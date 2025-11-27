@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../../spec/latest/index.html" class="home-link"></a>
@@ -369,21 +430,39 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Since Vulkan is a platform agnostic API, it can not interface directly with the window system on its own.
-To establish the connection between Vulkan and the window system to present results to the screen, we need to use the WSI (Window System Integration) extensions.
-In this chapter we&#8217;ll discuss the first one, which is <code>VK_KHR_surface</code>.
-It exposes a <code>VkSurfaceKHR</code> object that represents an abstract type of surface to present rendered images to.
-The surface in our program will be backed by the window that we&#8217;ve already opened with GLFW.</p>
+<p>Since Vulkan is a platform-agnostic API, it is not designed to interface
+directly with the window system on its own. To establish the connection
+between Vulkan and the window system to present results to the screen, we
+need to use the WSI (Window System Integration) extensions. In this chapter
+we&#8217;ll discuss the first one, which is <code>VK_KHR_surface</code>. It exposes a
+<code>VkSurfaceKHR</code> object that represents an abstract type of surface to
+present rendered images to. The surface in our program will be backed by
+the window that we&#8217;ve already opened with GLFW.</p>
 </div>
 <div class="paragraph">
-<p>The <code>VK_KHR_surface</code> extension is an instance level extension and we&#8217;ve actually already enabled it, because it&#8217;s included in the list returned by <code>glfwGetRequiredInstanceExtensions</code>.
-The list also includes some other WSI extensions that we&#8217;ll use in the next couple of chapters.</p>
+<p>The <code>VK_KHR_surface</code> extension is an instance level extension, and we&#8217;ve actually
+already enabled it, because it&#8217;s included in the list returned by
+<code>glfwGetRequiredInstanceExtensions</code>. The list also includes some other WSI
+extensions that we&#8217;ll use in the next couple of chapters.</p>
 </div>
 <div class="paragraph">
-<p>The window surface needs to be created right after the instance creation, because it can actually influence the physical device selection.
-The reason we postponed this is because window surfaces are part of the larger topic of render targets and presentation for which the explanation would have cluttered the basic setup.
-It should also be noted that window surfaces are an entirely optional component in Vulkan, if you just need off-screen rendering.
-Vulkan allows you to do that without hacks like creating an invisible window (necessary for OpenGL).</p>
+<p>The window surface needs to be created right after the instance creation,
+because it can actually influence the physical device selection. The reason we
+postponed this is that window surfaces are part of the larger topic of
+render targets and presentation for which the explanation would have cluttered
+the basic setup. It should also be noted that window surfaces are an entirely
+optional component in Vulkan if you just need off-screen rendering. Vulkan
+allows you to do that without hacks like creating an invisible window
+(necessary for OpenGL).  Vulkan also allows you to remotely render from a
+non-presenting GPU or remotely over the internet, or run compute
+acceleration for AI without a render or presentation target.</p>
+</div>
+<div class="paragraph">
+<p>While GLFW will be demonstrated here, the concept of Vulkan rendering to a
+surface is repeated as a target for any other Windowing API. This concept
+applies to mobile and to work with direct access to the windowing manager.
+That said, let&#8217;s for now, concentrate on GLFW and see how it concretely
+works in this tutorial.</p>
 </div>
 </div>
 </div>
@@ -395,19 +474,24 @@ Vulkan allows you to do that without hacks like creating an invisible window (ne
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkSurfaceKHR surface;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::SurfaceKHR surface = nullptr;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Although the <code>VkSurfaceKHR</code> object and its usage is platform agnostic, its creation isn&#8217;t because it depends on window system details.
-For example, it needs the <code>HWND</code> and <code>HMODULE</code> handles on Windows.
-Therefore there is a platform-specific addition to the extension, which on Windows is called <code>VK_KHR_win32_surface</code> and is also automatically included in the list from <code>glfwGetRequiredInstanceExtensions</code>.</p>
+<p>Although the <code>VkSurfaceKHR</code> object and its usage is platform-agnostic, its
+creation isn&#8217;t because it depends on window system details. For example, it
+needs the <code>HWND</code> and <code>HMODULE</code> handles on Windows. Therefore, there is a
+platform-specific addition to the extension, which on Windows is called
+<code>VK_KHR_win32_surface</code> and is also automatically included in the list from
+<code>glfwGetRequiredInstanceExtensions</code>.</p>
 </div>
 <div class="paragraph">
-<p>I will demonstrate how this platform specific extension can be used to create a surface on Windows, but we won&#8217;t actually use it in this tutorial.
-It doesn&#8217;t make any sense to use a library like GLFW and then proceed to use platform-specific code anyway.
-GLFW actually has <code>glfwCreateWindowSurface</code> that handles the platform differences for us.
-Still, it&#8217;s good to see what it does behind the scenes before we start relying on it.</p>
+<p>I will demonstrate how this platform-specific extension can be used to create a
+surface on Windows, but we won&#8217;t use it in this tutorial. It doesn&#8217;t
+make any sense to use a library like GLFW and then proceed to use
+platform-specific code anyway. GLFW actually has <code>glfwCreateWindowSurface</code> that
+handles the platform differences for us. Still, it&#8217;s good to see what it does
+behind the scenes before we start relying on it.</p>
 </div>
 <div class="paragraph">
 <p>To access native platform functions, you need to update the includes at the top:</p>
@@ -422,9 +506,10 @@ Still, it&#8217;s good to see what it does behind the scenes before we start rel
 </div>
 </div>
 <div class="paragraph">
-<p>Because a window surface is a Vulkan object, it comes with a <code>VkWin32SurfaceCreateInfoKHR</code> struct that needs to be filled in.
-It has two important parameters: <code>hwnd</code> and <code>hinstance</code>.
-These are the handles to the window and the process.</p>
+<p>Because a window surface is a Vulkan object, it comes with a
+<code>VkWin32SurfaceCreateInfoKHR</code> struct that needs to be filled in. It has two
+important parameters: <code>hwnd</code> and <code>hinstance</code>. These are the handles to the
+window and the process.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -435,12 +520,17 @@ createInfo.hinstance = GetModuleHandle(nullptr);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>glfwGetWin32Window</code> function is used to get the raw <code>HWND</code> from the GLFW window object.
-The <code>GetModuleHandle</code> call returns the <code>HINSTANCE</code> handle of the current process.</p>
+<p>The <code>glfwGetWin32Window</code> function is used to get the raw <code>HWND</code> from the GLFW
+window object. The <code>GetModuleHandle</code> call returns the <code>HINSTANCE</code> handle of the
+current process.</p>
 </div>
 <div class="paragraph">
-<p>After that the surface can be created with <code>vkCreateWin32SurfaceKHR</code>, which includes a parameter for the instance, surface creation details, custom allocators and the variable for the surface handle to be stored in.
-Technically this is a WSI extension function, but it is so commonly used that the standard Vulkan loader includes it, so unlike other extensions you don&#8217;t need to explicitly load it.</p>
+<p>After that the surface can be created with <code>vkCreateWin32SurfaceKHR</code>, which
+includes a parameter for the instance, surface creation details, custom
+allocators and the variable for the surface handle to be stored in.
+Technically, this is a WSI extension function, but it is so commonly used
+that the standard Vulkan loader includes it, so unlike other extensions, you
+don&#8217;t need to explicitly load it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -450,12 +540,15 @@ Technically this is a WSI extension function, but it is so commonly used that th
 </div>
 </div>
 <div class="paragraph">
-<p>The process is similar for other platforms like Linux, where <code>vkCreateXcbSurfaceKHR</code> takes an XCB connection and window as creation details with X11.</p>
+<p>The process is similar for other platforms like Linux, where
+<code>vkCreateXcbSurfaceKHR</code> takes an XCB connection and window as creation details
+with X11.</p>
 </div>
 <div class="paragraph">
-<p>The <code>glfwCreateWindowSurface</code> function performs exactly this operation with a different implementation for each platform.
-We&#8217;ll now integrate it into our program.
-Add a function <code>createSurface</code> to be called from <code>initVulkan</code> right after instance creation and <code>setupDebugMessenger</code>.</p>
+<p>The <code>glfwCreateWindowSurface</code> function performs exactly this operation with a
+different implementation for each platform. We&#8217;ll now integrate it into our
+program. Add a function <code>createSurface</code> to be called from <code>initVulkan</code> right
+after instance creation and <code>setupDebugMessenger</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -473,34 +566,31 @@ void createSurface() {
 </div>
 </div>
 <div class="paragraph">
-<p>The GLFW call takes simple parameters instead of a struct which makes the implementation of the function very straightforward:</p>
+<p>The GLFW call takes simple parameters instead of a struct which makes the
+implementation of the function very straightforward:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createSurface() {
-    if (glfwCreateWindowSurface(instance, window, nullptr, &amp;surface) != VK_SUCCESS) {
+    VkSurfaceKHR       _surface;
+    if (glfwCreateWindowSurface(*instance, window, nullptr, &amp;_surface) != 0) {
         throw std::runtime_error("failed to create window surface!");
     }
+    surface = vk::raii::SurfaceKHR(instance, _surface);
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The parameters are the <code>VkInstance</code>, GLFW window pointer, custom allocators and pointer to <code>VkSurfaceKHR</code> variable.
-It simply passes through the <code>VkResult</code> from the relevant platform call.
-GLFW doesn&#8217;t offer a special function for destroying a surface, but that can easily be done through the original API:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanup() {
-        ...
-        vkDestroySurfaceKHR(instance, surface, nullptr);
-        vkDestroyInstance(instance, nullptr);
-        ...
-    }</code></pre>
-</div>
+<p>However, as you see in the above, GLFW only deals with the Vulkan C API.
+The VkSurfaceKHR object is a C API object.  Thankfully, it can natively be
+promoted to the C++ wrapper, and that&#8217;s what we do here.</p>
 </div>
 <div class="paragraph">
-<p>Make sure that the surface is destroyed before the instance.</p>
+<p>The parameters are the <code>VkInstance</code>, GLFW window pointer, custom allocators and
+pointer to <code>VkSurfaceKHR</code> variable. It simply passes through the <code>VkResult</code> from
+the relevant platform call. GLFW doesn&#8217;t offer a special function for destroying
+a surface, but wrapping it in our raii SurfaceKHR object will let Vulkan
+RAII take care of that for us.</p>
 </div>
 </div>
 </div>
@@ -508,39 +598,33 @@ GLFW doesn&#8217;t offer a special function for destroying a surface, but that c
 <h2 id="_querying_for_presentation_support"><a class="anchor" href="#_querying_for_presentation_support"></a>Querying for presentation support</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Although the Vulkan implementation may support window system integration, that does not mean that every device in the system supports it.
-Therefore we need to extend <code>isDeviceSuitable</code> to ensure that a device can present images to the surface we created.
-Since the presentation is a queue-specific feature, the problem is actually about finding a queue family that supports presenting to the surface we created.</p>
+<p>Although the Vulkan implementation may support window system integration, that
+does not mean that every device in the system supports it. Therefore, we need to
+extend <code>createLogicalDevice</code> to ensure that a device can present images to the
+surface we created. Since the presentation is a queue-specific feature, the
+problem is actually about finding a queue family that supports presenting to the
+surface we created.</p>
 </div>
 <div class="paragraph">
-<p>It&#8217;s actually possible that the queue families supporting drawing commands and the ones supporting presentation do not overlap.
-Therefore we have to take into account that there could be a distinct presentation queue by modifying the <code>QueueFamilyIndices</code> structure:</p>
+<p>It&#8217;s actually possible that the queue families supporting drawing commands and
+the queue families supporting presentation do not overlap. Therefore, we
+have to take into account that there could be a distinct presentation queue.</p>
+</div>
+<div class="paragraph">
+<p>Next, we&#8217;ll look for a queue family that has the capability of presenting
+to our window surface. The function to check for that is
+<code>vkGetPhysicalDeviceSurfaceSupportKHR</code>, which takes the  physical device,
+queue family index and surface as parameters. Add a call to it
+in the same loop as the <code>VK_QUEUE_GRAPHICS_BIT</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">struct QueueFamilyIndices {
-    std::optional&lt;uint32_t&gt; graphicsFamily;
-    std::optional&lt;uint32_t&gt; presentFamily;
-
-    bool isComplete() {
-        return graphicsFamily.has_value() &amp;&amp; presentFamily.has_value();
-    }
-};</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkBool32 presentSupport = physicalDevice.getSurfaceSupportKHR( graphicsIndex, *surface );</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Next, we&#8217;ll modify the <code>findQueueFamilies</code> function to look for a queue family that has the capability of presenting to our window surface.
-The function to check for that is <code>vkGetPhysicalDeviceSurfaceSupportKHR</code>, which takes the physical device, queue family index and surface as parameters.
-Add a call to it in the same loop as the <code>VK_QUEUE_GRAPHICS_BIT</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkBool32 presentSupport = false;
-vkGetPhysicalDeviceSurfaceSupportKHR(device, i, surface, &amp;presentSupport);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then simply check the value of the boolean and store the presentation family queue index:</p>
+<p>Then check the value of the boolean and store the presentation family
+queue index:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -550,8 +634,11 @@ vkGetPhysicalDeviceSurfaceSupportKHR(device, i, surface, &amp;presentSupport);</
 </div>
 </div>
 <div class="paragraph">
-<p>Note that it&#8217;s very likely that these end up being the same queue family after all, but throughout the program we will treat them as if they were separate queues for a uniform approach.
-Nevertheless, you could add logic to explicitly prefer a physical device that supports drawing and presentation in the same queue for improved performance.</p>
+<p>Note that it&#8217;s very likely that these end up being the same queue family after
+all, but throughout the program we will treat them as if they were separate
+queues for a uniform approach. Nevertheless, you could add logic to explicitly
+prefer a physical device that supports drawing and presentation in the same
+queue for improved performance.</p>
 </div>
 </div>
 </div>
@@ -559,61 +646,102 @@ Nevertheless, you could add logic to explicitly prefer a physical device that su
 <h2 id="_creating_the_presentation_queue"><a class="anchor" href="#_creating_the_presentation_queue"></a>Creating the presentation queue</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The one thing that remains is modifying the logical device creation procedure to create the presentation queue and retrieve the <code>VkQueue</code> handle.
-Add a member variable for the handle:</p>
+<p>The one thing that remains is modifying the logical device creation procedure to
+create the presentation queue and retrieve the <code>VkQueue</code> handle. Add a member
+variable for the handle:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkQueue presentQueue;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::Queue presentQueue;
+
+std::vector&lt;const char*&gt; deviceExtensions = {
+    vk::KHRSwapchainExtensionName,
+    vk::KHRSpirv14ExtensionName,
+    vk::KHRSynchronization2ExtensionName,
+    vk::KHRCreateRenderpass2ExtensionName
+};</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Next, we need to have multiple <code>VkDeviceQueueCreateInfo</code> structs to create a queue from both families.
-An elegant way to do that is to create a set of all unique queue families that are necessary for the required queues:</p>
+<p>Next, we need to modify the filtering logic to find the best queue families
+to use as we detect them.  Here&#8217;s how we do it in one function at the device
+creation functions:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">#include &lt;set&gt;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createLogicalDevice() {
+    // find the index of the first queue family that supports graphics
+    std::vector&lt;vk::QueueFamilyProperties&gt; queueFamilyProperties = physicalDevice.getQueueFamilyProperties();
 
-...
+    // get the first index into queueFamilyProperties which supports graphics
+    auto graphicsQueueFamilyProperty = std::ranges::find_if( queueFamilyProperties, []( auto const &amp; qfp )
+                    { return (qfp.queueFlags &amp; vk::QueueFlagBits::eGraphics) != static_cast&lt;vk::QueueFlags&gt;(0); } );
 
-QueueFamilyIndices indices = findQueueFamilies(physicalDevice);
+    auto graphicsIndex = static_cast&lt;uint32_t&gt;( std::distance( queueFamilyProperties.begin(), graphicsQueueFamilyProperty ) );
 
-std::vector&lt;VkDeviceQueueCreateInfo&gt; queueCreateInfos;
-std::set&lt;uint32_t&gt; uniqueQueueFamilies = {indices.graphicsFamily.value(), indices.presentFamily.value()};
+    // determine a queueFamilyIndex that supports present
+    // first check if the graphicsIndex is good enough
+    auto presentIndex = physicalDevice.getSurfaceSupportKHR( graphicsIndex, *surface )
+                                       ? graphicsIndex
+                                       : static_cast&lt;uint32_t&gt;( queueFamilyProperties.size() );
+    if ( presentIndex == queueFamilyProperties.size() )
+    {
+        // the graphicsIndex doesn't support present -&gt; look for another family index that supports both
+        // graphics and present
+        for ( size_t i = 0; i &lt; queueFamilyProperties.size(); i++ )
+        {
+            if ( ( queueFamilyProperties[i].queueFlags &amp; vk::QueueFlagBits::eGraphics ) &amp;&amp;
+                 physicalDevice.getSurfaceSupportKHR( static_cast&lt;uint32_t&gt;( i ), *surface ) )
+            {
+                graphicsIndex = static_cast&lt;uint32_t&gt;( i );
+                presentIndex  = graphicsIndex;
+                break;
+            }
+        }
+        if ( presentIndex == queueFamilyProperties.size() )
+        {
+            // there's nothing like a single family index that supports both graphics and present -&gt; look for another
+            // family index that supports present
+            for ( size_t i = 0; i &lt; queueFamilyProperties.size(); i++ )
+            {
+                if ( physicalDevice.getSurfaceSupportKHR( static_cast&lt;uint32_t&gt;( i ), *surface ) )
+                {
+                    presentIndex = static_cast&lt;uint32_t&gt;( i );
+                    break;
+                }
+            }
+        }
+    }
+    if ( ( graphicsIndex == queueFamilyProperties.size() ) || ( presentIndex == queueFamilyProperties.size() ) )
+    {
+        throw std::runtime_error( "Could not find a queue for graphics or present -&gt; terminating" );
+    }
 
-float queuePriority = 1.0f;
-for (uint32_t queueFamily : uniqueQueueFamilies) {
-    VkDeviceQueueCreateInfo queueCreateInfo{};
-    queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
-    queueCreateInfo.queueFamilyIndex = queueFamily;
-    queueCreateInfo.queueCount = 1;
-    queueCreateInfo.pQueuePriorities = &amp;queuePriority;
-    queueCreateInfos.push_back(queueCreateInfo);
+    // query for Vulkan 1.3 features
+    auto features = physicalDevice.getFeatures2();
+    vk::PhysicalDeviceVulkan13Features vulkan13Features;
+    vk::PhysicalDeviceExtendedDynamicStateFeaturesEXT extendedDynamicStateFeatures;
+    vulkan13Features.dynamicRendering = vk::True;
+    extendedDynamicStateFeatures.extendedDynamicState = vk::True;
+    vulkan13Features.pNext = &amp;extendedDynamicStateFeatures;
+    features.pNext = &amp;vulkan13Features;
+    // create a Device
+    float                     queuePriority = 0.5f;
+    vk::DeviceQueueCreateInfo deviceQueueCreateInfo { .queueFamilyIndex = graphicsIndex, .queueCount = 1, .pQueuePriorities = &amp;queuePriority };
+    vk::DeviceCreateInfo      deviceCreateInfo{ .pNext =  &amp;features, .queueCreateInfoCount = 1, .pQueueCreateInfos = &amp;deviceQueueCreateInfo };
+    deviceCreateInfo.enabledExtensionCount = deviceExtensions.size();
+    deviceCreateInfo.ppEnabledExtensionNames = deviceExtensions.data();
+
+    device = vk::raii::Device( physicalDevice, deviceCreateInfo );
+    graphicsQueue = vk::raii::Queue( device, graphicsIndex, 0 );
+    presentQueue = vk::raii::Queue( device, presentIndex, 0 );
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>And modify <code>VkDeviceCreateInfo</code> to point to the vector:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">createInfo.queueCreateInfoCount = static_cast&lt;uint32_t&gt;(queueCreateInfos.size());
-createInfo.pQueueCreateInfos = queueCreateInfos.data();</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If the queue families are the same, then we only need to pass its index once.
-Finally, add a call to retrieve the queue handle:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkGetDeviceQueue(device, indices.presentFamily.value(), 0, &amp;presentQueue);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In case the queue families are the same, the two handles will most likely have the same value now.
-In the <a href="01_Swap_chain.html" class="xref page">next chapter</a> we&#8217;re going to look at swap chains and how they give us the ability to present images to the surface.</p>
+<p>In case the queue families are the same, the two handles will most likely have
+the same value now. In the <a href="01_Swap_chain.html" class="xref page">next chapter</a>, we&#8217;re going to look at swap chains and
+how they allow us to present images to the surface.</p>
 </div>
 <div class="paragraph">
 <p><a href="../../_attachments/05_window_surface.cpp">C&#43;&#43; code</a></p>
@@ -626,9 +754,56 @@ In the <a href="01_Swap_chain.html" class="xref page">next chapter</a> we&#8217;
 </div>
 <script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
-<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

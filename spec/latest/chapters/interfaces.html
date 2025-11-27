@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="spec" data-version="latest">
+<div class="nav-container" data-component="spec" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -128,6 +130,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="preamble.html">Preamble</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="introduction.html">Introduction</a>
   </li>
@@ -162,6 +167,9 @@
     <a class="nav-link" href="resources.html">Resource Creation</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="images.html">Images</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="samplers.html">Samplers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -175,6 +183,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="fragmentdensitymapops.html">Fragment Density Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_tensors/tensorops.html">Tensor Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="queries.html">Queries</a>
@@ -231,10 +242,13 @@
     <a class="nav-link" href="VK_KHR_deferred_host_operations/deferred_host_operations.html">Deferred Host Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_EXT_private_data.html">Private Data</a>
+    <a class="nav-link" href="private_data.html">Private Data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="accelstructures.html">Acceleration Structures</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_AMDX_dense_geometry_format/dense_geometry_format.html">Compressed triangle data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="VK_EXT_opacity_micromap/micromaps.html">Micromap</a>
@@ -246,7 +260,7 @@
     <a class="nav-link" href="raytracing.html">Ray Tracing</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_NV_memory_decompression.html">Memory Decompression</a>
+    <a class="nav-link" href="memory_decompression.html">Memory Decompression</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="videocoding.html">Video Coding</a>
@@ -256,6 +270,12 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="executiongraphs.html">Execution Graphs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_NV_external_compute_queue/VK_NV_external_compute_queue.html">External Compute Queues</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_data_graph/graphs.html">Data graphs</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="extensions.html">Extending Vulkan</a>
@@ -292,6 +312,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/roadmap.html">Vulkan Roadmap Milestones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendices/legacy.html">Legacy and Superseded Functionality</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/boilerplate.html">API Boilerplate</a>
@@ -333,6 +356,14 @@
       </ul>
     </li>
     <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
       <div class="title"><a href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a></div>
       <ul class="versions">
         <li class="version is-latest">
@@ -369,7 +400,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
@@ -477,6 +508,11 @@ Each class has a different set of matching criteria.</p>
 <p><code>Output</code> variables of a shader stage have <strong>undefined</strong> values until the
 shader writes to them or uses the <code>Initializer</code> operand when declaring
 the variable.</p>
+</div>
+<div class="paragraph">
+<p>For compute shaders, the input interface is formed by the built-in
+interface.
+The output interface is empty.</p>
 </div>
 <div class="sect2">
 <h3 id="interfaces-iointerfaces-builtin"><a class="anchor" href="#interfaces-iointerfaces-builtin"></a>Built-In Interface Block</h3>
@@ -662,8 +698,8 @@ level is also disregarded when assigning <code>Location</code> slots.</p>
 <div class="paragraph">
 <p>An array of size <span class="eq">n</span> with elements consuming <span class="eq">l</span> <code>Location</code> slots
 each will consume <span class="eq">l × n</span> <code>Location</code> slots.
-Each element of the array will consume all four <code>Component</code> slots in each
-<code>Location</code> slot.</p>
+Each element of the array will consume <code>Component</code> slots in each
+<code>Location</code> slot identically to a declaration using the element type.</p>
 </div>
 <div class="paragraph">
 <p>Matrices of size <span class="eq">n × m</span> are assigned locations identically to
@@ -671,25 +707,24 @@ arrays of size <span class="eq">n</span> of vectors of length 4 (consuming all <
 slots) with an identical element type.</p>
 </div>
 <div class="paragraph">
-<p>When an <code>OpVariable</code> with a structure type is decorated with a
-<code>Location</code>, the members in the structure type <strong>must</strong> not be decorated with
-a <code>Location</code>.
-The <code>OpVariable</code>&#8217;s members are assigned consecutive locations in
-declaration order, starting from the first member, which is assigned the
-location decoration from the <code>OpVariable</code>.
+<p>When a variable with a structure type is decorated with a <code>Location</code>, the
+members in the structure type <strong>must</strong> not be decorated with a <code>Location</code>.
+The variable&#8217;s members are assigned consecutive locations in declaration
+order, starting from the first member, which is assigned the location
+decoration from the variable.
 The <code>Location</code> slots consumed by structure members are determined by
 applying the rules above in a depth-first traversal of the instantiated
 members as though the structure or block member were declared as an input or
 output variable of the same type.</p>
 </div>
 <div class="paragraph">
-<p>An <code>OpVariable</code> with a structure type that is not decorated with
-<code>Block</code> <strong>must</strong> be decorated with a <code>Location</code>.</p>
+<p>A variable with a structure type that is not decorated with <code>Block</code> <strong>must</strong>
+be decorated with a <code>Location</code>.</p>
 </div>
 <div class="paragraph">
-<p>When an <code>OpVariable</code> with a structure type decorated with <code>Block</code> is
-declared without a <code>Location</code> decoration, each member in the structure
-<strong>must</strong> be decorated with a <code>Location</code>.
+<p>When a variable with a structure type decorated with <code>Block</code> is declared
+without a <code>Location</code> decoration, each member in the structure <strong>must</strong> be
+decorated with a <code>Location</code>.
 Types nested deeper than the top-level members <strong>must</strong> not have <code>Location</code>
 decorations.</p>
 </div>
@@ -867,12 +902,10 @@ void vkCmdSetRenderingAttachmentLocations(
     const VkRenderingAttachmentLocationInfo*    pLocationInfo);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkCmdSetRenderingAttachmentLocationsKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_dynamic_rendering_local_read
+// Equivalent to vkCmdSetRenderingAttachmentLocations
 void vkCmdSetRenderingAttachmentLocationsKHR(
     VkCommandBuffer                             commandBuffer,
     const VkRenderingAttachmentLocationInfo*    pLocationInfo);</code></pre>
@@ -951,7 +984,7 @@ The current render pass instance <strong>must</strong> have been started or resu
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRenderingAttachmentLocations-commandBuffer-cmdpool" href="#VUID-vkCmdSetRenderingAttachmentLocations-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetRenderingAttachmentLocations-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRenderingAttachmentLocations-renderpass" href="#VUID-vkCmdSetRenderingAttachmentLocations-renderpass"></a> <span class="vuid">VUID-vkCmdSetRenderingAttachmentLocations-renderpass</span><br>
@@ -1006,11 +1039,19 @@ The current render pass instance <strong>must</strong> have been started or resu
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Inside</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetRenderingAttachmentLocations is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -1031,12 +1072,10 @@ typedef struct VkRenderingAttachmentLocationInfo {
 } VkRenderingAttachmentLocationInfo;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkRenderingAttachmentLocationInfoKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_dynamic_rendering_local_read
+// Equivalent to VkRenderingAttachmentLocationInfo
 typedef VkRenderingAttachmentLocationInfo VkRenderingAttachmentLocationInfoKHR;</code></pre>
 </div>
 </div>
@@ -1470,12 +1509,10 @@ void vkCmdSetRenderingInputAttachmentIndices(
     const VkRenderingInputAttachmentIndexInfo*  pInputAttachmentIndexInfo);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkCmdSetRenderingInputAttachmentIndicesKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_dynamic_rendering_local_read
+// Equivalent to vkCmdSetRenderingInputAttachmentIndices
 void vkCmdSetRenderingInputAttachmentIndicesKHR(
     VkCommandBuffer                             commandBuffer,
     const VkRenderingInputAttachmentIndexInfo*  pInputAttachmentIndexInfo);</code></pre>
@@ -1556,7 +1593,7 @@ The current render pass instance <strong>must</strong> have been started or resu
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRenderingInputAttachmentIndices-commandBuffer-cmdpool" href="#VUID-vkCmdSetRenderingInputAttachmentIndices-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetRenderingInputAttachmentIndices-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRenderingInputAttachmentIndices-renderpass" href="#VUID-vkCmdSetRenderingInputAttachmentIndices-renderpass"></a> <span class="vuid">VUID-vkCmdSetRenderingInputAttachmentIndices-renderpass</span><br>
@@ -1611,11 +1648,19 @@ The current render pass instance <strong>must</strong> have been started or resu
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Inside</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetRenderingInputAttachmentIndices is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -1638,12 +1683,10 @@ typedef struct VkRenderingInputAttachmentIndexInfo {
 } VkRenderingInputAttachmentIndexInfo;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkRenderingInputAttachmentIndexInfoKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_dynamic_rendering_local_read
+// Equivalent to VkRenderingInputAttachmentIndexInfo
 typedef VkRenderingInputAttachmentIndexInfo VkRenderingInputAttachmentIndexInfoKHR;</code></pre>
 </div>
 </div>
@@ -1873,7 +1916,8 @@ are:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Ray payloads containing data tracked for the entire lifetime of the ray.</p>
+<p>Ray payloads containing data preserved for the entire lifetime of the
+ray.</p>
 </li>
 <li>
 <p>Hit attributes containing data about a specific hit for the duration of
@@ -1891,16 +1935,23 @@ passed to the invocation from any other payloads or data being used by
 subsequent shader call instructions.</p>
 </div>
 <div class="paragraph">
-<p>An interface structure used between stages <strong>must</strong> match between the stages
-using it.
+<p>An interface structure between stages <strong>must</strong> match between the stages using
+it.
 Specifically:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The hit attribute structure read in an any-hit or closest hit shader
-<strong>must</strong> be the same structure as the hit attribute structure written in
-the corresponding intersection shader in the same hit group.</p>
+<p>If an intersection shader is present, the hit attribute structure read
+in an any-hit or closest hit shader <strong>must</strong> be the same structure as the
+hit attribute structure written in the corresponding intersection shader
+in the same hit group.</p>
+</li>
+<li>
+<p>If an intersection shader is not present, the hit attribute structure
+read in an any-hit or closest hit shader <strong>must</strong> be a vector of 2 32-bit
+floating-point values that accepts the barycentric coordinates for
+triangle hits.</p>
 </li>
 <li>
 <p>The incoming callable data for a callable shader <strong>must</strong> be the same
@@ -1909,7 +1960,8 @@ instruction in the calling shader.</p>
 </li>
 <li>
 <p>The ray payload for a shader invoked by a ray tracing command <strong>must</strong> be
-the same structure for all shader stages using the payload for that ray.</p>
+the same structure for all shader stages using the payload for that ray,
+and <strong>must</strong> be declared in the shader even if it is not referenced.</p>
 </li>
 </ul>
 </div>
@@ -1994,9 +2046,11 @@ attribute <strong>must</strong> only declare one variable of that type.</p>
 <h2 id="interfaces-resources"><a class="anchor" href="#interfaces-resources"></a>Shader Resource Interface</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When a shader stage accesses buffer or image resources, as described in the
-<a href="descriptorsets.html#descriptorsets" class="xref page">Resource Descriptors</a> section, the shader resource
-variables <strong>must</strong> be matched with the <a href="descriptorsets.html#descriptorsets-pipelinelayout" class="xref page">pipeline layout</a> that is provided at pipeline creation time.</p>
+<p>When a shader stage accesses
+buffer, tensor,
+or image resources, as described in the <a href="descriptorsets.html#descriptorsets" class="xref page">Resource Descriptors</a> section, the shader resource variables <strong>must</strong> be matched with
+the <a href="descriptorsets.html#descriptorsets-pipelinelayout" class="xref page">pipeline layout</a> that is provided at
+pipeline creation time.</p>
 </div>
 <div class="paragraph">
 <p>The set of shader variables that form the <em>shader resource interface</em> for a
@@ -2346,6 +2400,21 @@ and <code>UniformTexelBufferArrayDynamicIndexing</code></p>
 </ul>
 </div>
 </li>
+<li>
+<p>Storage tensors:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Dynamically uniform: <code>shaderStorageTensorArrayDynamicIndexing</code> and
+<code>StorageTensorArrayDynamicIndexingARM</code></p>
+</li>
+<li>
+<p>Non-uniform: <code>shaderStorageTensorArrayNonUniformIndexing</code> and
+<code>StorageTensorArrayNonUniformIndexingARM</code></p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 <div class="admonitionblock note">
@@ -2446,6 +2515,10 @@ or
 <td class="tableblock halign-left valign-top"><p class="tableblock">block matching image</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM</code></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">storage tensor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code></p></td>
+</tr>
 </tbody>
 </table>
 <table id="interfaces-resources-storage-class-correspondence" class="tableblock frame-all grid-all stretch">
@@ -2474,21 +2547,21 @@ or
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sampled image</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>UniformConstant</code>
-or + <code>TileAttachmentQCOM</code></p></td>
+or <code>TileAttachmentQCOM</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code> (<code>Sampled</code>=1)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">storage image</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>UniformConstant</code>
-or + <code>TileAttachmentQCOM</code></p></td>
+or <code>TileAttachmentQCOM</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code> (<code>Sampled</code>=2)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">combined image sampler</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>UniformConstant</code>
-or + <code>TileAttachmentQCOM</code></p></td>
+or <code>TileAttachmentQCOM</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeSampledImage</code><br>
           <code>OpTypeImage</code> (<code>Sampled</code>=1)<br>
           <code>OpTypeSampler</code></p></td>
@@ -2525,7 +2598,7 @@ or + <code>TileAttachmentQCOM</code></p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">input attachment</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>UniformConstant</code>
-or + <code>TileAttachmentQCOM</code></p></td>
+or <code>TileAttachmentQCOM</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code> (<code>Dim</code>=<code>SubpassData</code>, <code>Sampled</code>=2)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>InputAttachmentIndex</code></p></td>
 </tr>
@@ -2544,7 +2617,7 @@ or + <code>TileAttachmentQCOM</code></p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sample weight image</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>UniformConstant</code>
-or + <code>TileAttachmentQCOM</code></p></td>
+or <code>TileAttachmentQCOM</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code> (<code>Depth</code>=0, <code>Dim</code>=<code>2D</code>,<br>
                             <code>Arrayed</code>=1, <code>MS</code>=0, <code>Sampled</code>=1)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>WeightTextureQCOM</code></p></td>
@@ -2552,10 +2625,16 @@ or + <code>TileAttachmentQCOM</code></p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">block matching image</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>UniformConstant</code>
-or + <code>TileAttachmentQCOM</code></p></td>
+or <code>TileAttachmentQCOM</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeImage</code> (<code>Depth</code>=0, <code>Dim</code>=<code>2D</code>,<br>
                             <code>Arrayed</code>=0, <code>MS</code>=0, <code>Sampled</code>=1)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>BlockMatchTextureQCOM</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">storage tensor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UniformConstant</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OpTypeTensorARM</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -2595,8 +2674,9 @@ Each descriptor set has its own binding name space.</p>
 <div class="paragraph">
 <p>If the <code>Binding</code> decoration is used with an array, the entire array is
 assigned that binding value.
-The array <strong>must</strong> be a single-dimensional array and size of the array <strong>must</strong> be
-no larger than the number of descriptors in the binding.
+The decorated array <strong>must</strong> have an <code>Element</code> <code>Type</code> corresponding to a
+descriptor type, and the size of the array <strong>must</strong> be no larger than the
+number of descriptors in the binding.
 If the array is runtime-sized, then array elements greater than or equal to
 the size of that binding in the bound descriptor set <strong>must</strong> not be used.
 If the array is runtime-sized, the <a href="features.html#features-runtimeDescriptorArray" class="xref page"><code>runtimeDescriptorArray</code></a> feature <strong>must</strong> be enabled and the
@@ -2779,11 +2859,10 @@ or
 <div class="sect2">
 <h3 id="interfaces-resources-layout"><a class="anchor" href="#interfaces-resources-layout"></a>Offset and Stride Assignment</h3>
 <div class="paragraph">
-<p>Certain objects <strong>must</strong> be explicitly laid out using the <code>Offset</code>,
-<code>ArrayStride</code>, and <code>MatrixStride</code>, as described in
-<a href="https://registry.khronos.org/spir-v/specs/unified1/SPIRV.html#ShaderValidation">SPIR-V
-explicit layout validation rules</a>.
-All such layouts also <strong>must</strong> conform to the following requirements.</p>
+<p>When a SPIR-V object is declared using an
+<a href="https://registry.khronos.org/spir-v/specs/unified1/SPIRV.html#ExplicitLayout">explicit
+layout</a>, it <strong>must</strong> be laid out according to the following additional
+requirements.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3073,10 +3152,10 @@ This level of arrayness is not included in the type descriptions below, but
 <strong>must</strong> be included when declaring the built-in.</p>
 </div>
 <div class="paragraph">
-<p>Any two <code>Input</code> storage class <code>OpVariable</code> declarations listed as
+<p>Any two variables declared in the <code>Input</code> storage class listed as
 operands on the same <code>OpEntryPoint</code> <strong>must</strong> not have the same <code>BuiltIn</code>
 decoration.
-Any two <code>Output</code> storage class <code>OpVariable</code> declarations listed as
+Any two variables declared in the <code>Output</code> storage class listed as
 operands on the same <code>OpEntryPoint</code> <strong>must</strong> not have the same <code>BuiltIn</code>
 decoration.</p>
 </div>
@@ -3961,7 +4040,7 @@ using the <code>Output</code> <code>Storage</code> <code>Class</code></p>
 
 <code>CullPrimitiveEXT</code> <strong>must</strong> decorate a scalar boolean member of a
 structure decorated as <code>Block</code>, or decorate a variable of type
-<code>OpTypeArray</code> of boolean values.</p>
+<code>OpTypeArray</code> of boolean values</p>
 </li>
 <li>
 <p><a id="VUID-CullPrimitiveEXT-CullPrimitiveEXT-10589" href="#VUID-CullPrimitiveEXT-CullPrimitiveEXT-10589"></a> <span class="vuid">VUID-CullPrimitiveEXT-CullPrimitiveEXT-10589</span><br>
@@ -3981,7 +4060,7 @@ that matches the value specified by <code>OutputPrimitivesEXT</code></p>
 <p><a id="VUID-CullPrimitiveEXT-CullPrimitiveEXT-10591" href="#VUID-CullPrimitiveEXT-CullPrimitiveEXT-10591"></a> <span class="vuid">VUID-CullPrimitiveEXT-CullPrimitiveEXT-10591</span><br>
 
 There must be only one declaration of the <code>CullPrimitiveEXT</code>
-associated with a entry point&#8217;s interface.</p>
+associated with a entry point&#8217;s interface</p>
 </li>
 <li>
 <p><a id="VUID-CullPrimitiveEXT-CullPrimitiveEXT-07038" href="#VUID-CullPrimitiveEXT-CullPrimitiveEXT-07038"></a> <span class="vuid">VUID-CullPrimitiveEXT-CullPrimitiveEXT-07038</span><br>
@@ -4459,6 +4538,21 @@ declared as a scalar 32-bit integer value</p>
 make that variable contain the dimensions in pixels of the
 <a href="../appendices/glossary.html#glossary-fragment-area" class="xref page">area</a> that the fragment covers for that
 invocation.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When used in a custom resolve operation and the <a href="features.html#features-customResolve" class="xref page"><code>customResolve</code></a> feature is enabled, the dimensions in pixels returned
+<strong>may</strong> be <span class="eq">(1,1)</span> if the fragment area was reduced.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>If fragment density map is not enabled, <code>FragSizeEXT</code> will be filled with
 a value of <span class="eq">(1,1)</span>.</p>
@@ -4932,7 +5026,7 @@ used only if the value of <code>HitKindKHR</code> is
 
 The acceleration structure corresponding to the current intersection
 <strong>must</strong> have been built with
-<code>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_KHR</code></p>
+<code>VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR</code></p>
 </li>
 </ul>
 </div>
@@ -5476,7 +5570,7 @@ The variable decorated with <code>Layer</code> within the <code>Fragment</code>
 
 The variable decorated with <code>Layer</code> <strong>must</strong> be declared as a scalar
 32-bit integer value for all supported execution models except
-<code>MeshEXT</code>.</p>
+<code>MeshEXT</code></p>
 </li>
 <li>
 <p><a id="VUID-Layer-Layer-07039" href="#VUID-Layer-Layer-07039"></a> <span class="vuid">VUID-Layer-Layer-07039</span><br>
@@ -5491,13 +5585,14 @@ decoration</p>
 <code>Layer</code> within the <code>MeshEXT</code> <code>Execution</code> <code>Model</code> <strong>must</strong> decorate a
 scalar 32-bit integer member of a structure decorated as <code>Block</code>, or
 decorate a variable of type <code>OpTypeArray</code> of scalar 32-bit integer
-values.</p>
+values</p>
 </li>
 <li>
 <p><a id="VUID-Layer-Layer-10593" href="#VUID-Layer-Layer-10593"></a> <span class="vuid">VUID-Layer-Layer-10593</span><br>
 
-If <code>Layer</code> is declared as an array of boolean values, the size of the
-array <strong>must</strong> match the value specified by <code>OutputPrimitivesEXT</code></p>
+If <code>Layer</code> is declared as an array of 32-bit integer values, within
+the <code>MeshEXT</code> <code>Execution</code> <code>Model</code>, size of the array <strong>must</strong> match the
+value specified by <code>OutputPrimitivesEXT</code></p>
 </li>
 <li>
 <p><a id="VUID-Layer-Layer-10594" href="#VUID-Layer-Layer-10594"></a> <span class="vuid">VUID-Layer-Layer-10594</span><br>
@@ -6507,8 +6602,7 @@ decoration</p>
 
 <code>PrimitiveId</code> within the <code>MeshEXT</code> <code>Execution</code> <code>Model</code> <strong>must</strong> decorate
 a scalar 32-bit integer member of a structure decorated as <code>Block</code>,
-or decorate a variable of type <code>OpTypeArray</code> of 32-bit integer
-values.</p>
+or decorate a variable of type <code>OpTypeArray</code> of 32-bit integer values</p>
 </li>
 <li>
 <p><a id="VUID-PrimitiveId-PrimitiveId-10596" href="#VUID-PrimitiveId-PrimitiveId-10596"></a> <span class="vuid">VUID-PrimitiveId-PrimitiveId-10596</span><br>
@@ -6881,14 +6975,14 @@ The variable decorated with <code>PrimitiveShadingRateKHR</code> within the
 <code>PrimitiveShadingRateKHR</code> within the <code>MeshEXT</code> <code>Execution</code> <code>Model</code>
 <strong>must</strong> decorate a scalar 32-bit integer member of a structure decorated
 as <code>Block</code>, or decorate a variable of type <code>OpTypeArray</code> of 32-bit
-integer values.</p>
+integer values</p>
 </li>
 <li>
 <p><a id="VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-10599" href="#VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-10599"></a> <span class="vuid">VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-10599</span><br>
 
-If <code>PrimitiveShadingRateKHR</code> is declared as an array of boolean
-values, the size of the array <strong>must</strong> match the value specified by
-<code>OutputPrimitivesEXT</code></p>
+If <code>PrimitiveShadingRateKHR</code> is declared as an array of 32-bit
+integer values, within the <code>MeshEXT</code> <code>Execution</code> <code>Model</code>, size of the
+array <strong>must</strong> match the value specified by <code>OutputPrimitivesEXT</code></p>
 </li>
 <li>
 <p><a id="VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-10600" href="#VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-10600"></a> <span class="vuid">VUID-PrimitiveShadingRateKHR-PrimitiveShadingRateKHR-10600</span><br>
@@ -7724,7 +7818,11 @@ This value <strong>must</strong> be between <a href="devsandqueues.html#limits-m
 The value <strong>may</strong> vary across a single draw call, and for fragment shaders <strong>may</strong>
 vary across a single primitive.
 In compute dispatches, <code>SubgroupSize</code> <strong>must</strong> be uniform with
-<a href="shaders.html#shaders-scope-command" class="xref page">command scope</a>.</p>
+<a href="shaders.html#shaders-scope-command" class="xref page">command scope</a>.
+In mesh and task shaders, <code>SubgroupSize</code> <strong>must</strong> be uniform with
+<a href="shaders.html#shaders-scope-command" class="xref page">command scope</a>.
+In a single <a href="shaders.html#shaders-scope-command" class="xref page">command scope</a>, the mesh and task
+shader <strong>may</strong> have different <code>SubgroupSize</code>.</p>
 </div>
 <div class="paragraph">
 <p>If the pipeline was created with a chained
@@ -7762,7 +7860,7 @@ subgroup is 128.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The old behavior for <code>SubgroupSize</code> is considered deprecated as certain
+<p>The old behavior for <code>SubgroupSize</code> is considered legacy as certain
 compute algorithms cannot be easily implemented without the guarantees of
 <code>VK_PIPELINE_SHADER_STAGE_CREATE_ALLOW_VARYING_SUBGROUP_SIZE_BIT</code> and
 <code>VK_PIPELINE_SHADER_STAGE_CREATE_REQUIRE_FULL_SUBGROUPS_BIT</code>.</p>
@@ -8035,7 +8133,7 @@ filled with <span class="eq">(0,0)</span>.</p>
 <p><a id="VUID-TileOffsetQCOM-TileOffsetQCOM-10626" href="#VUID-TileOffsetQCOM-TileOffsetQCOM-10626"></a> <span class="vuid">VUID-TileOffsetQCOM-TileOffsetQCOM-10626</span><br>
 
 The <code>TileOffsetQCOM</code> decoration <strong>must</strong> be used only within the
-<code>Fragment</code> <code>Execution</code> <code>Model</code> or <code>GLCompute</code> <code>Execution</code> <code>Model</code>.</p>
+<code>Fragment</code> <code>Execution</code> <code>Model</code> or <code>GLCompute</code> <code>Execution</code> <code>Model</code></p>
 </li>
 <li>
 <p><a id="VUID-TileOffsetQCOM-TileOffsetQCOM-10627" href="#VUID-TileOffsetQCOM-TileOffsetQCOM-10627"></a> <span class="vuid">VUID-TileOffsetQCOM-TileOffsetQCOM-10627</span><br>
@@ -8085,7 +8183,7 @@ filled with <span class="eq">(0,0)</span>.</p>
 <p><a id="VUID-TileDimensionQCOM-TileDimensionQCOM-10629" href="#VUID-TileDimensionQCOM-TileDimensionQCOM-10629"></a> <span class="vuid">VUID-TileDimensionQCOM-TileDimensionQCOM-10629</span><br>
 
 The <code>TileDimensionQCOM</code> decoration <strong>must</strong> be used only within the
-<code>Fragment</code> <code>Execution</code> <code>Model</code> or <code>GLCompute</code> <code>Execution</code> <code>Model</code>.</p>
+<code>Fragment</code> <code>Execution</code> <code>Model</code> or <code>GLCompute</code> <code>Execution</code> <code>Model</code></p>
 </li>
 <li>
 <p><a id="VUID-TileDimensionQCOM-TileDimensionQCOM-10630" href="#VUID-TileDimensionQCOM-TileDimensionQCOM-10630"></a> <span class="vuid">VUID-TileDimensionQCOM-TileDimensionQCOM-10630</span><br>
@@ -8138,7 +8236,7 @@ filled with <span class="eq">(0,0)</span>.</p>
 <p><a id="VUID-TileApronSizeQCOM-TileApronSizeQCOM-10632" href="#VUID-TileApronSizeQCOM-TileApronSizeQCOM-10632"></a> <span class="vuid">VUID-TileApronSizeQCOM-TileApronSizeQCOM-10632</span><br>
 
 The <code>TileApronSizeQCOM</code> decoration <strong>must</strong> be used only within the
-<code>Fragment</code> <code>Execution</code> <code>Model</code> or <code>GLCompute</code> <code>Execution</code> <code>Model</code>.</p>
+<code>Fragment</code> <code>Execution</code> <code>Model</code> or <code>GLCompute</code> <code>Execution</code> <code>Model</code></p>
 </li>
 <li>
 <p><a id="VUID-TileApronSizeQCOM-TileApronSizeQCOM-10633" href="#VUID-TileApronSizeQCOM-TileApronSizeQCOM-10633"></a> <span class="vuid">VUID-TileApronSizeQCOM-TileApronSizeQCOM-10633</span><br>
@@ -8388,7 +8486,7 @@ belongs to.</p>
 <a href="pipelines.html#pipelines-graphics-subsets-pre-rasterization" class="xref page">pre-rasterization shader stage</a> shader entry point&#8217;s interface does not include a variable decorated
 with <code>ViewportIndex</code>, then the value of <code>ViewIndex</code> is used as an
 index to select the viewport transform and scissor rectangle, and the value
-of <code>ViewportIndex</code> in the fragment shader is <strong>undefined</strong>:.</p>
+of <code>ViewportIndex</code> in the fragment shader is <strong>undefined</strong>.</p>
 </div>
 </dd>
 </dl>
@@ -8443,15 +8541,16 @@ decoration</p>
 <p><a id="VUID-ViewportIndex-ViewportIndex-10601" href="#VUID-ViewportIndex-ViewportIndex-10601"></a> <span class="vuid">VUID-ViewportIndex-ViewportIndex-10601</span><br>
 
 <code>ViewportIndex</code> within the <code>MeshEXT</code> <code>Execution</code> <code>Model</code> <strong>must</strong>
-decorate a scalar boolean member of a structure decorated as <code>Block</code>,
-or decorate a variable of type <code>OpTypeArray</code> of boolean values.</p>
+decorate a scalar 32-bit integer member of a structure decorated as
+<code>Block</code>, or decorate a variable of type <code>OpTypeArray</code> of scalar
+32-bit integer values</p>
 </li>
 <li>
 <p><a id="VUID-ViewportIndex-ViewportIndex-10602" href="#VUID-ViewportIndex-ViewportIndex-10602"></a> <span class="vuid">VUID-ViewportIndex-ViewportIndex-10602</span><br>
 
-If <code>ViewportIndex</code> is declared as an array of boolean values, the
-size of the array <strong>must</strong> match the value specified by
-<code>OutputPrimitivesEXT</code></p>
+If <code>ViewportIndex</code> is declared as an array of 32-bit integer values,
+within the <code>MeshEXT</code> <code>Execution</code> <code>Model</code>, size of the array <strong>must</strong> match
+the value specified by <code>OutputPrimitivesEXT</code></p>
 </li>
 <li>
 <p><a id="VUID-ViewportIndex-ViewportIndex-10603" href="#VUID-ViewportIndex-ViewportIndex-10603"></a> <span class="vuid">VUID-ViewportIndex-ViewportIndex-10603</span><br>
@@ -8700,10 +8799,13 @@ The variable decorated with <code>WarpIDNV</code> <strong>must</strong> be decla
 <dt class="hdlist1"><code>WorkgroupId</code></dt>
 <dd>
 <p>Decorating a variable with the <code>WorkgroupId</code> built-in decoration will
-make that variable contain the global workgroup that the current invocation
-is a member of.
-Each component ranges from a base value to a <span class="eq">base +  count</span> value,
-based on the parameters passed into the dispatching commands.</p>
+make that variable contain the global coordinate of the local workgroup that
+the current invocation is a member of.
+Each component is in the range <span class="eq">[base,base +  count)</span>, where
+<span class="eq">base</span> and <span class="eq">count</span> are based on the parameters passed into the
+dispatching
+or drawing
+commands in each dimension.</p>
 </dd>
 </dl>
 </div>
@@ -9480,9 +9582,56 @@ scalar 32-bit integer value</p>
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

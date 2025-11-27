@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="samples" data-version="latest">
+<div class="nav-container" data-component="samples" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -178,11 +180,8 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../samples/api/hello_triangle/README.html">Hello Triangle</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../samples/api/hello_triangle_1_3/README.html">Hello Triangle 1.3</a>
+    <a class="nav-link" href="../samples/api/hello_triangle/README.html">Hello Triangle</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../samples/api/hpp_hello_triangle/README.html">Hello Triangle (Vulkan-Hpp)</a>
@@ -191,10 +190,10 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../samples/api/hlsl_shaders/README.html">HLSL Shaders</a>
+    <a class="nav-link" href="../samples/api/hello_triangle_1_3/README.html">Hello Triangle 1.3</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../samples/api/hpp_hlsl_shaders/README.html">HLSL Shaders (Vulkan-Hpp)</a>
+    <a class="nav-link" href="../samples/api/hpp_hello_triangle_1_3/README.html">Hello Triangle 1.3(Vulkan-Hpp)</a>
   </li>
 </ul>
   </li>
@@ -313,6 +312,9 @@
     <a class="nav-link" href="../samples/extensions/extended_dynamic_state2/README.html">Extended dynamic state2</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../samples/extensions/fragment_density_map/README.html">Fragment density map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../samples/extensions/fragment_shader_barycentric/README.html">Fragment shader barycentric</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -398,6 +400,15 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../samples/extensions/synchronization_2/README.html">Synchronization 2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../samples/extensions/tensor_and_data_graph/README.html">Tensor and Data Graph</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../samples/extensions/tensor_and_data_graph/simple_tensor_and_data_graph/README.html">Simple Tensor and Data Graph</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../samples/extensions/timeline_semaphore/README.html">Timeline semaphore</a>
@@ -536,6 +547,9 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Samples" target="_blank" rel="noopener">GitHub Repository</a></span>
+  </li>
 </ul>
   </li>
 </ul>
@@ -560,6 +574,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -600,7 +622,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../spec/latest/index.html" class="home-link"></a>
@@ -751,6 +773,18 @@ Other platforms require the user to build the profiler from source see the <a hr
 </div>
 <div class="paragraph">
 <p>Tracy is not currently enabled for Android builds. In the future, we may add support for this.</p>
+</div>
+<div class="paragraph">
+<p><strong>Default:</strong> <code>OFF</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vkb_skip_slang_shader_compilation"><a class="anchor" href="#_vkb_skip_slang_shader_compilation"></a>VKB_SKIP_SLANG_SHADER_COMPILATION</h3>
+<div class="paragraph">
+<p>By default, Slang shaders are compiled if a Slang compiler is found on the system. In cases where this is undesirable, set this to <code>OFF</code> to disable Slang shader compilation.</p>
+</div>
+<div class="paragraph">
+<p>You can still select Slang as a shading language target for the samples since Slang shaders are included as precompiled SPIR-V files.</p>
 </div>
 <div class="paragraph">
 <p><strong>Default:</strong> <code>OFF</code></p>
@@ -936,11 +970,11 @@ Visual Studio 2022 must be installed)</p>
 </div>
 </div>
 <div class="paragraph">
-<p><code>Step 3.</code> Run the <strong>Vulkan Samples</strong> application</p>
+<p><code>Step 3.</code> Run the <strong>Vulkan Samples</strong> application by specifying the name of the sample</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">build\windows\app\bin\Release\AMD64\vulkan_samples.exe</code></pre>
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">build\windows\app\bin\Release\AMD64\vulkan_samples.exe sample &lt;sample_name&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -972,6 +1006,50 @@ Visual Studio 2022 must be installed)</p>
 <pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">sudo apt-get install cmake g++ xorg-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev</code></pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_selecting_the_window_system"><a class="anchor" href="#_selecting_the_window_system"></a>Selecting the window system</h3>
+<div class="paragraph">
+<p>On Linux, the samples support different window systems. If not explicitly set, default is X11 Xcb. If you want to build with another window system, use the <code>VKB_WSI_SELECTION</code> CMake option like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cmake -G "Unix Makefiles" -Bbuild/linux -DCMAKE_BUILD_TYPE=Release -DVKB_WSI_SELECTION=WAYLAND</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Available Linux window systems:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">VKB_WSI_SELECTION</th>
+<th class="tableblock halign-left valign-top">Window system</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XCB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X11 Xcb (Default)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XLIB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X11 Xlib</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WAYLAND</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wayland</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">D2D</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Direct to Display (<code>VK_KHR_DISPLAY</code>)</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_build_with_cmake"><a class="anchor" href="#_build_with_cmake"></a>Build with CMake</h3>
@@ -1045,7 +1123,7 @@ Visual Studio 2022 must be installed)</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cmake -G Xcode -Bbuild/mac-xcode -DCMAKE_BUILD_TYPE=Release</code></pre>
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cmake -G Xcode -Bbuild/mac-xcode -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=macosx -DCMAKE_OSX_DEPLOYMENT_TARGET=13.3</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1056,7 +1134,7 @@ Visual Studio 2022 must be installed)</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cmake -Bbuild/mac -DCMAKE_BUILD_TYPE=Release</code></pre>
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cmake -Bbuild/mac -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=macosx -DCMAKE_OSX_DEPLOYMENT_TARGET=13.3</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1127,18 +1205,18 @@ Visual Studio 2022 must be installed)</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cmake -G Xcode -Bbuild/ios -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphoneos -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0 -DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=YES -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_IOS_INSTALL_COMBINED=NO -DCMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM="XXXX" -DMACOSX_BUNDLE_GUI_IDENTIFIER="com.YYYY.vulkansamples"</code></pre>
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cmake -G Xcode -Bbuild/ios -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphoneos -DCMAKE_OSX_DEPLOYMENT_TARGET=16.3 -DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=YES -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_IOS_INSTALL_COMBINED=NO -DCMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM="XXXX" -DMACOSX_BUNDLE_GUI_IDENTIFIER="com.YYYY.vulkansamples"</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>NB:  You MUST change the XXXX in the above to your TeamID (or Organizational Unit identifier in your Apple Development certificate) for code signing, and YYYY to your bundle identifier. iOS will NOT allow the application to run without code signing and bundle identifier setup.</p>
 </div>
 <div class="paragraph">
-<p>Alternatively, you can build for the iOS Simulator without code signing or specifying a bundle identifier (a default bundle id will be used). However, depending on your host architecture, you MUST select either arm64 (Apple Silicon) or x86_64 in the command below</p>
+<p>Alternatively, you can build for the iOS Simulator (requires Vulkan SDK 1.4.321.0 or later) without code signing or specifying a bundle identifier (a default bundle id will be used). However, depending on your host architecture, you MUST select either arm64 (Apple Silicon) or x86_64 in the command below. <em>Note: On arm64 (Apple Silicon) hosts the Vulkan library may not load on iOS Simulator without specifying your TeamID and bundle identifier as shown above.</em></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cmake -G Xcode -Bbuild/ios-sim -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphonesimulator -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0 -DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=YES -DCMAKE_OSX_ARCHITECTURES=&lt;arm64|x86_64&gt; -DCMAKE_IOS_INSTALL_COMBINED=NO</code></pre>
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cmake -G Xcode -Bbuild/ios-sim -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_SYSROOT=iphonesimulator -DCMAKE_OSX_DEPLOYMENT_TARGET=16.3 -DCMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH=YES -DCMAKE_OSX_ARCHITECTURES=&lt;arm64|x86_64&gt; -DCMAKE_IOS_INSTALL_COMBINED=NO</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1152,7 +1230,7 @@ Visual Studio 2022 must be installed)</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cmake --build build/ios --config Release --target vulkan_samples -j$(sysctl -n hw.ncpu) -- -sdk iphoneos -allowProvisioningUpdates</code></pre>
+<pre class="highlightjs highlight"><code class="language-asciidoc hljs" data-lang="asciidoc">cmake --build build/ios --config Release --target vulkan_samples -j$(sysctl -n hw.ncpu) -- -allowProvisioningUpdates</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1364,9 +1442,56 @@ If you do set up the NDK and CMake environment variables, Android Studio will us
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../../spec/latest/index.html" class="home-link"></a>
@@ -369,12 +430,18 @@
 <h2 id="_general_structure"><a class="anchor" href="#_general_structure"></a>General structure</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the previous chapter you&#8217;ve created a Vulkan project with all of the proper configuration and tested it with the sample code.
-In this chapter we&#8217;re starting from scratch with the following code:</p>
+<p>In the previous chapter, you&#8217;ve created a Vulkan project with all the proper
+ configurations and tested it with the sample code. In this chapter, we&#8217;re starting
+from scratch with the following code:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">#include &lt;vulkan/vulkan.h&gt;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">#if defined(__INTELLISENSE__) || !defined(USE_CPP20_MODULES)
+#include &lt;vulkan/vulkan_raii.hpp&gt;
+#else
+import vulkan_hpp;
+#endif
+#include &lt;GLFW/glfw3.h&gt;
 
 #include &lt;iostream&gt;
 #include &lt;stdexcept&gt;
@@ -417,23 +484,34 @@ int main() {
 </div>
 </div>
 <div class="paragraph">
-<p>We first include the Vulkan header from the LunarG SDK, which provides the functions, structures and enumerations.
-The <code>stdexcept</code> and <code>iostream</code> headers are included for reporting and propagating errors.
-The <code>cstdlib</code> header provides the <code>EXIT_SUCCESS</code> and <code>EXIT_FAILURE</code> macros.</p>
+<p>We first include the Vulkan-Hpp RAII header by default, which provides the
+functions, structures and enumerations. If you enable C&#43;&#43;20 modules
+(<code>-DENABLE_CPP20_MODULE=ON</code>), the code will <code>import vulkan_hpp;</code> instead via the
+<code>USE_CPP20_MODULES</code> define set by CMake. The <code>stdexcept</code> and <code>iostream</code> headers
+are included for reporting and propagating errors. The <code>cstdlib</code> header
+provides the <code>EXIT_SUCCESS</code> and <code>EXIT_FAILURE</code> macros.</p>
 </div>
 <div class="paragraph">
-<p>The program itself is wrapped into a class where we&#8217;ll store the Vulkan objects as private class members and add functions to initiate each of them, which will be called from the <code>initVulkan</code> function.
-Once everything has been prepared, we enter the main loop to start rendering frames.
-We&#8217;ll fill in the <code>mainLoop</code> function to include a loop that iterates until the window is closed in a moment.
-Once the window is closed and <code>mainLoop</code> returns, we&#8217;ll make sure to deallocate the resources we&#8217;ve used in the <code>cleanup</code> function.</p>
+<p>The program itself is wrapped into a class where we&#8217;ll store the Vulkan objects
+as private class members and add functions to initiate each of them, which will
+be called from the <code>initVulkan</code> function. Once everything has been prepared, we
+enter the main loop to start rendering frames. We&#8217;ll fill in the <code>mainLoop</code>
+function to include a loop that iterates until the window is closed in a moment.
+Once the window is closed and <code>mainLoop</code> returns, we&#8217;ll make sure to deallocate
+the resources we&#8217;ve used in the <code>cleanup</code> function.</p>
 </div>
 <div class="paragraph">
-<p>If any kind of fatal error occurs during execution then we&#8217;ll throw a <code>std::runtime_error</code> exception with a descriptive message, which will propagate back to the <code>main</code> function and be printed to the command prompt.
-To handle  a variety of standard exception types as well, we catch the more general <code>std::exception</code>.
-One example of an error that we will deal with soon is finding  out that a certain required extension is not supported.</p>
+<p>If any kind of fatal error occurs during execution, then we&#8217;ll throw a
+<code>std::runtime_error</code> exception with a descriptive message, which will propagate
+back to the <code>main</code> function and be printed to the command prompt. To handle
+a variety of standard exception types, as well, we catch the more general
+<code>std::exception</code>. One example of an error that we will deal with soon is finding
+out that a certain required extension is not supported.</p>
 </div>
 <div class="paragraph">
-<p>Roughly every chapter that follows after this one will add one new function that will be called from <code>initVulkan</code> and one or more new Vulkan objects to the private class members that need to be freed at the end in <code>cleanup</code>.</p>
+<p>Roughly every chapter that follows after this one will add one new function that
+will be called from <code>initVulkan</code> and one or more new Vulkan objects to the
+private class members that need to be freed at the end in <code>cleanup</code>.</p>
 </div>
 </div>
 </div>
@@ -441,21 +519,97 @@ One example of an error that we will deal with soon is finding  out that a certa
 <h2 id="_resource_management"><a class="anchor" href="#_resource_management"></a>Resource management</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Just like each chunk of memory allocated with <code>malloc</code> requires a call to <code>free</code>, every Vulkan object that we create needs to be explicitly destroyed when we no longer need it.
-In C&#43;&#43; it is possible to perform automatic resource  management using <a href="https://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization">RAII</a>  or smart pointers provided in the <code>&lt;memory&gt;</code> header.
-However, I&#8217;ve chosen to be explicit about allocation and deallocation of Vulkan objects in this tutorial.
-After all, Vulkan&#8217;s niche is to be explicit about every operation to avoid mistakes, so it&#8217;s good to be explicit about the lifetime of objects to learn how the API works.</p>
+<p>Just like each chunk of memory allocated with <code>malloc</code> requires a call to
+<code>free</code>, every Vulkan object that we create needs to be explicitly destroyed when
+we no longer need it. In c&#43;&#43; it is possible to perform automatic resource
+management using <a href="https://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization">RAII</a>
+or smart pointers provided in the <code>&lt;memory&gt;</code> header. This tutorial is an attempt
+to make Vulkan easier to work with, and demonstrate modern Vulkan
+programming.  This tutorial will not only use RAII with smart pointers, it
+will endeavor to demonstrate the latest methods and extensions which should
+hopefully make Vulkan a joy to use.  Just because we enjoy working with
+low level graphics APIs, we shouldn&#8217;t make the bar too high to learn how
+to do so.  Where appropriate, we will discuss concerns for resource
+management for freeing resources.  However, for this tutorial, we&#8217;ll
+demonstrate that we can get pretty far with a basic destructor to clean up
+after our work.</p>
 </div>
 <div class="paragraph">
-<p>After following this tutorial, you could implement automatic resource management by writing C&#43;&#43; classes that acquire Vulkan objects in their constructor and release them in their destructor, or by providing a custom deleter to either <code>std::unique_ptr</code> or <code>std::shared_ptr</code>, depending on your ownership requirements.
-RAII is the recommended model for larger Vulkan programs, but for learning purposes it&#8217;s always good to know what&#8217;s going on behind the scenes.</p>
+<p>Vulkan objects are either created directly with functions like <code>vkCreateXXX</code>, or
+allocated through another object with functions like <code>vkAllocateXXX</code>. After
+making sure that an object is no longer used anywhere, you need to destroy it
+with the counterparts <code>vkDestroyXXX</code> and <code>vkFreeXXX</code>. The parameters for these
+functions generally vary for different types of objects, but there is one
+parameter that they all share: <code>pAllocator</code>. This is an optional parameter that
+allows you to specify callbacks for a custom memory allocator. We will ignore
+this parameter in the tutorial and always pass <code>nullptr</code> as argument.</p>
 </div>
 <div class="paragraph">
-<p>Vulkan objects are either created directly with functions like <code>vkCreateXXX</code>, or allocated through another object with functions like <code>vkAllocateXXX</code>.
-After making sure that an object is no longer used anywhere, you need to destroy it with the counterparts <code>vkDestroyXXX</code> and <code>vkFreeXXX</code>.
-The parameters for these functions generally vary for different types of objects, but there is one parameter that they all share: <code>pAllocator</code>.
-This is an optional parameter that allows you to specify callbacks for a custom memory allocator.
-We will ignore this parameter in the tutorial and always pass <code>nullptr</code> as argument.</p>
+<p>Using the Vulkan_hpp RAII module, we can rely upon the library to take care
+of <code>vkCreateXXX</code> <code>vkAllocateXXX</code> <code>vkDestroyXXX</code> and <code>vkFreeXXX</code> so a block
+of code that looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkInstance instance;
+VkApplicationInfo appInfo{};
+appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+appInfo.pApplicationName = "Hello Triangle";
+appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
+appInfo.pEngineName = "No Engine";
+appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
+appInfo.apiVersion = VK_API_VERSION_1_0;
+
+VkInstanceCreateInfo createInfo{};
+createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+createInfo.pApplicationInfo = &amp;appInfo;
+createInfo.enabledExtensionCount = 0;
+createInfo.ppEnabledExtensionNames = nullptr;
+
+createInfo.enabledLayerCount = 0;
+
+if (vkCreateInstance(&amp;createInfo, nullptr, &amp;instance) != VK_SUCCESS) {
+    throw std::runtime_error("failed to create instance!");
+}
+
+vkDestroyInstance(instance, nullptr);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>can be directly replaced by this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">constexpr vk::ApplicationInfo appInfo{ .pApplicationName   = "Hello Triangle",
+    .applicationVersion = VK_MAKE_VERSION( 1, 0, 0 ),
+    .pEngineName        = "No Engine",
+    .engineVersion      = VK_MAKE_VERSION( 1, 0, 0 ),
+    .apiVersion         = vk::ApiVersion14 };
+
+vk::InstanceCreateInfo createInfo{
+    .pApplicationInfo = &amp;appInfo
+};
+
+instance = vk::raii::Instance(context, createInfo);</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We use Vulkan-hpp with designated initializers introduced with C++ 20. By default,
+Vulkan-hpp uses a different way of initializing and we need to explicitly enable this
+by using the <code>VULKAN_HPP_NO_STRUCT_CONSTRUCTORS</code> define. This provides a better meaning
+towards what each option relates to in the structures that we&#8217;re depending upon.
+For this tutorial, said define is declared in the <a href="../../02_Development_environment.html#cmake" class="xref page">CMake build setup</a>.
+If you use a different build setup, you need to manually define this before including
+Vulkan-hpp.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -463,8 +617,12 @@ We will ignore this parameter in the tutorial and always pass <code>nullptr</cod
 <h2 id="_integrating_glfw"><a class="anchor" href="#_integrating_glfw"></a>Integrating GLFW</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vulkan works perfectly fine without creating a window if you want to use it for off-screen rendering, but it&#8217;s a lot more exciting to actually show something!
-First replace the <code>#include &lt;vulkan/vulkan.h&gt;</code> line with</p>
+<p>Vulkan works perfectly fine without creating a window if you want to use it for
+off-screen rendering, but it&#8217;s a lot more exciting to actually show something!
+First, let&#8217;s add GLFW: Note: we will continue to use the GLFW_INCLUDE_VULKAN as
+GLFW is designed to get a Vulkan Surface, but it uses the C surface directly.
+Other than that task, we can use GLFW_INCLUDE_NONE or not make that
+specification, and everything else works perfectly fine.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -473,9 +631,10 @@ First replace the <code>#include &lt;vulkan/vulkan.h&gt;</code> line with</p>
 </div>
 </div>
 <div class="paragraph">
-<p>That way GLFW will include its own definitions and automatically load the Vulkan header with it.
-Add a <code>initWindow</code> function and add a call to it from the <code>run</code> function before the other calls.
-We&#8217;ll use that function to initialize GLFW and create a window.</p>
+<p>That way, GLFW will include its own definitions and automatically load the Vulkan
+C header with it. Add a <code>initWindow</code> function and add a call to it from the
+<code>run</code> function before the other calls. We&#8217;ll use that function to initialize
+GLFW and create a window.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -488,13 +647,14 @@ We&#8217;ll use that function to initialize GLFW and create a window.</p>
 
 private:
     void initWindow() {
-
     }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The very first call in <code>initWindow</code> should be <code>glfwInit()</code>, which initializes the GLFW library.
-Because GLFW was originally designed to create an OpenGL context, we need to tell it to not create an OpenGL context with a subsequent call:</p>
+<p>The very first call in <code>initWindow</code> should be <code>glfwInit()</code>, which initializes
+the GLFW library. Because GLFW was originally designed to create an OpenGL
+context, we need to tell it to not create an OpenGL context with a later
+call:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -502,7 +662,8 @@ Because GLFW was originally designed to create an OpenGL context, we need to tel
 </div>
 </div>
 <div class="paragraph">
-<p>Because handling resized windows takes special care that we&#8217;ll look into later, disable it for now with another window hint call:</p>
+<p>Because handling resized windows takes special care that we&#8217;ll look into later,
+disable it for now with another window hint call:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -510,8 +671,8 @@ Because GLFW was originally designed to create an OpenGL context, we need to tel
 </div>
 </div>
 <div class="paragraph">
-<p>All that&#8217;s left now is creating the actual window.
-Add a <code>GLFWwindow* window;</code> private class member to store a reference to it and initialize the window with:</p>
+<p>All that&#8217;s left now is creating the actual window. Add a <code>GLFWwindow* window;</code>
+private class member to store a reference to it and initialize the window with:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -520,16 +681,18 @@ Add a <code>GLFWwindow* window;</code> private class member to store a reference
 </div>
 <div class="paragraph">
 <p>The first three parameters specify the width, height and title of the window.
-The fourth parameter allows you to optionally specify a monitor to open the window on and the last parameter is only relevant to OpenGL.</p>
+The fourth parameter allows you to optionally specify a monitor to open the
+window on, and the last parameter is only relevant to OpenGL.</p>
 </div>
 <div class="paragraph">
-<p>It&#8217;s a good idea to use constants instead of hardcoded width and height numbers because we&#8217;ll be referring to these values a couple of times in the future.
-I&#8217;ve added the following lines above the <code>HelloTriangleApplication</code> class definition:</p>
+<p>It&#8217;s a good idea to use constants instead of hardcoded width and height numbers
+because we&#8217;ll be referring to these values a couple of times in the future. I&#8217;ve
+added the following lines above the <code>HelloTriangleApplication</code> class definition:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">const uint32_t WIDTH = 800;
-const uint32_t HEIGHT = 600;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">constexpr uint32_t WIDTH = 800;
+constexpr uint32_t HEIGHT = 600;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -556,7 +719,8 @@ const uint32_t HEIGHT = 600;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To keep the application running until either an error occurs or the window is closed, we need to add an event loop to the <code>mainLoop</code> function as follows:</p>
+<p>To keep the application running until either an error occurs or the window is
+closed, we need to add an event loop to the <code>mainLoop</code> function as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -568,13 +732,13 @@ const uint32_t HEIGHT = 600;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This code should be fairly self-explanatory.
-It loops and checks for events like pressing the X button until the window has been closed by the user.
-This is also the loop where we&#8217;ll later call a function to render a single frame.</p>
+<p>This code should be fairly self-explanatory. It loops and checks for events like
+pressing the X button until the user has closed the window. This is also
+the loop where we&#8217;ll later call a function to render a single frame.</p>
 </div>
 <div class="paragraph">
-<p>Once the window is closed, we need to clean up resources by destroying it and terminating GLFW itself.
-This will be our first <code>cleanup</code> code:</p>
+<p>Once the window is closed, we need to clean up resources by destroying it and
+terminating GLFW itself. This will be our first <code>cleanup</code> code:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -586,8 +750,13 @@ This will be our first <code>cleanup</code> code:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When you run the program now you should see a window titled <code>Vulkan</code> show up until the application is terminated by closing the window.
-Now that we have the skeleton for the Vulkan application, let&#8217;s <a href="01_Instance.html" class="xref page">create the first Vulkan object</a>!</p>
+<p>Note that in this tutorial, this is the last time we&#8217;ll have to do anything
+in the cleanup() function. This code will never need to change again.</p>
+</div>
+<div class="paragraph">
+<p>When you run the program now, you should see a window titled <code>Vulkan</code> show up
+until the application is terminated by closing the window. Now that we have the
+skeleton for the Vulkan application, let&#8217;s <a href="01_Instance.html" class="xref page">create the first Vulkan object</a>!</p>
 </div>
 <div class="paragraph">
 <p><a href="../../_attachments/00_base_code.cpp">C&#43;&#43; code</a></p>
@@ -600,9 +769,56 @@ Now that we have the skeleton for the Vulkan application, let&#8217;s <a href="0
 </div>
 <script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
-<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

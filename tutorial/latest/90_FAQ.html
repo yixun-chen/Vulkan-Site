@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../_/site.webmanifest">
     <link rel="mask-icon" href="../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -281,8 +283,59 @@
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="11_Compute_Shader.html">Compute Shader</a>
   </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../spec/latest/index.html" class="home-link"></a>
@@ -396,8 +457,20 @@ Also ensure that your SDK version is at least 1.1.106.0 to support the <code>VK_
 <div class="sectionbody">
 <div class="paragraph">
 <p>This appears to be a compatibility problem in the Steam client beta.
-There are a few possible workarounds:     * Opt out of the Steam beta program.
-* Set the <code>DISABLE_VK_LAYER_VALVE_steam_overlay_1</code> environment variable to <code>1</code>     * Delete the Steam overlay Vulkan layer entry in the registry under <code>HKEY_LOCAL_MACHINE\SOFTWARE\Khronos\Vulkan\ImplicitLayers</code></p>
+There are a few possible workarounds:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Opt out of the Steam beta program.</p>
+</li>
+<li>
+<p>Set the <code>DISABLE_VK_LAYER_VALVE_steam_overlay_1</code> environment variable to <code>1</code></p>
+</li>
+<li>
+<p>Delete the Steam overlay Vulkan layer entry in the registry under <code>HKEY_LOCAL_MACHINE\SOFTWARE\Khronos\Vulkan\ImplicitLayers</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -432,16 +505,10 @@ for(uint32_t i = 0; i &lt; glfwExtensionCount; i++) {
     requiredExtensions.emplace_back(glfwExtensions[i]);
 }
 
-requiredExtensions.emplace_back(VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME);
+requiredExtensions.emplace_back(vk::KHRPortabilityEnumerationExtensionName);
 
-createInfo.flags |= VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR;
-
-createInfo.enabledExtensionCount = (uint32_t) requiredExtensions.size();
-createInfo.ppEnabledExtensionNames = requiredExtensions.data();
-
-if (vkCreateInstance(&amp;createInfo, nullptr, &amp;instance) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create instance!");
-}</code></pre>
+vk::InstanceCreateInfo createInfo(vk::InstanceCreateFlagBits::eEnumeratePortabilityKHR, &amp;appInfo, {}, requiredExtensions);
+instance = std::make_unique&lt;vk::raii::Instance&gt;(context, createInfo);</code></pre>
 </div>
 </div>
 </div>
@@ -452,9 +519,56 @@ if (vkCreateInstance(&amp;createInfo, nullptr, &amp;instance) != VK_SUCCESS) {
 </div>
 <script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
-<script src="../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
-<script async src="../../search-index.js"></script>
+<script src="../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

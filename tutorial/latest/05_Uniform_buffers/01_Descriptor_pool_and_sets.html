@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../spec/latest/index.html" class="home-link"></a>
@@ -404,9 +465,7 @@ void createDescriptorPool() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkDescriptorPoolSize poolSize{};
-poolSize.type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-poolSize.descriptorCount = static_cast&lt;uint32_t&gt;(MAX_FRAMES_IN_FLIGHT);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::DescriptorPoolSize poolSize(vk::DescriptorType::eUniformBuffer, MAX_FRAMES_IN_FLIGHT);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -415,19 +474,11 @@ This pool size structure is referenced by the main <code>VkDescriptorPoolCreateI
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkDescriptorPoolCreateInfo poolInfo{};
-poolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
-poolInfo.poolSizeCount = 1;
-poolInfo.pPoolSizes = &amp;poolSize;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::DescriptorPoolCreateInfo poolInfo{ .flags = vk::DescriptorPoolCreateFlagBits::eFreeDescriptorSet, .maxSets = MAX_FRAMES_IN_FLIGHT, .poolSizeCount = 1, .pPoolSizes = &amp;poolSize };</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Aside from the maximum number of individual descriptors that are available, we also need to specify the maximum number of descriptor sets that may be allocated:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">poolInfo.maxSets = static_cast&lt;uint32_t&gt;(MAX_FRAMES_IN_FLIGHT);</code></pre>
-</div>
 </div>
 <div class="paragraph">
 <p>The structure has an optional flag similar to command pools that determines if individual descriptor sets can be freed or not: <code>VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT</code>.
@@ -436,13 +487,11 @@ You can leave <code>flags</code> to its default value of <code>0</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkDescriptorPool descriptorPool;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::DescriptorPool descriptorPool = nullptr;
 
 ...
 
-if (vkCreateDescriptorPool(device, &amp;poolInfo, nullptr, &amp;descriptorPool) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create descriptor pool!");
-}</code></pre>
+descriptorPool = vk::raii::DescriptorPool(device, poolInfo);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -479,47 +528,26 @@ You need to specify the descriptor pool to allocate from, the number of descript
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;VkDescriptorSetLayout&gt; layouts(MAX_FRAMES_IN_FLIGHT, descriptorSetLayout);
-VkDescriptorSetAllocateInfo allocInfo{};
-allocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
-allocInfo.descriptorPool = descriptorPool;
-allocInfo.descriptorSetCount = static_cast&lt;uint32_t&gt;(MAX_FRAMES_IN_FLIGHT);
-allocInfo.pSetLayouts = layouts.data();</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;vk::DescriptorSetLayout&gt; layouts(MAX_FRAMES_IN_FLIGHT, *descriptorSetLayout);
+vk::DescriptorSetAllocateInfo allocInfo{ .descriptorPool = descriptorPool, .descriptorSetCount = static_cast&lt;uint32_t&gt;(layouts.size()), .pSetLayouts = layouts.data() };</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In our case we will create one descriptor set for each frame in flight, all with the same layout.
-Unfortunately we do need all the copies of the layout because the next function expects an array matching the number of sets.</p>
+<p>In our case, we will create one descriptor set for each frame in flight, all with the same layout.
+Unfortunately, we do need all the copies of the layout because the next function expects an array matching the number of sets.</p>
 </div>
 <div class="paragraph">
 <p>Add a class member to hold the descriptor set handles and allocate them with <code>vkAllocateDescriptorSets</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkDescriptorPool descriptorPool;
-std::vector&lt;VkDescriptorSet&gt; descriptorSets;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::DescriptorPool descriptorPool = nullptr;
+std::vector&lt;vk::raii::DescriptorSet&gt; descriptorSets;
 
 ...
 
-descriptorSets.resize(MAX_FRAMES_IN_FLIGHT);
-if (vkAllocateDescriptorSets(device, &amp;allocInfo, descriptorSets.data()) != VK_SUCCESS) {
-    throw std::runtime_error("failed to allocate descriptor sets!");
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You don&#8217;t need to explicitly clean up descriptor sets, because they will be automatically freed when the descriptor pool is destroyed.
-The call to <code>vkAllocateDescriptorSets</code> will allocate descriptor sets, each with one uniform buffer descriptor.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanup() {
-    ...
-    vkDestroyDescriptorPool(device, descriptorPool, nullptr);
-
-    vkDestroyDescriptorSetLayout(device, descriptorSetLayout, nullptr);
-    ...
-}</code></pre>
+descriptorSets.clear();
+descriptorSets = device.allocateDescriptorSets(allocInfo);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -540,10 +568,7 @@ This structure specifies the buffer and the region within it that contains the d
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">for (size_t i = 0; i &lt; MAX_FRAMES_IN_FLIGHT; i++) {
-    VkDescriptorBufferInfo bufferInfo{};
-    bufferInfo.buffer = uniformBuffers[i];
-    bufferInfo.offset = 0;
-    bufferInfo.range = sizeof(UniformBufferObject);
+    vk::DescriptorBufferInfo bufferInfo{ .buffer = uniformBuffers[i], .offset = 0, .range = sizeof(UniformBufferObject) };
 }</code></pre>
 </div>
 </div>
@@ -553,11 +578,7 @@ The configuration of descriptors is updated using the <code>vkUpdateDescriptorSe
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkWriteDescriptorSet descriptorWrite{};
-descriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
-descriptorWrite.dstSet = descriptorSets[i];
-descriptorWrite.dstBinding = 0;
-descriptorWrite.dstArrayElement = 0;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::WriteDescriptorSet descriptorWrite{ .dstSet = descriptorSets[i], .dstBinding = 0, .dstArrayElement = 0, .descriptorCount = 1, .descriptorType = vk::DescriptorType::eUniformBuffer, .pBufferInfo = &amp;bufferInfo };</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -566,23 +587,10 @@ We gave our uniform buffer binding index <code>0</code>.
 Remember that descriptors can be arrays, so we also need to specify the first index in the array that we want to update.
 We&#8217;re not using an array, so the index is simply <code>0</code>.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">descriptorWrite.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-descriptorWrite.descriptorCount = 1;</code></pre>
-</div>
-</div>
 <div class="paragraph">
 <p>We need to specify the type of descriptor again.
 It&#8217;s possible to update multiple descriptors at once in an array, starting at index <code>dstArrayElement</code>.
 The <code>descriptorCount</code> field specifies how many array elements you want to update.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">descriptorWrite.pBufferInfo = &amp;bufferInfo;
-descriptorWrite.pImageInfo = nullptr; // Optional
-descriptorWrite.pTexelBufferView = nullptr; // Optional</code></pre>
-</div>
 </div>
 <div class="paragraph">
 <p>The last field references an array with <code>descriptorCount</code> structs that actually configure the descriptors.
@@ -592,7 +600,7 @@ Our descriptor is based on buffers, so we&#8217;re using <code>pBufferInfo</code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkUpdateDescriptorSets(device, 1, &amp;descriptorWrite, 0, nullptr);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">device.updateDescriptorSets(descriptorWrite, {});</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -611,13 +619,13 @@ This needs to be done before the <code>vkCmdDrawIndexed</code> call:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipelineLayout, 0, 1, &amp;descriptorSets[currentFrame], 0, nullptr);
-vkCmdDrawIndexed(commandBuffer, static_cast&lt;uint32_t&gt;(indices.size()), 1, 0, 0, 0);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[currentFrame].bindDescriptorSets(vk::PipelineBindPoint::eGraphics, pipelineLayout, 0, *descriptorSets[currentFrame], nullptr);
+commandBuffers[currentFrame].drawIndexed(indices.size(), 1, 0, 0, 0);</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Unlike vertex and index buffers, descriptor sets are not unique to graphics pipelines.
-Therefore we need to specify if we want to bind descriptor sets to the graphics or compute pipeline.
+Therefore, we need to specify if we want to bind descriptor sets to the graphics or compute pipeline.
 The next parameter is the layout that the descriptors are based on.
 The next three parameters specify the index of the first descriptor set, the number of sets to bind, and the array of sets to bind.
 We&#8217;ll get back to this in a moment.
@@ -632,12 +640,12 @@ Go to the <code>createGraphicsPipeline</code> function and modify the <code>fron
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">rasterizer.cullMode = VK_CULL_MODE_BACK_BIT;
-rasterizer.frontFace = VK_FRONT_FACE_COUNTER_CLOCKWISE;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++"> vk::PipelineRasterizationStateCreateInfo rasterizer({}, vk::False, vk::False, vk::PolygonMode::eFill,
+        vk::CullModeFlagBits::eBack, vk::FrontFace::eCounterClockwise, vk::False, 0.0f, 0.0f, 1.0f, 1.0f);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Run your program again and you should now see the following:</p>
+<p>Run your program again, and you should now see the following:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -665,11 +673,12 @@ It seems obvious enough to simply use the same types in both:</p>
     glm::mat4 proj;
 };
 
-layout(binding = 0) uniform UniformBufferObject {
-    mat4 model;
-    mat4 view;
-    mat4 proj;
-} ubo;</code></pre>
+struct UniformBuffer {
+    float4x4 model;
+    float4x4 view;
+    float4x4 proj;
+};
+ConstantBuffer&lt;UniformBuffer&gt; ubo;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -685,16 +694,17 @@ For example, try modifying the struct and shader to look like this:</p>
     glm::mat4 proj;
 };
 
-layout(binding = 0) uniform UniformBufferObject {
-    vec2 foo;
-    mat4 model;
-    mat4 view;
-    mat4 proj;
-} ubo;</code></pre>
+struct UniformBuffer {
+    float2 foo;
+    float4x4 model;
+    float4x4 view;
+    float4x4 proj;
+};
+ConstantBuffer&lt;UniformBuffer&gt; ubo;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Recompile your shader and your program and run it and you&#8217;ll find that the colorful square you worked so far has disappeared!
+<p>Recompile your shader and your program and run it, and you&#8217;ll find that the colorful square you worked so far has disappeared!
 That&#8217;s because we haven&#8217;t taken into account the <em>alignment requirements</em>.</p>
 </div>
 <div class="paragraph">
@@ -703,24 +713,24 @@ That&#8217;s because we haven&#8217;t taken into account the <em>alignment requi
 <div class="ulist">
 <ul>
 <li>
-<p>Scalars have to be aligned by N (= 4 bytes given 32 bit floats).</p>
+<p>Scalars have to be aligned by N (= 4 bytes given 32-bit floats).</p>
 </li>
 <li>
-<p>A <code>vec2</code> must be aligned by 2N (= 8 bytes)</p>
+<p>A <code>float2</code> must be aligned by 2N (= 8 bytes)</p>
 </li>
 <li>
-<p>A <code>vec3</code> or <code>vec4</code> must be aligned by 4N (= 16 bytes)</p>
+<p>A <code>float3</code> or <code>float4</code> must be aligned by 4N (= 16 bytes)</p>
 </li>
 <li>
 <p>A nested structure must be aligned by the base alignment of its members rounded up to a multiple of 16.</p>
 </li>
 <li>
-<p>A <code>mat4</code> matrix must have the same alignment as a <code>vec4</code>.</p>
+<p>A <code>float4x4</code> matrix must have the same alignment as a <code>float4</code>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>You can find the full list of alignment requirements in <a href="https://www.khronos.org/registry/vulkan/specs/1.3-extensions/html/chap15.html#interfaces-resources-layout">the specification</a>.</p>
+<p>You can find the full list of alignment requirements in <a href="https://docs.vulkan.org/spec/latest/chapters/interfaces.html#interfaces-resources-layout">the specification</a>.</p>
 </div>
 <div class="paragraph">
 <p>Our original shader with just three <code>mat4</code> fields already met the alignment requirements.
@@ -743,7 +753,7 @@ To fix this problem we can use the <a href="https://en.cppreference.com/w/cpp/la
 </div>
 </div>
 <div class="paragraph">
-<p>If you now compile and run your program again you should see that the shader correctly receives its matrix values once again.</p>
+<p>If you now compile and run your program again, you should see that the shader correctly receives its matrix values once again.</p>
 </div>
 <div class="paragraph">
 <p>Luckily there is a way to not have to think about these alignment requirements <em>most</em> of the time.
@@ -760,7 +770,7 @@ We can define <code>GLM_FORCE_DEFAULT_ALIGNED_GENTYPES</code> right before inclu
 If you add this definition then you can remove the <code>alignas</code> specifier and your program should still work.</p>
 </div>
 <div class="paragraph">
-<p>Unfortunately this method can break down if you start using nested structures.
+<p>Unfortunately, this method can break down if you start using nested structures.
 Consider the following definition in the C&#43;&#43; code:</p>
 </div>
 <div class="listingblock">
@@ -784,15 +794,16 @@ struct UniformBufferObject {
     vec2 v;
 };
 
-layout(binding = 0) uniform UniformBufferObject {
+struct UniformBuffer {
     Foo f1;
     Foo f2;
-} ubo;</code></pre>
+};
+ConstantBuffer&lt;UniformBuffer&gt; ubo;</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>In this case <code>f2</code> will have an offset of <code>8</code> whereas it should have an offset of <code>16</code> since it is a nested structure.
-In this case you must specify the alignment yourself:</p>
+In this case, you must specify the alignment yourself:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -804,7 +815,7 @@ In this case you must specify the alignment yourself:</p>
 </div>
 <div class="paragraph">
 <p>These gotchas are a good reason to always be explicit about alignment.
-That way you won&#8217;t be caught offguard by the strange symptoms of alignment errors.</p>
+That way you won&#8217;t be caught off guard by the strange symptoms of alignment errors.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -816,7 +827,7 @@ That way you won&#8217;t be caught offguard by the strange symptoms of alignment
 </div>
 </div>
 <div class="paragraph">
-<p>Don&#8217;t forget to recompile your shader after removing the <code>foo</code> field.</p>
+<p>Remember to recompile your shader after removing the <code>foo</code> field.</p>
 </div>
 </div>
 </div>
@@ -830,18 +841,23 @@ Shaders can then reference specific descriptor sets like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">layout(set = 0, binding = 0) uniform UniformBufferObject { ... }</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">struct UniformBuffer {
+};
+ConstantBuffer&lt;UniformBuffer&gt; ubo;</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>You can use this feature to put descriptors that vary per-object and descriptors that are shared into separate descriptor sets.
-In that case you avoid rebinding most of the descriptors across draw calls which is potentially more efficient.</p>
+In that case, you avoid rebinding most of the descriptors across draw calls which are potentially more efficient.</p>
 </div>
 <div class="paragraph">
 <p>In the <a href="../06_Texture_mapping/00_Images.html" class="xref page">next chapters</a> we&#8217;ll build upon what we just learned and add textures to our scene.</p>
 </div>
 <div class="paragraph">
-<p><a href="../_attachments/23_descriptor_sets.cpp">C&#43;&#43; code</a> / <a href="../_attachments/22_shader_ubo.vert">Vertex shader</a> / <a href="../_attachments/22_shader_ubo.frag">Fragment shader</a></p>
+<p><a href="../_attachments/23_descriptor_sets.cpp">C&#43;&#43; code</a>  /
+<a href="../_attachments/22_shader_ubo.slang">slang shader</a> /
+<a href="../_attachments/22_shader_ubo.vert">GLSL Vertex shader</a> /
+<a href="../_attachments/22_shader_ubo.frag">GLSL Fragment shader</a></p>
 </div>
 </div>
 </div>
@@ -851,9 +867,56 @@ In that case you avoid rebinding most of the descriptors across draw calls which
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

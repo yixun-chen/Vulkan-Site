@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../_/site.webmanifest">
     <link rel="mask-icon" href="../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../spec/latest/index.html" class="home-link"></a>
@@ -370,7 +431,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Your program is now ready to render textured 3D meshes, but the current geometry in the <code>vertices</code> and <code>indices</code> arrays is not very interesting yet.
-In this chapter we&#8217;re going to extend the program to load the vertices and indices from an actual model file to make the graphics card actually do some work.</p>
+In this chapter, we&#8217;re going to extend the program to load the vertices and indices from an actual model file to make the graphics card actually do some work.</p>
 </div>
 <div class="paragraph">
 <p>Many graphics API tutorials have the reader write their own OBJ loader in a chapter like this.
@@ -385,35 +446,9 @@ We <em>will</em> load mesh data from an OBJ model in this chapter, but we&#8217;
 <div class="paragraph">
 <p>We will use the <a href="https://github.com/syoyo/tinyobjloader">tinyobjloader</a> library to load vertices and faces from an OBJ file.
 It&#8217;s fast and it&#8217;s easy to integrate because it&#8217;s a single file library like stb_image.
-Go to the repository linked above and download the <code>tiny_obj_loader.h</code> file to a folder in your library directory.</p>
-</div>
-<div class="paragraph">
-<p><strong>Visual Studio</strong></p>
-</div>
-<div class="paragraph">
-<p>Add the directory with <code>tiny_obj_loader.h</code> in it to the <code>Additional Include Directories</code> paths.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/images/include_dirs_tinyobjloader.png" alt="include dirs tinyobjloader">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Makefile</strong></p>
-</div>
-<div class="paragraph">
-<p>Add the directory with <code>tiny_obj_loader.h</code> to the include directories for GCC:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">VULKAN_SDK_PATH = /home/user/VulkanSDK/x.x.x.x/x86_64
-STB_INCLUDE_PATH = /home/user/libraries/stb
-TINYOBJ_INCLUDE_PATH = /home/user/libraries/tinyobjloader
-
-...
-
-CFLAGS = -std=c++17 -I$(VULKAN_SDK_PATH)/include -I$(STB_INCLUDE_PATH) -I$(TINYOBJ_INCLUDE_PATH)</code></pre>
-</div>
+This was mentioned in the <a href="02_Development_environment.adoc">Development
+Environment</a> chapter and should be part of the dependencies for this portion
+of the tutorial.</p>
 </div>
 </div>
 </div>
@@ -421,21 +456,21 @@ CFLAGS = -std=c++17 -I$(VULKAN_SDK_PATH)/include -I$(STB_INCLUDE_PATH) -I$(TINYO
 <h2 id="_sample_mesh"><a class="anchor" href="#_sample_mesh"></a>Sample mesh</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this chapter we won&#8217;t be enabling lighting yet, so it helps to use a sample model that has lighting baked into the texture.
+<p>In this chapter, we won&#8217;t be enabling lighting yet, so it helps to use a sample model that has lighting baked into the texture.
 An easy way to find such models is to look for 3D scans on <a href="https://sketchfab.com/">Sketchfab</a>.
 Many of the models on that site are available in OBJ format with a permissive license.</p>
 </div>
 <div class="paragraph">
-<p>For this tutorial I&#8217;ve decided to go with the <a href="https://sketchfab.com/3d-models/viking-room-a49f1b8e4f5c4ecf9e1fe7d81915ad38">Viking room</a> model by <a href="https://sketchfab.com/nigelgoh">nigelgoh</a> (<a href="https://web.archive.org/web/20200428202538/https://sketchfab.com/3d-models/viking-room-a49f1b8e4f5c4ecf9e1fe7d81915ad38">CC BY 4.0</a>).
-I tweaked the size and orientation of the model to use it as a drop in replacement for the current geometry:</p>
+<p>For this tutorial, I&#8217;ve decided to go with the <a href="https://sketchfab.com/3d-models/viking-room-a49f1b8e4f5c4ecf9e1fe7d81915ad38">Viking room</a> model by <a href="https://sketchfab.com/nigelgoh">nigelgoh</a> (<a href="https://web.archive.org/web/20200428202538/https://sketchfab.com/3d-models/viking-room-a49f1b8e4f5c4ecf9e1fe7d81915ad38">CC BY 4.0</a>).
+I tweaked the size and orientation of the model to use it as a drop-in replacement for the current geometry:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="_attachments/viking_room.obj" class="xref attachment">viking_room.obj</a></p>
+<p><a href="_attachments/assets/viking_room.obj" class="xref attachment">viking_room.obj</a></p>
 </li>
 <li>
-<p><a href="_attachments/viking_room.png" class="xref attachment">viking_room.png</a></p>
+<p><a href="_attachments/assets/viking_room.png" class="xref attachment">viking_room.png</a></p>
 </li>
 </ul>
 </div>
@@ -449,9 +484,8 @@ Put the model file in a new <code>models</code> directory next to <code>shaders<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">const uint32_t WIDTH = 800;
-const uint32_t HEIGHT = 600;
-
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">constexpr uint32_t WIDTH = 800;
+constexpr uint32_t HEIGHT = 600;
 const std::string MODEL_PATH = "models/viking_room.obj";
 const std::string TEXTURE_PATH = "textures/viking_room.png";</code></pre>
 </div>
@@ -477,8 +511,10 @@ Replace them with non-const containers as class members:</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;Vertex&gt; vertices;
 std::vector&lt;uint32_t&gt; indices;
-VkBuffer vertexBuffer;
-VkDeviceMemory vertexBufferMemory;</code></pre>
+vk::raii::Buffer vertexBuffer = nullptr;
+vk::raii::DeviceMemory vertexBufferMemory = nullptr;
+vk::raii::Buffer indexBuffer = nullptr;
+vk::raii::DeviceMemory indexBufferMemory = nullptr;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -487,7 +523,7 @@ Remember to also change the <code>vkCmdBindIndexBuffer</code> parameter:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkCmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VK_INDEX_TYPE_UINT32);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[currentFrame]-&gt;bindIndexBuffer( **indexBuffer, 0, vk::IndexType::eUint32 );</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -655,7 +691,7 @@ This is normal and is simply because the model is not really designed to be view
 <h2 id="_vertex_deduplication"><a class="anchor" href="#_vertex_deduplication"></a>Vertex deduplication</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Unfortunately we&#8217;re not really taking advantage of the index buffer yet.
+<p>Unfortunately, we&#8217;re not really taking advantage of the index buffer yet.
 The <code>vertices</code> vector contains a lot of duplicated vertex data, because many vertices are included in multiple triangles.
 We should keep only the unique vertices and use the index buffer to reuse them whenever they come up.
 A straightforward way to implement this is to use a <code>map</code> or <code>unordered_map</code> to keep track of the unique vertices and respective indices:</p>
@@ -730,7 +766,7 @@ The hash functions for the GLM types need to be included using the following hea
 </div>
 <div class="paragraph">
 <p>The hash functions are defined in the <code>gtx</code> folder, which means that it is technically still an experimental extension to GLM.
-Therefore you need to define <code>GLM_ENABLE_EXPERIMENTAL</code> to use it.
+Therefore, you need to define <code>GLM_ENABLE_EXPERIMENTAL</code> to use it.
 It means that the API could change with a new version of GLM in the future, but in practice the API is very stable.</p>
 </div>
 <div class="paragraph">
@@ -740,10 +776,13 @@ That means that each vertex is reused in an average number of ~6 triangles.
 This definitely saves us a lot of GPU memory.</p>
 </div>
 <div class="paragraph">
-<p>In the <a href="09_Generating_Mipmaps.html" class="xref page">next chapter</a> we&#8217;ll learn about a technique to improve texture rendering.</p>
+<p>In the <a href="09_Generating_Mipmaps.html" class="xref page">next chapter,</a> we&#8217;ll learn about a technique to improve texture rendering.</p>
 </div>
 <div class="paragraph">
-<p><a href="_attachments/28_model_loading.cpp">C&#43;&#43; code</a> / <a href="_attachments/27_shader_depth.vert">Vertex shader</a> / <a href="_attachments/27_shader_depth.frag">Fragment shader</a></p>
+<p><a href="_attachments/28_model_loading.cpp">C&#43;&#43; code</a> /
+<a href="_attachments/27_shader_depth.slang">slang shader</a> /
+<a href="_attachments/27_shader_depth.vert">GLSL Vertex shader</a> /
+<a href="_attachments/27_shader_depth.frag">GLSL Fragment shader</a></p>
 </div>
 </div>
 </div>
@@ -753,9 +792,56 @@ This definitely saves us a lot of GPU memory.</p>
 </div>
 <script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
-<script src="../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
-<script async src="../../search-index.js"></script>
+<script src="../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

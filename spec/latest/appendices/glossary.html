@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="spec" data-version="latest">
+<div class="nav-container" data-component="spec" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -128,6 +130,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/preamble.html">Preamble</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/introduction.html">Introduction</a>
   </li>
@@ -162,6 +167,9 @@
     <a class="nav-link" href="../chapters/resources.html">Resource Creation</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/images.html">Images</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/samplers.html">Samplers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -175,6 +183,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/fragmentdensitymapops.html">Fragment Density Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/VK_ARM_tensors/tensorops.html">Tensor Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/queries.html">Queries</a>
@@ -231,10 +242,13 @@
     <a class="nav-link" href="../chapters/VK_KHR_deferred_host_operations/deferred_host_operations.html">Deferred Host Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../chapters/VK_EXT_private_data.html">Private Data</a>
+    <a class="nav-link" href="../chapters/private_data.html">Private Data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/accelstructures.html">Acceleration Structures</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/VK_AMDX_dense_geometry_format/dense_geometry_format.html">Compressed triangle data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/VK_EXT_opacity_micromap/micromaps.html">Micromap</a>
@@ -246,7 +260,7 @@
     <a class="nav-link" href="../chapters/raytracing.html">Ray Tracing</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../chapters/VK_NV_memory_decompression.html">Memory Decompression</a>
+    <a class="nav-link" href="../chapters/memory_decompression.html">Memory Decompression</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/videocoding.html">Video Coding</a>
@@ -256,6 +270,12 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/executiongraphs.html">Execution Graphs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/VK_NV_external_compute_queue/VK_NV_external_compute_queue.html">External Compute Queues</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/VK_ARM_data_graph/graphs.html">Data graphs</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/extensions.html">Extending Vulkan</a>
@@ -292,6 +312,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="roadmap.html">Vulkan Roadmap Milestones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="legacy.html">Legacy and Superseded Functionality</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="boilerplate.html">API Boilerplate</a>
@@ -333,6 +356,14 @@
       </ul>
     </li>
     <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
       <div class="title"><a href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a></div>
       <ul class="versions">
         <li class="version is-latest">
@@ -369,7 +400,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
@@ -812,11 +843,6 @@ See <a href="../chapters/VK_KHR_deferred_host_operations/deferred_host_operation
 Represented by the <a href="../chapters/VK_KHR_deferred_host_operations/deferred_host_operations.html#VkDeferredOperationKHR" class="xref page">VkDeferredOperationKHR</a> object.
 See <a href="../chapters/VK_KHR_deferred_host_operations/deferred_host_operations.html#deferred-host-operations" class="xref page">Deferred Host Operations</a>.</p>
 </dd>
-<dt class="hdlist1">Deprecated (feature)</dt>
-<dd>
-<p>A feature is deprecated if it is no longer recommended as the correct or
-best way to achieve its intended purpose.</p>
-</dd>
 <dt class="hdlist1">Depth/Stencil Attachment</dt>
 <dd>
 <p>A subpass attachment point, or image view, that is the target of depth
@@ -1232,6 +1258,10 @@ operations.</p>
 <p>A framebuffer region is a set of sample (x, y, layer, sample)
 coordinates that is a subset of the entire framebuffer.</p>
 </dd>
+<dt class="hdlist1">Frame Rate</dt>
+<dd>
+<p>A non-Vulkan term for Image Present Rate (IPR).</p>
+</dd>
 <dt class="hdlist1">Front-Facing</dt>
 <dd>
 <p>See Facingness.</p>
@@ -1352,6 +1382,20 @@ also satisfy these three constraints.</p>
 <p>A resource that represents a multi-dimensional formatted interpretation
 of device memory.
 Represented by a <a href="../chapters/resources.html#VkImage" class="xref page">VkImage</a> object.</p>
+</dd>
+<dt class="hdlist1">Image Present Duration</dt>
+<dd>
+<p>The amount of time the application intends for each newly-presented
+image to be visible to the user.
+This value <strong>should</strong> be a multiple of the refresh cycle duration.</p>
+</dd>
+<dt class="hdlist1">Image Present Rate</dt>
+<dd>
+<p>The number of newly-presented images the application intends to present
+each second (a.k.a.
+frame rate).
+On fixed refresh rate displays, this value <strong>should</strong> be a multiple of the
+refresh rate.</p>
 </dd>
 <dt class="hdlist1">Image Subresource</dt>
 <dd>
@@ -1544,11 +1588,22 @@ considered dynamically uniform.</p>
 <p>A ray tracing <a href="../chapters/raytracing.html#ray-tracing-repack" class="xref page">instruction</a> where the
 implementation <strong>may</strong> change the set of invocations that are executing.</p>
 </dd>
+<dt class="hdlist1">IPD</dt>
+<dd>
+<p>Image Present Duration.</p>
+</dd>
 <dt class="hdlist1">Join (Deferred Host Operations)</dt>
 <dd>
 <p>The act of instructing a thread to participate in the execution of a
 deferred operation.
 See <a href="../chapters/VK_KHR_deferred_host_operations/deferred_host_operations.html#deferred-host-operations" class="xref page">Deferred Host Operations</a>.</p>
+</dd>
+<dt class="hdlist1">Legacy (feature)</dt>
+<dd>
+<p>A feature which is no longer recommended as the correct or best way to
+achieve its intended purpose.
+Legacy features are typically superseded by new features which are the
+currently recommended way to achieve that purpose.</p>
 </dd>
 </dl>
 </div>
@@ -1584,15 +1639,16 @@ See <a href="../chapters/VK_KHR_deferred_host_operations/deferred_host_operation
 <code>DRM_FORMAT_MOD_LINEAR</code></p>
 </li>
 <li>
-<p>a <a href="../chapters/resources.html#VkAccelerationStructureNV" class="xref page">VkAccelerationStructureNV</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Because a <a href="../chapters/resources.html#VkAccelerationStructureKHR" class="xref page">VkAccelerationStructureKHR</a> resource does not have memory
+<p>a <a href="../chapters/resources.html#VkAccelerationStructureNV" class="xref page">VkAccelerationStructureNV</a>
+Because a <a href="../chapters/resources.html#VkAccelerationStructureKHR" class="xref page">VkAccelerationStructureKHR</a> resource does not have memory
 bound to it directly, it is considered neither linear nor non-linear.
 However, the <a href="../chapters/resources.html#VkBuffer" class="xref page">VkBuffer</a> on which a <a href="../chapters/resources.html#VkAccelerationStructureKHR" class="xref page">VkAccelerationStructureKHR</a>
 resource is placed is a linear resource.</p>
+</li>
+<li>
+<p>a <a href="../chapters/resources.html#VkTensorARM" class="xref page">VkTensorARM</a> created with <code>VK_TENSOR_TILING_LINEAR_ARM</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>A resource is <em>non-linear</em> if it is one of the following:</p>
@@ -1607,6 +1663,9 @@ resource is placed is a linear resource.</p>
 <code>VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT</code> and whose
 <a href="#glossary-drm-format-modifier">Linux DRM format modifier</a> is not
 <code>DRM_FORMAT_MOD_LINEAR</code></p>
+</li>
+<li>
+<p>a <a href="../chapters/resources.html#VkTensorARM" class="xref page">VkTensorARM</a> created with <code>VK_TENSOR_TILING_OPTIMAL_ARM</code></p>
 </li>
 </ul>
 </div>
@@ -1785,8 +1844,10 @@ combination with the <a href="../chapters/features.html#features-bufferDeviceAdd
 </dd>
 <dt class="hdlist1">Overlapped Range (Aliased Range)</dt>
 <dd>
-<p>The aliased range of a device memory allocation that intersects a given
-image subresource of an image or range of a buffer.</p>
+<p>    The aliased range of a device memory allocation that intersects a given
+    image subresource of an image
+, a given tensor,
+or range of a buffer.</p>
 </dd>
 <dt class="hdlist1">Ownership (Resource)</dt>
 <dd>
@@ -1797,6 +1858,11 @@ to that resource is well-defined for access by that entity.</p>
 <dd>
 <p>A format whose components are stored as a single texel block in memory,
 with their relative locations defined within that element.</p>
+</dd>
+<dt class="hdlist1">Packed Tensor</dt>
+<dd>
+<p>A tensor whose elements are densely laid out in memory and thus whose
+backing memory does not contain any padding data.</p>
 </dd>
 <dt class="hdlist1">Passthrough Geometry Shader</dt>
 <dd>
@@ -1920,6 +1986,18 @@ One of:</p>
 <li>
 <p><code>OpHitObjectTraceRayMotionNV</code></p>
 </li>
+<li>
+<p><code>OpHitObjectTraceRayEXT</code></p>
+</li>
+<li>
+<p><code>OpHitObjectTraceReorderExecuteEXT</code></p>
+</li>
+<li>
+<p><code>OpHitObjectTraceRayMotionEXT</code></p>
+</li>
+<li>
+<p><code>OpHitObjectTraceMotionReorderExecuteEXT</code></p>
+</li>
 </ul>
 </div>
 </dd>
@@ -2023,6 +2101,10 @@ visible to the host.</p>
 <dd>
 <p>An image to which protected device memory <strong>can</strong> be bound.</p>
 </dd>
+<dt class="hdlist1">Protected Tensor</dt>
+<dd>
+<p>A tensor to which protected device memory <strong>can</strong> be bound.</p>
+</dd>
 <dt class="hdlist1">Provisional</dt>
 <dd>
 <p>A feature is released provisionally in order to get wider feedback on
@@ -2109,6 +2191,10 @@ more information.</p>
 <a href="../chapters/raytracing.html#vkCmdTraceRaysKHR" class="xref page">vkCmdTraceRaysKHR</a>, and <a href="../chapters/raytracing.html#vkCmdTraceRaysIndirectKHR" class="xref page">vkCmdTraceRaysIndirectKHR</a>
     .</p>
 </dd>
+<dt class="hdlist1">RC</dt>
+<dd>
+<p>Refresh Cycle.</p>
+</dd>
 <dt class="hdlist1">Reconstructed Picture</dt>
 <dd>
 <p>A video picture resource reconstructed from a compressed bitstream using
@@ -2130,6 +2216,19 @@ or encoded pictures.</p>
 <dt class="hdlist1">Reference Picture Metadata</dt>
 <dd>
 <p>Opaque state associated with a DPB slot, maintained by a video session.</p>
+</dd>
+<dt class="hdlist1">Refresh Cycle</dt>
+<dd>
+<p>The periodic process for updating the contents of the Presentation
+Engine&#8217;s display.</p>
+</dd>
+<dt class="hdlist1">Refresh Cycle Duration</dt>
+<dd>
+<p>The amount of time from the start of one refresh cycle to the next.</p>
+</dd>
+<dt class="hdlist1">Refresh Rate</dt>
+<dd>
+<p>The number of refresh cycles per second.</p>
 </dd>
 <dt class="hdlist1">Release Operation (Resource)</dt>
 <dd>
@@ -2342,6 +2441,11 @@ and atomics in a shader.</p>
 <p>A descriptor type that represents an image view, and supports unfiltered
 loads, stores, and atomics in a shader.</p>
 </dd>
+<dt class="hdlist1">Storage Tensor</dt>
+<dd>
+<p>A descriptor type that represents a tensor view, and supports reads,
+writes, in a shader.</p>
+</dd>
 <dt class="hdlist1">Storage Texel Buffer</dt>
 <dd>
 <p>A descriptor type that represents a buffer view, and supports
@@ -2396,6 +2500,29 @@ and preserve attachments used by the subpass in a render pass.</p>
 subpass of the self-dependency, and whose stage masks and access masks
 each contain a subset of the bits set in the identically named mask in
 the self-dependency.</p>
+</dd>
+<dt class="hdlist1">Superseded (feature)</dt>
+<dd>
+<p>A legacy feature can be superseded by newer functionality that achieves
+the same goals through a newer style of API, being more efficient, or
+otherwise following current recommendations for use of Vulkan.</p>
+</dd>
+<dt class="hdlist1">Tensor</dt>
+<dd>
+<p>A resource that represents an N-dimensional formatted interpretation of
+device memory.
+Represented by a <a href="../chapters/resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object.</p>
+</dd>
+<dt class="hdlist1">Tensor Description</dt>
+<dd>
+<p>Describes the shape, format, usage and layout in memory of a tensor.
+Represented by <a href="../chapters/resources.html#VkTensorDescriptionARM" class="xref page">VkTensorDescriptionARM</a>.</p>
+</dd>
+<dt class="hdlist1">Tensor View</dt>
+<dd>
+<p>An object that represents a specific tensor, and state that controls how
+the contents are interpreted.
+Represented by a <a href="../chapters/resources.html#VkTensorViewARM" class="xref page">VkTensorViewARM</a> object.</p>
 </dd>
 <dt class="hdlist1">Texel Block</dt>
 <dd>
@@ -2483,6 +2610,10 @@ the host.</p>
 <dt class="hdlist1">Unprotected Image</dt>
 <dd>
 <p>An image to which unprotected device memory <strong>can</strong> be bound.</p>
+</dd>
+<dt class="hdlist1">Unprotected Tensor</dt>
+<dd>
+<p>A tensor to which unprotected device memory <strong>can</strong> be bound.</p>
 </dd>
 <dt class="hdlist1">User-Defined Variable Interface</dt>
 <dd>
@@ -2875,9 +3006,56 @@ Used to denote the <code>VK_STRUCTURE_TYPE*</code> member of each structure in
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

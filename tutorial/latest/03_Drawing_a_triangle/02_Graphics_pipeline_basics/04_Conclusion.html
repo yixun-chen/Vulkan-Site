@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../../spec/latest/index.html" class="home-link"></a>
@@ -368,8 +429,8 @@
 <article class="doc">
 <h1 class="page">Conclusion</h1>
 <div class="paragraph">
-<p>We can now combine all of the structures and objects from the previous chapters to create the graphics pipeline!
-Here&#8217;s the types of objects we have now, as a quick recap:</p>
+<p>We can now combine all the structures and objects from the previous chapters to create the graphics pipeline!
+Here are the types of objects we have now, as a quick recap:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -377,13 +438,13 @@ Here&#8217;s the types of objects we have now, as a quick recap:</p>
 <p>Shader stages: the shader modules that define the functionality of the programmable stages of the graphics pipeline</p>
 </li>
 <li>
-<p>Fixed-function state: all of the structures that define the fixed-function stages of the pipeline, like input assembly, rasterizer, viewport and color blending</p>
+<p>Fixed-function state: all the structures that define the fixed-function stages of the pipeline, like input assembly, rasterizer, viewport and color blending</p>
 </li>
 <li>
 <p>Pipeline layout: the uniform and push values referenced by the shader that can be updated at draw time</p>
 </li>
 <li>
-<p>Render pass: the attachments referenced by the pipeline stages and their usage</p>
+<p>Dynamic rendering: the formats of the attachments that will be used during rendering</p>
 </li>
 </ul>
 </div>
@@ -393,10 +454,7 @@ But before the calls to  <code>vkDestroyShaderModule</code> because these are st
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkGraphicsPipelineCreateInfo pipelineInfo{};
-pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
-pipelineInfo.stageCount = 2;
-pipelineInfo.pStages = shaderStages;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::GraphicsPipelineCreateInfo pipelineInfo({}, 2, shaderStages);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -404,22 +462,17 @@ pipelineInfo.pStages = shaderStages;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">pipelineInfo.pVertexInputState = &amp;vertexInputInfo;
-pipelineInfo.pInputAssemblyState = &amp;inputAssembly;
-pipelineInfo.pViewportState = &amp;viewportState;
-pipelineInfo.pRasterizationState = &amp;rasterizer;
-pipelineInfo.pMultisampleState = &amp;multisampling;
-pipelineInfo.pDepthStencilState = nullptr; // Optional
-pipelineInfo.pColorBlendState = &amp;colorBlending;
-pipelineInfo.pDynamicState = &amp;dynamicState;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::GraphicsPipelineCreateInfo pipelineInfo({}, 2, shaderStages, &amp;vertexInputInfo, &amp;inputAssembly, {}, &amp;viewportState, &amp;rasterizer, &amp;multisampling, {}, &amp;colorBlending,
+            &amp;dynamicState);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then we reference all of the structures describing the fixed-function stage.</p>
+<p>Then we reference all the structures describing the fixed-function stage.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">pipelineInfo.layout = pipelineLayout;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::GraphicsPipelineCreateInfo pipelineInfo({}, 2, shaderStages, &amp;vertexInputInfo, &amp;inputAssembly, {}, &amp;viewportState, &amp;rasterizer, &amp;multisampling, {}, &amp;colorBlending,
+            &amp;dynamicState, *pipelineLayout);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -427,14 +480,17 @@ pipelineInfo.pDynamicState = &amp;dynamicState;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">pipelineInfo.renderPass = renderPass;
-pipelineInfo.subpass = 0;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PipelineRenderingCreateInfo pipelineRenderingCreateInfo{ .colorAttachmentCount = 1, .pColorAttachmentFormats = &amp;swapChainImageFormat };
+vk::GraphicsPipelineCreateInfo pipelineInfo{ .pNext = &amp;pipelineRenderingCreateInfo,
+    .stageCount = 2, .pStages = shaderStages,
+    .pVertexInputState = &amp;vertexInputInfo, .pInputAssemblyState = &amp;inputAssembly,
+    .pViewportState = &amp;viewportState, .pRasterizationState = &amp;rasterizer,
+    .pMultisampleState = &amp;multisampling, .pColorBlendState = &amp;colorBlending,
+    .pDynamicState = &amp;dynamicState, .layout = pipelineLayout, .renderPass = nullptr };</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>And finally we have the reference to the render pass and the index of the sub pass where this graphics pipeline will be used.
-It is also possible to use other render passes with this pipeline instead of this specific instance, but they have to be <em>compatible</em> with <code>renderPass</code>.
-The requirements for compatibility are described <a href="https://www.khronos.org/registry/vulkan/specs/1.3-extensions/html/chap8.html#renderpass-compatibility">here</a>, but we won&#8217;t be using that feature in this tutorial.</p>
+<p>Note that we&#8217;re using dynamic rendering instead of a traditional render pass, so we set the <code>renderPass</code> parameter to <code>nullptr</code> and include a <code>vk::PipelineRenderingCreateInfo</code> structure in the <code>pNext</code> chain. This structure specifies the formats of the attachments that will be used during rendering.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -455,17 +511,15 @@ These values are only used if the <code>VK_PIPELINE_CREATE_DERIVATIVE_BIT</code>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkPipeline graphicsPipeline;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::Pipeline graphicsPipeline = nullptr;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>And finally create the graphics pipeline:</p>
+<p>And finally, create the graphics pipeline:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (vkCreateGraphicsPipelines(device, VK_NULL_HANDLE, 1, &amp;pipelineInfo, nullptr, &amp;graphicsPipeline) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create graphics pipeline!");
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">graphicsPipeline = vk::raii::Pipeline(device, nullptr, pipelineInfo);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -479,24 +533,19 @@ This makes it possible to significantly speed up pipeline creation at a later ti
 We&#8217;ll get into this in the pipeline cache chapter.</p>
 </div>
 <div class="paragraph">
-<p>The graphics pipeline is required for all common drawing operations, so it should also only be destroyed at the end of the program:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanup() {
-    vkDestroyPipeline(device, graphicsPipeline, nullptr);
-    vkDestroyPipelineLayout(device, pipelineLayout, nullptr);
-    ...
-}</code></pre>
-</div>
+<p>The graphics pipeline is required for all common drawing operations.</p>
 </div>
 <div class="paragraph">
 <p>Now run your program to confirm that all this hard work has resulted in a successful pipeline creation!
 We are already getting quite close to seeing something pop up on the screen.
-In the <a href="../03_Drawing/00_Framebuffers.html" class="xref page">next couple of chapters</a> we&#8217;ll set up the actual framebuffers from the swap chain images and prepare the drawing commands.</p>
+In the <a href="../03_Drawing/00_Framebuffers.html" class="xref page">next couple of chapters,</a>
+we&#8217;ll set up the actual framebuffers from the swap chain images and prepare the drawing commands.</p>
 </div>
 <div class="paragraph">
-<p><a href="../../_attachments/12_graphics_pipeline_complete.cpp">C&#43;&#43; code</a> / <a href="../../_attachments/09_shader_base.vert">Vertex shader</a> / <a href="../../_attachments/09_shader_base.frag">Fragment shader</a></p>
+<p><a href="../../_attachments/12_graphics_pipeline_complete.cpp">C&#43;&#43; code</a> /
+<a href="../../_attachments/09_shader_base.slang">Slang shader</a> /
+<a href="../../_attachments/09_shader_base.vert">GLSL Vertex shader</a> /
+<a href="../../_attachments/09_shader_base.frag">GLSL Fragment shader</a></p>
 </div>
 </article>
   </div>
@@ -504,9 +553,56 @@ In the <a href="../03_Drawing/00_Framebuffers.html" class="xref page">next coupl
 </div>
 <script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
-<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

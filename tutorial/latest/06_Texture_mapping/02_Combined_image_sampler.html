@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../spec/latest/index.html" class="home-link"></a>
@@ -371,8 +432,11 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>We looked at descriptors for the first time in the uniform buffers part of the tutorial.
-In this chapter we will look at a new type of descriptor: <em>combined image sampler</em>.
+In this chapter, we will look at a new type of descriptor: <em>combined image sampler</em>.
 This descriptor makes it possible for shaders to access an image resource through a sampler object like the one we created in the previous chapter.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s worth noting that Vulkan provides flexibility in how textures are accessed in shaders through different descriptor types. While we&#8217;ll be using a <em>combined image sampler</em> in this tutorial, Vulkan also supports separate descriptors for samplers (<code>VK_DESCRIPTOR_TYPE_SAMPLER</code>) and sampled images (<code>VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE</code>). Using separate descriptors allows you to reuse the same sampler with multiple images or access the same image with different sampling parameters. This can be more efficient in scenarios where you have many textures that use identical sampling configurations. However, the combined image sampler is often more convenient and can offer better performance on some hardware due to optimized cache usage.</p>
 </div>
 <div class="paragraph">
 <p>We&#8217;ll start by modifying the descriptor set layout, descriptor pool and descriptor set to include such a combined image sampler descriptor.
@@ -389,18 +453,12 @@ We&#8217;ll simply put it in the binding after the uniform buffer:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkDescriptorSetLayoutBinding samplerLayoutBinding{};
-samplerLayoutBinding.binding = 1;
-samplerLayoutBinding.descriptorCount = 1;
-samplerLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-samplerLayoutBinding.pImmutableSamplers = nullptr;
-samplerLayoutBinding.stageFlags = VK_SHADER_STAGE_FRAGMENT_BIT;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::array bindings = {
+    vk::DescriptorSetLayoutBinding( 0, vk::DescriptorType::eUniformBuffer, 1, vk::ShaderStageFlagBits::eVertex, nullptr),
+    vk::DescriptorSetLayoutBinding( 1, vk::DescriptorType::eCombinedImageSampler, 1, vk::ShaderStageFlagBits::eFragment, nullptr)
+};
 
-std::array&lt;VkDescriptorSetLayoutBinding, 2&gt; bindings = {uboLayoutBinding, samplerLayoutBinding};
-VkDescriptorSetLayoutCreateInfo layoutInfo{};
-layoutInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
-layoutInfo.bindingCount = static_cast&lt;uint32_t&gt;(bindings.size());
-layoutInfo.pBindings = bindings.data();</code></pre>
+vk::DescriptorSetLayoutCreateInfo layoutInfo({}, bindings.size(), bindings.data());</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -414,17 +472,11 @@ Go to the <code>createDescriptorPool</code> function and modify it to include a 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::array&lt;VkDescriptorPoolSize, 2&gt; poolSizes{};
-poolSizes[0].type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-poolSizes[0].descriptorCount = static_cast&lt;uint32_t&gt;(MAX_FRAMES_IN_FLIGHT);
-poolSizes[1].type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-poolSizes[1].descriptorCount = static_cast&lt;uint32_t&gt;(MAX_FRAMES_IN_FLIGHT);
-
-VkDescriptorPoolCreateInfo poolInfo{};
-poolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
-poolInfo.poolSizeCount = static_cast&lt;uint32_t&gt;(poolSizes.size());
-poolInfo.pPoolSizes = poolSizes.data();
-poolInfo.maxSets = static_cast&lt;uint32_t&gt;(MAX_FRAMES_IN_FLIGHT);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::array poolSize {
+    vk::DescriptorPoolSize( vk::DescriptorType::eUniformBuffer, MAX_FRAMES_IN_FLIGHT),
+    vk::DescriptorPoolSize(  vk::DescriptorType::eCombinedImageSampler, MAX_FRAMES_IN_FLIGHT)
+};
+vk::DescriptorPoolCreateInfo poolInfo(vk::DescriptorPoolCreateFlagBits::eFreeDescriptorSet, MAX_FRAMES_IN_FLIGHT, poolSize);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -444,15 +496,8 @@ Go to the <code>createDescriptorSets</code> function.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">for (size_t i = 0; i &lt; MAX_FRAMES_IN_FLIGHT; i++) {
-    VkDescriptorBufferInfo bufferInfo{};
-    bufferInfo.buffer = uniformBuffers[i];
-    bufferInfo.offset = 0;
-    bufferInfo.range = sizeof(UniformBufferObject);
-
-    VkDescriptorImageInfo imageInfo{};
-    imageInfo.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
-    imageInfo.imageView = textureImageView;
-    imageInfo.sampler = textureSampler;
+    vk::DescriptorBufferInfo bufferInfo{ .buffer = uniformBuffers[i], .offset = 0, .range = sizeof(UniformBufferObject) };
+    vk::DescriptorImageInfo imageInfo{ .sampler = textureSampler, .imageView = textureImageView, .imageLayout = vk::ImageLayout::eShaderReadOnlyOptimal};
 
     ...
 }</code></pre>
@@ -464,25 +509,13 @@ This is where the objects from the previous chapter come together.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::array&lt;VkWriteDescriptorSet, 2&gt; descriptorWrites{};
-
-descriptorWrites[0].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
-descriptorWrites[0].dstSet = descriptorSets[i];
-descriptorWrites[0].dstBinding = 0;
-descriptorWrites[0].dstArrayElement = 0;
-descriptorWrites[0].descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-descriptorWrites[0].descriptorCount = 1;
-descriptorWrites[0].pBufferInfo = &amp;bufferInfo;
-
-descriptorWrites[1].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
-descriptorWrites[1].dstSet = descriptorSets[i];
-descriptorWrites[1].dstBinding = 1;
-descriptorWrites[1].dstArrayElement = 0;
-descriptorWrites[1].descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-descriptorWrites[1].descriptorCount = 1;
-descriptorWrites[1].pImageInfo = &amp;imageInfo;
-
-vkUpdateDescriptorSets(device, static_cast&lt;uint32_t&gt;(descriptorWrites.size()), descriptorWrites.data(), 0, nullptr);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::array descriptorWrites{
+    vk::WriteDescriptorSet{ .dstSet = descriptorSets[i], .dstBinding = 0, .dstArrayElement = 0, .descriptorCount = 1,
+        .descriptorType = vk::DescriptorType::eUniformBuffer, .pBufferInfo = &amp;bufferInfo },
+    vk::WriteDescriptorSet{ .dstSet = descriptorSets[i], .dstBinding = 1, .dstArrayElement = 0, .descriptorCount = 1,
+        .descriptorType = vk::DescriptorType::eCombinedImageSampler, .pImageInfo = &amp;imageInfo }
+};
+device.updateDescriptorSets(descriptorWrites, {});</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -506,34 +539,16 @@ The texture coordinates determine how the image is actually mapped to the geomet
     glm::vec3 color;
     glm::vec2 texCoord;
 
-    static VkVertexInputBindingDescription getBindingDescription() {
-        VkVertexInputBindingDescription bindingDescription{};
-        bindingDescription.binding = 0;
-        bindingDescription.stride = sizeof(Vertex);
-        bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
-
-        return bindingDescription;
+    static vk::VertexInputBindingDescription getBindingDescription() {
+        return { 0, sizeof(Vertex), vk::VertexInputRate::eVertex };
     }
 
-    static std::array&lt;VkVertexInputAttributeDescription, 3&gt; getAttributeDescriptions() {
-        std::array&lt;VkVertexInputAttributeDescription, 3&gt; attributeDescriptions{};
-
-        attributeDescriptions[0].binding = 0;
-        attributeDescriptions[0].location = 0;
-        attributeDescriptions[0].format = VK_FORMAT_R32G32_SFLOAT;
-        attributeDescriptions[0].offset = offsetof(Vertex, pos);
-
-        attributeDescriptions[1].binding = 0;
-        attributeDescriptions[1].location = 1;
-        attributeDescriptions[1].format = VK_FORMAT_R32G32B32_SFLOAT;
-        attributeDescriptions[1].offset = offsetof(Vertex, color);
-
-        attributeDescriptions[2].binding = 0;
-        attributeDescriptions[2].location = 2;
-        attributeDescriptions[2].format = VK_FORMAT_R32G32_SFLOAT;
-        attributeDescriptions[2].offset = offsetof(Vertex, texCoord);
-
-        return attributeDescriptions;
+    static std::array&lt;vk::VertexInputAttributeDescription, 3&gt; getAttributeDescriptions() {
+        return {
+            vk::VertexInputAttributeDescription( 0, 0, vk::Format::eR32G32Sfloat, offsetof(Vertex, pos) ),
+            vk::VertexInputAttributeDescription( 1, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, color) ),
+            vk::VertexInputAttributeDescription( 2, 0, vk::Format::eR32G32Sfloat, offsetof(Vertex, texCoord) )
+        };
     }
 };</code></pre>
 </div>
@@ -569,41 +584,46 @@ We first need to modify the vertex shader to pass through the texture coordinate
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">layout(location = 0) in vec2 inPosition;
-layout(location = 1) in vec3 inColor;
-layout(location = 2) in vec2 inTexCoord;
+<pre class="highlightjs highlight"><code class="language-slang hljs" data-lang="slang">struct VSInput {
+    float2 inPos;
+    float3 inColor;
+    float2 inTexCoord;
+};
 
-layout(location = 0) out vec3 fragColor;
-layout(location = 1) out vec2 fragTexCoord;
+struct UniformBuffer {
+    float4x4 model;
+    float4x4 view;
+    float4x4 proj;
+};
+ConstantBuffer&lt;UniformBuffer&gt; ubo;
 
-void main() {
-    gl_Position = ubo.proj * ubo.view * ubo.model * vec4(inPosition, 0.0, 1.0);
-    fragColor = inColor;
-    fragTexCoord = inTexCoord;
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Just like the per vertex colors, the <code>fragTexCoord</code> values will be smoothly interpolated across the area of the square by the rasterizer.
-We can visualize this by having the fragment shader output the texture coordinates as colors:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">#version 450
+struct VSOutput
+{
+    float4 pos : SV_Position;
+    float3 fragColor;
+    float2 fragTexCoord;
+};
 
-layout(location = 0) in vec3 fragColor;
-layout(location = 1) in vec2 fragTexCoord;
+[shader("vertex")]
+VSOutput vertMain(VSInput input) {
+    VSOutput output;
+    output.pos = mul(ubo.proj, mul(ubo.view, mul(ubo.model, float4(input.inPos, 0.0, 1.0))));
+    output.fragColor = input.inColor;
+    output.fragTexCoord = input.inTexCoord;
+    return output;
+}
 
-layout(location = 0) out vec4 outColor;
+Sampler2D texture;
 
-void main() {
-    outColor = vec4(fragTexCoord, 0.0, 1.0);
+[shader("fragment")]
+float4 fragMain(VSOutput vertIn) : SV_TARGET {
+   return texture.Sample(vertIn.fragTexCoord);
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>You should see something like the image below.
-Don&#8217;t forget to recompile the shaders!</p>
+Remember to recompile the shaders!</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -616,12 +636,12 @@ The black and yellow corners confirm that the texture coordinates are correctly 
 Visualizing data using colors is the shader programming equivalent of <code>printf</code> debugging, for lack of a better option!</p>
 </div>
 <div class="paragraph">
-<p>A combined image sampler descriptor is represented in GLSL by a sampler uniform.
+<p>A sampler represents a combined image sampler descriptor in Slang.
 Add a reference to it in the fragment shader:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">layout(binding = 1) uniform sampler2D texSampler;</code></pre>
+<pre class="highlightjs highlight"><code class="language-slang hljs" data-lang="slang">Sampler2D texture;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -630,8 +650,9 @@ Make sure to use the correct binding here.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">void main() {
-    outColor = texture(texSampler, fragTexCoord);
+<pre class="highlightjs highlight"><code class="language-slang hljs" data-lang="slang">[shader("fragment")]
+float4 fragMain(VSOutput vertIn) : SV_TARGET {
+   return texture.Sample(vertIn.fragTexCoord);
 }</code></pre>
 </div>
 </div>
@@ -652,8 +673,9 @@ For example, the following fragment shader produces the result in the image belo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">void main() {
-    outColor = texture(texSampler, fragTexCoord * 2.0);
+<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">[shader("fragment")]
+float4 fragMain(VSOutput vertIn) : SV_TARGET {
+   return texture.Sample(vertIn.fragTexCoord);
 }</code></pre>
 </div>
 </div>
@@ -667,8 +689,9 @@ For example, the following fragment shader produces the result in the image belo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">void main() {
-    outColor = vec4(fragColor * texture(texSampler, fragTexCoord).rgb, 1.0);
+<pre class="highlightjs highlight"><code class="language-slang hljs" data-lang="slang">[shader("fragment")]
+float4 fragMain(VSOutput vertIn) : SV_TARGET {
+   return float4(vertIn.fragColor * texture.Sample(vertIn.fragTexCoord).rgb, 1.0);
 }</code></pre>
 </div>
 </div>
@@ -689,7 +712,10 @@ You can use these images as inputs to implement cool effects like post-processin
 <p>In the <a href="../07_Depth_buffering.html" class="xref page">next chapter</a> we&#8217;ll learn how to add depth buffering for properly sorting objects.</p>
 </div>
 <div class="paragraph">
-<p><a href="../_attachments/26_texture_mapping.cpp">C&#43;&#43; code</a> / <a href="../_attachments/26_shader_textures.vert">Vertex shader</a> / <a href="../_attachments/26_shader_textures.frag">Fragment shader</a></p>
+<p><a href="../_attachments/26_texture_mapping.cpp">C&#43;&#43; code</a> /
+<a href="../_attachments/26_shader_textures.slang">slang shader</a> /
+<a href="../_attachments/26_shader_textures.vert">GLSL Vertex shader</a> /
+<a href="../_attachments/26_shader_textures.frag">GLSL Fragment shader</a></p>
 </div>
 </div>
 </div>
@@ -699,9 +725,56 @@ You can use these images as inputs to implement cool effects like post-processin
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

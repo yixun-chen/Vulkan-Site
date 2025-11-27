@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../spec/latest/index.html" class="home-link"></a>
@@ -370,8 +431,8 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>We&#8217;re now able to pass arbitrary attributes to the vertex shader for each vertex, but what about global variables?
-We&#8217;re going to move on to 3D graphics from this chapter on and that requires a model-view-projection matrix.
-We could include it as vertex data, but that&#8217;s a waste of memory and it would require us to update the vertex buffer whenever the transformation changes.
+We&#8217;re going to move on to 3D graphics from this chapter on, and that requires a model-view-projection matrix.
+We could include it as vertex data, but that&#8217;s a waste of memory, and it would require us to update the vertex buffer whenever the transformation changes.
 The transformation could easily change every single frame.</p>
 </div>
 <div class="paragraph">
@@ -417,15 +478,30 @@ Let&#8217;s say we have the data we want the vertex shader to have in a C struct
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">layout(binding = 0) uniform UniformBufferObject {
-    mat4 model;
-    mat4 view;
-    mat4 proj;
-} ubo;
+<pre class="highlightjs highlight"><code class="language-slang hljs" data-lang="slang">struct VSInput {
+    float2 inPosition;
+    float3 inColor;
+};
 
-void main() {
-    gl_Position = ubo.proj * ubo.view * ubo.model * vec4(inPosition, 0.0, 1.0);
-    fragColor = inColor;
+struct UniformBuffer {
+    float4x4 model;
+    float4x4 view;
+    float4x4 proj;
+};
+ConstantBuffer&lt;UniformBuffer&gt; ubo;
+
+struct VSOutput
+{
+    float4 pos : SV_Position;
+    float3 color;
+};
+
+[shader("vertex")]
+VSOutput vertMain(VSInput input) {
+    VSOutput output;
+    output.pos = mul(ubo.proj, mul(ubo.view, mul(ubo.model, float4(input.inPosition, 0.0, 1.0))));
+    output.color = input.inColor;
+    return output;
 }</code></pre>
 </div>
 </div>
@@ -444,30 +520,41 @@ If you&#8217;re not, see <a href="https://www.opengl-tutorial.org/beginners-tuto
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">#version 450
+<pre class="highlightjs highlight"><code class="language-slang hljs" data-lang="slang">struct VSInput {
+    float2 inPosition;
+    float3 inColor;
+};
 
-layout(binding = 0) uniform UniformBufferObject {
-    mat4 model;
-    mat4 view;
-    mat4 proj;
-} ubo;
+struct UniformBuffer {
+    float4x4 model;
+    float4x4 view;
+    float4x4 proj;
+};
+ConstantBuffer&lt;UniformBuffer&gt; ubo;
 
-layout(location = 0) in vec2 inPosition;
-layout(location = 1) in vec3 inColor;
+struct VSOutput
+{
+    float4 pos : SV_Position;
+    float3 color;
+};
 
-layout(location = 0) out vec3 fragColor;
+[shader("vertex")]
+VSOutput vertMain(VSInput input) {
+    VSOutput output;
+    output.pos = mul(ubo.proj, mul(ubo.view, mul(ubo.model, float4(input.inPosition, 0.0, 1.0))));
+    output.color = input.inColor;
+    return output;
+}
 
-void main() {
-    gl_Position = ubo.proj * ubo.view * ubo.model * vec4(inPosition, 0.0, 1.0);
-    fragColor = inColor;
+[shader("fragment")]
+float4 fragMain(VSOutput vertIn) : SV_TARGET {
+    return float4(vertIn.color, 1.0);
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that the order of the <code>uniform</code>, <code>in</code> and <code>out</code> declarations doesn&#8217;t matter.
-The <code>binding</code> directive is similar to the <code>location</code> directive for attributes.
-We&#8217;re going to reference this binding in the descriptor set layout.
-The line with <code>gl_Position</code> is changed to use the transformations to compute the final position in clip coordinates.
+<p>The line with <code>SV_Position</code> is changed to use the transformations to compute
+the final position in clip coordinates.
 Unlike the 2D triangles, the last component of the clip coordinates may not be <code>1</code>, which will result in a division when converted to the final normalized device coordinates on the screen.
 This is used in perspective projection as the <em>perspective division</em> and is essential for making closer objects look larger than objects that are further away.</p>
 </div>
@@ -519,10 +606,7 @@ void createDescriptorSetLayout() {
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createDescriptorSetLayout() {
-    VkDescriptorSetLayoutBinding uboLayoutBinding{};
-    uboLayoutBinding.binding = 0;
-    uboLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-    uboLayoutBinding.descriptorCount = 1;
+    vk::DescriptorSetLayoutBinding uboLayoutBinding(0, vk::DescriptorType::eUniformBuffer, 1, vk::ShaderStageFlagBits::eVertex, nullptr);
 }</code></pre>
 </div>
 </div>
@@ -532,33 +616,23 @@ It is possible for the shader variable to represent an array of uniform buffer o
 This could be used to specify a transformation for each of the bones in a skeleton for skeletal animation, for example.
 Our MVP transformation is in a single uniform buffer object, so we&#8217;re using a <code>descriptorCount</code> of <code>1</code>.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">uboLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;</code></pre>
-</div>
-</div>
 <div class="paragraph">
 <p>We also need to specify in which shader stages the descriptor is going to be referenced.
 The <code>stageFlags</code> field can be a combination of <code>VkShaderStageFlagBits</code> values or the value <code>VK_SHADER_STAGE_ALL_GRAPHICS</code>.
 In our case, we&#8217;re only referencing the descriptor from the vertex shader.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">uboLayoutBinding.pImmutableSamplers = nullptr; // Optional</code></pre>
-</div>
 </div>
 <div class="paragraph">
 <p>The <code>pImmutableSamplers</code> field is only relevant for image sampling related descriptors, which we&#8217;ll look at later.
 You can leave this to its default value.</p>
 </div>
 <div class="paragraph">
-<p>All of the descriptor bindings are combined into a single <code>VkDescriptorSetLayout</code> object.
+<p>All the descriptor bindings are combined into a single <code>VkDescriptorSetLayout</code> object.
 Define a new class member above <code>pipelineLayout</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkDescriptorSetLayout descriptorSetLayout;
-VkPipelineLayout pipelineLayout;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::DescriptorSetLayout descriptorSetLayout = nullptr;
+vk::raii::PipelineLayout pipelineLayout = nullptr;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -567,14 +641,9 @@ This function accepts a simple <code>VkDescriptorSetLayoutCreateInfo</code> with
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkDescriptorSetLayoutCreateInfo layoutInfo{};
-layoutInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
-layoutInfo.bindingCount = 1;
-layoutInfo.pBindings = &amp;uboLayoutBinding;
-
-if (vkCreateDescriptorSetLayout(device, &amp;layoutInfo, nullptr, &amp;descriptorSetLayout) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create descriptor set layout!");
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::DescriptorSetLayoutBinding uboLayoutBinding(0, vk::DescriptorType::eUniformBuffer, 1, vk::ShaderStageFlagBits::eVertex, nullptr);
+vk::DescriptorSetLayoutCreateInfo layoutInfo({}, 1, &amp;uboLayoutBinding);
+descriptorSetLayout = vk::raii::DescriptorSetLayout( device, layoutInfo );</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -584,30 +653,12 @@ Modify the <code>VkPipelineLayoutCreateInfo</code> to reference the layout objec
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
-pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
-pipelineLayoutInfo.setLayoutCount = 1;
-pipelineLayoutInfo.pSetLayouts = &amp;descriptorSetLayout;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PipelineLayoutCreateInfo pipelineLayoutInfo{ .setLayoutCount = 1, .pSetLayouts = &amp;*descriptorSetLayout, .pushConstantRangeCount = 0 };</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>You may be wondering why it&#8217;s possible to specify multiple descriptor set layouts here, because a single one already includes all of the bindings.
 We&#8217;ll get back to that in the next chapter, where we&#8217;ll look into descriptor pools and descriptor sets.</p>
-</div>
-<div class="paragraph">
-<p>The descriptor set layout should stick around while we may create new graphics pipelines i.e.
-until the program ends:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanup() {
-    cleanupSwapChain();
-
-    vkDestroyDescriptorSetLayout(device, descriptorSetLayout, nullptr);
-
-    ...
-}</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -628,11 +679,11 @@ Thus, we need to have as many uniform buffers as we have frames in flight, and w
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkBuffer indexBuffer;
-VkDeviceMemory indexBufferMemory;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::Buffer indexBuffer = nullptr;
+vk::raii::DeviceMemory indexBufferMemory = nullptr;
 
-std::vector&lt;VkBuffer&gt; uniformBuffers;
-std::vector&lt;VkDeviceMemory&gt; uniformBuffersMemory;
+std::vector&lt;vk::raii::Buffer&gt; uniformBuffers;
+std::vector&lt;vk::raii::DeviceMemory&gt; uniformBuffersMemory;
 std::vector&lt;void*&gt; uniformBuffersMapped;</code></pre>
 </div>
 </div>
@@ -652,16 +703,18 @@ std::vector&lt;void*&gt; uniformBuffersMapped;</code></pre>
 ...
 
 void createUniformBuffers() {
-    VkDeviceSize bufferSize = sizeof(UniformBufferObject);
-
-    uniformBuffers.resize(MAX_FRAMES_IN_FLIGHT);
-    uniformBuffersMemory.resize(MAX_FRAMES_IN_FLIGHT);
-    uniformBuffersMapped.resize(MAX_FRAMES_IN_FLIGHT);
+    uniformBuffers.clear();
+    uniformBuffersMemory.clear();
+    uniformBuffersMapped.clear();
 
     for (size_t i = 0; i &lt; MAX_FRAMES_IN_FLIGHT; i++) {
-        createBuffer(bufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, uniformBuffers[i], uniformBuffersMemory[i]);
-
-        vkMapMemory(device, uniformBuffersMemory[i], 0, bufferSize, 0, &amp;uniformBuffersMapped[i]);
+        vk::DeviceSize bufferSize = sizeof(UniformBufferObject);
+        vk::raii::Buffer buffer({});
+        vk::raii::DeviceMemory bufferMem({});
+        createBuffer(bufferSize, vk::BufferUsageFlagBits::eUniformBuffer, vk::MemoryPropertyFlagBits::eHostVisible | vk::MemoryPropertyFlagBits::eHostCoherent, buffer, bufferMem);
+        uniformBuffers.emplace_back(std::move(buffer));
+        uniformBuffersMemory.emplace_back(std::move(bufferMem));
+        uniformBuffersMapped.emplace_back( uniformBuffersMemory[i].mapMemory(0, bufferSize));
     }
 }</code></pre>
 </div>
@@ -671,26 +724,6 @@ void createUniformBuffers() {
 The buffer stays mapped to this pointer for the application&#8217;s whole lifetime.
 This technique is called <strong>"persistent mapping"</strong> and works on all Vulkan implementations.
 Not having to map the buffer every time we need to update it increases performances, as mapping is not free.</p>
-</div>
-<div class="paragraph">
-<p>The uniform data will be used for all draw calls, so the buffer containing it should only be destroyed when we stop rendering.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanup() {
-    ...
-
-    for (size_t i = 0; i &lt; MAX_FRAMES_IN_FLIGHT; i++) {
-        vkDestroyBuffer(device, uniformBuffers[i], nullptr);
-        vkFreeMemory(device, uniformBuffersMemory[i], nullptr);
-    }
-
-    vkDestroyDescriptorSetLayout(device, descriptorSetLayout, nullptr);
-
-    ...
-
-}</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -709,8 +742,9 @@ Not having to map the buffer every time we need to update it increases performan
 
     ...
 
-    VkSubmitInfo submitInfo{};
-    submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+    const vk::SubmitInfo submitInfo{ .waitSemaphoreCount = 1, .pWaitSemaphores = &amp;*presentCompleteSemaphore[currentFrame],
+                            .pWaitDstStageMask = &amp;waitDestinationStageMask, .commandBufferCount = 1, .pCommandBuffers = &amp;*commandBuffers[currentFrame],
+                            .signalSemaphoreCount = 1, .pSignalSemaphores = &amp;*renderFinishedSemaphore[currentFrame] };
 
     ...
 }
@@ -761,7 +795,7 @@ The model rotation will be a simple rotation around the Z-axis using the <code>t
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">UniformBufferObject ubo{};
-ubo.model = glm::rotate(glm::mat4(1.0f), time * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));</code></pre>
+ubo.model = rotate(glm::mat4(1.0f), time * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -771,7 +805,7 @@ Using a rotation angle of <code>time * glm::radians(90.0f)</code> accomplishes t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">ubo.view = glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">ubo.view = lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -780,7 +814,7 @@ The <code>glm::lookAt</code> function takes the eye position, center position an
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float) swapChainExtent.height, 0.1f, 10.0f);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">ubo.proj = glm::perspective(glm::radians(45.0f), static_cast&lt;float&gt;(swapChainExtent.width) / static_cast&lt;float&gt;(swapChainExtent.height), 0.1f, 10.0f);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -810,14 +844,17 @@ As noted earlier, we only map the uniform buffer once, so we can directly write 
 </div>
 <div class="paragraph">
 <p>Using a UBO this way is not the most efficient way to pass frequently changing values to the shader.
-A more efficient way to pass a small buffer of data to shaders are <em>push constants</em>.
+A more efficient way to pass a small buffer of data to shaders is <em>push constants</em>.
 We may look at these in a future chapter.</p>
 </div>
 <div class="paragraph">
 <p>In the <a href="01_Descriptor_pool_and_sets.html" class="xref page">next chapter</a> we&#8217;ll look at descriptor sets, which will actually bind the <code>VkBuffer</code>s to the uniform buffer descriptors so that the shader can access this transformation data.</p>
 </div>
 <div class="paragraph">
-<p><a href="../_attachments/22_descriptor_set_layout.cpp">C&#43;&#43; code</a> / <a href="../_attachments/22_shader_ubo.vert">Vertex shader</a> / <a href="../_attachments/22_shader_ubo.frag">Fragment shader</a></p>
+<p><a href="../_attachments/22_descriptor_layout.cpp">C&#43;&#43; code</a> /
+<a href="../_attachments/22_shader_ubo.slang">slang shader</a> /
+<a href="../_attachments/22_shader_ubo.vert">GLSL Vertex shader</a> /
+<a href="../_attachments/22_shader_ubo.frag">GLSL Fragment shader</a></p>
 </div>
 </div>
 </div>
@@ -827,9 +864,56 @@ We may look at these in a future chapter.</p>
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

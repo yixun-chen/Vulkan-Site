@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../spec/latest/index.html" class="home-link"></a>
@@ -369,7 +430,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this chapter we&#8217;re going to create two more resources that are needed for the graphics pipeline to sample an image.
+<p>In this chapter, we&#8217;re going to create two more resources that are needed for the graphics pipeline to sample an image.
 The first resource is one that we&#8217;ve already seen before while working with the swap chain images, but the second one is new - it relates to how the shader will read texels from the image.</p>
 </div>
 </div>
@@ -386,7 +447,7 @@ We will also need to create such an image view for the texture image.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkImageView textureImageView;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::ImageView textureImageView = nullptr;
 
 ...
 
@@ -411,16 +472,7 @@ The only two changes you have to make are the <code>format</code> and the <code>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkImageViewCreateInfo viewInfo{};
-viewInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
-viewInfo.image = textureImage;
-viewInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
-viewInfo.format = VK_FORMAT_R8G8B8A8_SRGB;
-viewInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-viewInfo.subresourceRange.baseMipLevel = 0;
-viewInfo.subresourceRange.levelCount = 1;
-viewInfo.subresourceRange.baseArrayLayer = 0;
-viewInfo.subresourceRange.layerCount = 1;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::ImageViewCreateInfo viewInfo{ .image = image, .viewType = vk::ImageViewType::e2D, .format = format, .subresourceRange = { vk::ImageAspectFlagBits::eColor, 0, 1, 0, 1 }};</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -429,9 +481,7 @@ Finish creating the image view by calling <code>vkCreateImageView</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (vkCreateImageView(device, &amp;viewInfo, nullptr, &amp;textureImageView) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create texture image view!");
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::ImageView( device, viewInfo );</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -439,24 +489,10 @@ Finish creating the image view by calling <code>vkCreateImageView</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkImageView createImageView(VkImage image, VkFormat format) {
-    VkImageViewCreateInfo viewInfo{};
-    viewInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
-    viewInfo.image = image;
-    viewInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
-    viewInfo.format = format;
-    viewInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-    viewInfo.subresourceRange.baseMipLevel = 0;
-    viewInfo.subresourceRange.levelCount = 1;
-    viewInfo.subresourceRange.baseArrayLayer = 0;
-    viewInfo.subresourceRange.layerCount = 1;
-
-    VkImageView imageView;
-    if (vkCreateImageView(device, &amp;viewInfo, nullptr, &amp;imageView) != VK_SUCCESS) {
-        throw std::runtime_error("failed to create image view!");
-    }
-
-    return imageView;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::ImageView createImageView(vk::raii::Image&amp; image, vk::Format format) {
+    vk::ImageViewCreateInfo viewInfo{ .image = image, .viewType = vk::ImageViewType::e2D,
+        .format = format, .subresourceRange = { vk::ImageAspectFlagBits::eColor, 0, 1, 0, 1 } };
+    return vk::raii::ImageView( device, viewInfo );
 }</code></pre>
 </div>
 </div>
@@ -466,7 +502,7 @@ Finish creating the image view by calling <code>vkCreateImageView</code>:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createTextureImageView() {
-    textureImageView = createImageView(textureImage, VK_FORMAT_R8G8B8A8_SRGB);
+    textureImageView = createImageView(textureImage, vk::Format::eR8G8B8A8Srgb);
 }</code></pre>
 </div>
 </div>
@@ -484,20 +520,6 @@ Finish creating the image view by calling <code>vkCreateImageView</code>:</p>
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Make sure to destroy the image view at the end of the program, right before destroying the image itself:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanup() {
-    cleanupSwapChain();
-
-    vkDestroyImageView(device, textureImageView, nullptr);
-
-    vkDestroyImage(device, textureImage, nullptr);
-    vkFreeMemory(device, textureImageMemory, nullptr);</code></pre>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -509,7 +531,7 @@ Textures are usually accessed through samplers, which will apply filtering and t
 </div>
 <div class="paragraph">
 <p>These filters are helpful to deal with problems like oversampling.
-Consider a texture that is mapped to geometry with more fragments than texels.
+Consider a texture mapped to geometry with more fragments than texels.
 If you simply took the closest texel for the texture coordinate in each fragment, then you would get a result like the first image:</p>
 </div>
 <div class="imageblock">
@@ -538,7 +560,7 @@ The solution to this is <a href="https://en.wikipedia.org/wiki/Anisotropic_filte
 <div class="paragraph">
 <p>Aside from these filters, a sampler can also take care of transformations.
 It determines what happens when you try to read texels outside the image through its <em>addressing mode</em>.
-The image below displays some of the possibilities:</p>
+The image below displays some possibilities:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -571,10 +593,7 @@ void createTextureSampler() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkSamplerCreateInfo samplerInfo{};
-samplerInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
-samplerInfo.magFilter = VK_FILTER_LINEAR;
-samplerInfo.minFilter = VK_FILTER_LINEAR;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::SamplerCreateInfo samplerInfo{.magFilter = vk::Filter::eLinear, .minFilter = vk::Filter::eLinear};</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -584,9 +603,8 @@ The choices are <code>VK_FILTER_NEAREST</code> and <code>VK_FILTER_LINEAR</code>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">samplerInfo.addressModeU = VK_SAMPLER_ADDRESS_MODE_REPEAT;
-samplerInfo.addressModeV = VK_SAMPLER_ADDRESS_MODE_REPEAT;
-samplerInfo.addressModeW = VK_SAMPLER_ADDRESS_MODE_REPEAT;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::SamplerCreateInfo samplerInfo{.magFilter = vk::Filter::eLinear, .minFilter = vk::Filter::eLinear,  .mipmapMode = vk::SamplerMipmapMode::eLinear,
+    .addressModeU = vk::SamplerAddressMode::eRepeat, .addressModeV = vk::SamplerAddressMode::eRepeat };</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -621,21 +639,22 @@ However, the repeat mode is probably the most common mode, because it can be use
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">samplerInfo.anisotropyEnable = VK_TRUE;
-samplerInfo.maxAnisotropy = ???;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PhysicalDeviceProperties properties = physicalDevice.getProperties();
+vk::SamplerCreateInfo samplerInfo{.magFilter = vk::Filter::eLinear, .minFilter = vk::Filter::eLinear,  .mipmapMode = vk::SamplerMipmapMode::eLinear,
+    .addressModeU = vk::SamplerAddressMode::eRepeat, .addressModeV = vk::SamplerAddressMode::eRepeat, .addressModeW = vk::SamplerAddressMode::eRepeat,
+    .anisotropyEnable = vk::True, .maxAnisotropy = properties.limits.maxSamplerAnisotropy};</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>These two fields specify if anisotropic filtering should be used.
+<p>The <code>anisotropyEnable</code> field specifies if anisotropic filtering should be used.
 There is no reason not to use this unless performance is a concern.
-The <code>maxAnisotropy</code> field limits the amount of texel samples that can be used to calculate the final color.
+The <code>maxAnisotropy</code> field limits the number of texel samples that can be used to calculate the final color.
 A lower value results in better performance, but lower quality results.
 To figure out which value we can use, we need to retrieve the properties of the physical device like so:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkPhysicalDeviceProperties properties{};
-vkGetPhysicalDeviceProperties(physicalDevice, &amp;properties);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PhysicalDeviceProperties properties = physicalDevice.getProperties();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -645,7 +664,11 @@ If we want to go for maximum quality, we can simply use that value directly:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">samplerInfo.maxAnisotropy = properties.limits.maxSamplerAnisotropy;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PhysicalDeviceProperties properties = physicalDevice.getProperties();
+vk::SamplerCreateInfo samplerInfo{.magFilter = vk::Filter::eLinear, .minFilter = vk::Filter::eLinear,  .mipmapMode = vk::SamplerMipmapMode::eLinear,
+    .addressModeU = vk::SamplerAddressMode::eRepeat, .addressModeV = vk::SamplerAddressMode::eRepeat, .addressModeW = vk::SamplerAddressMode::eRepeat,
+    .anisotropyEnable = vk::True, .maxAnisotropy = properties.limits.maxSamplerAnisotropy,
+    .compareEnable = vk::False, .compareOp = vk::CompareOp::eAlways};</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -653,7 +676,7 @@ If we want to go for maximum quality, we can simply use that value directly:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">samplerInfo.borderColor = VK_BORDER_COLOR_INT_OPAQUE_BLACK;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">samplerInfo.borderColor = vk::BorderColor::eIntOpaqueBlack;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -663,7 +686,7 @@ You cannot specify an arbitrary color.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">samplerInfo.unnormalizedCoordinates = VK_FALSE;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">samplerInfo.unnormalizedCoordinates = vk::False;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -674,8 +697,8 @@ Real-world applications almost always use normalized coordinates, because then i
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">samplerInfo.compareEnable = VK_FALSE;
-samplerInfo.compareOp = VK_COMPARE_OP_ALWAYS;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">samplerInfo.compareEnable = vk::False;
+samplerInfo.compareOp = vk::CompareOp::eAlways;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -685,7 +708,7 @@ We&#8217;ll look at this in a future chapter.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">samplerInfo.mipmapMode = VK_SAMPLER_MIPMAP_MODE_LINEAR;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">samplerInfo.mipmapMode = vk::SamplerMipmapMode::eLinear;
 samplerInfo.mipLodBias = 0.0f;
 samplerInfo.minLod = 0.0f;
 samplerInfo.maxLod = 0.0f;</code></pre>
@@ -701,17 +724,15 @@ Add a class member to hold the handle of the sampler object and create the sampl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkImageView textureImageView;
-VkSampler textureSampler;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::ImageView textureImageView = nullptr;
+vk::raii::Sampler textureSampler = nullptr;
 
 ...
 
 void createTextureSampler() {
     ...
 
-    if (vkCreateSampler(device, &amp;samplerInfo, nullptr, &amp;textureSampler) != VK_SUCCESS) {
-        throw std::runtime_error("failed to create texture sampler!");
-    }
+    textureSampler = vk::raii::Sampler(device, samplerInfo);
 }</code></pre>
 </div>
 </div>
@@ -720,21 +741,6 @@ void createTextureSampler() {
 The sampler is a distinct object that provides an interface to extract colors from a texture.
 It can be applied to any image you want, whether it is 1D, 2D or 3D.
 This is different from many older APIs, which combined texture images and filtering into a single state.</p>
-</div>
-<div class="paragraph">
-<p>Destroy the sampler at the end of the program when we&#8217;ll no longer be accessing the image:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanup() {
-    cleanupSwapChain();
-
-    vkDestroySampler(device, textureSampler, nullptr);
-    vkDestroyImageView(device, textureImageView, nullptr);
-
-    ...
-}</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -755,8 +761,11 @@ We need to update the <code>createLogicalDevice</code> function to request it:</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkPhysicalDeviceFeatures deviceFeatures{};
-deviceFeatures.samplerAnisotropy = VK_TRUE;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::StructureChain&lt;vk::PhysicalDeviceFeatures2, vk::PhysicalDeviceVulkan13Features, vk::PhysicalDeviceExtendedDynamicStateFeaturesEXT&gt; featureChain = {
+    {.features = {.samplerAnisotropy = true } },            // vk::PhysicalDeviceFeatures2
+    {.synchronization2 = true, .dynamicRendering = true },  // vk::PhysicalDeviceVulkan13Features
+    {.extendedDynamicState = true }                         // vk::PhysicalDeviceExtendedDynamicStateFeaturesEXT
+};</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -767,8 +776,7 @@ deviceFeatures.samplerAnisotropy = VK_TRUE;</code></pre>
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">bool isDeviceSuitable(VkPhysicalDevice device) {
     ...
 
-    VkPhysicalDeviceFeatures supportedFeatures;
-    vkGetPhysicalDeviceFeatures(device, &amp;supportedFeatures);
+    vk::PhysicalDeviceFeatures supportedFeatures = device.getPhysicalDeviceFeatures();
 
     return indices.isComplete() &amp;&amp; extensionsSupported &amp;&amp; swapChainAdequate &amp;&amp; supportedFeatures.samplerAnisotropy;
 }</code></pre>
@@ -778,7 +786,7 @@ deviceFeatures.samplerAnisotropy = VK_TRUE;</code></pre>
 <p>The <code>vkGetPhysicalDeviceFeatures</code> repurposes the <code>VkPhysicalDeviceFeatures</code> struct to indicate which features are supported rather than requested by setting the boolean values.</p>
 </div>
 <div class="paragraph">
-<p>Instead of enforcing the availability of anisotropic filtering, it&#8217;s also possible to simply not use it by conditionally setting:</p>
+<p>Instead of enforcing the availability of anisotropic filtering, it&#8217;s also possible to simply not use it by conditional setting:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -790,7 +798,10 @@ samplerInfo.maxAnisotropy = 1.0f;</code></pre>
 <p>In the <a href="02_Combined_image_sampler.html" class="xref page">next chapter</a> we will expose the image and sampler objects to the shaders to draw the texture onto the square.</p>
 </div>
 <div class="paragraph">
-<p><a href="../_attachments/25_sampler.cpp">C&#43;&#43; code</a> / <a href="../_attachments/22_shader_ubo.vert">Vertex shader</a> / <a href="../_attachments/22_shader_ubo.frag">Fragment shader</a></p>
+<p><a href="../_attachments/25_sampler.cpp">C&#43;&#43; code</a> /
+<a href="../_attachments/22_shader_ubo.slang">slang shader</a> /
+<a href="../_attachments/22_shader_ubo.vert">GLSL Vertex shader</a> /
+<a href="../_attachments/22_shader_ubo.frag">GLSL Fragment shader</a></p>
 </div>
 </div>
 </div>
@@ -800,9 +811,56 @@ samplerInfo.maxAnisotropy = 1.0f;</code></pre>
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

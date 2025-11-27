@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="samples" data-version="latest">
+<div class="nav-container" data-component="samples" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -178,11 +180,8 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../api/hello_triangle/README.html">Hello Triangle</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../api/hello_triangle_1_3/README.html">Hello Triangle 1.3</a>
+    <a class="nav-link" href="../../api/hello_triangle/README.html">Hello Triangle</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../api/hpp_hello_triangle/README.html">Hello Triangle (Vulkan-Hpp)</a>
@@ -191,10 +190,10 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../api/hlsl_shaders/README.html">HLSL Shaders</a>
+    <a class="nav-link" href="../../api/hello_triangle_1_3/README.html">Hello Triangle 1.3</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../api/hpp_hlsl_shaders/README.html">HLSL Shaders (Vulkan-Hpp)</a>
+    <a class="nav-link" href="../../api/hpp_hello_triangle_1_3/README.html">Hello Triangle 1.3(Vulkan-Hpp)</a>
   </li>
 </ul>
   </li>
@@ -313,6 +312,9 @@
     <a class="nav-link" href="../../extensions/extended_dynamic_state2/README.html">Extended dynamic state2</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../extensions/fragment_density_map/README.html">Fragment density map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../extensions/fragment_shader_barycentric/README.html">Fragment shader barycentric</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -398,6 +400,15 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../extensions/synchronization_2/README.html">Synchronization 2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../extensions/tensor_and_data_graph/README.html">Tensor and Data Graph</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/tensor_and_data_graph/simple_tensor_and_data_graph/README.html">Simple Tensor and Data Graph</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../../extensions/timeline_semaphore/README.html">Timeline semaphore</a>
@@ -536,6 +547,9 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Samples" target="_blank" rel="noopener">GitHub Repository</a></span>
+  </li>
 </ul>
   </li>
 </ul>
@@ -560,6 +574,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -600,7 +622,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../../../spec/latest/index.html" class="home-link"></a>
@@ -638,7 +660,7 @@ The source for this sample can be found in the <a href="https://github.com/Khron
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This sample shows how a Vulkan application can control the compression of <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImage.html"><code>VkImage</code></a> elements, in particular a framebuffer attachment and the swapchain.
+<p>This sample shows how a Vulkan application can control the compression of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImage.html"><code>VkImage</code></a> elements, in particular a framebuffer attachment and the swapchain.
 This requires enabling and using the extensions <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_EXT_image_compression_control"><code>VK_EXT_image_compression_control</code></a> and <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_EXT_image_compression_control_swapchain"><code>VK_EXT_image_compression_control_swapchain</code></a>, respectively.
 Applications that use compression generally perform better thanks to the reduced memory footprint and bandwidth.</p>
 </div>
@@ -792,13 +814,13 @@ This is the case for the Space Module scene shown above.</p>
 <h2 id="_vk_ext_image_compression_control"><a class="anchor" href="#_vk_ext_image_compression_control"></a>VK_EXT_image_compression_control</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This sample enables the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_image_compression_control.html"><code>VK_EXT_image_compression_control</code></a> extension and requests the relevant device feature, <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceImageCompressionControlFeaturesEXT.html"><code>imageCompressionControl</code></a>
+<p>This sample enables the <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_EXT_image_compression_control.html"><code>VK_EXT_image_compression_control</code></a> extension and requests the relevant device feature, <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceImageCompressionControlFeaturesEXT.html"><code>imageCompressionControl</code></a>
 This extension abstracts how applications choose a fixed compression rate, in terms of "minimum number of bits per component (BPC)".</p>
 </div>
 <div class="sect2">
 <h3 id="_query_for_image_compression_support"><a class="anchor" href="#_query_for_image_compression_support"></a>Query for image compression support</h3>
 <div class="paragraph">
-<p>To query if a particular image supports fixed-rate compression, add a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a> to the <code>pNext</code> chain of <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageFormatProperties2KHR.html"><code>VkImageFormatProperties2</code></a>, and call <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceImageFormatProperties2KHR.html"><code>vkGetPhysicalDeviceImageFormatProperties2KHR</code></a>:</p>
+<p>To query if a particular image supports fixed-rate compression, add a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a> to the <code>pNext</code> chain of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageFormatProperties2KHR.html"><code>VkImageFormatProperties2</code></a>, and call <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceImageFormatProperties2KHR.html"><code>vkGetPhysicalDeviceImageFormatProperties2KHR</code></a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -824,8 +846,8 @@ vkGetPhysicalDeviceImageFormatProperties2KHR(device.get_gpu().get_handle(), &amp
 <p>In the Vulkan Samples framework, this happens in the <a href="https://github.com/KhronosGroup/Vulkan-Samples/blob/main/framework/common/vk_common.cpp"><code>vkb::query_supported_fixed_rate_compression</code></a> function.</p>
 </div>
 <div class="paragraph">
-<p>Then inspect the values written to the <code>imageCompressionFixedRateFlags</code> component of <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a>.
-If fixed-rate compression is supported, the flags will indicate which levels may be selected for this image, for instance <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionFixedRateFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_FIXED_RATE_2BPC_BIT_EXT</code></a> or <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionFixedRateFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_FIXED_RATE_5BPC_BIT_EXT</code></a>.
+<p>Then inspect the values written to the <code>imageCompressionFixedRateFlags</code> component of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a>.
+If fixed-rate compression is supported, the flags will indicate which levels may be selected for this image, for instance <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionFixedRateFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_FIXED_RATE_2BPC_BIT_EXT</code></a> or <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionFixedRateFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_FIXED_RATE_5BPC_BIT_EXT</code></a>.
 The sample will use the minimum BPC available for its high compression setting, and the maximum BPC available for its low compression setting.</p>
 </div>
 <div class="imageblock text-center">
@@ -840,7 +862,7 @@ The sample will use the minimum BPC available for its high compression setting, 
 <div class="sect2">
 <h3 id="_request_image_compression"><a class="anchor" href="#_request_image_compression"></a>Request image compression</h3>
 <div class="paragraph">
-<p>To request fixed-rate compression, provide a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionControlEXT.html"><code>VkImageCompressionControlEXT</code></a> to the <code>pNext</code> chain of <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCreateInfo.html"><code>VkImageCreateInfo</code></a>:</p>
+<p>To request fixed-rate compression, provide a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionControlEXT.html"><code>VkImageCompressionControlEXT</code></a> to the <code>pNext</code> chain of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCreateInfo.html"><code>VkImageCreateInfo</code></a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -862,7 +884,7 @@ vkCreateImage(device, &amp;image_info, nullptr, &amp;new_image);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that, instead of using <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT</code></a>, one may use <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT</code></a>, and in that case it would not be necessary to provide a specific set of <code>pFixedRateFlags</code>.</p>
+<p>Note that, instead of using <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_FIXED_RATE_EXPLICIT_EXT</code></a>, one may use <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT</code></a>, and in that case it would not be necessary to provide a specific set of <code>pFixedRateFlags</code>.</p>
 </div>
 <div class="paragraph">
 <p>In the Vulkan Samples framework, this happens in the <a href="https://github.com/KhronosGroup/Vulkan-Samples/blob/main/framework/core/image.cpp"><code>core::Image</code></a> constructor.</p>
@@ -871,7 +893,7 @@ vkCreateImage(device, &amp;image_info, nullptr, &amp;new_image);</code></pre>
 <div class="sect2">
 <h3 id="verify_image_compression"><a class="anchor" href="#verify_image_compression"></a>Verify image compression</h3>
 <div class="paragraph">
-<p>To query which compression was applied, if any, once a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImage.html"><code>VkImage</code></a> has been created, add a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a> to the <code>pNext</code> chain of <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageSubresource2EXT.html"><code>VkImageSubresource2EXT</code></a>, and call <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetImageSubresourceLayout2EXT.html"><code>vkGetImageSubresourceLayout2EXT</code></a>:</p>
+<p>To query which compression was applied, if any, once a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImage.html"><code>VkImage</code></a> has been created, add a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a> to the <code>pNext</code> chain of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageSubresource2EXT.html"><code>VkImageSubresource2EXT</code></a>, and call <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetImageSubresourceLayout2EXT.html"><code>vkGetImageSubresourceLayout2EXT</code></a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -889,7 +911,7 @@ vkGetImageSubresourceLayout2EXT(device, image, &amp;image_subresource, &amp;subr
 </div>
 </div>
 <div class="paragraph">
-<p>Then inspect the values written to the <code>imageCompressionFlags</code> and  <code>imageCompressionFixedRateFlags</code> components of <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a>.
+<p>Then inspect the values written to the <code>imageCompressionFlags</code> and  <code>imageCompressionFixedRateFlags</code> components of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a>.
 In the Vulkan Samples framework, this happens in the <a href="https://github.com/KhronosGroup/Vulkan-Samples/blob/main/framework/core/image.cpp"><code>core::Image::query_applied_compression</code></a> function.</p>
 </div>
 </div>
@@ -899,13 +921,13 @@ In the Vulkan Samples framework, this happens in the <a href="https://github.com
 <h2 id="_vk_ext_image_compression_control_swapchain"><a class="anchor" href="#_vk_ext_image_compression_control_swapchain"></a>VK_EXT_image_compression_control_swapchain</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Compression control for swapchain images is similar, but it requires the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_image_compression_control_swapchain.html"><code>VK_EXT_image_compression_control_swapchain</code></a> extension and the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT.html"><code>imageCompressionControlSwapchain</code></a> device feature to be enabled.
-These depend on the <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_image_compression_control.html"><code>VK_EXT_image_compression_control</code></a> being available and enabled too.</p>
+<p>Compression control for swapchain images is similar, but it requires the <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_EXT_image_compression_control_swapchain.html"><code>VK_EXT_image_compression_control_swapchain</code></a> extension and the <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPhysicalDeviceImageCompressionControlSwapchainFeaturesEXT.html"><code>imageCompressionControlSwapchain</code></a> device feature to be enabled.
+These depend on the <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_EXT_image_compression_control.html"><code>VK_EXT_image_compression_control</code></a> being available and enabled too.</p>
 </div>
 <div class="sect2">
 <h3 id="_query_for_surface_compression_support"><a class="anchor" href="#_query_for_surface_compression_support"></a>Query for surface compression support</h3>
 <div class="paragraph">
-<p>To query if the surface supports fixed-rate compression, add a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a> to the <code>pNext</code> chain of <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageFormatProperties2KHR.html"><code>VkImageFormatProperties2</code></a>, and call <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceImageFormatProperties2KHR.html"><code>vkGetPhysicalDeviceImageFormatProperties2KHR</code></a>:</p>
+<p>To query if the surface supports fixed-rate compression, add a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a> to the <code>pNext</code> chain of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageFormatProperties2KHR.html"><code>VkImageFormatProperties2</code></a>, and call <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetPhysicalDeviceImageFormatProperties2KHR.html"><code>vkGetPhysicalDeviceImageFormatProperties2KHR</code></a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -931,14 +953,14 @@ vkGetPhysicalDeviceSurfaceFormats2KHR(device, &amp;surface_info, &amp;surface_fo
 </div>
 </div>
 <div class="paragraph">
-<p>Then inspect the values written to the <code>imageCompressionFixedRateFlags</code> component of <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a>, associated to a particular <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSurfaceFormat2KHR.html"><code>VkSurfaceFormat2KHR</code></a>.
+<p>Then inspect the values written to the <code>imageCompressionFixedRateFlags</code> component of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionPropertiesEXT.html"><code>VkImageCompressionPropertiesEXT</code></a>, associated to a particular <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSurfaceFormat2KHR.html"><code>VkSurfaceFormat2KHR</code></a>.
 In the Vulkan Samples framework, this happens in the <a href="https://github.com/KhronosGroup/Vulkan-Samples/blob/main/framework/core/swapchain.cpp"><code>Swapchain::query_supported_fixed_rate_compression</code></a> function.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_request_surface_compression"><a class="anchor" href="#_request_surface_compression"></a>Request surface compression</h3>
 <div class="paragraph">
-<p>To request fixed-rate compression, provide a <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionControlEXT.html"><code>VkImageCompressionControlEXT</code></a> to the <code>pNext</code> chain of <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkSwapchainCreateInfoKHR.html"><code>VkSwapchainCreateInfoKHR</code></a>:</p>
+<p>To request fixed-rate compression, provide a <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionControlEXT.html"><code>VkImageCompressionControlEXT</code></a> to the <code>pNext</code> chain of <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkSwapchainCreateInfoKHR.html"><code>VkSwapchainCreateInfoKHR</code></a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -957,7 +979,7 @@ vkCreateSwapchainKHR(device, &amp;create_info, nullptr, &amp;new_swapchain);</co
 </div>
 </div>
 <div class="paragraph">
-<p>Similarly to regular images, <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT</code></a> may be used instead.</p>
+<p>Similarly to regular images, <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT</code></a> may be used instead.</p>
 </div>
 <div class="paragraph">
 <p>In the Vulkan Samples framework, this happens in the <a href="https://github.com/KhronosGroup/Vulkan-Samples/blob/main/framework/core/swapchain.cpp"><code>Swapchain</code></a> constructor.</p>
@@ -966,7 +988,7 @@ vkCreateSwapchainKHR(device, &amp;create_info, nullptr, &amp;new_swapchain);</co
 <div class="sect2">
 <h3 id="_verify_surface_compression"><a class="anchor" href="#_verify_surface_compression"></a>Verify surface compression</h3>
 <div class="paragraph">
-<p>To verify that compression was applied to the swapchain images, use the same method as described for a regular <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImage.html"><code>VkImage</code></a> in <a href="#verify_image_compression">Verify image compression</a>.
+<p>To verify that compression was applied to the swapchain images, use the same method as described for a regular <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImage.html"><code>VkImage</code></a> in <a href="#verify_image_compression">Verify image compression</a>.
 No need to enable <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_EXT_image_compression_control_swapchain"><code>VK_EXT_image_compression_control_swapchain</code></a> for this.</p>
 </div>
 <div class="paragraph">
@@ -983,9 +1005,9 @@ The most likely reason is that, even though the GPU supports it, other IP compon
 <h2 id="_disabling_fixed_rate_compression"><a class="anchor" href="#_disabling_fixed_rate_compression"></a>Disabling fixed-rate compression</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As explained above, the <code>flags</code> in <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionControlEXT.html"><code>VkImageCompressionControlEXT</code></a> control the compression scheme selection for images.
+<p>As explained above, the <code>flags</code> in <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionControlEXT.html"><code>VkImageCompressionControlEXT</code></a> control the compression scheme selection for images.
 Take care not to accidentally disable <a href="#default_compression">Default compression</a> when disabling <a href="#fixed_rate_compression">Fixed-rate compression</a>.
-That is, ensure that <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_DEFAULT_EXT</code></a> is used by default, rather than <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkImageCompressionFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_DISABLED_EXT</code></a>, which disables all compression, negatively impacting performance.</p>
+That is, ensure that <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_DEFAULT_EXT</code></a> is used by default, rather than <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkImageCompressionFlagBitsEXT.html"><code>VK_IMAGE_COMPRESSION_DISABLED_EXT</code></a>, which disables all compression, negatively impacting performance.</p>
 </div>
 </div>
 </div>
@@ -1008,9 +1030,56 @@ Bandwidth reductions can in turn result in performance improvements and power sa
 </div>
 <script id="site-script" src="../../../../../_/js/site.js" data-ui-root-path="../../../../../_"></script>
 <script async src="../../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../../.." data-snippet-length="100" data-stylesheet="../../../../../_/css/search.css"></script>
-<script async src="../../../../../search-index.js"></script>
+<script src="../../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../../.." data-snippet-length="100" data-stylesheet="../../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

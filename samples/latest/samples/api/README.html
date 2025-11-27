@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="samples" data-version="latest">
+<div class="nav-container" data-component="samples" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -178,11 +180,8 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="hello_triangle/README.html">Hello Triangle</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="hello_triangle_1_3/README.html">Hello Triangle 1.3</a>
+    <a class="nav-link" href="hello_triangle/README.html">Hello Triangle</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="hpp_hello_triangle/README.html">Hello Triangle (Vulkan-Hpp)</a>
@@ -191,10 +190,10 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="hlsl_shaders/README.html">HLSL Shaders</a>
+    <a class="nav-link" href="hello_triangle_1_3/README.html">Hello Triangle 1.3</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="hpp_hlsl_shaders/README.html">HLSL Shaders (Vulkan-Hpp)</a>
+    <a class="nav-link" href="hpp_hello_triangle_1_3/README.html">Hello Triangle 1.3(Vulkan-Hpp)</a>
   </li>
 </ul>
   </li>
@@ -313,6 +312,9 @@
     <a class="nav-link" href="../extensions/extended_dynamic_state2/README.html">Extended dynamic state2</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extensions/fragment_density_map/README.html">Fragment density map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../extensions/fragment_shader_barycentric/README.html">Fragment shader barycentric</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -398,6 +400,15 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../extensions/synchronization_2/README.html">Synchronization 2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../extensions/tensor_and_data_graph/README.html">Tensor and Data Graph</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../extensions/tensor_and_data_graph/simple_tensor_and_data_graph/README.html">Simple Tensor and Data Graph</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../extensions/timeline_semaphore/README.html">Timeline semaphore</a>
@@ -536,6 +547,9 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Samples" target="_blank" rel="noopener">GitHub Repository</a></span>
+  </li>
 </ul>
   </li>
 </ul>
@@ -560,6 +574,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -600,7 +622,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../../spec/latest/index.html" class="home-link"></a>
@@ -643,7 +665,7 @@
 <div class="sect2">
 <h3 id="_hello_triangle"><a class="anchor" href="#_hello_triangle"></a><a href="hello_triangle/README.html" class="xref page">Hello Triangle</a></h3>
 <div class="paragraph">
-<p>A self-contained (minimal use of framework) sample that illustrates the rendering of a triangle.</p>
+<p>A self-contained (minimal use of framework) sample that illustrates the rendering of a triangle using unextended Vulkan 1.1.</p>
 </div>
 </div>
 <div class="sect2">
@@ -655,79 +677,79 @@
 <div class="sect2">
 <h3 id="_hpp_compute_shader_n_body_simulation"><a class="anchor" href="#_hpp_compute_shader_n_body_simulation"></a><a href="hpp_compute_nbody/README.html" class="xref page">HPP Compute shader N-Body simulation</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="compute_nbody/README.html" class="xref page">Compute N-Body</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="compute_nbody/README.html" class="xref page">Compute N-Body</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_hpp_dynamic_uniform_buffers"><a class="anchor" href="#_hpp_dynamic_uniform_buffers"></a><a href="hpp_dynamic_uniform_buffers/README.html" class="xref page">HPP Dynamic Uniform Buffers</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="dynamic_uniform_buffers/README.html" class="xref page">Dynamic Uniform buffers</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="dynamic_uniform_buffers/README.html" class="xref page">Dynamic Uniform buffers</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_hpp_high_dynamic_range"><a class="anchor" href="#_hpp_high_dynamic_range"></a><a href="hpp_hdr/README.html" class="xref page">HPP High dynamic range</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="hdr/README.html" class="xref page">High dynamic range</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="hdr/README.html" class="xref page">High dynamic range</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_hpp_hello_triangle"><a class="anchor" href="#_hpp_hello_triangle"></a><a href="hpp_hello_triangle/README.html" class="xref page">HPP Hello Triangle</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="hello_triangle/README.html" class="xref page">Hello Triangle</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="hello_triangle/README.html" class="xref page">Hello Triangle</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_hpp_hlsl_shaders"><a class="anchor" href="#_hpp_hlsl_shaders"></a><a href="hpp_hlsl_shaders/README.html" class="xref page">HPP HLSL shaders</a></h3>
+<h3 id="_hpp_hello_triangle_1_3"><a class="anchor" href="#_hpp_hello_triangle_1_3"></a><a href="hpp_hello_triangle_1_3/README.html" class="xref page">HPP Hello Triangle 1.3</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="hlsl_shaders/README.html" class="xref page">HLSL Shaders</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="hello_triangle_1_3/README.html" class="xref page">Hello Triangle 1.3</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_hpp_instancing"><a class="anchor" href="#_hpp_instancing"></a><a href="hpp_instancing/README.html" class="xref page">HPP Instancing</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="instancing/README.html" class="xref page">Instancing</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="instancing/README.html" class="xref page">Instancing</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_hpp_oit_depth_peeling"><a class="anchor" href="#_hpp_oit_depth_peeling"></a><a href="hpp_oit_depth_peeling/README.html" class="xref page">HPP OIT Depth Peeling</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="oit_depth_peeling/README.html" class="xref page">OIT Depth Peeling</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="oit_depth_peeling/README.html" class="xref page">OIT Depth Peeling</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_hpp_oit_linked_lists"><a class="anchor" href="#_hpp_oit_linked_lists"></a><a href="hpp_oit_linked_lists/README.html" class="xref page">HPP OIT Linked Lists</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="oit_linked_lists/README.html" class="xref page">OIT Linked Lists</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="oit_linked_lists/README.html" class="xref page">OIT Linked Lists</a> that illustrates the usage of the C&#43;&#43; bindings of Vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_hpp_separate_image_sampler"><a class="anchor" href="#_hpp_separate_image_sampler"></a><a href="hpp_separate_image_sampler/README.html" class="xref page">HPP Separate image sampler</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="separate_image_sampler/README.html" class="xref page">Separate image sampler</a> that illustrates the usage of the C&#43;&#43; bindings of vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="separate_image_sampler/README.html" class="xref page">Separate image sampler</a> that illustrates the usage of the C&#43;&#43; bindings of vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_hpp_terrain_tessellation"><a class="anchor" href="#_hpp_terrain_tessellation"></a><a href="hpp_terrain_tessellation/README.html" class="xref page">HPP Terrain Tessellation</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="terrain_tessellation/README.html" class="xref page">Terrain Tessellation</a> that illustrates the usage of the C&#43;&#43; bindings of vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="terrain_tessellation/README.html" class="xref page">Terrain Tessellation</a> that illustrates the usage of the C&#43;&#43; bindings of vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_hpp_texture_loading"><a class="anchor" href="#_hpp_texture_loading"></a><a href="hpp_texture_loading/README.html" class="xref page">HPP Texture Loading</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="texture_loading/README.html" class="xref page">Texture loading</a> that illustrates the usage of the C&#43;&#43; bindings of vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="texture_loading/README.html" class="xref page">Texture loading</a> that illustrates the usage of the C&#43;&#43; bindings of vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_hpp_texture_run_time_mip_map_generation"><a class="anchor" href="#_hpp_texture_run_time_mip_map_generation"></a><a href="hpp_texture_mipmap_generation/README.html" class="xref page">HPP Texture run-time mip-map generation</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample <a href="texture_mipmap_generation/README.html" class="xref page">Texture run-time mip-map generation</a> that illustrates the usage of the C&#43;&#43; bindings of vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample <a href="texture_mipmap_generation/README.html" class="xref page">Texture run-time mip-map generation</a> that illustrates the usage of the C&#43;&#43; bindings of vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_hpp_timestamp_queries"><a class="anchor" href="#_hpp_timestamp_queries"></a><a href="hpp_timestamp_queries/README.html" class="xref page">HPP Timestamp queries</a></h3>
 <div class="paragraph">
-<p>A transcoded version of the API sample<a href="timestamp_queries/README.html" class="xref page">Timestamp queries</a> that illustrates the usage of the C&#43;&#43; bindings of vulkan provided by vulkan.hpp.</p>
+<p>A transcoded version of the API sample<a href="timestamp_queries/README.html" class="xref page">Timestamp queries</a> that illustrates the usage of the C&#43;&#43; bindings of vulkan provided by Vulkan-Hpp.</p>
 </div>
 </div>
 <div class="sect2">
@@ -762,12 +784,6 @@ The sample demonstrates how to use different samplers for the same image without
 </div>
 </div>
 <div class="sect2">
-<h3 id="_hlsl_shaders"><a class="anchor" href="#_hlsl_shaders"></a><a href="hlsl_shaders/README.html" class="xref page">HLSL shaders</a></h3>
-<div class="paragraph">
-<p>Converts High Level Shading Language (HLSL) shaders to Vulkan-compatible SPIR-V.</p>
-</div>
-</div>
-<div class="sect2">
 <h3 id="_timestamp_queries"><a class="anchor" href="#_timestamp_queries"></a><a href="timestamp_queries/README.html" class="xref page">Timestamp queries</a></h3>
 <div class="paragraph">
 <p>Using timestamp queries for profiling GPU workloads.</p>
@@ -799,9 +815,56 @@ The sample demonstrates how to use different samplers for the same image without
 </div>
 <script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
-<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

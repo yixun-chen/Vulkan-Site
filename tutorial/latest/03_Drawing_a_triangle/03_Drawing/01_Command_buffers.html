@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../../spec/latest/index.html" class="home-link"></a>
@@ -371,8 +432,10 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Commands in Vulkan, like drawing operations and memory transfers, are not executed directly using function calls.
-You have to record all of the operations you want to perform in command buffer objects.
-The advantage of this is that when we are ready to tell the Vulkan what we want to do, all of the commands are submitted together and Vulkan can more efficiently process the commands since all of them are available together.
+You have to record all the operations you want to perform in command buffer objects.
+The advantage of this is that when we are ready to tell Vulkan what we want
+to do, all the commands are submitted together. Vulkan can more
+efficiently process the commands since all of them are available together.
 In addition, this allows command recording to happen in multiple threads if so desired.</p>
 </div>
 </div>
@@ -387,11 +450,11 @@ Add a new class member to store a <code>VkCommandPool</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkCommandPool commandPool;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::CommandPool commandPool = nullptr;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then create a new function <code>createCommandPool</code> and call it from <code>initVulkan</code> after the framebuffers were created.</p>
+<p>Then create a new function <code>createCommandPool</code> and call it from <code>initVulkan</code> after the graphics pipeline was created.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -403,9 +466,7 @@ Add a new class member to store a <code>VkCommandPool</code>:</p>
     createLogicalDevice();
     createSwapChain();
     createImageViews();
-    createRenderPass();
     createGraphicsPipeline();
-    createFramebuffers();
     createCommandPool();
 }
 
@@ -421,12 +482,7 @@ void createCommandPool() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">QueueFamilyIndices queueFamilyIndices = findQueueFamilies(physicalDevice);
-
-VkCommandPoolCreateInfo poolInfo{};
-poolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
-poolInfo.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
-poolInfo.queueFamilyIndex = queueFamilyIndices.graphicsFamily.value();</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::CommandPoolCreateInfo poolInfo{ .flags = vk::CommandPoolCreateFlagBits::eResetCommandBuffer, .queueFamilyIndex = graphicsIndex };</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -453,24 +509,13 @@ We&#8217;re going to record commands for drawing, which is why we&#8217;ve chose
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (vkCreateCommandPool(device, &amp;poolInfo, nullptr, &amp;commandPool) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create command pool!");
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandPool = vk::raii::CommandPool(device, poolInfo);</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Finish creating the command pool using the <code>vkCreateCommandPool</code> function.
 It doesn&#8217;t have any special parameters.
-Commands will be used throughout the program to draw things on the screen, so the pool should only be destroyed at the end:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanup() {
-    vkDestroyCommandPool(device, commandPool, nullptr);
-
-    ...
-}</code></pre>
-</div>
+Commands will be used throughout the program to draw things on the screen.</p>
 </div>
 </div>
 </div>
@@ -486,7 +531,7 @@ Command buffers will be automatically freed when their command pool is destroyed
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkCommandBuffer commandBuffer;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::CommandBuffer commandBuffer = nullptr;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -502,9 +547,7 @@ Command buffers will be automatically freed when their command pool is destroyed
     createLogicalDevice();
     createSwapChain();
     createImageViews();
-    createRenderPass();
     createGraphicsPipeline();
-    createFramebuffers();
     createCommandPool();
     createCommandBuffer();
 }
@@ -521,15 +564,9 @@ void createCommandBuffer() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkCommandBufferAllocateInfo allocInfo{};
-allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
-allocInfo.commandPool = commandPool;
-allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
-allocInfo.commandBufferCount = 1;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::CommandBufferAllocateInfo allocInfo{ .commandPool = commandPool, .level = vk::CommandBufferLevel::ePrimary, .commandBufferCount = 1 };
 
-if (vkAllocateCommandBuffers(device, &amp;allocInfo, &amp;commandBuffer) != VK_SUCCESS) {
-    throw std::runtime_error("failed to allocate command buffers!");
-}</code></pre>
+commandBuffer = std::move(vk::raii::CommandBuffers(device, allocInfo).front());</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -562,7 +599,7 @@ The <code>VkCommandBuffer</code> used will be passed in as a parameter, as well 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex) {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void recordCommandBuffer(uint32_t imageIndex) {
 
 }</code></pre>
 </div>
@@ -572,14 +609,7 @@ The <code>VkCommandBuffer</code> used will be passed in as a parameter, as well 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkCommandBufferBeginInfo beginInfo{};
-beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
-beginInfo.flags = 0; // Optional
-beginInfo.pInheritanceInfo = nullptr; // Optional
-
-if (vkBeginCommandBuffer(commandBuffer, &amp;beginInfo) != VK_SUCCESS) {
-    throw std::runtime_error("failed to begin recording command buffer!");
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer-&gt;begin( {} );</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -613,77 +643,124 @@ It&#8217;s not possible to append commands to a buffer at a later time.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_starting_a_render_pass"><a class="anchor" href="#_starting_a_render_pass"></a>Starting a render pass</h2>
+<h2 id="_image_layout_transitions"><a class="anchor" href="#_image_layout_transitions"></a>Image layout transitions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Drawing starts by beginning the render pass with <code>vkCmdBeginRenderPass</code>.
-The render pass is configured using some parameters in a <code>VkRenderPassBeginInfo</code> struct.</p>
+<p>Before we can start rendering to an image, we need to transition its layout to one that is suitable for rendering. In Vulkan, images can be in different layouts that are optimized for different operations. For example, an image can be in a layout that is optimal for presenting to the screen, or in a layout that is optimal for being used as a color attachment.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll use a pipeline barrier to transition the image layout from <code>VK_IMAGE_LAYOUT_UNDEFINED</code> to <code>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkRenderPassBeginInfo renderPassInfo{};
-renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-renderPassInfo.renderPass = renderPass;
-renderPassInfo.framebuffer = swapChainFramebuffers[imageIndex];</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void transition_image_layout(
+    uint32_t imageIndex,
+    vk::ImageLayout oldLayout,
+    vk::ImageLayout newLayout,
+    vk::AccessFlags2 srcAccessMask,
+    vk::AccessFlags2 dstAccessMask,
+    vk::PipelineStageFlags2 srcStageMask,
+    vk::PipelineStageFlags2 dstStageMask
+) {
+    vk::ImageMemoryBarrier2 barrier = {
+        .srcStageMask = srcStageMask,
+        .srcAccessMask = srcAccessMask,
+        .dstStageMask = dstStageMask,
+        .dstAccessMask = dstAccessMask,
+        .oldLayout = oldLayout,
+        .newLayout = newLayout,
+        .srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
+        .dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
+        .image = swapChainImages[imageIndex],
+        .subresourceRange = {
+            .aspectMask = vk::ImageAspectFlagBits::eColor,
+            .baseMipLevel = 0,
+            .levelCount = 1,
+            .baseArrayLayer = 0,
+            .layerCount = 1
+        }
+    };
+    vk::DependencyInfo dependencyInfo = {
+        .dependencyFlags = {},
+        .imageMemoryBarrierCount = 1,
+        .pImageMemoryBarriers = &amp;barrier
+    };
+    commandBuffer.pipelineBarrier2(dependencyInfo);
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first parameters are the render pass itself and the attachments to bind.
-We created a framebuffer for each swap chain image where it is specified as a color attachment.
-Thus we need to bind the framebuffer for the swapchain image we want to draw to.
-Using the imageIndex parameter which was passed in, we can pick the right framebuffer for the current swapchain image.</p>
+<p>This function will be used to transition the image layout before and after rendering.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_starting_dynamic_rendering"><a class="anchor" href="#_starting_dynamic_rendering"></a>Starting dynamic rendering</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With dynamic rendering, we don&#8217;t need to create a render pass or framebuffers. Instead, we specify the attachments directly when we begin rendering:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">renderPassInfo.renderArea.offset = {0, 0};
-renderPassInfo.renderArea.extent = swapChainExtent;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Before starting rendering, transition the swapchain image to COLOR_ATTACHMENT_OPTIMAL
+transition_image_layout(
+    imageIndex,
+    vk::ImageLayout::eUndefined,
+    vk::ImageLayout::eColorAttachmentOptimal,
+    {},                                                         // srcAccessMask (no need to wait for previous operations)
+    vk::AccessFlagBits2::eColorAttachmentWrite,                 // dstAccessMask
+    vk::PipelineStageFlagBits2::eColorAttachmentOutput,         // srcStage
+    vk::PipelineStageFlagBits2::eColorAttachmentOutput          // dstStage
+);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The next two parameters define the size of the render area.
-The render area defines where shader loads and stores will take place.
-The pixels outside this region will have undefined values.
-It should match the size of the attachments for best performance.</p>
+<p>First, we transition the image layout to <code>VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL</code>. Then, we set up the color attachment:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkClearValue clearColor = {{{0.0f, 0.0f, 0.0f, 1.0f}}};
-renderPassInfo.clearValueCount = 1;
-renderPassInfo.pClearValues = &amp;clearColor;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::ClearValue clearColor = vk::ClearColorValue(0.0f, 0.0f, 0.0f, 1.0f);
+vk::RenderingAttachmentInfo attachmentInfo = {
+    .imageView = swapChainImageViews[imageIndex],
+    .imageLayout = vk::ImageLayout::eColorAttachmentOptimal,
+    .loadOp = vk::AttachmentLoadOp::eClear,
+    .storeOp = vk::AttachmentStoreOp::eStore,
+    .clearValue = clearColor
+};</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The last two parameters define the clear values to use for <code>VK_ATTACHMENT_LOAD_OP_CLEAR</code>, which we used as load operation for the color attachment.
-I&#8217;ve defined the clear color to simply be black with 100% opacity.</p>
+<p>The <code>imageView</code> parameter specifies which image view to render to. The <code>imageLayout</code> parameter specifies the layout the image will be in during rendering. The <code>loadOp</code> parameter specifies what to do with the image before rendering, and the <code>storeOp</code> parameter specifies what to do with the image after rendering. We&#8217;re using <code>VK_ATTACHMENT_LOAD_OP_CLEAR</code> to clear the image to black before rendering, and <code>VK_ATTACHMENT_STORE_OP_STORE</code> to store the rendered image for later use.</p>
+</div>
+<div class="paragraph">
+<p>Next, we set up the rendering info:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkCmdBeginRenderPass(commandBuffer, &amp;renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::RenderingInfo renderingInfo = {
+    .renderArea = { .offset = { 0, 0 }, .extent = swapChainExtent },
+    .layerCount = 1,
+    .colorAttachmentCount = 1,
+    .pColorAttachments = &amp;attachmentInfo
+};</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The render pass can now begin.
-All of the functions that record commands can be recognized by their <code>vkCmd</code> prefix.
-They all return <code>void</code>, so there will be no error handling until we&#8217;ve finished recording.</p>
+<p>The <code>renderArea</code> parameter defines the size of the render area, similar to the render area in a render pass. The <code>layerCount</code> parameter specifies the number of layers to render to, which is 1 for a non-layered image. The <code>colorAttachmentCount</code> and <code>pColorAttachments</code> parameters specify the color attachments to render to.</p>
 </div>
 <div class="paragraph">
-<p>The first parameter for every command is always the command buffer to record the command to.
-The second parameter specifies the details of the render pass we&#8217;ve just provided.
-The final parameter controls how the drawing commands within the render pass will be provided.
-It can have one of two values:</p>
+<p>Now we can begin rendering:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VK_SUBPASS_CONTENTS_INLINE</code>: The render pass commands will be embedded in the primary command buffer itself and no secondary command buffers will be executed.</p>
-</li>
-<li>
-<p><code>VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS</code>: The render pass commands will be executed from secondary command buffers.</p>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer.beginRendering(renderingInfo);</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>We will not be using secondary command buffers, so we&#8217;ll go with the first option.</p>
+<p>All the functions that record commands can be recognized by their <code>vkCmd</code> prefix. They all return <code>void</code>, so there will be no error handling until we&#8217;ve finished recording.</p>
+</div>
+<div class="paragraph">
+<p>The parameter for the <code>beginRendering</code> command is the rendering info we just set up, which specifies the attachments to render to and the render area.</p>
 </div>
 </div>
 </div>
@@ -695,7 +772,7 @@ It can have one of two values:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer.bindPipeline(vk::PipelineBindPoint::eGraphics, graphicsPipeline);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -708,19 +785,8 @@ So we need to set them in the command buffer before issuing our draw command:</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkViewport viewport{};
-viewport.x = 0.0f;
-viewport.y = 0.0f;
-viewport.width = static_cast&lt;float&gt;(swapChainExtent.width);
-viewport.height = static_cast&lt;float&gt;(swapChainExtent.height);
-viewport.minDepth = 0.0f;
-viewport.maxDepth = 1.0f;
-vkCmdSetViewport(commandBuffer, 0, 1, &amp;viewport);
-
-VkRect2D scissor{};
-scissor.offset = {0, 0};
-scissor.extent = swapChainExtent;
-vkCmdSetScissor(commandBuffer, 0, 1, &amp;scissor);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer.setViewport(0, vk::Viewport(0.0f, 0.0f, static_cast&lt;float&gt;(swapChainExtent.width), static_cast&lt;float&gt;(swapChainExtent.height), 0.0f, 1.0f));
+commandBuffer.setScissor(0, vk::Rect2D(vk::Offset2D(0, 0), swapChainExtent));</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -728,7 +794,7 @@ vkCmdSetScissor(commandBuffer, 0, 1, &amp;scissor);</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkCmdDraw(commandBuffer, 3, 1, 0, 0);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer.draw(3, 1, 0, 0);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -744,10 +810,10 @@ It has the following parameters, aside from the command buffer:</p>
 <p><code>instanceCount</code>: Used for instanced rendering, use <code>1</code> if you&#8217;re not doing that.</p>
 </li>
 <li>
-<p><code>firstVertex</code>: Used as an offset into the vertex buffer, defines the lowest value of <code>gl_VertexIndex</code>.</p>
+<p><code>firstVertex</code>: Used as an offset into the vertex buffer, defines the lowest value of <code>SV_VertexId</code>.</p>
 </li>
 <li>
-<p><code>firstInstance</code>: Used as an offset for instanced rendering, defines the lowest value of <code>gl_InstanceIndex</code>.</p>
+<p><code>firstInstance</code>: Used as an offset for instanced rendering, defines the lowest value of <code>SV_InstanceID</code>.</p>
 </li>
 </ul>
 </div>
@@ -757,11 +823,28 @@ It has the following parameters, aside from the command buffer:</p>
 <h2 id="_finishing_up"><a class="anchor" href="#_finishing_up"></a>Finishing up</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The render pass can now be ended:</p>
+<p>The rendering can now be ended:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkCmdEndRenderPass(commandBuffer);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer.endRendering();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After rendering, we need to transition the image layout back to <code>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</code> so it can be presented to the screen:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// After rendering, transition the swapchain image to PRESENT_SRC
+transition_image_layout(
+    imageIndex,
+    vk::ImageLayout::eColorAttachmentOptimal,
+    vk::ImageLayout::ePresentSrcKHR,
+    vk::AccessFlagBits2::eColorAttachmentWrite,             // srcAccessMask
+    {},                                                     // dstAccessMask
+    vk::PipelineStageFlagBits2::eColorAttachmentOutput,     // srcStage
+    vk::PipelineStageFlagBits2::eBottomOfPipe               // dstStage
+);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -769,16 +852,17 @@ It has the following parameters, aside from the command buffer:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (vkEndCommandBuffer(commandBuffer) != VK_SUCCESS) {
-    throw std::runtime_error("failed to record command buffer!");
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer.end();</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>In the <a href="02_Rendering_and_presentation.html" class="xref page">next chapter</a> we&#8217;ll write the code for the main loop, which will acquire an image from the swap chain, record and execute a command buffer, then return the finished image to the swap chain.</p>
 </div>
 <div class="paragraph">
-<p><a href="../../_attachments/14_command_buffers.cpp">C&#43;&#43; code</a> / <a href="../../_attachments/09_shader_base.vert">Vertex shader</a> / <a href="../../_attachments/09_shader_base.frag">Fragment shader</a></p>
+<p><a href="../../_attachments/14_command_buffers.cpp">C&#43;&#43; code</a> /
+<a href="../../_attachments/09_shader_base.slang">Slang shader</a> /
+<a href="../../_attachments/09_shader_base.vert">GLSL Vertex shader</a> /
+<a href="../../_attachments/09_shader_base.frag">GLSL Fragment shader</a></p>
 </div>
 </div>
 </div>
@@ -788,9 +872,56 @@ It has the following parameters, aside from the command buffer:</p>
 </div>
 <script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
-<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

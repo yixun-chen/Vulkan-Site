@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../../spec/latest/index.html" class="home-link"></a>
@@ -368,23 +429,28 @@
 <article class="doc">
 <h1 class="page">Image views</h1>
 <div class="paragraph">
-<p>To use any <code>VkImage</code>, including those in the swap chain, in the render pipeline we have to create a <code>VkImageView</code> object.
-An image view is quite literally a view into an image.
-It describes how to access the image and which part of the image to access, for example if it should be treated as a 2D texture depth texture without any mipmapping levels.</p>
+<p>To use any <code>VkImage</code>, including those in the swap chain, in the render pipeline
+we have to create a <code>VkImageView</code> object. An image view is quite literally a
+view into an image. It describes how to access the image and which part of the
+image to access, for example, if it should be treated as a 2D texture depth
+texture without any mipmapping levels.</p>
 </div>
 <div class="paragraph">
-<p>In this chapter we&#8217;ll write a <code>createImageViews</code> function that creates a basic image view for every image in the swap chain so that we can use them as color targets later on.</p>
+<p>In this chapter we&#8217;ll write a <code>createImageViews</code> function that creates a basic
+image view for every image in the swap chain so that we can use them as color
+targets later on.</p>
 </div>
 <div class="paragraph">
-<p>First add a class member to store the image views in:</p>
+<p>First, add a class member to store the image views in:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;VkImageView&gt; swapChainImageViews;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;vk::raii::ImageView&gt; swapChainImageViews;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Create the <code>createImageViews</code> function and call it right after swap chain creation.</p>
+<p>Create the <code>createImageViews</code> function and call it right after swap chain
+creation.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -404,52 +470,37 @@ void createImageViews() {
 </div>
 </div>
 <div class="paragraph">
-<p>The first thing we need to do is resize the list to fit all of the image views we&#8217;ll be creating:</p>
+<p>The parameters for image view creation are specified in a
+<code>VkImageViewCreateInfo</code> structure. The first few parameters are the flags,
+this isn&#8217;t needed in our case, we&#8217;ll add the images in the upcoming for loop.
+Next, we specify that we&#8217;re rendering to a 2d screen.  If we were wanting
+to render to a 3d screen or cube map, those are also options as is a 1d
+screen.  As you can probably guess, we&#8217;d want a 2d render target in most
+cases when we&#8217;re rendering to a screen.</p>
+</div>
+<div class="paragraph">
+<p>Next, we specify the image format; this is how the colorspace
+components are configured so you get the right color format in your
+renders. Next, components aren&#8217;t needed for our swap chain; we&#8217;ll talk
+about them in a bit though. The last variable is the SubResource range,
+which is necessary, and we&#8217;ll talk about shortly.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createImageViews() {
-    swapChainImageViews.resize(swapChainImages.size());
+    swapChainImageViews.clear();
 
+    vk::ImageViewCreateInfo imageViewCreateInfo{ .viewType = vk::ImageViewType::e2D, .format = swapChainImageFormat,
+      .subresourceRange = { vk::ImageAspectFlagBits::eColor, 0, 1, 0, 1 } };
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Next, set up the loop that iterates over all of the swap chain images.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">for (size_t i = 0; i &lt; swapChainImages.size(); i++) {
-
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The parameters for image view creation are specified in a <code>VkImageViewCreateInfo</code> structure.
-The first few parameters are straightforward.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkImageViewCreateInfo createInfo{};
-createInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
-createInfo.image = swapChainImages[i];</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>viewType</code> and <code>format</code> fields specify how the image data should be interpreted.
-The <code>viewType</code> parameter allows you to treat images as 1D textures, 2D textures, 3D textures and cube maps.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">createInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
-createInfo.format = swapChainImageFormat;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>components</code> field allows you to swizzle the color channels around.
-For example, you can map all of the channels to the red channel for a monochrome texture.
-You can also map constant values of <code>0</code> and <code>1</code> to a channel.
-In our case we&#8217;ll stick to the default mapping.</p>
+<p>The <code>components</code> field allows you to swizzle the color channels around. For
+example, you can map all the channels to the red channel for a monochrome
+texture. You can also map constant values of <code>0</code> and <code>1</code> to a channel. In our
+ case, we&#8217;ll stick to the default mapping by accepting the constructed
+defaults, but here&#8217;s how to explicitly do it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -460,8 +511,9 @@ createInfo.components.a = VK_COMPONENT_SWIZZLE_IDENTITY;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>subresourceRange</code> field describes what the image&#8217;s purpose is and which part of the image should be accessed.
-Our images will be used as color targets without any mipmapping levels or multiple layers.</p>
+<p>The <code>subresourceRange</code> field describes what the image&#8217;s purpose is and which
+part of the image should be accessed. Our images will be used as color targets
+without any mipmapping levels or multiple layers.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -473,37 +525,55 @@ createInfo.subresourceRange.layerCount = 1;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If you were working on a stereographic 3D application, then you would create a swap chain with multiple layers.
-You could then create multiple image views for each image representing the views for the left and right eyes by accessing different layers.</p>
+<p>An easy way to specify all of that is this single line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::ImageViewCreateInfo imageViewCreateInfo( {}, {}, vk::ImageViewType::e2D, swapChainImageFormat, {}, { vk::ImageAspectFlagBits::eColor, 0, 1, 0, 1 } );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you were working on a stereographic 3D application, then you would create a
+swap chain with multiple layers. You could then create multiple image views for
+each image representing the views for the left and right eyes by accessing
+different layers.</p>
+</div>
+<div class="paragraph">
+<p>The maximum number of multiple image views you should expect graphics cards
+to handle is 16. This configuration covers most standard use cases, VR/AR
+headsets typically require no more than four simultaneous views. However,
+lightfield displays and CAVE displays might require a different solution as
+their view requirements can number in the thousands for simultaneous views.
+Those exotic requirements for rendering are beyond the scope of this
+tutorial, but even those use cases can be rendered to with these same
+structures and techniques we describe here.</p>
+</div>
+<div class="paragraph">
+<p>Next, set up the loop that iterates over all the swap chain images and add
+them to our structure.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">for (auto image : swapChainImages) {
+    imageViewCreateInfo.image = image;
+}</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Creating the image view is now a matter of calling <code>vkCreateImageView</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (vkCreateImageView(device, &amp;createInfo, nullptr, &amp;swapChainImageViews[i]) != VK_SUCCESS) {
-    throw std::runtime_error("failed to create image views!");
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Unlike images, the image views were explicitly created by us, so we need to add a similar loop to destroy them again at the end of the program:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanup() {
-    for (auto imageView : swapChainImageViews) {
-        vkDestroyImageView(device, imageView, nullptr);
-    }
-
-    ...
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">for (auto image : swapChainImages) {
+    imageViewCreateInfo.image = image;
+    swapChainImageViews.emplace_back( device, imageViewCreateInfo );
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>An image view is sufficient to start using an image as a texture, but it&#8217;s not quite ready to be used as a render target just yet.
-That requires one more step of indirection, known as a framebuffer.
-In the <a href="../02_Graphics_pipeline_basics/00_Introduction.html" class="xref page">next chapters</a> we&#8217;ll have to set up the graphics pipeline.</p>
+That requires one more step, known as a framebuffer.
+In the <a href="../02_Graphics_pipeline_basics/00_Introduction.html" class="xref page">next chapters,</a> we&#8217;ll have to set up the graphics pipeline.</p>
 </div>
 <div class="paragraph">
 <p><a href="../../_attachments/07_image_views.cpp">C&#43;&#43; code</a></p>
@@ -514,9 +584,56 @@ In the <a href="../02_Graphics_pipeline_basics/00_Introduction.html" class="xref
 </div>
 <script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
-<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

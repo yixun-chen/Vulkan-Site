@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="samples" data-version="latest">
+<div class="nav-container" data-component="samples" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -178,11 +180,8 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../api/hello_triangle/README.html">Hello Triangle</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../api/hello_triangle_1_3/README.html">Hello Triangle 1.3</a>
+    <a class="nav-link" href="../../api/hello_triangle/README.html">Hello Triangle</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../api/hpp_hello_triangle/README.html">Hello Triangle (Vulkan-Hpp)</a>
@@ -191,10 +190,10 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../api/hlsl_shaders/README.html">HLSL Shaders</a>
+    <a class="nav-link" href="../../api/hello_triangle_1_3/README.html">Hello Triangle 1.3</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../api/hpp_hlsl_shaders/README.html">HLSL Shaders (Vulkan-Hpp)</a>
+    <a class="nav-link" href="../../api/hpp_hello_triangle_1_3/README.html">Hello Triangle 1.3(Vulkan-Hpp)</a>
   </li>
 </ul>
   </li>
@@ -313,6 +312,9 @@
     <a class="nav-link" href="../extended_dynamic_state2/README.html">Extended dynamic state2</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../fragment_density_map/README.html">Fragment density map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../fragment_shader_barycentric/README.html">Fragment shader barycentric</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -398,6 +400,15 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../synchronization_2/README.html">Synchronization 2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tensor_and_data_graph/README.html">Tensor and Data Graph</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tensor_and_data_graph/simple_tensor_and_data_graph/README.html">Simple Tensor and Data Graph</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../timeline_semaphore/README.html">Timeline semaphore</a>
@@ -536,6 +547,9 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Samples" target="_blank" rel="noopener">GitHub Repository</a></span>
+  </li>
 </ul>
   </li>
 </ul>
@@ -560,6 +574,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -600,7 +622,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../../../spec/latest/index.html" class="home-link"></a>
@@ -643,7 +665,7 @@ The source for this sample can be found in the <a href="https://github.com/Khron
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_extended_dynamic_state2.html">VK_EXT_extended_dynamic_state2</a> extension allows to use dynamic states e.g.
+<p>The <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_EXT_extended_dynamic_state2.html">VK_EXT_extended_dynamic_state2</a> extension allows to use dynamic states e.g.
 the VK_DYNAMIC_STATE_LOGIC_OP_EXT.
 This may help an application to change a logical operation used without creating a new pipeline.</p>
 </div>
@@ -656,7 +678,7 @@ This may help an application to change a logical operation used without creating
 <h2 id="_surface_format_setting"><a class="anchor" href="#_surface_format_setting"></a>Surface format setting</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Logical operations are applied only for <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#framebuffer-logicop">signed and unsigned integer and normalized integer framebuffers</a>.</p>
+<p>Logical operations are applied only for <a href="https://registry.khronos.org/vulkan/specs/latest/html/vkspec.html#framebuffer-logicop">signed and unsigned integer and normalized integer framebuffers</a>.</p>
 </div>
 <div class="paragraph">
 <p>In the sample the surface format is changed to <code>VK_FORMAT_B8G8R8A8_UNORM</code> by overriding the virtual method <code>create_render_context</code> (derived from <code>ApiVulkanSample</code> class).</p>
@@ -691,7 +713,7 @@ render_context = platform.create_render_context(*device.get(), surface, surface_
 <p>The cube model is used to present blending effect achieved using the dynamic logical operations.</p>
 </div>
 <div class="paragraph">
-<p>The <code>logicOpEnable</code> member of the <code>VkPipelineColorBlendStateCreateInfo</code> structure <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendStateCreateInfo.html">controls if logical operations should be applied</a>.</p>
+<p>The <code>logicOpEnable</code> member of the <code>VkPipelineColorBlendStateCreateInfo</code> structure <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineColorBlendStateCreateInfo.html">controls if logical operations should be applied</a>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>logicOpEnable</code> member is set to <code>VK_TRUE</code> during creation of the baseline pipeline in the <code>create_pipeline</code> method.</p>
@@ -706,7 +728,7 @@ color_blend_state.logicOpEnable = VK_TRUE;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the same method <code>VK_DYNAMIC_STATE_LOGIC_OP_EXT</code> is added to the vector of <code>VkDynamicState</code> (used to define pipeline dynamic state in <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkPipelineDynamicStateCreateInfo.html"><code>VkPipelineDynamicStateCreateInfo</code></a>).</p>
+<p>In the same method <code>VK_DYNAMIC_STATE_LOGIC_OP_EXT</code> is added to the vector of <code>VkDynamicState</code> (used to define pipeline dynamic state in <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkPipelineDynamicStateCreateInfo.html"><code>VkPipelineDynamicStateCreateInfo</code></a>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -723,7 +745,7 @@ VkPipelineDynamicStateCreateInfo dynamic_state =
 </div>
 </div>
 <div class="paragraph">
-<p>Both structures: <code>color_blend_state</code> and <code>dynamic_state</code> are used to define <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkGraphicsPipelineCreateInfo.html"><code>VkGraphicsPipelineCreateInfo</code></a> needed to create the graphics pipeline.</p>
+<p>Both structures: <code>color_blend_state</code> and <code>dynamic_state</code> are used to define <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VkGraphicsPipelineCreateInfo.html"><code>VkGraphicsPipelineCreateInfo</code></a> needed to create the graphics pipeline.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -755,9 +777,9 @@ color_blend_state.logicOpEnable = VK_FALSE;</code></pre>
 <h2 id="_logical_operation_dynamic_setting_in_command_buffer_creation"><a class="anchor" href="#_logical_operation_dynamic_setting_in_command_buffer_creation"></a>Logical operation dynamic setting in command buffer creation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Calling <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/vkCmdSetLogicOpEXT.html"><code>vkCmdSetLogicOpEXT</code></a> allows to set the logic operation dynamically.
+<p>Calling <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetLogicOpEXT.html"><code>vkCmdSetLogicOpEXT</code></a> allows to set the logic operation dynamically.
 In the sample it is called before drawing the model in the <code>build_command_buffers</code> method using a value provided by the GUI.
-Available logical operations are defined by the <code>VkLogicOp</code> enumeration (check the Vulkan specification for details of <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#VkLogicOp">the logical operations</a>).
+Available logical operations are defined by the <code>VkLogicOp</code> enumeration (check the Vulkan specification for details of <a href="https://registry.khronos.org/vulkan/specs/latest/html/vkspec.html#VkLogicOp">the logical operations</a>).
 The background model is drawn before the cube model (with logical operations enabled) to observe blending results on the cube model.</p>
 </div>
 <div class="listingblock">
@@ -786,7 +808,7 @@ VK_CHECK(vkEndCommandBuffer(draw_cmd_buffer));</code></pre>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The extended dynamic state 2 API requires Vulkan 1.0 and the appropriate headers / SDK is required.
-This extension has been <a href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_EXT_extended_dynamic_state2.html#_promotion_to_vulkan_1_3">partially</a> promoted to Vulkan 1.3.</p>
+This extension has been <a href="https://registry.khronos.org/vulkan/specs/latest/man/html/VK_EXT_extended_dynamic_state2.html#_promotion_to_vulkan_1_3">partially</a> promoted to Vulkan 1.3.</p>
 </div>
 <div class="paragraph">
 <p>The device extension <code>VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME</code> requires  <code>VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME</code> instance extension to be enabled.</p>
@@ -840,9 +862,56 @@ requested_extended_dynamic_state_feature.extendedDynamicState = VK_TRUE;</code><
 </div>
 <script id="site-script" src="../../../../../_/js/site.js" data-ui-root-path="../../../../../_"></script>
 <script async src="../../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../../.." data-snippet-length="100" data-stylesheet="../../../../../_/css/search.css"></script>
-<script async src="../../../../../search-index.js"></script>
+<script src="../../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../../.." data-snippet-length="100" data-stylesheet="../../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

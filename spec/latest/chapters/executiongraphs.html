@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="spec" data-version="latest">
+<div class="nav-container" data-component="spec" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -128,6 +130,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="preamble.html">Preamble</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="introduction.html">Introduction</a>
   </li>
@@ -162,6 +167,9 @@
     <a class="nav-link" href="resources.html">Resource Creation</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="images.html">Images</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="samplers.html">Samplers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -175,6 +183,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="fragmentdensitymapops.html">Fragment Density Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_tensors/tensorops.html">Tensor Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="queries.html">Queries</a>
@@ -231,10 +242,13 @@
     <a class="nav-link" href="VK_KHR_deferred_host_operations/deferred_host_operations.html">Deferred Host Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_EXT_private_data.html">Private Data</a>
+    <a class="nav-link" href="private_data.html">Private Data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="accelstructures.html">Acceleration Structures</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_AMDX_dense_geometry_format/dense_geometry_format.html">Compressed triangle data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="VK_EXT_opacity_micromap/micromaps.html">Micromap</a>
@@ -246,7 +260,7 @@
     <a class="nav-link" href="raytracing.html">Ray Tracing</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_NV_memory_decompression.html">Memory Decompression</a>
+    <a class="nav-link" href="memory_decompression.html">Memory Decompression</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="videocoding.html">Video Coding</a>
@@ -256,6 +270,12 @@
   </li>
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="executiongraphs.html">Execution Graphs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_NV_external_compute_queue/VK_NV_external_compute_queue.html">External Compute Queues</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_data_graph/graphs.html">Data graphs</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="extensions.html">Extending Vulkan</a>
@@ -292,6 +312,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/roadmap.html">Vulkan Roadmap Milestones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendices/legacy.html">Legacy and Superseded Functionality</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/boilerplate.html">API Boilerplate</a>
@@ -333,6 +356,14 @@
       </ul>
     </li>
     <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
       <div class="title"><a href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a></div>
       <ul class="versions">
         <li class="version is-latest">
@@ -369,7 +400,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
@@ -587,10 +618,10 @@ not be set in the <code>flags</code> of that element</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><code>VK_PIPELINE_COMPILE_REQUIRED_EXT</code></p>
 </li>
 <li>
-<p><code>VK_PIPELINE_COMPILE_REQUIRED_EXT</code></p>
+<p><code>VK_SUCCESS</code></p>
 </li>
 </ul>
 </div>
@@ -600,10 +631,16 @@ not be set in the <code>flags</code> of that element</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+</li>
+<li>
 <p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -693,7 +730,7 @@ normal.
 Task shaders cannot be included in a graphics pipeline used for a draw node.</p>
 </div>
 <div class="paragraph">
-<p>In addition to the shader name and index, an internal "node index" is also
+<p>In addition to the shader name and index, an internal &#8220;node index&#8221; is also
 generated for each node, which can be queried with
 <a href="#vkGetExecutionGraphPipelineNodeIndexAMDX">vkGetExecutionGraphPipelineNodeIndexAMDX</a>, and is used exclusively for
 initial dispatch of an execution graph.</p>
@@ -766,8 +803,9 @@ descriptor type</p>
 <p><a id="VUID-VkExecutionGraphPipelineCreateInfoAMDX-layout-07991" href="#VUID-VkExecutionGraphPipelineCreateInfoAMDX-layout-07991"></a> <span class="vuid">VUID-VkExecutionGraphPipelineCreateInfoAMDX-layout-07991</span><br>
 
 If a <a href="interfaces.html#interfaces-resources" class="xref page">resource variable</a> is declared in a shader
-as an array, the corresponding descriptor set in <code>layout</code> <strong>must</strong>
-match the descriptor count</p>
+as an array, the corresponding descriptor binding used to create
+<code>layout</code> <strong>must</strong> have a <code>descriptorCount</code> that is greater than or
+equal to the length of the array</p>
 </li>
 <li>
 <p><a id="VUID-VkExecutionGraphPipelineCreateInfoAMDX-None-10391" href="#VUID-VkExecutionGraphPipelineCreateInfoAMDX-None-10391"></a> <span class="vuid">VUID-VkExecutionGraphPipelineCreateInfoAMDX-None-10391</span><br>
@@ -775,6 +813,13 @@ match the descriptor count</p>
 If a <a href="interfaces.html#interfaces-resources" class="xref page">resource variables</a> is declared in a shader
 as an array of descriptors, then the descriptor type of that variable
 <strong>must</strong> not be <code>VK_DESCRIPTOR_TYPE_INLINE_UNIFORM_BLOCK</code></p>
+</li>
+<li>
+<p><a id="VUID-VkExecutionGraphPipelineCreateInfoAMDX-flags-11798" href="#VUID-VkExecutionGraphPipelineCreateInfoAMDX-flags-11798"></a> <span class="vuid">VUID-VkExecutionGraphPipelineCreateInfoAMDX-flags-11798</span><br>
+
+If <a href="features.html#features-shader64BitIndexing" class="xref page">shader64BitIndexing</a> feature is not
+enabled, <code>flags</code> <strong>must</strong> not contain
+<code>VK_PIPELINE_CREATE_2_64_BIT_INDEXING_BIT_EXT</code></p>
 </li>
 </ul>
 </div>
@@ -1240,6 +1285,12 @@ index equal to <code>pNodeInfo-&gt;pName</code> and <code>pNodeInfo-&gt;index</c
 <li>
 <p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
 </li>
+<li>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+</li>
 </ul>
 </div>
 </dd>
@@ -1340,6 +1391,12 @@ will be returned in <code>pSizeInfo</code>.</p>
 <ul>
 <li>
 <p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -1508,12 +1565,20 @@ graph pipeline</p>
  <code>executionGraph</code> <strong>must</strong> be a valid <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> handle</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdInitializeGraphScratchMemoryAMDX-scratch-parameter" href="#VUID-vkCmdInitializeGraphScratchMemoryAMDX-scratch-parameter"></a> <span class="vuid">VUID-vkCmdInitializeGraphScratchMemoryAMDX-scratch-parameter</span><br>
+ <code>scratch</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdInitializeGraphScratchMemoryAMDX-commandBuffer-recording" href="#VUID-vkCmdInitializeGraphScratchMemoryAMDX-commandBuffer-recording"></a> <span class="vuid">VUID-vkCmdInitializeGraphScratchMemoryAMDX-commandBuffer-recording</span><br>
  <code>commandBuffer</code> <strong>must</strong> be in the <a href="cmdbuffers.html#commandbuffers-lifecycle" class="xref page">recording state</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdInitializeGraphScratchMemoryAMDX-commandBuffer-cmdpool" href="#VUID-vkCmdInitializeGraphScratchMemoryAMDX-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdInitializeGraphScratchMemoryAMDX-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics, or compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, or <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdInitializeGraphScratchMemoryAMDX-suspended" href="#VUID-vkCmdInitializeGraphScratchMemoryAMDX-suspended"></a> <span class="vuid">VUID-vkCmdInitializeGraphScratchMemoryAMDX-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdInitializeGraphScratchMemoryAMDX-videocoding" href="#VUID-vkCmdInitializeGraphScratchMemoryAMDX-videocoding"></a> <span class="vuid">VUID-vkCmdInitializeGraphScratchMemoryAMDX-videocoding</span><br>
@@ -1568,12 +1633,20 @@ graph pipeline</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Primary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics<br>
-Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT<br>
+VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdInitializeGraphScratchMemoryAMDX is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -1916,6 +1989,13 @@ by
 the <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> bound to the pipeline bind point used by this
 command and the bound <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> was not created with
 <code>VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphAMDX-imageLayout-00344" href="#VUID-vkCmdDispatchGraphAMDX-imageLayout-00344"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-imageLayout-00344</span><br>
+
+If an image descriptor is accessed by a shader, the <a href="resources.html#VkImageLayout" class="xref page">VkImageLayout</a>
+<strong>must</strong> match the subresource accessible from the <a href="resources.html#VkImageView" class="xref page">VkImageView</a> as
+defined by the <a href="resources.html#resources-image-layouts-matching-rule" class="xref page">image layout    matching rules</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphAMDX-None-08115" href="#VUID-vkCmdDispatchGraphAMDX-None-08115"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-None-08115</span><br>
@@ -2268,6 +2348,34 @@ transitioned to the
 <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> layout</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDispatchGraphAMDX-pDescription-09900" href="#VUID-vkCmdDispatchGraphAMDX-pDescription-09900"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-pDescription-09900</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object
+<strong>must</strong> have been created with a
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> whose <code>usage</code> member
+contained <code>VK_TENSOR_USAGE_SHADER_BIT_ARM</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphAMDX-dimensionCount-09905" href="#VUID-vkCmdDispatchGraphAMDX-dimensionCount-09905"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-dimensionCount-09905</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the <code>Rank</code> of the <code>OpTypeTensorARM</code>
+of the tensor resource variable <strong>must</strong> be equal to the
+<code>dimensionCount</code> provided via
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> when creating the
+underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphAMDX-OpTypeTensorARM-09906" href="#VUID-vkCmdDispatchGraphAMDX-OpTypeTensorARM-09906"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-OpTypeTensorARM-09906</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the element type of the
+<code>OpTypeTensorARM</code> of the tensor resource variable <strong>must</strong> be
+<a href="../appendices/spirvenv.html#spirvenv-tensor-formats" class="xref page">compatible</a> with the <a href="formats.html#VkFormat" class="xref page">VkFormat</a> of the
+<a href="resources.html#VkTensorViewARM" class="xref page">VkTensorViewARM</a> used for the access</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDispatchGraphAMDX-commandBuffer-09181" href="#VUID-vkCmdDispatchGraphAMDX-commandBuffer-09181"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-commandBuffer-09181</span><br>
 
 <code>commandBuffer</code> <strong>must</strong> not be a protected command buffer</p>
@@ -2297,7 +2405,7 @@ graph pipeline</p>
 <code>scratch</code> <strong>must</strong> be a device address within a <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a> created
 with the <code>VK_BUFFER_USAGE_EXECUTION_GRAPH_SCRATCH_BIT_AMDX</code>
 or <code>VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX</code>
-flag</p>
+usage flags set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphAMDX-scratch-10194" href="#VUID-vkCmdDispatchGraphAMDX-scratch-10194"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-scratch-10194</span><br>
@@ -2392,6 +2500,10 @@ node in <code>nodeIndex</code> in the first bytes</p>
  <code>commandBuffer</code> <strong>must</strong> be a valid <a href="cmdbuffers.html#VkCommandBuffer" class="xref page">VkCommandBuffer</a> handle</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDispatchGraphAMDX-scratch-parameter" href="#VUID-vkCmdDispatchGraphAMDX-scratch-parameter"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-scratch-parameter</span><br>
+ <code>scratch</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDispatchGraphAMDX-pCountInfo-parameter" href="#VUID-vkCmdDispatchGraphAMDX-pCountInfo-parameter"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-pCountInfo-parameter</span><br>
  <code>pCountInfo</code> <strong>must</strong> be a valid pointer to a valid <a href="#VkDispatchGraphCountInfoAMDX">VkDispatchGraphCountInfoAMDX</a> structure</p>
 </li>
@@ -2401,7 +2513,11 @@ node in <code>nodeIndex</code> in the first bytes</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphAMDX-commandBuffer-cmdpool" href="#VUID-vkCmdDispatchGraphAMDX-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics, or compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, or <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphAMDX-suspended" href="#VUID-vkCmdDispatchGraphAMDX-suspended"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphAMDX-videocoding" href="#VUID-vkCmdDispatchGraphAMDX-videocoding"></a> <span class="vuid">VUID-vkCmdDispatchGraphAMDX-videocoding</span><br>
@@ -2452,12 +2568,20 @@ node in <code>nodeIndex</code> in the first bytes</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Primary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics<br>
-Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT<br>
+VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdDispatchGraphAMDX is affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -2794,6 +2918,13 @@ by
 the <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> bound to the pipeline bind point used by this
 command and the bound <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> was not created with
 <code>VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-imageLayout-00344" href="#VUID-vkCmdDispatchGraphIndirectAMDX-imageLayout-00344"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-imageLayout-00344</span><br>
+
+If an image descriptor is accessed by a shader, the <a href="resources.html#VkImageLayout" class="xref page">VkImageLayout</a>
+<strong>must</strong> match the subresource accessible from the <a href="resources.html#VkImageView" class="xref page">VkImageView</a> as
+defined by the <a href="resources.html#resources-image-layouts-matching-rule" class="xref page">image layout    matching rules</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-None-08115" href="#VUID-vkCmdDispatchGraphIndirectAMDX-None-08115"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-None-08115</span><br>
@@ -3146,6 +3277,34 @@ transitioned to the
 <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> layout</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-pDescription-09900" href="#VUID-vkCmdDispatchGraphIndirectAMDX-pDescription-09900"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-pDescription-09900</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object
+<strong>must</strong> have been created with a
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> whose <code>usage</code> member
+contained <code>VK_TENSOR_USAGE_SHADER_BIT_ARM</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-dimensionCount-09905" href="#VUID-vkCmdDispatchGraphIndirectAMDX-dimensionCount-09905"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-dimensionCount-09905</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the <code>Rank</code> of the <code>OpTypeTensorARM</code>
+of the tensor resource variable <strong>must</strong> be equal to the
+<code>dimensionCount</code> provided via
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> when creating the
+underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-OpTypeTensorARM-09906" href="#VUID-vkCmdDispatchGraphIndirectAMDX-OpTypeTensorARM-09906"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-OpTypeTensorARM-09906</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the element type of the
+<code>OpTypeTensorARM</code> of the tensor resource variable <strong>must</strong> be
+<a href="../appendices/spirvenv.html#spirvenv-tensor-formats" class="xref page">compatible</a> with the <a href="formats.html#VkFormat" class="xref page">VkFormat</a> of the
+<a href="resources.html#VkTensorViewARM" class="xref page">VkTensorViewARM</a> used for the access</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-commandBuffer-09181" href="#VUID-vkCmdDispatchGraphIndirectAMDX-commandBuffer-09181"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-commandBuffer-09181</span><br>
 
 <code>commandBuffer</code> <strong>must</strong> not be a protected command buffer</p>
@@ -3175,7 +3334,7 @@ graph pipeline</p>
 <code>scratch</code> <strong>must</strong> be a device address within a <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a> created
 with the <code>VK_BUFFER_USAGE_EXECUTION_GRAPH_SCRATCH_BIT_AMDX</code>
 or <code>VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX</code>
-flag</p>
+usage flags set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-scratch-10194" href="#VUID-vkCmdDispatchGraphIndirectAMDX-scratch-10194"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-scratch-10194</span><br>
@@ -3228,7 +3387,7 @@ this command is executed on the device</p>
 
 <code>pCountInfo-&gt;infos</code> <strong>must</strong> be a device address within a
 <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a> created with the
-<code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> flag</p>
+<code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-pCountInfo-09152" href="#VUID-vkCmdDispatchGraphIndirectAMDX-pCountInfo-09152"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-pCountInfo-09152</span><br>
@@ -3259,7 +3418,7 @@ and <code>payloadStride</code> when this command is executed on the device</p>
 For each <a href="#VkDispatchGraphInfoAMDX">VkDispatchGraphInfoAMDX</a> structure in
 <code>pCountInfo-&gt;infos</code>, <code>payloads</code> <strong>must</strong> be a device address within
 a <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a> created with the
-<code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> flag</p>
+<code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-pCountInfo-09156" href="#VUID-vkCmdDispatchGraphIndirectAMDX-pCountInfo-09156"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-pCountInfo-09156</span><br>
@@ -3302,6 +3461,10 @@ on the device</p>
  <code>commandBuffer</code> <strong>must</strong> be a valid <a href="cmdbuffers.html#VkCommandBuffer" class="xref page">VkCommandBuffer</a> handle</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-scratch-parameter" href="#VUID-vkCmdDispatchGraphIndirectAMDX-scratch-parameter"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-scratch-parameter</span><br>
+ <code>scratch</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-pCountInfo-parameter" href="#VUID-vkCmdDispatchGraphIndirectAMDX-pCountInfo-parameter"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-pCountInfo-parameter</span><br>
  <code>pCountInfo</code> <strong>must</strong> be a valid pointer to a valid <a href="#VkDispatchGraphCountInfoAMDX">VkDispatchGraphCountInfoAMDX</a> structure</p>
 </li>
@@ -3311,7 +3474,11 @@ on the device</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-commandBuffer-cmdpool" href="#VUID-vkCmdDispatchGraphIndirectAMDX-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics, or compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, or <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-suspended" href="#VUID-vkCmdDispatchGraphIndirectAMDX-suspended"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectAMDX-videocoding" href="#VUID-vkCmdDispatchGraphIndirectAMDX-videocoding"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectAMDX-videocoding</span><br>
@@ -3362,12 +3529,20 @@ on the device</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Primary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics<br>
-Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT<br>
+VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdDispatchGraphIndirectAMDX is affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -3696,6 +3871,13 @@ by
 the <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> bound to the pipeline bind point used by this
 command and the bound <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> was not created with
 <code>VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-imageLayout-00344" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-imageLayout-00344"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-imageLayout-00344</span><br>
+
+If an image descriptor is accessed by a shader, the <a href="resources.html#VkImageLayout" class="xref page">VkImageLayout</a>
+<strong>must</strong> match the subresource accessible from the <a href="resources.html#VkImageView" class="xref page">VkImageView</a> as
+defined by the <a href="resources.html#resources-image-layouts-matching-rule" class="xref page">image layout    matching rules</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-None-08115" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-None-08115"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-None-08115</span><br>
@@ -4048,6 +4230,34 @@ transitioned to the
 <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> layout</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-pDescription-09900" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-pDescription-09900"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-pDescription-09900</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object
+<strong>must</strong> have been created with a
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> whose <code>usage</code> member
+contained <code>VK_TENSOR_USAGE_SHADER_BIT_ARM</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-dimensionCount-09905" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-dimensionCount-09905"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-dimensionCount-09905</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the <code>Rank</code> of the <code>OpTypeTensorARM</code>
+of the tensor resource variable <strong>must</strong> be equal to the
+<code>dimensionCount</code> provided via
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> when creating the
+underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-OpTypeTensorARM-09906" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-OpTypeTensorARM-09906"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-OpTypeTensorARM-09906</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the element type of the
+<code>OpTypeTensorARM</code> of the tensor resource variable <strong>must</strong> be
+<a href="../appendices/spirvenv.html#spirvenv-tensor-formats" class="xref page">compatible</a> with the <a href="formats.html#VkFormat" class="xref page">VkFormat</a> of the
+<a href="resources.html#VkTensorViewARM" class="xref page">VkTensorViewARM</a> used for the access</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-commandBuffer-09181" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-commandBuffer-09181"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-commandBuffer-09181</span><br>
 
 <code>commandBuffer</code> <strong>must</strong> not be a protected command buffer</p>
@@ -4077,7 +4287,7 @@ graph pipeline</p>
 <code>scratch</code> <strong>must</strong> be a device address within a <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a> created
 with the <code>VK_BUFFER_USAGE_EXECUTION_GRAPH_SCRATCH_BIT_AMDX</code>
 or <code>VK_BUFFER_USAGE_2_EXECUTION_GRAPH_SCRATCH_BIT_AMDX</code>
-flag</p>
+usage flags set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-scratch-10194" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-scratch-10194"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-scratch-10194</span><br>
@@ -4129,7 +4339,8 @@ this command is executed on the device</p>
 <p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09160" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09160"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09160</span><br>
 
 <code>countInfo</code> <strong>must</strong> be a device address within a <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a>
-created with the <code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> flag</p>
+created with the <code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> usage flag
+set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09161" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09161"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09161</span><br>
@@ -4148,7 +4359,8 @@ this command is executed on the device</p>
 <p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09163" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09163"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09163</span><br>
 
 <code>countInfo-&gt;infos</code> <strong>must</strong> be a device address within a <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a>
-created with the <code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> flag</p>
+created with the <code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> usage flag
+set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09164" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09164"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09164</span><br>
@@ -4179,7 +4391,7 @@ and <code>payloadStride</code> when this command is executed on the device</p>
 For each <a href="#VkDispatchGraphInfoAMDX">VkDispatchGraphInfoAMDX</a> structure in
 <code>countInfo-&gt;infos</code>, <code>payloads</code> <strong>must</strong> be a device address within
 a <a href="resources.html#VkBuffer" class="xref page">VkBuffer</a> created with the
-<code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> flag</p>
+<code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09168" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09168"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-09168</span><br>
@@ -4222,12 +4434,24 @@ on the device</p>
  <code>commandBuffer</code> <strong>must</strong> be a valid <a href="cmdbuffers.html#VkCommandBuffer" class="xref page">VkCommandBuffer</a> handle</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-scratch-parameter" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-scratch-parameter"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-scratch-parameter</span><br>
+ <code>scratch</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-parameter" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-parameter"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-countInfo-parameter</span><br>
+ <code>countInfo</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-commandBuffer-recording" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-commandBuffer-recording"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-commandBuffer-recording</span><br>
  <code>commandBuffer</code> <strong>must</strong> be in the <a href="cmdbuffers.html#commandbuffers-lifecycle" class="xref page">recording state</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-commandBuffer-cmdpool" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics, or compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, or <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-suspended" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-suspended"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchGraphIndirectCountAMDX-videocoding" href="#VUID-vkCmdDispatchGraphIndirectCountAMDX-videocoding"></a> <span class="vuid">VUID-vkCmdDispatchGraphIndirectCountAMDX-videocoding</span><br>
@@ -4278,12 +4502,20 @@ on the device</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Primary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics<br>
-Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT<br>
+VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdDispatchGraphIndirectCountAMDX is affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -4306,7 +4538,7 @@ typedef union VkDeviceOrHostAddressConstAMDX {
 <ul>
 <li>
 <p><code>deviceAddress</code> is a buffer device address as returned by the
-<a href="descriptorsets.html#vkGetBufferDeviceAddressKHR" class="xref page">vkGetBufferDeviceAddressKHR</a> command.</p>
+<a href="resources.html#vkGetBufferDeviceAddressKHR" class="xref page">vkGetBufferDeviceAddressKHR</a> command.</p>
 </li>
 <li>
 <p><code>hostAddress</code> is a const host memory address.</p>
@@ -4521,9 +4753,56 @@ pipeline.</p>
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

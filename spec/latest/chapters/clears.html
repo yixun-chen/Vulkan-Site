@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="spec" data-version="latest">
+<div class="nav-container" data-component="spec" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -128,6 +130,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="preamble.html">Preamble</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="introduction.html">Introduction</a>
   </li>
@@ -162,6 +167,9 @@
     <a class="nav-link" href="resources.html">Resource Creation</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="images.html">Images</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="samplers.html">Samplers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -175,6 +183,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="fragmentdensitymapops.html">Fragment Density Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_tensors/tensorops.html">Tensor Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="queries.html">Queries</a>
@@ -231,10 +242,13 @@
     <a class="nav-link" href="VK_KHR_deferred_host_operations/deferred_host_operations.html">Deferred Host Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_EXT_private_data.html">Private Data</a>
+    <a class="nav-link" href="private_data.html">Private Data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="accelstructures.html">Acceleration Structures</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_AMDX_dense_geometry_format/dense_geometry_format.html">Compressed triangle data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="VK_EXT_opacity_micromap/micromaps.html">Micromap</a>
@@ -246,7 +260,7 @@
     <a class="nav-link" href="raytracing.html">Ray Tracing</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_NV_memory_decompression.html">Memory Decompression</a>
+    <a class="nav-link" href="memory_decompression.html">Memory Decompression</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="videocoding.html">Video Coding</a>
@@ -256,6 +270,12 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="executiongraphs.html">Execution Graphs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_NV_external_compute_queue/VK_NV_external_compute_queue.html">External Compute Queues</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_data_graph/graphs.html">Data graphs</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="extensions.html">Extending Vulkan</a>
@@ -292,6 +312,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/roadmap.html">Vulkan Roadmap Milestones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendices/legacy.html">Legacy and Superseded Functionality</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/boilerplate.html">API Boilerplate</a>
@@ -333,6 +356,14 @@
       </ul>
     </li>
     <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
       <div class="title"><a href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a></div>
       <ul class="versions">
         <li class="version is-latest">
@@ -369,7 +400,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
@@ -462,8 +493,8 @@ The <a href="resources.html#resources-image-format-features" class="xref page">f
 <li>
 <p><a id="VUID-vkCmdClearColorImage-image-00002" href="#VUID-vkCmdClearColorImage-image-00002"></a> <span class="vuid">VUID-vkCmdClearColorImage-image-00002</span><br>
 
-<code>image</code> <strong>must</strong> have been created with
-<code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> usage flag</p>
+<code>image</code> <strong>must</strong> have been created with the
+<code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearColorImage-image-01545" href="#VUID-vkCmdClearColorImage-image-01545"></a> <span class="vuid">VUID-vkCmdClearColorImage-image-01545</span><br>
@@ -594,11 +625,15 @@ have a 64-bit component width</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearColorImage-commandBuffer-cmdpool" href="#VUID-vkCmdClearColorImage-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdClearColorImage-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics, or compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, or <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearColorImage-renderpass" href="#VUID-vkCmdClearColorImage-renderpass"></a> <span class="vuid">VUID-vkCmdClearColorImage-renderpass</span><br>
  This command <strong>must</strong> only be called outside of a render pass instance</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdClearColorImage-suspended" href="#VUID-vkCmdClearColorImage-suspended"></a> <span class="vuid">VUID-vkCmdClearColorImage-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearColorImage-videocoding" href="#VUID-vkCmdClearColorImage-videocoding"></a> <span class="vuid">VUID-vkCmdClearColorImage-videocoding</span><br>
@@ -657,12 +692,20 @@ have a 64-bit component width</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics<br>
-Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT<br>
+VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdClearColorImage is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -730,10 +773,9 @@ The <a href="resources.html#resources-image-format-features" class="xref page">f
 
 If the <code>aspect</code> member of any element of <code>pRanges</code> includes
 <code>VK_IMAGE_ASPECT_STENCIL_BIT</code>, and <code>image</code> was created with
-<a href="resources.html#VkImageStencilUsageCreateInfo" class="xref page">separate stencil usage</a>,
-<code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> <strong>must</strong> have been included in the
-<a href="resources.html#VkImageStencilUsageCreateInfo" class="xref page">VkImageStencilUsageCreateInfo</a>::<code>stencilUsage</code> used to create
-<code>image</code></p>
+<a href="resources.html#VkImageStencilUsageCreateInfo" class="xref page">separate stencil usage</a>, it must have
+been created with the <code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> usage flag
+set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-pRanges-02659" href="#VUID-vkCmdClearDepthStencilImage-pRanges-02659"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-pRanges-02659</span><br>
@@ -742,16 +784,15 @@ If the <code>aspect</code> member of any element of <code>pRanges</code> include
 <code>VK_IMAGE_ASPECT_STENCIL_BIT</code>,
 and <code>image</code> was not created with
 <a href="resources.html#VkImageStencilUsageCreateInfo" class="xref page">separate stencil usage</a>,
-<code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> <strong>must</strong> have been included in the
-<a href="resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a>::<code>usage</code> used to create <code>image</code></p>
+the <code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> usage flag <strong>must</strong> have been set
+in the <a href="resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a>::<code>usage</code> used to create <code>image</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-pRanges-02660" href="#VUID-vkCmdClearDepthStencilImage-pRanges-02660"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-pRanges-02660</span><br>
 
 If the <code>aspect</code> member of any element of <code>pRanges</code> includes
-<code>VK_IMAGE_ASPECT_DEPTH_BIT</code>, <code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code>
-<strong>must</strong> have been included in the <a href="resources.html#VkImageCreateInfo" class="xref page">VkImageCreateInfo</a>::<code>usage</code>
-used to create <code>image</code></p>
+<code>VK_IMAGE_ASPECT_DEPTH_BIT</code>, <code>image</code> <strong>must</strong> have been created
+with the <code>VK_IMAGE_USAGE_TRANSFER_DST_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-image-00010" href="#VUID-vkCmdClearDepthStencilImage-image-00010"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-image-00010</span><br>
@@ -884,11 +925,15 @@ If <code>commandBuffer</code> is a protected command buffer and
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-commandBuffer-cmdpool" href="#VUID-vkCmdClearDepthStencilImage-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-renderpass" href="#VUID-vkCmdClearDepthStencilImage-renderpass"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-renderpass</span><br>
  This command <strong>must</strong> only be called outside of a render pass instance</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdClearDepthStencilImage-suspended" href="#VUID-vkCmdClearDepthStencilImage-suspended"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearDepthStencilImage-videocoding" href="#VUID-vkCmdClearDepthStencilImage-videocoding"></a> <span class="vuid">VUID-vkCmdClearDepthStencilImage-videocoding</span><br>
@@ -947,11 +992,19 @@ If <code>commandBuffer</code> is a protected command buffer and
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdClearDepthStencilImage is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -1198,11 +1251,15 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearAttachments-commandBuffer-cmdpool" href="#VUID-vkCmdClearAttachments-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdClearAttachments-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearAttachments-renderpass" href="#VUID-vkCmdClearAttachments-renderpass"></a> <span class="vuid">VUID-vkCmdClearAttachments-renderpass</span><br>
  This command <strong>must</strong> only be called inside of a render pass instance</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdClearAttachments-suspended" href="#VUID-vkCmdClearAttachments-suspended"></a> <span class="vuid">VUID-vkCmdClearAttachments-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdClearAttachments-videocoding" href="#VUID-vkCmdClearAttachments-videocoding"></a> <span class="vuid">VUID-vkCmdClearAttachments-videocoding</span><br>
@@ -1261,11 +1318,19 @@ enabled</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Inside</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdClearAttachments is affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -1587,9 +1652,8 @@ The data word is written to memory according to the host endianness.</p>
 <div class="paragraph">
 <p><code>vkCmdFillBuffer</code> is treated as a &#8220;transfer&#8221; operation for the
 purposes of synchronization barriers.
-The <code>VK_BUFFER_USAGE_TRANSFER_DST_BIT</code> <strong>must</strong> be specified in <code>usage</code>
-of <a href="resources.html#VkBufferCreateInfo" class="xref page">VkBufferCreateInfo</a> in order for the buffer to be compatible with
-<code>vkCmdFillBuffer</code>.</p>
+It is only compatible with buffers created with the
+<code>VK_BUFFER_USAGE_TRANSFER_DST_BIT</code> usage flag set.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1627,8 +1691,8 @@ multiple of <code>4</code></p>
 <li>
 <p><a id="VUID-vkCmdFillBuffer-dstBuffer-00029" href="#VUID-vkCmdFillBuffer-dstBuffer-00029"></a> <span class="vuid">VUID-vkCmdFillBuffer-dstBuffer-00029</span><br>
 
-<code>dstBuffer</code> <strong>must</strong> have been created with
-<code>VK_BUFFER_USAGE_TRANSFER_DST_BIT</code> usage flag</p>
+<code>dstBuffer</code> <strong>must</strong> have been created with the
+<code>VK_BUFFER_USAGE_TRANSFER_DST_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdFillBuffer-apiVersion-07894" href="#VUID-vkCmdFillBuffer-apiVersion-07894"></a> <span class="vuid">VUID-vkCmdFillBuffer-apiVersion-07894</span><br>
@@ -1682,11 +1746,15 @@ If <code>commandBuffer</code> is a protected command buffer and
 </li>
 <li>
 <p><a id="VUID-vkCmdFillBuffer-commandBuffer-cmdpool" href="#VUID-vkCmdFillBuffer-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdFillBuffer-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support transfer, graphics or compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, or <code>VK_QUEUE_TRANSFER_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdFillBuffer-renderpass" href="#VUID-vkCmdFillBuffer-renderpass"></a> <span class="vuid">VUID-vkCmdFillBuffer-renderpass</span><br>
  This command <strong>must</strong> only be called outside of a render pass instance</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdFillBuffer-suspended" href="#VUID-vkCmdFillBuffer-suspended"></a> <span class="vuid">VUID-vkCmdFillBuffer-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdFillBuffer-videocoding" href="#VUID-vkCmdFillBuffer-videocoding"></a> <span class="vuid">VUID-vkCmdFillBuffer-videocoding</span><br>
@@ -1741,13 +1809,21 @@ If <code>commandBuffer</code> is a protected command buffer and
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Transfer<br>
-Graphics<br>
-Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT<br>
+VK_QUEUE_GRAPHICS_BIT<br>
+VK_QUEUE_TRANSFER_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdFillBuffer is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -1857,8 +1933,8 @@ of <a href="resources.html#VkBufferCreateInfo" class="xref page">VkBufferCreateI
 <li>
 <p><a id="VUID-vkCmdUpdateBuffer-dstBuffer-00034" href="#VUID-vkCmdUpdateBuffer-dstBuffer-00034"></a> <span class="vuid">VUID-vkCmdUpdateBuffer-dstBuffer-00034</span><br>
 
-<code>dstBuffer</code> <strong>must</strong> have been created with
-<code>VK_BUFFER_USAGE_TRANSFER_DST_BIT</code> usage flag</p>
+<code>dstBuffer</code> <strong>must</strong> have been created with the
+<code>VK_BUFFER_USAGE_TRANSFER_DST_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdUpdateBuffer-dstBuffer-00035" href="#VUID-vkCmdUpdateBuffer-dstBuffer-00035"></a> <span class="vuid">VUID-vkCmdUpdateBuffer-dstBuffer-00035</span><br>
@@ -1922,11 +1998,15 @@ If <code>commandBuffer</code> is a protected command buffer and
 </li>
 <li>
 <p><a id="VUID-vkCmdUpdateBuffer-commandBuffer-cmdpool" href="#VUID-vkCmdUpdateBuffer-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdUpdateBuffer-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support transfer, graphics, or compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, or <code>VK_QUEUE_TRANSFER_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdUpdateBuffer-renderpass" href="#VUID-vkCmdUpdateBuffer-renderpass"></a> <span class="vuid">VUID-vkCmdUpdateBuffer-renderpass</span><br>
  This command <strong>must</strong> only be called outside of a render pass instance</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdUpdateBuffer-suspended" href="#VUID-vkCmdUpdateBuffer-suspended"></a> <span class="vuid">VUID-vkCmdUpdateBuffer-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdUpdateBuffer-videocoding" href="#VUID-vkCmdUpdateBuffer-videocoding"></a> <span class="vuid">VUID-vkCmdUpdateBuffer-videocoding</span><br>
@@ -1985,13 +2065,21 @@ If <code>commandBuffer</code> is a protected command buffer and
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Transfer<br>
-Graphics<br>
-Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT<br>
+VK_QUEUE_GRAPHICS_BIT<br>
+VK_QUEUE_TRANSFER_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdUpdateBuffer is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -2021,9 +2109,56 @@ This was a historical anomaly, as the source data may be of other types.</p>
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

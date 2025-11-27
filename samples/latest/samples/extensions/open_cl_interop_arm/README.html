@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="samples" data-version="latest">
+<div class="nav-container" data-component="samples" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -178,11 +180,8 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../api/hello_triangle/README.html">Hello Triangle</a>
-  </li>
-  <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../api/hello_triangle_1_3/README.html">Hello Triangle 1.3</a>
+    <a class="nav-link" href="../../api/hello_triangle/README.html">Hello Triangle</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../api/hpp_hello_triangle/README.html">Hello Triangle (Vulkan-Hpp)</a>
@@ -191,10 +190,10 @@
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../api/hlsl_shaders/README.html">HLSL Shaders</a>
+    <a class="nav-link" href="../../api/hello_triangle_1_3/README.html">Hello Triangle 1.3</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../../api/hpp_hlsl_shaders/README.html">HLSL Shaders (Vulkan-Hpp)</a>
+    <a class="nav-link" href="../../api/hpp_hello_triangle_1_3/README.html">Hello Triangle 1.3(Vulkan-Hpp)</a>
   </li>
 </ul>
   </li>
@@ -313,6 +312,9 @@
     <a class="nav-link" href="../extended_dynamic_state2/README.html">Extended dynamic state2</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../fragment_density_map/README.html">Fragment density map</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../fragment_shader_barycentric/README.html">Fragment shader barycentric</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -398,6 +400,15 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../synchronization_2/README.html">Synchronization 2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../tensor_and_data_graph/README.html">Tensor and Data Graph</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tensor_and_data_graph/simple_tensor_and_data_graph/README.html">Simple Tensor and Data Graph</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="../timeline_semaphore/README.html">Timeline semaphore</a>
@@ -536,6 +547,9 @@
   </li>
 </ul>
   </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Samples" target="_blank" rel="noopener">GitHub Repository</a></span>
+  </li>
 </ul>
   </li>
 </ul>
@@ -560,6 +574,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -600,7 +622,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../../../spec/latest/index.html" class="home-link"></a>
@@ -688,7 +710,7 @@ This allows us to reuse it with two different APIs:</p>
 <div class="sect2">
 <h3 id="_support_by_vulkan_api"><a class="anchor" href="#_support_by_vulkan_api"></a>Support by Vulkan API</h3>
 <div class="paragraph">
-<p>In Vulkan hardware buffers can be imported or exported using <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_ANDROID_external_memory_android_hardware_buffer.html">VK_ANDROID_external_memory_android_hardware_buffer</a> extension.
+<p>In Vulkan hardware buffers can be imported or exported using <a href="https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_ANDROID_external_memory_android_hardware_buffer.html">VK_ANDROID_external_memory_android_hardware_buffer</a> extension.
 AHardwareBuffer can be bound to a <code>VkDeviceMemory</code> object, which serves as an allocation for objects of type <code>VkImage</code> or <code>VkBuffer</code>.</p>
 </div>
 <div class="paragraph">
@@ -731,7 +753,7 @@ export_memory_allocate_Info.handleTypes = VK_EXTERNAL_MEMORY_HANDLE_TYPE_ANDROID
 </div>
 <div class="paragraph">
 <p>This is specified as <code>pNext</code> of <code>VkMemoryAllocateInfo</code>, while <code>allocationSize</code> is set to 0.
-You can find more info on this in the <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#VkMemoryRequirements">specification</a>.</p>
+You can find more info on this in the <a href="https://www.khronos.org/registry/vulkan/specs/latest/html/vkspec.html#VkMemoryRequirements">specification</a>.</p>
 </div>
 <div class="paragraph">
 <p>Once the memory is allocated <strong>and</strong> bound to the image (or buffer), we can export a handle of type <code>AHardwareBuffer</code>:</p>
@@ -874,7 +896,7 @@ In this sample one of such handle types is demonstrated: Android Hardware Buffer
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_ANDROID_external_memory_android_hardware_buffer.html">VK_ANDROID_external_memory_android_hardware_buffer</a></p>
+<p><a href="https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_ANDROID_external_memory_android_hardware_buffer.html">VK_ANDROID_external_memory_android_hardware_buffer</a></p>
 </li>
 <li>
 <p><a href="https://www.khronos.org/registry/OpenCL/extensions/arm/cl_arm_import_memory.txt">cl_arm_import_memory</a></p>
@@ -889,9 +911,56 @@ In this sample one of such handle types is demonstrated: Android Hardware Buffer
 </div>
 <script id="site-script" src="../../../../../_/js/site.js" data-ui-root-path="../../../../../_"></script>
 <script async src="../../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../../.." data-snippet-length="100" data-stylesheet="../../../../../_/css/search.css"></script>
-<script async src="../../../../../search-index.js"></script>
+<script src="../../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../../.." data-snippet-length="100" data-stylesheet="../../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

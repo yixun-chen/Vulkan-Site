@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../_/site.webmanifest">
     <link rel="mask-icon" href="../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../spec/latest/index.html" class="home-link"></a>
@@ -404,7 +465,7 @@ First, add a class member to store this number:</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">...
 uint32_t mipLevels;
-VkImage textureImage;
+std::unique_ptr&lt;vk::raii::Image&gt; textureImage;
 ...</code></pre>
 </div>
 </div>
@@ -432,7 +493,7 @@ Add a <code>mipLevels</code> parameter to the functions:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createImage(uint32_t width, uint32_t height, uint32_t mipLevels, VkFormat format, VkImageTiling tiling, VkImageUsageFlags usage, VkMemoryPropertyFlags properties, VkImage&amp; image, VkDeviceMemory&amp; imageMemory) {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createImage(uint32_t width, uint32_t height, uint32_t mipLevels, vk::Format format, vk::ImageTiling tiling, vk::ImageUsageFlags usage, vk::MemoryPropertyFlags properties, vk::raii::Image&amp; image, vk::raii::DeviceMemory&amp; imageMemory) const {
     ...
     imageInfo.mipLevels = mipLevels;
     ...
@@ -441,7 +502,7 @@ Add a <code>mipLevels</code> parameter to the functions:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkImageView createImageView(VkImage image, VkFormat format, VkImageAspectFlags aspectFlags, uint32_t mipLevels) {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">[[nodiscard]] std::unique_ptr&lt;vk::raii::ImageView&gt; createImageView(const vk::raii::Image&amp; image, vk::Format format, vk::ImageAspectFlags aspectFlags, uint32_t mipLevels) const {
     ...
     viewInfo.subresourceRange.levelCount = mipLevels;
     ...</code></pre>
@@ -449,7 +510,7 @@ Add a <code>mipLevels</code> parameter to the functions:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout, uint32_t mipLevels) {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void transitionImageLayout(const vk::raii::Image&amp; image, const vk::ImageLayout oldLayout, const vk::ImageLayout newLayout, uint32_t mipLevels) const {
     ...
     barrier.subresourceRange.levelCount = mipLevels;
     ...</code></pre>
@@ -460,25 +521,25 @@ Add a <code>mipLevels</code> parameter to the functions:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">createImage(swapChainExtent.width, swapChainExtent.height, 1, depthFormat, VK_IMAGE_TILING_OPTIMAL, VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, depthImage, depthImageMemory);
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">createImage(swapChainExtent.width, swapChainExtent.height, 1, depthFormat, vk::ImageTiling::eOptimal, vk::ImageUsageFlagBits::eDepthStencilAttachment, vk::MemoryPropertyFlagBits::eDeviceLocal, depthImage, depthImageMemory);
 ...
-createImage(texWidth, texHeight, mipLevels, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_TILING_OPTIMAL, VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, textureImage, textureImageMemory);</code></pre>
+createImage(texWidth, texHeight, mipLevels, vk::Format::eR8G8B8A8Srgb, vk::ImageTiling::eOptimal, vk::ImageUsageFlagBits::eTransferSrc | vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, vk::MemoryPropertyFlagBits::eDeviceLocal, textureImage, textureImageMemory);</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">swapChainImageViews[i] = createImageView(swapChainImages[i], swapChainImageFormat, VK_IMAGE_ASPECT_COLOR_BIT, 1);
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">swapChainImageViews[i] = createImageView(swapChainImages[i], swapChainImageFormat, vk::ImageAspectFlagBits::eColor, 1);
 ...
-depthImageView = createImageView(depthImage, depthFormat, VK_IMAGE_ASPECT_DEPTH_BIT, 1);
+depthImageView = createImageView(depthImage, depthFormat,vk::ImageAspectFlagBits::eDepth, 1);
 ...
-textureImageView = createImageView(textureImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_ASPECT_COLOR_BIT, mipLevels);</code></pre>
+textureImageView = createImageView(textureImage, vk::Format::eR8G8B8A8Srgb, vk::ImageAspectFlagBits::eColor, mipLevels);</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">transitionImageLayout(depthImage, depthFormat, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL, 1);
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">transitionImageLayout(depthImage, depthFormat, vk::ImageLayout::eUndefined,vk::ImageLayout::eDepthStencilAttachmentOptimal, 1);
 ...
-transitionImageLayout(textureImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, mipLevels);</code></pre>
+transitionImageLayout(textureImage, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal, mipLevels);</code></pre>
 </div>
 </div>
 </div>
@@ -489,7 +550,7 @@ transitionImageLayout(textureImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_UND
 <div class="paragraph">
 <p>Our texture image now has multiple mip levels, but the staging buffer can only be used to fill mip level 0.
 The other levels are still undefined.
-To fill these levels we need to generate the data from the single level that we have.
+To fill these levels, we need to generate the data from the single level that we have.
 We will use the <code>vkCmdBlitImage</code> command.
 This command performs copying, scaling, and filtering operations.
 We will call this multiple times to <em>blit</em> data to each level of our texture image.</p>
@@ -501,7 +562,7 @@ Add <code>VK_IMAGE_USAGE_TRANSFER_SRC_BIT</code> to the texture image&#8217;s us
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">...
-createImage(texWidth, texHeight, mipLevels, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_TILING_OPTIMAL, VK_IMAGE_USAGE_TRANSFER_SRC_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, textureImage, textureImageMemory);
+createImage(texWidth, texHeight, mipLevels, vk::Format::eR8G8B8A8Srgb, vk::ImageTiling::eOptimal, vk::ImageUsageFlagBits::eTransferSrc | vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled, vk::MemoryPropertyFlagBits::eDeviceLocal, textureImage, textureImageMemory);
 ...</code></pre>
 </div>
 </div>
@@ -519,7 +580,7 @@ Remove the existing transition to <code>VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">...
-transitionImageLayout(textureImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, mipLevels);
+transitionImageLayout(textureImage,  vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal, mipLevels);
     copyBufferToImage(stagingBuffer, textureImage, static_cast&lt;uint32_t&gt;(texWidth), static_cast&lt;uint32_t&gt;(texHeight));
 //transitioned to VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL while generating mipmaps
 ...</code></pre>
@@ -534,19 +595,16 @@ Each level will be transitioned to <code>VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMA
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void generateMipmaps(VkImage image, int32_t texWidth, int32_t texHeight, uint32_t mipLevels) {
-    VkCommandBuffer commandBuffer = beginSingleTimeCommands();
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void generateMipmaps(vk::raii::Image&amp; image, vk::Format imageFormat, int32_t texWidth, int32_t texHeight, uint32_t mipLevels) {
+    std::unique_ptr&lt;vk::raii::CommandBuffer&gt; commandBuffer = beginSingleTimeCommands();
 
-    VkImageMemoryBarrier barrier{};
-    barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
-    barrier.image = image;
-    barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
-    barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
+    vk::ImageMemoryBarrier barrier (vk::AccessFlagBits::eTransferWrite, vk::AccessFlagBits::eTransferRead
+                               , vk::ImageLayout::eTransferDstOptimal, vk::ImageLayout::eTransferSrcOptimal
+                               , vk::QueueFamilyIgnored, vk::QueueFamilyIgnored, image);
     barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
     barrier.subresourceRange.baseArrayLayer = 0;
     barrier.subresourceRange.layerCount = 1;
     barrier.subresourceRange.levelCount = 1;
-
     endSingleTimeCommands(commandBuffer);
 }</code></pre>
 </div>
@@ -573,16 +631,12 @@ Note that the loop variable starts at 1, not 0.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">barrier.subresourceRange.baseMipLevel = i - 1;
-barrier.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;
-barrier.newLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
-barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
-barrier.dstAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
+barrier.oldLayout = vk::ImageLayout::eTransferDstOptimal;
+barrier.newLayout = vk::ImageLayout::eTransferSrcOptimal;
+barrier.srcAccessMask = vk::AccessFlagBits::eTransferWrite;
+barrier.dstAccessMask = vk::AccessFlagBits::eTransferRead;
 
-vkCmdPipelineBarrier(commandBuffer,
-    VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_TRANSFER_BIT, 0,
-    0, nullptr,
-    0, nullptr,
-    1, &amp;barrier);</code></pre>
+commandBuffer-&gt;pipelineBarrier(vk::PipelineStageFlagBits::eTransfer, vk::PipelineStageFlagBits::eTransfer, {}, {}, {}, barrier);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -592,19 +646,15 @@ The current blit command will wait on this transition.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkImageBlit blit{};
-blit.srcOffsets[0] = { 0, 0, 0 };
-blit.srcOffsets[1] = { mipWidth, mipHeight, 1 };
-blit.srcSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-blit.srcSubresource.mipLevel = i - 1;
-blit.srcSubresource.baseArrayLayer = 0;
-blit.srcSubresource.layerCount = 1;
-blit.dstOffsets[0] = { 0, 0, 0 };
-blit.dstOffsets[1] = { mipWidth &gt; 1 ? mipWidth / 2 : 1, mipHeight &gt; 1 ? mipHeight / 2 : 1, 1 };
-blit.dstSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-blit.dstSubresource.mipLevel = i;
-blit.dstSubresource.baseArrayLayer = 0;
-blit.dstSubresource.layerCount = 1;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::ArrayWrapper1D&lt;vk::Offset3D, 2&gt; offsets, dstOffsets;
+offsets[0] = vk::Offset3D(0, 0, 0);
+offsets[1] = vk::Offset3D(mipWidth, mipHeight, 1);
+dstOffsets[0] = vk::Offset3D(0, 0, 0);
+dstOffsets[1] = vk::Offset3D(mipWidth &gt; 1 ? mipWidth / 2 : 1, mipHeight &gt; 1 ? mipHeight / 2 : 1, 1);
+vk::ImageBlit blit = { .srcSubresource = {}, .srcOffsets = offsets,
+                    .dstSubresource =  {}, .dstOffsets = dstOffsets };
+blit.srcSubresource = vk::ImageSubresourceLayers( vk::ImageAspectFlagBits::eColor, i - 1, 0, 1);
+blit.dstSubresource = vk::ImageSubresourceLayers( vk::ImageAspectFlagBits::eColor, i, 0, 1);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -617,11 +667,7 @@ The Z dimension of <code>srcOffsets[1]</code> and <code>dstOffsets[1]</code> mus
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkCmdBlitImage(commandBuffer,
-    image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL,
-    image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
-    1, &amp;blit,
-    VK_FILTER_LINEAR);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffer-&gt;blitImage(image, vk::ImageLayout::eTransferSrcOptimal, image, vk::ImageLayout::eTransferDstOptimal, { blit }, vk::Filter::eLinear);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -640,16 +686,12 @@ We use the <code>VK_FILTER_LINEAR</code> to enable interpolation.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">barrier.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
-barrier.newLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
-barrier.srcAccessMask = VK_ACCESS_TRANSFER_READ_BIT;
-barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">barrier.oldLayout = vk::ImageLayout::eTransferSrcOptimal;
+barrier.newLayout = vk::ImageLayout::eShaderReadOnlyOptimal;
+barrier.srcAccessMask = vk::AccessFlagBits::eTransferRead;
+barrier.dstAccessMask = vk::AccessFlagBits::eShaderRead;
 
-vkCmdPipelineBarrier(commandBuffer,
-    VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, 0,
-    0, nullptr,
-    0, nullptr,
-    1, &amp;barrier);</code></pre>
+commandBuffer-&gt;pipelineBarrier(vk::PipelineStageFlagBits::eTransfer, vk::PipelineStageFlagBits::eFragmentShader, {}, {}, {}, barrier);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -674,40 +716,36 @@ When this happens, that dimension should remain 1 for all remaining levels.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">    barrier.subresourceRange.baseMipLevel = mipLevels - 1;
-    barrier.oldLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;
-    barrier.newLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
-    barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
-    barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;
+    barrier.oldLayout = vk::ImageLayout::eTransferDstOptimal;
+    barrier.newLayout = vk::ImageLayout::eShaderReadOnlyOptimal;
+    barrier.srcAccessMask = vk::AccessFlagBits::eTransferWrite;
+    barrier.dstAccessMask = vk::AccessFlagBits::eShaderRead;
 
-    vkCmdPipelineBarrier(commandBuffer,
-        VK_PIPELINE_STAGE_TRANSFER_BIT, VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, 0,
-        0, nullptr,
-        0, nullptr,
-        1, &amp;barrier);
+    commandBuffer-&gt;pipelineBarrier(vk::PipelineStageFlagBits::eTransfer, vk::PipelineStageFlagBits::eFragmentShader, {}, {}, {}, barrier);
 
-    endSingleTimeCommands(commandBuffer);
+    endSingleTimeCommands(*commandBuffer);
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Before we end the command buffer, we insert one more pipeline barrier.
 This barrier transitions the last mip level from <code>VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL</code> to <code>VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL</code>.
-This wasn&#8217;t handled by the loop, since the last mip level is never blitted from.</p>
+The loop didn&#8217;t handle this, since the last mip level is never blitted from.</p>
 </div>
 <div class="paragraph">
 <p>Finally, add the call to <code>generateMipmaps</code> in <code>createTextureImage</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">transitionImageLayout(textureImage, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, mipLevels);
-    copyBufferToImage(stagingBuffer, textureImage, static_cast&lt;uint32_t&gt;(texWidth), static_cast&lt;uint32_t&gt;(texHeight));
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">transitionImageLayout(*textureImage, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal, mipLevels);
+copyBufferToImage(stagingBuffer, *textureImage, static_cast&lt;uint32_t&gt;(texWidth), static_cast&lt;uint32_t&gt;(texHeight));
 //transitioned to VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL while generating mipmaps
 ...
 generateMipmaps(textureImage, texWidth, texHeight, mipLevels);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Our texture image&#8217;s mipmaps are now completely filled.</p>
+<p>Our texture image&#8217;s mipmaps are now filled.</p>
 </div>
 </div>
 </div>
@@ -720,17 +758,17 @@ It requires the texture image format we use to support linear filtering, which c
 We will add a check to the <code>generateMipmaps</code> function for this.</p>
 </div>
 <div class="paragraph">
-<p>First add an additional parameter that specifies the image format:</p>
+<p>First, add a parameter that specifies the image format:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createTextureImage() {
     ...
 
-    generateMipmaps(textureImage, VK_FORMAT_R8G8B8A8_SRGB, texWidth, texHeight, mipLevels);
+    generateMipmaps(*textureImage, vk::Format::eR8G8B8A8Srgb, texWidth, texHeight, mipLevels);
 }
 
-void generateMipmaps(VkImage image, VkFormat imageFormat, int32_t texWidth, int32_t texHeight, uint32_t mipLevels) {
+void generateMipmaps(vk::raii::Image&amp; image, vk::Format imageFormat, int32_t texWidth, int32_t texHeight, uint32_t mipLevels) {
 
     ...
 }</code></pre>
@@ -741,11 +779,10 @@ void generateMipmaps(VkImage image, VkFormat imageFormat, int32_t texWidth, int3
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void generateMipmaps(VkImage image, VkFormat imageFormat, int32_t texWidth, int32_t texHeight, uint32_t mipLevels) {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void generateMipmaps(vk::raii::Image&amp; image, vk::Format imageFormat, int32_t texWidth, int32_t texHeight, uint32_t mipLevels) {
 
-    // Check if image format supports linear blitting
-    VkFormatProperties formatProperties;
-    vkGetPhysicalDeviceFormatProperties(physicalDevice, imageFormat, &amp;formatProperties);
+    // Check if image format supports linear blit-ing
+    vk::FormatProperties formatProperties = physicalDevice-&gt;getFormatProperties(imageFormat);
 
     ...</code></pre>
 </div>
@@ -757,7 +794,7 @@ Support for the linear filtering feature can be checked with the <code>VK_FORMAT
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (!(formatProperties.optimalTilingFeatures &amp; VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT)) {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (!(formatProperties.optimalTilingFeatures &amp; vk::FormatFeatureFlagBits::eSampledImageFilterLinear)) {
     throw std::runtime_error("texture image format does not support linear blitting!");
 }</code></pre>
 </div>
@@ -769,7 +806,8 @@ Each mip level can then be loaded into the image in the same way that you loaded
 </div>
 <div class="paragraph">
 <p>It should be noted that it is uncommon in practice to generate the mipmap levels at runtime anyway.
-Usually they are pregenerated and stored in the texture file alongside the base level to improve loading speed.
+Usually they are pre-generated and stored in the texture file alongside the
+base level to improve loading speed.
 Implementing resizing in software and loading multiple levels from a file is left as an exercise to the reader.</p>
 </div>
 </div>
@@ -789,7 +827,7 @@ lod = clamp(lod + mipLodBias, minLod, maxLod);
 
 level = clamp(floor(lod), 0, texture.mipLevels - 1);  //clamped to the number of mip levels in the texture
 
-if (mipmapMode == VK_SAMPLER_MIPMAP_MODE_NEAREST) {
+if (mipmapMode == vk::SamplerMipmapMode::eNearest) {
     color = sample(level);
 } else {
     color = blend(sample(level), sample(level + 1));
@@ -827,22 +865,32 @@ We just need to choose values for <code>minLod</code>, <code>maxLod</code>, <cod
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createTextureSampler() {
-    ...
-    samplerInfo.mipmapMode = VK_SAMPLER_MIPMAP_MODE_LINEAR;
-    samplerInfo.minLod = 0.0f; // Optional
-    samplerInfo.maxLod = VK_LOD_CLAMP_NONE;
-    samplerInfo.mipLodBias = 0.0f; // Optional
+    vk::PhysicalDeviceProperties properties = physicalDevice.getProperties();
+    vk::SamplerCreateInfo samplerInfo {
+        .magFilter = vk::Filter::eLinear,
+        .minFilter = vk::Filter::eLinear,
+        .mipmapMode = vk::SamplerMipmapMode::eLinear,
+        .addressModeU = vk::SamplerAddressMode::eRepeat,
+        .addressModeV = vk::SamplerAddressMode::eRepeat,
+        .addressModeW = vk::SamplerAddressMode::eRepeat,
+        .mipLodBias = 0.0f,
+        .anisotropyEnable = vk::True,
+        .maxAnisotropy = properties.limits.maxSamplerAnisotropy,
+        .compareEnable = vk::False,
+        .compareOp = vk::CompareOp::eAlways
+    };
     ...
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To allow the full range of mip levels to be used, we set <code>minLod</code> to 0.0f, and <code>maxLod</code> to <code>VK_LOD_CLAMP_NONE</code>.
-This constant is equal to <code>1000.0f</code>, which means that all available mipmap levels in the texture will be sampled.
-We have no reason to change the <code>lod</code> value, so we set <code>mipLodBias</code> to 0.0f.</p>
+<p>In the code above, we&#8217;ve set up the sampler with linear filtering for both minification and magnification, and linear interpolation between mip levels. We&#8217;ve also set the mip level bias to 0.0f.</p>
 </div>
 <div class="paragraph">
-<p>Now run your program and you should see the following:</p>
+<p>By default, the full range of mip levels will be used. The default <code>minLod</code> is 0.0f, and the default <code>maxLod</code> is <code>VK_LOD_CLAMP_NONE</code> (which equals 1000.0f), meaning all available mipmap levels in the texture will be sampled.</p>
+</div>
+<div class="paragraph">
+<p>Now run your program, and you should see the following:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -851,7 +899,7 @@ We have no reason to change the <code>lod</code> value, so we set <code>mipLodBi
 </div>
 <div class="paragraph">
 <p>It&#8217;s not a dramatic difference, since our scene is so simple.
-There are subtle differences if you look closely.</p>
+There are subtle differences if you look close.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -859,7 +907,7 @@ There are subtle differences if you look closely.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The most noticeable difference is the writing on the papers.
+<p>The most noticeable difference is the writing in the papers.
 With mipmaps, the writing has been smoothed.
 Without mipmaps, the writing has harsh edges and gaps from Moiré artifacts.</p>
 </div>
@@ -887,7 +935,10 @@ For example, by changing <code>minLod</code>, you can force the sampler to not u
 <p>The <a href="10_Multisampling.html" class="xref page">next chapter</a> will walk us through multisampling to produce a smoother image.</p>
 </div>
 <div class="paragraph">
-<p><a href="_attachments/29_mipmapping.cpp">C&#43;&#43; code</a> / <a href="_attachments/27_shader_depth.vert">Vertex shader</a> / <a href="_attachments/27_shader_depth.frag">Fragment shader</a></p>
+<p><a href="_attachments/29_mipmapping.cpp">C&#43;&#43; code</a> /
+<a href="_attachments/27_shader_depth.slang">slang shader</a> /
+<a href="_attachments/27_shader_depth.vert">GLSL Vertex shader</a> /
+<a href="_attachments/27_shader_depth.frag">GLSL Fragment shader</a></p>
 </div>
 </div>
 </div>
@@ -897,9 +948,56 @@ For example, by changing <code>minLod</code>, you can force the sampler to not u
 </div>
 <script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
-<script src="../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
-<script async src="../../search-index.js"></script>
+<script src="../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

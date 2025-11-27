@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../_/site.webmanifest">
     <link rel="mask-icon" href="../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="spec" data-version="latest">
+<div class="nav-container" data-component="spec" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -128,6 +130,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapters/preamble.html">Preamble</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="chapters/introduction.html">Introduction</a>
   </li>
@@ -162,6 +167,9 @@
     <a class="nav-link" href="chapters/resources.html">Resource Creation</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapters/images.html">Images</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="chapters/samplers.html">Samplers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -175,6 +183,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="chapters/fragmentdensitymapops.html">Fragment Density Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapters/VK_ARM_tensors/tensorops.html">Tensor Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="chapters/queries.html">Queries</a>
@@ -231,10 +242,13 @@
     <a class="nav-link" href="chapters/VK_KHR_deferred_host_operations/deferred_host_operations.html">Deferred Host Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="chapters/VK_EXT_private_data.html">Private Data</a>
+    <a class="nav-link" href="chapters/private_data.html">Private Data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="chapters/accelstructures.html">Acceleration Structures</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapters/VK_AMDX_dense_geometry_format/dense_geometry_format.html">Compressed triangle data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="chapters/VK_EXT_opacity_micromap/micromaps.html">Micromap</a>
@@ -246,7 +260,7 @@
     <a class="nav-link" href="chapters/raytracing.html">Ray Tracing</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="chapters/VK_NV_memory_decompression.html">Memory Decompression</a>
+    <a class="nav-link" href="chapters/memory_decompression.html">Memory Decompression</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="chapters/videocoding.html">Video Coding</a>
@@ -256,6 +270,12 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="chapters/executiongraphs.html">Execution Graphs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapters/VK_NV_external_compute_queue/VK_NV_external_compute_queue.html">External Compute Queues</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapters/VK_ARM_data_graph/graphs.html">Data graphs</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="chapters/extensions.html">Extending Vulkan</a>
@@ -292,6 +312,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="appendices/roadmap.html">Vulkan Roadmap Milestones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="appendices/legacy.html">Legacy and Superseded Functionality</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="appendices/boilerplate.html">API Boilerplate</a>
@@ -333,6 +356,14 @@
       </ul>
     </li>
     <li class="component">
+      <div class="title"><a href="../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../refpages/latest/refpages/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
       <div class="title"><a href="../../features/latest/features/index.html">Vulkan Feature Descriptions</a></div>
       <ul class="versions">
         <li class="version is-latest">
@@ -369,7 +400,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="index.html" class="home-link is-current"></a>
@@ -390,60 +421,198 @@
 <h2 id="_about"><a class="anchor" href="#_about"></a>About</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://docs.vulkan.org/">This site</a> gathers together several key Vulkan
-documents including specifications, extension proposals, guides, tutorials
-and samples into a single site.
-This allows searching and cross-linking across documents, to help navigate
-quickly to the information you need for developing Vulkan-based
-applications.</p>
+<p>Welcome to the official Documentation site for the cross-platform Vulkan
+graphics and compute API.
+This is your starting point for all things related to
+<a href="https://www.vulkan.org">Vulkan</a>.
+This site gathers together several key Vulkan documents into a convenient
+single site.This allows searching and cross-linking across documents, to
+help navigate quickly to the information you need for developing
+Vulkan-based applications.</p>
 </div>
 <div class="paragraph">
-<p>For more information about and resources for using the Vulkan graphics API,
-see the Vulkan developer website at <a href="https://vulkan.org" class="bare">https://vulkan.org</a> .</p>
-</div>
-<div class="paragraph">
-<p>This build of the site includes the Vulkan 1.4.313 API specification
-(with all registered extensions), generated on 2025-04-18 09:43:19Z from git branch: main commit: 19b765119a9ddef1034e95442f82f94235167f36.</p>
+<p>This build of the site includes the Vulkan 1.4.335 API specification
+(with all registered extensions), generated on 2025-11-27 23:27:08Z from git branch: main commit: 60a4ad187cf3be4ede658f0fae7dd392192a314b.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_navigation"><a class="anchor" href="#_navigation"></a>Navigation</h2>
+<h2 id="_how_to_navigate_this_site"><a class="anchor" href="#_how_to_navigate_this_site"></a>How to Navigate This Site</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The site is organized in &#8220;components&#8221; (Antora terminology for
-specifications and other documents), each containing many &#8220;pages&#8221; (Antora
-terminology for a chapter of a specification, or other distinct piece of
-content for other components).</p>
+<p>The site is organized into &#8220;components&#8221;.
+The left navigation sidebar links to pages in the current component.
+The bottom-left button switches between components.</p>
 </div>
 <div class="paragraph">
-<p>The left navigation sidebar links to pages in the current component.</p>
-</div>
-<div class="paragraph">
-<p>The right navigation sidebar links to sections in the current page.</p>
-</div>
-<div class="paragraph">
-<p>The bottom-left button switches between components.</p>
-</div>
-<div class="paragraph">
-<p>The top navigation bar contains a text searchbox.
+<p>The top navigation also has links to all components and related external
+documentation.
+It also allows for searching within this site.
 If the &#8220;In this component&#8221; box is checked, search will be restricted to
 the current component.
 Otherwise, all components of the site are searched.</p>
 </div>
+<div class="paragraph">
+<p>On pages with multiple sections, a right navigation sidebar links to
+sections in the current page.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_site_information"><a class="anchor" href="#_site_information"></a>Site Information</h2>
+<h2 id="_what_is_included"><a class="anchor" href="#_what_is_included"></a>What is Included</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_vulkan_specification"><a class="anchor" href="#_vulkan_specification"></a>Vulkan Specification</h3>
 <div class="paragraph">
-<p><a href="https://docs.vulkan.org/">This site</a> is generated using the
-<a href="https://docs.antora.org/">Antora</a> static site generator.</p>
+<p><a href="index.html" class="xref page">The Vulkan specification</a> describes the Vulkan
+Application Programming Interface (API).
+Vulkan is a C99 API designed for explicit control of low-level graphics and
+compute functionality.</p>
 </div>
 <div class="paragraph">
-<p>If you need to report a problem or build the site yourself, start with the
-<a href="https://github.com/KhronosGroup/Vulkan-Site/">Vulkan-Site</a> repository on
-GitHub.</p>
+<p>The specification is aimed at implementors of Vulkan and at developers that
+already know the basics of Vulkan and want to read up on more advanced
+topics.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vulkan_feature_descriptions"><a class="anchor" href="#_vulkan_feature_descriptions"></a>Vulkan Feature Descriptions</h3>
+<div class="paragraph">
+<p><a href="../../features/latest/features/index.html" class="xref page">The Vulkan feature descriptions</a> include extension
+documents that are written outlining the proposed API for new extensions.
+They are the base for the final extension specification and contain
+supplementary documentation.</p>
+</div>
+<div class="paragraph">
+<p>It is closely related to the Vulkan specification and can help to understand
+why an extension or a feature has been implemented in a given way.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vulkan_guide"><a class="anchor" href="#_vulkan_guide"></a>Vulkan Guide</h3>
+<div class="paragraph">
+<p><a href="../../guide/latest/index.html" class="xref page">The Vulkan Guide</a> is designed to help developers get
+up and going with the world of Vulkan.
+It is aimed to be a light read that leads to many other useful links
+depending on what a developer is looking for.
+All information is intended to help better fill the gaps about the many
+nuances of the Vulkan ecosystem including peripheral topics like shading
+languages.</p>
+</div>
+<div class="paragraph">
+<p>The Guide is a good starting point for first time Vulkan developers.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vulkan_samples"><a class="anchor" href="#_vulkan_samples"></a>Vulkan Samples</h3>
+<div class="paragraph">
+<p><a href="../../samples/latest/README.html" class="xref page">The Vulkan Samples</a> are a collection of resources
+to help you develop optimized Vulkan applications.
+These C++ samples demonstrate a wide range of Vulkan&#8217;s functionality.
+From writing a first "Hello triangle" sample to rendering complex scenes,
+doing GPU based work and using hardware accelerated ray tracing, these
+samples are trying to help developers learn how to use Vulkan.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vulkan_tutorial"><a class="anchor" href="#_vulkan_tutorial"></a>Vulkan Tutorial</h3>
+<div class="paragraph">
+<p><a href="../../tutorial/latest/00_Introduction.html" class="xref page">The Vulkan tutorial</a> will teach you the
+basics of using Vulkan.
+It will help you get started with the API and teaches you how to get your
+first graphics and compute programs up and running using the C++ programming
+language.</p>
+</div>
+<div class="paragraph">
+<p>The Tutorial is aimed at people starting with Vulkan.
+If you are new to Vulkan, this should be your starting point.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_glsl_specification"><a class="anchor" href="#_glsl_specification"></a>GLSL Specification</h3>
+<div class="paragraph">
+<p>Although Vulkan consumes shaders in SPIR-V, one of the most widely used
+shading languages is <a href="../../glsl/latest/index.html" class="xref page">GLSL</a>.
+This part of the documentation site contains the GLSL shading language
+specification with Vulkan specific extensions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_get_started_with_vulkan"><a class="anchor" href="#_how_to_get_started_with_vulkan"></a>How to get Started With Vulkan</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_requirements"><a class="anchor" href="#_requirements"></a>Requirements</h3>
+<div class="paragraph">
+<p>Vulkan is a available on a <a href="../../guide/latest/platforms.html" class="xref page">wide range of
+platforms</a>.
+To develop with it, you first need an implementation that supports Vulkan.
+Most systems nowadays support Vulkan out of the box, as support ships via
+graphics cards drivers.</p>
+</div>
+<div class="paragraph">
+<p>For actually writing code that uses Vulkan, you need bindings for your
+programming language like the
+<a href="https://github.com/KhronosGroup/Vulkan-Headers">C bindings</a> (that also work
+with C++) or the <a href="https://github.com/KhronosGroup/Vulkan-Hpp">C&#43;&#43; bindings</a>
+that offers a C&#43;&#43; based interface to the API.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vulkan_sdk"><a class="anchor" href="#_vulkan_sdk"></a>Vulkan SDK</h3>
+<div class="paragraph">
+<p>While not a requirement for developing Vulkan application, the
+<a href="https://www.lunarg.com/vulkan-sdk/">LunarG Vulkan SDK</a> is a convenient
+package of components and tools to help with developing Vulkan applications.
+Using the SDK is recommended.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_first_vulkan_program"><a class="anchor" href="#_first_vulkan_program"></a>First Vulkan Program</h3>
+<div class="paragraph">
+<p>The
+<a href="https://vulkan.lunarg.com/doc/sdk/1.4.309.0/windows/getting_started.html">Vulkan
+SDK</a> contains C and C&#43;&#43; project templates for Microsoft Visual Studio that
+can be used as a starting point for writing Vulkan programs.</p>
+</div>
+<div class="paragraph">
+<p>Another option is to follow the
+<a href="../../tutorial/latest/02_Development_environment.html" class="xref page">development environment
+chapter</a> of the <a href="../../tutorial/latest/00_Introduction.html" class="xref page">The Vulkan tutorial</a>
+which has instructions for different platforms.</p>
+</div>
+<div class="paragraph">
+<p>As a third option, the <a href="../../samples/latest/README.html" class="xref page">The Vulkan Samples</a> come
+with build system that supports different platforms and C++ based
+development environments.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_help"><a class="anchor" href="#_getting_help"></a>Getting Help</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Vulkan communities are there to help with all questions regarding the
+Vulkan ecosystem.
+Official channels include <a href="https://discord.gg/vulkan">Discord</a>,
+<a href="https://www.reddit.com/r/vulkan/">Reddit</a> and a
+<a href="https://community.khronos.org/c/vulkan">Vulkan forum</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_feedback"><a class="anchor" href="#_feedback"></a>Feedback</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you need to report a problem or want to build the site yourself, start
+with the <a href="https://github.com/KhronosGroup/Vulkan-Site/">Vulkan-Site</a>
+repository on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>This site is generated using the <a href="https://docs.antora.org/">Antora</a>
+static site generator.</p>
 </div>
 </div>
 </div>
@@ -453,9 +622,56 @@ GitHub.</p>
 </div>
 <script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
-<script src="../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
-<script async src="../../search-index.js"></script>
+<script src="../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

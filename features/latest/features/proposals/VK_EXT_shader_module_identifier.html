@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="features" data-version="latest">
+<div class="nav-container" data-component="features" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -139,6 +141,9 @@
     <span class="nav-text">Feature Descriptions</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_AMDX_dense_geometry_format.html">VK_AMDX_dense_geometry_format</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_AMDX_shader_enqueue.html">VK_AMDX_shader_enqueue</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -151,10 +156,16 @@
     <a class="nav-link" href="VK_ANDROID_external_format_resolve.html">VK_ANDROID_external_format_resolve</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_ARM_performance_counters_by_region.html">VK_ARM_performance_counters_by_region</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_ARM_pipeline_opacity_micromap.html">VK_ARM_pipeline_opacity_micromap</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_ARM_render_pass_striped.html">VK_ARM_render_pass_striped</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_ARM_tensors.html">VK_ARM_tensors</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_attachment_feedback_loop_dynamic_state.html">VK_EXT_attachment_feedback_loop_dynamic_state</a>
@@ -164,6 +175,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_calibrated_timestamps.html">VK_EXT_calibrated_timestamps</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_custom_resolve.html">VK_EXT_custom_resolve</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_depth_bias_control.html">VK_EXT_depth_bias_control</a>
@@ -226,6 +240,9 @@
     <a class="nav-link" href="VK_EXT_map_memory_placed.html">VK_EXT_map_memory_placed</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_memory_decompression.html">VK_EXT_memory_decompression</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_mesh_shader.html">VK_EXT_mesh_shader</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -253,10 +270,22 @@
     <a class="nav-link" href="VK_EXT_present_mode_fifo_latest_ready.html">VK_EXT_present_mode_fifo_latest_ready</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_present_timing.html">VK_EXT_present_timing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_primitives_generated_query.html">VK_EXT_primitives_generated_query</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_rasterization_order_attachment_access.html">VK_EXT_rasterization_order_attachment_access</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_ray_tracing_invocation_reorder.html">VK_EXT_ray_tracing_invocation_reorder</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_shader_64bit_indexing.html">VK_EXT_shader_64bit_indexing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_shader_float8.html">VK_EXT_shader_float8</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="VK_EXT_shader_module_identifier.html">VK_EXT_shader_module_identifier</a>
@@ -271,6 +300,9 @@
     <a class="nav-link" href="VK_EXT_shader_tile_image.html">VK_EXT_shader_tile_image</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_shader_uniform_buffer_unsized_array.html">VK_EXT_shader_uniform_buffer_unsized_array</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_subpass_merge_feedback.html">VK_EXT_subpass_merge_feedback</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -278,6 +310,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_swapchain_maintenance1.html">VK_EXT_swapchain_maintenance1</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_zero_initialize_device_memory.html">VK_EXT_zero_initialize_device_memory</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_GOOGLE_surfaceless_query.html">VK_GOOGLE_surfaceless_query</a>
@@ -295,6 +330,9 @@
     <a class="nav-link" href="VK_KHR_cooperative_matrix.html">VK_KHR_cooperative_matrix</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_copy_memory_indirect.html">VK_KHR_copy_memory_indirect</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_dynamic_rendering.html">VK_KHR_dynamic_rendering</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -310,6 +348,9 @@
     <a class="nav-link" href="VK_KHR_load_store_op_none.html">VK_KHR_load_store_op_none</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_maintenance10.html">VK_KHR_maintenance10</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_maintenance5.html">VK_KHR_maintenance5</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -322,10 +363,22 @@
     <a class="nav-link" href="VK_KHR_maintenance8.html">VK_KHR_maintenance8</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_maintenance9.html">VK_KHR_maintenance9</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_map_memory2.html">VK_KHR_map_memory2</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_pipeline_binary.html">VK_KHR_pipeline_binary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_present_id2.html">VK_KHR_present_id2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_present_mode_fifo_latest_ready.html">VK_KHR_present_mode_fifo_latest_ready</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_present_wait2.html">VK_KHR_present_wait2</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_ray_tracing_position_fetch.html">VK_KHR_ray_tracing_position_fetch</a>
@@ -338,6 +391,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_shader_float_controls2.html">VK_KHR_shader_float_controls2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_shader_fma.html">VK_KHR_shader_fma</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_shader_integer_dot_product.html">VK_KHR_shader_integer_dot_product</a>
@@ -355,6 +411,18 @@
     <a class="nav-link" href="VK_KHR_shader_subgroup_rotate.html">Subgroup rotation instruction</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_shader_untyped_pointers.html">VK_KHR_shader_untyped_pointers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_surface_maintenance1.html">VK_KHR_surface_maintenance1</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_swapchain_maintenance1.html">VK_KHR_swapchain_maintenance1</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_unified_image_layouts.html">VK_KHR_unified_image_layouts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_vertex_attribute_divisor.html">VK_KHR_vertex_attribute_divisor</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -370,6 +438,9 @@
     <a class="nav-link" href="VK_KHR_video_decode_queue.html">VK_KHR_video_decode_queue</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_video_decode_vp9.html">VK_KHR_video_decode_vp9</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_video_encode_av1.html">VK_KHR_video_encode_av1</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -377,6 +448,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_video_encode_h265.html">VK_KHR_video_encode_h265</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_video_encode_intra_refresh.html">VK_KHR_video_encode_intra_refresh</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_video_encode_quantization_map.html">VK_KHR_video_encode_quantization_map</a>
@@ -424,6 +498,9 @@
     <a class="nav-link" href="VK_NV_ray_tracing_validation.html">VK_NV_ray_tracing_validation</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_QCOM_image_processing.html">VK_QCOM_image_processing</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -437,6 +514,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_VERSION_1_4.html">Vulkan 1.4</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VulkanBase.html">Vulkan Base</a>
   </li>
 </ul>
   </li>
@@ -464,6 +544,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -504,7 +592,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../../spec/latest/index.html" class="home-link"></a>
@@ -522,6 +610,30 @@
 </aside>
 <article class="doc">
 <h1 class="page">VK_EXT_shader_module_identifier</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_problem_statement">1. Problem Statement</a></li>
+<li><a href="#_solution_space">2. Solution Space</a></li>
+<li><a href="#_example_use_case">3. Example use case</a></li>
+<li><a href="#_proposal">4. Proposal</a>
+<ul class="sectlevel2">
+<li><a href="#_querying_identifier">4.1. Querying identifier</a></li>
+<li><a href="#_vk_null_handle_module_proxy">4.2. <code>VK_NULL_HANDLE</code> module proxy</a></li>
+<li><a href="#_handling_fallbacks">4.3. Handling fallbacks</a></li>
+<li><a href="#_soft_guarantees_of_successfully_compiling_pipelines">4.4. Soft guarantees of successfully compiling pipelines</a></li>
+</ul>
+</li>
+<li><a href="#_issues">5. Issues</a>
+<ul class="sectlevel2">
+<li><a href="#_resolved_should_applications_be_allowed_to_specify_their_own_shader_module_identifier">5.1. RESOLVED: Should applications be allowed to specify their own shader module identifier?</a></li>
+<li><a href="#_resolved_how_does_this_interact_with_vk_khr_ray_tracing_pipeline_vk_khr_pipeline_library_and_vk_ext_graphics_pipeline_library">5.2. RESOLVED: How does this interact with VK_KHR_ray_tracing_pipeline, VK_KHR_pipeline_library and VK_EXT_graphics_pipeline_library?</a></li>
+<li><a href="#_resolved_should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed">5.3. RESOLVED: Should there be stronger guarantees on when pipeline compilation with identifier must succeed?</a></li>
+</ul>
+</li>
+<li><a href="#_further_functionality">6. Further Functionality</a></li>
+</ul>
+</div>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -531,7 +643,7 @@ where we speculate that an implementation already has a pipeline blob in cache a
 </div>
 </div>
 <div class="sect1">
-<h2 id="_problem_statement"><a class="anchor" href="#_problem_statement"></a>Problem Statement</h2>
+<h2 id="_problem_statement"><a class="anchor" href="#_problem_statement"></a>1. Problem Statement</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In some applications, SPIR-V is generated on-the-fly, usually by translating from some other representation.
@@ -574,7 +686,7 @@ Optimizing the translation might not be enough when faced with tens of thousand 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_solution_space"><a class="anchor" href="#_solution_space"></a>Solution Space</h2>
+<h2 id="_solution_space"><a class="anchor" href="#_solution_space"></a>2. Solution Space</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The solution this extension addresses is the minimum viable approach to fix the problem.
@@ -603,7 +715,7 @@ is suitable for this use case.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_example_use_case"><a class="anchor" href="#_example_use_case"></a>Example use case</h2>
+<h2 id="_example_use_case"><a class="anchor" href="#_example_use_case"></a>3. Example use case</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>One scenario where this extension has been found to be particularly useful is D3D12 to Vulkan translation.
@@ -624,10 +736,10 @@ This hypothetically allows an end-user to never observe shader compilation stutt
 </div>
 </div>
 <div class="sect1">
-<h2 id="_proposal"><a class="anchor" href="#_proposal"></a>Proposal</h2>
+<h2 id="_proposal"><a class="anchor" href="#_proposal"></a>4. Proposal</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_querying_identifier"><a class="anchor" href="#_querying_identifier"></a>Querying identifier</h3>
+<h3 id="_querying_identifier"><a class="anchor" href="#_querying_identifier"></a>4.1. Querying identifier</h3>
 <div class="paragraph">
 <p>After the application has converted a shader to SPIR-V and compiled a pipeline, <code>vkGetShaderModuleIdentifierEXT</code> is used to obtain a shader identifier.
 This identifier can be stored on-disk for later use. (<code>vkGetShaderModuleCreateInfoIdentifierEXT</code> can be used as an object-less alternative.)
@@ -642,7 +754,7 @@ so that the identifiers can be retrieved without memory allocation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_vk_null_handle_module_proxy"><a class="anchor" href="#_vk_null_handle_module_proxy"></a><code>VK_NULL_HANDLE</code> module proxy</h3>
+<h3 id="_vk_null_handle_module_proxy"><a class="anchor" href="#_vk_null_handle_module_proxy"></a>4.2. <code>VK_NULL_HANDLE</code> module proxy</h3>
 <div class="paragraph">
 <p>On subsequent runs of an application, we speculate that the driver caches (or VkPipelineCaches) are primed, and thus having SPIR-V is not useful anymore.
 We then set <code>VkPipelineShaderStageCreateInfo::module</code> to <code>VK_NULL_HANDLE</code> and chain in <code>VkPipelineShaderStageModuleIdentifierCreateInfoEXT</code> as a proxy.
@@ -651,13 +763,13 @@ This allows a driver to generate the same internal PSO key that it would generat
 </div>
 </div>
 <div class="sect2">
-<h3 id="_handling_fallbacks"><a class="anchor" href="#_handling_fallbacks"></a>Handling fallbacks</h3>
+<h3 id="_handling_fallbacks"><a class="anchor" href="#_handling_fallbacks"></a>4.3. Handling fallbacks</h3>
 <div class="paragraph">
 <p>In a situation where we do not have the pipeline cached, we receive <code>VK_PIPELINE_COMPILE_REQUIRED</code>, and fall back to re-creating SPIR-V as usual.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_soft_guarantees_of_successfully_compiling_pipelines"><a class="anchor" href="#_soft_guarantees_of_successfully_compiling_pipelines"></a>Soft guarantees of successfully compiling pipelines</h3>
+<h3 id="_soft_guarantees_of_successfully_compiling_pipelines"><a class="anchor" href="#_soft_guarantees_of_successfully_compiling_pipelines"></a>4.4. Soft guarantees of successfully compiling pipelines</h3>
 <div class="paragraph">
 <p>The proposal as-is states that implementations may fail compilation for any reason. This is a defensive measure
 to make it possible for this extension to interoperate with layers, validation, debug tooling, etc., without too many problems.
@@ -672,10 +784,10 @@ This is not different from what implementations already do either way. After all
 </div>
 </div>
 <div class="sect1">
-<h2 id="_issues"><a class="anchor" href="#_issues"></a>Issues</h2>
+<h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_should_applications_be_allowed_to_specify_their_own_shader_module_identifier"><a class="anchor" href="#_resolved_should_applications_be_allowed_to_specify_their_own_shader_module_identifier"></a>RESOLVED: Should applications be allowed to specify their own shader module identifier?</h3>
+<h3 id="_resolved_should_applications_be_allowed_to_specify_their_own_shader_module_identifier"><a class="anchor" href="#_resolved_should_applications_be_allowed_to_specify_their_own_shader_module_identifier"></a>5.1. RESOLVED: Should applications be allowed to specify their own shader module identifier?</h3>
 <div class="paragraph">
 <p>NO.</p>
 </div>
@@ -694,7 +806,7 @@ but this is not meaningfully different from just using the driver identifier, an
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_does_this_interact_with_vk_khr_ray_tracing_pipeline_vk_khr_pipeline_library_and_vk_ext_graphics_pipeline_library"><a class="anchor" href="#_resolved_how_does_this_interact_with_vk_khr_ray_tracing_pipeline_vk_khr_pipeline_library_and_vk_ext_graphics_pipeline_library"></a>RESOLVED: How does this interact with VK_KHR_ray_tracing_pipeline, VK_KHR_pipeline_library and VK_EXT_graphics_pipeline_library?</h3>
+<h3 id="_resolved_how_does_this_interact_with_vk_khr_ray_tracing_pipeline_vk_khr_pipeline_library_and_vk_ext_graphics_pipeline_library"><a class="anchor" href="#_resolved_how_does_this_interact_with_vk_khr_ray_tracing_pipeline_vk_khr_pipeline_library_and_vk_ext_graphics_pipeline_library"></a>5.2. RESOLVED: How does this interact with VK_KHR_ray_tracing_pipeline, VK_KHR_pipeline_library and VK_EXT_graphics_pipeline_library?</h3>
 <div class="paragraph">
 <p>SUPPORTED.</p>
 </div>
@@ -732,7 +844,7 @@ ray-tracing pipelines from libraries.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed"><a class="anchor" href="#_resolved_should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed"></a>RESOLVED: Should there be stronger guarantees on when pipeline compilation with identifier must succeed?</h3>
+<h3 id="_resolved_should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed"><a class="anchor" href="#_resolved_should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed"></a>5.3. RESOLVED: Should there be stronger guarantees on when pipeline compilation with identifier must succeed?</h3>
 <div class="paragraph">
 <p>NO.</p>
 </div>
@@ -748,7 +860,7 @@ as there is no good excuse why an implementation should not be able to satisfy t
 </div>
 </div>
 <div class="sect1">
-<h2 id="_further_functionality"><a class="anchor" href="#_further_functionality"></a>Further Functionality</h2>
+<h2 id="_further_functionality"><a class="anchor" href="#_further_functionality"></a>6. Further Functionality</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>N/A</p>
@@ -761,9 +873,56 @@ as there is no good excuse why an implementation should not be able to satisfy t
 </div>
 <script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
-<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

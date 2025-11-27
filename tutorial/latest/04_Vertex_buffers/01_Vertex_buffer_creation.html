@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../spec/latest/index.html" class="home-link"></a>
@@ -373,7 +434,7 @@
 <p>Buffers in Vulkan are regions of memory used for storing arbitrary data that can be read by the graphics card.
 They can be used to store vertex data, which we&#8217;ll do in this chapter, but they can also be used for many other purposes that we&#8217;ll explore in future chapters.
 Unlike the Vulkan objects we&#8217;ve been dealing with so far, buffers do not automatically allocate memory for themselves.
-The work from the previous chapters has shown that the Vulkan API puts the programmer in control of almost everything and memory management is one of those things.</p>
+The work from the previous chapters has shown that the Vulkan API puts the programmer in control of almost everything, and memory management is one of those things.</p>
 </div>
 </div>
 </div>
@@ -393,9 +454,7 @@ The work from the previous chapters has shown that the Vulkan API puts the progr
     createLogicalDevice();
     createSwapChain();
     createImageViews();
-    createRenderPass();
     createGraphicsPipeline();
-    createFramebuffers();
     createCommandPool();
     createVertexBuffer();
     createCommandBuffers();
@@ -414,37 +473,26 @@ void createVertexBuffer() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkBufferCreateInfo bufferInfo{};
-bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
-bufferInfo.size = sizeof(vertices[0]) * vertices.size();</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::BufferCreateInfo bufferInfo{ .size = sizeof(vertices[0]) * vertices.size(), .usage = vk::BufferUsageFlagBits::eVertexBuffer, .sharingMode = vk::SharingMode::eExclusive };</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first field of the struct is <code>size</code>, which specifies the size of the buffer in bytes.
-Calculating the byte size of the vertex data is straightforward with <code>sizeof</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">bufferInfo.usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;</code></pre>
-</div>
+<p>The <code>size</code> field specifies the size of the buffer in bytes. Calculating
+the byte size of the vertex data is straightforward with <code>sizeof</code>.</p>
 </div>
 <div class="paragraph">
-<p>The second field is <code>usage</code>, which indicates for which purposes the data in the buffer is going to be used.
-It is possible to specify multiple purposes using a bitwise or.
-Our use case will be a vertex buffer, we&#8217;ll look at other types of usage in future chapters.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">bufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;</code></pre>
-</div>
+<p>The <code>usage</code> field indicates for which purposes the data in the
+buffer is going to be used. It is possible to specify multiple purposes using
+ a bitwise or. Our use case will be a vertex buffer, we&#8217;ll look at other
+ types of usage in future chapters.</p>
 </div>
 <div class="paragraph">
 <p>Just like the images in the swap chain, buffers can also be owned by a specific queue family or be shared between multiple at the same time.
 The buffer will only be used from the graphics queue, so we can stick to exclusive access.</p>
 </div>
 <div class="paragraph">
-<p>The <code>flags</code> parameter is used to configure sparse buffer memory, which is not relevant right now.
-We&#8217;ll leave it at the default value of <code>0</code>.</p>
+<p>There is also a <code>flags</code> field, which is used to configure sparse buffer memory. It&#8217;s not relevant right now, so
+we&#8217;ll leave it at the default value of <code>0</code>.</p>
 </div>
 <div class="paragraph">
 <p>We can now create the buffer with <code>vkCreateBuffer</code>.
@@ -452,36 +500,19 @@ Define a class member to hold the buffer handle and call it <code>vertexBuffer</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkBuffer vertexBuffer;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::Buffer vertexBuffer = nullptr;
 
 ...
 
 void createVertexBuffer() {
-    VkBufferCreateInfo bufferInfo{};
-    bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
-    bufferInfo.size = sizeof(vertices[0]) * vertices.size();
-    bufferInfo.usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;
-    bufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
-
-    if (vkCreateBuffer(device, &amp;bufferInfo, nullptr, &amp;vertexBuffer) != VK_SUCCESS) {
-        throw std::runtime_error("failed to create vertex buffer!");
-    }
+    vk::BufferCreateInfo bufferInfo{ .size = sizeof(vertices[0]) * vertices.size(), .usage = vk::BufferUsageFlagBits::eVertexBuffer, .sharingMode = vk::SharingMode::eExclusive };
+    vertexBuffer = vk::raii::Buffer(device, bufferInfo);
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The buffer should be available for use in rendering commands until the end of the program and it does not depend on the swap chain, so we&#8217;ll clean it up in the original <code>cleanup</code> function:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanup() {
-    cleanupSwapChain();
-
-    vkDestroyBuffer(device, vertexBuffer, nullptr);
-
-    ...
-}</code></pre>
-</div>
+<p>The buffer should be available for use in rendering commands until the end of
+ the program, and it does not depend on the swap chain.</p>
 </div>
 </div>
 </div>
@@ -489,13 +520,12 @@ void createVertexBuffer() {
 <h2 id="_memory_requirements"><a class="anchor" href="#_memory_requirements"></a>Memory requirements</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The buffer has been created, but it doesn&#8217;t actually have any memory assigned to it yet.
+<p>The buffer has been created, but it doesn&#8217;t have any memory assigned to it yet.
 The first step of allocating memory for the buffer is to query its memory requirements using the aptly named <code>vkGetBufferMemoryRequirements</code> function.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkMemoryRequirements memRequirements;
-vkGetBufferMemoryRequirements(device, vertexBuffer, &amp;memRequirements);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::MemoryRequirements memRequirements = vertexBuffer.getMemoryRequirements();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -504,7 +534,7 @@ vkGetBufferMemoryRequirements(device, vertexBuffer, &amp;memRequirements);</code
 <div class="ulist">
 <ul>
 <li>
-<p><code>size</code>: The size of the required amount of memory in bytes, may differ from <code>bufferInfo.size</code>.</p>
+<p><code>size</code>: The size of the required memory in bytes may differ from <code>bufferInfo.size</code>.</p>
 </li>
 <li>
 <p><code>alignment</code>: The offset in bytes where the buffer begins in the allocated region of memory, depends on <code>bufferInfo.usage</code> and <code>bufferInfo.flags</code>.</p>
@@ -522,7 +552,7 @@ Let&#8217;s create a new function <code>findMemoryType</code> for this purpose.<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties) {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">uint32_t findMemoryType(uint32_t typeFilter, vk::MemoryPropertyFlags properties) {
 
 }</code></pre>
 </div>
@@ -532,8 +562,7 @@ Let&#8217;s create a new function <code>findMemoryType</code> for this purpose.<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkPhysicalDeviceMemoryProperties memProperties;
-vkGetPhysicalDeviceMemoryProperties(physicalDevice, &amp;memProperties);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PhysicalDeviceMemoryProperties memProperties = physicalDevice.getMemoryProperties();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -548,7 +577,7 @@ Right now we&#8217;ll only concern ourselves with the type of memory and not the
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">for (uint32_t i = 0; i &lt; memProperties.memoryTypeCount; i++) {
-    if (typeFilter &amp; (1 &lt;&lt; i)) {
+    if ((typeFilter &amp; (1 &lt;&lt; i))) {
         return i;
     }
 }
@@ -563,7 +592,8 @@ That means that we can find the index of a suitable memory type by simply iterat
 <div class="paragraph">
 <p>However, we&#8217;re not just interested in a memory type that is suitable for the vertex buffer.
 We also need to be able to write our vertex data to that memory.
-The <code>memoryTypes</code> array consists of <code>VkMemoryType</code> structs that specify the heap and properties of each type of memory.
+The <code>memoryTypes</code> array consists of <code>VkMemoryType</code> structs that specify the
+heap and properties of each memory type.
 The properties define special features of the memory, like being able to map it so we can write to it from the CPU.
 This property is indicated with <code>VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT</code>, but we also need to use the <code>VK_MEMORY_PROPERTY_HOST_COHERENT_BIT</code> property.
 We&#8217;ll see why when we map the memory.</p>
@@ -582,7 +612,7 @@ We&#8217;ll see why when we map the memory.</p>
 </div>
 <div class="paragraph">
 <p>We may have more than one desirable property, so we should check if the result of the bitwise AND is not just non-zero, but equal to the desired properties bit field.
-If there is a memory type suitable for the buffer that also has all of the properties we need, then we return its index, otherwise we throw an exception.</p>
+If there is a memory type suitable for the buffer that also has all the properties we need, then we return its index, otherwise we throw an exception.</p>
 </div>
 </div>
 </div>
@@ -594,10 +624,7 @@ If there is a memory type suitable for the buffer that also has all of the prope
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkMemoryAllocateInfo allocInfo{};
-allocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
-allocInfo.allocationSize = memRequirements.size;
-allocInfo.memoryTypeIndex = findMemoryType(memRequirements.memoryTypeBits, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::MemoryAllocateInfo memoryAllocateInfo{  .allocationSize = memRequirements.size, .memoryTypeIndex = findMemoryType(memRequirements.memoryTypeBits, vk::MemoryPropertyFlagBits::eHostVisible | vk::MemoryPropertyFlagBits::eHostCoherent) };</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -606,14 +633,12 @@ Create a class member to store the handle to the memory and allocate it with <co
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkBuffer vertexBuffer;
-VkDeviceMemory vertexBufferMemory;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::Buffer vertexBuffer = nullptr;
+vk::raii::DeviceMemory vertexBufferMemory = nullptr;
 
 ...
 
-if (vkAllocateMemory(device, &amp;allocInfo, nullptr, &amp;vertexBufferMemory) != VK_SUCCESS) {
-    throw std::runtime_error("failed to allocate vertex buffer memory!");
-}</code></pre>
+vertexBufferMemory = vk::raii::DeviceMemory( device, memoryAllocateInfo );</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -621,26 +646,13 @@ if (vkAllocateMemory(device, &amp;allocInfo, nullptr, &amp;vertexBufferMemory) !
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkBindBufferMemory(device, vertexBuffer, vertexBufferMemory, 0);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vertexBuffer.bindMemory( *vertexBufferMemory, 0 );</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first three parameters are self-explanatory and the fourth parameter is the offset within the region of memory.
+<p>The first parameter is self-explanatory, and the second parameter is the offset within the region of memory.
 Since this memory is allocated specifically for this the vertex buffer, the offset is simply <code>0</code>.
 If the offset is non-zero, then it is required to be divisible by <code>memRequirements.alignment</code>.</p>
-</div>
-<div class="paragraph">
-<p>Of course, just like dynamic memory allocation in C&#43;&#43;, the memory should be freed at some point.
-Memory that is bound to a buffer object may be freed once the buffer is no longer used, so let&#8217;s free it after the buffer has been destroyed:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanup() {
-    cleanupSwapChain();
-
-    vkDestroyBuffer(device, vertexBuffer, nullptr);
-    vkFreeMemory(device, vertexBufferMemory, nullptr);</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -653,29 +665,23 @@ This is done by <a href="https://en.wikipedia.org/wiki/Memory-mapped_I/O">mappin
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void* data;
-vkMapMemory(device, vertexBufferMemory, 0, bufferInfo.size, 0, &amp;data);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void* data = vertexBufferMemory.mapMemory(0, bufferInfo.size);</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>This function allows us to access a region of the specified memory resource defined by an offset and size.
-The offset and size here are <code>0</code> and <code>bufferInfo.size</code>, respectively.
-It is also possible to specify the special value <code>VK_WHOLE_SIZE</code> to map all of the memory.
-The second to last parameter can be used to specify flags, but there aren&#8217;t any available yet in the current API.
-It must be set to the value <code>0</code>.
-The last parameter specifies the output for the pointer to the mapped memory.</p>
+The offset and size here are <code>0</code> and <code>bufferInfo.size</code>, respectively.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void* data;
-vkMapMemory(device, vertexBufferMemory, 0, bufferInfo.size, 0, &amp;data);
-    memcpy(data, vertices.data(), (size_t) bufferInfo.size);
-vkUnmapMemory(device, vertexBufferMemory);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void* data = vertexBufferMemory.mapMemory(0, bufferInfo.size);
+memcpy(data, vertices.data(), bufferInfo.size);
+vertexBufferMemory.unmapMemory();</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>You can now simply <code>memcpy</code> the vertex data to the mapped memory and unmap it again using <code>vkUnmapMemory</code>.
-Unfortunately the driver may not immediately copy the data into the buffer memory, for example because of caching.
+Unfortunately, the driver may not immediately copy the data into the buffer memory, for example, because of caching.
 It is also possible that writes to the buffer are not visible in the mapped memory yet.
 There are two ways to deal with that problem:</p>
 </div>
@@ -694,8 +700,8 @@ There are two ways to deal with that problem:</p>
 Do keep in mind that this may lead to slightly worse performance than explicit flushing, but we&#8217;ll see why that doesn&#8217;t matter in the next chapter.</p>
 </div>
 <div class="paragraph">
-<p>Flushing memory ranges or using a coherent memory heap means that the driver will be aware of our writes to the buffer, but it doesn&#8217;t mean that they are actually visible on the GPU yet.
-The transfer of data to the GPU is an operation that happens in the background and the specification simply <a href="https://www.khronos.org/registry/vulkan/specs/1.3-extensions/html/chap7.html#synchronization-submission-host-writes">tells us</a> that it is guaranteed to be complete as of the next call to <code>vkQueueSubmit</code>.</p>
+<p>Flushing memory ranges or using a coherent memory heap means that the driver will be aware of our writings to the buffer, but it doesn&#8217;t mean that they are actually visible on the GPU yet.
+The transfer of data to the GPU is an operation that happens in the background, and the specification simply <a href="https://docs.vulkan.org/spec/latest/chapters/synchronization.html#synchronization-submission-host-writes">tells us</a> that it is guaranteed to be complete as of the next call to <code>vkQueueSubmit</code>.</p>
 </div>
 </div>
 </div>
@@ -708,13 +714,11 @@ We&#8217;re going to extend the <code>recordCommandBuffer</code> function to do 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[currentFrame].bindPipeline(vk::PipelineBindPoint::eGraphics, *graphicsPipeline);
 
-VkBuffer vertexBuffers[] = {vertexBuffer};
-VkDeviceSize offsets[] = {0};
-vkCmdBindVertexBuffers(commandBuffer, 0, 1, vertexBuffers, offsets);
+commandBuffers[currentFrame].bindVertexBuffers(0, *vertexBuffer, {0});
 
-vkCmdDraw(commandBuffer, static_cast&lt;uint32_t&gt;(vertices.size()), 1, 0, 0);</code></pre>
+commandBuffers[currentFrame].draw(3, 1, 0, 0);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -744,7 +748,7 @@ You should also change the call to <code>vkCmdDraw</code> to pass the number of 
 </div>
 </div>
 <div class="paragraph">
-<p>Run the program again and you should see the following:</p>
+<p>Run the program again, and you should see the following:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -752,10 +756,13 @@ You should also change the call to <code>vkCmdDraw</code> to pass the number of 
 </div>
 </div>
 <div class="paragraph">
-<p>In the <a href="02_Staging_buffer.html" class="xref page">next chapter</a> we&#8217;ll look at a different way to copy vertex data to a vertex buffer that results in better performance, but takes some more work.</p>
+<p>In the <a href="02_Staging_buffer.html" class="xref page">next chapter,</a> we&#8217;ll look at a different way to copy vertex data to a vertex buffer that results in better performance, but takes some more work.</p>
 </div>
 <div class="paragraph">
-<p><a href="../_attachments/19_vertex_buffer.cpp">C&#43;&#43; code</a> / <a href="../_attachments/18_shader_vertexbuffer.vert">Vertex shader</a> / <a href="../_attachments/18_shader_vertexbuffer.frag">Fragment shader</a></p>
+<p><a href="../_attachments/19_vertex_buffer.cpp">C&#43;&#43; code</a> /
+<a href="../_attachments/18_shader_vertexbuffer.slang">slang shader</a> /
+<a href="../_attachments/18_shader_vertexbuffer.vert">GLSL Vertex shader</a> /
+<a href="../_attachments/18_shader_vertexbuffer.frag">GLSL Fragment shader</a></p>
 </div>
 </div>
 </div>
@@ -765,9 +772,56 @@ You should also change the call to <code>vkCmdDraw</code> to pass the number of 
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

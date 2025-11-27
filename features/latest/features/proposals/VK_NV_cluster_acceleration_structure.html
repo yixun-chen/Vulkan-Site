@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="features" data-version="latest">
+<div class="nav-container" data-component="features" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -139,6 +141,9 @@
     <span class="nav-text">Feature Descriptions</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_AMDX_dense_geometry_format.html">VK_AMDX_dense_geometry_format</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_AMDX_shader_enqueue.html">VK_AMDX_shader_enqueue</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -151,10 +156,16 @@
     <a class="nav-link" href="VK_ANDROID_external_format_resolve.html">VK_ANDROID_external_format_resolve</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_ARM_performance_counters_by_region.html">VK_ARM_performance_counters_by_region</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_ARM_pipeline_opacity_micromap.html">VK_ARM_pipeline_opacity_micromap</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_ARM_render_pass_striped.html">VK_ARM_render_pass_striped</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_ARM_tensors.html">VK_ARM_tensors</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_attachment_feedback_loop_dynamic_state.html">VK_EXT_attachment_feedback_loop_dynamic_state</a>
@@ -164,6 +175,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_calibrated_timestamps.html">VK_EXT_calibrated_timestamps</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_custom_resolve.html">VK_EXT_custom_resolve</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_depth_bias_control.html">VK_EXT_depth_bias_control</a>
@@ -226,6 +240,9 @@
     <a class="nav-link" href="VK_EXT_map_memory_placed.html">VK_EXT_map_memory_placed</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_memory_decompression.html">VK_EXT_memory_decompression</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_mesh_shader.html">VK_EXT_mesh_shader</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -253,10 +270,22 @@
     <a class="nav-link" href="VK_EXT_present_mode_fifo_latest_ready.html">VK_EXT_present_mode_fifo_latest_ready</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_present_timing.html">VK_EXT_present_timing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_primitives_generated_query.html">VK_EXT_primitives_generated_query</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_rasterization_order_attachment_access.html">VK_EXT_rasterization_order_attachment_access</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_ray_tracing_invocation_reorder.html">VK_EXT_ray_tracing_invocation_reorder</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_shader_64bit_indexing.html">VK_EXT_shader_64bit_indexing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_shader_float8.html">VK_EXT_shader_float8</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_shader_module_identifier.html">VK_EXT_shader_module_identifier</a>
@@ -271,6 +300,9 @@
     <a class="nav-link" href="VK_EXT_shader_tile_image.html">VK_EXT_shader_tile_image</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_shader_uniform_buffer_unsized_array.html">VK_EXT_shader_uniform_buffer_unsized_array</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_subpass_merge_feedback.html">VK_EXT_subpass_merge_feedback</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -278,6 +310,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_EXT_swapchain_maintenance1.html">VK_EXT_swapchain_maintenance1</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_EXT_zero_initialize_device_memory.html">VK_EXT_zero_initialize_device_memory</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_GOOGLE_surfaceless_query.html">VK_GOOGLE_surfaceless_query</a>
@@ -295,6 +330,9 @@
     <a class="nav-link" href="VK_KHR_cooperative_matrix.html">VK_KHR_cooperative_matrix</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_copy_memory_indirect.html">VK_KHR_copy_memory_indirect</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_dynamic_rendering.html">VK_KHR_dynamic_rendering</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -310,6 +348,9 @@
     <a class="nav-link" href="VK_KHR_load_store_op_none.html">VK_KHR_load_store_op_none</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_maintenance10.html">VK_KHR_maintenance10</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_maintenance5.html">VK_KHR_maintenance5</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -322,10 +363,22 @@
     <a class="nav-link" href="VK_KHR_maintenance8.html">VK_KHR_maintenance8</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_maintenance9.html">VK_KHR_maintenance9</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_map_memory2.html">VK_KHR_map_memory2</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_pipeline_binary.html">VK_KHR_pipeline_binary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_present_id2.html">VK_KHR_present_id2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_present_mode_fifo_latest_ready.html">VK_KHR_present_mode_fifo_latest_ready</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_present_wait2.html">VK_KHR_present_wait2</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_ray_tracing_position_fetch.html">VK_KHR_ray_tracing_position_fetch</a>
@@ -338,6 +391,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_shader_float_controls2.html">VK_KHR_shader_float_controls2</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_shader_fma.html">VK_KHR_shader_fma</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_shader_integer_dot_product.html">VK_KHR_shader_integer_dot_product</a>
@@ -355,6 +411,18 @@
     <a class="nav-link" href="VK_KHR_shader_subgroup_rotate.html">Subgroup rotation instruction</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_shader_untyped_pointers.html">VK_KHR_shader_untyped_pointers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_surface_maintenance1.html">VK_KHR_surface_maintenance1</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_swapchain_maintenance1.html">VK_KHR_swapchain_maintenance1</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_unified_image_layouts.html">VK_KHR_unified_image_layouts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_vertex_attribute_divisor.html">VK_KHR_vertex_attribute_divisor</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -370,6 +438,9 @@
     <a class="nav-link" href="VK_KHR_video_decode_queue.html">VK_KHR_video_decode_queue</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_video_decode_vp9.html">VK_KHR_video_decode_vp9</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_video_encode_av1.html">VK_KHR_video_encode_av1</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -377,6 +448,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_video_encode_h265.html">VK_KHR_video_encode_h265</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_KHR_video_encode_intra_refresh.html">VK_KHR_video_encode_intra_refresh</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_KHR_video_encode_quantization_map.html">VK_KHR_video_encode_quantization_map</a>
@@ -424,6 +498,9 @@
     <a class="nav-link" href="VK_NV_ray_tracing_validation.html">VK_NV_ray_tracing_validation</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_QCOM_data_graph_model.html">VK_QCOM_data_graph_model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_QCOM_image_processing.html">VK_QCOM_image_processing</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -437,6 +514,9 @@
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_VERSION_1_4.html">Vulkan 1.4</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VulkanBase.html">Vulkan Base</a>
   </li>
 </ul>
   </li>
@@ -464,6 +544,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -504,7 +592,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../../spec/latest/index.html" class="home-link"></a>
@@ -800,6 +888,7 @@ memory requirements, performing the build or move operation. The word
     VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_NV = 2,
     VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_BUILD_TRIANGLE_CLUSTER_TEMPLATE_NV = 3,
     VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV = 4,
+    VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_GET_CLUSTER_TEMPLATE_INDICES_NV = 5,
     VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_MAX_ENUM_NV = 0x7FFFFFFF
 } VkClusterAccelerationStructureOpTypeNV;</code></pre>
 </div>
@@ -820,6 +909,9 @@ memory requirements, performing the build or move operation. The word
 </li>
 <li>
 <p><code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV</code> means a cluster template acceleration structures will be instantiated.</p>
+</li>
+<li>
+<p><code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_GET_CLUSTER_TEMPLATE_INDICES_NV</code> means a cluster template acceleration structures vertex index data will be fetched.</p>
 </li>
 </ul>
 </div>
@@ -998,7 +1090,8 @@ address in <code>VkClusterAccelerationStructureCommandsInfoNV</code>. It can be 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">- VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_IMPLICIT_DATA_BIT_NV
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">- VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_NONE_NV
+- VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_IMPLICIT_DATA_BIT_NV
 - VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_SCRATCH_DATA_BIT_NV
 - VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_ADDRESS_ARRAY_BIT_NV
 - VK_CLUSTER_ACCELERATION_STRUCTURE_ADDRESS_RESOLUTION_INDIRECTED_DST_SIZES_ARRAY_BIT_NV
@@ -1025,6 +1118,9 @@ address in <code>VkClusterAccelerationStructureCommandsInfoNV</code>. It can be 
 </li>
 <li>
 <p><code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_INSTANTIATE_TRIANGLE_CLUSTER_NV</code> : <code>VkClusterAccelerationStructureInstantiateClusterInfoNV</code></p>
+</li>
+<li>
+<p><code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_TYPE_GET_CLUSTER_TEMPLATE_INDICES_NV</code> : <code>VkClusterAccelerationStructureGetTemplateIndicesInfoNV</code></p>
 </li>
 </ul>
 </div>
@@ -1126,6 +1222,16 @@ structure. Refer to the spec for more details on individual parameters:</p>
 } VkClusterAccelerationStructureInstantiateClusterInfoNV;</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>If fetching the vertex index data of a cluster template acceleration structure, its address is specified in:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">typedef struct VkClusterAccelerationStructureGetTemplateIndicesInfoNV {
+    VkDeviceAddress                       clusterTemplateAddress;
+} VkClusterAccelerationStructureGetTemplateIndicesInfoNV;</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1153,9 +1259,56 @@ This should be revisited when the extension is promoted.</p>
 </div>
 <script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
-<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

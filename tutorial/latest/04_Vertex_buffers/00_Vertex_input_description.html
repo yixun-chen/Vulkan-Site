@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../spec/latest/index.html" class="home-link"></a>
@@ -378,42 +439,40 @@ We&#8217;ll start with the easiest approach of creating a CPU visible buffer and
 <h2 id="_vertex_shader"><a class="anchor" href="#_vertex_shader"></a>Vertex shader</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>First change the vertex shader to no longer include the vertex data in the shader code itself.
-The vertex shader takes input from a vertex buffer using the <code>in</code> keyword.</p>
+<p>First, change the vertex shader to no longer include the vertex data in the shader code itself.
+The vertex shader takes input from a vertex buffer by being declared in a
+struct in the proper order.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">#version 450
+<pre class="highlightjs highlight"><code class="language-slang hljs" data-lang="slang">struct VSInput {
+    float2 inPosition;
+    float3 inColor;
+};
 
-layout(location = 0) in vec2 inPosition;
-layout(location = 1) in vec3 inColor;
+struct VSOutput
+{
+    float4 pos : SV_Position;
+    float3 color;
+};
 
-layout(location = 0) out vec3 fragColor;
+[shader("vertex")]
+VSOutput vertMain(VSInput input) {
+    VSOutput output;
+    output.pos = float4(input.inPosition, 0.0, 1.0);
+    output.color = input.inColor;
+    return output;
+}
 
-void main() {
-    gl_Position = vec4(inPosition, 0.0, 1.0);
-    fragColor = inColor;
+[shader("fragment")]
+float4 fragMain(VSOutput vertIn) : SV_TARGET {
+    return float4(vertIn.color, 1.0);
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The <code>inPosition</code> and <code>inColor</code> variables are <em>vertex attributes</em>.
-They&#8217;re properties that are specified per-vertex in the vertex buffer, just like we manually specified a position and color per vertex using the two arrays.
-Make sure to recompile the vertex shader!</p>
-</div>
-<div class="paragraph">
-<p>Just like <code>fragColor</code>, the <code>layout(location = x)</code> annotations assign indices to the inputs that we can later use to reference them.
-It is important to know that some types, like <code>dvec3</code> 64 bit vectors, use multiple <em>slots</em>.
-That means that the index after it must be at least 2 higher:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">layout(location = 0) in dvec3 inPosition;
-layout(location = 2) in vec3 inColor;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can find more info about the layout qualifier in the <a href="https://www.khronos.org/opengl/wiki/Layout_Qualifier_(GLSL)">OpenGL wiki</a>.</p>
+They&#8217;re properties that are specified per-vertex in the vertex buffer just like we manually specified a position and color per vertex using the two arrays.</p>
 </div>
 </div>
 </div>
@@ -476,10 +535,8 @@ There are two types of structures needed to convey this information.</p>
     glm::vec2 pos;
     glm::vec3 color;
 
-    static VkVertexInputBindingDescription getBindingDescription() {
-        VkVertexInputBindingDescription bindingDescription{};
-
-        return bindingDescription;
+    static vk::VertexInputBindingDescription getBindingDescription() {
+        return { 0, sizeof(Vertex), vk::VertexInputRate::eVertex };
     }
 };</code></pre>
 </div>
@@ -487,14 +544,6 @@ There are two types of structures needed to convey this information.</p>
 <div class="paragraph">
 <p>A vertex binding describes at which rate to load data from memory throughout the vertices.
 It specifies the number of bytes between data entries and whether to move to the next data entry after each vertex or after each instance.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkVertexInputBindingDescription bindingDescription{};
-bindingDescription.binding = 0;
-bindingDescription.stride = sizeof(Vertex);
-bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;</code></pre>
-</div>
 </div>
 <div class="paragraph">
 <p>All of our per-vertex data is packed together in one array, so we&#8217;re only going to have one binding.
@@ -529,10 +578,11 @@ We&#8217;re going to add another helper function to <code>Vertex</code> to fill 
 
 ...
 
-static std::array&lt;VkVertexInputAttributeDescription, 2&gt; getAttributeDescriptions() {
-    std::array&lt;VkVertexInputAttributeDescription, 2&gt; attributeDescriptions{};
-
-    return attributeDescriptions;
+static std::array&lt;vk::VertexInputAttributeDescription, 2&gt; getAttributeDescriptions() {
+    return {
+        vk::VertexInputAttributeDescription( 0, 0, vk::Format::eR32G32Sfloat, offsetof(Vertex, pos) ),
+        vk::VertexInputAttributeDescription( 1, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, color) )
+    };
 }</code></pre>
 </div>
 </div>
@@ -540,14 +590,6 @@ static std::array&lt;VkVertexInputAttributeDescription, 2&gt; getAttributeDescri
 <p>As the function prototype indicates, there are going to be two of these structures.
 An attribute description struct describes how to extract a vertex attribute from a chunk of vertex data originating from a binding description.
 We have two attributes, position and color, so we need two attribute description structs.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">attributeDescriptions[0].binding = 0;
-attributeDescriptions[0].location = 0;
-attributeDescriptions[0].format = VK_FORMAT_R32G32_SFLOAT;
-attributeDescriptions[0].offset = offsetof(Vertex, pos);</code></pre>
-</div>
 </div>
 <div class="paragraph">
 <p>The <code>binding</code> parameter tells Vulkan from which binding the per-vertex data comes.
@@ -565,13 +607,13 @@ The following shader types and formats are commonly used together:</p>
 <p><code>float</code>: <code>VK_FORMAT_R32_SFLOAT</code></p>
 </li>
 <li>
-<p><code>vec2</code>: <code>VK_FORMAT_R32G32_SFLOAT</code></p>
+<p><code>float2</code>: <code>VK_FORMAT_R32G32_SFLOAT</code></p>
 </li>
 <li>
-<p><code>vec3</code>: <code>VK_FORMAT_R32G32B32_SFLOAT</code></p>
+<p><code>float3</code>: <code>VK_FORMAT_R32G32B32_SFLOAT</code></p>
 </li>
 <li>
-<p><code>vec4</code>: <code>VK_FORMAT_R32G32B32A32_SFLOAT</code></p>
+<p><code>float4</code>: <code>VK_FORMAT_R32G32B32A32_SFLOAT</code></p>
 </li>
 </ul>
 </div>
@@ -585,10 +627,12 @@ See the following examples:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>ivec2</code>: <code>VK_FORMAT_R32G32_SINT</code>, a 2-component vector of 32-bit signed integers</p>
+<p><code>int2</code>: <code>VK_FORMAT_R32G32_SINT</code>, a 2-component vector of 32-bit signed
+integers</p>
 </li>
 <li>
-<p><code>uvec4</code>: <code>VK_FORMAT_R32G32B32A32_UINT</code>, a 4-component vector of 32-bit unsigned integers</p>
+<p><code>uint4</code>: <code>VK_FORMAT_R32G32B32A32_UINT</code>, a 4-component vector of 32-bit
+unsigned integers</p>
 </li>
 <li>
 <p><code>double</code>: <code>VK_FORMAT_R64_SFLOAT</code>, a double-precision (64-bit) float</p>
@@ -596,17 +640,9 @@ See the following examples:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>format</code> parameter implicitly defines the byte size of attribute data and the <code>offset</code> parameter specifies the number of bytes since the start of the per-vertex data to read from.
+<p>The <code>format</code> parameter implicitly defines the byte size of attribute data and the <code>offset</code> parameter has specified the number of bytes since the start of the per-vertex data to read from.
 The binding is loading one <code>Vertex</code> at a time and the position attribute (<code>pos</code>) is at an offset of <code>0</code> bytes from the beginning of this struct.
 This is automatically calculated using the <code>offsetof</code> macro.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">attributeDescriptions[1].binding = 0;
-attributeDescriptions[1].location = 1;
-attributeDescriptions[1].format = VK_FORMAT_R32G32B32_SFLOAT;
-attributeDescriptions[1].offset = offsetof(Vertex, color);</code></pre>
-</div>
 </div>
 <div class="paragraph">
 <p>The color attribute is described in much the same way.</p>
@@ -624,11 +660,8 @@ Find the <code>vertexInputInfo</code> struct and modify it to reference the two 
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">auto bindingDescription = Vertex::getBindingDescription();
 auto attributeDescriptions = Vertex::getAttributeDescriptions();
-
-vertexInputInfo.vertexBindingDescriptionCount = 1;
-vertexInputInfo.vertexAttributeDescriptionCount = static_cast&lt;uint32_t&gt;(attributeDescriptions.size());
-vertexInputInfo.pVertexBindingDescriptions = &amp;bindingDescription;
-vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();</code></pre>
+vk::PipelineVertexInputStateCreateInfo vertexInputInfo {  .vertexBindingDescriptionCount =1, .pVertexBindingDescriptions = &amp;bindingDescription,
+    .vertexAttributeDescriptionCount = attributeDescriptions.size(), .pVertexAttributeDescriptions = attributeDescriptions.data() };</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -637,7 +670,10 @@ If you run the program now with validation layers enabled, you&#8217;ll see that
 The <a href="01_Vertex_buffer_creation.html" class="xref page">next step</a> is to create a vertex buffer and move the vertex data to it so the GPU is able to access it.</p>
 </div>
 <div class="paragraph">
-<p><a href="../_attachments/18_vertex_input.cpp">C&#43;&#43; code</a> / <a href="../_attachments/18_shader_vertexbuffer.vert">Vertex shader</a> / <a href="../_attachments/18_shader_vertexbuffer.frag">Fragment shader</a></p>
+<p><a href="../_attachments/18_vertex_input.cpp">C&#43;&#43; code</a> /
+<a href="../_attachments/18_shader_vertexbuffer.slang">slang shader</a> /
+<a href="../_attachments/18_shader_vertexbuffer.vert">GLSL Vertex shader</a> /
+<a href="../_attachments/18_shader_vertexbuffer.frag">GLSL Fragment shader</a></p>
 </div>
 </div>
 </div>
@@ -647,9 +683,56 @@ The <a href="01_Vertex_buffer_creation.html" class="xref page">next step</a> is 
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

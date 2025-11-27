@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="spec" data-version="latest">
+<div class="nav-container" data-component="spec" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -128,6 +130,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="preamble.html">Preamble</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="introduction.html">Introduction</a>
   </li>
@@ -162,6 +167,9 @@
     <a class="nav-link" href="resources.html">Resource Creation</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="images.html">Images</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="samplers.html">Samplers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -175,6 +183,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="fragmentdensitymapops.html">Fragment Density Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_tensors/tensorops.html">Tensor Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="queries.html">Queries</a>
@@ -231,10 +242,13 @@
     <a class="nav-link" href="VK_KHR_deferred_host_operations/deferred_host_operations.html">Deferred Host Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_EXT_private_data.html">Private Data</a>
+    <a class="nav-link" href="private_data.html">Private Data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="accelstructures.html">Acceleration Structures</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_AMDX_dense_geometry_format/dense_geometry_format.html">Compressed triangle data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="VK_EXT_opacity_micromap/micromaps.html">Micromap</a>
@@ -246,7 +260,7 @@
     <a class="nav-link" href="raytracing.html">Ray Tracing</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_NV_memory_decompression.html">Memory Decompression</a>
+    <a class="nav-link" href="memory_decompression.html">Memory Decompression</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="videocoding.html">Video Coding</a>
@@ -256,6 +270,12 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="executiongraphs.html">Execution Graphs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_NV_external_compute_queue/VK_NV_external_compute_queue.html">External Compute Queues</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_data_graph/graphs.html">Data graphs</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="extensions.html">Extending Vulkan</a>
@@ -292,6 +312,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/roadmap.html">Vulkan Roadmap Milestones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendices/legacy.html">Legacy and Superseded Functionality</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/boilerplate.html">API Boilerplate</a>
@@ -333,6 +356,14 @@
       </ul>
     </li>
     <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
       <div class="title"><a href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a></div>
       <ul class="versions">
         <li class="version is-latest">
@@ -369,7 +400,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
@@ -828,10 +859,6 @@ then <a href="#primsrast-sampleshading">sample shading</a> <strong>must</strong>
 <p><a id="VUID-VkPipelineMultisampleStateCreateInfo-rasterizationSamples-parameter" href="#VUID-VkPipelineMultisampleStateCreateInfo-rasterizationSamples-parameter"></a> <span class="vuid">VUID-VkPipelineMultisampleStateCreateInfo-rasterizationSamples-parameter</span><br>
  <code>rasterizationSamples</code> <strong>must</strong> be a valid <a href="limits.html#VkSampleCountFlagBits" class="xref page">VkSampleCountFlagBits</a> value</p>
 </li>
-<li>
-<p><a id="VUID-VkPipelineMultisampleStateCreateInfo-pSampleMask-parameter" href="#VUID-VkPipelineMultisampleStateCreateInfo-pSampleMask-parameter"></a> <span class="vuid">VUID-VkPipelineMultisampleStateCreateInfo-pSampleMask-parameter</span><br>
- If <code>pSampleMask</code> is not <code>NULL</code>, <code>pSampleMask</code> <strong>must</strong> be a valid pointer to an array of <span class="steminline"> <svg style="vertical-align: -0.816ex; overflow: visible;" xmlns="http://www.w3.org/2000/svg" width="17.438ex" height="3.023ex" role="img" focusable="false" viewBox="0 -975.7 7707.5 1336.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2308" d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(444,0)"><g data-mml-node="mfrac"><g data-mml-node="TeXAtom" transform="translate(220,477.2) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="72" d="M81 278Q75 284 75 289Q77 301 89 339Q122 442 183 442Q219 442 241 425T271 384L283 396Q327 442 384 442Q424 442 454 421T484 362Q484 327 464 312T424 296Q407 296 396 305T385 331Q385 352 394 365T414 384T424 390Q409 405 378 405Q322 405 276 315L268 300L234 161Q200 25 196 16Q182 -11 152 -11T120 18Q120 23 159 181Q199 343 199 346Q202 360 202 372Q202 405 182 405Q164 405 150 377T128 316T117 280Q115 278 98 278H81Z"></path><path data-c="61" d="M418 53Q418 26 438 26Q466 26 494 131Q500 151 504 152Q507 153 516 153H521Q531 153 534 153T540 150T543 144Q543 141 540 126T529 88T509 43T477 5T434 -11Q404 -11 383 3T354 30T347 48H346Q345 47 342 45T337 40Q282 -11 228 -11Q172 -11 137 34T101 146Q101 260 177 351T333 442Q343 442 352 441T369 437T382 431T393 425T402 417T409 410T414 402T419 396Q423 406 436 414T461 422Q475 422 484 413T494 395Q494 384 459 244T420 88Q418 80 418 58V53ZM397 323Q397 344 382 374T333 405Q302 405 271 372Q249 349 235 316T203 215Q184 135 184 108V100V94Q184 54 207 35Q218 26 235 26Q279 26 330 91Q343 109 346 118T372 217Q397 317 397 323Z" transform="translate(422,0)"></path><path data-c="73" d="M153 285Q153 349 197 395T311 442Q355 442 386 420T418 356Q418 321 401 308T365 294Q336 294 331 326Q331 336 334 345T343 359T353 368T362 374L366 376Q365 379 362 383T344 396T308 404Q265 404 246 377T226 325T244 289T287 275T339 258T383 212Q395 188 395 163Q395 132 379 95T333 32Q279 -11 207 -11Q154 -11 115 13T76 86Q76 108 83 123T102 145T121 153T135 156Q154 156 164 145T175 117Q175 82 142 66L132 62Q131 62 131 61Q131 57 139 49T166 34T210 26Q250 26 277 44T312 83T321 123Q321 153 301 166T248 185T204 198Q176 211 162 241Q153 258 153 285Z" transform="translate(933,0)"></path><path data-c="74" d="M94 385Q87 392 87 395Q87 399 90 411T95 425Q97 430 103 430T149 431H196L215 511Q218 521 222 539T228 565T234 585T242 603T251 615T264 623T281 626Q311 626 315 597Q315 591 296 513T275 433Q275 431 320 431H366Q373 424 373 420Q373 398 360 385H263L189 86Q188 80 188 61V54Q188 29 201 27Q213 23 229 30Q253 37 276 66T316 138Q321 149 324 151T342 153H347Q364 153 364 146T360 130Q331 63 290 26T202 -11Q158 -11 135 18T111 81Q111 93 129 168T166 314L184 383Q184 385 139 385H94Z" transform="translate(1342,0)"></path><path data-c="65" d="M107 166Q107 230 131 283T193 369T270 420T345 441Q346 441 352 441T361 442H364Q409 442 439 418T470 355Q470 270 366 239Q308 223 218 223H205Q189 164 189 125Q189 83 206 55T261 27Q309 27 353 50T426 109Q436 121 440 121T453 111T466 97Q469 92 455 77Q424 41 372 16T258 -10Q184 -10 146 41T107 166ZM416 333T416 354T401 390T360 405Q322 405 292 384T246 336T223 288T215 261Q215 260 240 260Q262 261 276 262T314 266T353 275T384 291T408 317Z" transform="translate(1674,0)"></path><path data-c="72" d="M81 278Q75 284 75 289Q77 301 89 339Q122 442 183 442Q219 442 241 425T271 384L283 396Q327 442 384 442Q424 442 454 421T484 362Q484 327 464 312T424 296Q407 296 396 305T385 331Q385 352 394 365T414 384T424 390Q409 405 378 405Q322 405 276 315L268 300L234 161Q200 25 196 16Q182 -11 152 -11T120 18Q120 23 159 181Q199 343 199 346Q202 360 202 372Q202 405 182 405Q164 405 150 377T128 316T117 280Q115 278 98 278H81Z" transform="translate(2134,0)"></path><path data-c="69" d="M234 599Q234 620 251 638T292 656Q306 656 319 647T332 617Q332 594 313 577T273 560Q260 560 247 569T234 599ZM75 287Q75 292 82 313T103 362T142 413T196 441H214Q248 441 270 419T293 357Q292 338 289 330T245 208Q193 72 193 46Q193 26 209 26Q228 26 247 43Q273 71 292 136Q295 148 297 150T311 153H317Q327 153 330 153T337 150T340 143Q340 133 330 105T292 41T228 -8Q220 -10 204 -10Q160 -10 141 15T122 71Q122 98 171 227T221 384Q221 396 218 400T203 405Q175 403 156 374T128 312T116 279Q115 278 97 278H81Q75 284 75 287Z" transform="translate(2556,0)"></path><path data-c="7A" d="M160 317Q158 317 155 317Q136 317 136 324Q136 351 171 396T260 442Q292 442 321 410T365 375H369Q384 375 404 408L425 441Q427 442 444 442H460Q466 436 466 434Q466 419 426 367Q387 314 294 222T178 105L170 95L181 94Q198 93 236 81T295 68Q328 68 356 89T395 141Q398 150 401 151T419 153Q441 153 441 144Q441 110 394 50T282 -11Q251 -11 221 23T171 57Q157 57 143 47T121 26T104 3T95 -10Q93 -11 76 -11H60Q54 -5 54 -2Q54 3 61 14Q103 88 233 215Q349 329 349 338L302 351Q269 362 247 362Q227 362 212 356T192 342T183 327T178 320Q175 317 160 317Z" transform="translate(2863,0)"></path><path data-c="61" d="M418 53Q418 26 438 26Q466 26 494 131Q500 151 504 152Q507 153 516 153H521Q531 153 534 153T540 150T543 144Q543 141 540 126T529 88T509 43T477 5T434 -11Q404 -11 383 3T354 30T347 48H346Q345 47 342 45T337 40Q282 -11 228 -11Q172 -11 137 34T101 146Q101 260 177 351T333 442Q343 442 352 441T369 437T382 431T393 425T402 417T409 410T414 402T419 396Q423 406 436 414T461 422Q475 422 484 413T494 395Q494 384 459 244T420 88Q418 80 418 58V53ZM397 323Q397 344 382 374T333 405Q302 405 271 372Q249 349 235 316T203 215Q184 135 184 108V100V94Q184 54 207 35Q218 26 235 26Q279 26 330 91Q343 109 346 118T372 217Q397 317 397 323Z" transform="translate(3272,0)"></path><path data-c="74" d="M94 385Q87 392 87 395Q87 399 90 411T95 425Q97 430 103 430T149 431H196L215 511Q218 521 222 539T228 565T234 585T242 603T251 615T264 623T281 626Q311 626 315 597Q315 591 296 513T275 433Q275 431 320 431H366Q373 424 373 420Q373 398 360 385H263L189 86Q188 80 188 61V54Q188 29 201 27Q213 23 229 30Q253 37 276 66T316 138Q321 149 324 151T342 153H347Q364 153 364 146T360 130Q331 63 290 26T202 -11Q158 -11 135 18T111 81Q111 93 129 168T166 314L184 383Q184 385 139 385H94Z" transform="translate(3783,0)"></path><path data-c="69" d="M234 599Q234 620 251 638T292 656Q306 656 319 647T332 617Q332 594 313 577T273 560Q260 560 247 569T234 599ZM75 287Q75 292 82 313T103 362T142 413T196 441H214Q248 441 270 419T293 357Q292 338 289 330T245 208Q193 72 193 46Q193 26 209 26Q228 26 247 43Q273 71 292 136Q295 148 297 150T311 153H317Q327 153 330 153T337 150T340 143Q340 133 330 105T292 41T228 -8Q220 -10 204 -10Q160 -10 141 15T122 71Q122 98 171 227T221 384Q221 396 218 400T203 405Q175 403 156 374T128 312T116 279Q115 278 97 278H81Q75 284 75 287Z" transform="translate(4115,0)"></path><path data-c="6F" d="M103 155Q103 266 185 354T366 442Q435 442 476 394T517 275Q517 169 436 79T255 -11Q194 -11 149 32T103 155ZM187 119Q187 67 209 47T260 26Q290 26 321 47Q354 68 380 113T426 260Q432 291 432 315Q432 361 408 385Q388 405 358 405Q319 405 283 374T227 294Q217 271 202 213T187 119Z" transform="translate(4422,0)"></path><path data-c="6E" d="M449 44Q449 26 465 26Q482 26 502 43Q528 71 547 136Q550 148 552 150T566 153H572Q582 153 585 153T592 150T595 143Q595 133 585 105T547 41T483 -8Q475 -10 459 -10Q421 -10 399 12T377 72Q377 93 393 135Q448 288 448 349Q448 367 447 372Q437 405 408 405Q381 405 357 393T315 360T291 329T278 309Q267 290 262 274T231 151Q199 24 196 16Q182 -11 152 -11T120 18Q120 23 159 181Q199 343 199 346Q202 360 202 372Q202 406 183 406Q163 406 148 374Q142 360 135 338T124 299T117 280T98 278H81Q75 284 75 287Q76 293 78 303T90 341T110 388T141 425T184 442Q195 442 204 441T221 436T235 429T247 421T256 412T262 403T267 394T271 387T273 381L274 378V374L287 387Q342 442 414 442Q474 442 500 410T526 338Q526 290 488 178T449 44Z" transform="translate(4933,0)"></path><path data-c="53" d="M198 460Q198 551 269 628T432 705Q516 705 557 644L583 673Q589 679 593 684T600 693T605 698T609 702T611 704T614 705T618 705H620Q633 705 633 698T605 577T573 459L570 456H554Q546 456 543 456T536 457T532 460T531 466Q531 469 533 489T536 532Q536 573 525 600T496 640T462 657T427 662Q369 662 325 612T281 503Q281 475 290 458T318 430T356 415T407 401T463 383Q506 360 522 323T538 258V244Q538 141 465 60T300 -22Q198 -22 152 41L143 31Q137 25 126 12T106 -10T95 -21L92 -22Q88 -22 86 -22Q81 -22 78 -20T74 -16V-14Q74 -11 132 221Q134 227 155 227H171Q177 221 177 215Q177 212 175 205T171 182T169 147Q171 99 195 70T246 33T306 25Q358 25 400 70T453 169Q455 180 455 203V210Q455 263 414 285Q409 288 347 305Q271 328 254 339Q239 350 224 371Q198 409 198 460Z" transform="translate(5495,0)"></path><path data-c="61" d="M418 53Q418 26 438 26Q466 26 494 131Q500 151 504 152Q507 153 516 153H521Q531 153 534 153T540 150T543 144Q543 141 540 126T529 88T509 43T477 5T434 -11Q404 -11 383 3T354 30T347 48H346Q345 47 342 45T337 40Q282 -11 228 -11Q172 -11 137 34T101 146Q101 260 177 351T333 442Q343 442 352 441T369 437T382 431T393 425T402 417T409 410T414 402T419 396Q423 406 436 414T461 422Q475 422 484 413T494 395Q494 384 459 244T420 88Q418 80 418 58V53ZM397 323Q397 344 382 374T333 405Q302 405 271 372Q249 349 235 316T203 215Q184 135 184 108V100V94Q184 54 207 35Q218 26 235 26Q279 26 330 91Q343 109 346 118T372 217Q397 317 397 323Z" transform="translate(6057,0)"></path><path data-c="6D" d="M81 278Q75 284 75 289Q77 299 89 338Q101 373 114 396T142 428T166 439T186 442H189Q225 440 251 417Q266 401 271 384L275 374L286 386Q342 442 414 442Q428 442 440 440T461 435T479 427T493 418T503 407T511 397T516 387T520 378T523 370L524 366Q546 395 583 418T667 442Q729 442 755 411T782 338Q782 290 743 178T704 45Q704 26 720 26Q773 26 802 136Q805 148 807 150T822 153H828Q838 153 841 153T848 150T851 143Q851 137 843 115T821 63T778 12T715 -10Q671 -10 652 16T632 71Q632 88 668 191T704 349Q704 367 703 372Q693 405 664 405Q637 405 613 393T571 360T547 329T534 309Q523 290 518 274T487 151Q455 24 452 16Q438 -11 408 -11T376 18Q376 26 411 167T447 314Q449 325 449 346Q449 372 444 384Q431 405 408 405Q334 405 276 305Q266 289 262 273T231 151Q199 24 196 16Q182 -11 152 -11T120 18Q120 26 159 182T200 347Q202 361 202 372Q202 405 181 405Q168 405 159 391Q145 374 132 328T117 280T98 278H81Z" transform="translate(6568,0)"></path><path data-c="70" d="M81 278Q75 284 75 287Q93 379 131 417Q154 442 189 442Q222 440 243 423T272 382L280 390Q335 442 389 442Q446 442 482 398T518 284Q518 212 480 137T375 19Q321 -10 291 -10H282H278Q237 -10 204 28L202 32L181 -51Q160 -135 160 -139Q160 -147 205 -148H230Q236 -155 236 -157T233 -175Q230 -187 227 -190T214 -194Q211 -194 202 -194T169 -193T108 -192Q40 -192 21 -194H13Q6 -187 6 -183T9 -167Q13 -153 16 -151T39 -148Q73 -147 78 -136Q82 -128 139 104Q199 337 199 347Q202 362 202 372Q202 406 182 406Q169 406 159 391Q145 374 132 328T117 280T98 278H81ZM221 111Q234 26 286 26Q307 26 336 47T385 116Q398 147 416 217T435 332Q435 354 433 361Q420 405 383 405Q333 405 279 326L273 317L221 111Z" transform="translate(7386,0)"></path><path data-c="6C" d="M162 61Q162 26 183 26Q211 26 239 131Q245 151 249 152Q252 153 261 153H266H271Q288 153 288 144Q288 143 286 129Q276 91 266 65T232 14T179 -11Q144 -11 116 12T87 81Q87 96 88 102L216 616Q216 629 209 632T170 637H149Q143 643 143 645T145 664Q150 683 158 683Q163 683 223 688T300 694Q312 694 312 686Q312 676 240 389L164 86Q162 74 162 61Z" transform="translate(7897,0)"></path><path data-c="65" d="M107 166Q107 230 131 283T193 369T270 420T345 441Q346 441 352 441T361 442H364Q409 442 439 418T470 355Q470 270 366 239Q308 223 218 223H205Q189 164 189 125Q189 83 206 55T261 27Q309 27 353 50T426 109Q436 121 440 121T453 111T466 97Q469 92 455 77Q424 41 372 16T258 -10Q184 -10 146 41T107 166ZM416 333T416 354T401 390T360 405Q322 405 292 384T246 336T223 288T215 261Q215 260 240 260Q262 261 276 262T314 266T353 275T384 291T408 317Z" transform="translate(8153,0)"></path><path data-c="73" d="M153 285Q153 349 197 395T311 442Q355 442 386 420T418 356Q418 321 401 308T365 294Q336 294 331 326Q331 336 334 345T343 359T353 368T362 374L366 376Q365 379 362 383T344 396T308 404Q265 404 246 377T226 325T244 289T287 275T339 258T383 212Q395 188 395 163Q395 132 379 95T333 32Q279 -11 207 -11Q154 -11 115 13T76 86Q76 108 83 123T102 145T121 153T135 156Q154 156 164 145T175 117Q175 82 142 66L132 62Q131 62 131 61Q131 57 139 49T166 34T210 26Q250 26 277 44T312 83T321 123Q321 153 301 166T248 185T204 198Q176 211 162 241Q153 258 153 285Z" transform="translate(8613,0)"></path></g></g><g data-mml-node="mn" transform="translate(3056.2,-345) scale(0.707)"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" transform="translate(500,0)"></path></g><rect width="6579.5" height="60" x="120" y="220"></rect></g></g><g data-mml-node="mo" transform="translate(7263.5,0)"><path data-c="2309" d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"></path></g></g></g></svg> </span> <code>VkSampleMask</code> values</p>
-</li>
 </ul>
 </div>
 </div>
@@ -906,12 +933,10 @@ void vkCmdSetRasterizerDiscardEnable(
     VkBool32                                    rasterizerDiscardEnable);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkCmdSetRasterizerDiscardEnableEXT" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_extended_dynamic_state2, VK_EXT_shader_object
+// Equivalent to vkCmdSetRasterizerDiscardEnable
 void vkCmdSetRasterizerDiscardEnableEXT(
     VkCommandBuffer                             commandBuffer,
     VkBool32                                    rasterizerDiscardEnable);</code></pre>
@@ -984,7 +1009,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizerDiscardEnable-commandBuffer-cmdpool" href="#VUID-vkCmdSetRasterizerDiscardEnable-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetRasterizerDiscardEnable-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizerDiscardEnable-videocoding" href="#VUID-vkCmdSetRasterizerDiscardEnable-videocoding"></a> <span class="vuid">VUID-vkCmdSetRasterizerDiscardEnable-videocoding</span><br>
@@ -1035,11 +1060,19 @@ equal to Version 1.3</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetRasterizerDiscardEnable is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -1297,7 +1330,7 @@ is <code>VK_FALSE</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizationStreamEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetRasterizationStreamEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetRasterizationStreamEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizationStreamEXT-videocoding" href="#VUID-vkCmdSetRasterizationStreamEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetRasterizationStreamEXT-videocoding</span><br>
@@ -1348,11 +1381,19 @@ is <code>VK_FALSE</code></p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetRasterizationStreamEXT is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -1631,7 +1672,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizationSamplesEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetRasterizationSamplesEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetRasterizationSamplesEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetRasterizationSamplesEXT-videocoding" href="#VUID-vkCmdSetRasterizationSamplesEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetRasterizationSamplesEXT-videocoding</span><br>
@@ -1682,11 +1723,19 @@ enabled</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetRasterizationSamplesEXT is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -2226,7 +2275,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetSampleLocationsEnableEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetSampleLocationsEnableEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetSampleLocationsEnableEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetSampleLocationsEnableEXT-videocoding" href="#VUID-vkCmdSetSampleLocationsEnableEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetSampleLocationsEnableEXT-videocoding</span><br>
@@ -2277,11 +2326,19 @@ enabled</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetSampleLocationsEnableEXT is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -2364,7 +2421,7 @@ locations state pointed to by <code>pSampleLocationsInfo</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetSampleLocationsEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetSampleLocationsEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetSampleLocationsEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetSampleLocationsEXT-videocoding" href="#VUID-vkCmdSetSampleLocationsEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetSampleLocationsEXT-videocoding</span><br>
@@ -2415,11 +2472,19 @@ locations state pointed to by <code>pSampleLocationsInfo</code></p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetSampleLocationsEXT is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -2637,10 +2702,10 @@ but 4x2 is an unsupported rate.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><code>VK_INCOMPLETE</code></p>
 </li>
 <li>
-<p><code>VK_INCOMPLETE</code></p>
+<p><code>VK_SUCCESS</code></p>
 </li>
 </ul>
 </div>
@@ -2651,6 +2716,12 @@ but 4x2 is an unsupported rate.</p>
 <ul>
 <li>
 <p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -2944,7 +3015,7 @@ elements of <code>combinerOps</code> <strong>must</strong> be either
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateKHR-commandBuffer-cmdpool" href="#VUID-vkCmdSetFragmentShadingRateKHR-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateKHR-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateKHR-videocoding" href="#VUID-vkCmdSetFragmentShadingRateKHR-videocoding"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateKHR-videocoding</span><br>
@@ -2995,11 +3066,19 @@ elements of <code>combinerOps</code> <strong>must</strong> be either
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetFragmentShadingRateKHR is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -3062,10 +3141,7 @@ shading rate attachment texel is selected using <span class="eq">layer =
 Otherwise, <span class="eq">layer = 0</span>.</p>
 </div>
 <div class="paragraph">
-<p>The texel is read from the fragment shading rate attachment image as a
-<a href="textures.html#textures-input" class="xref page">texture input operation</a> without a sampler, using integer
-coordinates <span class="eq">i = x'</span>, <span class="eq">j = y'</span>, <span class="eq">k = 0</span>, <span class="eq">l = layer</span>, and
-<span class="eq">s = 0</span>.
+<p>The texel is <a href="images.html#images-reads" class="xref page">read from the fragment shading rate attachment image</a> using image coordinates equal to <span class="eq">(x',y',0,layer,0,0)</span>.
 The fragment size is encoded into the first component of the result of that
 operation as follows:</p>
 </div>
@@ -3686,7 +3762,7 @@ elements of <code>combinerOps</code> <strong>must</strong> be either
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateEnumNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetFragmentShadingRateEnumNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateEnumNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFragmentShadingRateEnumNV-videocoding" href="#VUID-vkCmdSetFragmentShadingRateEnumNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetFragmentShadingRateEnumNV-videocoding</span><br>
@@ -3737,11 +3813,19 @@ elements of <code>combinerOps</code> <strong>must</strong> be either
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetFragmentShadingRateEnumNV is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -3980,8 +4064,8 @@ of <code>VK_FORMAT_R8_UINT</code></p>
 <p><a id="VUID-vkCmdBindShadingRateImageNV-imageView-02061" href="#VUID-vkCmdBindShadingRateImageNV-imageView-02061"></a> <span class="vuid">VUID-vkCmdBindShadingRateImageNV-imageView-02061</span><br>
 
 If <code>imageView</code> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, it <strong>must</strong> have been
-created with a <code>usage</code> value including
-<code>VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV</code></p>
+created with the <code>VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV</code> usage
+flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBindShadingRateImageNV-imageView-02062" href="#VUID-vkCmdBindShadingRateImageNV-imageView-02062"></a> <span class="vuid">VUID-vkCmdBindShadingRateImageNV-imageView-02062</span><br>
@@ -4024,7 +4108,7 @@ be <code>VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV</code> or
 </li>
 <li>
 <p><a id="VUID-vkCmdBindShadingRateImageNV-commandBuffer-cmdpool" href="#VUID-vkCmdBindShadingRateImageNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdBindShadingRateImageNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBindShadingRateImageNV-videocoding" href="#VUID-vkCmdBindShadingRateImageNV-videocoding"></a> <span class="vuid">VUID-vkCmdBindShadingRateImageNV-videocoding</span><br>
@@ -4079,11 +4163,19 @@ be <code>VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV</code> or
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdBindShadingRateImageNV is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -4202,7 +4294,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetShadingRateImageEnableNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetShadingRateImageEnableNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetShadingRateImageEnableNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetShadingRateImageEnableNV-videocoding" href="#VUID-vkCmdSetShadingRateImageEnableNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetShadingRateImageEnableNV-videocoding</span><br>
@@ -4253,11 +4345,19 @@ enabled</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetShadingRateImageEnableNV is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -4362,7 +4462,7 @@ enabled, <code>viewportCount</code> <strong>must</strong> be <code>1</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportShadingRatePaletteNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetViewportShadingRatePaletteNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetViewportShadingRatePaletteNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetViewportShadingRatePaletteNV-videocoding" href="#VUID-vkCmdSetViewportShadingRatePaletteNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetViewportShadingRatePaletteNV-videocoding</span><br>
@@ -4417,11 +4517,19 @@ enabled, <code>viewportCount</code> <strong>must</strong> be <code>1</code></p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetViewportShadingRatePaletteNV is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -5154,7 +5262,7 @@ with matching values for both the <code>shadingRate</code> and
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoarseSampleOrderNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetCoarseSampleOrderNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetCoarseSampleOrderNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCoarseSampleOrderNV-videocoding" href="#VUID-vkCmdSetCoarseSampleOrderNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetCoarseSampleOrderNV-videocoding</span><br>
@@ -5205,11 +5313,19 @@ with matching values for both the <code>shadingRate</code> and
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetCoarseSampleOrderNV is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -5628,21 +5744,17 @@ typedef struct VkPipelineRasterizationLineStateCreateInfo {
 } VkPipelineRasterizationLineStateCreateInfo;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkPipelineRasterizationLineStateCreateInfoKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_line_rasterization
+// Equivalent to VkPipelineRasterizationLineStateCreateInfo
 typedef VkPipelineRasterizationLineStateCreateInfo VkPipelineRasterizationLineStateCreateInfoKHR;</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>or the equivalent</p>
 </div>
 <div id="VkPipelineRasterizationLineStateCreateInfoEXT" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_line_rasterization
+// Equivalent to VkPipelineRasterizationLineStateCreateInfo
 typedef VkPipelineRasterizationLineStateCreateInfo VkPipelineRasterizationLineStateCreateInfoEXT;</code></pre>
 </div>
 </div>
@@ -5796,21 +5908,17 @@ typedef enum VkLineRasterizationMode {
 } VkLineRasterizationMode;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkLineRasterizationModeKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_line_rasterization
+// Equivalent to VkLineRasterizationMode
 typedef VkLineRasterizationMode VkLineRasterizationModeKHR;</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>or the equivalent</p>
 </div>
 <div id="VkLineRasterizationModeEXT" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_line_rasterization
+// Equivalent to VkLineRasterizationMode
 typedef VkLineRasterizationMode VkLineRasterizationModeEXT;</code></pre>
 </div>
 </div>
@@ -5945,7 +6053,7 @@ If <code>lineRasterizationMode</code> is
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineRasterizationModeEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetLineRasterizationModeEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetLineRasterizationModeEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineRasterizationModeEXT-videocoding" href="#VUID-vkCmdSetLineRasterizationModeEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetLineRasterizationModeEXT-videocoding</span><br>
@@ -5996,11 +6104,19 @@ If <code>lineRasterizationMode</code> is
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetLineRasterizationModeEXT is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -6081,7 +6197,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineStippleEnableEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetLineStippleEnableEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetLineStippleEnableEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineStippleEnableEXT-videocoding" href="#VUID-vkCmdSetLineStippleEnableEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetLineStippleEnableEXT-videocoding</span><br>
@@ -6132,11 +6248,19 @@ enabled</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetLineStippleEnableEXT is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -6204,7 +6328,7 @@ If the <a href="features.html#features-wideLines" class="xref page"><code>wideLi
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineWidth-commandBuffer-cmdpool" href="#VUID-vkCmdSetLineWidth-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetLineWidth-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineWidth-videocoding" href="#VUID-vkCmdSetLineWidth-videocoding"></a> <span class="vuid">VUID-vkCmdSetLineWidth-videocoding</span><br>
@@ -6255,11 +6379,19 @@ If the <a href="features.html#features-wideLines" class="xref page"><code>wideLi
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetLineWidth is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -6688,24 +6820,20 @@ void vkCmdSetLineStipple(
     uint16_t                                    lineStipplePattern);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkCmdSetLineStippleKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_line_rasterization
+// Equivalent to vkCmdSetLineStipple
 void vkCmdSetLineStippleKHR(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    lineStippleFactor,
     uint16_t                                    lineStipplePattern);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkCmdSetLineStippleEXT" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_line_rasterization
+// Equivalent to vkCmdSetLineStipple
 void vkCmdSetLineStippleEXT(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    lineStippleFactor,
@@ -6769,7 +6897,7 @@ values used to create the currently active pipeline.</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineStipple-commandBuffer-cmdpool" href="#VUID-vkCmdSetLineStipple-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetLineStipple-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetLineStipple-videocoding" href="#VUID-vkCmdSetLineStipple-videocoding"></a> <span class="vuid">VUID-vkCmdSetLineStipple-videocoding</span><br>
@@ -6820,11 +6948,19 @@ values used to create the currently active pipeline.</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetLineStipple is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -6946,12 +7082,10 @@ void vkCmdSetFrontFace(
     VkFrontFace                                 frontFace);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkCmdSetFrontFaceEXT" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_extended_dynamic_state, VK_EXT_shader_object
+// Equivalent to vkCmdSetFrontFace
 void vkCmdSetFrontFaceEXT(
     VkCommandBuffer                             commandBuffer,
     VkFrontFace                                 frontFace);</code></pre>
@@ -7027,7 +7161,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFrontFace-commandBuffer-cmdpool" href="#VUID-vkCmdSetFrontFace-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetFrontFace-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetFrontFace-videocoding" href="#VUID-vkCmdSetFrontFace-videocoding"></a> <span class="vuid">VUID-vkCmdSetFrontFace-videocoding</span><br>
@@ -7078,11 +7212,19 @@ equal to Version 1.3</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetFrontFace is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -7158,12 +7300,10 @@ void vkCmdSetCullMode(
     VkCullModeFlags                             cullMode);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkCmdSetCullModeEXT" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_extended_dynamic_state, VK_EXT_shader_object
+// Equivalent to vkCmdSetCullMode
 void vkCmdSetCullModeEXT(
     VkCommandBuffer                             commandBuffer,
     VkCullModeFlags                             cullMode);</code></pre>
@@ -7238,7 +7378,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCullMode-commandBuffer-cmdpool" href="#VUID-vkCmdSetCullMode-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetCullMode-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetCullMode-videocoding" href="#VUID-vkCmdSetCullMode-videocoding"></a> <span class="vuid">VUID-vkCmdSetCullMode-videocoding</span><br>
@@ -7289,11 +7429,19 @@ equal to Version 1.3</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetCullMode is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -7603,7 +7751,7 @@ If the <code><a href="../appendices/extensions.html#VK_NV_fill_rectangle" class=
 </li>
 <li>
 <p><a id="VUID-vkCmdSetPolygonModeEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetPolygonModeEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetPolygonModeEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetPolygonModeEXT-videocoding" href="#VUID-vkCmdSetPolygonModeEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetPolygonModeEXT-videocoding</span><br>
@@ -7654,11 +7802,19 @@ If the <code><a href="../appendices/extensions.html#VK_NV_fill_rectangle" class=
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetPolygonModeEXT is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -7697,12 +7853,10 @@ void vkCmdSetDepthBiasEnable(
     VkBool32                                    depthBiasEnable);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkCmdSetDepthBiasEnableEXT" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_EXT_extended_dynamic_state2, VK_EXT_shader_object
+// Equivalent to vkCmdSetDepthBiasEnable
 void vkCmdSetDepthBiasEnableEXT(
     VkCommandBuffer                             commandBuffer,
     VkBool32                                    depthBiasEnable);</code></pre>
@@ -7774,7 +7928,7 @@ equal to Version 1.3</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBiasEnable-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthBiasEnable-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthBiasEnable-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBiasEnable-videocoding" href="#VUID-vkCmdSetDepthBiasEnable-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthBiasEnable-videocoding</span><br>
@@ -7825,11 +7979,19 @@ equal to Version 1.3</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetDepthBiasEnable is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -8066,7 +8228,7 @@ enabled, <code>depthBiasClamp</code> <strong>must</strong> be <code>0.0</code></
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBias-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthBias-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthBias-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBias-videocoding" href="#VUID-vkCmdSetDepthBias-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthBias-videocoding</span><br>
@@ -8117,11 +8279,19 @@ enabled, <code>depthBiasClamp</code> <strong>must</strong> be <code>0.0</code></
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetDepthBias is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -8382,7 +8552,7 @@ parameters, allowing them to be more easily extended.</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBias2EXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetDepthBias2EXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDepthBias2EXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDepthBias2EXT-videocoding" href="#VUID-vkCmdSetDepthBias2EXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetDepthBias2EXT-videocoding</span><br>
@@ -8433,11 +8603,19 @@ parameters, allowing them to be more easily extended.</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetDepthBias2EXT is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -8696,7 +8874,7 @@ enabled</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetConservativeRasterizationModeEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetConservativeRasterizationModeEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetConservativeRasterizationModeEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetConservativeRasterizationModeEXT-videocoding" href="#VUID-vkCmdSetConservativeRasterizationModeEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetConservativeRasterizationModeEXT-videocoding</span><br>
@@ -8747,11 +8925,19 @@ enabled</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetConservativeRasterizationModeEXT is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -8840,7 +9026,7 @@ inclusive</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-commandBuffer-cmdpool" href="#VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-videocoding" href="#VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-videocoding"></a> <span class="vuid">VUID-vkCmdSetExtraPrimitiveOverestimationSizeEXT-videocoding</span><br>
@@ -8891,11 +9077,19 @@ inclusive</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetExtraPrimitiveOverestimationSizeEXT is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -9047,9 +9241,56 @@ fully covered by the generating primitive.</p>
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

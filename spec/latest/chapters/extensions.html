@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="spec" data-version="latest">
+<div class="nav-container" data-component="spec" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -128,6 +130,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="preamble.html">Preamble</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="introduction.html">Introduction</a>
   </li>
@@ -162,6 +167,9 @@
     <a class="nav-link" href="resources.html">Resource Creation</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="images.html">Images</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="samplers.html">Samplers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -175,6 +183,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="fragmentdensitymapops.html">Fragment Density Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_tensors/tensorops.html">Tensor Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="queries.html">Queries</a>
@@ -231,10 +242,13 @@
     <a class="nav-link" href="VK_KHR_deferred_host_operations/deferred_host_operations.html">Deferred Host Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_EXT_private_data.html">Private Data</a>
+    <a class="nav-link" href="private_data.html">Private Data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="accelstructures.html">Acceleration Structures</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_AMDX_dense_geometry_format/dense_geometry_format.html">Compressed triangle data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="VK_EXT_opacity_micromap/micromaps.html">Micromap</a>
@@ -246,7 +260,7 @@
     <a class="nav-link" href="raytracing.html">Ray Tracing</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_NV_memory_decompression.html">Memory Decompression</a>
+    <a class="nav-link" href="memory_decompression.html">Memory Decompression</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="videocoding.html">Video Coding</a>
@@ -256,6 +270,12 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="executiongraphs.html">Execution Graphs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_NV_external_compute_queue/VK_NV_external_compute_queue.html">External Compute Queues</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_data_graph/graphs.html">Data graphs</a>
   </li>
   <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="extensions.html">Extending Vulkan</a>
@@ -292,6 +312,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/roadmap.html">Vulkan Roadmap Milestones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendices/legacy.html">Legacy and Superseded Functionality</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/boilerplate.html">API Boilerplate</a>
@@ -333,6 +356,14 @@
       </ul>
     </li>
     <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
       <div class="title"><a href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a></div>
       <ul class="versions">
         <li class="version is-latest">
@@ -369,7 +400,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
@@ -400,74 +431,60 @@ followed by the Vulkan Working Group.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="extendingvulkan-instanceanddevicefunctionality"><a class="anchor" href="#extendingvulkan-instanceanddevicefunctionality"></a>Instance and Device Functionality</h2>
+<h2 id="extendingvulkan-functionalitylevels"><a class="anchor" href="#extendingvulkan-functionalitylevels"></a>Functionality Levels</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Commands that enumerate instance properties, or that accept a
-<a href="initialization.html#VkInstance" class="xref page">VkInstance</a> object as a parameter, are considered instance-level
-functionality.</p>
+<p>Functionality in Vulkan is divided into several different levels; global,
+instance-level, physical-device-level, and device-level.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="initialization.html#VkInstance" class="xref page">VkInstance</a> and any objects created from a <a href="initialization.html#VkInstance" class="xref page">VkInstance</a> other
+than <a href="devsandqueues.html#VkPhysicalDevice" class="xref page">VkPhysicalDevice</a> are instance-level.</p>
+</li>
+<li>
+<p><a href="devsandqueues.html#VkPhysicalDevice" class="xref page">VkPhysicalDevice</a> is the only physical-device-level object.</p>
+</li>
+<li>
+<p><a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a> and any objects created from a <a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a> are
+device-level.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Commands that dispatch from a <a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a> object or a child object of a
-<a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a>, or take any of them as a parameter, are considered
-device-level functionality.
-Types defined by a <a href="#extendingvulkan-device-extensions">device extension</a>
-are also considered device-level functionality.</p>
+<p>The level of a command is the same as the level of its first parameter - if
+the first parameter is not a <a href="fundamentals.html#fundamentals-objectmodel-overview" class="xref page">dispatchable handle</a>, it is a global command.
+Different levels of functionality <strong>may</strong> be advertised in different ways.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="extendingvulkan-instanceanddeviceversions"><a class="anchor" href="#extendingvulkan-instanceanddeviceversions"></a>Instance and Device Versions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Starting with Vulkan 1.1, there are separate versions advertised for the
+Vulkan instance, and for each device supported on the system.
+This allows a system with multiple devices to advertise all devices at their
+full capabilities, even if those devices do not support the same version of
+Vulkan.</p>
 </div>
 <div class="paragraph">
-<p>Commands that dispatch from <a href="devsandqueues.html#VkPhysicalDevice" class="xref page">VkPhysicalDevice</a>, or accept a
-<a href="devsandqueues.html#VkPhysicalDevice" class="xref page">VkPhysicalDevice</a> object as a parameter, are considered either
-instance-level or device-level functionality depending if the functionality
-is specified by an <a href="#extendingvulkan-instance-extensions">instance extension</a> or <a href="#extendingvulkan-device-extensions">device extension</a>
-respectively.</p>
+<p>The instance version indicates which global and instance-level functionality
+is supported, while each device version indicates the physical-device-level
+and device-level functionality supported.</p>
 </div>
 <div class="paragraph">
-<p>Additionally, commands that enumerate physical device properties are
-considered device-level functionality.</p>
+<p>The instance version <strong>can</strong> be queried by calling
+<a href="initialization.html#vkEnumerateInstanceVersion" class="xref page">vkEnumerateInstanceVersion</a>.
+Querying for this function via <a href="initialization.html#vkGetInstanceProcAddr" class="xref page">vkGetInstanceProcAddr</a> will return
+<code>NULL</code> on implementations that only support Vulkan 1.0 functionality.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>Applications usually interface to Vulkan using a loader that implements only
-instance-level functionality, passing device-level functionality to
-implementations of the full Vulkan API on the system.
-In some circumstances, as these may be implemented independently, it is
-possible that the loader and device implementations on a given installation
-will support different versions.
-To allow for this and call out when it happens, the Vulkan specification
-enumerates device and instance level functionality separately - they have
-<a href="#extendingvulkan-coreversions-queryingversionsupport">independent version queries</a>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Vulkan 1.0 initially specified new physical device enumeration functionality
-as instance-level, requiring it to be included in an instance extension.
-As the capabilities of device-level functionality require discovery via
-physical device enumeration, this led to the situation where many device
-extensions required an instance extension as well.
-To alleviate this extra work,
-<code><a href="../appendices/extensions.html#VK_KHR_get_physical_device_properties2" class="xref page">VK_KHR_get_physical_device_properties2</a></code> (and subsequently Vulkan
-1.1) redefined device-level functionality to include physical device
-enumeration.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>The device version <strong>can</strong> be queried by calling
+<a href="devsandqueues.html#vkGetPhysicalDeviceProperties" class="xref page">vkGetPhysicalDeviceProperties</a> or <a href="devsandqueues.html#vkGetPhysicalDeviceProperties2" class="xref page">vkGetPhysicalDeviceProperties2</a>,
+and is returned in <a href="devsandqueues.html#VkPhysicalDeviceProperties" class="xref page">VkPhysicalDeviceProperties</a>::<code>apiVersion</code>,
+encoded as described in <a href="#extendingvulkan-coreversions-versionnumbers">Version Numbers</a>.</p>
 </div>
 </div>
 </div>
@@ -511,7 +528,7 @@ Specification.
 As Vulkan uses variant 0, this change is fully backwards compatible with the
 previous version number format for Vulkan implementations.
 New version number macros have been added for this change and the old macros
-deprecated.
+marked as legacy.
 For existing applications using the older format and macros, an
 implementation with non-zero variant will decode as a very high Vulkan
 version.
@@ -594,11 +611,21 @@ packed version number:</p>
 <p><code>VK_VERSION_MAJOR</code> extracts the API major version number from a packed
 version number:</p>
 </div>
-<div id="VK_VERSION_MAJOR" class="listingblock">
+<div id="VK_VERSION_MAJOR" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/versions.html#versions-1.0" class="xref page">Vulkan Version 1.0</a>. See <a href="../appendices/legacy.html#legacy-version-macros" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_VERSION_1_0
-// VK_VERSION_MAJOR is deprecated, but no reason was given in the API XML
-// DEPRECATED: This define is deprecated. VK_API_VERSION_MAJOR should be used instead.
 #define VK_VERSION_MAJOR(version) ((uint32_t)(version) &gt;&gt; 22U)</code></pre>
 </div>
 </div>
@@ -624,11 +651,21 @@ packed version number:</p>
 <p><code>VK_VERSION_MINOR</code> extracts the API minor version number from a packed
 version number:</p>
 </div>
-<div id="VK_VERSION_MINOR" class="listingblock">
+<div id="VK_VERSION_MINOR" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/versions.html#versions-1.0" class="xref page">Vulkan Version 1.0</a>. See <a href="../appendices/legacy.html#legacy-version-macros" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_VERSION_1_0
-// VK_VERSION_MINOR is deprecated, but no reason was given in the API XML
-// DEPRECATED: This define is deprecated. VK_API_VERSION_MINOR should be used instead.
 #define VK_VERSION_MINOR(version) (((uint32_t)(version) &gt;&gt; 12U) &amp; 0x3FFU)</code></pre>
 </div>
 </div>
@@ -654,11 +691,21 @@ packed version number:</p>
 <p><code>VK_VERSION_PATCH</code> extracts the API patch version number from a packed
 version number:</p>
 </div>
-<div id="VK_VERSION_PATCH" class="listingblock">
+<div id="VK_VERSION_PATCH" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/versions.html#versions-1.0" class="xref page">Vulkan Version 1.0</a>. See <a href="../appendices/legacy.html#legacy-version-macros" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_VERSION_1_0
-// VK_VERSION_PATCH is deprecated, but no reason was given in the API XML
-// DEPRECATED: This define is deprecated. VK_API_VERSION_PATCH should be used instead.
 #define VK_VERSION_PATCH(version) ((uint32_t)(version) &amp; 0xFFFU)</code></pre>
 </div>
 </div>
@@ -699,11 +746,21 @@ version number:</p>
 <div class="paragraph">
 <p><code>VK_MAKE_VERSION</code> constructs an API version number.</p>
 </div>
-<div id="VK_MAKE_VERSION" class="listingblock">
+<div id="VK_MAKE_VERSION" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/versions.html#versions-1.0" class="xref page">Vulkan Version 1.0</a>. See <a href="../appendices/legacy.html#legacy-version-macros" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_VERSION_1_0
-// VK_MAKE_VERSION is deprecated, but no reason was given in the API XML
-// DEPRECATED: This define is deprecated. VK_MAKE_API_VERSION should be used instead.
 #define VK_MAKE_VERSION(major, minor, patch) \
     ((((uint32_t)(major)) &lt;&lt; 22U) | (((uint32_t)(minor)) &lt;&lt; 12U) | ((uint32_t)(patch)))</code></pre>
 </div>
@@ -792,20 +849,6 @@ version number:</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="extendingvulkan-coreversions-queryingversionsupport"><a class="anchor" href="#extendingvulkan-coreversions-queryingversionsupport"></a>Querying Version Support</h3>
-<div class="paragraph">
-<p>The version of instance-level functionality can be queried by calling
-<a href="initialization.html#vkEnumerateInstanceVersion" class="xref page">vkEnumerateInstanceVersion</a>.</p>
-</div>
-<div class="paragraph">
-<p>The version of device-level functionality can be queried by calling
-<a href="devsandqueues.html#vkGetPhysicalDeviceProperties" class="xref page">vkGetPhysicalDeviceProperties</a>
-or <a href="devsandqueues.html#vkGetPhysicalDeviceProperties2" class="xref page">vkGetPhysicalDeviceProperties2</a>,
-and is returned in <a href="devsandqueues.html#VkPhysicalDeviceProperties" class="xref page">VkPhysicalDeviceProperties</a>::<code>apiVersion</code>,
-encoded as described in <a href="#extendingvulkan-coreversions-versionnumbers">Version Numbers</a>.</p>
 </div>
 </div>
 </div>
@@ -932,10 +975,10 @@ some of them become unavailable for future instances.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><code>VK_INCOMPLETE</code></p>
 </li>
 <li>
-<p><code>VK_INCOMPLETE</code></p>
+<p><code>VK_SUCCESS</code></p>
 </li>
 </ul>
 </div>
@@ -945,10 +988,16 @@ some of them become unavailable for future instances.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+</li>
+<li>
 <p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -1051,41 +1100,24 @@ are loaded.
 Explicitly enabling a layer that is implicitly enabled results in this layer
 being loaded as an implicitly enabled layer; it has no additional effect.</p>
 </div>
-<div class="sect2">
-<h3 id="extendingvulkan-layers-devicelayerdeprecation"><a class="anchor" href="#extendingvulkan-layers-devicelayerdeprecation"></a>Device Layer Deprecation</h3>
-<div class="paragraph">
-<p>Previous versions of this specification distinguished between instance and
-device layers.
-Instance layers were only able to intercept commands that operate on
-<code>VkInstance</code> and <code>VkPhysicalDevice</code>, except they were not able to
-intercept <a href="devsandqueues.html#vkCreateDevice" class="xref page">vkCreateDevice</a>.
-Device layers were enabled for individual devices when they were created,
-and could only intercept commands operating on that device or its child
-objects.</p>
-</div>
-<div class="paragraph">
-<p>Device-only layers are now deprecated, and this specification no longer
-distinguishes between instance and device layers.
-Layers are enabled during instance creation, and are able to intercept all
-commands operating on that instance or any of its child objects.
-At the time of deprecation there were no known device-only layers and no
-compelling reason to create one.</p>
-</div>
-<div class="paragraph">
-<p>In order to maintain compatibility with implementations released prior to
-device-layer deprecation, applications <strong>should</strong> still enumerate and enable
-device layers.
-The behavior of <code>vkEnumerateDeviceLayerProperties</code> and valid usage of
-the <code>ppEnabledLayerNames</code> member of <a href="devsandqueues.html#VkDeviceCreateInfo" class="xref page">VkDeviceCreateInfo</a> maximizes
-compatibility with applications written to work with the previous
-requirements.</p>
-</div>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
 <p>To enumerate device layers, call:</p>
 </div>
-<div id="vkEnumerateDeviceLayerProperties" class="listingblock">
+<div id="vkEnumerateDeviceLayerProperties" class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This functionality is superseded by <a href="../appendices/versions.html#versions-1.0" class="xref page">Vulkan Version 1.0</a>. See <a href="../appendices/legacy.html#legacy-devicelayers" class="xref page">Legacy Functionality</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_VERSION_1_0
 VkResult vkEnumerateDeviceLayerProperties(
@@ -1177,10 +1209,10 @@ underlying Vulkan driver.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><code>VK_INCOMPLETE</code></p>
 </li>
 <li>
-<p><code>VK_INCOMPLETE</code></p>
+<p><code>VK_SUCCESS</code></p>
 </li>
 </ul>
 </div>
@@ -1190,10 +1222,16 @@ underlying Vulkan driver.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+</li>
+<li>
 <p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -1206,7 +1244,7 @@ underlying Vulkan driver.</p>
 </div>
 <div class="paragraph">
 <p>The <code>ppEnabledLayerNames</code> and <code>enabledLayerCount</code> members of
-<a href="devsandqueues.html#VkDeviceCreateInfo" class="xref page">VkDeviceCreateInfo</a> are deprecated and their values <strong>must</strong> be ignored by
+<a href="devsandqueues.html#VkDeviceCreateInfo" class="xref page">VkDeviceCreateInfo</a> are legacy and their values <strong>must</strong> be ignored by
 implementations.
 However, for compatibility, only an empty list of layers or a list that
 exactly matches the sequence enabled at instance creation time are valid,
@@ -1217,7 +1255,6 @@ and validation layers <strong>should</strong> issue diagnostics for other cases.
 the
 sequence of layers active for a device will be exactly the sequence of
 layers enabled when the parent instance was created.</p>
-</div>
 </div>
 </div>
 </div>
@@ -1284,8 +1321,9 @@ It is defined only in the <a href="fundamentals.html#fundamentals-validusage-ext
 <div class="sect2">
 <h3 id="extendingvulkan-instance-extensions"><a class="anchor" href="#extendingvulkan-instance-extensions"></a>Instance Extensions</h3>
 <div class="paragraph">
-<p>Instance extensions add new
-<a href="#extendingvulkan-instanceanddevicefunctionality">instance-level functionality</a> to the API, outside of the core specification.</p>
+<p>Instance extensions add new <a href="#extendingvulkan-functionalitylevels">global or instance-level functionality</a> to the API, outside of the core
+specification.
+Instance extensions <strong>may</strong> also add <a href="#extendingvulkan-functionalitylevels">physical-device-level functionality</a>.</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -1380,10 +1418,10 @@ be enabled against the advertised version.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><code>VK_INCOMPLETE</code></p>
 </li>
 <li>
-<p><code>VK_INCOMPLETE</code></p>
+<p><code>VK_SUCCESS</code></p>
 </li>
 </ul>
 </div>
@@ -1393,13 +1431,19 @@ be enabled against the advertised version.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><code>VK_ERROR_LAYER_NOT_PRESENT</code></p>
 </li>
 <li>
 <p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
 </li>
 <li>
-<p><code>VK_ERROR_LAYER_NOT_PRESENT</code></p>
+<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -1414,8 +1458,13 @@ be enabled against the advertised version.</p>
 <div class="sect2">
 <h3 id="extendingvulkan-device-extensions"><a class="anchor" href="#extendingvulkan-device-extensions"></a>Device Extensions</h3>
 <div class="paragraph">
-<p>Device extensions add new
-<a href="#extendingvulkan-instanceanddevicefunctionality">device-level functionality</a> to the API, outside of the core specification.</p>
+<p>Device extensions add new <a href="#extendingvulkan-functionalitylevels">device-level functionality</a> to the API, outside of the core specification.
+If
+Vulkan 1.1
+or
+<a href="../appendices/extensions.html#VK_KHR_get_physical_device_properties2" class="xref page">VK_KHR_get_physical_device_properties2</a>
+is required by the extension, it <strong>may</strong> also add new
+<a href="#extendingvulkan-functionalitylevels">physical-device-level functionality</a>.</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -1578,10 +1627,10 @@ underlying Vulkan driver.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_SUCCESS</code></p>
+<p><code>VK_INCOMPLETE</code></p>
 </li>
 <li>
-<p><code>VK_INCOMPLETE</code></p>
+<p><code>VK_SUCCESS</code></p>
 </li>
 </ul>
 </div>
@@ -1591,13 +1640,19 @@ underlying Vulkan driver.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><code>VK_ERROR_LAYER_NOT_PRESENT</code></p>
 </li>
 <li>
 <p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
 </li>
 <li>
-<p><code>VK_ERROR_LAYER_NOT_PRESENT</code></p>
+<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -1635,24 +1690,6 @@ It is an integer, incremented with backward compatible changes.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="extendingvulkan-accessing-device-physical-device"><a class="anchor" href="#extendingvulkan-accessing-device-physical-device"></a>Accessing Device-Level Functionality From a <a href="devsandqueues.html#VkPhysicalDevice" class="xref page">VkPhysicalDevice</a></h4>
-<div class="paragraph">
-<p>Some device extensions also add support for physical-device-level
-functionality.
-Physical-device-level functionality <strong>can</strong> be used, if the required extension
-is supported as advertised by <a href="#vkEnumerateDeviceExtensionProperties">vkEnumerateDeviceExtensionProperties</a> for
-a given <a href="devsandqueues.html#VkPhysicalDevice" class="xref page">VkPhysicalDevice</a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="extendingvulkan-accessing-device-logical-device"><a class="anchor" href="#extendingvulkan-accessing-device-logical-device"></a>Accessing Device-Level Functionality From a <a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a></h4>
-<div class="paragraph">
-<p>For commands that are dispatched from a <a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a>, or from a child
-object of a <a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a>, device extensions <strong>must</strong> be enabled in
-<a href="devsandqueues.html#vkCreateDevice" class="xref page">vkCreateDevice</a>.</p>
 </div>
 </div>
 </div>
@@ -1782,8 +1819,8 @@ instead fixing them in either an extension or core version.</p>
 functionality has been added to the core specification.
 This will usually include new interfaces in the header, and <strong>may</strong> also
 include behavior changes and bug fixes.
-Core functionality <strong>may</strong> be deprecated in a minor version, but will not be
-obsoleted or removed.</p>
+Core functionality <strong>may</strong> be marked as legacy in a minor version, but will not
+be obsoleted or removed.</p>
 </div>
 <div class="paragraph">
 <p>The specification&#8217;s minor version is strictly increasing for a given major
@@ -1806,8 +1843,8 @@ across minor versions, though in general they are with few exceptions - see
 <div class="paragraph">
 <p>A difference in the major version of specifications indicates a large set of
 changes which will likely include interface changes, behavioral changes,
-removal of <a href="#extendingvulkan-compatibility-deprecation">deprecated functionality</a>, and the modification, addition, or replacement of other
-functionality.</p>
+removal of <a href="../appendices/legacy.html#legacy" class="xref page">legacy functionality</a>, and the modification, addition,
+or replacement of other functionality.</p>
 </div>
 <div class="paragraph">
 <p>The specification&#8217;s major version is monotonically increasing; any change to
@@ -1959,8 +1996,8 @@ when the extension was initially published.</p>
 <div class="sect3">
 <h4 id="extendingvulkan-compatibility-deprecation"><a class="anchor" href="#extendingvulkan-compatibility-deprecation"></a>Deprecation</h4>
 <div class="paragraph">
-<p>Extensions <strong>may</strong> be marked as deprecated when the intended use cases either
-become irrelevant or can be solved in other ways.
+<p>Extensions <strong>may</strong> be marked as <a href="../appendices/legacy.html#legacy" class="xref page">deprecated</a> when they are no longer
+intended to be used by applications under certain conditions.
 Generally, a new feature will become available to solve the use case in
 another extension or core version of the API, but it is not guaranteed.</p>
 </div>
@@ -1982,7 +2019,7 @@ modification in order to make use of the new features.</p>
 </div>
 <div class="paragraph">
 <p>Extensions that are deprecated are listed as being deprecated in their
-extension appendices, with an explanation of the deprecation and any
+extension appendices, with an explanation of the deprecation and any related
 features that are relevant.</p>
 </div>
 </div>
@@ -2120,9 +2157,56 @@ in &#8220;XML Tag&#8221; column above, as described in the &#8220;API Extensions
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

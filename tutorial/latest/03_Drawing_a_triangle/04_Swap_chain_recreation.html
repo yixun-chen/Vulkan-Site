@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="tutorial" data-version="latest">
+<div class="nav-container" data-component="tutorial" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -282,7 +284,58 @@
     <a class="nav-link" href="../11_Compute_Shader.html">Compute Shader</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../12_Ecosystem_Utilities_and_Compatibility.html">Ecosystem Utilities and GPU Compatibility</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../13_Vulkan_Profiles.html">Vulkan Profiles</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../14_Android.html">Android</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../15_GLTF_KTX2_Migration.html">Migrating to Modern Asset Formats: glTF and KTX2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../16_Multiple_Objects.html">Rendering Multiple Objects</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../17_Multithreading.html">Multithreading</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Ray Tracing</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/00_Overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/01_Dynamic_rendering.html">Dynamic rendering</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/02_Acceleration_structures.html">Acceleration structures</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/03_Ray_query_shadows.html">Ray query shadows</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/04_TLAS_animation.html">TLAS animation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/05_Shadow_transparency.html">Shadow transparency</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/06_Reflections.html">Reflections</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../courses/18_Ray_tracing/07_Conclusion.html">Conclusion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../90_FAQ.html">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text"><a href="https://github.com/KhronosGroup/Vulkan-Tutorial" target="_blank" rel="noopener">GitHub Repository</a></span>
   </li>
 </ul>
   </li>
@@ -308,6 +361,14 @@
       <ul class="versions">
         <li class="version is-latest">
           <a href="../../../glsl/latest/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
         </li>
       </ul>
     </li>
@@ -348,7 +409,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../../spec/latest/index.html" class="home-link"></a>
@@ -381,24 +442,22 @@ We have to catch these events and recreate the swap chain.</p>
 <h2 id="_recreating_the_swap_chain"><a class="anchor" href="#_recreating_the_swap_chain"></a>Recreating the swap chain</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Create a new <code>recreateSwapChain</code> function that calls <code>createSwapChain</code> and all of the creation functions for the objects that depend on the swap chain or the window size.</p>
+<p>Create a new <code>recreateSwapChain</code> function that calls <code>createSwapChain</code> and all the creation functions for the objects that depend on the swap chain or the window size.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void recreateSwapChain() {
-    vkDeviceWaitIdle(device);
+    device.waitIdle();
 
     createSwapChain();
     createImageViews();
-    createFramebuffers();
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>We first call <code>vkDeviceWaitIdle</code>, because just like in the last chapter, we shouldn&#8217;t touch resources that may still be in use.
 Obviously, we&#8217;ll have to recreate  the swap chain itself.
-The image views need to be recreated because they are based  directly on the swap chain images.
-Finally, the framebuffers directly depend on the  swap chain images, and thus must be recreated as well.</p>
+The image views need to be recreated because they are based directly on the swap chain images.</p>
 </div>
 <div class="paragraph">
 <p>To make sure that the old versions of these objects are cleaned up before recreating them, we should move some of the cleanup code to a separate function that we can call from the <code>recreateSwapChain</code> function.
@@ -411,20 +470,19 @@ Let&#8217;s call it <code>cleanupSwapChain</code>:</p>
 }
 
 void recreateSwapChain() {
-    vkDeviceWaitIdle(device);
+    device.waitIdle();
 
     cleanupSwapChain();
 
     createSwapChain();
     createImageViews();
-    createFramebuffers();
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Note that we don&#8217;t recreate the renderpass here for simplicity.
-In theory it can be possible for the swap chain image format to change during an applications' lifetime, e.g.
-when moving a window from an standard range to an high dynamic range monitor.
+In theory, it can be possible for the swap chain image format to change during an applications' lifetime, e.g.,
+when moving a window from a standard range to a high dynamic range monitor.
 This may require the application to recreate the renderpass to make sure the change between dynamic ranges is properly reflected.</p>
 </div>
 <div class="paragraph">
@@ -433,44 +491,14 @@ This may require the application to recreate the renderpass to make sure the cha
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void cleanupSwapChain() {
-    for (auto framebuffer : swapChainFramebuffers) {
-        vkDestroyFramebuffer(device, framebuffer, nullptr);
-    }
-
-    for (auto imageView : swapChainImageViews) {
-        vkDestroyImageView(device, imageView, nullptr);
-    }
-
-    vkDestroySwapchainKHR(device, swapChain, nullptr);
+    swapChainImageViews.clear();
+    swapChain = nullptr;
 }
 
 void cleanup() {
     cleanupSwapChain();
 
-    vkDestroyPipeline(device, graphicsPipeline, nullptr);
-    vkDestroyPipelineLayout(device, pipelineLayout, nullptr);
-
-    vkDestroyRenderPass(device, renderPass, nullptr);
-
-    for (size_t i = 0; i &lt; MAX_FRAMES_IN_FLIGHT; i++) {
-        vkDestroySemaphore(device, renderFinishedSemaphores[i], nullptr);
-        vkDestroySemaphore(device, imageAvailableSemaphores[i], nullptr);
-        vkDestroyFence(device, inFlightFences[i], nullptr);
-    }
-
-    vkDestroyCommandPool(device, commandPool, nullptr);
-
-    vkDestroyDevice(device, nullptr);
-
-    if (enableValidationLayers) {
-        DestroyDebugUtilsMessengerEXT(instance, debugMessenger, nullptr);
-    }
-
-    vkDestroySurfaceKHR(instance, surface, nullptr);
-    vkDestroyInstance(instance, nullptr);
-
     glfwDestroyWindow(window);
-
     glfwTerminate();
 }</code></pre>
 </div>
@@ -480,7 +508,7 @@ void cleanup() {
 </div>
 <div class="paragraph">
 <p>That&#8217;s all it takes to recreate the swap chain!
-However, the disadvantage of this approach is that we need to stop all rendering before creating the new swap chain.
+However, the disadvantage of this approach is that we need to stop all renderings before creating the new swap chain.
 It is possible to create a new swap chain while drawing commands on an image from the old swap chain are still in-flight.
 You need to pass the previous swap chain to the <code>oldSwapchain</code> field in the <code>VkSwapchainCreateInfoKHR</code> struct and destroy the old swap chain as soon as you&#8217;ve finished using it.</p>
 </div>
@@ -507,19 +535,20 @@ Usually happens after a window resize.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">VkResult result = vkAcquireNextImageKHR(device, swapChain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &amp;imageIndex);
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">auto [result, imageIndex] = swapChain.acquireNextImage( UINT64_MAX, *presentCompleteSemaphores[currentFrame], nullptr );
 
-if (result == VK_ERROR_OUT_OF_DATE_KHR) {
+if (result == vk::Result::eErrorOutOfDateKHR) {
     recreateSwapChain();
     return;
-} else if (result != VK_SUCCESS &amp;&amp; result != VK_SUBOPTIMAL_KHR) {
+}
+if (result != vk::Result::eSuccess &amp;&amp; result != vk::Result::eSuboptimalKHR) {
     throw std::runtime_error("failed to acquire swap chain image!");
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>If the swap chain turns out to be out of date when attempting to acquire an image, then it is no longer possible to present to it.
-Therefore we should immediately recreate the swap chain and try again in the next <code>drawFrame</code> call.</p>
+Therefore, we should immediately recreate the swap chain and try again in the next <code>drawFrame</code> call.</p>
 </div>
 <div class="paragraph">
 <p>You could also decide to do that if the swap chain is suboptimal, but I&#8217;ve chosen to proceed anyway in that case because we&#8217;ve already acquired an image.
@@ -527,11 +556,10 @@ Both <code>VK_SUCCESS</code> and <code>VK_SUBOPTIMAL_KHR</code> are considered "
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">result = vkQueuePresentKHR(presentQueue, &amp;presentInfo);
-
-if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR) {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">result = presentQueue.presentKHR( presentInfoKHR );
+if (result == vk::Result::eErrorOutOfDateKHR || result == vk::Result::eSuboptimalKHR) {
     recreateSwapChain();
-} else if (result != VK_SUCCESS) {
+} else if (result != vk::Result::eSuccess) {
     throw std::runtime_error("failed to present swap chain image!");
 }
 
@@ -540,7 +568,7 @@ currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;</code></pre>
 </div>
 <div class="paragraph">
 <p>The <code>vkQueuePresentKHR</code> function returns the same values with the same meaning.
-In this case we will also recreate the swap chain if it is suboptimal, because we want the best possible result.</p>
+In this case, we will also recreate the swap chain if it is suboptimal, because we want the best possible result.</p>
 </div>
 </div>
 </div>
@@ -556,7 +584,7 @@ Since we return immediately, no work is submitted for execution and the fence wi
 </div>
 <div class="paragraph">
 <p>There is a simple fix thankfully.
-Delay resetting the fence until after we know for sure we will be submitting work with it.
+Delay resetting the fence until after we know for sure, we will be submitting work with it.
 Thus, if we return early, the fence is still signaled and <code>vkWaitForFences</code> wont deadlock the next time we use the same fence object.</p>
 </div>
 <div class="paragraph">
@@ -588,11 +616,11 @@ vkResetFences(device, 1, &amp;inFlightFences[currentFrame]);</code></pre>
 <div class="paragraph">
 <p>Although many drivers and platforms trigger <code>VK_ERROR_OUT_OF_DATE_KHR</code> automatically after a window resize, it is not guaranteed to happen.
 That&#8217;s why we&#8217;ll add some extra code to also handle resizes explicitly.
-First add a new member variable that flags that a resize has happened:</p>
+First, add a new member variable that flags that a resize has happened:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;VkFence&gt; inFlightFences;
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">std::vector&lt;vk::raii::Fence&gt; inFlightFences;
 
 bool framebufferResized = false;</code></pre>
 </div>
@@ -602,17 +630,17 @@ bool framebufferResized = false;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR || framebufferResized) {
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (result == vk::Result::eErrorOutOfDateKHR || result == vk::Result::eSuboptimalKHR || framebufferResized) {
     framebufferResized = false;
     recreateSwapChain();
-} else if (result != VK_SUCCESS) {
+} else if (result != vk::Result::eSuccess) {
     ...
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>It is important to do this after <code>vkQueuePresentKHR</code> to ensure that the semaphores are in a consistent state, otherwise a signaled semaphore may never be properly waited upon.
-Now to actually detect resizes we can use the <code>glfwSetFramebufferSizeCallback</code> function in the GLFW framework to set up a callback:</p>
+Now, to actually detect resizes, we can use the <code>glfwSetFramebufferSizeCallback</code> function in the GLFW framework to set up a callback:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -634,7 +662,7 @@ static void framebufferResizeCallback(GLFWwindow* window, int width, int height)
 <p>The reason that we&#8217;re creating a <code>static</code> function as a callback is because GLFW does not know how to properly call a member function with the right <code>this</code> pointer to our <code>HelloTriangleApplication</code> instance.</p>
 </div>
 <div class="paragraph">
-<p>However, we do get a reference to the <code>GLFWwindow</code> in the callback and there is another GLFW function that allows you to store an arbitrary pointer inside of it: <code>glfwSetWindowUserPointer</code>:</p>
+<p>However, we do get a reference to the <code>GLFWwindow</code> in the callback and there is another GLFW function that allows you to store an arbitrary pointer inside it: <code>glfwSetWindowUserPointer</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -677,7 +705,7 @@ In this tutorial we will handle that by pausing until the window is in the foreg
         glfwWaitEvents();
     }
 
-    vkDeviceWaitIdle(device);
+    device.waitIdle();
 
     ...
 }</code></pre>
@@ -691,7 +719,10 @@ In this tutorial we will handle that by pausing until the window is in the foreg
 In the <a href="../04_Vertex_buffers/00_Vertex_input_description.html" class="xref page">next chapter</a> we&#8217;re going to get rid of the hardcoded vertices in the vertex shader and actually use a vertex buffer.</p>
 </div>
 <div class="paragraph">
-<p><a href="../_attachments/17_swap_chain_recreation.cpp">C&#43;&#43; code</a> / <a href="../_attachments/09_shader_base.vert">Vertex shader</a> / <a href="../_attachments/09_shader_base.frag">Fragment shader</a></p>
+<p><a href="../_attachments/17_swap_chain_recreation.cpp">C&#43;&#43; code</a> /
+<a href="../_attachments/09_shader_base.slang">Slang shader</a> /
+<a href="../_attachments/09_shader_base.vert">GLSL Vertex shader</a> /
+<a href="../_attachments/09_shader_base.frag">GLSL Fragment shader</a></p>
 </div>
 </div>
 </div>
@@ -701,9 +732,56 @@ In the <a href="../04_Vertex_buffers/00_Vertex_input_description.html" class="xr
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

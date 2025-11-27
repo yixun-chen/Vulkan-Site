@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="spec" data-version="latest">
+<div class="nav-container" data-component="spec" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -128,6 +130,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../preamble.html">Preamble</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../introduction.html">Introduction</a>
   </li>
@@ -162,6 +167,9 @@
     <a class="nav-link" href="../resources.html">Resource Creation</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../images.html">Images</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../samplers.html">Samplers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -175,6 +183,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../fragmentdensitymapops.html">Fragment Density Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../VK_ARM_tensors/tensorops.html">Tensor Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../queries.html">Queries</a>
@@ -231,10 +242,13 @@
     <a class="nav-link" href="../VK_KHR_deferred_host_operations/deferred_host_operations.html">Deferred Host Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../VK_EXT_private_data.html">Private Data</a>
+    <a class="nav-link" href="../private_data.html">Private Data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../accelstructures.html">Acceleration Structures</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../VK_AMDX_dense_geometry_format/dense_geometry_format.html">Compressed triangle data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../VK_EXT_opacity_micromap/micromaps.html">Micromap</a>
@@ -246,7 +260,7 @@
     <a class="nav-link" href="../raytracing.html">Ray Tracing</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../VK_NV_memory_decompression.html">Memory Decompression</a>
+    <a class="nav-link" href="../memory_decompression.html">Memory Decompression</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../videocoding.html">Video Coding</a>
@@ -256,6 +270,12 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../executiongraphs.html">Execution Graphs</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="VK_NV_external_compute_queue.html">External Compute Queues</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../VK_ARM_data_graph/graphs.html">Data graphs</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../extensions.html">Extending Vulkan</a>
@@ -292,6 +312,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../../appendices/roadmap.html">Vulkan Roadmap Milestones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../appendices/legacy.html">Legacy and Superseded Functionality</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../../appendices/boilerplate.html">API Boilerplate</a>
@@ -333,6 +356,14 @@
       </ul>
     </li>
     <li class="component">
+      <div class="title"><a href="../../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../../refpages/latest/refpages/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
       <div class="title"><a href="../../../../features/latest/features/index.html">Vulkan Feature Descriptions</a></div>
       <ul class="versions">
         <li class="version is-latest">
@@ -369,7 +400,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../../index.html" class="home-link"></a>
@@ -428,7 +459,7 @@ VkResult vkCreateExternalComputeQueueNV(
 </li>
 <li>
 <p><code>pCreateInfo</code> is a pointer to a
-<a href="#undefined.adoc#VkExternalComputeQueueCreateInfoNV" class="xref unresolved">VkExternalComputeQueueCreateInfoNV</a> structure specifying
+<a href="#VkExternalComputeQueueCreateInfoNV">VkExternalComputeQueueCreateInfoNV</a> structure specifying
 configuration info for creating the external queue.</p>
 </li>
 <li>
@@ -436,7 +467,7 @@ configuration info for creating the external queue.</p>
 <a href="../memory.html#memory-allocation" class="xref page">Memory Allocation</a> chapter.</p>
 </li>
 <li>
-<p><code>pExternalQueue</code> is a pointer to a <a href="#undefined.adoc#VkExternalComputeQueueNV" class="xref unresolved">VkExternalComputeQueueNV</a>
+<p><code>pExternalQueue</code> is a pointer to a <a href="#VkExternalComputeQueueNV">VkExternalComputeQueueNV</a>
 object that will be filled with the handle for the created external
 queue.</p>
 </li>
@@ -453,7 +484,7 @@ queue.</p>
 </li>
 <li>
 <p><a id="VUID-vkCreateExternalComputeQueueNV-pCreateInfo-parameter" href="#VUID-vkCreateExternalComputeQueueNV-pCreateInfo-parameter"></a> <span class="vuid">VUID-vkCreateExternalComputeQueueNV-pCreateInfo-parameter</span><br>
- <code>pCreateInfo</code> <strong>must</strong> be a valid pointer to a valid <a href="#undefined.adoc#VkExternalComputeQueueCreateInfoNV" class="xref unresolved">VkExternalComputeQueueCreateInfoNV</a> structure</p>
+ <code>pCreateInfo</code> <strong>must</strong> be a valid pointer to a valid <a href="#VkExternalComputeQueueCreateInfoNV">VkExternalComputeQueueCreateInfoNV</a> structure</p>
 </li>
 <li>
 <p><a id="VUID-vkCreateExternalComputeQueueNV-pAllocator-parameter" href="#VUID-vkCreateExternalComputeQueueNV-pAllocator-parameter"></a> <span class="vuid">VUID-vkCreateExternalComputeQueueNV-pAllocator-parameter</span><br>
@@ -461,7 +492,11 @@ queue.</p>
 </li>
 <li>
 <p><a id="VUID-vkCreateExternalComputeQueueNV-pExternalQueue-parameter" href="#VUID-vkCreateExternalComputeQueueNV-pExternalQueue-parameter"></a> <span class="vuid">VUID-vkCreateExternalComputeQueueNV-pExternalQueue-parameter</span><br>
- <code>pExternalQueue</code> <strong>must</strong> be a valid pointer to a <a href="#undefined.adoc#VkExternalComputeQueueNV" class="xref unresolved">VkExternalComputeQueueNV</a> handle</p>
+ <code>pExternalQueue</code> <strong>must</strong> be a valid pointer to a <a href="#VkExternalComputeQueueNV">VkExternalComputeQueueNV</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-vkCreateExternalComputeQueueNV-device-queuecount" href="#VUID-vkCreateExternalComputeQueueNV-device-queuecount"></a> <span class="vuid">VUID-vkCreateExternalComputeQueueNV-device-queuecount</span><br>
+ The device <strong>must</strong> have been created with at least <code>1</code> queue</p>
 </li>
 </ul>
 </div>
@@ -492,6 +527,12 @@ queue.</p>
 <li>
 <p><code>VK_ERROR_TOO_MANY_OBJECTS</code></p>
 </li>
+<li>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+</li>
 </ul>
 </div>
 </dd>
@@ -521,7 +562,7 @@ void vkDestroyExternalComputeQueueNV(
 <p><code>device</code> is the logical device that destroys the external queue.</p>
 </li>
 <li>
-<p><code>externalQueue</code> is the <a href="#undefined.adoc#VkExternalComputeQueueNV" class="xref unresolved">VkExternalComputeQueueNV</a> to destroy.</p>
+<p><code>externalQueue</code> is the <a href="#VkExternalComputeQueueNV">VkExternalComputeQueueNV</a> to destroy.</p>
 </li>
 <li>
 <p><code>pAllocator</code> controls host memory allocation as described in the
@@ -540,7 +581,7 @@ void vkDestroyExternalComputeQueueNV(
 </li>
 <li>
 <p><a id="VUID-vkDestroyExternalComputeQueueNV-externalQueue-parameter" href="#VUID-vkDestroyExternalComputeQueueNV-externalQueue-parameter"></a> <span class="vuid">VUID-vkDestroyExternalComputeQueueNV-externalQueue-parameter</span><br>
- <code>externalQueue</code> <strong>must</strong> be a valid <a href="#undefined.adoc#VkExternalComputeQueueNV" class="xref unresolved">VkExternalComputeQueueNV</a> handle</p>
+ <code>externalQueue</code> <strong>must</strong> be a valid <a href="#VkExternalComputeQueueNV">VkExternalComputeQueueNV</a> handle</p>
 </li>
 <li>
 <p><a id="VUID-vkDestroyExternalComputeQueueNV-pAllocator-parameter" href="#VUID-vkDestroyExternalComputeQueueNV-pAllocator-parameter"></a> <span class="vuid">VUID-vkDestroyExternalComputeQueueNV-pAllocator-parameter</span><br>
@@ -574,11 +615,11 @@ void vkGetExternalComputeQueueDataNV(
 <div class="ulist">
 <ul>
 <li>
-<p><code>externalQueue</code> is the <a href="#undefined.adoc#VkExternalComputeQueueNV" class="xref unresolved">VkExternalComputeQueueNV</a> to query the
+<p><code>externalQueue</code> is the <a href="#VkExternalComputeQueueNV">VkExternalComputeQueueNV</a> to query the
 data for.</p>
 </li>
 <li>
-<p><code>params</code> is a pointer to a <a href="#undefined.adoc#VkExternalComputeQueueDataParamsNV" class="xref unresolved">VkExternalComputeQueueDataParamsNV</a>
+<p><code>params</code> is a pointer to a <a href="#VkExternalComputeQueueDataParamsNV">VkExternalComputeQueueDataParamsNV</a>
 structure specifying parameters required for retrieval of the
 implementation-specific data.</p>
 </li>
@@ -597,8 +638,8 @@ requested data will be returned.</p>
 <p><a id="VUID-vkGetExternalComputeQueueDataNV-pData-08134" href="#VUID-vkGetExternalComputeQueueDataNV-pData-08134"></a> <span class="vuid">VUID-vkGetExternalComputeQueueDataNV-pData-08134</span><br>
 
 <code>pData</code> <strong>must</strong> be at least the size specified by the externalDataSize
-field in the <a href="#undefined.adoc#VkPhysicalDeviceExternalComputeQueuePropertiesNV" class="xref unresolved">VkPhysicalDeviceExternalComputeQueuePropertiesNV</a>
-structure.</p>
+field in the <a href="#VkPhysicalDeviceExternalComputeQueuePropertiesNV">VkPhysicalDeviceExternalComputeQueuePropertiesNV</a>
+structure</p>
 </li>
 </ul>
 </div>
@@ -611,11 +652,11 @@ structure.</p>
 <ul>
 <li>
 <p><a id="VUID-vkGetExternalComputeQueueDataNV-externalQueue-parameter" href="#VUID-vkGetExternalComputeQueueDataNV-externalQueue-parameter"></a> <span class="vuid">VUID-vkGetExternalComputeQueueDataNV-externalQueue-parameter</span><br>
- <code>externalQueue</code> <strong>must</strong> be a valid <a href="#undefined.adoc#VkExternalComputeQueueNV" class="xref unresolved">VkExternalComputeQueueNV</a> handle</p>
+ <code>externalQueue</code> <strong>must</strong> be a valid <a href="#VkExternalComputeQueueNV">VkExternalComputeQueueNV</a> handle</p>
 </li>
 <li>
 <p><a id="VUID-vkGetExternalComputeQueueDataNV-params-parameter" href="#VUID-vkGetExternalComputeQueueDataNV-params-parameter"></a> <span class="vuid">VUID-vkGetExternalComputeQueueDataNV-params-parameter</span><br>
- <code>params</code> <strong>must</strong> be a valid pointer to a <a href="#undefined.adoc#VkExternalComputeQueueDataParamsNV" class="xref unresolved">VkExternalComputeQueueDataParamsNV</a> structure</p>
+ <code>params</code> <strong>must</strong> be a valid pointer to a <a href="#VkExternalComputeQueueDataParamsNV">VkExternalComputeQueueDataParamsNV</a> structure</p>
 </li>
 <li>
 <p><a id="VUID-vkGetExternalComputeQueueDataNV-pData-parameter" href="#VUID-vkGetExternalComputeQueueDataNV-pData-parameter"></a> <span class="vuid">VUID-vkGetExternalComputeQueueDataNV-pData-parameter</span><br>
@@ -655,7 +696,7 @@ structure.</p>
 <p><code>reservedExternalQueues</code> is the maximum number of external queues an
 application <strong>can</strong> create at once.
 This <strong>must</strong> be less than or equal to the <code>maxExternalQueues</code> value
-reported by <a href="#undefined.adoc#VkPhysicalDeviceExternalComputeQueuePropertiesNV" class="xref unresolved">VkPhysicalDeviceExternalComputeQueuePropertiesNV</a></p>
+reported by <a href="#VkPhysicalDeviceExternalComputeQueuePropertiesNV">VkPhysicalDeviceExternalComputeQueuePropertiesNV</a></p>
 </li>
 </ul>
 </div>
@@ -810,7 +851,7 @@ structure.</p>
 </li>
 <li>
 <p><code>externalDataSize</code> is the minimum size of the memory allocation that
-applications <strong>can</strong> pass to <a href="#undefined.adoc#vkGetExternalComputeQueueDataNV" class="xref unresolved">vkGetExternalComputeQueueDataNV</a>.</p>
+applications <strong>can</strong> pass to <a href="#vkGetExternalComputeQueueDataNV">vkGetExternalComputeQueueDataNV</a>.</p>
 </li>
 <li>
 <p><code>maxExternalQueues</code> is the maximum number of external queues that an
@@ -839,9 +880,56 @@ application can create.</p>
 </div>
 <script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
 <script async src="../../../../_/js/vendor/highlight.js"></script>
-<script src="../../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
-<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="spec" data-version="latest">
+<div class="nav-container" data-component="spec" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -128,6 +130,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/preamble.html">Preamble</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/introduction.html">Introduction</a>
   </li>
@@ -162,6 +167,9 @@
     <a class="nav-link" href="../chapters/resources.html">Resource Creation</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/images.html">Images</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/samplers.html">Samplers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -175,6 +183,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/fragmentdensitymapops.html">Fragment Density Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/VK_ARM_tensors/tensorops.html">Tensor Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/queries.html">Queries</a>
@@ -231,10 +242,13 @@
     <a class="nav-link" href="../chapters/VK_KHR_deferred_host_operations/deferred_host_operations.html">Deferred Host Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../chapters/VK_EXT_private_data.html">Private Data</a>
+    <a class="nav-link" href="../chapters/private_data.html">Private Data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/accelstructures.html">Acceleration Structures</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/VK_AMDX_dense_geometry_format/dense_geometry_format.html">Compressed triangle data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/VK_EXT_opacity_micromap/micromaps.html">Micromap</a>
@@ -246,7 +260,7 @@
     <a class="nav-link" href="../chapters/raytracing.html">Ray Tracing</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../chapters/VK_NV_memory_decompression.html">Memory Decompression</a>
+    <a class="nav-link" href="../chapters/memory_decompression.html">Memory Decompression</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/videocoding.html">Video Coding</a>
@@ -256,6 +270,12 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/executiongraphs.html">Execution Graphs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/VK_NV_external_compute_queue/VK_NV_external_compute_queue.html">External Compute Queues</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../chapters/VK_ARM_data_graph/graphs.html">Data graphs</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../chapters/extensions.html">Extending Vulkan</a>
@@ -292,6 +312,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="roadmap.html">Vulkan Roadmap Milestones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="legacy.html">Legacy and Superseded Functionality</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="boilerplate.html">API Boilerplate</a>
@@ -333,6 +356,14 @@
       </ul>
     </li>
     <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
       <div class="title"><a href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a></div>
       <ul class="versions">
         <li class="version is-latest">
@@ -369,7 +400,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
@@ -592,10 +623,9 @@ Enabling this new feature has the same effect as enabling the extension.</p>
 <dd>
 <p><a href="extensions.html#VK_EXT_pipeline_protected_access" class="xref page">VK_EXT_pipeline_protected_access</a> is only useful when the
 <a href="../chapters/features.html#features-protectedMemory" class="xref page"><code>protectedMemory</code></a> feature is supported.
-As <a href="../chapters/features.html#features-protectedMemory" class="xref page"><code>protectedMemory</code></a> is optional in core
-Vulkan, <a href="../chapters/features.html#features-pipelineProtectedAccess" class="xref page"><code>pipelineProtectedAccess</code></a>
-is only required when <a href="../chapters/features.html#features-protectedMemory" class="xref page"><code>protectedMemory</code></a> is
-supported.</p>
+As the <a href="../chapters/features.html#features-protectedMemory" class="xref page"><code>protectedMemory</code></a> feature is
+optional in core Vulkan, the <a href="../chapters/features.html#features-pipelineProtectedAccess" class="xref page"><code>pipelineProtectedAccess</code></a> feature is only required when the
+<a href="../chapters/features.html#features-protectedMemory" class="xref page"><code>protectedMemory</code></a> feature is supported.</p>
 </dd>
 <dt class="hdlist1">Differences Relative to <code>VK_KHR_line_rasterization</code></dt>
 <dd>
@@ -717,6 +747,119 @@ the promoted <a href="extensions.html#VK_KHR_shader_subgroup_rotate" class="xref
 </li>
 </ul>
 </div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Updated Vulkan 1.4 Limit Support</dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div id="versions-1.4-updated-limits" class="paragraph">
+<p>Vulkan 1.4 also requires support for the following updated limits:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../chapters/limits.html#limits-maxImageDimension1D" class="xref page"><code>maxImageDimension1D</code></a> is increased from 4096 to 8192</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxImageDimension2D" class="xref page"><code>maxImageDimension2D</code></a> is increased from 4096 to 8192</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxImageDimension3D" class="xref page"><code>maxImageDimension3D</code></a> is increased from 256 to 512</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxImageDimensionCube" class="xref page"><code>maxImageDimensionCube</code></a> is increased from 4096 to 8192</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxImageArrayLayers" class="xref page"><code>maxImageArrayLayers</code></a> is increased from 256 to 2048</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxUniformBufferRange" class="xref page"><code>maxUniformBufferRange</code></a> is increased from 16384 to 65536</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxPushConstantsSize" class="xref page"><code>maxPushConstantsSize</code></a> is increased from 128 to 256</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-bufferImageGranularity" class="xref page"><code>bufferImageGranularity</code></a> is decreased from 131072 to 4096</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxBoundDescriptorSets" class="xref page"><code>maxBoundDescriptorSets</code></a> is increased from 4 to 7</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxPerStageDescriptorUniformBuffers" class="xref page"><code>maxPerStageDescriptorUniformBuffers</code></a> is increased from 12 to 15</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxPerStageResources" class="xref page"><code>maxPerStageResources</code></a> is increased from 128 to 200</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxDescriptorSetUniformBuffers" class="xref page"><code>maxDescriptorSetUniformBuffers</code></a> is increased from 72 to 90</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxDescriptorSetStorageBuffers" class="xref page"><code>maxDescriptorSetStorageBuffers</code></a> is increased from 24 to 96</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxDescriptorSetStorageImages" class="xref page"><code>maxDescriptorSetStorageImages</code></a> is increased from 24 to 144</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxFragmentCombinedOutputResources" class="xref page"><code>maxFragmentCombinedOutputResources</code></a> is increased from 4 to 16</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxComputeWorkGroupInvocations" class="xref page"><code>maxComputeWorkGroupInvocations</code></a> is increased from 128 to 256</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxComputeWorkGroupSize" class="xref page"><code>maxComputeWorkGroupSize</code></a> is increased from (128,128,64) to (256,256,64)</p>
+</li>
+<li>
+<p><a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat16" class="xref page"><code>shaderSignedZeroInfNanPreserveFloat16</code></a> is changed from unspecified to <code>VK_TRUE</code></p>
+</li>
+<li>
+<p><a href="../chapters/devsandqueues.html#limits-shaderSignedZeroInfNanPreserveFloat32" class="xref page"><code>shaderSignedZeroInfNanPreserveFloat32</code></a> is changed from unspecified to <code>VK_TRUE</code></p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-subTexelPrecisionBits" class="xref page"><code>subTexelPrecisionBits</code></a> is increased from 4 to 8</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-mipmapPrecisionBits" class="xref page"><code>mipmapPrecisionBits</code></a> is increased from 4 to 6</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxSamplerLodBias" class="xref page"><code>maxSamplerLodBias</code></a> is increased from 2 to 14</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxViewportDimensions" class="xref page"><code>maxViewportDimensions</code></a> is increased from (4096,4096) to (7680,7680)</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-viewportboundsrange" class="xref page"><code>viewportBoundsRange</code></a> is increased from (-8192,8191) to (-15360,15359)</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxFramebufferWidth" class="xref page"><code>maxFramebufferWidth</code></a> is increased from 4096 to 7680</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxFramebufferHeight" class="xref page"><code>maxFramebufferHeight</code></a> is increased from 4096 to 7680</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-maxColorAttachments" class="xref page"><code>maxColorAttachments</code></a> is increased from 7 to 8</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-timestampComputeAndGraphics" class="xref page"><code>timestampComputeAndGraphics</code></a> is changed from unspecified to <code>VK_TRUE</code></p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-pointSizeRange" class="xref page"><code>pointSizeRange</code></a> is increased from (1.0,64.0 - ULP) to (1.0,256.0 - <code>pointSizeGranularity</code>)</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-pointSizeGranularity" class="xref page"><code>pointSizeGranularity</code></a> is decreased from 1.0 to 0.125</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-lineWidthGranularity" class="xref page"><code>lineWidthGranularity</code></a> is decreased from 1.0 to 0.5</p>
+</li>
+<li>
+<p><a href="../chapters/devsandqueues.html#limits-maxPushDescriptors" class="xref page"><code>maxPushDescriptors</code></a> is increased from 16 to 32</p>
+</li>
+<li>
+<p><a href="../chapters/limits.html#limits-standardSampleLocations" class="xref page"><code>standardSampleLocations</code></a> is changed from unspecified to <code>VK_TRUE</code></p>
 </li>
 </ul>
 </div>
@@ -1642,7 +1785,7 @@ decoration.</p>
 <li>
 <p>The <a href="../chapters/features.html#features-bufferDeviceAddress" class="xref page"><code>bufferDeviceAddress</code></a> feature
 which indicates support for accessing memory in shaders as storage
-buffers via <a href="../chapters/descriptorsets.html#vkGetBufferDeviceAddress" class="xref page">vkGetBufferDeviceAddress</a>.</p>
+buffers via <a href="../chapters/resources.html#vkGetBufferDeviceAddress" class="xref page">vkGetBufferDeviceAddress</a>.</p>
 </li>
 <li>
 <p>The <a href="../chapters/features.html#features-vulkanMemoryModel" class="xref page"><code>vulkanMemoryModel</code></a> and
@@ -1687,7 +1830,7 @@ size of all inline uniform block bindings in a pipeline layout.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../chapters/VK_EXT_private_data.html#VkPrivateDataSlot" class="xref page">VkPrivateDataSlot</a></p>
+<p><a href="../chapters/private_data.html#VkPrivateDataSlot" class="xref page">VkPrivateDataSlot</a></p>
 </li>
 </ul>
 </div>
@@ -1781,10 +1924,10 @@ size of all inline uniform block bindings in a pipeline layout.</p>
 <p><a href="../chapters/queries.html#vkCmdWriteTimestamp2" class="xref page">vkCmdWriteTimestamp2</a></p>
 </li>
 <li>
-<p><a href="../chapters/VK_EXT_private_data.html#vkCreatePrivateDataSlot" class="xref page">vkCreatePrivateDataSlot</a></p>
+<p><a href="../chapters/private_data.html#vkCreatePrivateDataSlot" class="xref page">vkCreatePrivateDataSlot</a></p>
 </li>
 <li>
-<p><a href="../chapters/VK_EXT_private_data.html#vkDestroyPrivateDataSlot" class="xref page">vkDestroyPrivateDataSlot</a></p>
+<p><a href="../chapters/private_data.html#vkDestroyPrivateDataSlot" class="xref page">vkDestroyPrivateDataSlot</a></p>
 </li>
 <li>
 <p><a href="../chapters/resources.html#vkGetDeviceBufferMemoryRequirements" class="xref page">vkGetDeviceBufferMemoryRequirements</a></p>
@@ -1799,13 +1942,13 @@ size of all inline uniform block bindings in a pipeline layout.</p>
 <p><a href="../chapters/debugging.html#vkGetPhysicalDeviceToolProperties" class="xref page">vkGetPhysicalDeviceToolProperties</a></p>
 </li>
 <li>
-<p><a href="../chapters/VK_EXT_private_data.html#vkGetPrivateData" class="xref page">vkGetPrivateData</a></p>
+<p><a href="../chapters/private_data.html#vkGetPrivateData" class="xref page">vkGetPrivateData</a></p>
 </li>
 <li>
 <p><a href="../chapters/cmdbuffers.html#vkQueueSubmit2" class="xref page">vkQueueSubmit2</a></p>
 </li>
 <li>
-<p><a href="../chapters/VK_EXT_private_data.html#vkSetPrivateData" class="xref page">vkSetPrivateData</a></p>
+<p><a href="../chapters/private_data.html#vkSetPrivateData" class="xref page">vkSetPrivateData</a></p>
 </li>
 </ul>
 </div>
@@ -1869,7 +2012,7 @@ size of all inline uniform block bindings in a pipeline layout.</p>
 <p><a href="../chapters/pipelines.html#VkPipelineCreationFeedback" class="xref page">VkPipelineCreationFeedback</a></p>
 </li>
 <li>
-<p><a href="../chapters/VK_EXT_private_data.html#VkPrivateDataSlotCreateInfo" class="xref page">VkPrivateDataSlotCreateInfo</a></p>
+<p><a href="../chapters/private_data.html#VkPrivateDataSlotCreateInfo" class="xref page">VkPrivateDataSlotCreateInfo</a></p>
 </li>
 <li>
 <p><a href="../chapters/renderpass.html#VkRenderingAttachmentInfo" class="xref page">VkRenderingAttachmentInfo</a></p>
@@ -1937,7 +2080,7 @@ size of all inline uniform block bindings in a pipeline layout.</p>
 </div>
 </li>
 <li>
-<p>Extending <a href="../chapters/pipelines.html#VkGraphicsPipelineCreateInfo" class="xref page">VkGraphicsPipelineCreateInfo</a>, <a href="../chapters/pipelines.html#VkComputePipelineCreateInfo" class="xref page">VkComputePipelineCreateInfo</a>, <a href="../chapters/pipelines.html#VkRayTracingPipelineCreateInfoNV" class="xref page">VkRayTracingPipelineCreateInfoNV</a>, <a href="../chapters/pipelines.html#VkRayTracingPipelineCreateInfoKHR" class="xref page">VkRayTracingPipelineCreateInfoKHR</a>, <a href="../chapters/executiongraphs.html#VkExecutionGraphPipelineCreateInfoAMDX" class="xref page">VkExecutionGraphPipelineCreateInfoAMDX</a>:</p>
+<p>Extending <a href="../chapters/pipelines.html#VkGraphicsPipelineCreateInfo" class="xref page">VkGraphicsPipelineCreateInfo</a>, <a href="../chapters/pipelines.html#VkComputePipelineCreateInfo" class="xref page">VkComputePipelineCreateInfo</a>, <a href="../chapters/pipelines.html#VkRayTracingPipelineCreateInfoNV" class="xref page">VkRayTracingPipelineCreateInfoNV</a>, <a href="../chapters/pipelines.html#VkRayTracingPipelineCreateInfoKHR" class="xref page">VkRayTracingPipelineCreateInfoKHR</a>, <a href="../chapters/executiongraphs.html#VkExecutionGraphPipelineCreateInfoAMDX" class="xref page">VkExecutionGraphPipelineCreateInfoAMDX</a>, <a href="../chapters/VK_ARM_data_graph/graphs.html#VkDataGraphPipelineCreateInfoARM" class="xref page">VkDataGraphPipelineCreateInfoARM</a>:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2064,6 +2207,9 @@ size of all inline uniform block bindings in a pipeline layout.</p>
 <p><a href="../chapters/formats.html#VkFormatFeatureFlagBits2" class="xref page">VkFormatFeatureFlagBits2</a></p>
 </li>
 <li>
+<p><a href="../chapters/pipelines.html#VkPipelineCacheCreateFlagBits" class="xref page">VkPipelineCacheCreateFlagBits</a></p>
+</li>
+<li>
 <p><a href="../chapters/pipelines.html#VkPipelineCreationFeedbackFlagBits" class="xref page">VkPipelineCreationFeedbackFlagBits</a></p>
 </li>
 <li>
@@ -2098,7 +2244,7 @@ size of all inline uniform block bindings in a pipeline layout.</p>
 <p><a href="../chapters/synchronization.html#VkPipelineStageFlags2" class="xref page">VkPipelineStageFlags2</a></p>
 </li>
 <li>
-<p><a href="../chapters/VK_EXT_private_data.html#VkPrivateDataSlotCreateFlags" class="xref page">VkPrivateDataSlotCreateFlags</a></p>
+<p><a href="../chapters/private_data.html#VkPrivateDataSlotCreateFlags" class="xref page">VkPrivateDataSlotCreateFlags</a></p>
 </li>
 <li>
 <p><a href="../chapters/renderpass.html#VkRenderingFlags" class="xref page">VkRenderingFlags</a></p>
@@ -2903,10 +3049,10 @@ attachments with integer formats.</p>
 <p><a href="../chapters/renderpass.html#vkCreateRenderPass2" class="xref page">vkCreateRenderPass2</a></p>
 </li>
 <li>
-<p><a href="../chapters/descriptorsets.html#vkGetBufferDeviceAddress" class="xref page">vkGetBufferDeviceAddress</a></p>
+<p><a href="../chapters/resources.html#vkGetBufferDeviceAddress" class="xref page">vkGetBufferDeviceAddress</a></p>
 </li>
 <li>
-<p><a href="../chapters/descriptorsets.html#vkGetBufferOpaqueCaptureAddress" class="xref page">vkGetBufferOpaqueCaptureAddress</a></p>
+<p><a href="../chapters/resources.html#vkGetBufferOpaqueCaptureAddress" class="xref page">vkGetBufferOpaqueCaptureAddress</a></p>
 </li>
 <li>
 <p><a href="../chapters/memory.html#vkGetDeviceMemoryOpaqueCaptureAddress" class="xref page">vkGetDeviceMemoryOpaqueCaptureAddress</a></p>
@@ -2937,7 +3083,7 @@ attachments with integer formats.</p>
 <p><a href="../chapters/renderpass.html#VkAttachmentReference2" class="xref page">VkAttachmentReference2</a></p>
 </li>
 <li>
-<p><a href="../chapters/descriptorsets.html#VkBufferDeviceAddressInfo" class="xref page">VkBufferDeviceAddressInfo</a></p>
+<p><a href="../chapters/resources.html#VkBufferDeviceAddressInfo" class="xref page">VkBufferDeviceAddressInfo</a></p>
 </li>
 <li>
 <p><a href="../chapters/devsandqueues.html#VkConformanceVersion" class="xref page">VkConformanceVersion</a></p>
@@ -5829,7 +5975,7 @@ not have one).</p>
 </div>
 </li>
 <li>
-<p>Extending <a href="../chapters/pipelines.html#VkPipelineShaderStageCreateInfo" class="xref page">VkPipelineShaderStageCreateInfo</a>:</p>
+<p>Extending <a href="../chapters/pipelines.html#VkPipelineShaderStageCreateInfo" class="xref page">VkPipelineShaderStageCreateInfo</a>, <a href="../chapters/VK_ARM_data_graph/graphs.html#VkDataGraphPipelineCreateInfoARM" class="xref page">VkDataGraphPipelineCreateInfoARM</a>:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -6050,6 +6196,9 @@ not have one).</p>
 </li>
 <li>
 <p><a href="../chapters/queries.html#VkQueryPipelineStatisticFlagBits" class="xref page">VkQueryPipelineStatisticFlagBits</a></p>
+</li>
+<li>
+<p><a href="../chapters/queries.html#VkQueryPoolCreateFlagBits" class="xref page">VkQueryPoolCreateFlagBits</a></p>
 </li>
 <li>
 <p><a href="../chapters/queries.html#VkQueryResultFlagBits" class="xref page">VkQueryResultFlagBits</a></p>
@@ -6357,6 +6506,16 @@ not have one).</p>
 <li>
 <p><code>VK_WHOLE_SIZE</code></p>
 </li>
+<li>
+<p>Extending <a href="../chapters/fundamentals.html#VkResult" class="xref page">VkResult</a>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -6368,9 +6527,56 @@ not have one).</p>
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

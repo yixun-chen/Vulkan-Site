@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="spec" data-version="latest">
+<div class="nav-container" data-component="spec" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -128,6 +130,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="preamble.html">Preamble</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="introduction.html">Introduction</a>
   </li>
@@ -162,6 +167,9 @@
     <a class="nav-link" href="resources.html">Resource Creation</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="images.html">Images</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="samplers.html">Samplers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -175,6 +183,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="fragmentdensitymapops.html">Fragment Density Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_tensors/tensorops.html">Tensor Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="queries.html">Queries</a>
@@ -231,10 +242,13 @@
     <a class="nav-link" href="VK_KHR_deferred_host_operations/deferred_host_operations.html">Deferred Host Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_EXT_private_data.html">Private Data</a>
+    <a class="nav-link" href="private_data.html">Private Data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="accelstructures.html">Acceleration Structures</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_AMDX_dense_geometry_format/dense_geometry_format.html">Compressed triangle data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="VK_EXT_opacity_micromap/micromaps.html">Micromap</a>
@@ -246,7 +260,7 @@
     <a class="nav-link" href="raytracing.html">Ray Tracing</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_NV_memory_decompression.html">Memory Decompression</a>
+    <a class="nav-link" href="memory_decompression.html">Memory Decompression</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="videocoding.html">Video Coding</a>
@@ -256,6 +270,12 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="executiongraphs.html">Execution Graphs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_NV_external_compute_queue/VK_NV_external_compute_queue.html">External Compute Queues</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_data_graph/graphs.html">Data graphs</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="extensions.html">Extending Vulkan</a>
@@ -292,6 +312,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/roadmap.html">Vulkan Roadmap Milestones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendices/legacy.html">Legacy and Superseded Functionality</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/boilerplate.html">API Boilerplate</a>
@@ -333,6 +356,14 @@
       </ul>
     </li>
     <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
       <div class="title"><a href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a></div>
       <ul class="versions">
         <li class="version is-latest">
@@ -369,7 +400,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
@@ -703,6 +734,13 @@ by
 the <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> bound to the pipeline bind point used by this
 command and the bound <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> was not created with
 <code>VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatch-imageLayout-00344" href="#VUID-vkCmdDispatch-imageLayout-00344"></a> <span class="vuid">VUID-vkCmdDispatch-imageLayout-00344</span><br>
+
+If an image descriptor is accessed by a shader, the <a href="resources.html#VkImageLayout" class="xref page">VkImageLayout</a>
+<strong>must</strong> match the subresource accessible from the <a href="resources.html#VkImageView" class="xref page">VkImageView</a> as
+defined by the <a href="resources.html#resources-image-layouts-matching-rule" class="xref page">image layout    matching rules</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatch-None-08115" href="#VUID-vkCmdDispatch-None-08115"></a> <span class="vuid">VUID-vkCmdDispatch-None-08115</span><br>
@@ -1055,6 +1093,34 @@ transitioned to the
 <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> layout</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDispatch-pDescription-09900" href="#VUID-vkCmdDispatch-pDescription-09900"></a> <span class="vuid">VUID-vkCmdDispatch-pDescription-09900</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object
+<strong>must</strong> have been created with a
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> whose <code>usage</code> member
+contained <code>VK_TENSOR_USAGE_SHADER_BIT_ARM</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatch-dimensionCount-09905" href="#VUID-vkCmdDispatch-dimensionCount-09905"></a> <span class="vuid">VUID-vkCmdDispatch-dimensionCount-09905</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the <code>Rank</code> of the <code>OpTypeTensorARM</code>
+of the tensor resource variable <strong>must</strong> be equal to the
+<code>dimensionCount</code> provided via
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> when creating the
+underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatch-OpTypeTensorARM-09906" href="#VUID-vkCmdDispatch-OpTypeTensorARM-09906"></a> <span class="vuid">VUID-vkCmdDispatch-OpTypeTensorARM-09906</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the element type of the
+<code>OpTypeTensorARM</code> of the tensor resource variable <strong>must</strong> be
+<a href="../appendices/spirvenv.html#spirvenv-tensor-formats" class="xref page">compatible</a> with the <a href="formats.html#VkFormat" class="xref page">VkFormat</a> of the
+<a href="resources.html#VkTensorViewARM" class="xref page">VkTensorViewARM</a> used for the access</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDispatch-None-10672" href="#VUID-vkCmdDispatch-None-10672"></a> <span class="vuid">VUID-vkCmdDispatch-None-10672</span><br>
 
 
@@ -1171,7 +1237,11 @@ buffer</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatch-commandBuffer-cmdpool" href="#VUID-vkCmdDispatch-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdDispatch-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code> operations</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatch-suspended" href="#VUID-vkCmdDispatch-suspended"></a> <span class="vuid">VUID-vkCmdDispatch-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatch-videocoding" href="#VUID-vkCmdDispatch-videocoding"></a> <span class="vuid">VUID-vkCmdDispatch-videocoding</span><br>
@@ -1222,11 +1292,19 @@ buffer</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdDispatch is affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -1533,6 +1611,13 @@ by
 the <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> bound to the pipeline bind point used by this
 command and the bound <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> was not created with
 <code>VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchIndirect-imageLayout-00344" href="#VUID-vkCmdDispatchIndirect-imageLayout-00344"></a> <span class="vuid">VUID-vkCmdDispatchIndirect-imageLayout-00344</span><br>
+
+If an image descriptor is accessed by a shader, the <a href="resources.html#VkImageLayout" class="xref page">VkImageLayout</a>
+<strong>must</strong> match the subresource accessible from the <a href="resources.html#VkImageView" class="xref page">VkImageView</a> as
+defined by the <a href="resources.html#resources-image-layouts-matching-rule" class="xref page">image layout    matching rules</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchIndirect-None-08115" href="#VUID-vkCmdDispatchIndirect-None-08115"></a> <span class="vuid">VUID-vkCmdDispatchIndirect-None-08115</span><br>
@@ -1885,6 +1970,34 @@ transitioned to the
 <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> layout</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDispatchIndirect-pDescription-09900" href="#VUID-vkCmdDispatchIndirect-pDescription-09900"></a> <span class="vuid">VUID-vkCmdDispatchIndirect-pDescription-09900</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object
+<strong>must</strong> have been created with a
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> whose <code>usage</code> member
+contained <code>VK_TENSOR_USAGE_SHADER_BIT_ARM</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchIndirect-dimensionCount-09905" href="#VUID-vkCmdDispatchIndirect-dimensionCount-09905"></a> <span class="vuid">VUID-vkCmdDispatchIndirect-dimensionCount-09905</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the <code>Rank</code> of the <code>OpTypeTensorARM</code>
+of the tensor resource variable <strong>must</strong> be equal to the
+<code>dimensionCount</code> provided via
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> when creating the
+underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchIndirect-OpTypeTensorARM-09906" href="#VUID-vkCmdDispatchIndirect-OpTypeTensorARM-09906"></a> <span class="vuid">VUID-vkCmdDispatchIndirect-OpTypeTensorARM-09906</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the element type of the
+<code>OpTypeTensorARM</code> of the tensor resource variable <strong>must</strong> be
+<a href="../appendices/spirvenv.html#spirvenv-tensor-formats" class="xref page">compatible</a> with the <a href="formats.html#VkFormat" class="xref page">VkFormat</a> of the
+<a href="resources.html#VkTensorViewARM" class="xref page">VkTensorViewARM</a> used for the access</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDispatchIndirect-None-10672" href="#VUID-vkCmdDispatchIndirect-None-10672"></a> <span class="vuid">VUID-vkCmdDispatchIndirect-None-10672</span><br>
 
 
@@ -1947,7 +2060,7 @@ contiguously to a single <code>VkDeviceMemory</code> object</p>
 <p><a id="VUID-vkCmdDispatchIndirect-buffer-02709" href="#VUID-vkCmdDispatchIndirect-buffer-02709"></a> <span class="vuid">VUID-vkCmdDispatchIndirect-buffer-02709</span><br>
 
 <code>buffer</code> <strong>must</strong> have been created with the
-<code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> bit set</p>
+<code>VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchIndirect-offset-02710" href="#VUID-vkCmdDispatchIndirect-offset-02710"></a> <span class="vuid">VUID-vkCmdDispatchIndirect-offset-02710</span><br>
@@ -1988,7 +2101,11 @@ The sum of <code>offset</code> and the size of <code>VkDispatchIndirectCommand</
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchIndirect-commandBuffer-cmdpool" href="#VUID-vkCmdDispatchIndirect-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdDispatchIndirect-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code> operations</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchIndirect-suspended" href="#VUID-vkCmdDispatchIndirect-suspended"></a> <span class="vuid">VUID-vkCmdDispatchIndirect-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchIndirect-videocoding" href="#VUID-vkCmdDispatchIndirect-videocoding"></a> <span class="vuid">VUID-vkCmdDispatchIndirect-videocoding</span><br>
@@ -2043,11 +2160,19 @@ The sum of <code>offset</code> and the size of <code>VkDispatchIndirectCommand</
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdDispatchIndirect is affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -2135,12 +2260,10 @@ void vkCmdDispatchBase(
     uint32_t                                    groupCountZ);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkCmdDispatchBaseKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_device_group
+// Equivalent to vkCmdDispatchBase
 void vkCmdDispatchBaseKHR(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    baseGroupX,
@@ -2458,6 +2581,13 @@ by
 the <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> bound to the pipeline bind point used by this
 command and the bound <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> was not created with
 <code>VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchBase-imageLayout-00344" href="#VUID-vkCmdDispatchBase-imageLayout-00344"></a> <span class="vuid">VUID-vkCmdDispatchBase-imageLayout-00344</span><br>
+
+If an image descriptor is accessed by a shader, the <a href="resources.html#VkImageLayout" class="xref page">VkImageLayout</a>
+<strong>must</strong> match the subresource accessible from the <a href="resources.html#VkImageView" class="xref page">VkImageView</a> as
+defined by the <a href="resources.html#resources-image-layouts-matching-rule" class="xref page">image layout    matching rules</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchBase-None-08115" href="#VUID-vkCmdDispatchBase-None-08115"></a> <span class="vuid">VUID-vkCmdDispatchBase-None-08115</span><br>
@@ -2810,6 +2940,34 @@ transitioned to the
 <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> layout</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDispatchBase-pDescription-09900" href="#VUID-vkCmdDispatchBase-pDescription-09900"></a> <span class="vuid">VUID-vkCmdDispatchBase-pDescription-09900</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object
+<strong>must</strong> have been created with a
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> whose <code>usage</code> member
+contained <code>VK_TENSOR_USAGE_SHADER_BIT_ARM</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchBase-dimensionCount-09905" href="#VUID-vkCmdDispatchBase-dimensionCount-09905"></a> <span class="vuid">VUID-vkCmdDispatchBase-dimensionCount-09905</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the <code>Rank</code> of the <code>OpTypeTensorARM</code>
+of the tensor resource variable <strong>must</strong> be equal to the
+<code>dimensionCount</code> provided via
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> when creating the
+underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchBase-OpTypeTensorARM-09906" href="#VUID-vkCmdDispatchBase-OpTypeTensorARM-09906"></a> <span class="vuid">VUID-vkCmdDispatchBase-OpTypeTensorARM-09906</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the element type of the
+<code>OpTypeTensorARM</code> of the tensor resource variable <strong>must</strong> be
+<a href="../appendices/spirvenv.html#spirvenv-tensor-formats" class="xref page">compatible</a> with the <a href="formats.html#VkFormat" class="xref page">VkFormat</a> of the
+<a href="resources.html#VkTensorViewARM" class="xref page">VkTensorViewARM</a> used for the access</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDispatchBase-None-10672" href="#VUID-vkCmdDispatchBase-None-10672"></a> <span class="vuid">VUID-vkCmdDispatchBase-None-10672</span><br>
 
 
@@ -2933,7 +3091,7 @@ buffer</p>
 
 If any of <code>baseGroupX</code>, <code>baseGroupY</code>, or <code>baseGroupZ</code> are
 not zero, then the bound compute pipeline <strong>must</strong> have been created with
-the <code>VK_PIPELINE_CREATE_DISPATCH_BASE</code> flag
+the <code>VK_PIPELINE_CREATE_DISPATCH_BASE_BIT</code> flag
 or the bound compute shader object <strong>must</strong> have been created with the
 <code>VK_SHADER_CREATE_DISPATCH_BASE_BIT_EXT</code> flag</p>
 </li>
@@ -2956,7 +3114,11 @@ or the bound compute shader object <strong>must</strong> have been created with 
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchBase-commandBuffer-cmdpool" href="#VUID-vkCmdDispatchBase-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdDispatchBase-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code> operations</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchBase-suspended" href="#VUID-vkCmdDispatchBase-suspended"></a> <span class="vuid">VUID-vkCmdDispatchBase-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchBase-videocoding" href="#VUID-vkCmdDispatchBase-videocoding"></a> <span class="vuid">VUID-vkCmdDispatchBase-videocoding</span><br>
@@ -3007,11 +3169,19 @@ or the bound compute shader object <strong>must</strong> have been created with 
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdDispatchBase is affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -3025,7 +3195,8 @@ Secondary</p></td>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_QCOM_tile_shading
 void vkCmdDispatchTileQCOM(
-    VkCommandBuffer                             commandBuffer);</code></pre>
+    VkCommandBuffer                             commandBuffer,
+    const VkDispatchTileInfoQCOM*               pDispatchTileInfo);</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -3056,7 +3227,7 @@ Its <code>x</code> and <code>y</code> <strong>must</strong> be a power of two an
 the <a href="limits.html#limits-maxTileShadingRate" class="xref page">maxTileShadingRate</a> limit.
 Its <code>z</code> <strong>must</strong> be less than or equal to the active tile&#8217;s depth as
 reported by <a href="../appendices/extensions.html#VK_QCOM_tile_properties" class="xref page">VK_QCOM_tile_properties</a>, and
-<span class="eq"><a href="renderpass.html#VkTilePropertiesQCOM" class="xref page">VkTilePropertiesQCOM</a>::<code>tileSize</code>::<code>z</code> %
+<span class="eq"><a href="renderpass.html#VkTilePropertiesQCOM" class="xref page">VkTilePropertiesQCOM</a>.tileSize.z %
 <code>TileShadingRateQCOM</code>::<code>z</code></span> <strong>must</strong> equal <code>0</code>.</p>
 </div>
 <div class="paragraph">
@@ -3336,6 +3507,13 @@ by
 the <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> bound to the pipeline bind point used by this
 command and the bound <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> was not created with
 <code>VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchTileQCOM-imageLayout-00344" href="#VUID-vkCmdDispatchTileQCOM-imageLayout-00344"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-imageLayout-00344</span><br>
+
+If an image descriptor is accessed by a shader, the <a href="resources.html#VkImageLayout" class="xref page">VkImageLayout</a>
+<strong>must</strong> match the subresource accessible from the <a href="resources.html#VkImageView" class="xref page">VkImageView</a> as
+defined by the <a href="resources.html#resources-image-layouts-matching-rule" class="xref page">image layout    matching rules</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchTileQCOM-None-08115" href="#VUID-vkCmdDispatchTileQCOM-None-08115"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-None-08115</span><br>
@@ -3688,6 +3866,34 @@ transitioned to the
 <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> layout</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDispatchTileQCOM-pDescription-09900" href="#VUID-vkCmdDispatchTileQCOM-pDescription-09900"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-pDescription-09900</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object
+<strong>must</strong> have been created with a
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> whose <code>usage</code> member
+contained <code>VK_TENSOR_USAGE_SHADER_BIT_ARM</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchTileQCOM-dimensionCount-09905" href="#VUID-vkCmdDispatchTileQCOM-dimensionCount-09905"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-dimensionCount-09905</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the <code>Rank</code> of the <code>OpTypeTensorARM</code>
+of the tensor resource variable <strong>must</strong> be equal to the
+<code>dimensionCount</code> provided via
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> when creating the
+underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchTileQCOM-OpTypeTensorARM-09906" href="#VUID-vkCmdDispatchTileQCOM-OpTypeTensorARM-09906"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-OpTypeTensorARM-09906</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the element type of the
+<code>OpTypeTensorARM</code> of the tensor resource variable <strong>must</strong> be
+<a href="../appendices/spirvenv.html#spirvenv-tensor-formats" class="xref page">compatible</a> with the <a href="formats.html#VkFormat" class="xref page">VkFormat</a> of the
+<a href="resources.html#VkTensorViewARM" class="xref page">VkTensorViewARM</a> used for the access</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDispatchTileQCOM-None-10672" href="#VUID-vkCmdDispatchTileQCOM-None-10672"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-None-10672</span><br>
 
 
@@ -3794,16 +4000,24 @@ enabled</p>
  <code>commandBuffer</code> <strong>must</strong> be a valid <a href="cmdbuffers.html#VkCommandBuffer" class="xref page">VkCommandBuffer</a> handle</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDispatchTileQCOM-pDispatchTileInfo-parameter" href="#VUID-vkCmdDispatchTileQCOM-pDispatchTileInfo-parameter"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-pDispatchTileInfo-parameter</span><br>
+ <code>pDispatchTileInfo</code> <strong>must</strong> be a valid pointer to a valid <a href="#VkDispatchTileInfoQCOM">VkDispatchTileInfoQCOM</a> structure</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDispatchTileQCOM-commandBuffer-recording" href="#VUID-vkCmdDispatchTileQCOM-commandBuffer-recording"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-commandBuffer-recording</span><br>
  <code>commandBuffer</code> <strong>must</strong> be in the <a href="cmdbuffers.html#commandbuffers-lifecycle" class="xref page">recording state</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchTileQCOM-commandBuffer-cmdpool" href="#VUID-vkCmdDispatchTileQCOM-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchTileQCOM-renderpass" href="#VUID-vkCmdDispatchTileQCOM-renderpass"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-renderpass</span><br>
  This command <strong>must</strong> only be called inside of a render pass instance</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDispatchTileQCOM-suspended" href="#VUID-vkCmdDispatchTileQCOM-suspended"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDispatchTileQCOM-videocoding" href="#VUID-vkCmdDispatchTileQCOM-videocoding"></a> <span class="vuid">VUID-vkCmdDispatchTileQCOM-videocoding</span><br>
@@ -3851,11 +4065,19 @@ enabled</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Inside</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdDispatchTileQCOM is affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -4200,6 +4422,13 @@ by
 the <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> bound to the pipeline bind point used by this
 command and the bound <a href="pipelines.html#VkPipeline" class="xref page">VkPipeline</a> was not created with
 <code>VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdSubpassShadingHUAWEI-imageLayout-00344" href="#VUID-vkCmdSubpassShadingHUAWEI-imageLayout-00344"></a> <span class="vuid">VUID-vkCmdSubpassShadingHUAWEI-imageLayout-00344</span><br>
+
+If an image descriptor is accessed by a shader, the <a href="resources.html#VkImageLayout" class="xref page">VkImageLayout</a>
+<strong>must</strong> match the subresource accessible from the <a href="resources.html#VkImageView" class="xref page">VkImageView</a> as
+defined by the <a href="resources.html#resources-image-layouts-matching-rule" class="xref page">image layout    matching rules</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSubpassShadingHUAWEI-None-08115" href="#VUID-vkCmdSubpassShadingHUAWEI-None-08115"></a> <span class="vuid">VUID-vkCmdSubpassShadingHUAWEI-None-08115</span><br>
@@ -4552,6 +4781,34 @@ transitioned to the
 <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> layout</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdSubpassShadingHUAWEI-pDescription-09900" href="#VUID-vkCmdSubpassShadingHUAWEI-pDescription-09900"></a> <span class="vuid">VUID-vkCmdSubpassShadingHUAWEI-pDescription-09900</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object
+<strong>must</strong> have been created with a
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> whose <code>usage</code> member
+contained <code>VK_TENSOR_USAGE_SHADER_BIT_ARM</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdSubpassShadingHUAWEI-dimensionCount-09905" href="#VUID-vkCmdSubpassShadingHUAWEI-dimensionCount-09905"></a> <span class="vuid">VUID-vkCmdSubpassShadingHUAWEI-dimensionCount-09905</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the <code>Rank</code> of the <code>OpTypeTensorARM</code>
+of the tensor resource variable <strong>must</strong> be equal to the
+<code>dimensionCount</code> provided via
+<a href="resources.html#VkTensorCreateInfoARM" class="xref page">VkTensorCreateInfoARM</a>::<code>pDescription</code> when creating the
+underlying <a href="resources.html#VkTensorARM" class="xref page">VkTensorARM</a> object</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdSubpassShadingHUAWEI-OpTypeTensorARM-09906" href="#VUID-vkCmdSubpassShadingHUAWEI-OpTypeTensorARM-09906"></a> <span class="vuid">VUID-vkCmdSubpassShadingHUAWEI-OpTypeTensorARM-09906</span><br>
+
+If a <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code> descriptor is accessed as a
+result of this command, then the element type of the
+<code>OpTypeTensorARM</code> of the tensor resource variable <strong>must</strong> be
+<a href="../appendices/spirvenv.html#spirvenv-tensor-formats" class="xref page">compatible</a> with the <a href="formats.html#VkFormat" class="xref page">VkFormat</a> of the
+<a href="resources.html#VkTensorViewARM" class="xref page">VkTensorViewARM</a> used for the access</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdSubpassShadingHUAWEI-None-04931" href="#VUID-vkCmdSubpassShadingHUAWEI-None-04931"></a> <span class="vuid">VUID-vkCmdSubpassShadingHUAWEI-None-04931</span><br>
 
 This command <strong>must</strong> be called in a subpass with bind point
@@ -4579,11 +4836,15 @@ subpass</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSubpassShadingHUAWEI-commandBuffer-cmdpool" href="#VUID-vkCmdSubpassShadingHUAWEI-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSubpassShadingHUAWEI-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSubpassShadingHUAWEI-renderpass" href="#VUID-vkCmdSubpassShadingHUAWEI-renderpass"></a> <span class="vuid">VUID-vkCmdSubpassShadingHUAWEI-renderpass</span><br>
  This command <strong>must</strong> only be called inside of a render pass instance</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdSubpassShadingHUAWEI-suspended" href="#VUID-vkCmdSubpassShadingHUAWEI-suspended"></a> <span class="vuid">VUID-vkCmdSubpassShadingHUAWEI-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSubpassShadingHUAWEI-videocoding" href="#VUID-vkCmdSubpassShadingHUAWEI-videocoding"></a> <span class="vuid">VUID-vkCmdSubpassShadingHUAWEI-videocoding</span><br>
@@ -4634,11 +4895,19 @@ subpass</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Inside</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSubpassShadingHUAWEI is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -4720,7 +4989,11 @@ workgroups is assembled.</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCudaLaunchKernelNV-commandBuffer-cmdpool" href="#VUID-vkCmdCudaLaunchKernelNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdCudaLaunchKernelNV-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics, or compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, or <code>VK_QUEUE_GRAPHICS_BIT</code> operations</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdCudaLaunchKernelNV-suspended" href="#VUID-vkCmdCudaLaunchKernelNV-suspended"></a> <span class="vuid">VUID-vkCmdCudaLaunchKernelNV-suspended</span><br>
+ This command <strong>must</strong> not be called between suspended render pass instances</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCudaLaunchKernelNV-videocoding" href="#VUID-vkCmdCudaLaunchKernelNV-videocoding"></a> <span class="vuid">VUID-vkCmdCudaLaunchKernelNV-videocoding</span><br>
@@ -4768,12 +5041,20 @@ workgroups is assembled.</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics<br>
-Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT<br>
+VK_QUEUE_GRAPHICS_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdCudaLaunchKernelNV is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -5094,9 +5375,56 @@ vkCmdCudaLaunchKernelNV(commandBuffer, &amp;launchInfo);</code></pre>
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>

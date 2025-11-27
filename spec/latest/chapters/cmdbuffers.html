@@ -12,10 +12,11 @@
       }(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)')?.matches && 'dark'))
     </script>
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../_/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../_/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../_/img/favicon-16x16.png">
-    <link rel="manifest" href="../../../_/static/site.webmanifest">
+    <link rel="manifest" href="../../../_/site.webmanifest">
     <link rel="mask-icon" href="../../../_/img/safari-pinned-tab.svg" color="#a41e22">
     <meta name="msapplication-TileColor" content="#ffc40d">
   </head>
@@ -53,6 +54,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">Education</a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="../../../refpages/latest/refpages/index.html">Vulkan Reference Pages</a>
             <a class="navbar-item" href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a>
             <a class="navbar-item" href="../../../guide/latest/index.html">Vulkan Guide</a>
             <a class="navbar-item" href="../../../samples/latest/README.html">Vulkan Samples</a>
@@ -118,7 +120,7 @@
   }();
 </script>
 <div class="body">
-<div class="nav-container" data-component="spec" data-version="latest">
+<div class="nav-container" data-component="spec" data-version="latest" id="split-0">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -128,6 +130,9 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="preamble.html">Preamble</a>
+  </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="introduction.html">Introduction</a>
   </li>
@@ -162,6 +167,9 @@
     <a class="nav-link" href="resources.html">Resource Creation</a>
   </li>
   <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="images.html">Images</a>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="samplers.html">Samplers</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -175,6 +183,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="fragmentdensitymapops.html">Fragment Density Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_tensors/tensorops.html">Tensor Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="queries.html">Queries</a>
@@ -231,10 +242,13 @@
     <a class="nav-link" href="VK_KHR_deferred_host_operations/deferred_host_operations.html">Deferred Host Operations</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_EXT_private_data.html">Private Data</a>
+    <a class="nav-link" href="private_data.html">Private Data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="accelstructures.html">Acceleration Structures</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_AMDX_dense_geometry_format/dense_geometry_format.html">Compressed triangle data</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="VK_EXT_opacity_micromap/micromaps.html">Micromap</a>
@@ -246,7 +260,7 @@
     <a class="nav-link" href="raytracing.html">Ray Tracing</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="VK_NV_memory_decompression.html">Memory Decompression</a>
+    <a class="nav-link" href="memory_decompression.html">Memory Decompression</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="videocoding.html">Video Coding</a>
@@ -256,6 +270,12 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="executiongraphs.html">Execution Graphs</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_NV_external_compute_queue/VK_NV_external_compute_queue.html">External Compute Queues</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="VK_ARM_data_graph/graphs.html">Data graphs</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="extensions.html">Extending Vulkan</a>
@@ -292,6 +312,9 @@
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/roadmap.html">Vulkan Roadmap Milestones</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../appendices/legacy.html">Legacy and Superseded Functionality</a>
   </li>
   <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../appendices/boilerplate.html">API Boilerplate</a>
@@ -333,6 +356,14 @@
       </ul>
     </li>
     <li class="component">
+      <div class="title"><a href="../../../refpages/latest/refpages/index.html">Vulkan API Reference Pages</a></div>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../refpages/latest/refpages/index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
       <div class="title"><a href="../../../features/latest/features/index.html">Vulkan Feature Descriptions</a></div>
       <ul class="versions">
         <li class="version is-latest">
@@ -369,7 +400,7 @@
     </div>
   </aside>
 </div>
-<main class="article">
+<main class="article" id="split-1">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
@@ -658,6 +689,10 @@ available in the logical device <code>device</code></p>
 <p><a id="VUID-vkCreateCommandPool-pCommandPool-parameter" href="#VUID-vkCreateCommandPool-pCommandPool-parameter"></a> <span class="vuid">VUID-vkCreateCommandPool-pCommandPool-parameter</span><br>
  <code>pCommandPool</code> <strong>must</strong> be a valid pointer to a <a href="#VkCommandPool">VkCommandPool</a> handle</p>
 </li>
+<li>
+<p><a id="VUID-vkCreateCommandPool-device-queuecount" href="#VUID-vkCreateCommandPool-device-queuecount"></a> <span class="vuid">VUID-vkCreateCommandPool-device-queuecount</span><br>
+ The device <strong>must</strong> have been created with at least <code>1</code> queue</p>
+</li>
 </ul>
 </div>
 </div>
@@ -682,10 +717,16 @@ available in the logical device <code>device</code></p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+</li>
+<li>
 <p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -745,6 +786,40 @@ If the <a href="features.html#features-protectedMemory" class="xref page"><code>
 not enabled, the <code>VK_COMMAND_POOL_CREATE_PROTECTED_BIT</code> bit of
 <code>flags</code> <strong>must</strong> not be set</p>
 </li>
+<li>
+<p><a id="VUID-VkCommandPoolCreateInfo-pNext-09908" href="#VUID-VkCommandPoolCreateInfo-pNext-09908"></a> <span class="vuid">VUID-VkCommandPoolCreateInfo-pNext-09908</span><br>
+
+If the <code>pNext</code> chain includes a
+<a href="VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM" class="xref page">VkDataGraphProcessingEngineCreateInfoARM</a> structure, then
+<code>queueFamilyIndex</code> <strong>must</strong> designate a queue family that supports
+<code>VK_QUEUE_DATA_GRAPH_BIT_ARM</code></p>
+</li>
+<li>
+<p><a id="VUID-VkCommandPoolCreateInfo-pNext-09909" href="#VUID-VkCommandPoolCreateInfo-pNext-09909"></a> <span class="vuid">VUID-VkCommandPoolCreateInfo-pNext-09909</span><br>
+
+If the <code>pNext</code> chain includes a
+<a href="VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM" class="xref page">VkDataGraphProcessingEngineCreateInfoARM</a> structure, each member of
+<code>pProcessingEngines</code> <strong>must</strong> be identical to
+<a href="VK_ARM_data_graph/graphs.html#VkQueueFamilyDataGraphPropertiesARM" class="xref page">VkQueueFamilyDataGraphPropertiesARM</a>::<code>engine</code> retrieved from
+<a href="VK_ARM_data_graph/graphs.html#vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM" class="xref page">vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM</a> with
+<code>queueFamilyIndex</code> and the <code>physicalDevice</code> that was used to
+create <code>device</code></p>
+</li>
+<li>
+<p><a id="VUID-VkCommandPoolCreateInfo-queueFamilyIndex-11830" href="#VUID-VkCommandPoolCreateInfo-queueFamilyIndex-11830"></a> <span class="vuid">VUID-VkCommandPoolCreateInfo-queueFamilyIndex-11830</span><br>
+
+If <code>queueFamilyIndex</code> designates a queue family that supports
+<code>VK_QUEUE_DATA_GRAPH_BIT_ARM</code> and enumerates a foreign engine
+through <a href="VK_ARM_data_graph/graphs.html#vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM" class="xref page">vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM</a> with
+type
+<code>VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_NEURAL_QCOM</code>
+or
+<code>VK_PHYSICAL_DEVICE_DATA_GRAPH_PROCESSING_ENGINE_TYPE_COMPUTE_QCOM</code>,
+the <code>pNext</code> chain must include
+<a href="VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM" class="xref page">VkDataGraphProcessingEngineCreateInfoARM</a> with
+<a href="VK_ARM_data_graph/graphs.html#VkPhysicalDeviceDataGraphProcessingEngineARM" class="xref page">VkPhysicalDeviceDataGraphProcessingEngineARM</a>::<code>isForeign</code> set
+to <code>VK_TRUE</code> for all elements of <code>pProcessingEngines</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -760,7 +835,11 @@ not enabled, the <code>VK_COMMAND_POOL_CREATE_PROTECTED_BIT</code> bit of
 </li>
 <li>
 <p><a id="VUID-VkCommandPoolCreateInfo-pNext-pNext" href="#VUID-VkCommandPoolCreateInfo-pNext-pNext"></a> <span class="vuid">VUID-VkCommandPoolCreateInfo-pNext-pNext</span><br>
- <code>pNext</code> <strong>must</strong> be <code>NULL</code></p>
+ <code>pNext</code> <strong>must</strong> be <code>NULL</code> or a pointer to a valid instance of <a href="VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM" class="xref page">VkDataGraphProcessingEngineCreateInfoARM</a></p>
+</li>
+<li>
+<p><a id="VUID-VkCommandPoolCreateInfo-sType-unique" href="#VUID-VkCommandPoolCreateInfo-sType-unique"></a> <span class="vuid">VUID-VkCommandPoolCreateInfo-sType-unique</span><br>
+ The <code>sType</code> value of each structure in the <code>pNext</code> chain <strong>must</strong> be unique</p>
 </li>
 <li>
 <p><a id="VUID-VkCommandPoolCreateInfo-flags-parameter" href="#VUID-VkCommandPoolCreateInfo-flags-parameter"></a> <span class="vuid">VUID-VkCommandPoolCreateInfo-flags-parameter</span><br>
@@ -843,12 +922,10 @@ void vkTrimCommandPool(
     VkCommandPoolTrimFlags                      flags);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkTrimCommandPoolKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_maintenance1
+// Equivalent to vkTrimCommandPool
 void vkTrimCommandPoolKHR(
     VkDevice                                    device,
     VkCommandPool                               commandPool,
@@ -972,12 +1049,10 @@ cost of trimming is &#8220;worth&#8221; it.</p>
 typedef VkFlags VkCommandPoolTrimFlags;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkCommandPoolTrimFlagsKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_maintenance1
+// Equivalent to VkCommandPoolTrimFlags
 typedef VkCommandPoolTrimFlags VkCommandPoolTrimFlagsKHR;</code></pre>
 </div>
 </div>
@@ -1100,6 +1175,12 @@ not be in the <a href="#commandbuffers-lifecycle">pending state</a></p>
 <ul>
 <li>
 <p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -1338,6 +1419,10 @@ contents.</p>
  <code>pCommandBuffers</code> <strong>must</strong> be a valid pointer to an array of <code>pAllocateInfo-&gt;commandBufferCount</code> <a href="#VkCommandBuffer">VkCommandBuffer</a> handles</p>
 </li>
 <li>
+<p><a id="VUID-vkAllocateCommandBuffers-device-queuecount" href="#VUID-vkAllocateCommandBuffers-device-queuecount"></a> <span class="vuid">VUID-vkAllocateCommandBuffers-device-queuecount</span><br>
+ The device <strong>must</strong> have been created with at least <code>1</code> queue</p>
+</li>
+<li>
 <p><a id="VUID-vkAllocateCommandBuffers-pAllocateInfo::commandBufferCount-arraylength" href="#VUID-vkAllocateCommandBuffers-pAllocateInfo::commandBufferCount-arraylength"></a> <span class="vuid">VUID-vkAllocateCommandBuffers-pAllocateInfo::commandBufferCount-arraylength</span><br>
  <code>pAllocateInfo-&gt;commandBufferCount</code> <strong>must</strong> be greater than <code>0</code></p>
 </li>
@@ -1365,10 +1450,16 @@ contents.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+</li>
+<li>
 <p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -1596,6 +1687,12 @@ created with the <code>VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT</code></p
 <ul>
 <li>
 <p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -1884,10 +1981,16 @@ If <code>commandBuffer</code> is a primary command buffer, then
 <div class="ulist">
 <ul>
 <li>
+<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+</li>
+<li>
 <p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
 </li>
 <li>
-<p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -2273,7 +2376,7 @@ If the <a href="features.html#features-pipelineStatisticsQuery" class="xref page
 </li>
 <li>
 <p><a id="VUID-VkCommandBufferInheritanceInfo-pNext-pNext" href="#VUID-VkCommandBufferInheritanceInfo-pNext-pNext"></a> <span class="vuid">VUID-VkCommandBufferInheritanceInfo-pNext-pNext</span><br>
- Each <code>pNext</code> member of any structure (including this one) in the <code>pNext</code> chain <strong>must</strong> be either <code>NULL</code> or a pointer to a valid instance of <a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a>, <a href="#VkCommandBufferInheritanceConditionalRenderingInfoEXT">VkCommandBufferInheritanceConditionalRenderingInfoEXT</a>, <a href="#VkCommandBufferInheritanceRenderPassTransformInfoQCOM">VkCommandBufferInheritanceRenderPassTransformInfoQCOM</a>, <a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a>, <a href="#VkCommandBufferInheritanceViewportScissorInfoNV">VkCommandBufferInheritanceViewportScissorInfoNV</a>, <a href="resources.html#VkExternalFormatANDROID" class="xref page">VkExternalFormatANDROID</a>, <a href="renderpass.html#VkMultiviewPerViewAttributesInfoNVX" class="xref page">VkMultiviewPerViewAttributesInfoNVX</a>, <a href="renderpass.html#VkRenderPassTileShadingCreateInfoQCOM" class="xref page">VkRenderPassTileShadingCreateInfoQCOM</a>, <a href="interfaces.html#VkRenderingAttachmentLocationInfo" class="xref page">VkRenderingAttachmentLocationInfo</a>, <a href="interfaces.html#VkRenderingInputAttachmentIndexInfo" class="xref page">VkRenderingInputAttachmentIndexInfo</a>, or <a href="memory.html#VkTileMemoryBindInfoQCOM" class="xref page">VkTileMemoryBindInfoQCOM</a></p>
+ Each <code>pNext</code> member of any structure (including this one) in the <code>pNext</code> chain <strong>must</strong> be either <code>NULL</code> or a pointer to a valid instance of <a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a>, <a href="#VkCommandBufferInheritanceConditionalRenderingInfoEXT">VkCommandBufferInheritanceConditionalRenderingInfoEXT</a>, <a href="#VkCommandBufferInheritanceRenderPassTransformInfoQCOM">VkCommandBufferInheritanceRenderPassTransformInfoQCOM</a>, <a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a>, <a href="#VkCommandBufferInheritanceViewportScissorInfoNV">VkCommandBufferInheritanceViewportScissorInfoNV</a>, <a href="pipelines.html#VkCustomResolveCreateInfoEXT" class="xref page">VkCustomResolveCreateInfoEXT</a>, <a href="resources.html#VkExternalFormatANDROID" class="xref page">VkExternalFormatANDROID</a>, <a href="resources.html#VkExternalFormatOHOS" class="xref page">VkExternalFormatOHOS</a>, <a href="renderpass.html#VkMultiviewPerViewAttributesInfoNVX" class="xref page">VkMultiviewPerViewAttributesInfoNVX</a>, <a href="renderpass.html#VkRenderPassTileShadingCreateInfoQCOM" class="xref page">VkRenderPassTileShadingCreateInfoQCOM</a>, <a href="interfaces.html#VkRenderingAttachmentLocationInfo" class="xref page">VkRenderingAttachmentLocationInfo</a>, <a href="interfaces.html#VkRenderingInputAttachmentIndexInfo" class="xref page">VkRenderingInputAttachmentIndexInfo</a>, or <a href="memory.html#VkTileMemoryBindInfoQCOM" class="xref page">VkTileMemoryBindInfoQCOM</a></p>
 </li>
 <li>
 <p><a id="VUID-VkCommandBufferInheritanceInfo-sType-unique" href="#VUID-VkCommandBufferInheritanceInfo-sType-unique"></a> <span class="vuid">VUID-VkCommandBufferInheritanceInfo-sType-unique</span><br>
@@ -2425,7 +2528,7 @@ defined as:</p>
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_QCOM_render_pass_transform
 typedef struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM {
     VkStructureType                  sType;
-    void*                            pNext;
+    const void*                      pNext;
     VkSurfaceTransformFlagBitsKHR    transform;
     VkRect2D                         renderArea;
 } VkCommandBufferInheritanceRenderPassTransformInfoQCOM;</code></pre>
@@ -2737,12 +2840,10 @@ typedef struct VkCommandBufferInheritanceRenderingInfo {
 } VkCommandBufferInheritanceRenderingInfo;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkCommandBufferInheritanceRenderingInfoKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_dynamic_rendering
+// Equivalent to VkCommandBufferInheritanceRenderingInfo
 typedef VkCommandBufferInheritanceRenderingInfo VkCommandBufferInheritanceRenderingInfoKHR;</code></pre>
 </div>
 </div>
@@ -2940,12 +3041,10 @@ typedef struct VkAttachmentSampleCountInfoAMD {
 } VkAttachmentSampleCountInfoAMD;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkAttachmentSampleCountInfoNV" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_NV_framebuffer_mixed_samples with VK_VERSION_1_3 or VK_KHR_dynamic_rendering
+// Equivalent to VkAttachmentSampleCountInfoAMD
 typedef VkAttachmentSampleCountInfoAMD VkAttachmentSampleCountInfoNV;</code></pre>
 </div>
 </div>
@@ -3182,13 +3281,19 @@ an outstanding <a href="debugging.html#vkCmdDebugMarkerBeginEXT" class="xref pag
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><code>VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR</code></p>
 </li>
 <li>
 <p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
 </li>
 <li>
-<p><code>VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR</code></p>
+<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -3240,12 +3345,10 @@ VkResult vkQueueSubmit2(
     VkFence                                     fence);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkQueueSubmit2KHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_synchronization2
+// Equivalent to vkQueueSubmit2
 VkResult vkQueueSubmit2KHR(
     VkQueue                                     queue,
     uint32_t                                    submitCount,
@@ -3442,6 +3545,15 @@ acquire operation as defined in the definition of such
 which happens before the acquire operation</p>
 </li>
 <li>
+<p><a id="VUID-vkQueueSubmit2-commandBuffer-10910" href="#VUID-vkQueueSubmit2-commandBuffer-10910"></a> <span class="vuid">VUID-vkQueueSubmit2-commandBuffer-10910</span><br>
+
+If a command recorded into the <code>commandBuffer</code> member of any element
+of the <code>pCommandBufferInfos</code> member of any element of <code>pSubmits</code>
+includes a <a href="synchronization.html#synchronization-queue-transfers-acquire" class="xref page">Queue Family    Ownership Transfer Acquire Operation</a>, the affected resource <strong>must</strong> not
+be modified in any way between the last matching release operation and
+the acquire operation</p>
+</li>
+<li>
 <p><a id="VUID-vkQueueSubmit2-commandBuffer-03880" href="#VUID-vkQueueSubmit2-commandBuffer-03880"></a> <span class="vuid">VUID-vkQueueSubmit2-commandBuffer-03880</span><br>
 
 If a command recorded into the <code>commandBuffer</code> member of any element
@@ -3556,13 +3668,19 @@ any element of <code>pSubmits</code> <strong>must</strong> not include
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><code>VK_ERROR_DEVICE_LOST</code></p>
 </li>
 <li>
 <p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
 </li>
 <li>
-<p><code>VK_ERROR_DEVICE_LOST</code></p>
+<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -3594,12 +3712,10 @@ typedef struct VkSubmitInfo2 {
 } VkSubmitInfo2;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkSubmitInfo2KHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_synchronization2
+// Equivalent to VkSubmitInfo2
 typedef VkSubmitInfo2 VkSubmitInfo2KHR;</code></pre>
 </div>
 </div>
@@ -3738,6 +3854,33 @@ bound, any pipelines bound in the render pass instance that resumes it,
 or any subsequent render pass instances that resume from that one and so
 on, <strong>must</strong> use the same sample locations</p>
 </li>
+<li>
+<p><a id="VUID-VkSubmitInfo2-pNext-09682" href="#VUID-VkSubmitInfo2-pNext-09682"></a> <span class="vuid">VUID-VkSubmitInfo2-pNext-09682</span><br>
+
+If the <code>pNext</code> chain of this structure includes a
+<a href="debugging.html#VkFrameBoundaryTensorsARM" class="xref page">VkFrameBoundaryTensorsARM</a> structure then it <strong>must</strong> also include a
+<a href="debugging.html#VkFrameBoundaryEXT" class="xref page">VkFrameBoundaryEXT</a> structure.</p>
+</li>
+<li>
+<p><a id="VUID-VkSubmitInfo2-pCommandBufferInfos-09933" href="#VUID-VkSubmitInfo2-pCommandBufferInfos-09933"></a> <span class="vuid">VUID-VkSubmitInfo2-pCommandBufferInfos-09933</span><br>
+
+If at least one <a href="#VkCommandBufferSubmitInfo">VkCommandBufferSubmitInfo</a> structure in
+<code>pCommandBufferInfos</code> references a <code>commandBuffer</code> allocated
+from a pool that was created with a
+<a href="VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM" class="xref page">VkDataGraphProcessingEngineCreateInfoARM</a> structure in the
+<code>pNext</code> chain of <a href="#VkCommandPoolCreateInfo">VkCommandPoolCreateInfo</a> that included a
+foreign data graph processing engine in its <code>pProcessingEngines</code>
+member, then <code>pWaitSemaphoreInfos</code> and <code>pSignalSemaphoreInfos</code>
+<strong>must</strong> only reference <code>semaphore</code> objects that were created from
+external handle types reported as supported in a
+<a href="VK_ARM_data_graph/graphs.html#VkQueueFamilyDataGraphProcessingEnginePropertiesARM" class="xref page">VkQueueFamilyDataGraphProcessingEnginePropertiesARM</a>::<code>foreignSemaphoreHandleTypes</code>
+structure via
+<a href="VK_ARM_data_graph/graphs.html#vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM" class="xref page">vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM</a>
+with a <code>queueFamilyIndex</code> matching the one the command pool was
+created for, for all the foreign data graph processing engines that were
+part of the <a href="VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM" class="xref page">VkDataGraphProcessingEngineCreateInfoARM</a> used to
+create the command pool</p>
+</li>
 </ul>
 </div>
 </div>
@@ -3753,7 +3896,7 @@ on, <strong>must</strong> use the same sample locations</p>
 </li>
 <li>
 <p><a id="VUID-VkSubmitInfo2-pNext-pNext" href="#VUID-VkSubmitInfo2-pNext-pNext"></a> <span class="vuid">VUID-VkSubmitInfo2-pNext-pNext</span><br>
- Each <code>pNext</code> member of any structure (including this one) in the <code>pNext</code> chain <strong>must</strong> be either <code>NULL</code> or a pointer to a valid instance of <a href="debugging.html#VkFrameBoundaryEXT" class="xref page">VkFrameBoundaryEXT</a>, <a href="VK_KHR_surface/wsi.html#VkLatencySubmissionPresentIdNV" class="xref page">VkLatencySubmissionPresentIdNV</a>, <a href="#VkPerformanceQuerySubmitInfoKHR">VkPerformanceQuerySubmitInfoKHR</a>, <a href="#VkWin32KeyedMutexAcquireReleaseInfoKHR">VkWin32KeyedMutexAcquireReleaseInfoKHR</a>, or <a href="#VkWin32KeyedMutexAcquireReleaseInfoNV">VkWin32KeyedMutexAcquireReleaseInfoNV</a></p>
+ Each <code>pNext</code> member of any structure (including this one) in the <code>pNext</code> chain <strong>must</strong> be either <code>NULL</code> or a pointer to a valid instance of <a href="debugging.html#VkFrameBoundaryEXT" class="xref page">VkFrameBoundaryEXT</a>, <a href="debugging.html#VkFrameBoundaryTensorsARM" class="xref page">VkFrameBoundaryTensorsARM</a>, <a href="VK_KHR_surface/wsi.html#VkLatencySubmissionPresentIdNV" class="xref page">VkLatencySubmissionPresentIdNV</a>, <a href="#VkPerformanceQuerySubmitInfoKHR">VkPerformanceQuerySubmitInfoKHR</a>, <a href="#VkWin32KeyedMutexAcquireReleaseInfoKHR">VkWin32KeyedMutexAcquireReleaseInfoKHR</a>, or <a href="#VkWin32KeyedMutexAcquireReleaseInfoNV">VkWin32KeyedMutexAcquireReleaseInfoNV</a></p>
 </li>
 <li>
 <p><a id="VUID-VkSubmitInfo2-sType-unique" href="#VUID-VkSubmitInfo2-sType-unique"></a> <span class="vuid">VUID-VkSubmitInfo2-sType-unique</span><br>
@@ -3797,12 +3940,10 @@ typedef enum VkSubmitFlagBits {
 } VkSubmitFlagBits;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkSubmitFlagBitsKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_synchronization2
+// Equivalent to VkSubmitFlagBits
 typedef VkSubmitFlagBits VkSubmitFlagBitsKHR;</code></pre>
 </div>
 </div>
@@ -3824,12 +3965,10 @@ submission.</p>
 typedef VkFlags VkSubmitFlags;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkSubmitFlagsKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_synchronization2
+// Equivalent to VkSubmitFlags
 typedef VkSubmitFlags VkSubmitFlagsKHR;</code></pre>
 </div>
 </div>
@@ -3857,12 +3996,10 @@ typedef struct VkSemaphoreSubmitInfo {
 } VkSemaphoreSubmitInfo;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkSemaphoreSubmitInfoKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_synchronization2
+// Equivalent to VkSemaphoreSubmitInfo
 typedef VkSemaphoreSubmitInfo VkSemaphoreSubmitInfoKHR;</code></pre>
 </div>
 </div>
@@ -4066,12 +4203,10 @@ typedef struct VkCommandBufferSubmitInfo {
 } VkCommandBufferSubmitInfo;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkCommandBufferSubmitInfoKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_synchronization2
+// Equivalent to VkCommandBufferSubmitInfo
 typedef VkCommandBufferSubmitInfo VkCommandBufferSubmitInfoKHR;</code></pre>
 </div>
 </div>
@@ -4458,6 +4593,14 @@ as defined in the definition of such
 which happens-before the acquire operation</p>
 </li>
 <li>
+<p><a id="VUID-vkQueueSubmit-pSubmits-10911" href="#VUID-vkQueueSubmit-pSubmits-10911"></a> <span class="vuid">VUID-vkQueueSubmit-pSubmits-10911</span><br>
+
+If any element of <code>pSubmits-&gt;pCommandBuffers</code> includes a
+<a href="synchronization.html#synchronization-queue-transfers-acquire" class="xref page">Queue Family Ownership    Transfer Acquire Operation</a>, the affected resource <strong>must</strong> not be
+modified in any way between the last matching release operation and the
+acquire operation</p>
+</li>
+<li>
 <p><a id="VUID-vkQueueSubmit-pCommandBuffers-03220" href="#VUID-vkQueueSubmit-pCommandBuffers-03220"></a> <span class="vuid">VUID-vkQueueSubmit-pCommandBuffers-03220</span><br>
 
 If a command recorded into any element of <code>pCommandBuffers</code> was a
@@ -4586,13 +4729,19 @@ its <code>pNext</code> chain with <code>protectedSubmit</code> equal to <code>VK
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+<p><code>VK_ERROR_DEVICE_LOST</code></p>
 </li>
 <li>
 <p><code>VK_ERROR_OUT_OF_DEVICE_MEMORY</code></p>
 </li>
 <li>
-<p><code>VK_ERROR_DEVICE_LOST</code></p>
+<p><code>VK_ERROR_OUT_OF_HOST_MEMORY</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_UNKNOWN</code></p>
+</li>
+<li>
+<p><code>VK_ERROR_VALIDATION_FAILED</code></p>
 </li>
 </ul>
 </div>
@@ -4888,6 +5037,33 @@ render pass instance that resumes it, or any subsequent render pass
 instances that resume from that one and so on, <strong>must</strong> use the same sample
 locations</p>
 </li>
+<li>
+<p><a id="VUID-VkSubmitInfo-pNext-09683" href="#VUID-VkSubmitInfo-pNext-09683"></a> <span class="vuid">VUID-VkSubmitInfo-pNext-09683</span><br>
+
+If the <code>pNext</code> chain of this structure includes a
+<a href="debugging.html#VkFrameBoundaryTensorsARM" class="xref page">VkFrameBoundaryTensorsARM</a> structure then it <strong>must</strong> also include a
+<a href="debugging.html#VkFrameBoundaryEXT" class="xref page">VkFrameBoundaryEXT</a> structure.</p>
+</li>
+<li>
+<p><a id="VUID-VkSubmitInfo-pCommandBufferInfos-09942" href="#VUID-VkSubmitInfo-pCommandBufferInfos-09942"></a> <span class="vuid">VUID-VkSubmitInfo-pCommandBufferInfos-09942</span><br>
+
+If at least one <a href="#VkCommandBufferSubmitInfo">VkCommandBufferSubmitInfo</a> structure in
+<code>pCommandBufferInfos</code> references a <code>commandBuffer</code> allocated
+from a pool that was created with a
+<a href="VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM" class="xref page">VkDataGraphProcessingEngineCreateInfoARM</a> structure in the
+<code>pNext</code> chain of <a href="#VkCommandPoolCreateInfo">VkCommandPoolCreateInfo</a> that included a
+foreign data graph processing engine in its <code>pProcessingEngines</code>
+member, then <code>pWaitSemaphoreInfos</code> and <code>pSignalSemaphoreInfos</code>
+<strong>must</strong> only reference <code>semaphore</code> objects that were created from
+external handle types reported as supported in a
+<a href="VK_ARM_data_graph/graphs.html#VkQueueFamilyDataGraphProcessingEnginePropertiesARM" class="xref page">VkQueueFamilyDataGraphProcessingEnginePropertiesARM</a>::<code>foreignSemaphoreHandleTypes</code>
+structure via
+<a href="VK_ARM_data_graph/graphs.html#vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM" class="xref page">vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM</a>
+with a <code>queueFamilyIndex</code> matching the one the command pool was
+created for, for all the foreign data graph processing engines that were
+part of the <a href="VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM" class="xref page">VkDataGraphProcessingEngineCreateInfoARM</a> used to
+create the command pool</p>
+</li>
 </ul>
 </div>
 </div>
@@ -4903,7 +5079,7 @@ locations</p>
 </li>
 <li>
 <p><a id="VUID-VkSubmitInfo-pNext-pNext" href="#VUID-VkSubmitInfo-pNext-pNext"></a> <span class="vuid">VUID-VkSubmitInfo-pNext-pNext</span><br>
- Each <code>pNext</code> member of any structure (including this one) in the <code>pNext</code> chain <strong>must</strong> be either <code>NULL</code> or a pointer to a valid instance of <a href="../appendices/extensions.html#VkAmigoProfilingSubmitInfoSEC" class="xref page">VkAmigoProfilingSubmitInfoSEC</a>, <a href="#VkD3D12FenceSubmitInfoKHR">VkD3D12FenceSubmitInfoKHR</a>, <a href="#VkDeviceGroupSubmitInfo">VkDeviceGroupSubmitInfo</a>, <a href="debugging.html#VkFrameBoundaryEXT" class="xref page">VkFrameBoundaryEXT</a>, <a href="VK_KHR_surface/wsi.html#VkLatencySubmissionPresentIdNV" class="xref page">VkLatencySubmissionPresentIdNV</a>, <a href="#VkPerformanceQuerySubmitInfoKHR">VkPerformanceQuerySubmitInfoKHR</a>, <a href="#VkProtectedSubmitInfo">VkProtectedSubmitInfo</a>, <a href="#VkTimelineSemaphoreSubmitInfo">VkTimelineSemaphoreSubmitInfo</a>, <a href="#VkWin32KeyedMutexAcquireReleaseInfoKHR">VkWin32KeyedMutexAcquireReleaseInfoKHR</a>, or <a href="#VkWin32KeyedMutexAcquireReleaseInfoNV">VkWin32KeyedMutexAcquireReleaseInfoNV</a></p>
+ Each <code>pNext</code> member of any structure (including this one) in the <code>pNext</code> chain <strong>must</strong> be either <code>NULL</code> or a pointer to a valid instance of <a href="../appendices/extensions.html#VkAmigoProfilingSubmitInfoSEC" class="xref page">VkAmigoProfilingSubmitInfoSEC</a>, <a href="#VkD3D12FenceSubmitInfoKHR">VkD3D12FenceSubmitInfoKHR</a>, <a href="#VkDeviceGroupSubmitInfo">VkDeviceGroupSubmitInfo</a>, <a href="debugging.html#VkFrameBoundaryEXT" class="xref page">VkFrameBoundaryEXT</a>, <a href="debugging.html#VkFrameBoundaryTensorsARM" class="xref page">VkFrameBoundaryTensorsARM</a>, <a href="VK_KHR_surface/wsi.html#VkLatencySubmissionPresentIdNV" class="xref page">VkLatencySubmissionPresentIdNV</a>, <a href="#VkPerformanceQuerySubmitInfoKHR">VkPerformanceQuerySubmitInfoKHR</a>, <a href="#VkProtectedSubmitInfo">VkProtectedSubmitInfo</a>, <a href="#VkTimelineSemaphoreSubmitInfo">VkTimelineSemaphoreSubmitInfo</a>, <a href="#VkWin32KeyedMutexAcquireReleaseInfoKHR">VkWin32KeyedMutexAcquireReleaseInfoKHR</a>, or <a href="#VkWin32KeyedMutexAcquireReleaseInfoNV">VkWin32KeyedMutexAcquireReleaseInfoNV</a></p>
 </li>
 <li>
 <p><a id="VUID-VkSubmitInfo-sType-unique" href="#VUID-VkSubmitInfo-sType-unique"></a> <span class="vuid">VUID-VkSubmitInfo-sType-unique</span><br>
@@ -4959,12 +5135,10 @@ typedef struct VkTimelineSemaphoreSubmitInfo {
 } VkTimelineSemaphoreSubmitInfo;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkTimelineSemaphoreSubmitInfoKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_timeline_semaphore
+// Equivalent to VkTimelineSemaphoreSubmitInfo
 typedef VkTimelineSemaphoreSubmitInfo VkTimelineSemaphoreSubmitInfoKHR;</code></pre>
 </div>
 </div>
@@ -5481,12 +5655,10 @@ typedef struct VkDeviceGroupSubmitInfo {
 } VkDeviceGroupSubmitInfo;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkDeviceGroupSubmitInfoKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_device_group
+// Equivalent to VkDeviceGroupSubmitInfo
 typedef VkDeviceGroupSubmitInfo VkDeviceGroupSubmitInfoKHR;</code></pre>
 </div>
 </div>
@@ -5826,15 +5998,15 @@ Each element of <code>pCommandBuffers</code> <strong>must</strong> have been all
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-00096" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-00096"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-00096</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance, each element of <code>pCommandBuffers</code> <strong>must</strong> have been recorded
-with the <code>VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT</code></p>
+If this command is called within a render pass instance, each element of
+<code>pCommandBuffers</code> <strong>must</strong> have been recorded with the
+<code>VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-00099" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-00099"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-00099</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance, and any element of <code>pCommandBuffers</code> was recorded with
+If this command is called within a render pass instance, and any element
+of <code>pCommandBuffers</code> was recorded with
 <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a>::<code>framebuffer</code> not equal to
 <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, that <code>VkFramebuffer</code> <strong>must</strong> match the
 <code>VkFramebuffer</code> used in the current render pass instance</p>
@@ -5842,70 +6014,69 @@ instance, and any element of <code>pCommandBuffers</code> was recorded with
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-contents-09680" href="#VUID-vkCmdExecuteCommands-contents-09680"></a> <span class="vuid">VUID-vkCmdExecuteCommands-contents-09680</span><br>
 
-    If <code>vkCmdExecuteCommands</code> is being called within a render pass
-    instance begun with <a href="renderpass.html#vkCmdBeginRenderPass" class="xref page">vkCmdBeginRenderPass</a>, and
-    <a href="renderpass.html#vkCmdNextSubpass" class="xref page">vkCmdNextSubpass</a> has not been called in the current render pass
-    instance, the <code>contents</code> parameter of <a href="renderpass.html#vkCmdBeginRenderPass" class="xref page">vkCmdBeginRenderPass</a>
-    <strong>must</strong> have been <code>VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS</code>
+    If this command is called within a render pass instance begun with
+    <a href="renderpass.html#vkCmdBeginRenderPass" class="xref page">vkCmdBeginRenderPass</a>, and <a href="renderpass.html#vkCmdNextSubpass" class="xref page">vkCmdNextSubpass</a> has not been
+    called in the current render pass instance, the <code>contents</code> parameter
+    of <a href="renderpass.html#vkCmdBeginRenderPass" class="xref page">vkCmdBeginRenderPass</a> <strong>must</strong> have been
+    <code>VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS</code>
 , or <code>VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-None-09681" href="#VUID-vkCmdExecuteCommands-None-09681"></a> <span class="vuid">VUID-vkCmdExecuteCommands-None-09681</span><br>
 
-    If <code>vkCmdExecuteCommands</code> is being called within a render pass
-    instance begun with <a href="renderpass.html#vkCmdBeginRenderPass" class="xref page">vkCmdBeginRenderPass</a>, and
-    <a href="renderpass.html#vkCmdNextSubpass" class="xref page">vkCmdNextSubpass</a> has been called in the current render pass
-    instance, the <code>contents</code> parameter of the last call to
-    <a href="renderpass.html#vkCmdNextSubpass" class="xref page">vkCmdNextSubpass</a> <strong>must</strong> have been
+    If this command is called within a render pass instance begun with
+    <a href="renderpass.html#vkCmdBeginRenderPass" class="xref page">vkCmdBeginRenderPass</a>, and <a href="renderpass.html#vkCmdNextSubpass" class="xref page">vkCmdNextSubpass</a> has been called
+    in the current render pass instance, the <code>contents</code> parameter of the
+    last call to <a href="renderpass.html#vkCmdNextSubpass" class="xref page">vkCmdNextSubpass</a> <strong>must</strong> have been
     <code>VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS</code>
 , or <code>VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-06019" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-06019"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-06019</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRenderPass" class="xref page">vkCmdBeginRenderPass</a>, each element of
-<code>pCommandBuffers</code> <strong>must</strong> have been recorded with
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRenderPass" class="xref page">vkCmdBeginRenderPass</a>, each element of <code>pCommandBuffers</code> <strong>must</strong>
+have been recorded with
 <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a>::<code>subpass</code> set to the index of
 the subpass which the given command buffer will be executed in</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pBeginInfo-06020" href="#VUID-vkCmdExecuteCommands-pBeginInfo-06020"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pBeginInfo-06020</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRenderPass" class="xref page">vkCmdBeginRenderPass</a>, the render passes
-specified in the <code>pBeginInfo-&gt;pInheritanceInfo&#8594;renderPass</code> members
-of the <a href="#vkBeginCommandBuffer">vkBeginCommandBuffer</a> commands used to begin recording each
-element of <code>pCommandBuffers</code> <strong>must</strong> be
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRenderPass" class="xref page">vkCmdBeginRenderPass</a>, the render passes specified in the
+<code>pBeginInfo-&gt;pInheritanceInfo&#8594;renderPass</code> members of the
+<a href="#vkBeginCommandBuffer">vkBeginCommandBuffer</a> commands used to begin recording each element
+of <code>pCommandBuffers</code> <strong>must</strong> be
 <a href="renderpass.html#renderpass-compatibility" class="xref page">compatible</a> with the current render pass</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pNext-02865" href="#VUID-vkCmdExecuteCommands-pNext-02865"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pNext-02865</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance that included <a href="renderpass.html#VkRenderPassTransformBeginInfoQCOM" class="xref page">VkRenderPassTransformBeginInfoQCOM</a> in the
-<code>pNext</code> chain of <a href="renderpass.html#VkRenderPassBeginInfo" class="xref page">VkRenderPassBeginInfo</a>, then each element of
-<code>pCommandBuffers</code> <strong>must</strong> have been recorded with
+If this command is called within a render pass instance that included
+<a href="renderpass.html#VkRenderPassTransformBeginInfoQCOM" class="xref page">VkRenderPassTransformBeginInfoQCOM</a> in the <code>pNext</code> chain of
+<a href="renderpass.html#VkRenderPassBeginInfo" class="xref page">VkRenderPassBeginInfo</a>, then each element of <code>pCommandBuffers</code>
+<strong>must</strong> have been recorded with
 <a href="#VkCommandBufferInheritanceRenderPassTransformInfoQCOM">VkCommandBufferInheritanceRenderPassTransformInfoQCOM</a> in the
 <code>pNext</code> chain of <a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pNext-02866" href="#VUID-vkCmdExecuteCommands-pNext-02866"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pNext-02866</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance that included <a href="renderpass.html#VkRenderPassTransformBeginInfoQCOM" class="xref page">VkRenderPassTransformBeginInfoQCOM</a> in the
-<code>pNext</code> chain of <a href="renderpass.html#VkRenderPassBeginInfo" class="xref page">VkRenderPassBeginInfo</a>, then each element of
-<code>pCommandBuffers</code> <strong>must</strong> have been recorded with
+If this command is called within a render pass instance that included
+<a href="renderpass.html#VkRenderPassTransformBeginInfoQCOM" class="xref page">VkRenderPassTransformBeginInfoQCOM</a> in the <code>pNext</code> chain of
+<a href="renderpass.html#VkRenderPassBeginInfo" class="xref page">VkRenderPassBeginInfo</a>, then each element of <code>pCommandBuffers</code>
+<strong>must</strong> have been recorded with
 <a href="#VkCommandBufferInheritanceRenderPassTransformInfoQCOM">VkCommandBufferInheritanceRenderPassTransformInfoQCOM</a>::<code>transform</code>
 identical to <a href="renderpass.html#VkRenderPassTransformBeginInfoQCOM" class="xref page">VkRenderPassTransformBeginInfoQCOM</a>::<code>transform</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pNext-02867" href="#VUID-vkCmdExecuteCommands-pNext-02867"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pNext-02867</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance that included <a href="renderpass.html#VkRenderPassTransformBeginInfoQCOM" class="xref page">VkRenderPassTransformBeginInfoQCOM</a> in the
-<code>pNext</code> chain of <a href="renderpass.html#VkRenderPassBeginInfo" class="xref page">VkRenderPassBeginInfo</a>, then each element of
-<code>pCommandBuffers</code> <strong>must</strong> have been recorded with
+If this command is called within a render pass instance that included
+<a href="renderpass.html#VkRenderPassTransformBeginInfoQCOM" class="xref page">VkRenderPassTransformBeginInfoQCOM</a> in the <code>pNext</code> chain of
+<a href="renderpass.html#VkRenderPassBeginInfo" class="xref page">VkRenderPassBeginInfo</a>, then each element of <code>pCommandBuffers</code>
+<strong>must</strong> have been recorded with
 <a href="#VkCommandBufferInheritanceRenderPassTransformInfoQCOM">VkCommandBufferInheritanceRenderPassTransformInfoQCOM</a>::<code>renderArea</code>
 identical to <a href="renderpass.html#VkRenderPassBeginInfo" class="xref page">VkRenderPassBeginInfo</a>::<code>renderArea</code></p>
 </li>
@@ -5988,41 +6159,38 @@ This command <strong>must</strong> not be recorded when transform feedback is ac
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-commandBuffer-06533" href="#VUID-vkCmdExecuteCommands-commandBuffer-06533"></a> <span class="vuid">VUID-vkCmdExecuteCommands-commandBuffer-06533</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance and any recorded command in <code>commandBuffer</code> in the current
-subpass will write to an image subresource as an attachment, commands
-recorded in elements of <code>pCommandBuffers</code> <strong>must</strong> not read from the
-memory backing that image subresource in any other way</p>
+If this command is called within a render pass instance and any recorded
+command in <code>commandBuffer</code> in the current subpass will write to an
+image subresource as an attachment, commands recorded in elements of
+<code>pCommandBuffers</code> <strong>must</strong> not read from the memory backing that image
+subresource in any other way</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-commandBuffer-06534" href="#VUID-vkCmdExecuteCommands-commandBuffer-06534"></a> <span class="vuid">VUID-vkCmdExecuteCommands-commandBuffer-06534</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance and any recorded command in <code>commandBuffer</code> in the current
-subpass will read from an image subresource used as an attachment in any
-way other than as an attachment, commands recorded in elements of
-<code>pCommandBuffers</code> <strong>must</strong> not write to that image subresource as an
-attachment</p>
+If this command is called within a render pass instance and any recorded
+command in <code>commandBuffer</code> in the current subpass will read from an
+image subresource used as an attachment in any way other than as an
+attachment, commands recorded in elements of <code>pCommandBuffers</code> <strong>must</strong>
+not write to that image subresource as an attachment</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-06535" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-06535"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-06535</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance and any recorded command in a given element of
-<code>pCommandBuffers</code> will write to an image subresource as an
-attachment, commands recorded in elements of <code>pCommandBuffers</code> at a
-higher index <strong>must</strong> not read from the memory backing that image
-subresource in any other way</p>
+If this command is called within a render pass instance and any recorded
+command in a given element of <code>pCommandBuffers</code> will write to an
+image subresource as an attachment, commands recorded in elements of
+<code>pCommandBuffers</code> at a higher index <strong>must</strong> not read from the memory
+backing that image subresource in any other way</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-06536" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-06536"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-06536</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance and any recorded command in a given element of
-<code>pCommandBuffers</code> will read from an image subresource used as an
-attachment in any way other than as an attachment, commands recorded in
-elements of <code>pCommandBuffers</code> at a higher index <strong>must</strong> not write to
-that image subresource as an attachment</p>
+If this command is called within a render pass instance and any recorded
+command in a given element of <code>pCommandBuffers</code> will read from an
+image subresource used as an attachment in any way other than as an
+attachment, commands recorded in elements of <code>pCommandBuffers</code> at a
+higher index <strong>must</strong> not write to that image subresource as an attachment</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-06021" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-06021"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-06021</span><br>
@@ -6051,27 +6219,27 @@ locations</p>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-flags-06024" href="#VUID-vkCmdExecuteCommands-flags-06024"></a> <span class="vuid">VUID-vkCmdExecuteCommands-flags-06024</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, its
-<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>flags</code> parameter <strong>must</strong> have included
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, its <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>flags</code>
+parameter <strong>must</strong> have included
 <code>VK_RENDERING_CONTENTS_SECONDARY_COMMAND_BUFFERS_BIT</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pBeginInfo-06025" href="#VUID-vkCmdExecuteCommands-pBeginInfo-06025"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pBeginInfo-06025</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the render passes
-specified in the <code>pBeginInfo-&gt;pInheritanceInfo&#8594;renderPass</code> members
-of the <a href="#vkBeginCommandBuffer">vkBeginCommandBuffer</a> commands used to begin recording each
-element of <code>pCommandBuffers</code> <strong>must</strong> be <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a></p>
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the render passes specified in the
+<code>pBeginInfo-&gt;pInheritanceInfo&#8594;renderPass</code> members of the
+<a href="#vkBeginCommandBuffer">vkBeginCommandBuffer</a> commands used to begin recording each element
+of <code>pCommandBuffers</code> <strong>must</strong> be <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-flags-06026" href="#VUID-vkCmdExecuteCommands-flags-06026"></a> <span class="vuid">VUID-vkCmdExecuteCommands-flags-06026</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the <code>flags</code> member of
-the <a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a> structure included in
-the <code>pNext</code> chain of
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the <code>flags</code> member of the
+<a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a> structure included in the
+<code>pNext</code> chain of
 <a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to begin
 recording each element of <code>pCommandBuffers</code> <strong>must</strong> be equal to the
 <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>flags</code> parameter to
@@ -6081,9 +6249,8 @@ recording each element of <code>pCommandBuffers</code> <strong>must</strong> be 
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-colorAttachmentCount-06027" href="#VUID-vkCmdExecuteCommands-colorAttachmentCount-06027"></a> <span class="vuid">VUID-vkCmdExecuteCommands-colorAttachmentCount-06027</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the
-<code>colorAttachmentCount</code> member of the
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the <code>colorAttachmentCount</code> member of the
 <a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a> structure included in the
 <code>pNext</code> chain of
 <a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to begin
@@ -6094,10 +6261,9 @@ recording each element of <code>pCommandBuffers</code> <strong>must</strong> be 
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-imageView-06028" href="#VUID-vkCmdExecuteCommands-imageView-06028"></a> <span class="vuid">VUID-vkCmdExecuteCommands-imageView-06028</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, if the <code>imageView</code>
-member of an element of the
-<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pColorAttachments</code> parameter to
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, if the <code>imageView</code> member of an element
+of the <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pColorAttachments</code> parameter to
 <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the corresponding
 element of the <code>pColorAttachmentFormats</code> member of the
 <a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a> structure included in the
@@ -6109,10 +6275,9 @@ format used to create that image view</p>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-imageView-07606" href="#VUID-vkCmdExecuteCommands-imageView-07606"></a> <span class="vuid">VUID-vkCmdExecuteCommands-imageView-07606</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, if the <code>imageView</code>
-member of an element of the
-<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pColorAttachments</code> parameter to
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, if the <code>imageView</code> member of an element
+of the <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pColorAttachments</code> parameter to
 <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the corresponding
 element of the <code>pColorAttachmentFormats</code> member of the
 <a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a> structure included in the
@@ -6124,8 +6289,8 @@ recording each element of <code>pCommandBuffers</code> <strong>must</strong> be
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pDepthAttachment-06029" href="#VUID-vkCmdExecuteCommands-pDepthAttachment-06029"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pDepthAttachment-06029</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, if the
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, if the
 <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pDepthAttachment-&gt;imageView</code> parameter to
 <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the value of the
 <code>depthAttachmentFormat</code> member of the
@@ -6138,8 +6303,8 @@ format used to create that image view</p>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pStencilAttachment-06030" href="#VUID-vkCmdExecuteCommands-pStencilAttachment-06030"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pStencilAttachment-06030</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, if the
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, if the
 <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pStencilAttachment-&gt;imageView</code> parameter to
 <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the value of the
 <code>stencilAttachmentFormat</code> member of the
@@ -6152,8 +6317,8 @@ format used to create that image view</p>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pDepthAttachment-06774" href="#VUID-vkCmdExecuteCommands-pDepthAttachment-06774"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pDepthAttachment-06774</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the
 <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pDepthAttachment-&gt;imageView</code> parameter to
 <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> was <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the value of the
 <code>depthAttachmentFormat</code> member of the
@@ -6166,8 +6331,8 @@ recording each element of <code>pCommandBuffers</code> <strong>must</strong> be
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pStencilAttachment-06775" href="#VUID-vkCmdExecuteCommands-pStencilAttachment-06775"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pStencilAttachment-06775</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the
 <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pStencilAttachment-&gt;imageView</code> parameter to
 <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> was <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the value of the
 <code>stencilAttachmentFormat</code> member of the
@@ -6178,12 +6343,180 @@ recording each element of <code>pCommandBuffers</code> <strong>must</strong> be
 <code>VK_FORMAT_UNDEFINED</code></p>
 </li>
 <li>
+<p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-11500" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-11500"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-11500</span><br>
+
+If the current render pass instance was begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and contains a custom resolve, then each
+element of <code>pCommandBuffers</code> <strong>must</strong> have been recorded with a
+<a href="pipelines.html#VkCustomResolveCreateInfoEXT" class="xref page">VkCustomResolveCreateInfoEXT</a> struct chained to its
+<a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-11501" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-11501"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-11501</span><br>
+
+If the current render pass instance was begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and does not contain a custom resolve, then
+each element of <code>pCommandBuffers</code> <strong>must</strong> not have been recorded with
+a <a href="pipelines.html#VkCustomResolveCreateInfoEXT" class="xref page">VkCustomResolveCreateInfoEXT</a> struct chained to its
+<a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-11502" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-11502"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-11502</span><br>
+
+If the current render pass instance was begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and <a href="renderpass.html#vkCmdBeginCustomResolveEXT" class="xref page">vkCmdBeginCustomResolveEXT</a> has been
+recorded in the render pass instance, then each element of
+<code>pCommandBuffers</code> <strong>must</strong> have been recorded with
+<a href="pipelines.html#VkCustomResolveCreateInfoEXT" class="xref page">VkCustomResolveCreateInfoEXT</a>::<code>customResolve</code> as <code>VK_TRUE</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-11503" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-11503"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-11503</span><br>
+
+If the current render pass instance was begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and contains a custom resolve, and
+<a href="renderpass.html#vkCmdBeginCustomResolveEXT" class="xref page">vkCmdBeginCustomResolveEXT</a> has not been recorded in the render
+pass instance, then each element of <code>pCommandBuffers</code> <strong>must</strong> have
+been recorded with
+<a href="pipelines.html#VkCustomResolveCreateInfoEXT" class="xref page">VkCustomResolveCreateInfoEXT</a>::<code>customResolve</code> as
+<code>VK_FALSE</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-colorAttachmentCount-11532" href="#VUID-vkCmdExecuteCommands-colorAttachmentCount-11532"></a> <span class="vuid">VUID-vkCmdExecuteCommands-colorAttachmentCount-11532</span><br>
+
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> that contains a custom resolve, the
+<code>colorAttachmentCount</code> member of the
+<a href="pipelines.html#VkCustomResolveCreateInfoEXT" class="xref page">VkCustomResolveCreateInfoEXT</a> structure included in the <code>pNext</code>
+chain of <a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to
+begin recording each element of <code>pCommandBuffers</code> <strong>must</strong> be equal to
+the <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>colorAttachmentCount</code> parameter to
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-resolveImageView-11533" href="#VUID-vkCmdExecuteCommands-resolveImageView-11533"></a> <span class="vuid">VUID-vkCmdExecuteCommands-resolveImageView-11533</span><br>
+
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> that contains a custom resolve, if the
+<code>resolveImageView</code> member of an element of the
+<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pColorAttachments</code> parameter to
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the corresponding
+element of the <code>pColorAttachmentFormats</code> member of the
+<a href="pipelines.html#VkCustomResolveCreateInfoEXT" class="xref page">VkCustomResolveCreateInfoEXT</a> structure included in the <code>pNext</code>
+chain of <a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to
+begin recording each element of <code>pCommandBuffers</code> <strong>must</strong> be equal to
+the format used to create that image view</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-resolveImageView-11534" href="#VUID-vkCmdExecuteCommands-resolveImageView-11534"></a> <span class="vuid">VUID-vkCmdExecuteCommands-resolveImageView-11534</span><br>
+
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> that contains a custom resolve, if the
+<code>resolveImageView</code> member of an element of the
+<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pColorAttachments</code> parameter to
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the corresponding
+element of the <code>pColorAttachmentFormats</code> member of the
+<a href="pipelines.html#VkCustomResolveCreateInfoEXT" class="xref page">VkCustomResolveCreateInfoEXT</a> structure included in the <code>pNext</code>
+chain of <a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to
+begin recording each element of <code>pCommandBuffers</code> <strong>must</strong> be
+<code>VK_FORMAT_UNDEFINED</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-pDepthAttachment-11535" href="#VUID-vkCmdExecuteCommands-pDepthAttachment-11535"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pDepthAttachment-11535</span><br>
+
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, if the
+<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pDepthAttachment-&gt;imageView</code> parameter to
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the value of the
+<code>depthAttachmentFormat</code> member of the
+<a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a> structure included in the
+<code>pNext</code> chain of
+<a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to begin
+recording each element of <code>pCommandBuffers</code> <strong>must</strong> be equal to the
+format used to create that image view</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-pStencilAttachment-11536" href="#VUID-vkCmdExecuteCommands-pStencilAttachment-11536"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pStencilAttachment-11536</span><br>
+
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> that contains a custom resolve, if the
+<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pStencilAttachment-&gt;resolveImageView</code>
+parameter to <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the
+value of the <code>stencilAttachmentFormat</code> member of the
+<a href="pipelines.html#VkCustomResolveCreateInfoEXT" class="xref page">VkCustomResolveCreateInfoEXT</a> structure included in the <code>pNext</code>
+chain of <a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to
+begin recording each element of <code>pCommandBuffers</code> <strong>must</strong> be equal to
+the format used to create that image view</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-pDepthAttachment-11537" href="#VUID-vkCmdExecuteCommands-pDepthAttachment-11537"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pDepthAttachment-11537</span><br>
+
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> that contains a custom resolve and the
+<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pDepthAttachment-&gt;resolveImageView</code>
+parameter to <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> was <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the
+value of the <code>depthAttachmentFormat</code> member of the
+<a href="pipelines.html#VkCustomResolveCreateInfoEXT" class="xref page">VkCustomResolveCreateInfoEXT</a> structure included in the <code>pNext</code>
+chain of <a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to
+begin recording each element of <code>pCommandBuffers</code> <strong>must</strong> be
+<code>VK_FORMAT_UNDEFINED</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-pStencilAttachment-11538" href="#VUID-vkCmdExecuteCommands-pStencilAttachment-11538"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pStencilAttachment-11538</span><br>
+
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> that contains a custom resolve and the
+<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pStencilAttachment-&gt;resolveImageView</code>
+parameter to <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> was <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the
+value of the <code>stencilAttachmentFormat</code> member of the
+<a href="pipelines.html#VkCustomResolveCreateInfoEXT" class="xref page">VkCustomResolveCreateInfoEXT</a> structure included in the <code>pNext</code>
+chain of <a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to
+begin recording each element of <code>pCommandBuffers</code> <strong>must</strong> be
+<code>VK_FORMAT_UNDEFINED</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-resolveImageView-11526" href="#VUID-vkCmdExecuteCommands-resolveImageView-11526"></a> <span class="vuid">VUID-vkCmdExecuteCommands-resolveImageView-11526</span><br>
+
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, <a href="renderpass.html#vkCmdBeginCustomResolveEXT" class="xref page">vkCmdBeginCustomResolveEXT</a> has been
+recorded in the render pass instance, and the <code>resolveImageView</code>
+member of an element of the
+<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pColorAttachments</code> parameter to
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the value of
+<a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a>::<code>rasterizationSamples</code>
+<strong>must</strong> be equal to the sample count used to create that
+<code>resolveImageView</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-pDepthAttachment-11527" href="#VUID-vkCmdExecuteCommands-pDepthAttachment-11527"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pDepthAttachment-11527</span><br>
+
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, <a href="renderpass.html#vkCmdBeginCustomResolveEXT" class="xref page">vkCmdBeginCustomResolveEXT</a> has been
+recorded in the render pass instance, and the
+<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pDepthAttachment-&gt;resolveImageView</code>
+parameter to <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the
+value of
+<a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a>::<code>rasterizationSamples</code>
+<strong>must</strong> be equal to the sample count used to create that image view</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteCommands-pStencilAttachment-11528" href="#VUID-vkCmdExecuteCommands-pStencilAttachment-11528"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pStencilAttachment-11528</span><br>
+
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, <a href="renderpass.html#vkCmdBeginCustomResolveEXT" class="xref page">vkCmdBeginCustomResolveEXT</a> has been
+recorded in the render pass instance, and the
+<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pStencilAttachment-&gt;resolveImageView</code>
+parameter to <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the
+value of
+<a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a>::<code>rasterizationSamples</code>
+<strong>must</strong> be equal to the sample count used to create that image view</p>
+</li>
+<li>
 <p><a id="VUID-vkCmdExecuteCommands-viewMask-06031" href="#VUID-vkCmdExecuteCommands-viewMask-06031"></a> <span class="vuid">VUID-vkCmdExecuteCommands-viewMask-06031</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the <code>viewMask</code> member
-of the <a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a> structure included
-in the <code>pNext</code> chain of
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the <code>viewMask</code> member of the
+<a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a> structure included in the
+<code>pNext</code> chain of
 <a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to begin
 recording each element of <code>pCommandBuffers</code> <strong>must</strong> be equal to the
 <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>viewMask</code> parameter to
@@ -6192,9 +6525,9 @@ recording each element of <code>pCommandBuffers</code> <strong>must</strong> be 
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pNext-06032" href="#VUID-vkCmdExecuteCommands-pNext-06032"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pNext-06032</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the <code>pNext</code> chain
-of <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> includes a
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the <code>pNext</code> chain of
+<a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> includes a
 <a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a> or
 <a href="#VkAttachmentSampleCountInfoNV">VkAttachmentSampleCountInfoNV</a> structure, if the <code>imageView</code>
 member of an element of the
@@ -6211,9 +6544,9 @@ sample count used to create that image view</p>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pNext-06033" href="#VUID-vkCmdExecuteCommands-pNext-06033"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pNext-06033</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the <code>pNext</code> chain
-of <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> includes a
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the <code>pNext</code> chain of
+<a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> includes a
 <a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a> or
 <a href="#VkAttachmentSampleCountInfoNV">VkAttachmentSampleCountInfoNV</a> structure, if the
 <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pDepthAttachment-&gt;imageView</code> parameter to
@@ -6229,9 +6562,9 @@ sample count used to create that image view</p>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pNext-06034" href="#VUID-vkCmdExecuteCommands-pNext-06034"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pNext-06034</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the <code>pNext</code> chain
-of <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> includes a
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the <code>pNext</code> chain of
+<a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> includes a
 <a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a> or
 <a href="#VkAttachmentSampleCountInfoNV">VkAttachmentSampleCountInfoNV</a> structure, if the
 <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pStencilAttachment-&gt;imageView</code> parameter to
@@ -6247,62 +6580,65 @@ sample count used to create that image view</p>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pNext-06035" href="#VUID-vkCmdExecuteCommands-pNext-06035"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pNext-06035</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the <code>pNext</code> chain
-of <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> does not include a
-<a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a> or
-<a href="#VkAttachmentSampleCountInfoNV">VkAttachmentSampleCountInfoNV</a> structure, if the <code>imageView</code>
-member of an element of the
-<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pColorAttachments</code> parameter to
-<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the value of
-<a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a>::<code>rasterizationSamples</code>
-<strong>must</strong> be equal to the sample count used to create that image view</p>
+    If this command is called within a render pass instance begun with
+    <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, and the <code>pNext</code> chain of
+    <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> does not include a
+    <a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a> or
+    <a href="#VkAttachmentSampleCountInfoNV">VkAttachmentSampleCountInfoNV</a> structure,
+<a href="renderpass.html#vkCmdBeginCustomResolveEXT" class="xref page">vkCmdBeginCustomResolveEXT</a> has not yet been recorded in the render pass instance, and
+    if the <code>imageView</code> member of an element of the
+    <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pColorAttachments</code> parameter to
+    <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the value of
+    <a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a>::<code>rasterizationSamples</code>
+    <strong>must</strong> be equal to the sample count used to create that image view</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pNext-06036" href="#VUID-vkCmdExecuteCommands-pNext-06036"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pNext-06036</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the <code>pNext</code> chain
-of <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> does not include a
-<a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a> or
-<a href="#VkAttachmentSampleCountInfoNV">VkAttachmentSampleCountInfoNV</a> structure, if the
-<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pDepthAttachment-&gt;imageView</code> parameter to
-<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the value of
-<a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a>::<code>rasterizationSamples</code>
-<strong>must</strong> be equal to the sample count used to create that image view</p>
+    If this command is called within a render pass instance begun with
+    <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the <code>pNext</code> chain of
+    <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> does not include a
+    <a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a> or
+    <a href="#VkAttachmentSampleCountInfoNV">VkAttachmentSampleCountInfoNV</a> structure,
+<a href="renderpass.html#vkCmdBeginCustomResolveEXT" class="xref page">vkCmdBeginCustomResolveEXT</a> has not yet been recorded in the render pass instance, and
+    if the <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pDepthAttachment-&gt;imageView</code>
+    parameter to <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the
+    value of
+    <a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a>::<code>rasterizationSamples</code>
+    <strong>must</strong> be equal to the sample count used to create that image view</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pNext-06037" href="#VUID-vkCmdExecuteCommands-pNext-06037"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pNext-06037</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the <code>pNext</code> chain
-of <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> does not include a
-<a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a> or
-<a href="#VkAttachmentSampleCountInfoNV">VkAttachmentSampleCountInfoNV</a> structure, if the
-<a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pStencilAttachment-&gt;imageView</code> parameter to
-<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the value of
-<a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a>::<code>rasterizationSamples</code>
-<strong>must</strong> be equal to the sample count used to create that image view</p>
+    If this command is called within a render pass instance begun with
+    <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> and the <code>pNext</code> chain of
+    <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> does not include a
+    <a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a> or
+    <a href="#VkAttachmentSampleCountInfoNV">VkAttachmentSampleCountInfoNV</a> structure,
+<a href="renderpass.html#vkCmdBeginCustomResolveEXT" class="xref page">vkCmdBeginCustomResolveEXT</a> has not yet been recorded in the render pass instance, and
+    if the <a href="renderpass.html#VkRenderingInfo" class="xref page">VkRenderingInfo</a>::<code>pStencilAttachment-&gt;imageView</code>
+    parameter to <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the
+    value of
+    <a href="#VkCommandBufferInheritanceRenderingInfo">VkCommandBufferInheritanceRenderingInfo</a>::<code>rasterizationSamples</code>
+    <strong>must</strong> be equal to the sample count used to create that image view</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pNext-09299" href="#VUID-vkCmdExecuteCommands-pNext-09299"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pNext-09299</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, with any color attachment
-using a resolve mode of
-<code>VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_ANDROID</code>, the
-<code>pNext</code> chain of <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> used to create
-each element of <code>pCommandBuffers</code> <strong>must</strong> include a
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, with any color attachment using a resolve
+mode of <code>VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID</code>,
+the <code>pNext</code> chain of <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> used to
+create each element of <code>pCommandBuffers</code> <strong>must</strong> include a
 <a href="resources.html#VkExternalFormatANDROID" class="xref page">VkExternalFormatANDROID</a> structure with an <code>externalFormat</code>
 matching that used to create the resolve attachment in the render pass</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pNext-09300" href="#VUID-vkCmdExecuteCommands-pNext-09300"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pNext-09300</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> with any color attachment
-using a resolve mode of
-<code>VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_ANDROID</code>, and the
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a> with any color attachment using a resolve mode
+of <code>VK_RESOLVE_MODE_EXTERNAL_FORMAT_DOWNSAMPLE_BIT_ANDROID</code>, and the
 <code>pNext</code> chain of <a href="#VkCommandBufferInheritanceInfo">VkCommandBufferInheritanceInfo</a> does not
 include a <a href="#VkAttachmentSampleCountInfoAMD">VkAttachmentSampleCountInfoAMD</a> or
 <a href="#VkAttachmentSampleCountInfoNV">VkAttachmentSampleCountInfoNV</a> structure, the value of
@@ -6343,31 +6679,31 @@ element of <code>pCommandBuffers</code> <strong>must</strong> not have been reco
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-09504" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-09504"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-09504</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the color attachment
-mapping state specified by <a href="interfaces.html#VkRenderingAttachmentLocationInfo" class="xref page">VkRenderingAttachmentLocationInfo</a> in
-the inheritance info of each element of <code>pCommandBuffers</code> and in the
-current state of <code>commandBuffer</code> <strong>must</strong> match</p>
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the color attachment mapping state specified
+by <a href="interfaces.html#VkRenderingAttachmentLocationInfo" class="xref page">VkRenderingAttachmentLocationInfo</a> in the inheritance info of
+each element of <code>pCommandBuffers</code> and in the current state of
+<code>commandBuffer</code> <strong>must</strong> match</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-09505" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-09505"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-09505</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the input attachment
-mapping state specified by <a href="interfaces.html#VkRenderingInputAttachmentIndexInfo" class="xref page">VkRenderingInputAttachmentIndexInfo</a> in
-the inheritance info of each element of <code>pCommandBuffers</code> and in the
-current state of <code>commandBuffer</code> <strong>must</strong> match</p>
+If this command is called within a render pass instance begun with
+<a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>, the input attachment mapping state specified
+by <a href="interfaces.html#VkRenderingInputAttachmentIndexInfo" class="xref page">VkRenderingInputAttachmentIndexInfo</a> in the inheritance info of
+each element of <code>pCommandBuffers</code> and in the current state of
+<code>commandBuffer</code> <strong>must</strong> match</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-memory-10724" href="#VUID-vkCmdExecuteCommands-memory-10724"></a> <span class="vuid">VUID-vkCmdExecuteCommands-memory-10724</span><br>
 
-If <code>vkCmdExecuteCommands</code> is being called within a render pass
-instance, the size of <code>memory</code> member of the
-<a href="memory.html#VkTileMemoryBindInfoQCOM" class="xref page">VkTileMemoryBindInfoQCOM</a> structure included in the <code>pNext</code>
-chain of <a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to
-begin recording each element of <code>pCommandBuffers</code> <strong>must</strong> be equal to
-the active bound <a href="memory.html#memory-bind-tile-memory" class="xref page">bound tile memory object</a>
-in <code>commandBuffer</code></p>
+If this command is called within a render pass instance, the size of
+<code>memory</code> member of the <a href="memory.html#VkTileMemoryBindInfoQCOM" class="xref page">VkTileMemoryBindInfoQCOM</a> structure
+included in the <code>pNext</code> chain of
+<a href="#VkCommandBufferBeginInfo">VkCommandBufferBeginInfo</a>::<code>pInheritanceInfo</code> used to begin
+recording each element of <code>pCommandBuffers</code> <strong>must</strong> be equal to the
+active bound <a href="memory.html#memory-bind-tile-memory" class="xref page">bound tile memory object</a> in
+<code>commandBuffer</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-pCommandBuffers-10620" href="#VUID-vkCmdExecuteCommands-pCommandBuffers-10620"></a> <span class="vuid">VUID-vkCmdExecuteCommands-pCommandBuffers-10620</span><br>
@@ -6443,7 +6779,7 @@ was recorded into all elements of <code>pCommandBuffers</code> <strong>must</str
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-commandBuffer-cmdpool" href="#VUID-vkCmdExecuteCommands-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdExecuteCommands-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support transfer, graphics, or compute operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, or <code>VK_QUEUE_TRANSFER_BIT</code> operations</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdExecuteCommands-videocoding" href="#VUID-vkCmdExecuteCommands-videocoding"></a> <span class="vuid">VUID-vkCmdExecuteCommands-videocoding</span><br>
@@ -6502,13 +6838,21 @@ was recorded into all elements of <code>pCommandBuffers</code> <strong>must</str
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Transfer<br>
-Graphics<br>
-Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT<br>
+VK_QUEUE_GRAPHICS_BIT<br>
+VK_QUEUE_TRANSFER_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Indirection</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdExecuteCommands is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -6618,12 +6962,10 @@ typedef struct VkDeviceGroupCommandBufferBeginInfo {
 } VkDeviceGroupCommandBufferBeginInfo;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent</p>
-</div>
 <div id="VkDeviceGroupCommandBufferBeginInfoKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_device_group
+// Equivalent to VkDeviceGroupCommandBufferBeginInfo
 typedef VkDeviceGroupCommandBufferBeginInfo VkDeviceGroupCommandBufferBeginInfoKHR;</code></pre>
 </div>
 </div>
@@ -6698,12 +7040,10 @@ void vkCmdSetDeviceMask(
     uint32_t                                    deviceMask);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>or the equivalent command</p>
-</div>
 <div id="vkCmdSetDeviceMaskKHR" class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_KHR_device_group
+// Equivalent to vkCmdSetDeviceMask
 void vkCmdSetDeviceMaskKHR(
     VkCommandBuffer                             commandBuffer,
     uint32_t                                    deviceMask);</code></pre>
@@ -6779,7 +7119,7 @@ render pass instance began recording</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdSetDeviceMask-commandBuffer-cmdpool" href="#VUID-vkCmdSetDeviceMask-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetDeviceMask-commandBuffer-cmdpool</span><br>
- The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support graphics, compute, or transfer operations</p>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code>, <code>VK_QUEUE_GRAPHICS_BIT</code>, or <code>VK_QUEUE_TRANSFER_BIT</code> operations</p>
 </li>
 </ul>
 </div>
@@ -6826,13 +7166,21 @@ render pass instance began recording</p>
 Secondary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Graphics<br>
-Compute<br>
-Transfer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT<br>
+VK_QUEUE_GRAPHICS_BIT<br>
+VK_QUEUE_TRANSFER_BIT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetDeviceMask is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -6845,9 +7193,56 @@ Transfer</p></td>
 </div>
 <script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
-<script src="../../../_/js/vendor/lunr.js"></script>
-<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js"></script>
-<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css"></script>
-<script async src="../../../search-index.js"></script>
+<script src="../../../_/js/vendor/split.js"></script>
+<script>
+    // Splitter should only be visible in non-mobile layouts (where a hamburger menu is used for nav)
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    var mobileNav = (width < 1024);
+
+    if (!mobileNav) {
+        var sizes = localStorage.getItem('split-sizes')
+
+        if (sizes) {
+            sizes = JSON.parse(sizes)
+        } else {
+            sizes = [25, 75]
+        }
+
+        var split = Split(['#split-0', '#split-1'], {
+            sizes: sizes,
+            onDragEnd: function (sizes) {
+                localStorage.setItem('split-sizes', JSON.stringify(sizes))
+            },
+        })
+    }
+</script>
+<script src="../../../_/js/vendor/lunr.js" defer></script>
+<script src="https://cdn.jsdelivr.net/pako/1.0.3/pako.min.js" defer></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../.." data-snippet-length="100" data-stylesheet="../../../_/css/search.css" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  try {
+    var script = document.getElementById('search-ui-script');
+    var siteRoot = (script && script.getAttribute('data-site-root-path')) || '';
+    var manifestUrl = siteRoot + '/search-index/manifest.json';
+    fetch(manifestUrl)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('manifest not found')) })
+      .then(function (manifest) { antoraSearch.bootstrap(lunr, manifest, siteRoot); })
+      .catch(function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = siteRoot + '/search-index.js';
+        document.head.appendChild(s);
+      });
+  } catch (e) {
+    // Fallback to monolithic index if anything goes wrong
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = '../../../search-index.js';
+    document.head.appendChild(s);
+  }
+});
+</script>
+<script async src="../../../_/js/vendor/tabs.js"></script>
   </body>
 </html>
