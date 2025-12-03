@@ -222,9 +222,9 @@ There are two types of structs to configure color blending.
 The first struct, `VkPipelineColorBlendAttachmentState` contains the configuration per attached framebuffer and the second struct, `VkPipelineColorBlendStateCreateInfo` contains the *global* color blending settings.
 In our case, we only have one framebuffer:
 
-vk::PipelineColorBlendAttachmentState colorBlendAttachment;
-colorBlendAttachment.colorWriteMask = vk::ColorComponentFlagBits::eR | vk::ColorComponentFlagBits::eG | vk::ColorComponentFlagBits::eB | vk::ColorComponentFlagBits::eA;
-colorBlendAttachment.blendEnable = vk::False;
+vk::PipelineColorBlendAttachmentState colorBlendAttachment{
+    .blendEnable    = vk::False,
+    .colorWriteMask = vk::ColorComponentFlagBits::eR | vk::ColorComponentFlagBits::eG | vk::ColorComponentFlagBits::eB | vk::ColorComponentFlagBits::eA};
 
 This per-framebuffer struct allows you to configure the first way of color blending.
 The operations that will be performed are best demonstrated using the following pseudocode:

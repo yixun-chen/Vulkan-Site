@@ -877,7 +877,9 @@ We just need to choose values for <code>minLod</code>, <code>maxLod</code>, <cod
         .anisotropyEnable = vk::True,
         .maxAnisotropy = properties.limits.maxSamplerAnisotropy,
         .compareEnable = vk::False,
-        .compareOp = vk::CompareOp::eAlways
+        .compareOp = vk::CompareOp::eAlways,
+        .minLod = 0.0f,
+        .maxLod = vk::LodClampNone
     };
     ...
 }</code></pre>
@@ -887,7 +889,7 @@ We just need to choose values for <code>minLod</code>, <code>maxLod</code>, <cod
 <p>In the code above, we&#8217;ve set up the sampler with linear filtering for both minification and magnification, and linear interpolation between mip levels. We&#8217;ve also set the mip level bias to 0.0f.</p>
 </div>
 <div class="paragraph">
-<p>By default, the full range of mip levels will be used. The default <code>minLod</code> is 0.0f, and the default <code>maxLod</code> is <code>VK_LOD_CLAMP_NONE</code> (which equals 1000.0f), meaning all available mipmap levels in the texture will be sampled.</p>
+<p>The <code>minLod</code> and <code>maxLod</code> are used to effectively set the range of mip levels to be used by clamping the minimum and maximum LOD values. By setting <code>minLod</code> to <code>0.0f</code> and <code>maxLod</code> to <code>VK_LOD_CLAMP_NONE</code> we ensure the full range of mip levels will be used.</p>
 </div>
 <div class="paragraph">
 <p>Now run your program, and you should see the following:</p>

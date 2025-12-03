@@ -1822,6 +1822,11 @@ alignment.
 The **std140 layout** satisfies the rules for types using the extended
 alignment. |
 
+|  | An alternate explanation of the shader memory requirements, discussing the
+| --- | --- |
+underlying extensions and core versions which affect them, is found in the
+[Vulkan Guide](../../../guide/latest/shader_memory_layout.html). |
+
 Built-in variables are accessed in shaders by declaring a variable decorated
 with a `BuiltIn` SPIR-V decoration.
 The meaning of each `BuiltIn` decoration is as follows.

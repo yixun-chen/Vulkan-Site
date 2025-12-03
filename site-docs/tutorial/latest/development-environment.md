@@ -269,7 +269,7 @@ GLFW on the [official website](https://www.glfw.org/download.html).
 In this tutorial, we’ll be using the 64-bit binaries, but you can of course also
 choose to build in 32-bit mode. In that case make sure to link with the Vulkan
 SDK binaries in the `Lib32` directory instead of `Lib`. After downloading it, extract the archive
-to a convenient location. I’ve chosen to create a `Libraries` directory in the
+to a convenient location. We’ve chosen to create a `Libraries` directory in the
 Visual Studio directory under documents.
 
 ![glfw directory](_images/images/glfw_directory.png)
@@ -288,7 +288,7 @@ Now that you have installed all the dependencies, we can set up a basic
 CMake project for Vulkan and write a little bit of code to make sure that
 everything works.
 
-I will assume that you already have some basic experience with CMake, like
+We will assume that you already have some basic experience with CMake, like
 how variables and rules work. If not, you can get up to speed very quickly with [this tutorial](https://cmake.org/cmake/help/book/mastering-cmake/cmake/Help/guide/tutorial/).
 
 You can now use the code from any of the following chapters found in the `attachment` folder as a template for your Vulkan projects. Make a copy, rename it to something like `HelloTriangle` and remove all the code in `main.cpp`.
@@ -391,7 +391,7 @@ Now that you have installed all the dependencies, we can set up a basic
 CMake project for Vulkan and write a little bit of code to make sure that
 everything works.
 
-I will assume that you already have some basic experience with CMake, like
+We will assume that you already have some basic experience with CMake, like
 how variables and rules work. If not, you can get up to speed very quickly with [this tutorial](https://cmake.org/cmake/help/book/mastering-cmake/cmake/Help/guide/tutorial/).
 
 You can now use the [attachments](_attachments/) directory in this tutorial as a template for your

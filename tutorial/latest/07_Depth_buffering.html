@@ -440,7 +440,7 @@ We&#8217;ll use this third coordinate to place a square over the current square 
 <h2 id="_3d_geometry"><a class="anchor" href="#_3d_geometry"></a>3D geometry</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Change the <code>Vertex</code> struct to use a 3D vector for the position, and update the <code>format</code> in the corresponding <code>VkVertexInputAttributeDescription</code>:</p>
+<p>Change the <code>Vertex</code> struct to use a 3D vector for the position, and update the <code>format</code> in the corresponding <code>vk::VertexInputAttributeDescription</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -453,9 +453,9 @@ We&#8217;ll use this third coordinate to place a square over the current square 
 
     static std::array&lt;vk::VertexInputAttributeDescription, 3&gt; getAttributeDescriptions() {
         return {
-            vk::VertexInputAttributeDescription( 0, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, pos) ),
-            vk::VertexInputAttributeDescription( 1, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, color) ),
-            vk::VertexInputAttributeDescription( 2, 0, vk::Format::eR32G32Sfloat, offsetof(Vertex, texCoord) )
+            vk::VertexInputAttributeDescription(0, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, pos)),
+            vk::VertexInputAttributeDescription(1, 0, vk::Format::eR32G32B32Sfloat, offsetof(Vertex, color)),
+            vk::VertexInputAttributeDescription(2, 0, vk::Format::eR32G32Sfloat, offsetof(Vertex, texCoord))
         };
 
         ...
@@ -464,12 +464,14 @@ We&#8217;ll use this third coordinate to place a square over the current square 
 </div>
 </div>
 <div class="paragraph">
-<p>Next, update the vertex shader to accept and transform 3D coordinates as input.
-Remember to recompile it afterward!</p>
+<p>Next, update the vertex shader to accept and transform 3D coordinates as input by changing the type for <code>inPosition</code> from <code>float2</code> to <code>float3</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">float3 inPosition;
+<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">struct VSInput {
+    float3 inPosition;
+    ...
+};
 
 ...
 
@@ -482,6 +484,9 @@ VSOutput vertMain(VSInput input) {
     return output;
 }</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Remember to recompile the shader afterwards!</p>
 </div>
 <div class="paragraph">
 <p>Lastly, update the <code>vertices</code> container to include Z coordinates:</p>
@@ -613,7 +618,7 @@ void createDepthResources() {
 <p>Creating a depth image is fairly straightforward.
 It should have the same resolution as the color attachment, defined by the swap chain extent, an image usage appropriate for a depth attachment, optimal tiling and device local memory.
 The only question is: what is the right format for a depth image?
-The format must contain a depth component, indicated by <code><em>D??</em></code> in the <code>VK_FORMAT_</code>.</p>
+The format must contain a depth component, indicated by <code><em>D??</em></code> in the <code>vk::Format</code>.</p>
 </div>
 <div class="paragraph">
 <p>Unlike the texture image, we don&#8217;t necessarily need a specific format, because we won&#8217;t be directly accessing the texels from the program.
@@ -623,13 +628,13 @@ There are several formats that fit this requirement:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VK_FORMAT_D32_SFLOAT</code>: 32-bit float for depth</p>
+<p><code>vk::Format::eD32Sfloat</code>: 32-bit float for depth</p>
 </li>
 <li>
-<p><code>VK_FORMAT_D32_SFLOAT_S8_UINT</code>: 32-bit signed float for depth and 8 bit stencil component</p>
+<p><code>vk::Format::eD32SfloatS8Uint</code>: 32-bit signed float for depth and 8 bit stencil component</p>
 </li>
 <li>
-<p><code>VK_FORMAT_D24_UNORM_S8_UINT</code>: 24-bit float for depth and 8 bit stencil component</p>
+<p><code>vk::Format::eD24UnormS8Uint</code>: 24-bit float for depth and 8 bit stencil component</p>
 </li>
 </ul>
 </div>
@@ -638,7 +643,7 @@ There are several formats that fit this requirement:</p>
 We&#8217;ll look at this in a future chapter.</p>
 </div>
 <div class="paragraph">
-<p>We could simply go for the <code>VK_FORMAT_D32_SFLOAT</code> format, because support for it is extremely common (see the hardware database), but it&#8217;s nice to add some extra flexibility to our application where possible.
+<p>We could simply go for the <code>vk::Format::eD32Sfloat</code> format, because support for it is extremely common (see the hardware database), but it&#8217;s nice to add some extra flexibility to our application where possible.
 We&#8217;re going to write a function <code>findSupportedFormat</code> that takes a list of candidate formats in order from most desirable to least desirable, and checks which is the first one that is supported:</p>
 </div>
 <div class="listingblock">
@@ -650,7 +655,7 @@ We&#8217;re going to write a function <code>findSupportedFormat</code> that take
 </div>
 <div class="paragraph">
 <p>The support of a format depends on the tiling mode and usage, so we must also include these as parameters.
-The support of a format can be queried using the <code>vkGetPhysicalDeviceFormatProperties</code> function:</p>
+The support of a format can be queried using the <code>physicalDevice.getFormatProperties</code> function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -660,7 +665,7 @@ The support of a format can be queried using the <code>vkGetPhysicalDeviceFormat
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>VkFormatProperties</code> struct contains three fields:</p>
+<p>The <code>vk::FormatProperties</code> struct contains three fields:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -724,7 +729,7 @@ if (tiling == vk::ImageTiling::eOptimal &amp;&amp; (props.optimalTilingFeatures 
 </div>
 </div>
 <div class="paragraph">
-<p>Make sure to use the <code>VK_FORMAT_FEATURE_</code> flag instead of <code>VK_IMAGE_USAGE_</code> in this case.
+<p>Make sure to use the <code>vk::FormatFeatureFlagBits</code> instead of <code>vk::ImageUsageFlagBits</code> in this case.
 All of these candidate formats contain a depth component, but the latter two also contain a stencil component.
 We won&#8217;t be using that yet, but we do need to take that into account when performing layout transitions on images with these formats.
 Add a simple helper function that tells us if the chosen depth format contains a stencil component:</p>
@@ -754,13 +759,15 @@ depthImageView = createImageView(depthImage, depthFormat, vk::ImageAspectFlagBit
 </div>
 </div>
 <div class="paragraph">
-<p>However, the <code>createImageView</code> function currently assumes that the subresource is always the <code>VK_IMAGE_ASPECT_COLOR_BIT</code>, so we will need to turn that field into a parameter:</p>
+<p>However, the <code>createImageView</code> function currently assumes that the subresource is always the <code>vk::ImageAspectFlagBits::eColor</code>, so we will need to turn that field into a parameter:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::raii::ImageView createImageView(vk::raii::Image&amp; image, vk::Format format, vk::ImageAspectFlags aspectFlags) {
     ...
-    viewInfo.subresourceRange.aspectMask = aspectFlags;
+    vk::ImageViewCreateInfo viewInfo{
+                ...
+                .subresourceRange = {aspectFlags, 0, 1, 0, 1}};
     ...
 }</code></pre>
 </div>
@@ -779,191 +786,123 @@ textureImageView = createImageView(textureImage, vk::Format::eR8G8B8A8Srgb, vk::
 </div>
 <div class="paragraph">
 <p>That&#8217;s it for creating the depth image.
-We don&#8217;t need to map it or copy another image to it, because we&#8217;re going to clear it at the start of the render pass like the color attachment.</p>
+We don&#8217;t need to map it or copy another image to it, because we&#8217;re going to clear it at the start of our command buffer like the color attachment.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_command_buffer"><a class="anchor" href="#_command_buffer"></a>Command buffer</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_explicitly_transitioning_the_depth_image"><a class="anchor" href="#_explicitly_transitioning_the_depth_image"></a>Explicitly transitioning the depth image</h3>
+<h3 id="_clear_values"><a class="anchor" href="#_clear_values"></a>Clear values</h3>
 <div class="paragraph">
-<p>We don&#8217;t need to explicitly transition the layout of the image to a depth attachment because we&#8217;ll take care of this in the render pass.
-However, for completeness, I&#8217;ll still describe the process in this section.
-You may skip it if you like.</p>
-</div>
-<div class="paragraph">
-<p>Make a call to <code>transitionImageLayout</code> at the end of the <code>createDepthResources</code> function like so:</p>
+<p>Because we now have multiple attachments that will be cleared to <code>vk::AttachmentLoadOp::eClear</code> (color and depth), we also need to specify multiple clear values.
+Go to <code>recordCommandBuffer</code> and create and add an additional <code>vk::ClearValue</code> variable called <code>clearDepth</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">transitionImageLayout(depthImage, depthFormat, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The undefined layout can be used as initial layout, because there are no existing depth image contents that matter.
-We need to update some logic in <code>transitionImageLayout</code> to use the right subresource aspect:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (newLayout == vk::ImageLayout::eDepthStencilAttachmentOptimal) {
-    barrier.subresourceRange.aspectMask = vk::ImageAspectFlagBits::eDepth;
-
-    if (hasStencilComponent(format)) {
-        barrier.subresourceRange.aspectMask |= VK_IMAGE_ASPECT_STENCIL_BIT;
-    }
-} else {
-    barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Although we&#8217;re not using the stencil component, we do need to include it in the layout transitions of the depth image.</p>
-</div>
-<div class="paragraph">
-<p>Finally, add the correct access masks and pipeline stages:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">if (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED &amp;&amp; newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) {
-    barrier.srcAccessMask = 0;
-    barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
-
-    sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
-    destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
-} else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL &amp;&amp; newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) {
-    barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
-    barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;
-
-    sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
-    destinationStage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT;
-} else if (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED &amp;&amp; newLayout == VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL) {
-    barrier.srcAccessMask = 0;
-    barrier.dstAccessMask = VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT | VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT;
-
-    sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
-    destinationStage = VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT;
-} else {
-    throw std::invalid_argument("unsupported layout transition!");
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The depth buffer will be read from to perform depth tests to see if a fragment is visible, and will be written to when a new fragment is drawn.
-The reading happens in the <code>VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT</code> stage and the writing in the <code>VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT</code>.
-You should pick the earliest pipeline stage that matches the specified operations, so that it is ready for usage as depth attachment when it needs to be.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_render_pass"><a class="anchor" href="#_render_pass"></a>Render pass</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We&#8217;re now going to modify <code>createRenderPass</code> to include a depth attachment.
-First specify the <code>VkAttachmentDescription</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::AttachmentDescription depthAttachment({}, findDepthFormat(), vk::SampleCountFlagBits::e1, vk::AttachmentLoadOp::eClear,
-    vk::AttachmentStoreOp::eDontCare, vk::AttachmentLoadOp::eDontCare, vk::AttachmentStoreOp::eDontCare, vk::ImageLayout::eUndefined,
-    vk::ImageLayout::eDepthStencilAttachmentOptimal);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>format</code> should be the same as the depth image itself.
-This time we don&#8217;t care about storing the depth data (<code>storeOp</code>), because it will not be used after drawing has finished.
-This may allow the hardware to perform additional optimizations.
-Just like the color buffer, we don&#8217;t care about the previous depth contents, so we can use <code>VK_IMAGE_LAYOUT_UNDEFINED</code> as <code>initialLayout</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::AttachmentReference depthAttachmentRef(1, vk::ImageLayout::eDepthStencilAttachmentOptimal);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Add a reference to the attachment for the first (and only) subpass:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::SubpassDescription subpass({}, vk::PipelineBindPoint::eGraphics, 0, {}, 1, &amp;colorAttachmentRef, {}, &amp;depthAttachmentRef);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Unlike color attachments, a subpass can only use a single depth (+stencil) attachment.
-It wouldn&#8217;t really make any sense to do depth tests on multiple buffers.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++"> std::array attachments = {colorAttachment, depthAttachment};
- vk::RenderPassCreateInfo renderPassInfo({}, attachments, subpass, dependency);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Next, update the <code>VkSubpassDependency</code> struct to refer to both attachments.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::SubpassDependency dependency(vk::SubpassExternal, {},
-                    vk::PipelineStageFlagBits::eColorAttachmentOutput | vk::PipelineStageFlagBits::eLateFragmentTests,
-                    vk::PipelineStageFlagBits::eEarlyFragmentTests | vk::PipelineStageFlagBits::eColorAttachmentOutput,
-                    vk::AccessFlagBits::eDepthStencilAttachmentWrite,
-                    vk::AccessFlagBits::eDepthStencilAttachmentWrite | vk::AccessFlagBits::eColorAttachmentWrite
-                    );</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Finally, we need to extend our subpass dependencies to make sure that there is no conflict between the transitioning of the depth image and it being cleared as part of its load operation.
-The depth image is first accessed in the early fragment test pipeline stage and because we have a load operation that <em>clears</em>, we should specify the access mask for writes.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_framebuffer"><a class="anchor" href="#_framebuffer"></a>Framebuffer</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The next step is to modify the framebuffer creation to bind the depth image to the depth attachment.
-Go to <code>createFramebuffers</code> and specify the depth image view as second attachment:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">svk::ImageView attachments[] = { view, *depthImageView };
-vk::FramebufferCreateInfo framebufferCreateInfo( {}, *renderPass, attachments, swapChainExtent.width, swapChainExtent.height, 1 );</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The color attachment differs for every swap chain image, but the same depth image can be used by all of them because only a single subpass is running at the same time due to our semaphores.</p>
-</div>
-<div class="paragraph">
-<p>You&#8217;ll also need to move the call to <code>createFramebuffers</code> to make sure that it is called after the depth image view has actually been created:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void initVulkan() {
-    ...
-    createDepthResources();
-    createFramebuffers();
-    ...
-}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_clear_values"><a class="anchor" href="#_clear_values"></a>Clear values</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Because we now have multiple attachments with <code>VK_ATTACHMENT_LOAD_OP_CLEAR</code>, we also need to specify multiple clear values.
-Go to <code>recordCommandBuffer</code> and create an array of <code>VkClearValue</code> structs:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::ClearValue clearColor[2] = { vk::ClearColorValue(0.0f, 0.0f, 0.0f, 1.0f), vk::ClearDepthStencilValue(1.0f, 0) };
-vk::RenderPassBeginInfo renderPassInfo( *renderPass, swapChainFramebuffers[imageIndex], {{0, 0}, swapChainExtent}, clearColor);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::ClearValue clearColor = vk::ClearColorValue(0.0f, 0.0f, 0.0f, 1.0f);
+vk::ClearValue clearDepth = vk::ClearDepthStencilValue(1.0f, 0);</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The range of depths in the depth buffer is <code>0.0</code> to <code>1.0</code> in Vulkan, where <code>1.0</code> lies at the far view plane and <code>0.0</code> at the near view plane.
 The initial value at each point in the depth buffer should be the furthest possible depth, which is <code>1.0</code>.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_dynamic_rendering"><a class="anchor" href="#_dynamic_rendering"></a>Dynamic rendering</h3>
 <div class="paragraph">
-<p>Note that the order of <code>clearValues</code> should be identical to the order of your attachments.</p>
+<p>Now that we have our depth image set up, we need to make use of it in <code>recordCommandBuffer</code>.
+This will be part of dynamic rendering and is similar to setting up our color output image.</p>
+</div>
+<div class="paragraph">
+<p>First specify a new rendering attachment for the depth image:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::RenderingAttachmentInfo depthAttachmentInfo = {
+    .imageView   = depthImageView,
+    .imageLayout = vk::ImageLayout::eDepthAttachmentOptimal,
+    .loadOp      = vk::AttachmentLoadOp::eClear,
+    .storeOp     = vk::AttachmentStoreOp::eDontCare,
+    .clearValue  = clearDepth};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And add it to the dynamic rendering info structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::RenderingInfo renderingInfo = {
+    ...
+    .pDepthAttachment     = &amp;depthAttachmentInfo};</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_explicitly_transitioning_the_depth_image"><a class="anchor" href="#_explicitly_transitioning_the_depth_image"></a>Explicitly transitioning the depth image</h3>
+<div class="paragraph">
+<p>Just like the color attachment, the depth attachment needs to be in the correct layout for the intended use case. For this we need to issue an additional barriers to ensure that the depth image can be used as a depth attachment during rendering.
+The depth image is first accessed in the early fragment test pipeline stage and because we have a load operation that <em>clears</em>, we should specify the access mask for writes.</p>
+</div>
+<div class="paragraph">
+<p>As we now deal with an additional image type (depth), first add a new argument to the <code>transition_image_layout</code> function for the image aspect:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void transition_image_layout(
+    ...
+    vk::ImageAspectFlags    image_aspect_flags)
+{
+    vk::ImageMemoryBarrier2 barrier = {
+        ...
+        .subresourceRange    = {
+            .aspectMask     = image_aspect_flags,
+            .baseMipLevel   = 0,
+            .levelCount     = 1,
+            .baseArrayLayer = 0,
+            .layerCount     = 1}};
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now add new image layout transition at the start of the command buffer in <code>recordCommandBuffer</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[currentFrame].begin({});
+// Transition for the color attachment
+transition_image_layout(
+    ...
+    vk::ImageAspectFlagBits::eColor);
+// New transition for the depth image
+transition_image_layout(
+    *depthImage,
+    vk::ImageLayout::eUndefined,
+    vk::ImageLayout::eDepthAttachmentOptimal,
+    vk::AccessFlagBits2::eDepthStencilAttachmentWrite,
+    vk::AccessFlagBits2::eDepthStencilAttachmentWrite,
+    vk::PipelineStageFlagBits2::eEarlyFragmentTests | vk::PipelineStageFlagBits2::eLateFragmentTests,
+    vk::PipelineStageFlagBits2::eEarlyFragmentTests | vk::PipelineStageFlagBits2::eLateFragmentTests,
+    vk::ImageAspectFlagBits::eDepth);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Unlike as with the color image we don&#8217;t need multiple barriers here. As we don&#8217;t care for the contents of the depth attachment once the frame is finished, we can always translate from <code>k::ImageLayout::eUndefined</code>. What&#8217;s special about this layout, is the fact that you can always use it as a source without having to care what happens before.</p>
+</div>
+<div class="paragraph">
+<p>Also make sure you adjust all other calls to the <code>transition_image_layout</code> function call to pass the correct image aspect:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Before starting rendering, transition the swapchain image to COLOR_ATTACHMENT_OPTIMAL
+transition_image_layout(
+    ...
+    // Also need to specify this for color images
+    vk::ImageAspectFlagBits::eColor);</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -972,7 +911,17 @@ The initial value at each point in the depth buffer should be the furthest possi
 <div class="sectionbody">
 <div class="paragraph">
 <p>The depth attachment is ready to be used now, but depth testing still needs to be enabled in the graphics pipeline.
-It is configured through the <code>VkPipelineDepthStencilStateCreateInfo</code> struct:</p>
+It is configured through the <code>PipelineDepthStencilStateCreateInfo</code> struct:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::PipelineDepthStencilStateCreateInfo depthStencil{
+    .depthTestEnable       = vk::True,
+    .depthWriteEnable      = vk::True,
+    .depthCompareOp        = vk::CompareOp::eLess,
+    .depthBoundsTestEnable = vk::False,
+    .stencilTestEnable     = vk::False};</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>The <code>depthTestEnable</code> field specifies if the depth of new fragments should be compared to the depth buffer to see if they should be discarded.
@@ -992,8 +941,20 @@ We won&#8217;t be using this functionality.</p>
 If you want to use these operations, then you will have to make sure that the format of the depth/stencil image contains a stencil component.</p>
 </div>
 <div class="paragraph">
-<p>Update the <code>VkGraphicsPipelineCreateInfo</code> struct to reference the depth stencil state we just filled in.
-A depth stencil state must always be specified if the render pass contains a depth stencil attachment.</p>
+<p>A depth stencil state must always be specified if the dynamic rendering setup contains a depth stencil attachment:</p>
+</div>
+<div class="paragraph">
+<p>Update the <code>pipelineCreateInfoChain</code> structure chain to reference the depth stencil state we just filled in and also add a reference to the depth format we&#8217;re using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vk::StructureChain&lt;vk::GraphicsPipelineCreateInfo, vk::PipelineRenderingCreateInfo&gt; pipelineCreateInfoChain = {
+    {.stageCount          = 2,
+        ...
+        .pDepthStencilState  = &amp;depthStencil,
+        ...
+    {.colorAttachmentCount = 1, .pColorAttachmentFormats = &amp;swapChainSurfaceFormat.format, .depthAttachmentFormat = depthFormat}};</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>If you run your program now, then you should see that the fragments of the geometry are now correctly ordered:</p>
@@ -1021,14 +982,12 @@ Extend the <code>recreateSwapChain</code> function to recreate the depth resourc
         glfwWaitEvents();
     }
 
-    vkDeviceWaitIdle(device);
+    device.waitIdle(device);
 
     cleanupSwapChain();
-
     createSwapChain();
     createImageViews();
     createDepthResources();
-    createFramebuffers();
 }</code></pre>
 </div>
 </div>

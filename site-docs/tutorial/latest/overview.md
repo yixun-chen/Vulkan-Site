@@ -355,7 +355,7 @@ Vulkan allows you to enable extensive checks through a feature known as
 Validation layers are pieces of code that can be inserted between the API
 and the graphics driver to do things like running extra checks on function
 parameters and tracking memory management problems.
-The nice thing is that you can enable them during development and then
+An important benefit is that you can enable them during development and then
 completely disable them when releasing your application for zero overhead.
 Anyone can write their own validation layers, but the Vulkan SDK by LunarG
 provides a standard set of validation layers that we’ll be using in this tutorial.
