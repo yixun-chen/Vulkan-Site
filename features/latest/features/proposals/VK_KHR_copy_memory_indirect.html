@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -624,7 +627,11 @@
 </ul>
 </li>
 <li><a href="#_examples">5. Examples</a></li>
-<li><a href="#_issues">6. Issues</a></li>
+<li><a href="#_issues">6. Issues</a>
+<ul class="sectlevel2">
+<li><a href="#_should_we_add_copycount_to_be_also_sourced_from_the_gpu_and_use_the_minimum_of_the_api_specified_and_gpu_value">6.1. Should we add <code>copyCount</code> to be also sourced from the GPU and use the minimum of the API specified and GPU value?</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="preamble">
@@ -842,14 +849,13 @@ VKAPI_ATTR void VKAPI_CALL vkCmdCopyMemoryToImageIndirectKHR(
 <div class="sect1">
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>6. Issues</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_should_we_add_copycount_to_be_also_sourced_from_the_gpu_and_use_the_minimum_of_the_api_specified_and_gpu_value"><a class="anchor" href="#_should_we_add_copycount_to_be_also_sourced_from_the_gpu_and_use_the_minimum_of_the_api_specified_and_gpu_value"></a>6.1. Should we add <code>copyCount</code> to be also sourced from the GPU and use the minimum of the API specified and GPU value?</h3>
 <div class="paragraph">
-<p>1) Should we add <code>copyCount</code> to be also sourced from the GPU and
-use the minimum of the API specified and GPU value?</p>
-</div>
-<div class="paragraph">
-<p><strong>RESOLVED</strong>: No. Though this falls in line with some of the other similar indirect
+<p>No. Though this falls in line with some of the other similar indirect
 API commands, this can add significant complexity for memory to image copies.
 So, the consensus is to not add it.</p>
+</div>
 </div>
 </div>
 </div>

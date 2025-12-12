@@ -174,26 +174,25 @@ each other
 * 
 [](#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10550) VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10550
 
-The buffer from which the buffer device address for
-`pBuildInfo->scratchData` is queried **must** have been created with
-the `VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
+`pBuildInfo->scratchData` **must** be a device address allocated to the
+application from a buffer created with the
+`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
 
 * 
 [](#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10551) VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10551
 
-The buffers from which the buffer device addresses for
-`pBuildInfo->srcInfos` and `pBuildInfo->srcInfosCount` are
-queried **must** have been created with the
+`pBuildInfo->srcInfos` and `pBuildInfo->srcInfosCount` **must** be
+device addresses allocated to the application from buffers created with
+the
 `VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
 usage flag set
 
 * 
 [](#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10552) VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10552
 
-The buffers from which the buffer device addresses for
 `pBuildInfo->srcAccelerationStructureData` and
-`pBuildInfo->dstAccelerationStructureData` are queried **must** have
-been created with the
+`pBuildInfo->dstAccelerationStructureData` **must** be a device
+addresses allocated to the application from buffers created with the
 `VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` usage flag
 set
 

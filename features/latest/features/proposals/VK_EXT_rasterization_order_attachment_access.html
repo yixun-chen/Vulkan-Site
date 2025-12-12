@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -618,8 +621,8 @@
 <li><a href="#_proposal">3. Proposal</a></li>
 <li><a href="#_issues">4. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension">4.1. RESOLVED: Is there any interaction with the VK_KHR_dynamic_rendering extension?</a></li>
-<li><a href="#_resolved_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension">4.2. RESOLVED: What are the differences to the VK_ARM_rasterization_order_attachment_access extension?</a></li>
+<li><a href="#_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension">4.1. Is there any interaction with the VK_KHR_dynamic_rendering extension?</a></li>
+<li><a href="#_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension">4.2. What are the differences to the VK_ARM_rasterization_order_attachment_access extension?</a></li>
 </ul>
 </li>
 </ul>
@@ -718,14 +721,14 @@ rasterization order access. The following flags are added to VkSubpassDescriptio
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension"><a class="anchor" href="#_resolved_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension"></a>4.1. RESOLVED: Is there any interaction with the <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_KHR_dynamic_rendering">VK_KHR_dynamic_rendering</a> extension?</h3>
+<h3 id="_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension"><a class="anchor" href="#_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension"></a>4.1. Is there any interaction with the <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_KHR_dynamic_rendering">VK_KHR_dynamic_rendering</a> extension?</h3>
 <div class="paragraph">
 <p>No. This extension only affects reads from input attachments.
 Render pass instances begun with <code>vkCmdBeginRenderingKHR</code> do not have input attachments and a different mechanism will be needed to provide similar functionality in that case.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension"><a class="anchor" href="#_resolved_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension"></a>4.2. RESOLVED: What are the differences to the <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_ARM_rasterization_order_attachment_access">VK_ARM_rasterization_order_attachment_access</a> extension?</h3>
+<h3 id="_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension"><a class="anchor" href="#_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension"></a>4.2. What are the differences to the <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_ARM_rasterization_order_attachment_access">VK_ARM_rasterization_order_attachment_access</a> extension?</h3>
 <div class="paragraph">
 <p>None. This extension is a multi-vendor version of that extension with no changes.
 The two extensions can be used interchangeably since the API structures and enumeration alias each other.</p>

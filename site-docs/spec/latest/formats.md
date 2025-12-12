@@ -3193,16 +3193,16 @@ each texel block represents in each dimension.
 
                     `VK_FORMAT_R16G16_USCALED`,
 
-                    `VK_FORMAT_R16G16_SSCALED`,
-
-                    `VK_FORMAT_R16G16_UINT` |
+                    `VK_FORMAT_R16G16_SSCALED` |
 | 32-bit (continued)
 
   Block size 4 byte
 
   1x1x1 block extent
 
-  1 texel/block | `VK_FORMAT_R16G16_SINT`,
+  1 texel/block | `VK_FORMAT_R16G16_UINT`,
+
+                    `VK_FORMAT_R16G16_SINT`,
 
                     `VK_FORMAT_R16G16_SFLOAT`,
 

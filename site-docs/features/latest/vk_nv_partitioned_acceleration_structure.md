@@ -23,6 +23,8 @@
 - [4.3.2. Performing build](#_performing_build)
 - [4.3.2._Performing_build](#_performing_build)
 - [5. Issues](#_issues)
+- [5.1. Does PTLAS support serialization/deserialization?](#_does_ptlas_support_serializationdeserialization)
+- [5.1._Does_PTLAS_support_serialization/deserialization?](#_does_ptlas_support_serializationdeserialization)
 
 ## Content
 
@@ -38,6 +40,8 @@ Table of Contents
 [4.3. Commands](#_commands)
 
 [5. Issues](#_issues)
+
+[5.1. Does PTLAS support serialization/deserialization?](#_does_ptlas_support_serializationdeserialization)
 
 This document proposes the addition of Partitioned Top Level Acceleration
 Structures (PTLAS) as an alternative to the existing TLAS.
@@ -310,5 +314,4 @@ typedef struct VkPartitionedAccelerationStructureWritePartitionTranslationDataNV
 `partitionTranslation` sets the translation vector for this partition. When tracing this partition, the contained instances will behave as if the partition translation was added to the translation component of the instance transform.
 This translation vector is also added to the instances in the partition that had their bounding box specified.
 
-1) Does PTLAS support serialization/deserialization?
-**RESOLVED**: No. The current specification does not support it but could be added if there is interest.
+No. The current specification does not support it but could be added if there is interest.

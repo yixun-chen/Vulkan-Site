@@ -270,16 +270,16 @@ The memory range defined by `srcAddress` and `compressedSize`
 * 
 [](#VUID-VkDecompressMemoryRegionEXT-srcAddress-11764) VUID-VkDecompressMemoryRegionEXT-srcAddress-11764
 
-The underlying buffer for `srcAddress` **must** have the
-`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` bit set in its
-usage flag
+`srcAddress` **must** be a device address allocated to the application
+from a buffer created with the
+`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` usage flag set
 
 * 
 [](#VUID-VkDecompressMemoryRegionEXT-dstAddress-11765) VUID-VkDecompressMemoryRegionEXT-dstAddress-11765
 
-The underlying buffer for `dstAddress` **must** have the
-`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` bit set in its
-usage flag
+`dstAddress` **must** be a device address allocated to the application
+from a buffer created with the
+`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` usage flag set
 
 Valid Usage (Implicit)
 
@@ -545,9 +545,9 @@ The [`memoryDecompression`](features.html#features-memoryDecompression) feature
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07694) VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07694
 
-The [VkBuffer](resources.html#VkBuffer) that `indirectCommandsAddress` comes from **must**
-have been created with the `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT`
-usage flag set
+`indirectCommandsAddress` **must** be a device address allocated to the
+application from a buffer created with the
+`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07695) VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07695
@@ -557,8 +557,8 @@ usage flag set
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsCountAddress-07697) VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsCountAddress-07697
 
-The [VkBuffer](resources.html#VkBuffer) that `indirectCommandsCountAddress` comes from
-**must** have been created with the
+`indirectCommandsCountAddress` **must** be a device address allocated
+to the application from a buffer created with the
 `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
 
 * 
@@ -727,9 +727,9 @@ The [`memoryDecompression`](features.html#features-memoryDecompression) feature
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsAddress-07694) VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsAddress-07694
 
-The [VkBuffer](resources.html#VkBuffer) that `indirectCommandsAddress` comes from **must**
-have been created with the `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT`
-usage flag set
+`indirectCommandsAddress` **must** be a device address allocated to the
+application from a buffer created with the
+`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsAddress-07695) VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsAddress-07695
@@ -739,8 +739,8 @@ usage flag set
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsCountAddress-07697) VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsCountAddress-07697
 
-The [VkBuffer](resources.html#VkBuffer) that `indirectCommandsCountAddress` comes from
-**must** have been created with the
+`indirectCommandsCountAddress` **must** be a device address allocated
+to the application from a buffer created with the
 `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
 
 * 
@@ -768,6 +768,69 @@ buffer device address range of the same buffer
 
 `stride` **must** be a multiple of `4` and **must** be greater than or
 equal to sizeof([VkDecompressMemoryRegionNV](#VkDecompressMemoryRegionNV))
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkCmdDecompressMemoryIndirectCountNV-commandBuffer-parameter) VUID-vkCmdDecompressMemoryIndirectCountNV-commandBuffer-parameter
+
+ `commandBuffer` **must** be a valid [VkCommandBuffer](cmdbuffers.html#VkCommandBuffer) handle
+
+* 
+[](#VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsAddress-parameter) VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsAddress-parameter
+
+ `indirectCommandsAddress` **must** be a valid `VkDeviceAddress` value
+
+* 
+[](#VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsCountAddress-parameter) VUID-vkCmdDecompressMemoryIndirectCountNV-indirectCommandsCountAddress-parameter
+
+ `indirectCommandsCountAddress` **must** be a valid `VkDeviceAddress` value
+
+* 
+[](#VUID-vkCmdDecompressMemoryIndirectCountNV-commandBuffer-recording) VUID-vkCmdDecompressMemoryIndirectCountNV-commandBuffer-recording
+
+ `commandBuffer` **must** be in the [recording state](cmdbuffers.html#commandbuffers-lifecycle)
+
+* 
+[](#VUID-vkCmdDecompressMemoryIndirectCountNV-commandBuffer-cmdpool) VUID-vkCmdDecompressMemoryIndirectCountNV-commandBuffer-cmdpool
+
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT`, or `VK_QUEUE_GRAPHICS_BIT` operations
+
+* 
+[](#VUID-vkCmdDecompressMemoryIndirectCountNV-renderpass) VUID-vkCmdDecompressMemoryIndirectCountNV-renderpass
+
+ This command **must** only be called outside of a render pass instance
+
+* 
+[](#VUID-vkCmdDecompressMemoryIndirectCountNV-suspended) VUID-vkCmdDecompressMemoryIndirectCountNV-suspended
+
+ This command **must** not be called between suspended render pass instances
+
+* 
+[](#VUID-vkCmdDecompressMemoryIndirectCountNV-videocoding) VUID-vkCmdDecompressMemoryIndirectCountNV-videocoding
+
+ This command **must** only be called outside of a video coding scope
+
+Host Synchronization
+
+* 
+Host access to `commandBuffer` **must** be externally synchronized
+
+* 
+Host access to the `VkCommandPool` that `commandBuffer` was allocated from **must** be externally synchronized
+
+Command Properties
+| [Command Buffer Levels](cmdbuffers.html#VkCommandBufferLevel) | [Render Pass Scope](renderpass.html#vkCmdBeginRenderPass) | [Video Coding Scope](videocoding.html#vkCmdBeginVideoCodingKHR) | [Supported Queue Types](devsandqueues.html#VkQueueFlagBits) | [Command Type](fundamentals.html#fundamentals-queueoperation-command-types) |
+| --- | --- | --- | --- | --- |
+| Primary
+
+Secondary | Outside | Outside | VK_QUEUE_COMPUTE_BIT
+
+VK_QUEUE_GRAPHICS_BIT | Action |
+
+Conditional Rendering
+
+vkCmdDecompressMemoryIndirectCountNV is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
 Bits which **can** be set in
 `VkDecompressMemoryRegionEXT`::`decompressionMethod`

@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -632,10 +635,10 @@
 <li><a href="#_expected_features_and_limits">4. Expected Features and limits</a></li>
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_should_this_be_one_extension_or_3_extensions">5.1. RESOLVED:  Should this be one extension or 3 extensions?</a></li>
-<li><a href="#_resolved_how_does_this_interact_with_descriptor_indexing">5.2. RESOLVED:  How does this interact with descriptor indexing ?</a></li>
-<li><a href="#_resolved_how_does_this_extension_interact_with_ext_robustness2">5.3. RESOLVED:  How does this extension interact with EXT_robustness2 ?</a></li>
-<li><a href="#_resolved_how_does_this_interact_with_push_descriptors">5.4. RESOLVED:  How does this interact with push descriptors ?</a></li>
+<li><a href="#_should_this_be_one_extension_or_3_extensions">5.1. Should this be one extension or 3 extensions?</a></li>
+<li><a href="#_how_does_this_interact_with_descriptor_indexing">5.2. How does this interact with descriptor indexing ?</a></li>
+<li><a href="#_how_does_this_extension_interact_with_ext_robustness2">5.3. How does this extension interact with EXT_robustness2 ?</a></li>
+<li><a href="#_how_does_this_interact_with_push_descriptors">5.4. How does this interact with push descriptors ?</a></li>
 </ul>
 </li>
 </ul>
@@ -1574,13 +1577,13 @@ of <em>texel error squared</em>.</p>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_should_this_be_one_extension_or_3_extensions"><a class="anchor" href="#_resolved_should_this_be_one_extension_or_3_extensions"></a>5.1. RESOLVED:  Should this be one extension or 3 extensions?</h3>
+<h3 id="_should_this_be_one_extension_or_3_extensions"><a class="anchor" href="#_should_this_be_one_extension_or_3_extensions"></a>5.1. Should this be one extension or 3 extensions?</h3>
 <div class="paragraph">
 <p>For simplicity, and since we expect this extension supported only for Adreno GPUs, we propose one extension with 3 feature bits.  The associated SPIR-V extension will have 3 capabilities.  The associated GLSL extension will have 3 extension strings.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_does_this_interact_with_descriptor_indexing"><a class="anchor" href="#_resolved_how_does_this_interact_with_descriptor_indexing"></a>5.2. RESOLVED:  How does this interact with descriptor indexing ?</h3>
+<h3 id="_how_does_this_interact_with_descriptor_indexing"><a class="anchor" href="#_how_does_this_interact_with_descriptor_indexing"></a>5.2. How does this interact with descriptor indexing ?</h3>
 <div class="paragraph">
 <p>The new built-ins added by this extension support descriptor arrays and
 dynamic indexing, but only if the index is dynamically uniform.  The "update-after-bind"
@@ -1596,14 +1599,14 @@ bind"</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_does_this_extension_interact_with_ext_robustness2"><a class="anchor" href="#_resolved_how_does_this_extension_interact_with_ext_robustness2"></a>5.3. RESOLVED:  How does this extension interact with EXT_robustness2 ?</h3>
+<h3 id="_how_does_this_extension_interact_with_ext_robustness2"><a class="anchor" href="#_how_does_this_extension_interact_with_ext_robustness2"></a>5.3. How does this extension interact with EXT_robustness2 ?</h3>
 <div class="paragraph">
 <p>These instructions do not support nullDescriptor feature of robustness2.  If any descriptor accessed by these
 instructions is not bound, undefined results will occur.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_does_this_interact_with_push_descriptors"><a class="anchor" href="#_resolved_how_does_this_interact_with_push_descriptors"></a>5.4. RESOLVED:  How does this interact with push descriptors ?</h3>
+<h3 id="_how_does_this_interact_with_push_descriptors"><a class="anchor" href="#_how_does_this_interact_with_push_descriptors"></a>5.4. How does this interact with push descriptors ?</h3>
 <div class="paragraph">
 <p>The descriptors added by this extension can be updated using vkCmdPushDescriptors</p>
 </div>

@@ -833,28 +833,28 @@ member of any element of `pGeometries` or `ppGeometries` with a
 bound to device memory
 
 * 
-[](#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03671) VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03671
+[](#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12258) VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12258
 
 If `pInfos`[i].`mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR`, all addresses
-between `pInfos`[i].`scratchData.deviceAddress` and
-`pInfos`[i].`scratchData.deviceAddress` +  N - 1 **must** be in
-the buffer device address range of the same buffer, where N is given by
-the `buildScratchSize` member of the
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR`, and N is not `0`,
+all addresses between `pInfos`[i].`scratchData.deviceAddress`
+and `pInfos`[i].`scratchData.deviceAddress` +  N - 1 **must**
+be in the buffer device address range of the same buffer, where N is
+given by the `buildScratchSize` member of the
 [VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned from a
 call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR) with an identical
 [VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR) structure and
 primitive count
 
 * 
-[](#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03672) VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03672
+[](#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12259) VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12259
 
 If `pInfos`[i].`mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, all addresses
-between `pInfos`[i].`scratchData.deviceAddress` and
-`pInfos`[i].`scratchData.deviceAddress` +  N - 1 **must** be in
-the buffer device address range of the same buffer, where N is given by
-the `updateScratchSize` member of the
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, and N is not `0`,
+all addresses between `pInfos`[i].`scratchData.deviceAddress`
+and `pInfos`[i].`scratchData.deviceAddress` +  N - 1 **must**
+be in the buffer device address range of the same buffer, where N is
+given by the `updateScratchSize` member of the
 [VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned from a
 call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR) with an identical
 [VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR) structure and
@@ -873,18 +873,32 @@ are queried **must** have been created with the
 usage flag set
 
 * 
-[](#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03674) VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03674
+[](#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12260) VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12260
 
-The buffer from which the buffer device address
-`pInfos`[i].`scratchData.deviceAddress` is queried **must** have
-been created with the `VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage
-flag set
+If `pInfos`[i].`mode` is
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, and the size
+reported by `updateScratchSize` member of the
+[VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned from a
+call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR) with an identical
+[VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR) structure and
+primitive count is non-zero,
+`pInfos`[i].`scratchData.deviceAddress` **must** be a device
+address allocated to the application from a buffer created with the
+`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
 
 * 
-[](#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03802) VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03802
+[](#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12261) VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12261
 
-For each element of `pInfos`, its `scratchData.deviceAddress`
-member **must** be a valid `VkDeviceAddress`
+If `pInfos`[i].`mode` is
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR`, and the size
+reported by `buildScratchSize` member of the
+[VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned from a
+call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR) with an identical
+[VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR) structure and
+primitive count is non-zero,
+`pInfos`[i].`scratchData.deviceAddress` **must** be a device
+address allocated to the application from a buffer created with the
+`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
 
 * 
 [](#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03710) VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03710
@@ -1703,28 +1717,28 @@ member of any element of `pGeometries` or `ppGeometries` with a
 bound to device memory
 
 * 
-[](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03671) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03671
+[](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12258) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12258
 
 If `pInfos`[i].`mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR`, all addresses
-between `pInfos`[i].`scratchData.deviceAddress` and
-`pInfos`[i].`scratchData.deviceAddress` +  N - 1 **must** be in
-the buffer device address range of the same buffer, where N is given by
-the `buildScratchSize` member of the
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR`, and N is not `0`,
+all addresses between `pInfos`[i].`scratchData.deviceAddress`
+and `pInfos`[i].`scratchData.deviceAddress` +  N - 1 **must**
+be in the buffer device address range of the same buffer, where N is
+given by the `buildScratchSize` member of the
 [VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned from a
 call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR) with an identical
 [VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR) structure and
 primitive count
 
 * 
-[](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03672) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03672
+[](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12259) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12259
 
 If `pInfos`[i].`mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, all addresses
-between `pInfos`[i].`scratchData.deviceAddress` and
-`pInfos`[i].`scratchData.deviceAddress` +  N - 1 **must** be in
-the buffer device address range of the same buffer, where N is given by
-the `updateScratchSize` member of the
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, and N is not `0`,
+all addresses between `pInfos`[i].`scratchData.deviceAddress`
+and `pInfos`[i].`scratchData.deviceAddress` +  N - 1 **must**
+be in the buffer device address range of the same buffer, where N is
+given by the `updateScratchSize` member of the
 [VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned from a
 call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR) with an identical
 [VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR) structure and
@@ -1743,18 +1757,32 @@ are queried **must** have been created with the
 usage flag set
 
 * 
-[](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03674) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03674
+[](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12260) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12260
 
-The buffer from which the buffer device address
-`pInfos`[i].`scratchData.deviceAddress` is queried **must** have
-been created with the `VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage
-flag set
+If `pInfos`[i].`mode` is
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, and the size
+reported by `updateScratchSize` member of the
+[VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned from a
+call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR) with an identical
+[VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR) structure and
+primitive count is non-zero,
+`pInfos`[i].`scratchData.deviceAddress` **must** be a device
+address allocated to the application from a buffer created with the
+`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
 
 * 
-[](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03802) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03802
+[](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12261) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12261
 
-For each element of `pInfos`, its `scratchData.deviceAddress`
-member **must** be a valid `VkDeviceAddress`
+If `pInfos`[i].`mode` is
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR`, and the size
+reported by `buildScratchSize` member of the
+[VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned from a
+call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR) with an identical
+[VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR) structure and
+primitive count is non-zero,
+`pInfos`[i].`scratchData.deviceAddress` **must** be a device
+address allocated to the application from a buffer created with the
+`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
 
 * 
 [](#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03710) VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03710
@@ -4123,13 +4151,15 @@ feature **must** be enabled
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10887) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10887
 
 If `format` is VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX, then
-`compressedData.address` **must** be aligned to 128 bytes
+`compressedData` **must** be aligned to
+`VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX` (128) bytes
 
 * 
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10888) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10888
 
 If `format` is VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX, then
-`dataSize` **must** be aligned to 128 bytes
+`dataSize` **must** be a multiple of
+`VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX` (128) bytes
 
 * 
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-pNext-10890) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-pNext-10890
@@ -4160,6 +4190,18 @@ Valid Usage (Implicit)
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-parameter) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-parameter
 
  `format` **must** be a valid [VkCompressedTriangleFormatAMDX](#VkCompressedTriangleFormatAMDX) value
+
+`VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX` is the
+alignment requirement in bytes for compressed triangle data as specified in
+[VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX)::`compressedData`.
+
+#define VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX 128U
+
+`VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX` is the stride
+requirement in bytes for compressed triangle data as specified in
+[VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX](#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX)::`dataSize`.
+
+#define VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX 128U
 
 The `VkCompressedTriangleFormatAMDX` enumeration is defined as:
 
@@ -6134,6 +6176,7 @@ parameters required for the memory requirements query.
 [VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure which returns
 the size required for an acceleration structure and scratch buffer,
 given the build parameters.
+The size requirements for a scratch buffer **may** be zero.
 
 If [VkClusterAccelerationStructureInputInfoNV](#VkClusterAccelerationStructureInputInfoNV)::`opMode` is
 `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV`,
@@ -6750,27 +6793,39 @@ for multiple acceleration structure builds **must** not overlap with
 * 
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10457) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10457
 
-The buffer from which the buffer device address for
-`pCommandInfos->scratchData` is queried **must** have been created with
-the `VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
+`pCommandInfos->scratchData` **must** be a device address allocated to
+the application from a buffer created with the
+`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
 
 * 
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10458) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10458
 
-The buffers from which the buffer device addresses for
-`pCommandInfos->srcInfosArray` and
-`pCommandInfos->srcInfosCount` are queried **must** have been created
-with the
+`pCommandInfos->srcInfosArray` **must** be a device address range
+allocated to application from a buffer created with the
+`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
+usage flag set
+
+* 
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12246) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12246
+
+`pCommandInfos->srcInfosCount` **must** be a device address allocated
+to application from a buffer created with the
 `VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
 usage flag set
 
 * 
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10459) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10459
 
-The buffers from which the buffer device addresses for
-`pCommandInfos->dstImplicitData` and
-`pCommandInfos->dstAddressesArray` are queried **must** have been
-created with the
+`pCommandInfos->dstAddressesArray` **must** be a device address range
+allocated to the application from a buffer created with the
+`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` usage flag
+set
+
+* 
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12247) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12247
+
+`pCommandInfos->dstImplicitData` **must** be a device address allocated
+to the application from a buffer created with the
 `VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` usage flag
 set
 
@@ -6872,27 +6927,29 @@ this value is ignored.
 used during cluster acceleration structure move or build.
 
 * 
-`dstAddressesArray` is a [VkStridedDeviceAddressRegionKHR](resources.html#VkStridedDeviceAddressRegionKHR) where
-the individual addresses and stride of moved or built cluster
-acceleration structures will be saved or read from depending on
+`dstAddressesArray` is a [VkStridedDeviceAddressRegionKHR](resources.html#VkStridedDeviceAddressRegionKHR) that
+specifies addresses and stride for moved or built cluster acceleration
+structures, depending on the value of
 [VkClusterAccelerationStructureInputInfoNV](#VkClusterAccelerationStructureInputInfoNV)::`opMode`.
 If [VkClusterAccelerationStructureInputInfoNV](#VkClusterAccelerationStructureInputInfoNV)::`opMode` is
 `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV`
-and the address in `dstAddressesArray` is not `0`, then the
-addresses are saved.
+and [VkStridedDeviceAddressRegionKHR](resources.html#VkStridedDeviceAddressRegionKHR)::`deviceAddress` is not
+`0`, then the implementation writes the cluster addresses to the
+specified region.
 If [VkClusterAccelerationStructureInputInfoNV](#VkClusterAccelerationStructureInputInfoNV)::`opMode` is
 `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV`,
-then the addresses are read from.
+the implementation reads the cluster addresses from the specified
+region.
 If [VkClusterAccelerationStructureInputInfoNV](#VkClusterAccelerationStructureInputInfoNV)::`opMode` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV`, then
-this value is ignored and **may** be `0`.
+`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV`, this
+member is ignored.
 
 * 
-`dstSizesArray` is `NULL` or a [VkStridedDeviceAddressRegionKHR](resources.html#VkStridedDeviceAddressRegionKHR)
+`dstSizesArray` is a [VkStridedDeviceAddressRegionKHR](resources.html#VkStridedDeviceAddressRegionKHR)
 containing sizes of moved or built cluster acceleration structures.
-Similar to `dstAddressesArray`, if
-[VkClusterAccelerationStructureInputInfoNV](#VkClusterAccelerationStructureInputInfoNV)::`opMode` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV`,
+If [VkClusterAccelerationStructureInputInfoNV](#VkClusterAccelerationStructureInputInfoNV)::`opMode` is
+`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV`
+or `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV`,
 then the sizes are saved.
 If [VkClusterAccelerationStructureInputInfoNV](#VkClusterAccelerationStructureInputInfoNV)::`opMode` is
 `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV`,
@@ -7064,6 +7121,14 @@ then depending on the
 [VkPhysicalDeviceClusterAccelerationStructurePropertiesNV](limits.html#VkPhysicalDeviceClusterAccelerationStructurePropertiesNV)::`clusterScratchByteAlignment`
 
 * 
+[](#VUID-VkClusterAccelerationStructureCommandsInfoNV-buildScratchSize-12248) VUID-VkClusterAccelerationStructureCommandsInfoNV-buildScratchSize-12248
+
+If the `buildScratchSize` member of the
+[VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned from a
+call to [vkGetClusterAccelerationStructureBuildSizesNV](#vkGetClusterAccelerationStructureBuildSizesNV) is not `0`,
+then `scratchData` **must** be a valid device address
+
+* 
 [](#VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-10481) VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-10481
 
 `srcInfosCount` **must** be 4-byte aligned
@@ -7099,7 +7164,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureCommandsInfoNV-dstImplicitData-parameter) VUID-VkClusterAccelerationStructureCommandsInfoNV-dstImplicitData-parameter
 
- `dstImplicitData` **must** be a valid `VkDeviceAddress` value
+ If `dstImplicitData` is not `0`, `dstImplicitData` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureCommandsInfoNV-scratchData-parameter) VUID-VkClusterAccelerationStructureCommandsInfoNV-scratchData-parameter
@@ -7109,7 +7174,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-parameter) VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-parameter
 
- `srcInfosCount` **must** be a valid `VkDeviceAddress` value
+ If `srcInfosCount` is not `0`, `srcInfosCount` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureCommandsInfoNV-addressResolutionFlags-parameter) VUID-VkClusterAccelerationStructureCommandsInfoNV-addressResolutionFlags-parameter
@@ -7572,17 +7637,17 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-geometryIndexAndFlagsBuffer-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-geometryIndexAndFlagsBuffer-parameter
 
- `geometryIndexAndFlagsBuffer` **must** be a valid `VkDeviceAddress` value
+ If `geometryIndexAndFlagsBuffer` is not `0`, `geometryIndexAndFlagsBuffer` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapArray-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapArray-parameter
 
- `opacityMicromapArray` **must** be a valid `VkDeviceAddress` value
+ If `opacityMicromapArray` is not `0`, `opacityMicromapArray` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapIndexBuffer-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapIndexBuffer-parameter
 
- `opacityMicromapIndexBuffer` **must** be a valid `VkDeviceAddress` value
+ If `opacityMicromapIndexBuffer` is not `0`, `opacityMicromapIndexBuffer` **must** be a valid `VkDeviceAddress` value
 
 Bits that **can** be set in
 [VkClusterAccelerationStructureBuildTriangleClusterInfoNV](#VkClusterAccelerationStructureBuildTriangleClusterInfoNV)::`indexType`,
@@ -7850,27 +7915,27 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-vertexBuffer-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-vertexBuffer-parameter
 
- `vertexBuffer` **must** be a valid `VkDeviceAddress` value
+ If `vertexBuffer` is not `0`, `vertexBuffer` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-geometryIndexAndFlagsBuffer-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-geometryIndexAndFlagsBuffer-parameter
 
- `geometryIndexAndFlagsBuffer` **must** be a valid `VkDeviceAddress` value
+ If `geometryIndexAndFlagsBuffer` is not `0`, `geometryIndexAndFlagsBuffer` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapArray-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapArray-parameter
 
- `opacityMicromapArray` **must** be a valid `VkDeviceAddress` value
+ If `opacityMicromapArray` is not `0`, `opacityMicromapArray` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapIndexBuffer-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapIndexBuffer-parameter
 
- `opacityMicromapIndexBuffer` **must** be a valid `VkDeviceAddress` value
+ If `opacityMicromapIndexBuffer` is not `0`, `opacityMicromapIndexBuffer` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-instantiationBoundingBoxLimit-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-instantiationBoundingBoxLimit-parameter
 
- `instantiationBoundingBoxLimit` **must** be a valid `VkDeviceAddress` value
+ If `instantiationBoundingBoxLimit` is not `0`, `instantiationBoundingBoxLimit` **must** be a valid `VkDeviceAddress` value
 
 The [VkClusterAccelerationStructureInstantiateClusterInfoNV](#VkClusterAccelerationStructureInstantiateClusterInfoNV) structure
 is defined as:
@@ -7900,9 +7965,11 @@ index of each triangle.
 cluster template.
 
 * 
-`vertexBuffer` is either `0` or a [VkStridedDeviceAddressNV](#VkStridedDeviceAddressNV)
-structure containing the vertex data for the indexed triangles stored in
-the cluster template.
+`vertexBuffer` is a [VkStridedDeviceAddressNV](#VkStridedDeviceAddressNV) structure
+containing the vertex data for the indexed triangles stored in the
+cluster template.
+If the address in [VkStridedDeviceAddressNV](#VkStridedDeviceAddressNV) is `0` the vertex data
+is sourced from the cluster template.
 
 Valid Usage
 
@@ -8059,6 +8126,7 @@ containing parameters required for the memory requirements query.
 [VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure which returns
 the size required for an acceleration structure and the sizes required
 for the scratch buffers, given the build parameters.
+The size requirements for a scratch buffer **may** be zero.
 
 Valid Usage
 
@@ -8343,26 +8411,25 @@ each other
 * 
 [](#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10550) VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10550
 
-The buffer from which the buffer device address for
-`pBuildInfo->scratchData` is queried **must** have been created with
-the `VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
+`pBuildInfo->scratchData` **must** be a device address allocated to the
+application from a buffer created with the
+`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
 
 * 
 [](#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10551) VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10551
 
-The buffers from which the buffer device addresses for
-`pBuildInfo->srcInfos` and `pBuildInfo->srcInfosCount` are
-queried **must** have been created with the
+`pBuildInfo->srcInfos` and `pBuildInfo->srcInfosCount` **must** be
+device addresses allocated to the application from buffers created with
+the
 `VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
 usage flag set
 
 * 
 [](#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10552) VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10552
 
-The buffers from which the buffer device addresses for
 `pBuildInfo->srcAccelerationStructureData` and
-`pBuildInfo->dstAccelerationStructureData` are queried **must** have
-been created with the
+`pBuildInfo->dstAccelerationStructureData` **must** be a device
+addresses allocated to the application from buffers created with the
 `VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` usage flag
 set
 
@@ -8483,7 +8550,10 @@ Valid Usage
 * 
 [](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10558) VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10558
 
-`scratchData` **must** not be `NULL`
+If the `buildScratchSize` member of the
+[VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned from a
+call to [vkGetPartitionedAccelerationStructuresBuildSizesNV](#vkGetPartitionedAccelerationStructuresBuildSizesNV) is not
+`0`, then `scratchData` **must** be a valid device address
 
 * 
 [](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10559) VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10559
@@ -8546,7 +8616,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-srcAccelerationStructureData-parameter) VUID-VkBuildPartitionedAccelerationStructureInfoNV-srcAccelerationStructureData-parameter
 
- `srcAccelerationStructureData` **must** be a valid `VkDeviceAddress` value
+ If `srcAccelerationStructureData` is not `0`, `srcAccelerationStructureData` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkBuildPartitionedAccelerationStructureInfoNV-dstAccelerationStructureData-parameter) VUID-VkBuildPartitionedAccelerationStructureInfoNV-dstAccelerationStructureData-parameter
@@ -8746,6 +8816,12 @@ Valid Usage (Implicit)
 [](#VUID-VkPartitionedAccelerationStructureWriteInstanceDataNV-accelerationStructure-parameter) VUID-VkPartitionedAccelerationStructureWriteInstanceDataNV-accelerationStructure-parameter
 
  `accelerationStructure` **must** be a valid `VkDeviceAddress` value
+
+`VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV` is a
+special constant value used for partitioned acceleration structures to
+specify global partitions.
+
+#define VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV (~0U)
 
 The [VkPartitionedAccelerationStructureUpdateInstanceDataNV](#VkPartitionedAccelerationStructureUpdateInstanceDataNV) structure
 is defined as:
@@ -9448,30 +9524,30 @@ member of any element of `pGeometries` or `ppGeometries` with a
 bound to host-visible device memory
 
 * 
-[](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03725) VUID-vkBuildAccelerationStructuresKHR-pInfos-03725
+[](#VUID-vkBuildAccelerationStructuresKHR-pInfos-12244) VUID-vkBuildAccelerationStructuresKHR-pInfos-12244
 
 If `pInfos`[i].`mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR`, all addresses
-between `pInfos`[i].`scratchData.hostAddress` and
-`pInfos`[i].`scratchData.hostAddress` + N - 1 **must** be valid
-host memory, where N is given by the `buildScratchSize` member of
-the [VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned
-from a call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR) with an
-identical [VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR) structure
-and primitive count
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR`, and N is not `0`,
+all addresses between `pInfos`[i].`scratchData.hostAddress` and
+`pInfos`[i].`scratchData.hostAddress` +  N - 1 **must**
+be valid host memory, where N is given by the `buildScratchSize`
+member of the [VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure
+returned from a call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR)
+with an identical [VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR)
+structure and primitive count
 
 * 
-[](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03726) VUID-vkBuildAccelerationStructuresKHR-pInfos-03726
+[](#VUID-vkBuildAccelerationStructuresKHR-pInfos-12245) VUID-vkBuildAccelerationStructuresKHR-pInfos-12245
 
 If `pInfos`[i].`mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, all addresses
-between `pInfos`[i].`scratchData.hostAddress` and
-`pInfos`[i].`scratchData.hostAddress` + N - 1 **must** be valid
-host memory, where N is given by the `updateScratchSize` member of
-the [VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure returned
-from a call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR) with an
-identical [VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR) structure
-and primitive count
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, and N is not `0`,
+all addresses between `pInfos`[i].`scratchData.hostAddress` and
+`pInfos`[i].`scratchData.hostAddress` +  N - 1 **must**
+be valid host memory, where N is given by the `updateScratchSize`
+member of the [VkAccelerationStructureBuildSizesInfoKHR](resources.html#VkAccelerationStructureBuildSizesInfoKHR) structure
+returned from a call to [vkGetAccelerationStructureBuildSizesKHR](resources.html#vkGetAccelerationStructureBuildSizesKHR)
+with an identical [VkAccelerationStructureBuildGeometryInfoKHR](#VkAccelerationStructureBuildGeometryInfoKHR)
+structure and primitive count
 
 * 
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03771) VUID-vkBuildAccelerationStructuresKHR-pInfos-03771

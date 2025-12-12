@@ -100,15 +100,17 @@ the `pNext` chain **must** include a
 
 If `usage` includes
 `VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`, `address`
-**must** be an address within a valid buffer that was created with the
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT` usage flag set
+**must** be a device address allocated to the application from a buffer
+created with the `VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`
+usage flag set
 
 * 
 [](#VUID-VkDescriptorBufferBindingInfoEXT-usage-08123) VUID-VkDescriptorBufferBindingInfoEXT-usage-08123
 
 If `usage` includes
 `VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`, `address`
-**must** be an address within a valid buffer that was created with the
+**must** be a device address allocated to the application from a buffer
+created with the
 `VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` usage flag set
 
 * 
@@ -116,8 +118,8 @@ If `usage` includes
 
 If `usage` includes
 `VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`,
-`address` **must** be an address within a valid buffer that was created
-with the
+`address` **must** be a device address allocated to the application
+from a buffer created with the
 `VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT` usage
 flag set
 

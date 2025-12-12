@@ -68,8 +68,9 @@ conditions.
 `pMessage` is only valid for the duration of the callback.
 
 * 
-`pUserData` is the user data given when the
-[VkDebugReportCallbackEXT](VkDebugReportCallbackEXT.html) was created.
+`pUserData` is the application-defined user data pointer, equal to
+the value of [VkDebugReportCallbackCreateInfoEXT](VkDebugReportCallbackCreateInfoEXT.html)::`pUserData`
+specified when the [VkDebugReportCallbackEXT](VkDebugReportCallbackEXT.html) object was created.
 
 The callback **must** not call `vkDestroyDebugReportCallbackEXT`.
 

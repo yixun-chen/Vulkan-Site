@@ -20614,6 +20614,65 @@ chain of <a href="devsandqueues.html#VkDeviceCreateInfo" class="xref page">VkDev
 </div>
 </div>
 </div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <code>VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV</code> structure is
+defined as:</p>
+</div>
+<div id="VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_NV_compute_occupancy_priority
+typedef struct VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           computeOccupancyPriority;
+} VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This structure describes the following features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sType</code> is a <a href="fundamentals.html#VkStructureType" class="xref page">VkStructureType</a> value identifying this structure.</p>
+</li>
+<li>
+<p><code>pNext</code> is <code>NULL</code> or a pointer to a structure extending this
+structure.</p>
+</li>
+<li>
+<p><a id="features-computeOccupancyPriority"></a> <code>computeOccupancyPriority</code> is
+true if compute occupancy priority is supported.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the <code>VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV</code> structure is included in the <code>pNext</code> chain of the
+<a href="#VkPhysicalDeviceFeatures2">VkPhysicalDeviceFeatures2</a> structure passed to
+<a href="#vkGetPhysicalDeviceFeatures2">vkGetPhysicalDeviceFeatures2</a>, it is filled in to indicate whether each
+corresponding feature is supported.
+If the application wishes to use a <a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a> with any features
+described by <code>VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV</code>, it <strong>must</strong> add an instance of the structure,
+with the desired feature members set to <code>VK_TRUE</code>, to the <code>pNext</code>
+chain of <a href="devsandqueues.html#VkDeviceCreateInfo" class="xref page">VkDeviceCreateInfo</a> when creating the <a href="devsandqueues.html#VkDevice" class="xref page">VkDevice</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV-sType-sType" href="#VUID-VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV-sType-sType"></a> <span class="vuid">VUID-VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV-sType-sType</span><br>
+ <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -22119,6 +22178,10 @@ at least one of <a href="#features-cooperativeMatrixWorkgroupScope"><code>cooper
 <li>
 <p>If <code><a href="../appendices/extensions.html#VK_EXT_shader_uniform_buffer_unsized_array" class="xref page">VK_EXT_shader_uniform_buffer_unsized_array</a></code> is supported,
 <a href="#features-shaderUniformBufferUnsizedArray"><code>shaderUniformBufferUnsizedArray</code></a> <strong>must</strong> be supported</p>
+</li>
+<li>
+<p>If <code><a href="../appendices/extensions.html#VK_NV_compute_occupancy_priority" class="xref page">VK_NV_compute_occupancy_priority</a></code> is supported,
+<a href="#features-computeOccupancyPriority"><code>computeOccupancyPriority</code></a> <strong>must</strong> be supported</p>
 </li>
 <li>
 <p>If <code><a href="../appendices/extensions.html#VK_KHR_acceleration_structure" class="xref page">VK_KHR_acceleration_structure</a></code> is supported,

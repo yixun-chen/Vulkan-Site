@@ -14,8 +14,8 @@
 - [2._Solution_Space](#_solution_space)
 - [3. Proposal](#_proposal)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Is a string the right way to identify an underlying API?](#_resolved_is_a_string_the_right_way_to_identify_an_underlying_api)
-- [4.1._RESOLVED:_Is_a_string_the_right_way_to_identify_an_underlying_API?](#_resolved_is_a_string_the_right_way_to_identify_an_underlying_api)
+- [4.1. Is a string the right way to identify an underlying API?](#_is_a_string_the_right_way_to_identify_an_underlying_api)
+- [4.1._Is_a_string_the_right_way_to_identify_an_underlying_API?](#_is_a_string_the_right_way_to_identify_an_underlying_api)
 - [5. Further Functionality](#_further_functionality)
 - [5._Further_Functionality](#_further_functionality)
 
@@ -28,7 +28,7 @@ Table of Contents
 [3. Proposal](#_proposal)
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: Is a string the right way to identify an underlying API?](#_resolved_is_a_string_the_right_way_to_identify_an_underlying_api)
+[4.1. Is a string the right way to identify an underlying API?](#_is_a_string_the_right_way_to_identify_an_underlying_api)
 
 [5. Further Functionality](#_further_functionality)
 

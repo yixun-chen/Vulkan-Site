@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -642,7 +645,7 @@
 </li>
 <li><a href="#_issues">4. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries">4.1. RESOLVED: When running on a layered implementation, how should the properties of an underlying layered Vulkan device be queries?</a></li>
+<li><a href="#_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries">4.1. When running on a layered implementation, how should the properties of an underlying layered Vulkan device be queries?</a></li>
 </ul>
 </li>
 <li><a href="#_further_functionality">5. Further Functionality</a></li>
@@ -1002,7 +1005,7 @@ For example, if the application is running through Mesa&#8217;s Dozen, atop VKD3
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries"><a class="anchor" href="#_resolved_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries"></a>4.1. RESOLVED: When running on a layered implementation, how should the properties of an underlying layered Vulkan device be queries?</h3>
+<h3 id="_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries"><a class="anchor" href="#_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries"></a>4.1. When running on a layered implementation, how should the properties of an underlying layered Vulkan device be queries?</h3>
 <div class="paragraph">
 <p>A dedicated struct <code>VkPhysicalDeviceLayeredApiVulkanPropertiesKHR</code> should be used, with a <code>VkPhysicalDeviceProperties2</code> member.
 Additional information can be queried by chaining <code>VkPhysicalDeviceDriverProperties</code> and <code>VkPhysicalDeviceIDProperties</code> structs to that member.</p>

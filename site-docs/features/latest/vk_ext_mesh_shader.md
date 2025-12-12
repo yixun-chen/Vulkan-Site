@@ -532,8 +532,8 @@ Note that some existing outputs that previously were associated by provoking ver
 
 Finally a new mesh-shader function is added:
 
-    void SetMeshOutputsEXT(uint vertexCount,
-                           uint primitiveCount)
+void SetMeshOutputsEXT(uint vertexCount,
+                       uint primitiveCount)
 
 This function maps exactly to the `OpSetMeshOutputsEXT` instruction - setting the number of valid vertices and primitives that are output by the mesh shader workgroup.
 
@@ -545,9 +545,9 @@ taskPayloadSharedEXT MyPayloadStruct {
 
 Finally a new function corresponding to `OpEmitMeshTasksEXT` is added to launch mesh workgroups:
 
-    void EmitMeshTasksEXT(uint groupCountX,
-                          uint groupCountY,
-                          uint groupCountZ)
+void EmitMeshTasksEXT(uint groupCountX,
+                      uint groupCountY,
+                      uint groupCountZ)
 
 The HLSL specification for mesh shaders is defined by Microsoft® here: [https://microsoft.github.io/DirectX-Specs/d3d/MeshShader.html](https://microsoft.github.io/DirectX-Specs/d3d/MeshShader.html).
 

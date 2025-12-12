@@ -14,10 +14,10 @@
 - [2._Solution_Space](#_solution_space)
 - [3. Proposal](#_proposal)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Is there any interaction with the VK_KHR_dynamic_rendering extension?](#_resolved_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension)
-- [4.1._RESOLVED:_Is_there_any_interaction_with_the_VK_KHR_dynamic_rendering_extension?](#_resolved_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension)
-- [4.2. RESOLVED: What are the differences to the VK_ARM_rasterization_order_attachment_access extension?](#_resolved_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension)
-- [4.2._RESOLVED:_What_are_the_differences_to_the_VK_ARM_rasterization_order_attachment_access_extension?](#_resolved_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension)
+- [4.1. Is there any interaction with the VK_KHR_dynamic_rendering extension?](#_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension)
+- [4.1._Is_there_any_interaction_with_the_VK_KHR_dynamic_rendering_extension?](#_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension)
+- [4.2. What are the differences to the VK_ARM_rasterization_order_attachment_access extension?](#_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension)
+- [4.2._What_are_the_differences_to_the_VK_ARM_rasterization_order_attachment_access_extension?](#_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension)
 
 ## Content
 
@@ -28,8 +28,8 @@ Table of Contents
 [3. Proposal](#_proposal)
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: Is there any interaction with the VK_KHR_dynamic_rendering extension?](#_resolved_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension)
-[4.2. RESOLVED: What are the differences to the VK_ARM_rasterization_order_attachment_access extension?](#_resolved_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension)
+[4.1. Is there any interaction with the VK_KHR_dynamic_rendering extension?](#_is_there_any_interaction_with_the_vk_khr_dynamic_rendering_extension)
+[4.2. What are the differences to the VK_ARM_rasterization_order_attachment_access extension?](#_what_are_the_differences_to_the_vk_arm_rasterization_order_attachment_access_extension)
 
 This proposal extends the mechanism of input attachments to allow access to framebuffer attachments that are used both as input and as
 color or depth/stencil attachments from one fragment to the next, in rasterization order, without explicit synchronization.

@@ -14,8 +14,8 @@
 - [2._Solution_Space](#_solution_space)
 - [3. Proposal](#_proposal)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Is it possible to use VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT image layout with sparse images?](#_resolved_is_it_possible_to_use_vk_image_layout_attachment_feedback_loop_optimal_ext_image_layout_with_sparse_images)
-- [4.1._RESOLVED:_Is_it_possible_to_use_VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT_image_layout_with_sparse_images?](#_resolved_is_it_possible_to_use_vk_image_layout_attachment_feedback_loop_optimal_ext_image_layout_with_sparse_images)
+- [4.1. Is it possible to use VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT image layout with sparse images?](#_is_it_possible_to_use_vk_image_layout_attachment_feedback_loop_optimal_ext_image_layout_with_sparse_images)
+- [4.1._Is_it_possible_to_use_VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT_image_layout_with_sparse_images?](#_is_it_possible_to_use_vk_image_layout_attachment_feedback_loop_optimal_ext_image_layout_with_sparse_images)
 
 ## Content
 
@@ -26,7 +26,7 @@ Table of Contents
 [3. Proposal](#_proposal)
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: Is it possible to use `VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` image layout with sparse images?](#_resolved_is_it_possible_to_use_vk_image_layout_attachment_feedback_loop_optimal_ext_image_layout_with_sparse_images)
+[4.1. Is it possible to use `VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` image layout with sparse images?](#_is_it_possible_to_use_vk_image_layout_attachment_feedback_loop_optimal_ext_image_layout_with_sparse_images)
 
 This document details API design ideas for the `VK_EXT_attachment_feedback_loop_layout` extension,
 which provides functionality to both render to and sample/fetch from the same subresource of an image in a given

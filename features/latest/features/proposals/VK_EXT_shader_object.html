@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -628,15 +631,15 @@
 </li>
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_how_should_implementations_which_absolutely_must_link_shader_stages_implement_this_extension">5.1. RESOLVED: How should implementations which absolutely must link shader stages implement this extension?</a></li>
-<li><a href="#_resolved_should_this_extension_try_to_reuse_pipeline_objects_and_concepts">5.2. RESOLVED: Should this extension try to reuse pipeline objects and concepts?</a></li>
-<li><a href="#_resolved_should_binary_shader_support_be_exposed_in_some_way_similar_to_existing_pipeline_caches_or_pipeline_binaries">5.3. RESOLVED: Should binary shader support be exposed in some way similar to existing pipeline caches or pipeline binaries?</a></li>
-<li><a href="#_resolved_should_there_be_some_kind_of_shader_program_object_to_represent_a_set_of_linked_shaders">5.4. RESOLVED: Should there be some kind of shader program object to represent a set of linked shaders?</a></li>
-<li><a href="#_resolved_should_there_be_some_mechanism_for_applications_to_provide_static_state_that_is_known_at_compile_time">5.5. RESOLVED: Should there be some mechanism for applications to provide static state that is known at compile time?</a></li>
-<li><a href="#_resolved_should_this_extension_expose_some_abstraction_for_setting_groups_of_related_state">5.6. RESOLVED: Should this extension expose some abstraction for setting groups of related state?</a></li>
-<li><a href="#_resolved_there_is_currently_no_dynamic_state_setting_functionality_for_sample_shading_how_should_this_be_handled">5.7. RESOLVED: There is currently no dynamic state setting functionality for sample shading. How should this be handled?</a></li>
-<li><a href="#_resolved_is_vk_incompatible_shader_binary_ext_a_success_code_or_an_error_code">5.8. RESOLVED: Is <code>VK_INCOMPATIBLE_SHADER_BINARY_EXT</code> a success code, or an error code?</a></li>
-<li><a href="#_resolved_is_multiview_allowed">5.9. RESOLVED: Is multiview allowed?</a></li>
+<li><a href="#_how_should_implementations_which_absolutely_must_link_shader_stages_implement_this_extension">5.1. How should implementations which absolutely must link shader stages implement this extension?</a></li>
+<li><a href="#_should_this_extension_try_to_reuse_pipeline_objects_and_concepts">5.2. Should this extension try to reuse pipeline objects and concepts?</a></li>
+<li><a href="#_should_binary_shader_support_be_exposed_in_some_way_similar_to_existing_pipeline_caches_or_pipeline_binaries">5.3. Should binary shader support be exposed in some way similar to existing pipeline caches or pipeline binaries?</a></li>
+<li><a href="#_should_there_be_some_kind_of_shader_program_object_to_represent_a_set_of_linked_shaders">5.4. Should there be some kind of shader program object to represent a set of linked shaders?</a></li>
+<li><a href="#_should_there_be_some_mechanism_for_applications_to_provide_static_state_that_is_known_at_compile_time">5.5. Should there be some mechanism for applications to provide static state that is known at compile time?</a></li>
+<li><a href="#_should_this_extension_expose_some_abstraction_for_setting_groups_of_related_state">5.6. Should this extension expose some abstraction for setting groups of related state?</a></li>
+<li><a href="#_there_is_currently_no_dynamic_state_setting_functionality_for_sample_shading_how_should_this_be_handled">5.7. There is currently no dynamic state setting functionality for sample shading. How should this be handled?</a></li>
+<li><a href="#_is_vk_incompatible_shader_binary_ext_a_success_code_or_an_error_code">5.8. Is <code>VK_INCOMPATIBLE_SHADER_BINARY_EXT</code> a success code, or an error code?</a></li>
+<li><a href="#_is_multiview_allowed">5.9. Is multiview allowed?</a></li>
 </ul>
 </li>
 <li><a href="#_further_functionality">6. Further Functionality</a></li>
@@ -1610,7 +1613,7 @@ vkCmdBindShadersEXT(commandBuffer, 1, &amp;stage, &amp;shader);</code></pre>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_how_should_implementations_which_absolutely_must_link_shader_stages_implement_this_extension"><a class="anchor" href="#_resolved_how_should_implementations_which_absolutely_must_link_shader_stages_implement_this_extension"></a>5.1. RESOLVED: How should implementations which absolutely must link shader stages implement this extension?</h3>
+<h3 id="_how_should_implementations_which_absolutely_must_link_shader_stages_implement_this_extension"><a class="anchor" href="#_how_should_implementations_which_absolutely_must_link_shader_stages_implement_this_extension"></a>5.1. How should implementations which absolutely must link shader stages implement this extension?</h3>
 <div class="paragraph">
 <p>The purpose of this extension is to expose the flexibility of those implementations which allow arbitrary combinations of unlinked but compatible shader stages and state to be bound independently. Attempting to modify this extension to support implementations which do not have this flexibility would defeat the entire purpose of the extension. For this reason, implementations which do not have the required flexibility should not implement this extension.</p>
 </div>
@@ -1619,7 +1622,7 @@ vkCmdBindShadersEXT(commandBuffer, 1, &amp;stage, &amp;shader);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_this_extension_try_to_reuse_pipeline_objects_and_concepts"><a class="anchor" href="#_resolved_should_this_extension_try_to_reuse_pipeline_objects_and_concepts"></a>5.2. RESOLVED: Should this extension try to reuse pipeline objects and concepts?</h3>
+<h3 id="_should_this_extension_try_to_reuse_pipeline_objects_and_concepts"><a class="anchor" href="#_should_this_extension_try_to_reuse_pipeline_objects_and_concepts"></a>5.2. Should this extension try to reuse pipeline objects and concepts?</h3>
 <div class="paragraph">
 <p>No - the pipeline abstraction was never designed with such a radically different design in mind.</p>
 </div>
@@ -1628,13 +1631,13 @@ vkCmdBindShadersEXT(commandBuffer, 1, &amp;stage, &amp;shader);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_binary_shader_support_be_exposed_in_some_way_similar_to_existing_pipeline_caches_or_pipeline_binaries"><a class="anchor" href="#_resolved_should_binary_shader_support_be_exposed_in_some_way_similar_to_existing_pipeline_caches_or_pipeline_binaries"></a>5.3. RESOLVED: Should binary shader support be exposed in some way similar to existing pipeline caches or pipeline binaries?</h3>
+<h3 id="_should_binary_shader_support_be_exposed_in_some_way_similar_to_existing_pipeline_caches_or_pipeline_binaries"><a class="anchor" href="#_should_binary_shader_support_be_exposed_in_some_way_similar_to_existing_pipeline_caches_or_pipeline_binaries"></a>5.3. Should binary shader support be exposed in some way similar to existing pipeline caches or pipeline binaries?</h3>
 <div class="paragraph">
 <p>No - fixed platforms like game consoles and embedded systems have constraints which make shipping both SPIR-V and binary copies of the same shader code undesirable.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_there_be_some_kind_of_shader_program_object_to_represent_a_set_of_linked_shaders"><a class="anchor" href="#_resolved_should_there_be_some_kind_of_shader_program_object_to_represent_a_set_of_linked_shaders"></a>5.4. RESOLVED: Should there be some kind of shader program object to represent a set of linked shaders?</h3>
+<h3 id="_should_there_be_some_kind_of_shader_program_object_to_represent_a_set_of_linked_shaders"><a class="anchor" href="#_should_there_be_some_kind_of_shader_program_object_to_represent_a_set_of_linked_shaders"></a>5.4. Should there be some kind of shader program object to represent a set of linked shaders?</h3>
 <div class="paragraph">
 <p>No - the compiled code for each shader stage is represented by a single <code>VkShaderEXT</code> object whether it is linked to other stages or not.</p>
 </div>
@@ -1657,7 +1660,7 @@ vkCmdBindShadersEXT(commandBuffer, 1, &amp;stage, &amp;shader);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_there_be_some_mechanism_for_applications_to_provide_static_state_that_is_known_at_compile_time"><a class="anchor" href="#_resolved_should_there_be_some_mechanism_for_applications_to_provide_static_state_that_is_known_at_compile_time"></a>5.5. RESOLVED: Should there be some mechanism for applications to provide static state that is known at compile time?</h3>
+<h3 id="_should_there_be_some_mechanism_for_applications_to_provide_static_state_that_is_known_at_compile_time"><a class="anchor" href="#_should_there_be_some_mechanism_for_applications_to_provide_static_state_that_is_known_at_compile_time"></a>5.5. Should there be some mechanism for applications to provide static state that is known at compile time?</h3>
 <div class="paragraph">
 <p>Not as part of this extension - it is possible to imagine some kind of "shader optimization hint" functionality to let applications provide implementations with "static state" similar to the existing static state in pipelines, but on an opt-in rather than opt-out basis. By providing a given piece of state in an optimization hint at shader creation time, an application could promise that the equivalent piece of dynamic state would always be set to some specific value whenever that shader is used, thereby allowing implementations to perform compile time optimizations similar to those they can make with pipelines today.</p>
 </div>
@@ -1669,7 +1672,7 @@ vkCmdBindShadersEXT(commandBuffer, 1, &amp;stage, &amp;shader);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_this_extension_expose_some_abstraction_for_setting_groups_of_related_state"><a class="anchor" href="#_resolved_should_this_extension_expose_some_abstraction_for_setting_groups_of_related_state"></a>5.6. RESOLVED: Should this extension expose some abstraction for setting groups of related state?</h3>
+<h3 id="_should_this_extension_expose_some_abstraction_for_setting_groups_of_related_state"><a class="anchor" href="#_should_this_extension_expose_some_abstraction_for_setting_groups_of_related_state"></a>5.6. Should this extension expose some abstraction for setting groups of related state?</h3>
 <div class="paragraph">
 <p>No - an earlier version of this proposal exposed a mechanism for applications to pre-create "interface shaders" which could then be bound on a command buffer to reduce draw time overhead. This added complexity to the API, and it was unclear that this solution would be able to deliver meaningful performance improvements over setting individual pieces of state on the command buffer.</p>
 </div>
@@ -1678,7 +1681,7 @@ vkCmdBindShadersEXT(commandBuffer, 1, &amp;stage, &amp;shader);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_there_is_currently_no_dynamic_state_setting_functionality_for_sample_shading_how_should_this_be_handled"><a class="anchor" href="#_resolved_there_is_currently_no_dynamic_state_setting_functionality_for_sample_shading_how_should_this_be_handled"></a>5.7. RESOLVED: There is currently no dynamic state setting functionality for sample shading. How should this be handled?</h3>
+<h3 id="_there_is_currently_no_dynamic_state_setting_functionality_for_sample_shading_how_should_this_be_handled"><a class="anchor" href="#_there_is_currently_no_dynamic_state_setting_functionality_for_sample_shading_how_should_this_be_handled"></a>5.7. There is currently no dynamic state setting functionality for sample shading. How should this be handled?</h3>
 <div class="paragraph">
 <p>Sample shading is already implicitly enabled (with minSampleShading = 1.0) whenever a shader reads from the SampleId or SamplePosition builtins. The main functionality missing in the absence of dynamic sample shading is the ability to specify minSampleShading values other than 1.0.</p>
 </div>
@@ -1690,7 +1693,7 @@ vkCmdBindShadersEXT(commandBuffer, 1, &amp;stage, &amp;shader);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_is_vk_incompatible_shader_binary_ext_a_success_code_or_an_error_code"><a class="anchor" href="#_resolved_is_vk_incompatible_shader_binary_ext_a_success_code_or_an_error_code"></a>5.8. RESOLVED: Is <code>VK_INCOMPATIBLE_SHADER_BINARY_EXT</code> a success code, or an error code?</h3>
+<h3 id="_is_vk_incompatible_shader_binary_ext_a_success_code_or_an_error_code"><a class="anchor" href="#_is_vk_incompatible_shader_binary_ext_a_success_code_or_an_error_code"></a>5.8. Is <code>VK_INCOMPATIBLE_SHADER_BINARY_EXT</code> a success code, or an error code?</h3>
 <div class="paragraph">
 <p>A success code.</p>
 </div>
@@ -1707,7 +1710,7 @@ without <code>ERROR</code> in it.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_is_multiview_allowed"><a class="anchor" href="#_resolved_is_multiview_allowed"></a>5.9. RESOLVED: Is multiview allowed?</h3>
+<h3 id="_is_multiview_allowed"><a class="anchor" href="#_is_multiview_allowed"></a>5.9. Is multiview allowed?</h3>
 <div class="paragraph">
 <p>No. The multiview mask is widely required static state since implementations may compute all views in one big shader invocation.
 This concept may be re-introduced in a different extension.</p>

@@ -44,8 +44,8 @@
 - [3.4. New structs](#_new_structs)
 - [3.4._New_structs](#_new_structs)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: When running on a layered implementation, how should the properties of an underlying layered Vulkan device be queries?](#_resolved_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries)
-- [4.1._RESOLVED:_When_running_on_a_layered_implementation,_how_should_the_properties_of_an_underlying_layered_Vulkan_device_be_queries?](#_resolved_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries)
+- [4.1. When running on a layered implementation, how should the properties of an underlying layered Vulkan device be queries?](#_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries)
+- [4.1._When_running_on_a_layered_implementation,_how_should_the_properties_of_an_underlying_layered_Vulkan_device_be_queries?](#_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries)
 - [5. Further Functionality](#_further_functionality)
 - [5._Further_Functionality](#_further_functionality)
 
@@ -79,7 +79,7 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: When running on a layered implementation, how should the properties of an underlying layered Vulkan device be queries?](#_resolved_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries)
+[4.1. When running on a layered implementation, how should the properties of an underlying layered Vulkan device be queries?](#_when_running_on_a_layered_implementation_how_should_the_properties_of_an_underlying_layered_vulkan_device_be_queries)
 
 [5. Further Functionality](#_further_functionality)
 

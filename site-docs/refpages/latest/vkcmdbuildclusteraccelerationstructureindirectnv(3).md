@@ -192,27 +192,39 @@ for multiple acceleration structure builds **must** not overlap with
 * 
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10457) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10457
 
-The buffer from which the buffer device address for
-`pCommandInfos->scratchData` is queried **must** have been created with
-the `VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
+`pCommandInfos->scratchData` **must** be a device address allocated to
+the application from a buffer created with the
+`VK_BUFFER_USAGE_STORAGE_BUFFER_BIT` usage flag set
 
 * 
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10458) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10458
 
-The buffers from which the buffer device addresses for
-`pCommandInfos->srcInfosArray` and
-`pCommandInfos->srcInfosCount` are queried **must** have been created
-with the
+`pCommandInfos->srcInfosArray` **must** be a device address range
+allocated to application from a buffer created with the
+`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
+usage flag set
+
+* 
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12246) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12246
+
+`pCommandInfos->srcInfosCount` **must** be a device address allocated
+to application from a buffer created with the
 `VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`
 usage flag set
 
 * 
 [](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10459) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10459
 
-The buffers from which the buffer device addresses for
-`pCommandInfos->dstImplicitData` and
-`pCommandInfos->dstAddressesArray` are queried **must** have been
-created with the
+`pCommandInfos->dstAddressesArray` **must** be a device address range
+allocated to the application from a buffer created with the
+`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` usage flag
+set
+
+* 
+[](#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12247) VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12247
+
+`pCommandInfos->dstImplicitData` **must** be a device address allocated
+to the application from a buffer created with the
 `VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR` usage flag
 set
 

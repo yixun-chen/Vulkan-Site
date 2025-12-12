@@ -20,6 +20,10 @@
 - [3.4. GLSL mapping](#_glsl_mapping)
 - [3.4._GLSL_mapping](#_glsl_mapping)
 - [4. Issues](#_issues)
+- [4.1. Should we specify that the groups of four shader invocations used for derivatives in a compute shader are the same groups of four invocations that form a "quad" in shader subgroups?](#_should_we_specify_that_the_groups_of_four_shader_invocations_used_for_derivatives_in_a_compute_shader_are_the_same_groups_of_four_invocations_that_form_a_quad_in_shader_subgroups)
+- [4.1._Should_we_specify_that_the_groups_of_four_shader_invocations_used_for_derivatives_in_a_compute_shader_are_the_same_groups_of_four_invocations_that_form_a_"quad"_in_shader_subgroups?](#_should_we_specify_that_the_groups_of_four_shader_invocations_used_for_derivatives_in_a_compute_shader_are_the_same_groups_of_four_invocations_that_form_a_quad_in_shader_subgroups)
+- [4.2. Should we add support for derivatives in mesh and task shaders?](#_should_we_add_support_for_derivatives_in_mesh_and_task_shaders)
+- [4.2._Should_we_add_support_for_derivatives_in_mesh_and_task_shaders?](#_should_we_add_support_for_derivatives_in_mesh_and_task_shaders)
 
 ## Content
 
@@ -35,6 +39,9 @@ Table of Contents
 [3.4. GLSL mapping](#_glsl_mapping)
 
 [4. Issues](#_issues)
+
+[4.1. Should we specify that the groups of four shader invocations used for derivatives in a compute shader are the same groups of four invocations that form a "quad" in shader subgroups?](#_should_we_specify_that_the_groups_of_four_shader_invocations_used_for_derivatives_in_a_compute_shader_are_the_same_groups_of_four_invocations_that_form_a_quad_in_shader_subgroups)
+[4.2. Should we add support for derivatives in mesh and task shaders?](#_should_we_add_support_for_derivatives_in_mesh_and_task_shaders)
 
 This extension enables applications to use derivative operations from execution models with defined workgroups.
 
@@ -103,12 +110,6 @@ derivative_group_quadsKHR layout qualifier → DerivativeGroupQuadsKHR Execution
 * 
 derivative_group_linearKHR layout qualifier → DerivativeGroupLinearKHR Execution Mode
 
-(1) Should we specify that the groups of four shader invocations used for
-    derivatives in a compute shader are the same groups of four invocations
-    that form a "quad" in shader subgroups?
+Yes.
 
-**RESOLVED**: Yes.
-
-(2) Should we add support for derivatives in mesh and task shaders?
-
-**RESOLVED**: Yes, as optional features. Add them as an optional feature as they are in SM6.6.
+Yes, as optional features. Add them as an optional feature as they are in SM6.6.

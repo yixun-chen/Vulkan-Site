@@ -5369,6 +5369,276 @@ vkCmdCudaLaunchKernelNV(commandBuffer, &amp;launchInfo);</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="compute-occupancy-priority"><a class="anchor" href="#compute-occupancy-priority"></a>Compute Occupancy Priority</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="../appendices/extensions.html#VK_NV_compute_occupancy_priority" class="xref page">VK_NV_compute_occupancy_priority</a> extension provides applications
+with control over how their compute workloads utilize GPU compute resources,
+specifically allowing prioritization relative to other simultaneously
+executing workloads.
+Applications can specify the priority with which compute workloads should
+occupy GPU compute resources, allowing for a fine-grained distinction
+between workloads that may want to execute at a background priority over a
+long period of time versus workloads with harder latency requirements.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>To set the compute occupancy priority for subsequent compute dispatches,
+call:</p>
+</div>
+<div id="vkCmdSetComputeOccupancyPriorityNV" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_NV_compute_occupancy_priority
+void vkCmdSetComputeOccupancyPriorityNV(
+    VkCommandBuffer                             commandBuffer,
+    const VkComputeOccupancyPriorityParametersNV* pParameters);</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>commandBuffer</code> is the command buffer into which the command will be
+recorded.</p>
+</li>
+<li>
+<p><code>pParameters</code> is a pointer to a
+<a href="#VkComputeOccupancyPriorityParametersNV">VkComputeOccupancyPriorityParametersNV</a> structure specifying the
+occupancy priority parameters.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The occupancy priority affects how compute workloads utilize GPU compute
+resources relative to other simultaneously executing workloads.
+The priority is stateful on a command buffer.
+All compute dispatch commands issued subsequent to a
+<a href="#vkCmdSetComputeOccupancyPriorityNV">vkCmdSetComputeOccupancyPriorityNV</a> call will be executed with the
+specified priority parameters until another
+<a href="#vkCmdSetComputeOccupancyPriorityNV">vkCmdSetComputeOccupancyPriorityNV</a> call is made.</p>
+</div>
+<div class="paragraph">
+<p>All command buffers (primary and secondary) start with a priority level
+equal to the <code>VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV</code> value.
+The priority state is not inherited by secondary command buffers - each
+command buffer maintains its own independent priority state.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-parameter" href="#VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-parameter"></a> <span class="vuid">VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-parameter</span><br>
+ <code>commandBuffer</code> <strong>must</strong> be a valid <a href="cmdbuffers.html#VkCommandBuffer" class="xref page">VkCommandBuffer</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdSetComputeOccupancyPriorityNV-pParameters-parameter" href="#VUID-vkCmdSetComputeOccupancyPriorityNV-pParameters-parameter"></a> <span class="vuid">VUID-vkCmdSetComputeOccupancyPriorityNV-pParameters-parameter</span><br>
+ <code>pParameters</code> <strong>must</strong> be a valid pointer to a valid <a href="#VkComputeOccupancyPriorityParametersNV">VkComputeOccupancyPriorityParametersNV</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-recording" href="#VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-recording"></a> <span class="vuid">VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-recording</span><br>
+ <code>commandBuffer</code> <strong>must</strong> be in the <a href="cmdbuffers.html#commandbuffers-lifecycle" class="xref page">recording state</a></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-cmdpool" href="#VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-cmdpool</span><br>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> support <code>VK_QUEUE_COMPUTE_BIT</code> operations</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdSetComputeOccupancyPriorityNV-videocoding" href="#VUID-vkCmdSetComputeOccupancyPriorityNV-videocoding"></a> <span class="vuid">VUID-vkCmdSetComputeOccupancyPriorityNV-videocoding</span><br>
+ This command <strong>must</strong> only be called outside of a video coding scope</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Host Synchronization</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Host access to the <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong>must</strong> be externally synchronized</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Command Properties</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><a href="cmdbuffers.html#VkCommandBufferLevel" class="xref page">Command Buffer Levels</a></th>
+<th class="tableblock halign-left valign-top"><a href="renderpass.html#vkCmdBeginRenderPass" class="xref page">Render Pass Scope</a></th>
+<th class="tableblock halign-left valign-top"><a href="videocoding.html#vkCmdBeginVideoCodingKHR" class="xref page">Video Coding Scope</a></th>
+<th class="tableblock halign-left valign-top"><a href="devsandqueues.html#VkQueueFlagBits" class="xref page">Supported Queue Types</a></th>
+<th class="tableblock halign-left valign-top"><a href="fundamentals.html#fundamentals-queueoperation-command-types" class="xref page">Command Type</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Primary<br>
+Secondary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Both</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VK_QUEUE_COMPUTE_BIT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">State</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Conditional Rendering</div>
+<div class="paragraph">
+<p>vkCmdSetComputeOccupancyPriorityNV is not affected by <a href="drawing.html#drawing-conditional-rendering" class="xref page">conditional rendering</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The <code>VkComputeOccupancyPriorityParametersNV</code> structure is defined as:</p>
+</div>
+<div id="VkComputeOccupancyPriorityParametersNV" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">// Provided by VK_NV_compute_occupancy_priority
+typedef struct VkComputeOccupancyPriorityParametersNV {
+    VkStructureType    sType;
+    const void*        pNext;
+    float              occupancyPriority;
+    float              occupancyThrottling;
+} VkComputeOccupancyPriorityParametersNV;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sType</code> is a <a href="fundamentals.html#VkStructureType" class="xref page">VkStructureType</a> value identifying this structure.</p>
+</li>
+<li>
+<p><code>pNext</code> is <code>NULL</code> or a pointer to a structure extending this
+structure.</p>
+</li>
+<li>
+<p><code>occupancyPriority</code> is a value specifying the occupancy priority for
+subsequent compute workloads, with a valid range of [0.0, 1.0].
+A value of 0.0 represents the lowest priority, while a value of 1.0 is
+the maximum priority.
+Default priority is specified by a value of 0.5.</p>
+</li>
+<li>
+<p><code>occupancyThrottling</code> is a value specifying the level of occupancy
+throttling applied to subsequent workloads, with a valid range of [0.0,
+1.0].
+A value of 0.0 (the default) means no throttling is applied, allowing
+workloads to use the full available compute capacity.
+Non-zero values represent increasing levels of throttling, with higher
+values resulting in more restrictive occupancy limits.
+A value of 1.0 represents the maximum level of throttling supported by
+the implementation.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkComputeOccupancyPriorityParametersNV-occupancyPriority-11919" href="#VUID-VkComputeOccupancyPriorityParametersNV-occupancyPriority-11919"></a> <span class="vuid">VUID-VkComputeOccupancyPriorityParametersNV-occupancyPriority-11919</span><br>
+
+<code>occupancyPriority</code> <strong>must</strong> be between <code>0</code> and <code>1</code>, inclusive</p>
+</li>
+<li>
+<p><a id="VUID-VkComputeOccupancyPriorityParametersNV-occupancyThrottling-11920" href="#VUID-VkComputeOccupancyPriorityParametersNV-occupancyThrottling-11920"></a> <span class="vuid">VUID-VkComputeOccupancyPriorityParametersNV-occupancyThrottling-11920</span><br>
+
+<code>occupancyThrottling</code> <strong>must</strong> be between <code>0</code> and <code>1</code>, inclusive</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkComputeOccupancyPriorityParametersNV-sType-sType" href="#VUID-VkComputeOccupancyPriorityParametersNV-sType-sType"></a> <span class="vuid">VUID-VkComputeOccupancyPriorityParametersNV-sType-sType</span><br>
+ <code>sType</code> <strong>must</strong> be <code>VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV</code></p>
+</li>
+<li>
+<p><a id="VUID-VkComputeOccupancyPriorityParametersNV-pNext-pNext" href="#VUID-VkComputeOccupancyPriorityParametersNV-pNext-pNext"></a> <span class="vuid">VUID-VkComputeOccupancyPriorityParametersNV-pNext-pNext</span><br>
+ <code>pNext</code> <strong>must</strong> be <code>NULL</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p><code>VK_COMPUTE_OCCUPANCY_PRIORITY_LOW_NV</code> is a constant value that can be
+used for
+<a href="#VkComputeOccupancyPriorityParametersNV">VkComputeOccupancyPriorityParametersNV</a>::<code>occupancyPriority</code> to
+specify a low priority level.</p>
+</div>
+<div id="VK_COMPUTE_OCCUPANCY_PRIORITY_LOW_NV" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">#define VK_COMPUTE_OCCUPANCY_PRIORITY_LOW_NV 0.25f</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p><code>VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV</code> is a constant value that can
+be used for
+<a href="#VkComputeOccupancyPriorityParametersNV">VkComputeOccupancyPriorityParametersNV</a>::<code>occupancyPriority</code> to
+specify a normal priority level.
+This represents the default priority level.</p>
+</div>
+<div id="VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">#define VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV 0.50f</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p><code>VK_COMPUTE_OCCUPANCY_PRIORITY_HIGH_NV</code> is a constant value that can be
+used for
+<a href="#VkComputeOccupancyPriorityParametersNV">VkComputeOccupancyPriorityParametersNV</a>::<code>occupancyPriority</code> to
+specify a high priority level.</p>
+</div>
+<div id="VK_COMPUTE_OCCUPANCY_PRIORITY_HIGH_NV" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">#define VK_COMPUTE_OCCUPANCY_PRIORITY_HIGH_NV 0.75f</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </article>
   </div>
 </main>

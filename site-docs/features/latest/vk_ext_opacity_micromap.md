@@ -15,8 +15,8 @@
 - [3. Proposal](#_proposal)
 - [4. Examples](#_examples)
 - [5. Issues](#_issues)
-- [5.1. RESOLVED: Are there any issues that belong here?](#_resolved_are_there_any_issues_that_belong_here)
-- [5.1._RESOLVED:_Are_there_any_issues_that_belong_here?](#_resolved_are_there_any_issues_that_belong_here)
+- [5.1. Are there any issues that belong here?](#_are_there_any_issues_that_belong_here)
+- [5.1._Are_there_any_issues_that_belong_here?](#_are_there_any_issues_that_belong_here)
 - [6. Further Functionality](#_further_functionality)
 - [6._Further_Functionality](#_further_functionality)
 
@@ -30,7 +30,7 @@ Table of Contents
 [4. Examples](#_examples)
 [5. Issues](#_issues)
 
-[5.1. RESOLVED: Are there any issues that belong here?](#_resolved_are_there_any_issues_that_belong_here)
+[5.1. Are there any issues that belong here?](#_are_there_any_issues_that_belong_here)
 
 [6. Further Functionality](#_further_functionality)
 

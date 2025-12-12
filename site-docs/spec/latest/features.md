@@ -14246,6 +14246,45 @@ Valid Usage (Implicit)
 
  `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PERFORMANCE_COUNTERS_BY_REGION_FEATURES_ARM`
 
+The `VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV` structure is
+defined as:
+
+// Provided by VK_NV_compute_occupancy_priority
+typedef struct VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV {
+    VkStructureType    sType;
+    void*              pNext;
+    VkBool32           computeOccupancyPriority;
+} VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV;
+
+This structure describes the following features:
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+ `computeOccupancyPriority` is
+true if compute occupancy priority is supported.
+
+If the `VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV` structure is included in the `pNext` chain of the
+[VkPhysicalDeviceFeatures2](#VkPhysicalDeviceFeatures2) structure passed to
+[vkGetPhysicalDeviceFeatures2](#vkGetPhysicalDeviceFeatures2), it is filled in to indicate whether each
+corresponding feature is supported.
+If the application wishes to use a [VkDevice](devsandqueues.html#VkDevice) with any features
+described by `VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV`, it **must** add an instance of the structure,
+with the desired feature members set to `VK_TRUE`, to the `pNext`
+chain of [VkDeviceCreateInfo](devsandqueues.html#VkDeviceCreateInfo) when creating the [VkDevice](devsandqueues.html#VkDevice).
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV-sType-sType) VUID-VkPhysicalDeviceComputeOccupancyPriorityFeaturesNV-sType-sType
+
+ `sType` **must** be `VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV`
+
 All Vulkan graphics implementations **must** support the following features:
 
 * 
@@ -15440,6 +15479,9 @@ If `[VK_SEC_pipeline_cache_incremental_mode](../appendices/extensions.html#VK_SE
 
 If `[VK_EXT_shader_uniform_buffer_unsized_array](../appendices/extensions.html#VK_EXT_shader_uniform_buffer_unsized_array)` is supported,
 [`shaderUniformBufferUnsizedArray`](#features-shaderUniformBufferUnsizedArray) **must** be supported
+
+If `[VK_NV_compute_occupancy_priority](../appendices/extensions.html#VK_NV_compute_occupancy_priority)` is supported,
+[`computeOccupancyPriority`](#features-computeOccupancyPriority) **must** be supported
 
 If `[VK_KHR_acceleration_structure](../appendices/extensions.html#VK_KHR_acceleration_structure)` is supported,
 the following features **must** be supported:

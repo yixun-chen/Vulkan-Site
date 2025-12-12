@@ -184,8 +184,12 @@ queried **must** have been created with the
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-pInfos-07512) VUID-vkCmdBuildMicromapsEXT-pInfos-07512
 
-For each element of `pInfos`, `scratchData.deviceAddress` **must**
-be a valid `VkDeviceAddress`
+For each element of `pInfos`, if the value of
+[VkMicromapBuildSizesInfoEXT](../resources.html#VkMicromapBuildSizesInfoEXT)::`buildScratchSize`, returned from
+a call to [vkGetMicromapBuildSizesEXT](../resources.html#vkGetMicromapBuildSizesEXT) with an identical
+[VkMicromapBuildInfoEXT](#VkMicromapBuildInfoEXT) structure, is not `0`,
+`scratchData.deviceAddress` **must** be a valid
+`VkDeviceAddress`
 
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-pInfos-10896) VUID-vkCmdBuildMicromapsEXT-pInfos-10896
@@ -1673,12 +1677,13 @@ feature **must** be enabled
 [](#VUID-vkBuildMicromapsEXT-pInfos-07556) VUID-vkBuildMicromapsEXT-pInfos-07556
 
 If `pInfos`[i].`mode` is `VK_BUILD_MICROMAP_MODE_BUILD_EXT`,
-all addresses between `pInfos`[i].`scratchData.hostAddress` and
-`pInfos`[i].`scratchData.hostAddress` + N - 1 **must** be valid
-host memory, where N is given by the `buildScratchSize` member of
-the [VkMicromapBuildSizesInfoEXT](../resources.html#VkMicromapBuildSizesInfoEXT) structure returned from a call to
-[vkGetMicromapBuildSizesEXT](../resources.html#vkGetMicromapBuildSizesEXT) with an identical
-[VkMicromapBuildInfoEXT](#VkMicromapBuildInfoEXT) structure and primitive count
+and N is not `0`, then all addresses between
+`pInfos`[i].`scratchData.hostAddress` and
+`pInfos`[i].`scratchData.hostAddress` +  N - 1 **must**
+be valid host memory, where N is given by the value of
+[VkMicromapBuildSizesInfoEXT](../resources.html#VkMicromapBuildSizesInfoEXT)::`buildScratchSize` returned from
+a call to [vkGetMicromapBuildSizesEXT](../resources.html#vkGetMicromapBuildSizesEXT) with an identical
+[VkMicromapBuildInfoEXT](#VkMicromapBuildInfoEXT) structure
 
 * 
 [](#VUID-vkBuildMicromapsEXT-pInfos-07557) VUID-vkBuildMicromapsEXT-pInfos-07557

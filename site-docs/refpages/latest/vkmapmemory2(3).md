@@ -19,8 +19,8 @@
 
 vkMapMemory2 - Map a memory object into application address space
 
-Alternatively, to retrieve a host virtual address pointer to a region of a
-mappable memory object, call:
+To retrieve a host virtual address pointer to a region of a mappable memory
+object, call:
 
 // Provided by VK_VERSION_1_4
 VkResult vkMapMemory2(

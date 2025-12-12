@@ -7210,8 +7210,8 @@ Return Codes
 * 
 `VK_ERROR_VALIDATION_FAILED`
 
-Alternatively, to query the supported presentation modes for a surface
-combined with select other fixed swapchain creation parameters, call:
+To query the supported presentation modes for a surface combined with select
+other fixed swapchain creation parameters, call:
 
 // Provided by VK_EXT_full_screen_exclusive
 VkResult vkGetPhysicalDeviceSurfacePresentModes2EXT(
@@ -7847,9 +7847,8 @@ Return Codes
 * 
 `VK_ERROR_VALIDATION_FAILED`
 
-Alternatively, to query the supported device group presentation modes for a
-surface combined with select other fixed swapchain creation parameters,
-call:
+To query the supported device group presentation modes for a surface
+combined with select other fixed swapchain creation parameters, call:
 
 // Provided by VK_EXT_full_screen_exclusive with VK_KHR_device_group or VK_VERSION_1_1
 VkResult vkGetDeviceGroupSurfacePresentModes2EXT(
@@ -11534,9 +11533,9 @@ less than `UINT64_MAX`, and no image became available within the time
 allowed.
 
 * 
-`VK_SUBOPTIMAL_KHR` is returned if an image became available, and
-the swapchain no longer matches the surface properties exactly, but **can**
-still be used to present to the surface successfully.
+`VK_SUBOPTIMAL_KHR` **may** be returned if an image became available,
+and the swapchain no longer matches the surface properties exactly, but
+**can** still be used to present to the surface successfully.
 
 |  | This **may** happen, for example, if the platform surface has been resized but
 | --- | --- |

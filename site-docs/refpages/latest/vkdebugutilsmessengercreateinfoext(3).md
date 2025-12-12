@@ -56,7 +56,8 @@ event(s) will cause this callback to be called.
 `pfnUserCallback` is the application callback function to call.
 
 * 
-`pUserData` is user data to be passed to the callback.
+`pUserData` is NULL or an application-defined user data pointer to
+be passed to the callback.
 
 For each `VkDebugUtilsMessengerEXT` that is created the
 `VkDebugUtilsMessengerCreateInfoEXT`::`messageSeverity` and

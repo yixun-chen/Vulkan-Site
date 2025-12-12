@@ -718,9 +718,9 @@ used to create the bound ray tracing pipeline
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-indirectDeviceAddress-03633) VUID-vkCmdTraceRaysIndirect2KHR-indirectDeviceAddress-03633
 
-The buffer from which `indirectDeviceAddress` was queried **must** have
-been created with the `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage
-flag set
+`indirectDeviceAddress` **must** be a device address allocated to the
+application from a buffer created with the
+`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirect2KHR-indirectDeviceAddress-03634) VUID-vkCmdTraceRaysIndirect2KHR-indirectDeviceAddress-03634

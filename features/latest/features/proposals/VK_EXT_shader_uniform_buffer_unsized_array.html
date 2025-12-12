@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -627,7 +630,14 @@
 <li><a href="#_example_usage">3.4. Example Usage</a></li>
 </ul>
 </li>
-<li><a href="#_issues">4. Issues</a></li>
+<li><a href="#_issues">4. Issues</a>
+<ul class="sectlevel2">
+<li><a href="#_how_is_effective_size_determined">4.1. How is effective size determined?</a></li>
+<li><a href="#_what_happens_when_an_application_indexes_beyond_the_effective_bounds_of_an_unsized_array">4.2. What happens when an application indexes beyond the effective bounds of an unsized array?</a></li>
+<li><a href="#_should_we_allow_unsized_arrays_at_any_position_within_a_uniform_block">4.3. Should we allow unsized arrays at any position within a uniform block?</a></li>
+<li><a href="#_what_are_the_restrictions_on_using_unsized_arrays_in_uniform_blocks">4.4. What are the restrictions on using unsized arrays in uniform blocks?</a></li>
+</ul>
+</li>
 <li><a href="#_dependencies">5. Dependencies</a></li>
 <li><a href="#_references">6. References</a></li>
 </ul>
@@ -672,7 +682,7 @@ size of the buffer object backing the uniform buffer.</p>
 <p>Only the last member of a uniform buffer can be an unsized array</p>
 </li>
 <li>
-<p>Array size is inferred from buffer size using: max((buffer_size - array_offset) / array_stride, 0)</p>
+<p>Array size is inferred from buffer size using: <code>max((buffer_size - array_offset) / array_stride, 0)</code></p>
 </li>
 <li>
 <p>Applications calculate array size manually and pass it via separate uniforms if needed</p>
@@ -762,56 +772,41 @@ void main() {
 <div class="sect1">
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>How is effective size determined?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>RESOLVED: The effective size is determined from the underlying buffer object size
+<div class="sect2">
+<h3 id="_how_is_effective_size_determined"><a class="anchor" href="#_how_is_effective_size_determined"></a>4.1. How is effective size determined?</h3>
+<div class="paragraph">
+<p>The effective size is determined from the underlying buffer object size
 using the formula: size = max((buffer_size - array_offset) / array_stride, 0)
 This calculation accounts for the actual size of the buffer object bound to the
 uniform block, the offset of the unsized array within the block, and the stride
 between array elements according to the layout rules.</p>
-</li>
-</ul>
 </div>
-</li>
-<li>
-<p>What happens when an application indexes beyond the effective bounds of an unsized array?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>RESOLVED: As with regular buffer accesses, accesses beyond the bound buffer object&#8217;s
+</div>
+<div class="sect2">
+<h3 id="_what_happens_when_an_application_indexes_beyond_the_effective_bounds_of_an_unsized_array"><a class="anchor" href="#_what_happens_when_an_application_indexes_beyond_the_effective_bounds_of_an_unsized_array"></a>4.2. What happens when an application indexes beyond the effective bounds of an unsized array?</h3>
+<div class="paragraph">
+<p>As with regular buffer accesses, accesses beyond the bound buffer object&#8217;s
 size are undefined and may result in device loss. Applications should ensure that
 array accesses remain within the effective bounds of the array. When robustness
 features are enabled, bounds checking applies to unsized array elements that are
 not fully contained in the uniform buffer memory associated with the block.</p>
-</li>
-</ul>
 </div>
-</li>
-<li>
-<p>Should we allow unsized arrays at any position within a uniform block?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>RESOLVED: No. Only the last member of a uniform block may be declared as an
+</div>
+<div class="sect2">
+<h3 id="_should_we_allow_unsized_arrays_at_any_position_within_a_uniform_block"><a class="anchor" href="#_should_we_allow_unsized_arrays_at_any_position_within_a_uniform_block"></a>4.3. Should we allow unsized arrays at any position within a uniform block?</h3>
+<div class="paragraph">
+<p>No. Only the last member of a uniform block may be declared as an
 unsized array. This restriction simplifies implementation and memory layout,
 as only the final member&#8217;s size needs to be determined at runtime. Allowing
 unsized arrays in arbitrary positions would significantly complicate the
 memory layout of the entire block.</p>
-</li>
-</ul>
 </div>
-</li>
-<li>
-<p>What are the restrictions on using unsized arrays in uniform blocks?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>RESOLVED: Several restrictions apply to unsized arrays in uniform blocks:</p>
+</div>
+<div class="sect2">
+<h3 id="_what_are_the_restrictions_on_using_unsized_arrays_in_uniform_blocks"><a class="anchor" href="#_what_are_the_restrictions_on_using_unsized_arrays_in_uniform_blocks"></a>4.4. What are the restrictions on using unsized arrays in uniform blocks?</h3>
+<div class="paragraph">
+<p>Several restrictions apply to unsized arrays in uniform blocks:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -824,17 +819,14 @@ memory layout of the entire block.</p>
 <p>They cannot be indexed with negative constant expressions</p>
 </li>
 <li>
-<p>OpArrayLength cannot be used
-These restrictions ensure predictable behavior and manageable implementation
+<p>OpArrayLength cannot be used</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These restrictions ensure predictable behavior and manageable implementation
 complexity while still providing the core functionality of variable-sized arrays.</p>
-</li>
-</ul>
 </div>
-</li>
-</ul>
-</div>
-</li>
-</ol>
 </div>
 </div>
 </div>

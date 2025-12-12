@@ -5766,6 +5766,22 @@ If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDraw-multiviewPerViewViewports-12262" href="#VUID-vkCmdDraw-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDraw-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDraw-multiviewPerViewViewports-12263" href="#VUID-vkCmdDraw-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDraw-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDraw-flags-11521" href="#VUID-vkCmdDraw-flags-11521"></a> <span class="vuid">VUID-vkCmdDraw-flags-11521</span><br>
 
 If current render pass instance was begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>
@@ -9879,6 +9895,22 @@ be enabled</p>
 
 If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawIndexed-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawIndexed-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawIndexed-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawIndexed-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawIndexed-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawIndexed-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDrawIndexed-flags-11521" href="#VUID-vkCmdDrawIndexed-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawIndexed-flags-11521</span><br>
@@ -14005,6 +14037,22 @@ be enabled</p>
 
 If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMultiEXT-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawMultiEXT-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawMultiEXT-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMultiEXT-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawMultiEXT-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawMultiEXT-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDrawMultiEXT-flags-11521" href="#VUID-vkCmdDrawMultiEXT-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawMultiEXT-flags-11521</span><br>
@@ -18140,6 +18188,22 @@ be enabled</p>
 
 If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMultiIndexedEXT-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawMultiIndexedEXT-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawMultiIndexedEXT-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMultiIndexedEXT-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawMultiIndexedEXT-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawMultiIndexedEXT-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDrawMultiIndexedEXT-flags-11521" href="#VUID-vkCmdDrawMultiIndexedEXT-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawMultiIndexedEXT-flags-11521</span><br>
@@ -22358,6 +22422,22 @@ be enabled</p>
 
 If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawIndirect-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawIndirect-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawIndirect-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawIndirect-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawIndirect-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawIndirect-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDrawIndirect-flags-11521" href="#VUID-vkCmdDrawIndirect-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawIndirect-flags-11521</span><br>
@@ -26583,6 +26663,22 @@ If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDrawIndirectCount-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawIndirectCount-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawIndirectCount-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawIndirectCount-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawIndirectCount-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawIndirectCount-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDrawIndirectCount-flags-11521" href="#VUID-vkCmdDrawIndirectCount-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawIndirectCount-flags-11521</span><br>
 
 If current render pass instance was begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>
@@ -30704,6 +30800,22 @@ be enabled</p>
 
 If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawIndexedIndirect-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawIndexedIndirect-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawIndexedIndirect-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawIndexedIndirect-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawIndexedIndirect-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawIndexedIndirect-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDrawIndexedIndirect-flags-11521" href="#VUID-vkCmdDrawIndexedIndirect-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawIndexedIndirect-flags-11521</span><br>
@@ -34961,6 +35073,22 @@ If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDrawIndexedIndirectCount-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawIndexedIndirectCount-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawIndexedIndirectCount-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawIndexedIndirectCount-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawIndexedIndirectCount-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawIndexedIndirectCount-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDrawIndexedIndirectCount-flags-11521" href="#VUID-vkCmdDrawIndexedIndirectCount-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawIndexedIndirectCount-flags-11521</span><br>
 
 If current render pass instance was begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>
@@ -39142,6 +39270,22 @@ be enabled</p>
 
 If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawIndirectByteCountEXT-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawIndirectByteCountEXT-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawIndirectByteCountEXT-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawIndirectByteCountEXT-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawIndirectByteCountEXT-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawIndirectByteCountEXT-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDrawIndirectByteCountEXT-flags-11521" href="#VUID-vkCmdDrawIndirectByteCountEXT-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawIndirectByteCountEXT-flags-11521</span><br>
@@ -43836,6 +43980,22 @@ If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDrawMeshTasksNV-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawMeshTasksNV-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksNV-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMeshTasksNV-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawMeshTasksNV-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksNV-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDrawMeshTasksNV-flags-11521" href="#VUID-vkCmdDrawMeshTasksNV-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksNV-flags-11521</span><br>
 
 If current render pass instance was begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>
@@ -47616,6 +47776,22 @@ be enabled</p>
 
 If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMeshTasksIndirectNV-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawMeshTasksIndirectNV-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectNV-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMeshTasksIndirectNV-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawMeshTasksIndirectNV-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectNV-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDrawMeshTasksIndirectNV-flags-11521" href="#VUID-vkCmdDrawMeshTasksIndirectNV-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectNV-flags-11521</span><br>
@@ -51522,6 +51698,22 @@ If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDrawMeshTasksIndirectCountNV-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawMeshTasksIndirectCountNV-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectCountNV-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMeshTasksIndirectCountNV-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawMeshTasksIndirectCountNV-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectCountNV-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDrawMeshTasksIndirectCountNV-flags-11521" href="#VUID-vkCmdDrawMeshTasksIndirectCountNV-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectCountNV-flags-11521</span><br>
 
 If current render pass instance was begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>
@@ -55380,6 +55572,22 @@ If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDrawMeshTasksEXT-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawMeshTasksEXT-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksEXT-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMeshTasksEXT-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawMeshTasksEXT-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksEXT-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDrawMeshTasksEXT-flags-11521" href="#VUID-vkCmdDrawMeshTasksEXT-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksEXT-flags-11521</span><br>
 
 If current render pass instance was begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>
@@ -59228,6 +59436,22 @@ be enabled</p>
 
 If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMeshTasksIndirectEXT-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawMeshTasksIndirectEXT-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectEXT-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMeshTasksIndirectEXT-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawMeshTasksIndirectEXT-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectEXT-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDrawMeshTasksIndirectEXT-flags-11521" href="#VUID-vkCmdDrawMeshTasksIndirectEXT-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectEXT-flags-11521</span><br>
@@ -63199,6 +63423,22 @@ If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDrawMeshTasksIndirectCountEXT-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawMeshTasksIndirectCountEXT-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectCountEXT-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawMeshTasksIndirectCountEXT-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawMeshTasksIndirectCountEXT-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectCountEXT-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDrawMeshTasksIndirectCountEXT-flags-11521" href="#VUID-vkCmdDrawMeshTasksIndirectCountEXT-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawMeshTasksIndirectCountEXT-flags-11521</span><br>
 
 If current render pass instance was begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>
@@ -67070,6 +67310,22 @@ If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdDrawClusterHUAWEI-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawClusterHUAWEI-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawClusterHUAWEI-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawClusterHUAWEI-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawClusterHUAWEI-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawClusterHUAWEI-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
+</li>
+<li>
 <p><a id="VUID-vkCmdDrawClusterHUAWEI-flags-11521" href="#VUID-vkCmdDrawClusterHUAWEI-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawClusterHUAWEI-flags-11521</span><br>
 
 If current render pass instance was begun with <a href="renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>
@@ -70862,6 +71118,22 @@ be enabled</p>
 
 If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawClusterIndirectHUAWEI-multiviewPerViewViewports-12262" href="#VUID-vkCmdDrawClusterIndirectHUAWEI-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdDrawClusterIndirectHUAWEI-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdDrawClusterIndirectHUAWEI-multiviewPerViewViewports-12263" href="#VUID-vkCmdDrawClusterIndirectHUAWEI-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdDrawClusterIndirectHUAWEI-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdDrawClusterIndirectHUAWEI-flags-11521" href="#VUID-vkCmdDrawClusterIndirectHUAWEI-flags-11521"></a> <span class="vuid">VUID-vkCmdDrawClusterIndirectHUAWEI-flags-11521</span><br>

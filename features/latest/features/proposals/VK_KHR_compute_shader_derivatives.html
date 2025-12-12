@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -623,7 +626,12 @@
 <li><a href="#_glsl_mapping">3.4. GLSL mapping</a></li>
 </ul>
 </li>
-<li><a href="#_issues">4. Issues</a></li>
+<li><a href="#_issues">4. Issues</a>
+<ul class="sectlevel2">
+<li><a href="#_should_we_specify_that_the_groups_of_four_shader_invocations_used_for_derivatives_in_a_compute_shader_are_the_same_groups_of_four_invocations_that_form_a_quad_in_shader_subgroups">4.1. Should we specify that the groups of four shader invocations used for derivatives in a compute shader are the same groups of four invocations that form a "quad" in shader subgroups?</a></li>
+<li><a href="#_should_we_add_support_for_derivatives_in_mesh_and_task_shaders">4.2. Should we add support for derivatives in mesh and task shaders?</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="preamble">
@@ -766,19 +774,17 @@ mesh and task shader support.</p>
 <div class="sect1">
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_should_we_specify_that_the_groups_of_four_shader_invocations_used_for_derivatives_in_a_compute_shader_are_the_same_groups_of_four_invocations_that_form_a_quad_in_shader_subgroups"><a class="anchor" href="#_should_we_specify_that_the_groups_of_four_shader_invocations_used_for_derivatives_in_a_compute_shader_are_the_same_groups_of_four_invocations_that_form_a_quad_in_shader_subgroups"></a>4.1. Should we specify that the groups of four shader invocations used for derivatives in a compute shader are the same groups of four invocations that form a "quad" in shader subgroups?</h3>
 <div class="paragraph">
-<p>(1) Should we specify that the groups of four shader invocations used for
-    derivatives in a compute shader are the same groups of four invocations
-    that form a "quad" in shader subgroups?</p>
+<p>Yes.</p>
 </div>
-<div class="paragraph">
-<p><strong>RESOLVED</strong>: Yes.</p>
 </div>
+<div class="sect2">
+<h3 id="_should_we_add_support_for_derivatives_in_mesh_and_task_shaders"><a class="anchor" href="#_should_we_add_support_for_derivatives_in_mesh_and_task_shaders"></a>4.2. Should we add support for derivatives in mesh and task shaders?</h3>
 <div class="paragraph">
-<p>(2) Should we add support for derivatives in mesh and task shaders?</p>
+<p>Yes, as optional features. Add them as an optional feature as they are in SM6.6.</p>
 </div>
-<div class="paragraph">
-<p><strong>RESOLVED</strong>: Yes, as optional features. Add them as an optional feature as they are in SM6.6.</p>
 </div>
 </div>
 </div>

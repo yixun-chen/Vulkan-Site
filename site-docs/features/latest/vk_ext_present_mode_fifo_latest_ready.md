@@ -14,8 +14,8 @@
 - [2._Solution_Space](#_solution_space)
 - [3. Proposal](#_proposal)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Is the presentation engine required to wait for the next vblank to return images of obsolete present requests?](#_resolved_is_the_presentation_engine_required_to_wait_for_the_next_vblank_to_return_images_of_obsolete_present_requests)
-- [4.1._RESOLVED:_Is_the_presentation_engine_required_to_wait_for_the_next_vblank_to_return_images_of_obsolete_present_requests?](#_resolved_is_the_presentation_engine_required_to_wait_for_the_next_vblank_to_return_images_of_obsolete_present_requests)
+- [4.1. Is the presentation engine required to wait for the next vblank to return images of obsolete present requests?](#_is_the_presentation_engine_required_to_wait_for_the_next_vblank_to_return_images_of_obsolete_present_requests)
+- [4.1._Is_the_presentation_engine_required_to_wait_for_the_next_vblank_to_return_images_of_obsolete_present_requests?](#_is_the_presentation_engine_required_to_wait_for_the_next_vblank_to_return_images_of_obsolete_present_requests)
 - [4.2. TODO: Should VK_PRESENT_MODE_FIFO_RELAXED_KHR get a corresponding VK_PRESENT_MODE_FIFO_RELAXED_LATEST_READY_EXT?](#_todo_should_vk_present_mode_fifo_relaxed_khr_get_a_corresponding_vk_present_mode_fifo_relaxed_latest_ready_ext)
 - [4.2._TODO:_Should_VK_PRESENT_MODE_FIFO_RELAXED_KHR_get_a_corresponding_VK_PRESENT_MODE_FIFO_RELAXED_LATEST_READY_EXT?](#_todo_should_vk_present_mode_fifo_relaxed_khr_get_a_corresponding_vk_present_mode_fifo_relaxed_latest_ready_ext)
 
@@ -28,7 +28,7 @@ Table of Contents
 [3. Proposal](#_proposal)
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: Is the presentation engine required to wait for the next vblank to return images of obsolete present requests?](#_resolved_is_the_presentation_engine_required_to_wait_for_the_next_vblank_to_return_images_of_obsolete_present_requests)
+[4.1. Is the presentation engine required to wait for the next vblank to return images of obsolete present requests?](#_is_the_presentation_engine_required_to_wait_for_the_next_vblank_to_return_images_of_obsolete_present_requests)
 [4.2. TODO: Should VK_PRESENT_MODE_FIFO_RELAXED_KHR get a corresponding VK_PRESENT_MODE_FIFO_RELAXED_LATEST_READY_EXT?](#_todo_should_vk_present_mode_fifo_relaxed_khr_get_a_corresponding_vk_present_mode_fifo_relaxed_latest_ready_ext)
 
 When an application manages to render multiple frames per display refresh cycle,

@@ -8,8 +8,8 @@
 
 ## Table of Contents
 
-- [1. Problem statement](#_problem_statement)
-- [1._Problem_statement](#_problem_statement)
+- [1. Problem Statement](#_problem_statement)
+- [1._Problem_Statement](#_problem_statement)
 - [2. Solution Space](#_solution_space)
 - [2._Solution_Space](#_solution_space)
 - [3. Proposal](#_proposal)
@@ -40,10 +40,10 @@
 - [5. Issues](#_issues)
 - [5.1. What are the key differences to VK_GOOGLE_display_timing?](#_what_are_the_key_differences_to_vk_google_display_timing)
 - [5.1._What_are_the_key_differences_to_VK_GOOGLE_display_timing?](#_what_are_the_key_differences_to_vk_google_display_timing)
-- [5.2. RESOLVED: How does the application choose the internal queue size to pass in vkSetSwapchainPresentTimingQueueSize?](#_resolved_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize)
-- [5.2._RESOLVED:_How_does_the_application_choose_the_internal_queue_size_to_pass_in_vkSetSwapchainPresentTimingQueueSize?](#_resolved_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize)
-- [5.3. RESOLVED: Do we need an API to synchronously wait for present timing feedback?](#_resolved_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback)
-- [5.3._RESOLVED:_Do_we_need_an_API_to_synchronously_wait_for_present_timing_feedback?](#_resolved_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback)
+- [5.2. How does the application choose the internal queue size to pass in vkSetSwapchainPresentTimingQueueSize?](#_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize)
+- [5.2._How_does_the_application_choose_the_internal_queue_size_to_pass_in_vkSetSwapchainPresentTimingQueueSize?](#_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize)
+- [5.3. Do we need an API to synchronously wait for present timing feedback?](#_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback)
+- [5.3._Do_we_need_an_API_to_synchronously_wait_for_present_timing_feedback?](#_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback)
 - [5.4. PROPOSED: How do we handle dynamic surface properties updates?](#_proposed_how_do_we_handle_dynamic_surface_properties_updates)
 - [5.4._PROPOSED:_How_do_we_handle_dynamic_surface_properties_updates?](#_proposed_how_do_we_handle_dynamic_surface_properties_updates)
 - [5.5. PROPOSED: How are dropped presentation requests handled?](#_proposed_how_are_dropped_presentation_requests_handled)
@@ -57,7 +57,7 @@
 
 Table of Contents
 
-[1. Problem statement](#_problem_statement)
+[1. Problem Statement](#_problem_statement)
 [2. Solution Space](#_solution_space)
 [3. Proposal](#_proposal)
 
@@ -78,8 +78,8 @@ Table of Contents
 [5. Issues](#_issues)
 
 [5.1. What are the key differences to `VK_GOOGLE_display_timing`?](#_what_are_the_key_differences_to_vk_google_display_timing)
-[5.2. RESOLVED: How does the application choose the internal queue size to pass in `vkSetSwapchainPresentTimingQueueSize`?](#_resolved_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize)
-[5.3. RESOLVED: Do we need an API to synchronously wait for present timing feedback?](#_resolved_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback)
+[5.2. How does the application choose the internal queue size to pass in `vkSetSwapchainPresentTimingQueueSize`?](#_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize)
+[5.3. Do we need an API to synchronously wait for present timing feedback?](#_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback)
 [5.4. PROPOSED: How do we handle dynamic surface properties updates?](#_proposed_how_do_we_handle_dynamic_surface_properties_updates)
 [5.5. PROPOSED: How are dropped presentation requests handled?](#_proposed_how_are_dropped_presentation_requests_handled)
 [5.6. PROPOSED: How do different variable refresh rate technologies interact with this extension?](#_proposed_how_do_different_variable_refresh_rate_technologies_interact_with_this_extension)

@@ -24,12 +24,12 @@
 - [4.4. Soft guarantees of successfully compiling pipelines](#_soft_guarantees_of_successfully_compiling_pipelines)
 - [4.4._Soft_guarantees_of_successfully_compiling_pipelines](#_soft_guarantees_of_successfully_compiling_pipelines)
 - [5. Issues](#_issues)
-- [5.1. RESOLVED: Should applications be allowed to specify their own shader module identifier?](#_resolved_should_applications_be_allowed_to_specify_their_own_shader_module_identifier)
-- [5.1._RESOLVED:_Should_applications_be_allowed_to_specify_their_own_shader_module_identifier?](#_resolved_should_applications_be_allowed_to_specify_their_own_shader_module_identifier)
-- [5.2. RESOLVED: How does this interact with VK_KHR_ray_tracing_pipeline, VK_KHR_pipeline_library and VK_EXT_graphics_pipeline_library?](#_resolved_how_does_this_interact_with_vk_khr_ray_tracing_pipeline_vk_khr_pipeline_library_and_vk_ext_graphics_pipeline_library)
-- [5.2._RESOLVED:_How_does_this_interact_with_VK_KHR_ray_tracing_pipeline,_VK_KHR_pipeline_library_and_VK_EXT_graphics_pipeline_library?](#_resolved_how_does_this_interact_with_vk_khr_ray_tracing_pipeline_vk_khr_pipeline_library_and_vk_ext_graphics_pipeline_library)
-- [5.3. RESOLVED: Should there be stronger guarantees on when pipeline compilation with identifier must succeed?](#_resolved_should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed)
-- [5.3._RESOLVED:_Should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed?](#_resolved_should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed)
+- [5.1. Should applications be allowed to specify their own shader module identifier?](#_should_applications_be_allowed_to_specify_their_own_shader_module_identifier)
+- [5.1._Should_applications_be_allowed_to_specify_their_own_shader_module_identifier?](#_should_applications_be_allowed_to_specify_their_own_shader_module_identifier)
+- [5.2. How does this interact with VK_KHR_ray_tracing_pipeline, VK_KHR_pipeline_library and VK_EXT_graphics_pipeline_library?](#_how_does_this_interact_with_vk_khr_ray_tracing_pipeline_vk_khr_pipeline_library_and_vk_ext_graphics_pipeline_library)
+- [5.2._How_does_this_interact_with_VK_KHR_ray_tracing_pipeline,_VK_KHR_pipeline_library_and_VK_EXT_graphics_pipeline_library?](#_how_does_this_interact_with_vk_khr_ray_tracing_pipeline_vk_khr_pipeline_library_and_vk_ext_graphics_pipeline_library)
+- [5.3. Should there be stronger guarantees on when pipeline compilation with identifier must succeed?](#_should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed)
+- [5.3._Should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed?](#_should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed)
 - [6. Further Functionality](#_further_functionality)
 - [6._Further_Functionality](#_further_functionality)
 
@@ -49,9 +49,9 @@ Table of Contents
 
 [5. Issues](#_issues)
 
-[5.1. RESOLVED: Should applications be allowed to specify their own shader module identifier?](#_resolved_should_applications_be_allowed_to_specify_their_own_shader_module_identifier)
-[5.2. RESOLVED: How does this interact with VK_KHR_ray_tracing_pipeline, VK_KHR_pipeline_library and VK_EXT_graphics_pipeline_library?](#_resolved_how_does_this_interact_with_vk_khr_ray_tracing_pipeline_vk_khr_pipeline_library_and_vk_ext_graphics_pipeline_library)
-[5.3. RESOLVED: Should there be stronger guarantees on when pipeline compilation with identifier must succeed?](#_resolved_should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed)
+[5.1. Should applications be allowed to specify their own shader module identifier?](#_should_applications_be_allowed_to_specify_their_own_shader_module_identifier)
+[5.2. How does this interact with VK_KHR_ray_tracing_pipeline, VK_KHR_pipeline_library and VK_EXT_graphics_pipeline_library?](#_how_does_this_interact_with_vk_khr_ray_tracing_pipeline_vk_khr_pipeline_library_and_vk_ext_graphics_pipeline_library)
+[5.3. Should there be stronger guarantees on when pipeline compilation with identifier must succeed?](#_should_there_be_stronger_guarantees_on_when_pipeline_compilation_with_identifier_must_succeed)
 
 [6. Further Functionality](#_further_functionality)
 

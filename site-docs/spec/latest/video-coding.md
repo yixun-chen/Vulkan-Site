@@ -9773,6 +9773,12 @@ be chained to the corresponding [VkVideoReferenceSlotInfoKHR](#VkVideoReferenceS
 and no `StdVideoDecodeVP9ReferenceInfo` structure exists in the VP9 Video
 Std Headers. |
 
+`VK_MAX_VIDEO_VP9_REFERENCES_PER_FRAME_KHR` is the length of the array
+of DPB slot or VP9 reference names passed in
+[VkVideoDecodeVP9PictureInfoKHR](#VkVideoDecodeVP9PictureInfoKHR)::`referenceNameSlotIndices`.
+
+#define VK_MAX_VIDEO_VP9_REFERENCES_PER_FRAME_KHR 3U
+
 This section describes the **required** VP9 decoding capabilities for physical
 devices that have at least one queue family that supports the video codec
 operation `VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR`, as returned by
@@ -10475,6 +10481,12 @@ Valid Usage (Implicit)
 [](#VUID-VkVideoDecodeAV1PictureInfoKHR-tileCount-arraylength) VUID-VkVideoDecodeAV1PictureInfoKHR-tileCount-arraylength
 
  `tileCount` **must** be greater than `0`
+
+`VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR` is the length of the array
+of DPB slot or AV1 reference names passed in
+[VkVideoDecodeAV1PictureInfoKHR](#VkVideoDecodeAV1PictureInfoKHR)::`referenceNameSlotIndices`.
+
+#define VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR 7U
 
 The `VkVideoDecodeAV1DpbSlotInfoKHR` structure is defined as:
 

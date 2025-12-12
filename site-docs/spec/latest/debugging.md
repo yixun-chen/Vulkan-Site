@@ -1116,7 +1116,8 @@ event(s) will cause this callback to be called.
 `pfnUserCallback` is the application callback function to call.
 
 * 
-`pUserData` is user data to be passed to the callback.
+`pUserData` is NULL or an application-defined user data pointer to
+be passed to the callback.
 
 For each `VkDebugUtilsMessengerEXT` that is created the
 `VkDebugUtilsMessengerCreateInfoEXT`::`messageSeverity` and
@@ -1322,8 +1323,9 @@ event(s) triggered this callback.
 [VkDebugUtilsMessengerCallbackDataEXT](#VkDebugUtilsMessengerCallbackDataEXT) structure.
 
 * 
-`pUserData` is the user data provided when the
-[VkDebugUtilsMessengerEXT](#VkDebugUtilsMessengerEXT) was created.
+`pUserData` is the application-defined user data pointer, equal to
+the value of [VkDebugUtilsMessengerCreateInfoEXT](#VkDebugUtilsMessengerCreateInfoEXT)::`pUserData`
+specified when the [VkDebugUtilsMessengerEXT](#VkDebugUtilsMessengerEXT) object was created.
 
 The callback returns a `VkBool32`, which is interpreted in a
 layer-specified manner.
@@ -2439,7 +2441,8 @@ which event(s) will cause this callback to be called.
 `pfnCallback` is the application callback function to call.
 
 * 
-`pUserData` is user data to be passed to the callback.
+`pUserData` is NULL or an application-defined user data pointer to
+be passed to the callback.
 
 For each `VkDebugReportCallbackEXT` that is created the
 `VkDebugReportCallbackCreateInfoEXT`::`flags` determine when that
@@ -2575,8 +2578,9 @@ conditions.
 `pMessage` is only valid for the duration of the callback.
 
 * 
-`pUserData` is the user data given when the
-[VkDebugReportCallbackEXT](#VkDebugReportCallbackEXT) was created.
+`pUserData` is the application-defined user data pointer, equal to
+the value of [VkDebugReportCallbackCreateInfoEXT](#VkDebugReportCallbackCreateInfoEXT)::`pUserData`
+specified when the [VkDebugReportCallbackEXT](#VkDebugReportCallbackEXT) object was created.
 
 The callback **must** not call `vkDestroyDebugReportCallbackEXT`.
 

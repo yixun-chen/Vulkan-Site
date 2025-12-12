@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -623,10 +626,10 @@
 </li>
 <li><a href="#_issues">4. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions">4.1. RESOLVED: Should this extension be built by adding Metal platform variations to the <code>VK_KHR_external_memory</code> family of extensions?</a></li>
-<li><a href="#_resolved_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects">4.2. RESOLVED: Should this extension be split into two, one for resources and one for other objects?</a></li>
-<li><a href="#_resolved_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created">4.3. RESOLVED: Should the application be required to indicate its intention to export Metal objects when the corresponding Vulkan object is created?</a></li>
-<li><a href="#_resolved_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory">4.4. RESOLVED: Should a <code>MTLBuffer</code> be imported and exported through a <code>VkBuffer</code> or a <code>VkDeviceMemory</code>?</a></li>
+<li><a href="#_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions">4.1. Should this extension be built by adding Metal platform variations to the <code>VK_KHR_external_memory</code> family of extensions?</a></li>
+<li><a href="#_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects">4.2. Should this extension be split into two, one for resources and one for other objects?</a></li>
+<li><a href="#_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created">4.3. Should the application be required to indicate its intention to export Metal objects when the corresponding Vulkan object is created?</a></li>
+<li><a href="#_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory">4.4. Should a <code>MTLBuffer</code> be imported and exported through a <code>VkBuffer</code> or a <code>VkDeviceMemory</code>?</a></li>
 </ul>
 </li>
 </ul>
@@ -844,7 +847,7 @@ typedef struct VkImportMetalSharedEventInfoEXT {
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions"><a class="anchor" href="#_resolved_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions"></a>4.1. RESOLVED: Should this extension be built by adding Metal platform variations to the <code>VK_KHR_external_memory</code> family of extensions?</h3>
+<h3 id="_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions"><a class="anchor" href="#_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions"></a>4.1. Should this extension be built by adding Metal platform variations to the <code>VK_KHR_external_memory</code> family of extensions?</h3>
 <div class="paragraph">
 <p>No. While the <code>VK_KHR_external_memory</code> family of extensions is suitable for resource
 objects such as images and buffers, the intent of the <code>VK_EXT_metal_objects</code> is to
@@ -853,7 +856,7 @@ limited to resource objects.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects"><a class="anchor" href="#_resolved_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects"></a>4.2. RESOLVED: Should this extension be split into two, one for resources and one for other objects?</h3>
+<h3 id="_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects"><a class="anchor" href="#_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects"></a>4.2. Should this extension be split into two, one for resources and one for other objects?</h3>
 <div class="paragraph">
 <p>No. Given the expectation that this extension will be limited to layered implementations
 on top of Metal running only on Apple platforms, the preference was for a single simple
@@ -865,7 +868,7 @@ functionality overlap will not cause any issues.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created"><a class="anchor" href="#_resolved_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created"></a>4.3. RESOLVED: Should the application be required to indicate its intention to export Metal objects when the corresponding Vulkan object is created?</h3>
+<h3 id="_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created"><a class="anchor" href="#_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created"></a>4.3. Should the application be required to indicate its intention to export Metal objects when the corresponding Vulkan object is created?</h3>
 <div class="paragraph">
 <p>Yes. To improve implementation flexibility and integrity, requiring the application to indicate
 the intention to export provides the implementation with the flexibility to optimize
@@ -873,7 +876,7 @@ internally if it knows certain Metal objects will or will not be required to be 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory"><a class="anchor" href="#_resolved_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory"></a>4.4. RESOLVED: Should a <code>MTLBuffer</code> be imported and exported through a <code>VkBuffer</code> or a <code>VkDeviceMemory</code>?</h3>
+<h3 id="_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory"><a class="anchor" href="#_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory"></a>4.4. Should a <code>MTLBuffer</code> be imported and exported through a <code>VkBuffer</code> or a <code>VkDeviceMemory</code>?</h3>
 <div class="paragraph">
 <p>While <code>MTLBuffer</code> spans functionality covered by both <code>VkBuffer</code> and <code>VkDeviceMemory</code>, it
 was felt that <code>MTLBuffer</code> maps closest to <code>VkDeviceMemory</code>, with a <code>VkBuffer</code> essentially

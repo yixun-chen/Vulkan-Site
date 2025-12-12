@@ -620,8 +620,12 @@ queried <strong>must</strong> have been created with the
 <li>
 <p><a id="VUID-vkCmdBuildMicromapsEXT-pInfos-07512" href="#VUID-vkCmdBuildMicromapsEXT-pInfos-07512"></a> <span class="vuid">VUID-vkCmdBuildMicromapsEXT-pInfos-07512</span><br>
 
-For each element of <code>pInfos</code>, <code>scratchData.deviceAddress</code> <strong>must</strong>
-be a valid <code>VkDeviceAddress</code></p>
+For each element of <code>pInfos</code>, if the value of
+<a href="../resources.html#VkMicromapBuildSizesInfoEXT" class="xref page">VkMicromapBuildSizesInfoEXT</a>::<code>buildScratchSize</code>, returned from
+a call to <a href="../resources.html#vkGetMicromapBuildSizesEXT" class="xref page">vkGetMicromapBuildSizesEXT</a> with an identical
+<a href="#VkMicromapBuildInfoEXT">VkMicromapBuildInfoEXT</a> structure, is not <code>0</code>,
+<code>scratchData.deviceAddress</code> <strong>must</strong> be a valid
+<code>VkDeviceAddress</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBuildMicromapsEXT-pInfos-10896" href="#VUID-vkCmdBuildMicromapsEXT-pInfos-10896"></a> <span class="vuid">VUID-vkCmdBuildMicromapsEXT-pInfos-10896</span><br>
@@ -2708,12 +2712,13 @@ feature <strong>must</strong> be enabled</p>
 <p><a id="VUID-vkBuildMicromapsEXT-pInfos-07556" href="#VUID-vkBuildMicromapsEXT-pInfos-07556"></a> <span class="vuid">VUID-vkBuildMicromapsEXT-pInfos-07556</span><br>
 
 If <code>pInfos</code>[i].<code>mode</code> is <code>VK_BUILD_MICROMAP_MODE_BUILD_EXT</code>,
-all addresses between <code>pInfos</code>[i].<code>scratchData.hostAddress</code> and
-<code>pInfos</code>[i].<code>scratchData.hostAddress</code> + N - 1 <strong>must</strong> be valid
-host memory, where N is given by the <code>buildScratchSize</code> member of
-the <a href="../resources.html#VkMicromapBuildSizesInfoEXT" class="xref page">VkMicromapBuildSizesInfoEXT</a> structure returned from a call to
-<a href="../resources.html#vkGetMicromapBuildSizesEXT" class="xref page">vkGetMicromapBuildSizesEXT</a> with an identical
-<a href="#VkMicromapBuildInfoEXT">VkMicromapBuildInfoEXT</a> structure and primitive count</p>
+and N is not <code>0</code>, then all addresses between
+<code>pInfos</code>[i].<code>scratchData.hostAddress</code> and
+<code>pInfos</code>[i].<code>scratchData.hostAddress</code> <span class="eq">+  N - 1</span> <strong>must</strong>
+be valid host memory, where N is given by the value of
+<a href="../resources.html#VkMicromapBuildSizesInfoEXT" class="xref page">VkMicromapBuildSizesInfoEXT</a>::<code>buildScratchSize</code> returned from
+a call to <a href="../resources.html#vkGetMicromapBuildSizesEXT" class="xref page">vkGetMicromapBuildSizesEXT</a> with an identical
+<a href="#VkMicromapBuildInfoEXT">VkMicromapBuildInfoEXT</a> structure</p>
 </li>
 <li>
 <p><a id="VUID-vkBuildMicromapsEXT-pInfos-07557" href="#VUID-vkBuildMicromapsEXT-pInfos-07557"></a> <span class="vuid">VUID-vkBuildMicromapsEXT-pInfos-07557</span><br>

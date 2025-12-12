@@ -745,8 +745,8 @@ to its `stride` member
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-pRayGenShaderBindingTable-03681) VUID-vkCmdTraceRaysIndirectKHR-pRayGenShaderBindingTable-03681
 
-The buffer from which the `pRayGenShaderBindingTable->deviceAddress` is queried
-**must** have been created with the
+`pRayGenShaderBindingTable->deviceAddress` **must** be a device address allocated to
+the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 
@@ -758,8 +758,8 @@ The buffer from which the `pRayGenShaderBindingTable->deviceAddress` is queried
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-pMissShaderBindingTable-03684) VUID-vkCmdTraceRaysIndirectKHR-pMissShaderBindingTable-03684
 
-The buffer from which the `pMissShaderBindingTable->deviceAddress` is queried
-**must** have been created with the
+`pMissShaderBindingTable->deviceAddress` **must** be a device address allocated to
+the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 
@@ -783,8 +783,8 @@ The buffer from which the `pMissShaderBindingTable->deviceAddress` is queried
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-pHitShaderBindingTable-03688) VUID-vkCmdTraceRaysIndirectKHR-pHitShaderBindingTable-03688
 
-The buffer from which the `pHitShaderBindingTable->deviceAddress` is queried
-**must** have been created with the
+`pHitShaderBindingTable->deviceAddress` **must** be a device address allocated to
+the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 
@@ -808,8 +808,8 @@ The buffer from which the `pHitShaderBindingTable->deviceAddress` is queried
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-pCallableShaderBindingTable-03692) VUID-vkCmdTraceRaysIndirectKHR-pCallableShaderBindingTable-03692
 
-The buffer from which the `pCallableShaderBindingTable->deviceAddress` is queried
-**must** have been created with the
+`pCallableShaderBindingTable->deviceAddress` **must** be a device address allocated
+to the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 
@@ -891,9 +891,9 @@ been created with
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-indirectDeviceAddress-03633) VUID-vkCmdTraceRaysIndirectKHR-indirectDeviceAddress-03633
 
-The buffer from which `indirectDeviceAddress` was queried **must** have
-been created with the `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage
-flag set
+`indirectDeviceAddress` **must** be a device address allocated to the
+application from a buffer created with the
+`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
 
 * 
 [](#VUID-vkCmdTraceRaysIndirectKHR-indirectDeviceAddress-03634) VUID-vkCmdTraceRaysIndirectKHR-indirectDeviceAddress-03634

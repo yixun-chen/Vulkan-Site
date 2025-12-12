@@ -2112,6 +2112,30 @@ If <code>imageView</code> is not <a href="../appendices/boilerplate.html#VK_NULL
 <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a></p>
 </li>
 <li>
+<p><a id="VUID-VkRenderingAttachmentInfo-None-12256" href="#VUID-VkRenderingAttachmentInfo-None-12256"></a> <span class="vuid">VUID-VkRenderingAttachmentInfo-None-12256</span><br>
+
+If all of the following are true:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>imageView</code> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a></p>
+</li>
+<li>
+<p><code>imageView</code> has a sample count of <code>VK_SAMPLE_COUNT_1_BIT</code></p>
+</li>
+<li>
+<p>the <code>pNext</code> chain of <a href="#VkRenderingInfo">VkRenderingInfo</a> includes a
+<a href="#VkMultisampledRenderToSingleSampledInfoEXT">VkMultisampledRenderToSingleSampledInfoEXT</a> structure with the
+<code>multisampledRenderToSingleSampledEnable</code> field equal to
+<code>VK_TRUE</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>then <code>resolveMode</code> <strong>must</strong> not be <code>VK_RESOLVE_MODE_NONE</code></p>
+</div>
+</li>
+<li>
 <p><a id="VUID-VkRenderingAttachmentInfo-imageView-06864" href="#VUID-VkRenderingAttachmentInfo-imageView-06864"></a> <span class="vuid">VUID-VkRenderingAttachmentInfo-imageView-06864</span><br>
 
 If <code>imageView</code> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, <code>resolveImageView</code>
@@ -3727,6 +3751,44 @@ instance included <code>VK_RENDERING_SUSPENDING_BIT</code>, then this render pas
 is suspended and will be resumed later in
 <a href="synchronization.html#synchronization-submission-order" class="xref page">submission order</a>.</p>
 </div>
+<div id="renderpass-multipassordering" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>There is no implicit ordering between separate render passes, even in the
+same command buffer, and even when the attachments match.
+Some applications rely on the continuation of
+<a href="primsrast.html#primsrast-order" class="xref page">rasterization order</a> between multiple render passes with
+attachments defined in the same way, in order to perform non-rendering
+operations (such as copies or compute operations) between draw calls, but
+this has never been required by the specification.
+There is also no explicit barrier currently in the API that provides the
+guarantee that applications rely on without additional performance
+penalties.</p>
+</div>
+<div class="paragraph">
+<p>New applications should avoid relying on this ordering until an appropriate
+barrier is added to the API.</p>
+</div>
+<div class="paragraph">
+<p>Implementations where applications are performing this splitting are
+encouraged to continue supporting this guarantee until a suitable barrier is
+added to the API.</p>
+</div>
+<div class="paragraph">
+<p>Existing applications relying on this ordering should expect that it will
+continue working on platforms where it currently does.
+Once a new extension adds support for a new barrier, developers are
+encouraged to adapt their applications to use this when available.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage</div>
@@ -3862,7 +3924,7 @@ State</p></td>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Alternatively, to end a render pass instance, call:</p>
+<p>To end a render pass instance, call:</p>
 </div>
 <div id="vkCmdEndRendering2KHR" class="listingblock">
 <div class="content">
@@ -3899,6 +3961,44 @@ the render pass will be ended.</p>
 instance included <code>VK_RENDERING_SUSPENDING_BIT</code>, then this render pass
 is suspended and will be resumed later in
 <a href="synchronization.html#synchronization-submission-order" class="xref page">submission order</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>There is no implicit ordering between separate render passes, even in the
+same command buffer, and even when the attachments match.
+Some applications rely on the continuation of
+<a href="primsrast.html#primsrast-order" class="xref page">rasterization order</a> between multiple render passes with
+attachments defined in the same way, in order to perform non-rendering
+operations (such as copies or compute operations) between draw calls, but
+this has never been required by the specification.
+There is also no explicit barrier currently in the API that provides the
+guarantee that applications rely on without additional performance
+penalties.</p>
+</div>
+<div class="paragraph">
+<p>New applications should avoid relying on this ordering until an appropriate
+barrier is added to the API.</p>
+</div>
+<div class="paragraph">
+<p>Implementations where applications are performing this splitting are
+encouraged to continue supporting this guarantee until a suitable barrier is
+added to the API.</p>
+</div>
+<div class="paragraph">
+<p>Existing applications relying on this ordering should expect that it will
+continue working on platforms where it currently does.
+Once a new extension adds support for a new barrier, developers are
+encouraged to adapt their applications to use this when available.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -13312,7 +13412,7 @@ Synchronization</p></td>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Alternatively to begin a render pass, call:</p>
+<p>To begin a render pass, call:</p>
 </div>
 <div id="vkCmdBeginRenderPass2" class="admonitionblock warning">
 <table>
@@ -15684,6 +15784,44 @@ render pass instance.</p>
 <p>Ending a render pass instance performs any multisample resolve operations on
 the final subpass.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>There is no implicit ordering between separate render passes, even in the
+same command buffer, and even when the attachments match.
+Some applications rely on the continuation of
+<a href="primsrast.html#primsrast-order" class="xref page">rasterization order</a> between multiple render passes with
+attachments defined in the same way, in order to perform non-rendering
+operations (such as copies or compute operations) between draw calls, but
+this has never been required by the specification.
+There is also no explicit barrier currently in the API that provides the
+guarantee that applications rely on without additional performance
+penalties.</p>
+</div>
+<div class="paragraph">
+<p>New applications should avoid relying on this ordering until an appropriate
+barrier is added to the API.</p>
+</div>
+<div class="paragraph">
+<p>Implementations where applications are performing this splitting are
+encouraged to continue supporting this guarantee until a suitable barrier is
+added to the API.</p>
+</div>
+<div class="paragraph">
+<p>Existing applications relying on this ordering should expect that it will
+continue working on platforms where it currently does.
+Once a new extension adds support for a new barrier, developers are
+encouraged to adapt their applications to use this when available.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Valid Usage</div>
@@ -15870,6 +16008,44 @@ containing information about how the last subpass will be ended.</p>
 <div class="paragraph">
 <p><code>vkCmdEndRenderPass2</code> is semantically identical to
 <a href="#vkCmdEndRenderPass">vkCmdEndRenderPass</a>, except that it is extensible.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>There is no implicit ordering between separate render passes, even in the
+same command buffer, and even when the attachments match.
+Some applications rely on the continuation of
+<a href="primsrast.html#primsrast-order" class="xref page">rasterization order</a> between multiple render passes with
+attachments defined in the same way, in order to perform non-rendering
+operations (such as copies or compute operations) between draw calls, but
+this has never been required by the specification.
+There is also no explicit barrier currently in the API that provides the
+guarantee that applications rely on without additional performance
+penalties.</p>
+</div>
+<div class="paragraph">
+<p>New applications should avoid relying on this ordering until an appropriate
+barrier is added to the API.</p>
+</div>
+<div class="paragraph">
+<p>Implementations where applications are performing this splitting are
+encouraged to continue supporting this guarantee until a suitable barrier is
+added to the API.</p>
+</div>
+<div class="paragraph">
+<p>Existing applications relying on this ordering should expect that it will
+continue working on platforms where it currently does.
+Once a new extension adds support for a new barrier, developers are
+encouraged to adapt their applications to use this when available.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sidebarblock">
 <div class="content">

@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -631,10 +634,10 @@
 </li>
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_why_is_this_not_an_extension_of_vk_khr_performance_query">5.1. RESOLVED: Why is this not an extension of VK_KHR_performance_query?</a></li>
-<li><a href="#_resolved_what_is_the_security_model_of_this_extension">5.2. RESOLVED: What is the security model of this extension?</a></li>
-<li><a href="#_resolved_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension">5.3. RESOLVED: What are the interactions with the VK_ARM_render_pass_striped extension?</a></li>
-<li><a href="#_resolved_in_what_pipeline_stage_is_the_performance_counter_writes_done">5.4. RESOLVED: In what pipeline stage is the performance counter writes done</a></li>
+<li><a href="#_why_is_this_not_an_extension_of_vk_khr_performance_query">5.1. Why is this not an extension of VK_KHR_performance_query?</a></li>
+<li><a href="#_what_is_the_security_model_of_this_extension">5.2. What is the security model of this extension?</a></li>
+<li><a href="#_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension">5.3. What are the interactions with the VK_ARM_render_pass_striped extension?</a></li>
+<li><a href="#_in_what_pipeline_stage_is_the_performance_counter_writes_done">5.4. In what pipeline stage is the performance counter writes done</a></li>
 </ul>
 </li>
 </ul>
@@ -943,7 +946,7 @@ renderingInfo.pNext = &amp;countersBeginInfo;
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_why_is_this_not_an_extension_of_vk_khr_performance_query"><a class="anchor" href="#_resolved_why_is_this_not_an_extension_of_vk_khr_performance_query"></a>5.1. RESOLVED: Why is this not an extension of VK_KHR_performance_query?</h3>
+<h3 id="_why_is_this_not_an_extension_of_vk_khr_performance_query"><a class="anchor" href="#_why_is_this_not_an_extension_of_vk_khr_performance_query"></a>5.1. Why is this not an extension of VK_KHR_performance_query?</h3>
 <div class="paragraph">
 <p>From a technical point of view, this extension behaves slightly differently
 in that 1) it always ties counters to a render pass and 2) the size of the
@@ -955,7 +958,7 @@ of the <code>VK_KHR_performance_query</code> extension.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_is_the_security_model_of_this_extension"><a class="anchor" href="#_resolved_what_is_the_security_model_of_this_extension"></a>5.2. RESOLVED: What is the security model of this extension?</h3>
+<h3 id="_what_is_the_security_model_of_this_extension"><a class="anchor" href="#_what_is_the_security_model_of_this_extension"></a>5.2. What is the security model of this extension?</h3>
 <div class="paragraph">
 <p>The GPU hardware is able to run workloads from multiple applications
 concurrently. This is introduces the possibility of side-channel leaks where
@@ -986,7 +989,7 @@ between external memory and L2 caches are not available.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension"><a class="anchor" href="#_resolved_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension"></a>5.3. RESOLVED: What are the interactions with the VK_ARM_render_pass_striped extension?</h3>
+<h3 id="_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension"><a class="anchor" href="#_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension"></a>5.3. What are the interactions with the VK_ARM_render_pass_striped extension?</h3>
 <div class="paragraph">
 <p>Splitting a render pass instance into stripes does not change what is being rendered,
 or what framebuffer-space coordinates are used.
@@ -994,7 +997,7 @@ The two extensions are therefore compatible and can be used together.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_in_what_pipeline_stage_is_the_performance_counter_writes_done"><a class="anchor" href="#_resolved_in_what_pipeline_stage_is_the_performance_counter_writes_done"></a>5.4. RESOLVED: In what pipeline stage is the performance counter writes done</h3>
+<h3 id="_in_what_pipeline_stage_is_the_performance_counter_writes_done"><a class="anchor" href="#_in_what_pipeline_stage_is_the_performance_counter_writes_done"></a>5.4. In what pipeline stage is the performance counter writes done</h3>
 <div class="paragraph">
 <p>and how is synchronization handled?</p>
 </div>

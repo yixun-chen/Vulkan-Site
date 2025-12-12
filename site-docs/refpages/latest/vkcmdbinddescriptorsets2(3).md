@@ -19,8 +19,7 @@
 
 vkCmdBindDescriptorSets2 - Binds descriptor sets to a command buffer
 
-Alternatively, to bind one or more descriptor sets to a command buffer,
-call:
+To bind one or more descriptor sets to a command buffer, call:
 
 // Provided by VK_VERSION_1_4
 void vkCmdBindDescriptorSets2(

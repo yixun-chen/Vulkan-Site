@@ -141,12 +141,13 @@ feature **must** be enabled
 [](#VUID-vkBuildMicromapsEXT-pInfos-07556) VUID-vkBuildMicromapsEXT-pInfos-07556
 
 If `pInfos`[i].`mode` is `VK_BUILD_MICROMAP_MODE_BUILD_EXT`,
-all addresses between `pInfos`[i].`scratchData.hostAddress` and
-`pInfos`[i].`scratchData.hostAddress` + N - 1 **must** be valid
-host memory, where N is given by the `buildScratchSize` member of
-the [VkMicromapBuildSizesInfoEXT](VkMicromapBuildSizesInfoEXT.html) structure returned from a call to
-[vkGetMicromapBuildSizesEXT](vkGetMicromapBuildSizesEXT.html) with an identical
-[VkMicromapBuildInfoEXT](VkMicromapBuildInfoEXT.html) structure and primitive count
+and N is not `0`, then all addresses between
+`pInfos`[i].`scratchData.hostAddress` and
+`pInfos`[i].`scratchData.hostAddress` +  N - 1 **must**
+be valid host memory, where N is given by the value of
+[VkMicromapBuildSizesInfoEXT](VkMicromapBuildSizesInfoEXT.html)::`buildScratchSize` returned from
+a call to [vkGetMicromapBuildSizesEXT](vkGetMicromapBuildSizesEXT.html) with an identical
+[VkMicromapBuildInfoEXT](VkMicromapBuildInfoEXT.html) structure
 
 * 
 [](#VUID-vkBuildMicromapsEXT-pInfos-07557) VUID-vkBuildMicromapsEXT-pInfos-07557

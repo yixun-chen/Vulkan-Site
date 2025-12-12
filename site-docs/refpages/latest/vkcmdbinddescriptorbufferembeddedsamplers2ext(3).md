@@ -19,8 +19,7 @@
 
 vkCmdBindDescriptorBufferEmbeddedSamplers2EXT - Setting embedded immutable samplers offsets in a command buffer
 
-Alternatively, to bind an embedded immutable sampler set to a command
-buffer, call:
+To bind an embedded immutable sampler set to a command buffer, call:
 
 // Provided by VK_KHR_maintenance6 with VK_EXT_descriptor_buffer
 void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(

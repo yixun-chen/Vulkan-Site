@@ -14,10 +14,10 @@
 - [3. Example Usage](#_example_usage)
 - [3._Example_Usage](#_example_usage)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Should the extension provide a query to list the layers settings?](#_resolved_should_the_extension_provide_a_query_to_list_the_layers_settings)
-- [4.1._RESOLVED:_Should_the_extension_provide_a_query_to_list_the_layers_settings?](#_resolved_should_the_extension_provide_a_query_to_list_the_layers_settings)
-- [4.2. RESOLVED: Should this extension deprecate VK_EXT_validation_features?](#_resolved_should_this_extension_deprecate_vk_ext_validation_features)
-- [4.2._RESOLVED:_Should_this_extension_deprecate_VK_EXT_validation_features?](#_resolved_should_this_extension_deprecate_vk_ext_validation_features)
+- [4.1. Should the extension provide a query to list the layers settings?](#_should_the_extension_provide_a_query_to_list_the_layers_settings)
+- [4.1._Should_the_extension_provide_a_query_to_list_the_layers_settings?](#_should_the_extension_provide_a_query_to_list_the_layers_settings)
+- [4.2. Should this extension deprecate VK_EXT_validation_features?](#_should_this_extension_deprecate_vk_ext_validation_features)
+- [4.2._Should_this_extension_deprecate_VK_EXT_validation_features?](#_should_this_extension_deprecate_vk_ext_validation_features)
 
 ## Content
 

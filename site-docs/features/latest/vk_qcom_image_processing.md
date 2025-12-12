@@ -44,13 +44,13 @@
 - [4. Expected Features and limits](#_expected_features_and_limits)
 - [4._Expected_Features_and_limits](#_expected_features_and_limits)
 - [5. Issues](#_issues)
-- [5.1. RESOLVED:  Should this be one extension or 3 extensions?](#_resolved_should_this_be_one_extension_or_3_extensions)
-- [5.1._RESOLVED:__Should_this_be_one_extension_or_3_extensions?](#_resolved_should_this_be_one_extension_or_3_extensions)
-- [5.2. RESOLVED:  How does this interact with descriptor indexing ?](#_resolved_how_does_this_interact_with_descriptor_indexing)
-- [5.2._RESOLVED:__How_does_this_interact_with_descriptor_indexing_?](#_resolved_how_does_this_interact_with_descriptor_indexing)
-- [5.3._RESOLVED:__How_does_this_extension_interact_with_EXT_robustness2_?](#_resolved_how_does_this_extension_interact_with_ext_robustness2)
-- [5.4. RESOLVED:  How does this interact with push descriptors ?](#_resolved_how_does_this_interact_with_push_descriptors)
-- [5.4._RESOLVED:__How_does_this_interact_with_push_descriptors_?](#_resolved_how_does_this_interact_with_push_descriptors)
+- [5.1. Should this be one extension or 3 extensions?](#_should_this_be_one_extension_or_3_extensions)
+- [5.1._Should_this_be_one_extension_or_3_extensions?](#_should_this_be_one_extension_or_3_extensions)
+- [5.2. How does this interact with descriptor indexing ?](#_how_does_this_interact_with_descriptor_indexing)
+- [5.2._How_does_this_interact_with_descriptor_indexing_?](#_how_does_this_interact_with_descriptor_indexing)
+- [5.3._How_does_this_extension_interact_with_EXT_robustness2_?](#_how_does_this_extension_interact_with_ext_robustness2)
+- [5.4. How does this interact with push descriptors ?](#_how_does_this_interact_with_push_descriptors)
+- [5.4._How_does_this_interact_with_push_descriptors_?](#_how_does_this_interact_with_push_descriptors)
 
 ## Content
 
@@ -74,10 +74,10 @@ Table of Contents
 [4. Expected Features and limits](#_expected_features_and_limits)
 [5. Issues](#_issues)
 
-[5.1. RESOLVED:  Should this be one extension or 3 extensions?](#_resolved_should_this_be_one_extension_or_3_extensions)
-[5.2. RESOLVED:  How does this interact with descriptor indexing ?](#_resolved_how_does_this_interact_with_descriptor_indexing)
-[5.3. RESOLVED:  How does this extension interact with EXT_robustness2 ?](#_resolved_how_does_this_extension_interact_with_ext_robustness2)
-[5.4. RESOLVED:  How does this interact with push descriptors ?](#_resolved_how_does_this_interact_with_push_descriptors)
+[5.1. Should this be one extension or 3 extensions?](#_should_this_be_one_extension_or_3_extensions)
+[5.2. How does this interact with descriptor indexing ?](#_how_does_this_interact_with_descriptor_indexing)
+[5.3. How does this extension interact with EXT_robustness2 ?](#_how_does_this_extension_interact_with_ext_robustness2)
+[5.4. How does this interact with push descriptors ?](#_how_does_this_interact_with_push_descriptors)
 
 This document proposes a new extension that adds shader built-in functions and
 descriptor types for image processing.

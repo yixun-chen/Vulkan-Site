@@ -44,14 +44,14 @@
 - [5. Interactions with other extensions](#_interactions_with_other_extensions)
 - [5._Interactions_with_other_extensions](#_interactions_with_other_extensions)
 - [6. Issues](#_issues)
-- [6.1. RESOLVED: Fixed size keys](#_resolved_fixed_size_keys)
-- [6.1._RESOLVED:_Fixed_size_keys](#_resolved_fixed_size_keys)
-- [6.2. RESOLVED: Should implementations be able to advertise in some way what a key/data pair are associated with?](#_resolved_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with)
-- [6.2._RESOLVED:_Should_implementations_be_able_to_advertise_in_some_way_what_a_key/data_pair_are_associated_with?](#_resolved_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with)
-- [6.3. RESOLVED: Can we avoid copies everywhere?](#_resolved_can_we_avoid_copies_everywhere)
-- [6.3._RESOLVED:_Can_we_avoid_copies_everywhere?](#_resolved_can_we_avoid_copies_everywhere)
-- [6.4. RESOLVED: Can we avoid recomputing keys on each run?](#_resolved_can_we_avoid_recomputing_keys_on_each_run)
-- [6.4._RESOLVED:_Can_we_avoid_recomputing_keys_on_each_run?](#_resolved_can_we_avoid_recomputing_keys_on_each_run)
+- [6.1. Fixed size keys](#_fixed_size_keys)
+- [6.1._Fixed_size_keys](#_fixed_size_keys)
+- [6.2. Should implementations be able to advertise in some way what a key/data pair are associated with?](#_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with)
+- [6.2._Should_implementations_be_able_to_advertise_in_some_way_what_a_key/data_pair_are_associated_with?](#_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with)
+- [6.3. Can we avoid copies everywhere?](#_can_we_avoid_copies_everywhere)
+- [6.3._Can_we_avoid_copies_everywhere?](#_can_we_avoid_copies_everywhere)
+- [6.4. Can we avoid recomputing keys on each run?](#_can_we_avoid_recomputing_keys_on_each_run)
+- [6.4._Can_we_avoid_recomputing_keys_on_each_run?](#_can_we_avoid_recomputing_keys_on_each_run)
 
 ## Content
 
@@ -77,10 +77,10 @@ Table of Contents
 [5. Interactions with other extensions](#_interactions_with_other_extensions)
 [6. Issues](#_issues)
 
-[6.1. RESOLVED: Fixed size keys](#_resolved_fixed_size_keys)
-[6.2. RESOLVED: Should implementations be able to advertise in some way *what* a key/data pair are associated with?](#_resolved_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with)
-[6.3. RESOLVED: Can we avoid copies everywhere?](#_resolved_can_we_avoid_copies_everywhere)
-[6.4. RESOLVED: Can we avoid recomputing keys on each run?](#_resolved_can_we_avoid_recomputing_keys_on_each_run)
+[6.1. Fixed size keys](#_fixed_size_keys)
+[6.2. Should implementations be able to advertise in some way *what* a key/data pair are associated with?](#_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with)
+[6.3. Can we avoid copies everywhere?](#_can_we_avoid_copies_everywhere)
+[6.4. Can we avoid recomputing keys on each run?](#_can_we_avoid_recomputing_keys_on_each_run)
 
 This extension proposes a method to directly retrieve binary data associated with individual pipelines, bypassing the pipeline caching mechanism, and enabling applications to manage caching themselves.
 

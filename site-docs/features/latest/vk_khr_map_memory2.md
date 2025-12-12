@@ -14,6 +14,8 @@
 - [2.1. API Features](#_api_features)
 - [2.1._API_Features](#_api_features)
 - [3. Issues](#_issues)
+- [3.1. Should we do further reworks of the memory mapping API?](#_should_we_do_further_reworks_of_the_memory_mapping_api)
+- [3.1._Should_we_do_further_reworks_of_the_memory_mapping_API?](#_should_we_do_further_reworks_of_the_memory_mapping_api)
 
 ## Content
 
@@ -25,6 +27,8 @@ Table of Contents
 [2.1. API Features](#_api_features)
 
 [3. Issues](#_issues)
+
+[3.1. Should we do further reworks of the memory mapping API?](#_should_we_do_further_reworks_of_the_memory_mapping_api)
 
 This document proposes adding extensible version of `vkMapMemory()` and
 `vkUnmapMemory()`.
@@ -77,9 +81,7 @@ required to be `VK_SUCCESS`.
 
 This extension has no independent features
 
-1) Should we do further reworks of the memory mapping API?
-
-**PROPOSED**: No, further reworks are out-of-scope for this extension.  It is
+No, further reworks are out-of-scope for this extension.  It is
 intended to solve the extensibility problem to enable new functionality,
 not add functionality itself.  In that sense, it is similar to
 VK_KHR_get_physical_device_properties2 or VK_KHR_copy_commands2.

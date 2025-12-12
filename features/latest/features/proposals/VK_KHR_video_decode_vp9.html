@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -635,17 +638,17 @@
 </li>
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_in_what_form_should_codec_specific_parameters_be_provided">5.1. RESOLVED: In what form should codec-specific parameters be provided?</a></li>
-<li><a href="#_resolved_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data">5.2. RESOLVED: What are the requirements for the codec-specific input parameters and bitstream data?</a></li>
-<li><a href="#_resolved_what_type_of_vp9_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects">5.3. RESOLVED: What type of VP9 parameter sets do we want to store in video session parameters objects?</a></li>
-<li><a href="#_resolved_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_vp9_frame">5.4. RESOLVED: What should be the contents of the input bitstream buffer when decoding an VP9 frame?</a></li>
-<li><a href="#_resolved_does_the_application_need_to_specify_the_offsets_of_individual_tiles">5.5. RESOLVED: Does the application need to specify the offsets of individual tiles?</a></li>
-<li><a href="#_resolved_does_the_application_also_need_to_specify_the_offset_of_the_frame_header">5.6. RESOLVED: Does the application also need to specify the offset of the frame header?</a></li>
-<li><a href="#_resolved_how_do_vp9_references_map_to_dpb_slot_indices">5.7. RESOLVED: How do VP9 references map to DPB slot indices?</a></li>
-<li><a href="#_resolved_does_the_application_has_to_send_frames_that_have_show_existing_frame_set_for_decoding">5.8. RESOLVED: Does the application has to send frames that have <code>show_existing_frame</code> set for decoding?</a></li>
-<li><a href="#_resolved_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent">5.9. RESOLVED: Are any of the <code>frame_width_minus_1</code>, <code>frame_height_minus_1</code>, <code>render_width_minus_1</code>, and <code>render_height_minus_1</code> parameters from the frame header redundant with respect to the decoded frame size specified in <code>VkVideoDecodeInfoKHR::dstPictureResource.codedExtent</code>?</a></li>
-<li><a href="#_resolved_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures">5.10. RESOLVED: What codec-specific parameters need to be specified for the active reference pictures?</a></li>
-<li><a href="#_resolved_how_is_reference_picture_setup_requested_for_vp9_decode_operations">5.11. RESOLVED: How is reference picture setup requested for VP9 decode operations?</a></li>
+<li><a href="#_in_what_form_should_codec_specific_parameters_be_provided">5.1. In what form should codec-specific parameters be provided?</a></li>
+<li><a href="#_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data">5.2. What are the requirements for the codec-specific input parameters and bitstream data?</a></li>
+<li><a href="#_what_type_of_vp9_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects">5.3. What type of VP9 parameter sets do we want to store in video session parameters objects?</a></li>
+<li><a href="#_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_vp9_frame">5.4. What should be the contents of the input bitstream buffer when decoding an VP9 frame?</a></li>
+<li><a href="#_does_the_application_need_to_specify_the_offsets_of_individual_tiles">5.5. Does the application need to specify the offsets of individual tiles?</a></li>
+<li><a href="#_does_the_application_also_need_to_specify_the_offset_of_the_frame_header">5.6. Does the application also need to specify the offset of the frame header?</a></li>
+<li><a href="#_how_do_vp9_references_map_to_dpb_slot_indices">5.7. How do VP9 references map to DPB slot indices?</a></li>
+<li><a href="#_does_the_application_has_to_send_frames_that_have_show_existing_frame_set_for_decoding">5.8. Does the application has to send frames that have <code>show_existing_frame</code> set for decoding?</a></li>
+<li><a href="#_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent">5.9. Are any of the <code>frame_width_minus_1</code>, <code>frame_height_minus_1</code>, <code>render_width_minus_1</code>, and <code>render_height_minus_1</code> parameters from the frame header redundant with respect to the decoded frame size specified in <code>VkVideoDecodeInfoKHR::dstPictureResource.codedExtent</code>?</a></li>
+<li><a href="#_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures">5.10. What codec-specific parameters need to be specified for the active reference pictures?</a></li>
+<li><a href="#_how_is_reference_picture_setup_requested_for_vp9_decode_operations">5.11. How is reference picture setup requested for VP9 decode operations?</a></li>
 </ul>
 </li>
 </ul>
@@ -1085,7 +1088,7 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_in_what_form_should_codec_specific_parameters_be_provided"><a class="anchor" href="#_resolved_in_what_form_should_codec_specific_parameters_be_provided"></a>5.1. RESOLVED: In what form should codec-specific parameters be provided?</h3>
+<h3 id="_in_what_form_should_codec_specific_parameters_be_provided"><a class="anchor" href="#_in_what_form_should_codec_specific_parameters_be_provided"></a>5.1. In what form should codec-specific parameters be provided?</h3>
 <div class="paragraph">
 <p>In the form of structures defined by the <code>vulkan_video_codec_vp9std_decode</code> and <code>vulkan_video_codec_vp9std</code> video std headers.</p>
 </div>
@@ -1094,37 +1097,37 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data"><a class="anchor" href="#_resolved_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data"></a>5.2. RESOLVED: What are the requirements for the codec-specific input parameters and bitstream data?</h3>
+<h3 id="_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data"><a class="anchor" href="#_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data"></a>5.2. What are the requirements for the codec-specific input parameters and bitstream data?</h3>
 <div class="paragraph">
 <p>It is legal from an API usage perspective for the application to provide any values for the codec-specific input parameters (parameter sets, picture information, etc.) or video bitstream data. However, if the input data does not conform to the requirements of the VP9 video compression standard, then video decode operations may complete unsuccessfully and, in general, the outputs produced by the video decode operation will have undefined contents.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_type_of_vp9_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects"><a class="anchor" href="#_resolved_what_type_of_vp9_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects"></a>5.3. RESOLVED: What type of VP9 parameter sets do we want to store in video session parameters objects?</h3>
+<h3 id="_what_type_of_vp9_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects"><a class="anchor" href="#_what_type_of_vp9_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects"></a>5.3. What type of VP9 parameter sets do we want to store in video session parameters objects?</h3>
 <div class="paragraph">
 <p>None. VP9 does not define any parameter sets.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_vp9_frame"><a class="anchor" href="#_resolved_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_vp9_frame"></a>5.4. RESOLVED: What should be the contents of the input bitstream buffer when decoding an VP9 frame?</h3>
+<h3 id="_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_vp9_frame"><a class="anchor" href="#_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_vp9_frame"></a>5.4. What should be the contents of the input bitstream buffer when decoding an VP9 frame?</h3>
 <div class="paragraph">
 <p>An entire VP9 frame, including the uncompressed and compressed headers, and the tile data corresponding to the frame.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_the_application_need_to_specify_the_offsets_of_individual_tiles"><a class="anchor" href="#_resolved_does_the_application_need_to_specify_the_offsets_of_individual_tiles"></a>5.5. RESOLVED: Does the application need to specify the offsets of individual tiles?</h3>
+<h3 id="_does_the_application_need_to_specify_the_offsets_of_individual_tiles"><a class="anchor" href="#_does_the_application_need_to_specify_the_offsets_of_individual_tiles"></a>5.5. Does the application need to specify the offsets of individual tiles?</h3>
 <div class="paragraph">
 <p>No. VP9 does not support decoding individual tiles independently.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_the_application_also_need_to_specify_the_offset_of_the_frame_header"><a class="anchor" href="#_resolved_does_the_application_also_need_to_specify_the_offset_of_the_frame_header"></a>5.6. RESOLVED: Does the application also need to specify the offset of the frame header?</h3>
+<h3 id="_does_the_application_also_need_to_specify_the_offset_of_the_frame_header"><a class="anchor" href="#_does_the_application_also_need_to_specify_the_offset_of_the_frame_header"></a>5.6. Does the application also need to specify the offset of the frame header?</h3>
 <div class="paragraph">
 <p>Yes, the offset of the uncompressed frame header, the compressed frame header, and a single offset to the start of the tile data corresponding to the frame.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_do_vp9_references_map_to_dpb_slot_indices"><a class="anchor" href="#_resolved_how_do_vp9_references_map_to_dpb_slot_indices"></a>5.7. RESOLVED: How do VP9 references map to DPB slot indices?</h3>
+<h3 id="_how_do_vp9_references_map_to_dpb_slot_indices"><a class="anchor" href="#_how_do_vp9_references_map_to_dpb_slot_indices"></a>5.7. How do VP9 references map to DPB slot indices?</h3>
 <div class="paragraph">
 <p>VP9 associates different semantics to the various types of references referred to by a frame (<code>INTRA_FRAME..ALTREF_FRAME</code>).</p>
 </div>
@@ -1152,25 +1155,25 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_the_application_has_to_send_frames_that_have_show_existing_frame_set_for_decoding"><a class="anchor" href="#_resolved_does_the_application_has_to_send_frames_that_have_show_existing_frame_set_for_decoding"></a>5.8. RESOLVED: Does the application has to send frames that have <code>show_existing_frame</code> set for decoding?</h3>
+<h3 id="_does_the_application_has_to_send_frames_that_have_show_existing_frame_set_for_decoding"><a class="anchor" href="#_does_the_application_has_to_send_frames_that_have_show_existing_frame_set_for_decoding"></a>5.8. Does the application has to send frames that have <code>show_existing_frame</code> set for decoding?</h3>
 <div class="paragraph">
 <p>No. Such frames do not contain any actual payload that is relevant to implementations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent"><a class="anchor" href="#_resolved_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent"></a>5.9. RESOLVED: Are any of the <code>frame_width_minus_1</code>, <code>frame_height_minus_1</code>, <code>render_width_minus_1</code>, and <code>render_height_minus_1</code> parameters from the frame header redundant with respect to the decoded frame size specified in <code>VkVideoDecodeInfoKHR::dstPictureResource.codedExtent</code>?</h3>
+<h3 id="_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent"><a class="anchor" href="#_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent"></a>5.9. Are any of the <code>frame_width_minus_1</code>, <code>frame_height_minus_1</code>, <code>render_width_minus_1</code>, and <code>render_height_minus_1</code> parameters from the frame header redundant with respect to the decoded frame size specified in <code>VkVideoDecodeInfoKHR::dstPictureResource.codedExtent</code>?</h3>
 <div class="paragraph">
 <p>Yes. None of those parameters are necessary for decoding, as the <code>codedExtent</code> of the decode output picture provides sufficient information to implementations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures"><a class="anchor" href="#_resolved_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures"></a>5.10. RESOLVED: What codec-specific parameters need to be specified for the active reference pictures?</h3>
+<h3 id="_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures"><a class="anchor" href="#_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures"></a>5.10. What codec-specific parameters need to be specified for the active reference pictures?</h3>
 <div class="paragraph">
 <p>None. there is no <code>VkVideoDecodeVP9DpbSlotInfoKHR</code> structure defined to enable specifying those for the active reference pictures and the optional reconstructed picture.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_is_reference_picture_setup_requested_for_vp9_decode_operations"><a class="anchor" href="#_resolved_how_is_reference_picture_setup_requested_for_vp9_decode_operations"></a>5.11. RESOLVED: How is reference picture setup requested for VP9 decode operations?</h3>
+<h3 id="_how_is_reference_picture_setup_requested_for_vp9_decode_operations"><a class="anchor" href="#_how_is_reference_picture_setup_requested_for_vp9_decode_operations"></a>5.11. How is reference picture setup requested for VP9 decode operations?</h3>
 <div class="paragraph">
 <p>As specifying a reconstructed picture DPB slot and resource is always required per the latest revision of the video extensions, additional codec syntax controls whether the DPB slot is activated with the reconstructed picture.</p>
 </div>

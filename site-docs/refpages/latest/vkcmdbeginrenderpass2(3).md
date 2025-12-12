@@ -19,7 +19,7 @@
 
 vkCmdBeginRenderPass2 - Begin a new render pass
 
-Alternatively to begin a render pass, call:
+To begin a render pass, call:
 
 |  | This functionality is superseded by [Vulkan Version 1.4](../../../../spec/latest/appendices/versions.html#versions-1.4). See [Legacy Functionality](../../../../spec/latest/appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |

@@ -23,6 +23,10 @@
 - [4.3.2. Performing build or move operation](#_performing_build_or_move_operation)
 - [4.3.2._Performing_build_or_move_operation](#_performing_build_or_move_operation)
 - [5. Issues](#_issues)
+- [5.1. Why use a separate VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV structure to enable the feature instead of a pipeline bit?](#_why_use_a_separate_vkraytracingpipelineclusteraccelerationstructurecreateinfonv_structure_to_enable_the_feature_instead_of_a_pipeline_bit)
+- [5.1._Why_use_a_separate_VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV_structure_to_enable_the_feature_instead_of_a_pipeline_bit?](#_why_use_a_separate_vkraytracingpipelineclusteraccelerationstructurecreateinfonv_structure_to_enable_the_feature_instead_of_a_pipeline_bit)
+- [5.2. Do cluster acceleration structures support serialization/deserialization?](#_do_cluster_acceleration_structures_support_serializationdeserialization)
+- [5.2._Do_cluster_acceleration_structures_support_serialization/deserialization?](#_do_cluster_acceleration_structures_support_serializationdeserialization)
 
 ## Content
 
@@ -38,6 +42,9 @@ Table of Contents
 [4.3. Commands](#_commands)
 
 [5. Issues](#_issues)
+
+[5.1. Why use a separate `VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV` structure to enable the feature instead of a pipeline bit?](#_why_use_a_separate_vkraytracingpipelineclusteraccelerationstructurecreateinfonv_structure_to_enable_the_feature_instead_of_a_pipeline_bit)
+[5.2. Do cluster acceleration structures support serialization/deserialization?](#_do_cluster_acceleration_structures_support_serializationdeserialization)
 
 This document introduces a new type of bottom level acceleration structure
 that supports using pre-generated clusters of primitives which helps in reducing
@@ -475,11 +482,7 @@ typedef struct VkClusterAccelerationStructureGetTemplateIndicesInfoNV {
     VkDeviceAddress                       clusterTemplateAddress;
 } VkClusterAccelerationStructureGetTemplateIndicesInfoNV;
 
-1) Why use a separate `VkRayTracingPipelineClusterAccelerationStructureCreateInfoNV` structure
-to enable the feature instead of a pipeline bit?
-
-**RESOLVED**: Yes. The extension was originally provisional and we did not want to use a pipeline bit.
+Yes. The extension was originally provisional and we did not want to use a pipeline bit.
 This should be revisited when the extension is promoted.
 
-2) Do cluster acceleration structures support serialization/deserialization?
-**RESOLVED**: No. The current specification does not support it but could be added if there is interest.
+No. The current specification does not support it but could be added if there is interest.

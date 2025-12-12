@@ -1414,9 +1414,8 @@ Valid Usage (Implicit)
 
  `sType` **must** be `VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO`
 
-Alternatively, to
-request a specific device address for a buffer, add a
-[VkBufferDeviceAddressCreateInfoEXT](#VkBufferDeviceAddressCreateInfoEXT) structure to the `pNext` chain
+To request a specific device address for a buffer, add a
+`VkBufferDeviceAddressCreateInfoEXT` structure to the `pNext` chain
 of the [VkBufferCreateInfo](#VkBufferCreateInfo) structure.
 The `VkBufferDeviceAddressCreateInfoEXT` structure is defined as:
 
@@ -8243,8 +8242,10 @@ structure with a `conversion` value other than [VK_NULL_HANDLE](../appendices/bo
 
 [](#VUID-VkImageViewCreateInfo-image-01020) VUID-VkImageViewCreateInfo-image-01020
 
-If `image` is non-sparse then it **must** be bound completely and
-contiguously to a single `VkDeviceMemory` object
+If `image` is non-sparse then the image
+or each specified *disjoint* plane
+**must** be bound completely and contiguously to a single
+`VkDeviceMemory` object
 
 [](#VUID-VkImageViewCreateInfo-subResourceRange-01021) VUID-VkImageViewCreateInfo-subResourceRange-01021
 
@@ -10264,6 +10265,7 @@ of primitives built into each geometry.
 [VkAccelerationStructureBuildSizesInfoKHR](#VkAccelerationStructureBuildSizesInfoKHR) structure which returns
 the size required for an acceleration structure and the sizes required
 for the scratch buffers, given the build parameters.
+The size requirements for a scratch buffer **may** be zero.
 
 The `srcAccelerationStructure`, `dstAccelerationStructure`, and
 `mode` members of `pBuildInfo` are ignored.
@@ -12457,6 +12459,7 @@ structure describing parameters of a build operation.
 `pSizeInfo` is a pointer to a [VkMicromapBuildSizesInfoEXT](#VkMicromapBuildSizesInfoEXT)
 structure which returns the size required for a micromap and the sizes
 required for the scratch buffers, given the build parameters.
+The size requirements for a scratch buffer **may** be zero.
 
 The `dstMicromap` and `mode` members of `pBuildInfo` are
 ignored.

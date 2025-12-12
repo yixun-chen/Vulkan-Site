@@ -111,8 +111,8 @@ Valid Usage
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pRayGenShaderBindingTable-03681) VUID-VkTraceRaysIndirectCommand2KHR-pRayGenShaderBindingTable-03681
 
-The buffer from which the `raygenShaderRecordAddress` is queried
-**must** have been created with the
+`raygenShaderRecordAddress` **must** be a device address allocated to
+the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 
@@ -124,8 +124,8 @@ The buffer from which the `raygenShaderRecordAddress` is queried
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pMissShaderBindingTable-03684) VUID-VkTraceRaysIndirectCommand2KHR-pMissShaderBindingTable-03684
 
-The buffer from which the `missShaderBindingTableAddress` is queried
-**must** have been created with the
+`missShaderBindingTableAddress` **must** be a device address allocated to
+the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 
@@ -149,8 +149,8 @@ The buffer from which the `missShaderBindingTableAddress` is queried
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pHitShaderBindingTable-03688) VUID-VkTraceRaysIndirectCommand2KHR-pHitShaderBindingTable-03688
 
-The buffer from which the `hitShaderBindingTableAddress` is queried
-**must** have been created with the
+`hitShaderBindingTableAddress` **must** be a device address allocated to
+the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 
@@ -174,8 +174,8 @@ The buffer from which the `hitShaderBindingTableAddress` is queried
 * 
 [](#VUID-VkTraceRaysIndirectCommand2KHR-pCallableShaderBindingTable-03692) VUID-VkTraceRaysIndirectCommand2KHR-pCallableShaderBindingTable-03692
 
-The buffer from which the `callableShaderBindingTableAddress` is queried
-**must** have been created with the
+`callableShaderBindingTableAddress` **must** be a device address allocated
+to the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 

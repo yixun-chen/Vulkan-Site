@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -616,7 +619,13 @@
 <li><a href="#_problem_statement">1. Problem Statement</a></li>
 <li><a href="#_solution_space">2. Solution Space</a></li>
 <li><a href="#_proposal">3. Proposal</a></li>
-<li><a href="#_issues">4. Issues</a></li>
+<li><a href="#_issues">4. Issues</a>
+<ul class="sectlevel2">
+<li><a href="#_should_the_depth_clamp_range_be_a_per_viewport_parameter">4.1. Should the depth clamp range be a per-viewport parameter?</a></li>
+<li><a href="#_should_this_pipeline_state_be_dynamic">4.2. Should this pipeline state be dynamic?</a></li>
+<li><a href="#_can_the_depth_clamp_range_be_ignored_when_depth_clamping_is_disabled">4.3. Can the depth clamp range be ignored when depth clamping is disabled?</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="preamble">
@@ -794,11 +803,10 @@ typedef struct VkPipelineViewportDepthClampControlCreateInfoEXT {
 <div class="sect1">
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_should_the_depth_clamp_range_be_a_per_viewport_parameter"><a class="anchor" href="#_should_the_depth_clamp_range_be_a_per_viewport_parameter"></a>4.1. Should the depth clamp range be a per-viewport parameter?</h3>
 <div class="paragraph">
-<p>1) Should the depth clamp range be a per-viewport parameter?</p>
-</div>
-<div class="paragraph">
-<p><strong>RESOLVED</strong>: No.
+<p>No.
 Because the depth clamp range was previously defined to be equal to the
 viewport depth range, conformant runtimes are already handling the depth
 clamp range as a per-viewport parameter.
@@ -807,20 +815,20 @@ original issue and because of complexities from interactions with
 multi-viewport support, this is left to a future extensions if a use case
 arises.</p>
 </div>
-<div class="paragraph">
-<p>2) Should this pipeline state be dynamic?</p>
 </div>
+<div class="sect2">
+<h3 id="_should_this_pipeline_state_be_dynamic"><a class="anchor" href="#_should_this_pipeline_state_be_dynamic"></a>4.2. Should this pipeline state be dynamic?</h3>
 <div class="paragraph">
-<p><strong>RESOLVED</strong>: Yes.
+<p>Yes.
 Since the viewport depth range can already be a dynamic state conformant
 runtimes are already able to handle the depth clamp range as a dynamic
 state.</p>
 </div>
-<div class="paragraph">
-<p>3) Can the depth clamp range be ignored when depth clamping is disabled?</p>
 </div>
+<div class="sect2">
+<h3 id="_can_the_depth_clamp_range_be_ignored_when_depth_clamping_is_disabled"><a class="anchor" href="#_can_the_depth_clamp_range_be_ignored_when_depth_clamping_is_disabled"></a>4.3. Can the depth clamp range be ignored when depth clamping is disabled?</h3>
 <div class="paragraph">
-<p><strong>RESOLVED</strong>: Yes.
+<p>Yes.
 This extension overrides the clamping range used only when depth clamping is
 enabled.
 The alternative would be highly unintuitive.
@@ -828,6 +836,7 @@ As a consequence the
 <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_EXT_depth_clamp_control">VK_EXT_depth_clamp_control</a>
 extension is required if depth clipping is desired in combination with this
 extension.</p>
+</div>
 </div>
 </div>
 </div>

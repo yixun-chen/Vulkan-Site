@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -637,25 +640,25 @@
 </li>
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_in_what_form_should_codec_specific_parameters_be_provided">5.1. RESOLVED: In what form should codec-specific parameters be provided?</a></li>
-<li><a href="#_resolved_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data">5.2. RESOLVED: What are the requirements for the codec-specific input parameters and bitstream data?</a></li>
-<li><a href="#_resolved_what_type_of_av1_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects">5.3. RESOLVED: What type of AV1 parameter sets do we want to store in video session parameters objects?</a></li>
-<li><a href="#_resolved_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_av1_frame">5.4. RESOLVED: What should be the contents of the input bitstream buffer when decoding an AV1 frame?</a></li>
-<li><a href="#_resolved_does_the_application_need_to_specify_the_offsets_of_individual_tiles">5.5. RESOLVED: Does the application need to specify the offsets of individual tiles?</a></li>
-<li><a href="#_resolved_does_the_application_also_need_to_specify_the_sizes_of_individual_tiles">5.6. RESOLVED: Does the application also need to specify the sizes of individual tiles?</a></li>
-<li><a href="#_resolved_does_the_application_also_need_to_specify_the_offset_of_the_frame_header_obu">5.7. RESOLVED: Does the application also need to specify the offset of the frame header OBU?</a></li>
-<li><a href="#_resolved_does_the_application_also_need_to_specify_the_offsets_of_the_tile_group_obus_and_the_range_of_tiles_they_cover">5.8. RESOLVED: Does the application also need to specify the offsets of the tile group OBUs and the range of tiles they cover?</a></li>
-<li><a href="#_resolved_how_do_av1_references_map_to_dpb_slot_indices">5.9. RESOLVED: How do AV1 references map to DPB slot indices?</a></li>
-<li><a href="#_resolved_does_av1_decode_support_the_coincide_mode">5.10. RESOLVED: Does AV1 decode support the <em>coincide</em> mode?</a></li>
-<li><a href="#_resolved_should_film_grain_be_a_capability_or_part_of_the_video_profile_definition">5.11. RESOLVED: Should film grain be a capability or part of the video profile definition?</a></li>
-<li><a href="#_resolved_do_the_additional_memory_requirements_imposed_by_av1_film_grain_support_affect_the_memory_requirements_of_images_created_with_vk_image_create_video_profile_independent_bit_khr">5.12. RESOLVED: Do the additional memory requirements imposed by AV1 film grain support affect the memory requirements of images created with <code>VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR</code>?</a></li>
-<li><a href="#_resolved_does_the_application_has_to_send_frame_obus_that_have_show_existing_frame_set_for_decoding">5.13. RESOLVED: Does the application has to send frame OBUs that have <code>show_existing_frame</code> set for decoding?</a></li>
-<li><a href="#_resolved_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent">5.14. RESOLVED: Are any of the <code>frame_width_minus_1</code>, <code>frame_height_minus_1</code>, <code>render_width_minus_1</code>, and <code>render_height_minus_1</code> parameters from the frame header redundant with respect to the decoded frame size specified in <code>VkVideoDecodeInfoKHR::dstPictureResource.codedExtent</code>?</a></li>
-<li><a href="#_resolved_are_the_extents_in_superblocks_specified_by_the_width_in_sbs_minus_1_and_height_in_sbs_minus_1_tile_parameters_necessary">5.15. RESOLVED: Are the extents in superblocks specified by the <code>width_in_sbs_minus_1</code> and <code>height_in_sbs_minus_1</code> tile parameters necessary?</a></li>
-<li><a href="#_resolved_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures">5.16. RESOLVED: What codec-specific parameters need to be specified for the active reference pictures?</a></li>
-<li><a href="#_resolved_how_is_reference_picture_setup_requested_for_av1_decode_operations">5.17. RESOLVED: How is reference picture setup requested for AV1 decode operations?</a></li>
-<li><a href="#_resolved_are_film_grain_parameters_tracked_as_part_of_dpb_slot_reference_picture_metadata">5.18. RESOLVED: Are film grain parameters tracked as part of DPB slot reference picture metadata?</a></li>
-<li><a href="#_resolved_should_the_size_of_the_gmtype_and_gm_params_arrays_be_std_video_av1_num_ref_frames_or_std_video_av1_refs_per_frame">5.19. RESOLVED: Should the size of the <code>GmType</code> and <code>gm_params</code> arrays be <code>STD_VIDEO_AV1_NUM_REF_FRAMES</code> or <code>STD_VIDEO_AV1_REFS_PER_FRAME</code>?</a></li>
+<li><a href="#_in_what_form_should_codec_specific_parameters_be_provided">5.1. In what form should codec-specific parameters be provided?</a></li>
+<li><a href="#_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data">5.2. What are the requirements for the codec-specific input parameters and bitstream data?</a></li>
+<li><a href="#_what_type_of_av1_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects">5.3. What type of AV1 parameter sets do we want to store in video session parameters objects?</a></li>
+<li><a href="#_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_av1_frame">5.4. What should be the contents of the input bitstream buffer when decoding an AV1 frame?</a></li>
+<li><a href="#_does_the_application_need_to_specify_the_offsets_of_individual_tiles">5.5. Does the application need to specify the offsets of individual tiles?</a></li>
+<li><a href="#_does_the_application_also_need_to_specify_the_sizes_of_individual_tiles">5.6. Does the application also need to specify the sizes of individual tiles?</a></li>
+<li><a href="#_does_the_application_also_need_to_specify_the_offset_of_the_frame_header_obu">5.7. Does the application also need to specify the offset of the frame header OBU?</a></li>
+<li><a href="#_does_the_application_also_need_to_specify_the_offsets_of_the_tile_group_obus_and_the_range_of_tiles_they_cover">5.8. Does the application also need to specify the offsets of the tile group OBUs and the range of tiles they cover?</a></li>
+<li><a href="#_how_do_av1_references_map_to_dpb_slot_indices">5.9. How do AV1 references map to DPB slot indices?</a></li>
+<li><a href="#_does_av1_decode_support_the_coincide_mode">5.10. Does AV1 decode support the <em>coincide</em> mode?</a></li>
+<li><a href="#_should_film_grain_be_a_capability_or_part_of_the_video_profile_definition">5.11. Should film grain be a capability or part of the video profile definition?</a></li>
+<li><a href="#_do_the_additional_memory_requirements_imposed_by_av1_film_grain_support_affect_the_memory_requirements_of_images_created_with_vk_image_create_video_profile_independent_bit_khr">5.12. Do the additional memory requirements imposed by AV1 film grain support affect the memory requirements of images created with <code>VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR</code>?</a></li>
+<li><a href="#_does_the_application_has_to_send_frame_obus_that_have_show_existing_frame_set_for_decoding">5.13. Does the application has to send frame OBUs that have <code>show_existing_frame</code> set for decoding?</a></li>
+<li><a href="#_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent">5.14. Are any of the <code>frame_width_minus_1</code>, <code>frame_height_minus_1</code>, <code>render_width_minus_1</code>, and <code>render_height_minus_1</code> parameters from the frame header redundant with respect to the decoded frame size specified in <code>VkVideoDecodeInfoKHR::dstPictureResource.codedExtent</code>?</a></li>
+<li><a href="#_are_the_extents_in_superblocks_specified_by_the_width_in_sbs_minus_1_and_height_in_sbs_minus_1_tile_parameters_necessary">5.15. Are the extents in superblocks specified by the <code>width_in_sbs_minus_1</code> and <code>height_in_sbs_minus_1</code> tile parameters necessary?</a></li>
+<li><a href="#_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures">5.16. What codec-specific parameters need to be specified for the active reference pictures?</a></li>
+<li><a href="#_how_is_reference_picture_setup_requested_for_av1_decode_operations">5.17. How is reference picture setup requested for AV1 decode operations?</a></li>
+<li><a href="#_are_film_grain_parameters_tracked_as_part_of_dpb_slot_reference_picture_metadata">5.18. Are film grain parameters tracked as part of DPB slot reference picture metadata?</a></li>
+<li><a href="#_should_the_size_of_the_gmtype_and_gm_params_arrays_be_std_video_av1_num_ref_frames_or_std_video_av1_refs_per_frame">5.19. Should the size of the <code>GmType</code> and <code>gm_params</code> arrays be <code>STD_VIDEO_AV1_NUM_REF_FRAMES</code> or <code>STD_VIDEO_AV1_REFS_PER_FRAME</code>?</a></li>
 </ul>
 </li>
 </ul>
@@ -1215,7 +1218,7 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_in_what_form_should_codec_specific_parameters_be_provided"><a class="anchor" href="#_resolved_in_what_form_should_codec_specific_parameters_be_provided"></a>5.1. RESOLVED: In what form should codec-specific parameters be provided?</h3>
+<h3 id="_in_what_form_should_codec_specific_parameters_be_provided"><a class="anchor" href="#_in_what_form_should_codec_specific_parameters_be_provided"></a>5.1. In what form should codec-specific parameters be provided?</h3>
 <div class="paragraph">
 <p>In the form of structures defined by the <code>vulkan_video_codec_av1std_decode</code> and <code>vulkan_video_codec_av1std</code> video std headers.</p>
 </div>
@@ -1227,37 +1230,37 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data"><a class="anchor" href="#_resolved_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data"></a>5.2. RESOLVED: What are the requirements for the codec-specific input parameters and bitstream data?</h3>
+<h3 id="_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data"><a class="anchor" href="#_what_are_the_requirements_for_the_codec_specific_input_parameters_and_bitstream_data"></a>5.2. What are the requirements for the codec-specific input parameters and bitstream data?</h3>
 <div class="paragraph">
 <p>It is legal from an API usage perspective for the application to provide any values for the codec-specific input parameters (parameter sets, picture information, etc.) or video bitstream data. However, if the input data does not conform to the requirements of the AV1 video compression standard, then video decode operations may complete unsuccessfully and, in general, the outputs produced by the video decode operation will have undefined contents.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_type_of_av1_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects"><a class="anchor" href="#_resolved_what_type_of_av1_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects"></a>5.3. RESOLVED: What type of AV1 parameter sets do we want to store in video session parameters objects?</h3>
+<h3 id="_what_type_of_av1_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects"><a class="anchor" href="#_what_type_of_av1_parameter_sets_do_we_want_to_store_in_video_session_parameters_objects"></a>5.3. What type of AV1 parameter sets do we want to store in video session parameters objects?</h3>
 <div class="paragraph">
 <p>Only sequence headers. As AV1 does not have identifiers for these, each video session parameters object will only ever store a single AV1 sequence header and thus applications have to create separate video session parameters objects for each sequence.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_av1_frame"><a class="anchor" href="#_resolved_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_av1_frame"></a>5.4. RESOLVED: What should be the contents of the input bitstream buffer when decoding an AV1 frame?</h3>
+<h3 id="_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_av1_frame"><a class="anchor" href="#_what_should_be_the_contents_of_the_input_bitstream_buffer_when_decoding_an_av1_frame"></a>5.4. What should be the contents of the input bitstream buffer when decoding an AV1 frame?</h3>
 <div class="paragraph">
 <p>One or more frame OBUs, each consisting of a frame header OBU and a tile group OBU. The tile group OBUs need to include all tiles of the frame.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_the_application_need_to_specify_the_offsets_of_individual_tiles"><a class="anchor" href="#_resolved_does_the_application_need_to_specify_the_offsets_of_individual_tiles"></a>5.5. RESOLVED: Does the application need to specify the offsets of individual tiles?</h3>
+<h3 id="_does_the_application_need_to_specify_the_offsets_of_individual_tiles"><a class="anchor" href="#_does_the_application_need_to_specify_the_offsets_of_individual_tiles"></a>5.5. Does the application need to specify the offsets of individual tiles?</h3>
 <div class="paragraph">
 <p>Yes.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_the_application_also_need_to_specify_the_sizes_of_individual_tiles"><a class="anchor" href="#_resolved_does_the_application_also_need_to_specify_the_sizes_of_individual_tiles"></a>5.6. RESOLVED: Does the application also need to specify the sizes of individual tiles?</h3>
+<h3 id="_does_the_application_also_need_to_specify_the_sizes_of_individual_tiles"><a class="anchor" href="#_does_the_application_also_need_to_specify_the_sizes_of_individual_tiles"></a>5.6. Does the application also need to specify the sizes of individual tiles?</h3>
 <div class="paragraph">
 <p>Yes. Especially as the tiles may be spread across multiple tile group OBUs.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_the_application_also_need_to_specify_the_offset_of_the_frame_header_obu"><a class="anchor" href="#_resolved_does_the_application_also_need_to_specify_the_offset_of_the_frame_header_obu"></a>5.7. RESOLVED: Does the application also need to specify the offset of the frame header OBU?</h3>
+<h3 id="_does_the_application_also_need_to_specify_the_offset_of_the_frame_header_obu"><a class="anchor" href="#_does_the_application_also_need_to_specify_the_offset_of_the_frame_header_obu"></a>5.7. Does the application also need to specify the offset of the frame header OBU?</h3>
 <div class="paragraph">
 <p>Due to the base address alignment requirements of the bitstream buffer, having the frame header OBU at offset zero within the application provided bitstream buffer range may require an additional copy on the application side which would be suboptimal. There are at least two possible options to avoid that:</p>
 </div>
@@ -1279,13 +1282,13 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_the_application_also_need_to_specify_the_offsets_of_the_tile_group_obus_and_the_range_of_tiles_they_cover"><a class="anchor" href="#_resolved_does_the_application_also_need_to_specify_the_offsets_of_the_tile_group_obus_and_the_range_of_tiles_they_cover"></a>5.8. RESOLVED: Does the application also need to specify the offsets of the tile group OBUs and the range of tiles they cover?</h3>
+<h3 id="_does_the_application_also_need_to_specify_the_offsets_of_the_tile_group_obus_and_the_range_of_tiles_they_cover"><a class="anchor" href="#_does_the_application_also_need_to_specify_the_offsets_of_the_tile_group_obus_and_the_range_of_tiles_they_cover"></a>5.8. Does the application also need to specify the offsets of the tile group OBUs and the range of tiles they cover?</h3>
 <div class="paragraph">
 <p>No. Implementations only need the offsets and sizes of individual tiles but do not care about the grouping of tiles into tile group OBUs.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_do_av1_references_map_to_dpb_slot_indices"><a class="anchor" href="#_resolved_how_do_av1_references_map_to_dpb_slot_indices"></a>5.9. RESOLVED: How do AV1 references map to DPB slot indices?</h3>
+<h3 id="_how_do_av1_references_map_to_dpb_slot_indices"><a class="anchor" href="#_how_do_av1_references_map_to_dpb_slot_indices"></a>5.9. How do AV1 references map to DPB slot indices?</h3>
 <div class="paragraph">
 <p>AV1 associates different semantics to the various types of references referred to by a frame (<code>INTRA_FRAME..ALTREF_FRAME</code>).</p>
 </div>
@@ -1360,13 +1363,13 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_av1_decode_support_the_coincide_mode"><a class="anchor" href="#_resolved_does_av1_decode_support_the_coincide_mode"></a>5.10. RESOLVED: Does AV1 decode support the <em>coincide</em> mode?</h3>
+<h3 id="_does_av1_decode_support_the_coincide_mode"><a class="anchor" href="#_does_av1_decode_support_the_coincide_mode"></a>5.10. Does AV1 decode support the <em>coincide</em> mode?</h3>
 <div class="paragraph">
 <p>AV1 film grain is an example where the image contents of the decode output picture and the reconstructed picture will need to be different, thus in such cases using <em>coincide</em> mode is not really an option. However, requiring <em>distinct</em> mode in all cases would be overly restrictive, as implementations may be able to support <em>coincide</em> mode when film grain is not used, or if the frames using film grain may not need to be set up as reference, hence this proposal does not restrict implementations to support <em>coincide</em> mode when applicable and only requires the use of <em>distinct</em> mode in the specific decode operations that do apply film grain. In fact, this proposal changes general codec-independent behavior by allowing <em>distinct</em> mode to be used for AV1 film grain enabled frames (by specifying a different decode output and reconstructed picture resource) even if the implementation does not report support for <em>distinct</em> mode in the video decode profile capabilities.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_film_grain_be_a_capability_or_part_of_the_video_profile_definition"><a class="anchor" href="#_resolved_should_film_grain_be_a_capability_or_part_of_the_video_profile_definition"></a>5.11. RESOLVED: Should film grain be a capability or part of the video profile definition?</h3>
+<h3 id="_should_film_grain_be_a_capability_or_part_of_the_video_profile_definition"><a class="anchor" href="#_should_film_grain_be_a_capability_or_part_of_the_video_profile_definition"></a>5.11. Should film grain be a capability or part of the video profile definition?</h3>
 <div class="paragraph">
 <p>As AV1 film grain may have implications on the overall behavior of the decoding process, this proposal includes it in the video profile definition similar to how the picture layout for interlaced content is also part of the video profile definition for H.264 decode.</p>
 </div>
@@ -1391,37 +1394,37 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_do_the_additional_memory_requirements_imposed_by_av1_film_grain_support_affect_the_memory_requirements_of_images_created_with_vk_image_create_video_profile_independent_bit_khr"><a class="anchor" href="#_resolved_do_the_additional_memory_requirements_imposed_by_av1_film_grain_support_affect_the_memory_requirements_of_images_created_with_vk_image_create_video_profile_independent_bit_khr"></a>5.12. RESOLVED: Do the additional memory requirements imposed by AV1 film grain support affect the memory requirements of images created with <code>VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR</code>?</h3>
+<h3 id="_do_the_additional_memory_requirements_imposed_by_av1_film_grain_support_affect_the_memory_requirements_of_images_created_with_vk_image_create_video_profile_independent_bit_khr"><a class="anchor" href="#_do_the_additional_memory_requirements_imposed_by_av1_film_grain_support_affect_the_memory_requirements_of_images_created_with_vk_image_create_video_profile_independent_bit_khr"></a>5.12. Do the additional memory requirements imposed by AV1 film grain support affect the memory requirements of images created with <code>VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR</code>?</h3>
 <div class="paragraph">
 <p>Potentially. Video profile independent image resources need to be compatible with all video profiles supported by the implementation, thus if the implementation has additional memory requirements for such resources (e.g. an image usable both as decode output picture and reconstructed picture) in order to support AV1 film grain, then those may apply to certain video profile independent image resources, in line with the general expectations laid out about video profile independent resources in the <code>VK_KHR_video_maintenance1</code> extension.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_the_application_has_to_send_frame_obus_that_have_show_existing_frame_set_for_decoding"><a class="anchor" href="#_resolved_does_the_application_has_to_send_frame_obus_that_have_show_existing_frame_set_for_decoding"></a>5.13. RESOLVED: Does the application has to send frame OBUs that have <code>show_existing_frame</code> set for decoding?</h3>
+<h3 id="_does_the_application_has_to_send_frame_obus_that_have_show_existing_frame_set_for_decoding"><a class="anchor" href="#_does_the_application_has_to_send_frame_obus_that_have_show_existing_frame_set_for_decoding"></a>5.13. Does the application has to send frame OBUs that have <code>show_existing_frame</code> set for decoding?</h3>
 <div class="paragraph">
 <p>No. Such frame OBUs do not contain any actual payload that is relevant to implementations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent"><a class="anchor" href="#_resolved_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent"></a>5.14. RESOLVED: Are any of the <code>frame_width_minus_1</code>, <code>frame_height_minus_1</code>, <code>render_width_minus_1</code>, and <code>render_height_minus_1</code> parameters from the frame header redundant with respect to the decoded frame size specified in <code>VkVideoDecodeInfoKHR::dstPictureResource.codedExtent</code>?</h3>
+<h3 id="_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent"><a class="anchor" href="#_are_any_of_the_frame_width_minus_1_frame_height_minus_1_render_width_minus_1_and_render_height_minus_1_parameters_from_the_frame_header_redundant_with_respect_to_the_decoded_frame_size_specified_in_vkvideodecodeinfokhrdstpictureresource_codedextent"></a>5.14. Are any of the <code>frame_width_minus_1</code>, <code>frame_height_minus_1</code>, <code>render_width_minus_1</code>, and <code>render_height_minus_1</code> parameters from the frame header redundant with respect to the decoded frame size specified in <code>VkVideoDecodeInfoKHR::dstPictureResource.codedExtent</code>?</h3>
 <div class="paragraph">
 <p>Yes. None of those parameters are necessary for decoding, as the <code>codedExtent</code> of the decode output picture provides sufficient information to implementations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_the_extents_in_superblocks_specified_by_the_width_in_sbs_minus_1_and_height_in_sbs_minus_1_tile_parameters_necessary"><a class="anchor" href="#_resolved_are_the_extents_in_superblocks_specified_by_the_width_in_sbs_minus_1_and_height_in_sbs_minus_1_tile_parameters_necessary"></a>5.15. RESOLVED: Are the extents in superblocks specified by the <code>width_in_sbs_minus_1</code> and <code>height_in_sbs_minus_1</code> tile parameters necessary?</h3>
+<h3 id="_are_the_extents_in_superblocks_specified_by_the_width_in_sbs_minus_1_and_height_in_sbs_minus_1_tile_parameters_necessary"><a class="anchor" href="#_are_the_extents_in_superblocks_specified_by_the_width_in_sbs_minus_1_and_height_in_sbs_minus_1_tile_parameters_necessary"></a>5.15. Are the extents in superblocks specified by the <code>width_in_sbs_minus_1</code> and <code>height_in_sbs_minus_1</code> tile parameters necessary?</h3>
 <div class="paragraph">
 <p>Yes. Video APIs use different conventions for these parameters. This proposal expects the syntax values specified through the <code>pWidthInSbsMinus1</code> and <code>pHeightInSbsMinus1</code> array pointer members of the <code>StdVideoAV1TileInfo</code> structure.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures"><a class="anchor" href="#_resolved_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures"></a>5.16. RESOLVED: What codec-specific parameters need to be specified for the active reference pictures?</h3>
+<h3 id="_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures"><a class="anchor" href="#_what_codec_specific_parameters_need_to_be_specified_for_the_active_reference_pictures"></a>5.16. What codec-specific parameters need to be specified for the active reference pictures?</h3>
 <div class="paragraph">
 <p>Certain frame header OBU parameters of the referenced frames and a subset of the reference frame state tracked according to section 7.20 of the AV1 specification. These are needed by implementations that may not track them as part of the video session state.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_is_reference_picture_setup_requested_for_av1_decode_operations"><a class="anchor" href="#_resolved_how_is_reference_picture_setup_requested_for_av1_decode_operations"></a>5.17. RESOLVED: How is reference picture setup requested for AV1 decode operations?</h3>
+<h3 id="_how_is_reference_picture_setup_requested_for_av1_decode_operations"><a class="anchor" href="#_how_is_reference_picture_setup_requested_for_av1_decode_operations"></a>5.17. How is reference picture setup requested for AV1 decode operations?</h3>
 <div class="paragraph">
 <p>As specifying a reconstructed picture DPB slot and resource is always required per the latest revision of the video extensions, additional codec syntax controls whether the DPB slot is activated with the reconstructed picture.</p>
 </div>
@@ -1433,13 +1436,13 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_film_grain_parameters_tracked_as_part_of_dpb_slot_reference_picture_metadata"><a class="anchor" href="#_resolved_are_film_grain_parameters_tracked_as_part_of_dpb_slot_reference_picture_metadata"></a>5.18. RESOLVED: Are film grain parameters tracked as part of DPB slot reference picture metadata?</h3>
+<h3 id="_are_film_grain_parameters_tracked_as_part_of_dpb_slot_reference_picture_metadata"><a class="anchor" href="#_are_film_grain_parameters_tracked_as_part_of_dpb_slot_reference_picture_metadata"></a>5.18. Are film grain parameters tracked as part of DPB slot reference picture metadata?</h3>
 <div class="paragraph">
 <p>No. Implementations do not usually track this in the AV1 decode sessions and the application is anyway expected to specify the effective film grain parameters through the <code>StdVideoAV1FilmGrain</code> structure. It is thus the application&#8217;s responsibility to ensure that they provide these. This also means that AV1 decoder implementations will ignore the <code>update_grain</code> and <code>film_grain_params_ref_idx</code> parameters which are defined only for the purposes of being used by a future AV1 encoder extension.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_the_size_of_the_gmtype_and_gm_params_arrays_be_std_video_av1_num_ref_frames_or_std_video_av1_refs_per_frame"><a class="anchor" href="#_resolved_should_the_size_of_the_gmtype_and_gm_params_arrays_be_std_video_av1_num_ref_frames_or_std_video_av1_refs_per_frame"></a>5.19. RESOLVED: Should the size of the <code>GmType</code> and <code>gm_params</code> arrays be <code>STD_VIDEO_AV1_NUM_REF_FRAMES</code> or <code>STD_VIDEO_AV1_REFS_PER_FRAME</code>?</h3>
+<h3 id="_should_the_size_of_the_gmtype_and_gm_params_arrays_be_std_video_av1_num_ref_frames_or_std_video_av1_refs_per_frame"><a class="anchor" href="#_should_the_size_of_the_gmtype_and_gm_params_arrays_be_std_video_av1_num_ref_frames_or_std_video_av1_refs_per_frame"></a>5.19. Should the size of the <code>GmType</code> and <code>gm_params</code> arrays be <code>STD_VIDEO_AV1_NUM_REF_FRAMES</code> or <code>STD_VIDEO_AV1_REFS_PER_FRAME</code>?</h3>
 <div class="paragraph">
 <p><code>STD_VIDEO_AV1_NUM_REF_FRAMES</code>, i.e. eight, in order to match the indexing scheme used by the AV1 specification. In practice, element index zero will not be used, because the AV1 specification only defines these for the AV1 reference names between <code>LAST_FRAME</code> and <code>ALTREF_FRAME</code> (i.e. between indices 1 and 7), but it was deemed that diverging from the indexing scheme used by the AV1 specification could be the source of confusion.</p>
 </div>

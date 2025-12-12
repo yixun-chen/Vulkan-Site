@@ -111,8 +111,8 @@ typedef struct VkAllocationCallbacks {
 } VkAllocationCallbacks;
 
 * 
-`pUserData` is a value to be interpreted by the implementation of
-the callbacks.
+`pUserData` is NULL or an application-defined user data pointer to
+be interpreted by the implementation of the callbacks.
 When any of the callbacks in `VkAllocationCallbacks` are called, the
 Vulkan implementation will pass this value as the first parameter to the
 callback.
@@ -7107,8 +7107,8 @@ typedef VkFlags VkMemoryMapFlags;
 `VkMemoryMapFlags` is a bitmask type for setting a mask of zero or more
 [VkMemoryMapFlagBits](#VkMemoryMapFlagBits).
 
-Alternatively, to retrieve a host virtual address pointer to a region of a
-mappable memory object, call:
+To retrieve a host virtual address pointer to a region of a mappable memory
+object, call:
 
 // Provided by VK_VERSION_1_4
 VkResult vkMapMemory2(
@@ -7801,8 +7801,8 @@ Host Synchronization
 * 
 Host access to `memory` **must** be externally synchronized
 
-Alternatively, to unmap a memory object once host access to it is no longer
-needed by the application, call:
+To unmap a memory object once host access to it is no longer needed by the
+application, call:
 
 // Provided by VK_VERSION_1_4
 VkResult vkUnmapMemory2(

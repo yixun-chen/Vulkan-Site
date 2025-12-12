@@ -3114,6 +3114,20 @@ be enabled
 If a shader object is bound to any graphics stage, *multiview*
 functionality **must** not be enabled in the current render pass
 
+[](#VUID-vkCmdDrawClusterHUAWEI-multiviewPerViewViewports-12262) VUID-vkCmdDrawClusterHUAWEI-multiviewPerViewViewports-12262
+
+If the [    `multiviewPerViewViewports`](../../../../spec/latest/chapters/features.html#features-multiviewPerViewViewports) feature is enabled, then the index of
+the most significant bit in current render pass instance `viewMask`
+**must** be less than the [current value](../../../../spec/latest/chapters/pipelines.html#dynamic-state-current-value) of
+`viewportCount`
+
+[](#VUID-vkCmdDrawClusterHUAWEI-multiviewPerViewViewports-12263) VUID-vkCmdDrawClusterHUAWEI-multiviewPerViewViewports-12263
+
+If the [    `multiviewPerViewViewports`](../../../../spec/latest/chapters/features.html#features-multiviewPerViewViewports) feature is enabled, then the index of
+the most significant bit in current render pass instance `viewMask`
+**must** be less than the [current value](../../../../spec/latest/chapters/pipelines.html#dynamic-state-current-value) of
+`scissorCount`
+
 [](#VUID-vkCmdDrawClusterHUAWEI-flags-11521) VUID-vkCmdDrawClusterHUAWEI-flags-11521
 
 If current render pass instance was begun with [vkCmdBeginRendering](vkCmdBeginRendering.html)

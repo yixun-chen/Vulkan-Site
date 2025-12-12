@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -632,15 +635,15 @@
 </li>
 <li><a href="#_issues">4. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations">4.1. Are all attachment types (color, depth/stencil, input, resolve) accessible via tile attachment load/store operations?</a></li>
-<li><a href="#_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled">4.2. Should draw commands be allowed when per-tile execution mode is enabled?</a></li>
-<li><a href="#_should_texture_sampling_be_supported_on_tile_attachments">4.3. Should texture sampling be supported on tile attachments?</a></li>
-<li><a href="#_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions">4.4. Does this extension offer any guarantees for the granularity of the tile dimensions?</a></li>
-<li><a href="#_should_we_support_atomic_operations_on_tile_attachments">4.5. Should we support atomic operations on tile attachments?</a></li>
-<li><a href="#_does_this_extension_support_multiview_rendering">4.6. Does this extension support multiview rendering?</a></li>
-<li><a href="#_does_this_extension_support_attachments_with_a_layer_count_greater_than_1">4.7. Does this extension support attachments with a layer count greater than 1?</a></li>
-<li><a href="#_are_store_operations_allowed_for_apron_pixels">4.8. Are store operations allowed for apron pixels?</a></li>
-<li><a href="#_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes">4.9. Is functionality and performance expected to be similar for both render pass objects and dynamic render passes?</a></li>
+<li><a href="#_proposed_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations">4.1. PROPOSED: Are all attachment types (color, depth/stencil, input, resolve) accessible via tile attachment load/store operations?</a></li>
+<li><a href="#_proposed_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled">4.2. PROPOSED: Should draw commands be allowed when per-tile execution mode is enabled?</a></li>
+<li><a href="#_proposed_should_texture_sampling_be_supported_on_tile_attachments">4.3. PROPOSED: Should texture sampling be supported on tile attachments?</a></li>
+<li><a href="#_proposed_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions">4.4. PROPOSED: Does this extension offer any guarantees for the granularity of the tile dimensions?</a></li>
+<li><a href="#_proposed_should_we_support_atomic_operations_on_tile_attachments">4.5. PROPOSED: Should we support atomic operations on tile attachments?</a></li>
+<li><a href="#_proposed_does_this_extension_support_multiview_rendering">4.6. PROPOSED: Does this extension support multiview rendering?</a></li>
+<li><a href="#_proposed_does_this_extension_support_attachments_with_a_layer_count_greater_than_1">4.7. PROPOSED: Does this extension support attachments with a layer count greater than 1?</a></li>
+<li><a href="#_proposed_are_store_operations_allowed_for_apron_pixels">4.8. PROPOSED: Are store operations allowed for apron pixels?</a></li>
+<li><a href="#_proposed_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes">4.9. PROPOSED: Is functionality and performance expected to be similar for both render pass objects and dynamic render passes?</a></li>
 <li><a href="#_does_this_extension_change_the_behavior_of_render_pass_loadop_or_storeop">4.10. Does this extension change the behavior of render pass LoadOp or StoreOp?</a></li>
 <li><a href="#_can_tile_attachment_loadstore_operations_be_used_without_enabling_per_tile_execution">4.11. Can tile attachment load/store operations be used without enabling per-tile execution?</a></li>
 <li><a href="#_should_this_extension_include_the_ability_for_fragment_or_compute_shader_to_reinterpret_the_format_of_tile_attachment_pixels">4.12. Should this extension include the ability for fragment or compute shader to reinterpret the format of tile attachment pixels?</a></li>
@@ -1546,9 +1549,9 @@ specified in the shader can be, and must be a power of 2.</p>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations"><a class="anchor" href="#_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations"></a>4.1. Are all attachment types (color, depth/stencil, input, resolve) accessible via tile attachment load/store operations?</h3>
+<h3 id="_proposed_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations"><a class="anchor" href="#_proposed_are_all_attachment_types_color_depthstencil_input_resolve_accessible_via_tile_attachment_loadstore_operations"></a>4.1. PROPOSED: Are all attachment types (color, depth/stencil, input, resolve) accessible via tile attachment load/store operations?</h3>
 <div class="paragraph">
-<p>PROPOSED:  No, we propose the following restrictions for specific attachment types and shader stages:</p>
+<p>No, we propose the following restrictions for specific attachment types and shader stages:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1573,9 +1576,9 @@ in this extension.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled"><a class="anchor" href="#_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled"></a>4.2. Should draw commands be allowed when per-tile execution mode is enabled?</h3>
+<h3 id="_proposed_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled"><a class="anchor" href="#_proposed_should_draw_commands_be_allowed_when_per_tile_execution_mode_is_enabled"></a>4.2. PROPOSED: Should draw commands be allowed when per-tile execution mode is enabled?</h3>
 <div class="paragraph">
-<p>PROPOSED: Yes, this is allowed, because it can be useful for certain use cases.</p>
+<p>Yes, this is allowed, because it can be useful for certain use cases.</p>
 </div>
 <div class="paragraph">
 <p>Without this extension, a TBDR GPU can "distribute" the draw call across the tiles.
@@ -1604,9 +1607,9 @@ DRAW_INDIRECT stage.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_should_texture_sampling_be_supported_on_tile_attachments"><a class="anchor" href="#_should_texture_sampling_be_supported_on_tile_attachments"></a>4.3. Should texture sampling be supported on tile attachments?</h3>
+<h3 id="_proposed_should_texture_sampling_be_supported_on_tile_attachments"><a class="anchor" href="#_proposed_should_texture_sampling_be_supported_on_tile_attachments"></a>4.3. PROPOSED: Should texture sampling be supported on tile attachments?</h3>
 <div class="paragraph">
-<p>PROPOSED: Yes, this has been included in the current proposal, but
+<p>Yes, this has been included in the current proposal, but
 guarded by feature bit <code>tileShadingSampledAttachments</code>.</p>
 </div>
 <div class="ulist">
@@ -1639,9 +1642,9 @@ reading locations outside the tile+apron boundary.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions"><a class="anchor" href="#_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions"></a>4.4. Does this extension offer any guarantees for the granularity of the tile dimensions?</h3>
+<h3 id="_proposed_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions"><a class="anchor" href="#_proposed_does_this_extension_offer_any_guarantees_for_the_granularity_of_the_tile_dimensions"></a>4.4. PROPOSED: Does this extension offer any guarantees for the granularity of the tile dimensions?</h3>
 <div class="paragraph">
-<p>PROPOSED: Yes, the granularity is guaranteed.</p>
+<p>Yes, the granularity is guaranteed.</p>
 </div>
 <div class="paragraph">
 <p><a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_QCOM_tile_properties">VK_QCOM_tile_properties</a> reports
@@ -1654,16 +1657,16 @@ size of known dimensions.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_should_we_support_atomic_operations_on_tile_attachments"><a class="anchor" href="#_should_we_support_atomic_operations_on_tile_attachments"></a>4.5. Should we support atomic operations on tile attachments?</h3>
+<h3 id="_proposed_should_we_support_atomic_operations_on_tile_attachments"><a class="anchor" href="#_proposed_should_we_support_atomic_operations_on_tile_attachments"></a>4.5. PROPOSED: Should we support atomic operations on tile attachments?</h3>
 <div class="paragraph">
-<p>PROPOSED:  Yes, the atomic operations on tile attachments are supported but
+<p>Yes, the atomic operations on tile attachments are supported but
 the functionality is currently guarded by a feature bit.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_does_this_extension_support_multiview_rendering"><a class="anchor" href="#_does_this_extension_support_multiview_rendering"></a>4.6. Does this extension support multiview rendering?</h3>
+<h3 id="_proposed_does_this_extension_support_multiview_rendering"><a class="anchor" href="#_proposed_does_this_extension_support_multiview_rendering"></a>4.6. PROPOSED: Does this extension support multiview rendering?</h3>
 <div class="paragraph">
-<p>PROPOSED: Yes, this is supported.</p>
+<p>Yes, this is supported.</p>
 </div>
 <div class="paragraph">
 <p>Without this extension, implementations may implement multiview
@@ -1677,16 +1680,16 @@ implementation style.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_does_this_extension_support_attachments_with_a_layer_count_greater_than_1"><a class="anchor" href="#_does_this_extension_support_attachments_with_a_layer_count_greater_than_1"></a>4.7. Does this extension support attachments with a layer count greater than 1?</h3>
+<h3 id="_proposed_does_this_extension_support_attachments_with_a_layer_count_greater_than_1"><a class="anchor" href="#_proposed_does_this_extension_support_attachments_with_a_layer_count_greater_than_1"></a>4.7. PROPOSED: Does this extension support attachments with a layer count greater than 1?</h3>
 <div class="paragraph">
-<p>PROPOSED: Yes, this is supported. The existing <code>VK_QCOM_tile_properties</code>
+<p>Yes, this is supported. The existing <code>VK_QCOM_tile_properties</code>
 extension exposes support for multi-layered tiles.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_are_store_operations_allowed_for_apron_pixels"><a class="anchor" href="#_are_store_operations_allowed_for_apron_pixels"></a>4.8. Are store operations allowed for apron pixels?</h3>
+<h3 id="_proposed_are_store_operations_allowed_for_apron_pixels"><a class="anchor" href="#_proposed_are_store_operations_allowed_for_apron_pixels"></a>4.8. PROPOSED: Are store operations allowed for apron pixels?</h3>
 <div class="paragraph">
-<p>PROPOSED: No, this is not allowed.</p>
+<p>No, this is not allowed.</p>
 </div>
 <div class="paragraph">
 <p>There are no known use cases, for stores to the apron pixels
@@ -1695,9 +1698,9 @@ TBDRs.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes"><a class="anchor" href="#_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes"></a>4.9. Is functionality and performance expected to be similar for both render pass objects and dynamic render passes?</h3>
+<h3 id="_proposed_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes"><a class="anchor" href="#_proposed_is_functionality_and_performance_expected_to_be_similar_for_both_render_pass_objects_and_dynamic_render_passes"></a>4.9. PROPOSED: Is functionality and performance expected to be similar for both render pass objects and dynamic render passes?</h3>
 <div class="paragraph">
-<p>PROPOSED: Yes, since this extension builds upon
+<p>Yes, since this extension builds upon
 <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_KHR_dynamic_rendering_local_read">VK_KHR_dynamic_rendering_local_read</a>,
 the functionality and performance is expected to be equivalent.</p>
 </div>
@@ -1710,13 +1713,13 @@ for dynamic render passes.</p>
 <div class="sect2">
 <h3 id="_does_this_extension_change_the_behavior_of_render_pass_loadop_or_storeop"><a class="anchor" href="#_does_this_extension_change_the_behavior_of_render_pass_loadop_or_storeop"></a>4.10. Does this extension change the behavior of render pass LoadOp or StoreOp?</h3>
 <div class="paragraph">
-<p>RESOLVED: No, there is no change to the behavior.</p>
+<p>No, there is no change to the behavior.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_can_tile_attachment_loadstore_operations_be_used_without_enabling_per_tile_execution"><a class="anchor" href="#_can_tile_attachment_loadstore_operations_be_used_without_enabling_per_tile_execution"></a>4.11. Can tile attachment load/store operations be used without enabling per-tile execution?</h3>
 <div class="paragraph">
-<p>RESOLVED: Yes, if a render pass enables tile shading but not the
+<p>Yes, if a render pass enables tile shading but not the
 <a href="https://docs.vulkan.org/spec/latest/chapters/renderpass.html#renderpass-per-tile-execution-model">per-tile execution model</a>, then
 fragment shader invocations can load pixel values from tile attachment
 variables.</p>
@@ -1730,7 +1733,7 @@ of other fragments within the tile and/or the apron region.</p>
 <div class="sect2">
 <h3 id="_should_this_extension_include_the_ability_for_fragment_or_compute_shader_to_reinterpret_the_format_of_tile_attachment_pixels"><a class="anchor" href="#_should_this_extension_include_the_ability_for_fragment_or_compute_shader_to_reinterpret_the_format_of_tile_attachment_pixels"></a>4.12. Should this extension include the ability for fragment or compute shader to reinterpret the format of tile attachment pixels?</h3>
 <div class="paragraph">
-<p>RESOLVED: No, while such a feature is desirable for many TBDR GPUs and is related
+<p>No, while such a feature is desirable for many TBDR GPUs and is related
 to this extension, but was considered beyond the scope of this extension.</p>
 </div>
 <div class="paragraph">
@@ -1748,7 +1751,7 @@ used. Therefore, it may be best handled as a completely separate extension.</p>
 <div class="sect2">
 <h3 id="_should_this_extension_include_an_area_based_dispatch"><a class="anchor" href="#_should_this_extension_include_an_area_based_dispatch"></a>4.13. Should this extension include an area-based dispatch?</h3>
 <div class="paragraph">
-<p>RESOLVED: Yes, on some Adreno &#8482; GPUs and for some use cases, the tile-sized
+<p>Yes, on some Adreno &#8482; GPUs and for some use cases, the tile-sized
 dispatch can improve GPU efficiency and has been incorporated into this extension.</p>
 </div>
 <div class="paragraph">
@@ -1762,7 +1765,7 @@ most optimally perform load/store operations for the micro tile&#8217;s pixels.<
 <div class="sect2">
 <h3 id="_do_we_need_a_new_vk_pipeline_create_bit_to_specify_if_per_tile_execution_mode_will_be_enabled"><a class="anchor" href="#_do_we_need_a_new_vk_pipeline_create_bit_to_specify_if_per_tile_execution_mode_will_be_enabled"></a>4.14. Do we need a new VK_PIPELINE_CREATE bit to specify if per-tile execution mode will be enabled?</h3>
 <div class="paragraph">
-<p>RESOLVED: No. In this proposal, a created graphics pipeline can be used in a render
+<p>No. In this proposal, a created graphics pipeline can be used in a render
 pass regardless whether the render pass enables tile shading, and regardless whether
 <a href="https://docs.vulkan.org/spec/latest/chapters/renderpass.html#renderpass-per-tile-execution-model">per-tile execution mode</a> is enabled. Similarly,
 a created compute pipelines can now be used inside or outside a render pass. We decided
@@ -1775,7 +1778,7 @@ the value <code>0</code> if the shader is invoked when per-tile execution mode i
 <div class="sect2">
 <h3 id="_should_vkcomputepipelinecreateinfo_be_extended_with_renderpasssubpass_information"><a class="anchor" href="#_should_vkcomputepipelinecreateinfo_be_extended_with_renderpasssubpass_information"></a>4.15. Should VkComputePipelineCreateInfo be extended with renderpass/subpass information?</h3>
 <div class="paragraph">
-<p>RESOLVED: No. Similar to above, we believe that limiting
+<p>No. Similar to above, we believe that limiting
 compute pipelines to a single renderpass/subpass would be a burden to developers
 and we do not anticipate that implementations need this information.</p>
 </div>
@@ -1783,7 +1786,7 @@ and we do not anticipate that implementations need this information.</p>
 <div class="sect2">
 <h3 id="_how_does_this_extension_differ_from_vk_ext_shader_tile_image"><a class="anchor" href="#_how_does_this_extension_differ_from_vk_ext_shader_tile_image"></a>4.16. How does this extension differ from <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_EXT_shader_tile_image">VK_EXT_shader_tile_image</a>?</h3>
 <div class="paragraph">
-<p>RESOLVED: The functionality of this extension is a superset of <code>VK_EXT_shader_tile_image</code>.</p>
+<p>The functionality of this extension is a superset of <code>VK_EXT_shader_tile_image</code>.</p>
 </div>
 <div class="paragraph">
 <p>VK_EXT_shader_tile_image is limited to bringing the functionality of
@@ -1798,7 +1801,7 @@ the exception of descriptor-less access.</p>
 <div class="sect2">
 <h3 id="_is_robustness_specified_for_out_of_bounds_tile_attachment_access"><a class="anchor" href="#_is_robustness_specified_for_out_of_bounds_tile_attachment_access"></a>4.17. Is robustness specified for out-of-bounds tile attachment access?</h3>
 <div class="paragraph">
-<p>RESOLVED: Possibly in a future extension. This extension requires that sampling
+<p>Possibly in a future extension. This extension requires that sampling
 and load/store tile attachment access must use an offset/coordinate that is within
 the boundary of the tile (plus any apron). Out-of-bounds access will result in
 undefined behavior. For many use cases, this will require the
@@ -1820,7 +1823,7 @@ In this initial proposal, we have elected to simply ban out-of-bounds tile acces
 <div class="sect2">
 <h3 id="_how_does_this_extension_interact_with_vk_qcom_image_processing"><a class="anchor" href="#_how_does_this_extension_interact_with_vk_qcom_image_processing"></a>4.18. How does this extension interact with <a href="https://docs.vulkan.org/spec/latest/appendices/extensions.html#VK_QCOM_image_processing">VK_QCOM_image_processing</a>?</h3>
 <div class="paragraph">
-<p>RESOLVED: The functionality VK_QCOM_image_processing and VK_QCOM_image_processing2 are
+<p>The functionality VK_QCOM_image_processing and VK_QCOM_image_processing2 are
 available with tile shading with an optional feature bit <code>tileShadingImageProcessing</code>.</p>
 </div>
 <div class="paragraph">

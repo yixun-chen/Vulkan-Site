@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -651,17 +654,17 @@
 </li>
 <li><a href="#_issues">7. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_1_resolved_should_we_allow_early_fragment_tests">7.1. 1. RESOLVED: Should we allow early fragment tests?</a></li>
-<li><a href="#_2_resolved_should_depth_stencil_fetch_be_a_separate_extension">7.2. 2. RESOLVED: Should depth / stencil fetch be a separate extension?</a></li>
-<li><a href="#_3_resolved_what_should_we_name_these_variables_what_should_the_extension_be_named">7.3. 3. RESOLVED: What should we name these variables? What should the extension be named?</a></li>
-<li><a href="#_4_resolved_are_there_any_non_obvious_interactions_with_the_suspendresume_functionality_in_vk_khr_dynamic_rendering">7.4. 4. RESOLVED: Are there any non-obvious interactions with the suspend/resume functionality in <code>VK_KHR_dynamic_rendering</code>?</a></li>
-<li><a href="#_5_resolved_enable_disable_raster_order_access">7.5. 5. RESOLVED: Enable / Disable raster order access</a></li>
-<li><a href="#_7_resolved_should_this_extension_reuse_optypeimage_or_introduce_a_new_type_for_declaring_tile_images">7.6. 7. RESOLVED: Should this extension reuse OpTypeImage, or introduce a new type for declaring tile images?</a></li>
-<li><a href="#_8_resolved_should_color_depth_and_stencil_reads_use_the_same_spir_v_opcode">7.7. 8. RESOLVED: Should Color, Depth, and Stencil reads use the same SPIR-V opcode?</a></li>
-<li><a href="#_9_resolved_should_depth_and_stencil_read_opcodes_consume_an_image_operand_specifying_the_attachment_or_should_it_be_implicit">7.8. 9. RESOLVED: Should Depth and Stencil read opcodes consume an image operand specifying the attachment, or should it be implicit?</a></li>
-<li><a href="#_10_resolved_should_this_extension_reuse_the_image_dim_subpassdata_or_introduce_a_new_dim">7.9. 10. RESOLVED: Should this extension reuse the image Dim SubpassData or introduce a new Dim?</a></li>
-<li><a href="#_11_resolved_should_this_extension_require_applications_to_create_and_bind_descriptors_for_tile_images">7.10. 11. RESOLVED: Should this extension require applications to create and bind descriptors for tile images?</a></li>
-<li><a href="#_12_resolved_what_does_undefined_value_mean_for_tile_image_reads">7.11. 12. RESOLVED: What does 'undefined value' mean for tile image reads?</a></li>
+<li><a href="#_should_we_allow_early_fragment_tests">7.1. Should we allow early fragment tests?</a></li>
+<li><a href="#_should_depth_stencil_fetch_be_a_separate_extension">7.2. Should depth / stencil fetch be a separate extension?</a></li>
+<li><a href="#_what_should_we_name_these_variables_what_should_the_extension_be_named">7.3. What should we name these variables? What should the extension be named?</a></li>
+<li><a href="#_are_there_any_non_obvious_interactions_with_the_suspendresume_functionality_in_vk_khr_dynamic_rendering">7.4. Are there any non-obvious interactions with the suspend/resume functionality in <code>VK_KHR_dynamic_rendering</code>?</a></li>
+<li><a href="#_enable_disable_raster_order_access">7.5. Enable / Disable raster order access</a></li>
+<li><a href="#_should_this_extension_reuse_optypeimage_or_introduce_a_new_type_for_declaring_tile_images">7.6. Should this extension reuse OpTypeImage, or introduce a new type for declaring tile images?</a></li>
+<li><a href="#_should_color_depth_and_stencil_reads_use_the_same_spir_v_opcode">7.7. Should Color, Depth, and Stencil reads use the same SPIR-V opcode?</a></li>
+<li><a href="#_should_depth_and_stencil_read_opcodes_consume_an_image_operand_specifying_the_attachment_or_should_it_be_implicit">7.8. Should Depth and Stencil read opcodes consume an image operand specifying the attachment, or should it be implicit?</a></li>
+<li><a href="#_should_this_extension_reuse_the_image_dim_subpassdata_or_introduce_a_new_dim">7.9. Should this extension reuse the image Dim SubpassData or introduce a new Dim?</a></li>
+<li><a href="#_should_this_extension_require_applications_to_create_and_bind_descriptors_for_tile_images">7.10. Should this extension require applications to create and bind descriptors for tile images?</a></li>
+<li><a href="#_what_does_undefined_value_mean_for_tile_image_reads">7.11. What does 'undefined value' mean for tile image reads?</a></li>
 </ul>
 </li>
 <li><a href="#_further_functionality">8. Further Functionality</a>
@@ -1432,19 +1435,19 @@ vkCmdDraw(...);</code></pre>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>7. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_1_resolved_should_we_allow_early_fragment_tests"><a class="anchor" href="#_1_resolved_should_we_allow_early_fragment_tests"></a>7.1. 1. RESOLVED: Should we allow early fragment tests?</h3>
+<h3 id="_should_we_allow_early_fragment_tests"><a class="anchor" href="#_should_we_allow_early_fragment_tests"></a>7.1. Should we allow early fragment tests?</h3>
 <div class="paragraph">
 <p>Early fragment tests are disallowed if reading frag depth / stencil.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_2_resolved_should_depth_stencil_fetch_be_a_separate_extension"><a class="anchor" href="#_2_resolved_should_depth_stencil_fetch_be_a_separate_extension"></a>7.2. 2. RESOLVED: Should depth / stencil fetch be a separate extension?</h3>
+<h3 id="_should_depth_stencil_fetch_be_a_separate_extension"><a class="anchor" href="#_should_depth_stencil_fetch_be_a_separate_extension"></a>7.2. Should depth / stencil fetch be a separate extension?</h3>
 <div class="paragraph">
 <p>Access to depth / stencil is defined differently than color, but we suggest keeping them together - with separate feature bits.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_3_resolved_what_should_we_name_these_variables_what_should_the_extension_be_named"><a class="anchor" href="#_3_resolved_what_should_we_name_these_variables_what_should_the_extension_be_named"></a>7.3. 3. RESOLVED: What should we name these variables? What should the extension be named?</h3>
+<h3 id="_what_should_we_name_these_variables_what_should_the_extension_be_named"><a class="anchor" href="#_what_should_we_name_these_variables_what_should_the_extension_be_named"></a>7.3. What should we name these variables? What should the extension be named?</h3>
 <div class="paragraph">
 <p>Other APIs have similar but not identical concepts, so a unique name is useful.</p>
 </div>
@@ -1461,14 +1464,14 @@ A tile image is a view of a framebuffer attachment, restricted to the tile being
 </div>
 </div>
 <div class="sect2">
-<h3 id="_4_resolved_are_there_any_non_obvious_interactions_with_the_suspendresume_functionality_in_vk_khr_dynamic_rendering"><a class="anchor" href="#_4_resolved_are_there_any_non_obvious_interactions_with_the_suspendresume_functionality_in_vk_khr_dynamic_rendering"></a>7.4. 4. RESOLVED: Are there any non-obvious interactions with the suspend/resume functionality in <code>VK_KHR_dynamic_rendering</code>?</h3>
+<h3 id="_are_there_any_non_obvious_interactions_with_the_suspendresume_functionality_in_vk_khr_dynamic_rendering"><a class="anchor" href="#_are_there_any_non_obvious_interactions_with_the_suspendresume_functionality_in_vk_khr_dynamic_rendering"></a>7.4. Are there any non-obvious interactions with the suspend/resume functionality in <code>VK_KHR_dynamic_rendering</code>?</h3>
 <div class="paragraph">
 <p>Not at present.
 If we were to allow non-aliased tile image variables, then implementations would have to be able to guarantee that those variables never have to 'spill' from tile image.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_5_resolved_enable_disable_raster_order_access"><a class="anchor" href="#_5_resolved_enable_disable_raster_order_access"></a>7.5. 5. RESOLVED: Enable / Disable raster order access</h3>
+<h3 id="_enable_disable_raster_order_access"><a class="anchor" href="#_enable_disable_raster_order_access"></a>7.5. Enable / Disable raster order access</h3>
 <div class="paragraph">
 <p>Some implementations pay a performance cost to guarantee raster order access. We need to give them a way to disable raster order access and add support for barriers to explicitly perform synchronization.</p>
 </div>
@@ -1483,7 +1486,7 @@ If we were to allow non-aliased tile image variables, then implementations would
 </div>
 </div>
 <div class="sect2">
-<h3 id="_7_resolved_should_this_extension_reuse_optypeimage_or_introduce_a_new_type_for_declaring_tile_images"><a class="anchor" href="#_7_resolved_should_this_extension_reuse_optypeimage_or_introduce_a_new_type_for_declaring_tile_images"></a>7.6. 7. RESOLVED: Should this extension reuse OpTypeImage, or introduce a new type for declaring tile images?</h3>
+<h3 id="_should_this_extension_reuse_optypeimage_or_introduce_a_new_type_for_declaring_tile_images"><a class="anchor" href="#_should_this_extension_reuse_optypeimage_or_introduce_a_new_type_for_declaring_tile_images"></a>7.6. Should this extension reuse OpTypeImage, or introduce a new type for declaring tile images?</h3>
 <div class="paragraph">
 <p>OpTypeImage is reused with a special Dim for tile images, following what was done for subpass attachments.</p>
 </div>
@@ -1493,7 +1496,7 @@ That would require less special-casing of OpTypeImage, but comes with higher ini
 </div>
 </div>
 <div class="sect2">
-<h3 id="_8_resolved_should_color_depth_and_stencil_reads_use_the_same_spir_v_opcode"><a class="anchor" href="#_8_resolved_should_color_depth_and_stencil_reads_use_the_same_spir_v_opcode"></a>7.7. 8. RESOLVED: Should Color, Depth, and Stencil reads use the same SPIR-V opcode?</h3>
+<h3 id="_should_color_depth_and_stencil_reads_use_the_same_spir_v_opcode"><a class="anchor" href="#_should_color_depth_and_stencil_reads_use_the_same_spir_v_opcode"></a>7.7. Should Color, Depth, and Stencil reads use the same SPIR-V opcode?</h3>
 <div class="paragraph">
 <p>No. The extension introduces separate opcodes.</p>
 </div>
@@ -1506,7 +1509,7 @@ Some GPU implementations would have a significant performance penalty in raster 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_9_resolved_should_depth_and_stencil_read_opcodes_consume_an_image_operand_specifying_the_attachment_or_should_it_be_implicit"><a class="anchor" href="#_9_resolved_should_depth_and_stencil_read_opcodes_consume_an_image_operand_specifying_the_attachment_or_should_it_be_implicit"></a>7.8. 9. RESOLVED: Should Depth and Stencil read opcodes consume an image operand specifying the attachment, or should it be implicit?</h3>
+<h3 id="_should_depth_and_stencil_read_opcodes_consume_an_image_operand_specifying_the_attachment_or_should_it_be_implicit"><a class="anchor" href="#_should_depth_and_stencil_read_opcodes_consume_an_image_operand_specifying_the_attachment_or_should_it_be_implicit"></a>7.8. Should Depth and Stencil read opcodes consume an image operand specifying the attachment, or should it be implicit?</h3>
 <div class="paragraph">
 <p>No operand is necessary as there is depth and stencil uniquely identify the attachments unlike with color.</p>
 </div>
@@ -1528,7 +1531,7 @@ Some GPU implementations would have a significant performance penalty in raster 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_10_resolved_should_this_extension_reuse_the_image_dim_subpassdata_or_introduce_a_new_dim"><a class="anchor" href="#_10_resolved_should_this_extension_reuse_the_image_dim_subpassdata_or_introduce_a_new_dim"></a>7.9. 10. RESOLVED: Should this extension reuse the image Dim SubpassData or introduce a new Dim?</h3>
+<h3 id="_should_this_extension_reuse_the_image_dim_subpassdata_or_introduce_a_new_dim"><a class="anchor" href="#_should_this_extension_reuse_the_image_dim_subpassdata_or_introduce_a_new_dim"></a>7.9. Should this extension reuse the image Dim SubpassData or introduce a new Dim?</h3>
 <div class="paragraph">
 <p>The extension introduces a new Dim.</p>
 </div>
@@ -1538,7 +1541,7 @@ In SPIR-V, input attachments use images with Dim of SubpassData. We use a new Di
 </div>
 </div>
 <div class="sect2">
-<h3 id="_11_resolved_should_this_extension_require_applications_to_create_and_bind_descriptors_for_tile_images"><a class="anchor" href="#_11_resolved_should_this_extension_require_applications_to_create_and_bind_descriptors_for_tile_images"></a>7.10. 11. RESOLVED: Should this extension require applications to create and bind descriptors for tile images?</h3>
+<h3 id="_should_this_extension_require_applications_to_create_and_bind_descriptors_for_tile_images"><a class="anchor" href="#_should_this_extension_require_applications_to_create_and_bind_descriptors_for_tile_images"></a>7.10. Should this extension require applications to create and bind descriptors for tile images?</h3>
 <div class="paragraph">
 <p>No.
 Some GPUs internally require descriptors to be able to access framebuffer data. The input attachments in Vulkan subpasses help these GPU implementations.</p>
@@ -1548,7 +1551,7 @@ Some GPUs internally require descriptors to be able to access framebuffer data. 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_12_resolved_what_does_undefined_value_mean_for_tile_image_reads"><a class="anchor" href="#_12_resolved_what_does_undefined_value_mean_for_tile_image_reads"></a>7.11. 12. RESOLVED: What does 'undefined value' mean for tile image reads?</h3>
+<h3 id="_what_does_undefined_value_mean_for_tile_image_reads"><a class="anchor" href="#_what_does_undefined_value_mean_for_tile_image_reads"></a>7.11. What does 'undefined value' mean for tile image reads?</h3>
 <div class="paragraph">
 <p>It simply means that the value has no well-defined meaning to an application. It does <em>not</em> mean that the value is random nor that it could have been leaked from other contexts, processes, or memory other than the framebuffer attachments.</p>
 </div>

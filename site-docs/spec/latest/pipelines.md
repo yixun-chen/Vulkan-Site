@@ -6480,26 +6480,46 @@ enabled, there **must** be no element of the `pDynamicStates` member of
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07730) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07730
 
-If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and no element of the
-`pDynamicStates` member of `pDynamicState` is
-`VK_DYNAMIC_STATE_VIEWPORT` or
-`VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT`, and if the
-[`multiviewPerViewViewports`](features.html#features-multiviewPerViewViewports)
-feature is enabled, then the index of the most significant bit in each
-element of [VkRenderPassMultiviewCreateInfo](renderpass.html#VkRenderPassMultiviewCreateInfo)::`pViewMasks` **must**
-be less than `pViewportState->viewportCount`
+If the [    `multiviewPerViewViewports`](features.html#features-multiviewPerViewViewports) feature is enabled, `renderpass`
+is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline requires
+[pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization), and no element of the `pDynamicStates` member of
+`pDynamicState` is `VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT`, then
+the index of the most significant bit in each element of
+[VkRenderPassMultiviewCreateInfo](renderpass.html#VkRenderPassMultiviewCreateInfo)::`pViewMasks` **must** be less
+than `pViewportState->viewportCount`
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07731) VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07731
 
-If the pipeline requires [    pre-rasterization shader state](#pipelines-graphics-subsets-pre-rasterization), and no element of the
-`pDynamicStates` member of `pDynamicState` is
-`VK_DYNAMIC_STATE_SCISSOR` or
-`VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT`, and if the
-[`multiviewPerViewViewports`](features.html#features-multiviewPerViewViewports)
-feature is enabled, then the index of the most significant bit in each
-element of [VkRenderPassMultiviewCreateInfo](renderpass.html#VkRenderPassMultiviewCreateInfo)::`pViewMasks` **must**
-be less than `pViewportState->scissorCount`
+If the [    `multiviewPerViewViewports`](features.html#features-multiviewPerViewViewports) feature is enabled, `renderpass`
+is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline requires
+[pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization), and no element of the `pDynamicStates` member of
+`pDynamicState` is `VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT`, then
+the index of the most significant bit in each element of
+[VkRenderPassMultiviewCreateInfo](renderpass.html#VkRenderPassMultiviewCreateInfo)::`pViewMasks` **must** be less
+than `pViewportState->scissorCount`
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-multiviewPerViewViewports-12249) VUID-VkGraphicsPipelineCreateInfo-multiviewPerViewViewports-12249
+
+If the [    `multiviewPerViewViewports`](features.html#features-multiviewPerViewViewports) feature is enabled, `renderpass`
+is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline requires
+[pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization), and no element of the `pDynamicStates` member of
+`pDynamicState` is `VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT`, then
+the index of the most significant bit in
+[VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`viewMask` **must** be less than
+`pViewportState->viewportCount`
+
+* 
+[](#VUID-VkGraphicsPipelineCreateInfo-multiviewPerViewViewports-12250) VUID-VkGraphicsPipelineCreateInfo-multiviewPerViewViewports-12250
+
+If the [    `multiviewPerViewViewports`](features.html#features-multiviewPerViewViewports) feature is enabled, `renderpass`
+is [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the pipeline requires
+[pre-rasterization shader    state](#pipelines-graphics-subsets-pre-rasterization), and no element of the `pDynamicStates` member of
+`pDynamicState` is `VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT`, then
+the index of the most significant bit in
+[VkPipelineRenderingCreateInfo](#VkPipelineRenderingCreateInfo)::`viewMask` **must** be less than
+`pViewportState->scissorCount`
 
 * 
 [](#VUID-VkGraphicsPipelineCreateInfo-pStages-08711) VUID-VkGraphicsPipelineCreateInfo-pStages-08711
@@ -11417,8 +11437,8 @@ graph cache encoded in the data.
 cache.
 
 * 
-`toolchainVersion` is the version of the compiler that built the
-data graph cache.
+`toolchainVersion` is a null-terminated UTF-8 string specifying the
+version of the compiler that built the data graph cache.
 
 The application **should** verify that the header info is compatible with the
 [VkDataGraphProcessingEngineCreateInfoARM](VK_ARM_data_graph/graphs.html#VkDataGraphProcessingEngineCreateInfoARM) passed during pipeline
@@ -11493,6 +11513,13 @@ typedef enum VkDataGraphModelCacheTypeQCOM {
 * 
 `VK_DATA_GRAPH_MODEL_CACHE_TYPE_GENERIC_BINARY_QCOM` specifies a
 general binary layout type.
+
+`VK_DATA_GRAPH_MODEL_TOOLCHAIN_VERSION_LENGTH_QCOM` is the length in
+`char` values of an array containing the version of the compiler that
+built a data graph cache, as returned in
+[VkPipelineCacheHeaderVersionDataGraphQCOM](#VkPipelineCacheHeaderVersionDataGraphQCOM)::`toolchainVersion`.
+
+#define VK_DATA_GRAPH_MODEL_TOOLCHAIN_VERSION_LENGTH_QCOM 3U
 
 To destroy a pipeline cache, call:
 

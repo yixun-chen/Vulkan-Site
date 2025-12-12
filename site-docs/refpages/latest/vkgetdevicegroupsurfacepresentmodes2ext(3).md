@@ -19,9 +19,8 @@
 
 vkGetDeviceGroupSurfacePresentModes2EXT - Query device group present capabilities for a surface
 
-Alternatively, to query the supported device group presentation modes for a
-surface combined with select other fixed swapchain creation parameters,
-call:
+To query the supported device group presentation modes for a surface
+combined with select other fixed swapchain creation parameters, call:
 
 // Provided by VK_EXT_full_screen_exclusive with VK_KHR_device_group or VK_VERSION_1_1
 VkResult vkGetDeviceGroupSurfacePresentModes2EXT(

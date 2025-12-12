@@ -166,8 +166,12 @@ queried **must** have been created with the
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-pInfos-07512) VUID-vkCmdBuildMicromapsEXT-pInfos-07512
 
-For each element of `pInfos`, `scratchData.deviceAddress` **must**
-be a valid `VkDeviceAddress`
+For each element of `pInfos`, if the value of
+[VkMicromapBuildSizesInfoEXT](VkMicromapBuildSizesInfoEXT.html)::`buildScratchSize`, returned from
+a call to [vkGetMicromapBuildSizesEXT](vkGetMicromapBuildSizesEXT.html) with an identical
+[VkMicromapBuildInfoEXT](VkMicromapBuildInfoEXT.html) structure, is not `0`,
+`scratchData.deviceAddress` **must** be a valid
+`VkDeviceAddress`
 
 * 
 [](#VUID-vkCmdBuildMicromapsEXT-pInfos-10896) VUID-vkCmdBuildMicromapsEXT-pInfos-10896

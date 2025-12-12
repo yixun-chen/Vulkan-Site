@@ -124,47 +124,47 @@ specific required features.
 
 A workgroup scope GEMM:
 
-    uvec2 tileID = uvec2(gl_WorkGroupID.xy);
+uvec2 tileID = uvec2(gl_WorkGroupID.xy);
 
-    // Initialize result to zero
-    result = coopmat(0.0);
+// Initialize result to zero
+result = coopmat(0.0);
 
-    // Create tensor layouts for A, B, Accumulator
-    tensorLayoutNV tensorLayoutA = createTensorLayoutNV(2);
-    tensorLayoutNV tensorLayoutB = createTensorLayoutNV(2);
-    tensorLayoutNV tensorLayoutC = createTensorLayoutNV(2);
+// Create tensor layouts for A, B, Accumulator
+tensorLayoutNV tensorLayoutA = createTensorLayoutNV(2);
+tensorLayoutNV tensorLayoutB = createTensorLayoutNV(2);
+tensorLayoutNV tensorLayoutC = createTensorLayoutNV(2);
 
-    tensorLayoutA = setTensorLayoutDimensionNV(tensorLayoutA, M, K);
-    tensorLayoutB = setTensorLayoutDimensionNV(tensorLayoutB, K, N);
-    tensorLayoutC = setTensorLayoutDimensionNV(tensorLayoutC, M, N);
+tensorLayoutA = setTensorLayoutDimensionNV(tensorLayoutA, M, K);
+tensorLayoutB = setTensorLayoutDimensionNV(tensorLayoutB, K, N);
+tensorLayoutC = setTensorLayoutDimensionNV(tensorLayoutC, M, N);
 
-    // Loop over K dimension and accumulate partial results
-    for (uint chunkK = 0; chunkK  matrixA;
-        coopMatLoadTensorNV(matrixA, inputA.x, 0, sliceTensorLayoutNV(tensorLayoutA, TILE_M * tileID.y, TILE_M, chunkK, TILE_K));
+// Loop over K dimension and accumulate partial results
+for (uint chunkK = 0; chunkK  matrixA;
+    coopMatLoadTensorNV(matrixA, inputA.x, 0, sliceTensorLayoutNV(tensorLayoutA, TILE_M * tileID.y, TILE_M, chunkK, TILE_K));
 
-        coopmat matrixB;
-        coopMatLoadTensorNV(matrixB, inputB.x, 0, sliceTensorLayoutNV(tensorLayoutB, chunkK, TILE_K, TILE_N * tileID.x, TILE_N));
+    coopmat matrixB;
+    coopMatLoadTensorNV(matrixB, inputB.x, 0, sliceTensorLayoutNV(tensorLayoutB, chunkK, TILE_K, TILE_N * tileID.x, TILE_N));
 
-        result = coopMatMulAdd(matrixA, matrixB, result);
-    }
+    result = coopMatMulAdd(matrixA, matrixB, result);
+}
 
-    // Load C and compute alpha*(A*B)+beta*C
-    coopmat matrixC;
-    coopMatLoadTensorNV(matrixC, inputC.x, 0, sliceTensorLayoutNV(tensorLayoutC, TILE_M * tileID.y, TILE_M, TILE_N * tileID.x, TILE_N));
-    result = C_TYPE(alpha) * result + C_TYPE(beta) * matrixC;
+// Load C and compute alpha*(A*B)+beta*C
+coopmat matrixC;
+coopMatLoadTensorNV(matrixC, inputC.x, 0, sliceTensorLayoutNV(tensorLayoutC, TILE_M * tileID.y, TILE_M, TILE_N * tileID.x, TILE_N));
+result = C_TYPE(alpha) * result + C_TYPE(beta) * matrixC;
 
-    // Store result to memory
-    coopMatStoreTensorNV(result, outputD.x, 0, sliceTensorLayoutNV(tensorLayoutC, TILE_M * tileID.y, TILE_M, TILE_N * tileID.x, TILE_N));
+// Store result to memory
+coopMatStoreTensorNV(result, outputD.x, 0, sliceTensorLayoutNV(tensorLayoutC, TILE_M * tileID.y, TILE_M, TILE_N * tileID.x, TILE_N));
 
 A reduction computing max over each row of a matrix:
 
-    float16_t maxReduce(const in float16_t x, const in float16_t y) {
-        return max(x, y);
-    }
+float16_t maxReduce(const in float16_t x, const in float16_t y) {
+    return max(x, y);
+}
 
-    mat = ...;
+mat = ...;
 
-    coopmat rowMax;
-    coopMatReduceNV(rowMax, mat, gl_CooperativeMatrixReduceRowNV, maxReduce);
+coopmat rowMax;
+coopMatReduceNV(rowMax, mat, gl_CooperativeMatrixReduceRowNV, maxReduce);
 
 None.

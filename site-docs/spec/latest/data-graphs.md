@@ -2757,6 +2757,13 @@ Valid Usage (Implicit)
 
  `name` **must** be a null-terminated UTF-8 string whose length is less than or equal to `VK_MAX_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_SET_NAME_SIZE_ARM`
 
+`VK_MAX_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_SET_NAME_SIZE_ARM` is the
+length in `char` values of an array containing the name of a data graph
+operation, as returned in
+[VkPhysicalDeviceDataGraphOperationSupportARM](#VkPhysicalDeviceDataGraphOperationSupportARM)::`name`.
+
+#define VK_MAX_PHYSICAL_DEVICE_DATA_GRAPH_OPERATION_SET_NAME_SIZE_ARM 128U
+
 The defined data graph operations are:
 
 // Provided by VK_ARM_data_graph

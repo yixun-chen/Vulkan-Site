@@ -234,13 +234,25 @@ command is executed
 [](#VUID-vkCmdCopyQueryPoolResults-flags-00822) VUID-vkCmdCopyQueryPoolResults-flags-00822
 
 If `VK_QUERY_RESULT_64_BIT` is not set in `flags` then
-`dstOffset` and `stride` **must** be multiples of `4`
+`dstOffset` **must** be a multiple of `4`
+
+* 
+[](#VUID-vkCmdCopyQueryPoolResults-queryCount-12254) VUID-vkCmdCopyQueryPoolResults-queryCount-12254
+
+If `queryCount` is greater than 1 and `VK_QUERY_RESULT_64_BIT`
+is not set in `flags` then `stride` **must** be a multiple of `4`
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-flags-00823) VUID-vkCmdCopyQueryPoolResults-flags-00823
 
 If `VK_QUERY_RESULT_64_BIT` is set in `flags` then
-`dstOffset` and `stride` **must** be multiples of `8`
+`dstOffset` **must** be a multiple of `8`
+
+* 
+[](#VUID-vkCmdCopyQueryPoolResults-queryCount-12255) VUID-vkCmdCopyQueryPoolResults-queryCount-12255
+
+If `queryCount` is greater than 1 and `VK_QUERY_RESULT_64_BIT`
+is set in `flags` then `stride` **must** be a multiple of `8`
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-dstBuffer-00824) VUID-vkCmdCopyQueryPoolResults-dstBuffer-00824

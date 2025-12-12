@@ -440,6 +440,12 @@ layouts:
 `VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL`
 
 * 
+`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL`
+
+* 
+`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL`
+
+* 
 `VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
 
 * 
@@ -6766,8 +6772,7 @@ Conditional Rendering
 
 vkCmdBindDescriptorSets is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
-Alternatively, to bind one or more descriptor sets to a command buffer,
-call:
+To bind one or more descriptor sets to a command buffer, call:
 
 // Provided by VK_VERSION_1_4
 void vkCmdBindDescriptorSets2(
@@ -7284,7 +7289,7 @@ Conditional Rendering
 
 vkCmdPushDescriptorSet is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
-Alternatively, to push descriptor updates into a command buffer, call:
+To push descriptor updates into a command buffer, call:
 
 // Provided by VK_VERSION_1_4
 void vkCmdPushDescriptorSet2(
@@ -7512,9 +7517,8 @@ Valid Usage (Implicit)
 
  `descriptorWriteCount` **must** be greater than `0`
 
-It is also possible to use a descriptor update template to specify the push
-descriptors to update.
-To do so, call:
+To use a descriptor update template to specify the push descriptors to
+update in a command buffer, call:
 
 // Provided by VK_VERSION_1_4
 void vkCmdPushDescriptorSetWithTemplate(
@@ -7725,8 +7729,8 @@ AppDataStructure appData;
 // fill appData here or cache it in your engine
 vkCmdPushDescriptorSetWithTemplate(myCmdBuffer, myDescriptorUpdateTemplate, myPipelineLayout, 0,&appData);
 
-Alternatively, to use a descriptor update template to specify the push
-descriptors to update, call:
+To use a descriptor update template to specify the push descriptors to
+update in a command buffer, call:
 
 // Provided by VK_VERSION_1_4
 void vkCmdPushDescriptorSetWithTemplate2(
@@ -8133,7 +8137,7 @@ Conditional Rendering
 
 vkCmdPushConstants is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
-Alternatively, to update push constants, call:
+To update push constants, call:
 
 // Provided by VK_VERSION_1_4
 void vkCmdPushConstants2(
@@ -8854,8 +8858,7 @@ If `type` is `VK_DESCRIPTOR_TYPE_TENSOR_ARM`, a
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12216) VUID-VkDescriptorGetInfoEXT-type-12216
 
-If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`pCombinedImageSampler` is not `NULL`, and
+If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` and
 `pCombinedImageSampler->imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), the
 `pCombinedImageSampler->imageView` member of `data` **must** have
 been created with `VK_IMAGE_USAGE_SAMPLED_BIT` set
@@ -9568,15 +9571,17 @@ the `pNext` chain **must** include a
 
 If `usage` includes
 `VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`, `address`
-**must** be an address within a valid buffer that was created with the
-`VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT` usage flag set
+**must** be a device address allocated to the application from a buffer
+created with the `VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT`
+usage flag set
 
 * 
 [](#VUID-VkDescriptorBufferBindingInfoEXT-usage-08123) VUID-VkDescriptorBufferBindingInfoEXT-usage-08123
 
 If `usage` includes
 `VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT`, `address`
-**must** be an address within a valid buffer that was created with the
+**must** be a device address allocated to the application from a buffer
+created with the
 `VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT` usage flag set
 
 * 
@@ -9584,8 +9589,8 @@ If `usage` includes
 
 If `usage` includes
 `VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT`,
-`address` **must** be an address within a valid buffer that was created
-with the
+`address` **must** be a device address allocated to the application
+from a buffer created with the
 `VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT` usage
 flag set
 
@@ -9918,7 +9923,7 @@ Conditional Rendering
 
 vkCmdSetDescriptorBufferOffsetsEXT is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
-Alternatively, to set descriptor buffer offsets in a command buffer, call:
+To set descriptor buffer offsets in a command buffer, call:
 
 // Provided by VK_KHR_maintenance6 with VK_EXT_descriptor_buffer
 void vkCmdSetDescriptorBufferOffsets2EXT(
@@ -10318,8 +10323,7 @@ Conditional Rendering
 
 vkCmdBindDescriptorBufferEmbeddedSamplersEXT is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
-Alternatively, to bind an embedded immutable sampler set to a command
-buffer, call:
+To bind an embedded immutable sampler set to a command buffer, call:
 
 // Provided by VK_KHR_maintenance6 with VK_EXT_descriptor_buffer
 void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(

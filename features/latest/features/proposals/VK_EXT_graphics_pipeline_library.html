@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -634,23 +637,23 @@
 </li>
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_should_the_pre_rasterization_stages_be_separated">5.1. RESOLVED: Should the pre-rasterization stages be separated?</a></li>
-<li><a href="#_resolved_what_is_the_expected_usage_model">5.2. RESOLVED: What is the expected usage model?</a></li>
-<li><a href="#_resolved_why_is_there_suggested_behavior_for_the_implementation_of_pipeline_caches_instead_of_letting_the_caching_be_driven_by_the_application">5.3. RESOLVED: Why is there suggested behavior for the implementation of pipeline caches instead of letting the caching be driven by the application?</a></li>
-<li><a href="#_resolved_what_are_the_downsides_to_using_unoptimized_pipelines">5.4. RESOLVED: What are the downsides to using unoptimized pipelines?</a></li>
-<li><a href="#_resolved_are_there_any_interactions_with_specialization_constants">5.5. RESOLVED: Are there any interactions with specialization constants?</a></li>
-<li><a href="#_resolved_are_there_any_interface_matching_requirements_that_will_need_to_change_like_ssos_in_opengles">5.6. RESOLVED: Are there any interface matching requirements that will need to change, like SSOs in OpenGL/ES?</a></li>
-<li><a href="#_resolved_should_we_allow_passing_spir_v_directly_into_pipeline_creation">5.7. RESOLVED: Should we allow passing SPIR-V directly into pipeline creation?</a></li>
-<li><a href="#_resolved_should_we_advertise_a_property_for_free_link_vs_fast_link">5.8. RESOLVED: Should we advertise a property for “free link” vs. “fast link”?</a></li>
-<li><a href="#_resolved_does_anyone_need_the_depthstencil_format_to_be_provided_with_the_depth_bias_state">5.9. RESOLVED: Does anyone need the depth/stencil format to be provided with the depth bias state?</a></li>
-<li><a href="#_resolved_with_the_recommendation_to_create_an_optimized_pipeline_as_well_as_a_fast_linked_pipeline_will_this_lead_to_additional_memory_consumption">5.10. RESOLVED: With the recommendation to create an optimized pipeline as well as a fast linked pipeline, will this lead to additional memory consumption?</a></li>
-<li><a href="#_resolved_should_the_link_time_optimization_bits_apply_to_other_pipeline_libraries_e_g_ray_tracing">5.11. RESOLVED: Should the link time optimization bits apply to other pipeline libraries (e.g. ray tracing)?</a></li>
-<li><a href="#_resolved_does_the_shader_module_deprecation_apply_to_other_pipelines">5.12. RESOLVED: Does the shader module deprecation apply to other pipelines?</a></li>
-<li><a href="#_resolved_should_vkpipelinedepthstencilstatecreateinfo_be_part_of_the_fragment_shader_state_or_fragment_output_interface_state">5.13. RESOLVED: Should <code>VkPipelineDepthStencilStateCreateInfo</code> be part of the fragment shader state or fragment output interface state?</a></li>
-<li><a href="#_resolved_should_vkpipelinemultisamplestatecreateinfo_be_required_even_when_the_fragment_shader_does_not_make_use_of_multisampling_shader_features">5.14. RESOLVED: Should <code>VkPipelineMultisampleStateCreateInfo</code> be required, even when the fragment shader does not make use of multisampling shader features?</a></li>
-<li><a href="#_resolved_should_vkpipelinemultisamplestatecreateinfo_be_part_of_the_fragment_output_interface_instead">5.15. RESOLVED: Should <code>VkPipelineMultisampleStateCreateInfo</code> be part of the fragment output interface instead?</a></li>
-<li><a href="#_resolved_should_we_add_an_explicit_result_code_to_pipeline_creation_to_indicate_that_a_pipeline_compiled_with_link_time_optimization_has_been_returned">5.16. RESOLVED: Should we add an explicit result code to pipeline creation to indicate that a pipeline compiled with link time optimization has been returned?</a></li>
-<li><a href="#_resolved_can_pipeline_caches_return_optimized_pipelines_without_the_vk_pipeline_layout_create_independent_sets_bit_ext_set">5.17. RESOLVED: Can pipeline caches return optimized pipelines without the <code>VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT</code> set?</a></li>
+<li><a href="#_should_the_pre_rasterization_stages_be_separated">5.1. Should the pre-rasterization stages be separated?</a></li>
+<li><a href="#_what_is_the_expected_usage_model">5.2. What is the expected usage model?</a></li>
+<li><a href="#_why_is_there_suggested_behavior_for_the_implementation_of_pipeline_caches_instead_of_letting_the_caching_be_driven_by_the_application">5.3. Why is there suggested behavior for the implementation of pipeline caches instead of letting the caching be driven by the application?</a></li>
+<li><a href="#_what_are_the_downsides_to_using_unoptimized_pipelines">5.4. What are the downsides to using unoptimized pipelines?</a></li>
+<li><a href="#_are_there_any_interactions_with_specialization_constants">5.5. Are there any interactions with specialization constants?</a></li>
+<li><a href="#_are_there_any_interface_matching_requirements_that_will_need_to_change_like_ssos_in_opengles">5.6. Are there any interface matching requirements that will need to change, like SSOs in OpenGL/ES?</a></li>
+<li><a href="#_should_we_allow_passing_spir_v_directly_into_pipeline_creation">5.7. Should we allow passing SPIR-V directly into pipeline creation?</a></li>
+<li><a href="#_should_we_advertise_a_property_for_free_link_vs_fast_link">5.8. Should we advertise a property for “free link” vs. “fast link”?</a></li>
+<li><a href="#_does_anyone_need_the_depthstencil_format_to_be_provided_with_the_depth_bias_state">5.9. Does anyone need the depth/stencil format to be provided with the depth bias state?</a></li>
+<li><a href="#_with_the_recommendation_to_create_an_optimized_pipeline_as_well_as_a_fast_linked_pipeline_will_this_lead_to_additional_memory_consumption">5.10. With the recommendation to create an optimized pipeline as well as a fast linked pipeline, will this lead to additional memory consumption?</a></li>
+<li><a href="#_should_the_link_time_optimization_bits_apply_to_other_pipeline_libraries_e_g_ray_tracing">5.11. Should the link time optimization bits apply to other pipeline libraries (e.g. ray tracing)?</a></li>
+<li><a href="#_does_the_shader_module_deprecation_apply_to_other_pipelines">5.12. Does the shader module deprecation apply to other pipelines?</a></li>
+<li><a href="#_should_vkpipelinedepthstencilstatecreateinfo_be_part_of_the_fragment_shader_state_or_fragment_output_interface_state">5.13. Should <code>VkPipelineDepthStencilStateCreateInfo</code> be part of the fragment shader state or fragment output interface state?</a></li>
+<li><a href="#_should_vkpipelinemultisamplestatecreateinfo_be_required_even_when_the_fragment_shader_does_not_make_use_of_multisampling_shader_features">5.14. Should <code>VkPipelineMultisampleStateCreateInfo</code> be required, even when the fragment shader does not make use of multisampling shader features?</a></li>
+<li><a href="#_should_vkpipelinemultisamplestatecreateinfo_be_part_of_the_fragment_output_interface_instead">5.15. Should <code>VkPipelineMultisampleStateCreateInfo</code> be part of the fragment output interface instead?</a></li>
+<li><a href="#_should_we_add_an_explicit_result_code_to_pipeline_creation_to_indicate_that_a_pipeline_compiled_with_link_time_optimization_has_been_returned">5.16. Should we add an explicit result code to pipeline creation to indicate that a pipeline compiled with link time optimization has been returned?</a></li>
+<li><a href="#_can_pipeline_caches_return_optimized_pipelines_without_the_vk_pipeline_layout_create_independent_sets_bit_ext_set">5.17. Can pipeline caches return optimized pipelines without the <code>VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT</code> set?</a></li>
 </ul>
 </li>
 </ul>
@@ -1400,7 +1403,7 @@ pipeline and corresponding cache entry.</p>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_should_the_pre_rasterization_stages_be_separated"><a class="anchor" href="#_resolved_should_the_pre_rasterization_stages_be_separated"></a>5.1. RESOLVED: Should the pre-rasterization stages be separated?</h3>
+<h3 id="_should_the_pre_rasterization_stages_be_separated"><a class="anchor" href="#_should_the_pre_rasterization_stages_be_separated"></a>5.1. Should the pre-rasterization stages be separated?</h3>
 <div class="paragraph">
 <p>While splitting the geometry stages may be possible, it’s a significant
 amount of additional work for many vendors, the advantage for most
@@ -1409,7 +1412,7 @@ guarantees in this extension.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_is_the_expected_usage_model"><a class="anchor" href="#_resolved_what_is_the_expected_usage_model"></a>5.2. RESOLVED: What is the expected usage model?</h3>
+<h3 id="_what_is_the_expected_usage_model"><a class="anchor" href="#_what_is_the_expected_usage_model"></a>5.2. What is the expected usage model?</h3>
 <div class="paragraph">
 <p>When a novel shader/stage combination is seen that requires compilation, it
 should be compiled into a separate pipeline library as early as possible;
@@ -1440,7 +1443,7 @@ available.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_why_is_there_suggested_behavior_for_the_implementation_of_pipeline_caches_instead_of_letting_the_caching_be_driven_by_the_application"><a class="anchor" href="#_resolved_why_is_there_suggested_behavior_for_the_implementation_of_pipeline_caches_instead_of_letting_the_caching_be_driven_by_the_application"></a>5.3. RESOLVED: Why is there suggested behavior for the implementation of pipeline caches instead of letting the caching be driven by the application?</h3>
+<h3 id="_why_is_there_suggested_behavior_for_the_implementation_of_pipeline_caches_instead_of_letting_the_caching_be_driven_by_the_application"><a class="anchor" href="#_why_is_there_suggested_behavior_for_the_implementation_of_pipeline_caches_instead_of_letting_the_caching_be_driven_by_the_application"></a>5.3. Why is there suggested behavior for the implementation of pipeline caches instead of letting the caching be driven by the application?</h3>
 <div class="paragraph">
 <p>Work to change the way pipelines are cached is ongoing; to avoid scope creep
 the minimum set of features required to ensure things worked were added.
@@ -1449,7 +1452,7 @@ design something that would be thrown away later.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_are_the_downsides_to_using_unoptimized_pipelines"><a class="anchor" href="#_resolved_what_are_the_downsides_to_using_unoptimized_pipelines"></a>5.4. RESOLVED: What are the downsides to using unoptimized pipelines?</h3>
+<h3 id="_what_are_the_downsides_to_using_unoptimized_pipelines"><a class="anchor" href="#_what_are_the_downsides_to_using_unoptimized_pipelines"></a>5.4. What are the downsides to using unoptimized pipelines?</h3>
 <div class="paragraph">
 <p>A fast-linked pipeline may have a significant device performance penalty
 compared to the final pipeline on some implementations.
@@ -1470,7 +1473,7 @@ performance degradation on some implementations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_there_any_interactions_with_specialization_constants"><a class="anchor" href="#_resolved_are_there_any_interactions_with_specialization_constants"></a>5.5. RESOLVED: Are there any interactions with specialization constants?</h3>
+<h3 id="_are_there_any_interactions_with_specialization_constants"><a class="anchor" href="#_are_there_any_interactions_with_specialization_constants"></a>5.5. Are there any interactions with specialization constants?</h3>
 <div class="paragraph">
 <p>No. This extension doesn’t change how specialization constants work – they
 work as they do for existing pipelines.
@@ -1482,7 +1485,7 @@ This may be something we want to address in a future extension.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_there_any_interface_matching_requirements_that_will_need_to_change_like_ssos_in_opengles"><a class="anchor" href="#_resolved_are_there_any_interface_matching_requirements_that_will_need_to_change_like_ssos_in_opengles"></a>5.6. RESOLVED: Are there any interface matching requirements that will need to change, like SSOs in OpenGL/ES?</h3>
+<h3 id="_are_there_any_interface_matching_requirements_that_will_need_to_change_like_ssos_in_opengles"><a class="anchor" href="#_are_there_any_interface_matching_requirements_that_will_need_to_change_like_ssos_in_opengles"></a>5.6. Are there any interface matching requirements that will need to change, like SSOs in OpenGL/ES?</h3>
 <div class="paragraph">
 <p>Some implementations require the interpolation decorations in the last
 geometry shader stage if pipeline libraries are used, and this is
@@ -1494,13 +1497,13 @@ shader objects, unlike OpenGL.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_allow_passing_spir_v_directly_into_pipeline_creation"><a class="anchor" href="#_resolved_should_we_allow_passing_spir_v_directly_into_pipeline_creation"></a>5.7. RESOLVED: Should we allow passing SPIR-V directly into pipeline creation?</h3>
+<h3 id="_should_we_allow_passing_spir_v_directly_into_pipeline_creation"><a class="anchor" href="#_should_we_allow_passing_spir_v_directly_into_pipeline_creation"></a>5.7. Should we allow passing SPIR-V directly into pipeline creation?</h3>
 <div class="paragraph">
 <p>Yes. This simplifies compilation, avoids an unnecessary copy, and brings developers and implementations onto the same page.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_advertise_a_property_for_free_link_vs_fast_link"><a class="anchor" href="#_resolved_should_we_advertise_a_property_for_free_link_vs_fast_link"></a>5.8. RESOLVED: Should we advertise a property for “free link” vs. “fast link”?</h3>
+<h3 id="_should_we_advertise_a_property_for_free_link_vs_fast_link"><a class="anchor" href="#_should_we_advertise_a_property_for_free_link_vs_fast_link"></a>5.8. Should we advertise a property for “free link” vs. “fast link”?</h3>
 <div class="paragraph">
 <p>Yes, as developers may want to adjust the way they manage pipelines.
 If linking is more or less free, the expectation is that applications may
@@ -1517,14 +1520,14 @@ linking should be comparable to recording commands in a command buffer.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_anyone_need_the_depthstencil_format_to_be_provided_with_the_depth_bias_state"><a class="anchor" href="#_resolved_does_anyone_need_the_depthstencil_format_to_be_provided_with_the_depth_bias_state"></a>5.9. RESOLVED: Does anyone need the depth/stencil format to be provided with the depth bias state?</h3>
+<h3 id="_does_anyone_need_the_depthstencil_format_to_be_provided_with_the_depth_bias_state"><a class="anchor" href="#_does_anyone_need_the_depthstencil_format_to_be_provided_with_the_depth_bias_state"></a>5.9. Does anyone need the depth/stencil format to be provided with the depth bias state?</h3>
 <div class="paragraph">
 <p>The depth format affects how depth bias is applied, but these are currently provided in separate parts of the pipeline.
 Nobody has claimed this to be a problem.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_with_the_recommendation_to_create_an_optimized_pipeline_as_well_as_a_fast_linked_pipeline_will_this_lead_to_additional_memory_consumption"><a class="anchor" href="#_resolved_with_the_recommendation_to_create_an_optimized_pipeline_as_well_as_a_fast_linked_pipeline_will_this_lead_to_additional_memory_consumption"></a>5.10. RESOLVED: With the recommendation to create an optimized pipeline as well as a fast linked pipeline, will this lead to additional memory consumption?</h3>
+<h3 id="_with_the_recommendation_to_create_an_optimized_pipeline_as_well_as_a_fast_linked_pipeline_will_this_lead_to_additional_memory_consumption"><a class="anchor" href="#_with_the_recommendation_to_create_an_optimized_pipeline_as_well_as_a_fast_linked_pipeline_will_this_lead_to_additional_memory_consumption"></a>5.10. With the recommendation to create an optimized pipeline as well as a fast linked pipeline, will this lead to additional memory consumption?</h3>
 <div class="paragraph">
 <p>Caches containing pipeline libraries will necessarily increase the total memory consumption of compiled pipelines, as applications will generally try to keep these available while pipeline could be streamed in/out.
 Implementations may be able to use data in the library caches for the final pipelines in some circumstances, which could help mitigate it - but this is not guaranteed and will vary by vendor.</p>
@@ -1537,7 +1540,7 @@ Implementations may be able to use data in the library caches for the final pipe
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_the_link_time_optimization_bits_apply_to_other_pipeline_libraries_e_g_ray_tracing"><a class="anchor" href="#_resolved_should_the_link_time_optimization_bits_apply_to_other_pipeline_libraries_e_g_ray_tracing"></a>5.11. RESOLVED: Should the link time optimization bits apply to other pipeline libraries (e.g. ray tracing)?</h3>
+<h3 id="_should_the_link_time_optimization_bits_apply_to_other_pipeline_libraries_e_g_ray_tracing"><a class="anchor" href="#_should_the_link_time_optimization_bits_apply_to_other_pipeline_libraries_e_g_ray_tracing"></a>5.11. Should the link time optimization bits apply to other pipeline libraries (e.g. ray tracing)?</h3>
 <div class="paragraph">
 <p>Yes, but it will not necessarily be subject to the same quality guarantees. Ray tracing pipeline libraries were not designed with this directly in mind, so while implementations should make use of these bits as best they can, it is not possible to make the same quality guarantees as for graphics pipelines.</p>
 </div>
@@ -1546,25 +1549,25 @@ Implementations may be able to use data in the library caches for the final pipe
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_the_shader_module_deprecation_apply_to_other_pipelines"><a class="anchor" href="#_resolved_does_the_shader_module_deprecation_apply_to_other_pipelines"></a>5.12. RESOLVED: Does the shader module deprecation apply to other pipelines?</h3>
+<h3 id="_does_the_shader_module_deprecation_apply_to_other_pipelines"><a class="anchor" href="#_does_the_shader_module_deprecation_apply_to_other_pipelines"></a>5.12. Does the shader module deprecation apply to other pipelines?</h3>
 <div class="paragraph">
 <p>Yes.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_vkpipelinedepthstencilstatecreateinfo_be_part_of_the_fragment_shader_state_or_fragment_output_interface_state"><a class="anchor" href="#_resolved_should_vkpipelinedepthstencilstatecreateinfo_be_part_of_the_fragment_shader_state_or_fragment_output_interface_state"></a>5.13. RESOLVED: Should <code>VkPipelineDepthStencilStateCreateInfo</code> be part of the fragment shader state or fragment output interface state?</h3>
+<h3 id="_should_vkpipelinedepthstencilstatecreateinfo_be_part_of_the_fragment_shader_state_or_fragment_output_interface_state"><a class="anchor" href="#_should_vkpipelinedepthstencilstatecreateinfo_be_part_of_the_fragment_shader_state_or_fragment_output_interface_state"></a>5.13. Should <code>VkPipelineDepthStencilStateCreateInfo</code> be part of the fragment shader state or fragment output interface state?</h3>
 <div class="paragraph">
 <p>Some vendors will make use of this information if it is available and would rather not see it move - however notably all of this state can be made dynamic. Applications wanting to avoid setting this state with the fragment shader library should use this dynamic state.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_vkpipelinemultisamplestatecreateinfo_be_required_even_when_the_fragment_shader_does_not_make_use_of_multisampling_shader_features"><a class="anchor" href="#_resolved_should_vkpipelinemultisamplestatecreateinfo_be_required_even_when_the_fragment_shader_does_not_make_use_of_multisampling_shader_features"></a>5.14. RESOLVED: Should <code>VkPipelineMultisampleStateCreateInfo</code> be required, even when the fragment shader does not make use of multisampling shader features?</h3>
+<h3 id="_should_vkpipelinemultisamplestatecreateinfo_be_required_even_when_the_fragment_shader_does_not_make_use_of_multisampling_shader_features"><a class="anchor" href="#_should_vkpipelinemultisamplestatecreateinfo_be_required_even_when_the_fragment_shader_does_not_make_use_of_multisampling_shader_features"></a>5.14. Should <code>VkPipelineMultisampleStateCreateInfo</code> be required, even when the fragment shader does not make use of multisampling shader features?</h3>
 <div class="paragraph">
 <p>The fragment shader library only needs this information when sample shading is enabled.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_vkpipelinemultisamplestatecreateinfo_be_part_of_the_fragment_output_interface_instead"><a class="anchor" href="#_resolved_should_vkpipelinemultisamplestatecreateinfo_be_part_of_the_fragment_output_interface_instead"></a>5.15. RESOLVED: Should <code>VkPipelineMultisampleStateCreateInfo</code> be part of the fragment output interface instead?</h3>
+<h3 id="_should_vkpipelinemultisamplestatecreateinfo_be_part_of_the_fragment_output_interface_instead"><a class="anchor" href="#_should_vkpipelinemultisamplestatecreateinfo_be_part_of_the_fragment_output_interface_instead"></a>5.15. Should <code>VkPipelineMultisampleStateCreateInfo</code> be part of the fragment output interface instead?</h3>
 <div class="paragraph">
 <p>Moving it to the output interface removes the need to create multiple fragment shader libraries for different MSAA rates, which some applications do as a part of dynamic performance tuning.
 This only works when used in conjunction with dynamic rendering; when render pass objects are used, the sample rate will effectively be sourced from any subpass attachments due to validation constraints.
@@ -1572,13 +1575,13 @@ This could be made to work with subpasses with no attachments, but the additiona
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_add_an_explicit_result_code_to_pipeline_creation_to_indicate_that_a_pipeline_compiled_with_link_time_optimization_has_been_returned"><a class="anchor" href="#_resolved_should_we_add_an_explicit_result_code_to_pipeline_creation_to_indicate_that_a_pipeline_compiled_with_link_time_optimization_has_been_returned"></a>5.16. RESOLVED: Should we add an explicit result code to pipeline creation to indicate that a pipeline compiled with link time optimization has been returned?</h3>
+<h3 id="_should_we_add_an_explicit_result_code_to_pipeline_creation_to_indicate_that_a_pipeline_compiled_with_link_time_optimization_has_been_returned"><a class="anchor" href="#_should_we_add_an_explicit_result_code_to_pipeline_creation_to_indicate_that_a_pipeline_compiled_with_link_time_optimization_has_been_returned"></a>5.16. Should we add an explicit result code to pipeline creation to indicate that a pipeline compiled with link time optimization has been returned?</h3>
 <div class="paragraph">
 <p>No, as the complexity of handling this does not clearly translate to significant application wins.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_pipeline_caches_return_optimized_pipelines_without_the_vk_pipeline_layout_create_independent_sets_bit_ext_set"><a class="anchor" href="#_resolved_can_pipeline_caches_return_optimized_pipelines_without_the_vk_pipeline_layout_create_independent_sets_bit_ext_set"></a>5.17. RESOLVED: Can pipeline caches return optimized pipelines without the <code>VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT</code> set?</h3>
+<h3 id="_can_pipeline_caches_return_optimized_pipelines_without_the_vk_pipeline_layout_create_independent_sets_bit_ext_set"><a class="anchor" href="#_can_pipeline_caches_return_optimized_pipelines_without_the_vk_pipeline_layout_create_independent_sets_bit_ext_set"></a>5.17. Can pipeline caches return optimized pipelines without the <code>VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT</code> set?</h3>
 <div class="paragraph">
 <p>Not unconditionally - if an implementation does not do anything with that flag then yes, but there is a functional difference then it cannot. I.e. the same as other pipeline state.</p>
 </div>

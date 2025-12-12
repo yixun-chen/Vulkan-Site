@@ -15,6 +15,8 @@
 - [3. Proposal](#_proposal)
 - [4. Examples](#_examples)
 - [5. Issues](#_issues)
+- [5.1. What shader stages should the instructions introduced by this extension be allowed in?](#_what_shader_stages_should_the_instructions_introduced_by_this_extension_be_allowed_in)
+- [5.1._What_shader_stages_should_the_instructions_introduced_by_this_extension_be_allowed_in?](#_what_shader_stages_should_the_instructions_introduced_by_this_extension_be_allowed_in)
 
 ## Content
 
@@ -25,6 +27,8 @@ Table of Contents
 [3. Proposal](#_proposal)
 [4. Examples](#_examples)
 [5. Issues](#_issues)
+
+[5.1. What shader stages should the instructions introduced by this extension be allowed in?](#_what_shader_stages_should_the_instructions_introduced_by_this_extension_be_allowed_in)
 
 This document proposes adding support for expect/assume SPIR-V instructions
 to guide shader program optimizations.
@@ -93,8 +97,5 @@ is not NaN or infinite:
 value = load(...)
 assume(!isnan(value))
 
-1) What shader stages should the instructions introduced by this extension
-be allowed in?
-
-**PROPOSED**: No restrictions are placed on the shader stages the instructions can
+No restrictions are placed on the shader stages the instructions can
 be used in.

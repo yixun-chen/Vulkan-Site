@@ -59,6 +59,22 @@ normalized floating-point values, specifying priorities of work that
 will be submitted to each created queue.
 See [Queue Priority](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-priority) for more information.
 
+Some queue families support functionality which requires a device feature or
+extension to be enabled, as indicated by the
+[VkQueueFamilyProperties](VkQueueFamilyProperties.html)::`queueFlags` member.
+Applications **may** create such queues and submit [queue submission commands](../../../../spec/latest/chapters/devsandqueues.html#devsandqueues-submission) to them without enabling the corresponding
+feature or extension, but **must** not utilize the specific functionality that
+they did not enable.
+
+For example, [sparse memory management operations](../../../../spec/latest/chapters/sparsemem.html#sparsememory) **can** be
+performed on queues from queue families exposing the
+`VK_QUEUE_SPARSE_BINDING_BIT` bit, provided the
+[sparseBinding](../../../../spec/latest/chapters/features.html#features-sparseBinding) feature is enabled.
+If a queue family supports both the `VK_QUEUE_SPARSE_BINDING_BIT` and
+`VK_QUEUE_TRANSFER_BIT` bits, applications **may** create a queue from this
+family and issue transfer operations without enabling the
+[sparseBinding](../../../../spec/latest/chapters/features.html#features-sparseBinding) feature.
+
 Valid Usage
 
 * 

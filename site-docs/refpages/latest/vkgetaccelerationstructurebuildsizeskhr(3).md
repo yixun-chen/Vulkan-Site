@@ -52,6 +52,7 @@ of primitives built into each geometry.
 [VkAccelerationStructureBuildSizesInfoKHR](VkAccelerationStructureBuildSizesInfoKHR.html) structure which returns
 the size required for an acceleration structure and the sizes required
 for the scratch buffers, given the build parameters.
+The size requirements for a scratch buffer **may** be zero.
 
 The `srcAccelerationStructure`, `dstAccelerationStructure`, and
 `mode` members of `pBuildInfo` are ignored.

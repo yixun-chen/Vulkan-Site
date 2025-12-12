@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -619,7 +622,11 @@
 <li><a href="#_api_features">2.1. API Features</a></li>
 </ul>
 </li>
-<li><a href="#_issues">3. Issues</a></li>
+<li><a href="#_issues">3. Issues</a>
+<ul class="sectlevel2">
+<li><a href="#_should_we_do_further_reworks_of_the_memory_mapping_api">3.1. Should we do further reworks of the memory mapping API?</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="preamble">
@@ -707,14 +714,14 @@ required to be <code>VK_SUCCESS</code>.</p>
 <div class="sect1">
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>3. Issues</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_should_we_do_further_reworks_of_the_memory_mapping_api"><a class="anchor" href="#_should_we_do_further_reworks_of_the_memory_mapping_api"></a>3.1. Should we do further reworks of the memory mapping API?</h3>
 <div class="paragraph">
-<p>1) Should we do further reworks of the memory mapping API?</p>
-</div>
-<div class="paragraph">
-<p><strong>PROPOSED</strong>: No, further reworks are out-of-scope for this extension.  It is
+<p>No, further reworks are out-of-scope for this extension.  It is
 intended to solve the extensibility problem to enable new functionality,
 not add functionality itself.  In that sense, it is similar to
 VK_KHR_get_physical_device_properties2 or VK_KHR_copy_commands2.</p>
+</div>
 </div>
 </div>
 </div>

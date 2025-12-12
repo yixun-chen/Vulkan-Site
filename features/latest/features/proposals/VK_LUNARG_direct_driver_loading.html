@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -831,7 +834,7 @@ vkCreateInstance(&amp;instance_info, NULL, inst);</code></pre>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_global_functions_are_not_extensible"><a class="anchor" href="#_resolved_global_functions_are_not_extensible"></a>5.1. RESOLVED: Global functions are not extensible</h3>
+<h3 id="_global_functions_are_not_extensible"><a class="anchor" href="#_global_functions_are_not_extensible"></a>5.1. Global functions are not extensible</h3>
 <div class="paragraph">
 <p>Since this proposal allows adding drivers, and vkEnumerateInstanceExtensionProperties
 returns the list of extensions supported by drivers on the system, the application
@@ -846,20 +849,20 @@ with instance creation that need addressing than what this extension accomplishe
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_this_extension_also_handle_layer_loading"><a class="anchor" href="#_resolved_should_this_extension_also_handle_layer_loading"></a>5.2. RESOLVED: Should this extension also handle layer loading?</h3>
+<h3 id="_should_this_extension_also_handle_layer_loading"><a class="anchor" href="#_should_this_extension_also_handle_layer_loading"></a>5.2. Should this extension also handle layer loading?</h3>
 <div class="paragraph">
 <p>No, layers require significantly more information to be present for the loader
 to handle correctly, and have the same defect of global functions not being extensible.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_do_drivers_implement_this_extension"><a class="anchor" href="#_resolved_do_drivers_implement_this_extension"></a>5.3. RESOLVED: Do drivers implement this extension?</h3>
+<h3 id="_do_drivers_implement_this_extension"><a class="anchor" href="#_do_drivers_implement_this_extension"></a>5.3. Do drivers implement this extension?</h3>
 <div class="paragraph">
 <p>No, this would be implemented by the Vulkan Loader.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_there_any_changes_drivers_need_to_make_to_allow_being_used_in_this_extension"><a class="anchor" href="#_resolved_are_there_any_changes_drivers_need_to_make_to_allow_being_used_in_this_extension"></a>5.4. RESOLVED: Are there any changes drivers need to make to allow being used in this extension?</h3>
+<h3 id="_are_there_any_changes_drivers_need_to_make_to_allow_being_used_in_this_extension"><a class="anchor" href="#_are_there_any_changes_drivers_need_to_make_to_allow_being_used_in_this_extension"></a>5.4. Are there any changes drivers need to make to allow being used in this extension?</h3>
 <div class="paragraph">
 <p>Partially, drivers do not need modification to work today. However, to support
 all of the features of the Loader-ICD interface, they will need to support the
@@ -869,7 +872,7 @@ vkGetInstanceProcAddr, which is simple addition.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_kinds_of_drivers_are_expected_to_be_used_with_this_extension"><a class="anchor" href="#_resolved_what_kinds_of_drivers_are_expected_to_be_used_with_this_extension"></a>5.5. RESOLVED: What kinds of drivers are expected to be used with this extension?</h3>
+<h3 id="_what_kinds_of_drivers_are_expected_to_be_used_with_this_extension"><a class="anchor" href="#_what_kinds_of_drivers_are_expected_to_be_used_with_this_extension"></a>5.5. What kinds of drivers are expected to be used with this extension?</h3>
 <div class="paragraph">
 <p>This extension is designed to be used with non-hardware drivers, such as software
 implementations like lavapipe and swiftshader, as well as API translation layers

@@ -96,13 +96,15 @@ feature **must** be enabled
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10887) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10887
 
 If `format` is VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX, then
-`compressedData.address` **must** be aligned to 128 bytes
+`compressedData` **must** be aligned to
+`VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX` (128) bytes
 
 * 
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10888) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10888
 
 If `format` is VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX, then
-`dataSize` **must** be aligned to 128 bytes
+`dataSize` **must** be a multiple of
+`VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX` (128) bytes
 
 * 
 [](#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-pNext-10890) VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-pNext-10890

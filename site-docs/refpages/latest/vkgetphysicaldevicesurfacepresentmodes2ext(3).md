@@ -19,8 +19,8 @@
 
 vkGetPhysicalDeviceSurfacePresentModes2EXT - Query supported presentation modes
 
-Alternatively, to query the supported presentation modes for a surface
-combined with select other fixed swapchain creation parameters, call:
+To query the supported presentation modes for a surface combined with select
+other fixed swapchain creation parameters, call:
 
 // Provided by VK_EXT_full_screen_exclusive
 VkResult vkGetPhysicalDeviceSurfacePresentModes2EXT(

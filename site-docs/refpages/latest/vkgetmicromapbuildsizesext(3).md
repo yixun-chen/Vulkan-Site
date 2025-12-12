@@ -44,6 +44,7 @@ structure describing parameters of a build operation.
 `pSizeInfo` is a pointer to a [VkMicromapBuildSizesInfoEXT](VkMicromapBuildSizesInfoEXT.html)
 structure which returns the size required for a micromap and the sizes
 required for the scratch buffers, given the build parameters.
+The size requirements for a scratch buffer **may** be zero.
 
 The `dstMicromap` and `mode` members of `pBuildInfo` are
 ignored.

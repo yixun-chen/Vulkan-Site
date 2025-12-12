@@ -17,8 +17,8 @@
 - [3.1._SPV_KHR_untyped_pointers](#_spv_khr_untyped_pointers)
 - [3.2. Examples](#_examples)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Which storage classes should allow untyped pointers?](#_resolved_which_storage_classes_should_allow_untyped_pointers)
-- [4.1._RESOLVED:_Which_storage_classes_should_allow_untyped_pointers?](#_resolved_which_storage_classes_should_allow_untyped_pointers)
+- [4.1. Which storage classes should allow untyped pointers?](#_which_storage_classes_should_allow_untyped_pointers)
+- [4.1._Which_storage_classes_should_allow_untyped_pointers?](#_which_storage_classes_should_allow_untyped_pointers)
 
 ## Content
 

@@ -49,8 +49,8 @@ graph cache encoded in the data.
 cache.
 
 * 
-`toolchainVersion` is the version of the compiler that built the
-data graph cache.
+`toolchainVersion` is a null-terminated UTF-8 string specifying the
+version of the compiler that built the data graph cache.
 
 The application **should** verify that the header info is compatible with the
 [VkDataGraphProcessingEngineCreateInfoARM](VkDataGraphProcessingEngineCreateInfoARM.html) passed during pipeline

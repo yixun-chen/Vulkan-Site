@@ -197,4 +197,4 @@ vkQueueSubmit2(graphicsQueue, 1, &submitInfo, VK_NULL_HANDLE);
 It will work specifically with `vkCmdPipelineBarrier` as this has a dependency flags parameter.
 When used with this command, the synchronization scopes are used for synchronizing in the same manner when a QFOT is specified.
 
-There is no requiremented that any stage masks need to match between the acquire and release, whether the new `VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR` flag is present or not.
+There is no requirement that any stage masks need to match between the acquire and release, whether the new `VK_DEPENDENCY_QUEUE_FAMILY_OWNERSHIP_TRANSFER_USE_ALL_STAGES_BIT_KHR` flag is present or not.

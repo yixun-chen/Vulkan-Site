@@ -25,14 +25,14 @@
 - [4.2. Enable counters](#_enable_counters)
 - [4.2._Enable_counters](#_enable_counters)
 - [5. Issues](#_issues)
-- [5.1. RESOLVED: Why is this not an extension of VK_KHR_performance_query?](#_resolved_why_is_this_not_an_extension_of_vk_khr_performance_query)
-- [5.1._RESOLVED:_Why_is_this_not_an_extension_of_VK_KHR_performance_query?](#_resolved_why_is_this_not_an_extension_of_vk_khr_performance_query)
-- [5.2. RESOLVED: What is the security model of this extension?](#_resolved_what_is_the_security_model_of_this_extension)
-- [5.2._RESOLVED:_What_is_the_security_model_of_this_extension?](#_resolved_what_is_the_security_model_of_this_extension)
-- [5.3. RESOLVED: What are the interactions with the VK_ARM_render_pass_striped extension?](#_resolved_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension)
-- [5.3._RESOLVED:_What_are_the_interactions_with_the_VK_ARM_render_pass_striped_extension?](#_resolved_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension)
-- [5.4. RESOLVED: In what pipeline stage is the performance counter writes done](#_resolved_in_what_pipeline_stage_is_the_performance_counter_writes_done)
-- [5.4._RESOLVED:_In_what_pipeline_stage_is_the_performance_counter_writes_done](#_resolved_in_what_pipeline_stage_is_the_performance_counter_writes_done)
+- [5.1. Why is this not an extension of VK_KHR_performance_query?](#_why_is_this_not_an_extension_of_vk_khr_performance_query)
+- [5.1._Why_is_this_not_an_extension_of_VK_KHR_performance_query?](#_why_is_this_not_an_extension_of_vk_khr_performance_query)
+- [5.2. What is the security model of this extension?](#_what_is_the_security_model_of_this_extension)
+- [5.2._What_is_the_security_model_of_this_extension?](#_what_is_the_security_model_of_this_extension)
+- [5.3. What are the interactions with the VK_ARM_render_pass_striped extension?](#_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension)
+- [5.3._What_are_the_interactions_with_the_VK_ARM_render_pass_striped_extension?](#_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension)
+- [5.4. In what pipeline stage is the performance counter writes done](#_in_what_pipeline_stage_is_the_performance_counter_writes_done)
+- [5.4._In_what_pipeline_stage_is_the_performance_counter_writes_done](#_in_what_pipeline_stage_is_the_performance_counter_writes_done)
 
 ## Content
 
@@ -54,10 +54,10 @@ Table of Contents
 
 [5. Issues](#_issues)
 
-[5.1. RESOLVED: Why is this not an extension of VK_KHR_performance_query?](#_resolved_why_is_this_not_an_extension_of_vk_khr_performance_query)
-[5.2. RESOLVED: What is the security model of this extension?](#_resolved_what_is_the_security_model_of_this_extension)
-[5.3. RESOLVED: What are the interactions with the VK_ARM_render_pass_striped extension?](#_resolved_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension)
-[5.4. RESOLVED: In what pipeline stage is the performance counter writes done](#_resolved_in_what_pipeline_stage_is_the_performance_counter_writes_done)
+[5.1. Why is this not an extension of VK_KHR_performance_query?](#_why_is_this_not_an_extension_of_vk_khr_performance_query)
+[5.2. What is the security model of this extension?](#_what_is_the_security_model_of_this_extension)
+[5.3. What are the interactions with the VK_ARM_render_pass_striped extension?](#_what_are_the_interactions_with_the_vk_arm_render_pass_striped_extension)
+[5.4. In what pipeline stage is the performance counter writes done](#_in_what_pipeline_stage_is_the_performance_counter_writes_done)
 
 This document describes a proposal for a new extension that allows
 performance counter information to be captured for each region of

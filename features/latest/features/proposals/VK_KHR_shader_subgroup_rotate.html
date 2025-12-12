@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -677,7 +680,7 @@ instruction, here abbreviated as <code>Shuffle</code>, as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">ShuffleRotate(value, amount) = Shuffle(value, ((amount + LocalId) &amp; (SubgroupSize - 1)))</code></pre>
+<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">ShuffleRotate(value, amount) = Shuffle(value, ((amount + LocalId) &amp; (SubgroupSize - 1)))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -739,7 +742,7 @@ the rotation amount to be dynamically uniform within the subgroup.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">genType  subgroupRotate(genType value,  uint delta);
+<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">genType  subgroupRotate(genType value,  uint delta);
 genIType subgroupRotate(genIType value, uint delta);
 genUType subgroupRotate(genUType value, uint delta);
 genBType subgroupRotate(genBType value, uint delta);

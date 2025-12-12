@@ -2438,19 +2438,35 @@ All queries used by the command **must** not be uninitialized
 If `VK_QUERY_RESULT_64_BIT` is not set in `flags`
 and the `queryType` used to create `queryPool` was not
 `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`,
-then `pData` and `stride` **must** be multiples of `4`
+then `pData` **must** be aligned to a multiple of `4`
+
+* 
+[](#VUID-vkGetQueryPoolResults-queryCount-12251) VUID-vkGetQueryPoolResults-queryCount-12251
+
+If `queryCount` is greater than 1, `VK_QUERY_RESULT_64_BIT` is
+not set in `flags`
+and the `queryType` used to create `queryPool` was not
+`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`,
+then `stride` **must** be a multiple of `4`
 
 * 
 [](#VUID-vkGetQueryPoolResults-flags-00815) VUID-vkGetQueryPoolResults-flags-00815
 
 If `VK_QUERY_RESULT_64_BIT` is set in `flags` then `pData`
-and `stride` **must** be multiples of `8`
+**must** be aligned to a multiple of `8`
+
+* 
+[](#VUID-vkGetQueryPoolResults-queryCount-12252) VUID-vkGetQueryPoolResults-queryCount-12252
+
+If `queryCount` is greater than 1 and `VK_QUERY_RESULT_64_BIT`
+is set in `flags`, then `stride` **must** be a multiple of `8`
 
 * 
 [](#VUID-vkGetQueryPoolResults-stride-08993) VUID-vkGetQueryPoolResults-stride-08993
 
-    If `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT` is set, `stride`
-    **must** be large enough to contain the unsigned integer representing
+    If `queryCount` is greater than 1 and
+    `VK_QUERY_RESULT_WITH_AVAILABILITY_BIT` is set, `stride` **must**
+    be large enough to contain the unsigned integer representing
     availability
 or status
     in addition to the query result
@@ -2459,16 +2475,23 @@ or status
 [](#VUID-vkGetQueryPoolResults-queryType-03229) VUID-vkGetQueryPoolResults-queryType-03229
 
 If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, then `pData` and
-`stride` **must** be multiples of the size of
+`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, then `pData` **must** be
+aligned to a multiple of the size of [VkPerformanceCounterResultKHR](#VkPerformanceCounterResultKHR)
+
+* 
+[](#VUID-vkGetQueryPoolResults-queryCount-12253) VUID-vkGetQueryPoolResults-queryCount-12253
+
+If `queryCount` is greater than 1 and the `queryType` used to
+create `queryPool` was `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`,
+then `stride` **must** be a multiple of the size of
 [VkPerformanceCounterResultKHR](#VkPerformanceCounterResultKHR)
 
 * 
 [](#VUID-vkGetQueryPoolResults-queryType-04519) VUID-vkGetQueryPoolResults-queryType-04519
 
-If the `queryType` used to create `queryPool` was
-`VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`, then `stride` **must** be
-large enough to contain the
+If `queryCount` is greater than 1 and the `queryType` used to
+create `queryPool` was `VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR`,
+then `stride` **must** be large enough to contain the
 [VkQueryPoolPerformanceCreateInfoKHR](#VkQueryPoolPerformanceCreateInfoKHR)::`counterIndexCount` used
 to create `queryPool` times the size of
 [VkPerformanceCounterResultKHR](#VkPerformanceCounterResultKHR)
@@ -2827,13 +2850,25 @@ command is executed
 [](#VUID-vkCmdCopyQueryPoolResults-flags-00822) VUID-vkCmdCopyQueryPoolResults-flags-00822
 
 If `VK_QUERY_RESULT_64_BIT` is not set in `flags` then
-`dstOffset` and `stride` **must** be multiples of `4`
+`dstOffset` **must** be a multiple of `4`
+
+* 
+[](#VUID-vkCmdCopyQueryPoolResults-queryCount-12254) VUID-vkCmdCopyQueryPoolResults-queryCount-12254
+
+If `queryCount` is greater than 1 and `VK_QUERY_RESULT_64_BIT`
+is not set in `flags` then `stride` **must** be a multiple of `4`
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-flags-00823) VUID-vkCmdCopyQueryPoolResults-flags-00823
 
 If `VK_QUERY_RESULT_64_BIT` is set in `flags` then
-`dstOffset` and `stride` **must** be multiples of `8`
+`dstOffset` **must** be a multiple of `8`
+
+* 
+[](#VUID-vkCmdCopyQueryPoolResults-queryCount-12255) VUID-vkCmdCopyQueryPoolResults-queryCount-12255
+
+If `queryCount` is greater than 1 and `VK_QUERY_RESULT_64_BIT`
+is set in `flags` then `stride` **must** be a multiple of `8`
 
 * 
 [](#VUID-vkCmdCopyQueryPoolResults-dstBuffer-00824) VUID-vkCmdCopyQueryPoolResults-dstBuffer-00824
@@ -3008,7 +3043,7 @@ either drawing or
 dispatching commands while a pipeline statistics query is active.
 As such, pipeline statistics queries are available on queue families
 supporting
-
+either graphics or
 compute operations.
 The availability of pipeline statistics queries is indicated by the
 `pipelineStatisticsQuery` member of the `VkPhysicalDeviceFeatures`
@@ -4152,7 +4187,7 @@ typedef struct VkInitializePerformanceApiInfoINTEL {
 structure.
 
 * 
-`pUserData` is a pointer for application data.
+`pUserData` is NULL or a pointer for application data.
 
 Valid Usage (Implicit)
 

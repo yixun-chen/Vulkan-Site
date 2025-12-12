@@ -47,9 +47,11 @@ index of each triangle.
 cluster template.
 
 * 
-`vertexBuffer` is either `0` or a [VkStridedDeviceAddressNV](VkStridedDeviceAddressNV.html)
-structure containing the vertex data for the indexed triangles stored in
-the cluster template.
+`vertexBuffer` is a [VkStridedDeviceAddressNV](VkStridedDeviceAddressNV.html) structure
+containing the vertex data for the indexed triangles stored in the
+cluster template.
+If the address in [VkStridedDeviceAddressNV](VkStridedDeviceAddressNV.html) is `0` the vertex data
+is sourced from the cluster template.
 
 Valid Usage
 

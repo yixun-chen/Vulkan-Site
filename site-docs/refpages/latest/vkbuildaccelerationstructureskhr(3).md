@@ -522,30 +522,30 @@ member of any element of `pGeometries` or `ppGeometries` with a
 bound to host-visible device memory
 
 * 
-[](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03725) VUID-vkBuildAccelerationStructuresKHR-pInfos-03725
+[](#VUID-vkBuildAccelerationStructuresKHR-pInfos-12244) VUID-vkBuildAccelerationStructuresKHR-pInfos-12244
 
 If `pInfos`[i].`mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR`, all addresses
-between `pInfos`[i].`scratchData.hostAddress` and
-`pInfos`[i].`scratchData.hostAddress` + N - 1 **must** be valid
-host memory, where N is given by the `buildScratchSize` member of
-the [VkAccelerationStructureBuildSizesInfoKHR](VkAccelerationStructureBuildSizesInfoKHR.html) structure returned
-from a call to [vkGetAccelerationStructureBuildSizesKHR](vkGetAccelerationStructureBuildSizesKHR.html) with an
-identical [VkAccelerationStructureBuildGeometryInfoKHR](VkAccelerationStructureBuildGeometryInfoKHR.html) structure
-and primitive count
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR`, and N is not `0`,
+all addresses between `pInfos`[i].`scratchData.hostAddress` and
+`pInfos`[i].`scratchData.hostAddress` +  N - 1 **must**
+be valid host memory, where N is given by the `buildScratchSize`
+member of the [VkAccelerationStructureBuildSizesInfoKHR](VkAccelerationStructureBuildSizesInfoKHR.html) structure
+returned from a call to [vkGetAccelerationStructureBuildSizesKHR](vkGetAccelerationStructureBuildSizesKHR.html)
+with an identical [VkAccelerationStructureBuildGeometryInfoKHR](VkAccelerationStructureBuildGeometryInfoKHR.html)
+structure and primitive count
 
 * 
-[](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03726) VUID-vkBuildAccelerationStructuresKHR-pInfos-03726
+[](#VUID-vkBuildAccelerationStructuresKHR-pInfos-12245) VUID-vkBuildAccelerationStructuresKHR-pInfos-12245
 
 If `pInfos`[i].`mode` is
-`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, all addresses
-between `pInfos`[i].`scratchData.hostAddress` and
-`pInfos`[i].`scratchData.hostAddress` + N - 1 **must** be valid
-host memory, where N is given by the `updateScratchSize` member of
-the [VkAccelerationStructureBuildSizesInfoKHR](VkAccelerationStructureBuildSizesInfoKHR.html) structure returned
-from a call to [vkGetAccelerationStructureBuildSizesKHR](vkGetAccelerationStructureBuildSizesKHR.html) with an
-identical [VkAccelerationStructureBuildGeometryInfoKHR](VkAccelerationStructureBuildGeometryInfoKHR.html) structure
-and primitive count
+`VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, and N is not `0`,
+all addresses between `pInfos`[i].`scratchData.hostAddress` and
+`pInfos`[i].`scratchData.hostAddress` +  N - 1 **must**
+be valid host memory, where N is given by the `updateScratchSize`
+member of the [VkAccelerationStructureBuildSizesInfoKHR](VkAccelerationStructureBuildSizesInfoKHR.html) structure
+returned from a call to [vkGetAccelerationStructureBuildSizesKHR](vkGetAccelerationStructureBuildSizesKHR.html)
+with an identical [VkAccelerationStructureBuildGeometryInfoKHR](VkAccelerationStructureBuildGeometryInfoKHR.html)
+structure and primitive count
 
 * 
 [](#VUID-vkBuildAccelerationStructuresKHR-pInfos-03771) VUID-vkBuildAccelerationStructuresKHR-pInfos-03771

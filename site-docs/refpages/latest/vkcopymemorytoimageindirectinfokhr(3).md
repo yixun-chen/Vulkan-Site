@@ -130,8 +130,10 @@ a region that is contained within `dstImage`
 * 
 [](#VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-07665) VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-07665
 
-If `dstImage` is non-sparse then it **must** be bound completely and
-contiguously to a single `VkDeviceMemory` object
+If `dstImage` is non-sparse then the image
+or each specified *disjoint* plane
+**must** be bound completely and contiguously to a single
+`VkDeviceMemory` object
 
 * 
 [](#VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-07973) VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-07973

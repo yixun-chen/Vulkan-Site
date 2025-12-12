@@ -19,6 +19,8 @@
 - [3.1.2. Creating geometry](#_creating_geometry)
 - [3.1.2._Creating_geometry](#_creating_geometry)
 - [4. Issues](#_issues)
+- [4.1. Should applications be able to zoom-in to the geometry and expect 'good' results?](#_should_applications_be_able_to_zoom_in_to_the_geometry_and_expect_good_results)
+- [4.1._Should_applications_be_able_to_zoom-in_to_the_geometry_and_expect_'good'_results?](#_should_applications_be_able_to_zoom_in_to_the_geometry_and_expect_good_results)
 
 ## Content
 
@@ -31,6 +33,8 @@ Table of Contents
 [3.1. API Features](#_api_features)
 
 [4. Issues](#_issues)
+
+[4.1. Should applications be able to zoom-in to the geometry and expect 'good' results?](#_should_applications_be_able_to_zoom_in_to_the_geometry_and_expect_good_results)
 
 This document outlines the addition of two primitives for ray tracing: a
 sphere primitive and a linear swept sphere (LSS) primitive.
@@ -164,10 +168,7 @@ specified in the `pNext` field of `VkAccelerationStructureGeometryKHR`
 and the `geometryType` is set to either `VK_GEOMETRY_TYPE_SPHERES_NV` or
 `VK_GEOMETRY_TYPE_LINEAR_SWEPT_SPHERES_NV`.
 
-1) Should applications be able to zoom-in to the geometry and expect 'good'
-results?
-
-**RESOLVED**: No. Finding the intersection between a ray and an LSS is more
+No. Finding the intersection between a ray and an LSS is more
 involved than for a triangle and requires more floating-point operations.
 It is expected that there will be more rounding errors in the results, and the
 input ranges where the intersection test will produce a usable result will be

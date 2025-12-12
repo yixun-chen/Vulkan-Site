@@ -18,14 +18,14 @@
 - [3.2. Importing Metal Objects](#_importing_metal_objects)
 - [3.2._Importing_Metal_Objects](#_importing_metal_objects)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Should this extension be built by adding Metal platform variations to the VK_KHR_external_memory family of extensions?](#_resolved_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions)
-- [4.1._RESOLVED:_Should_this_extension_be_built_by_adding_Metal_platform_variations_to_the_VK_KHR_external_memory_family_of_extensions?](#_resolved_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions)
-- [4.2. RESOLVED: Should this extension be split into two, one for resources and one for other objects?](#_resolved_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects)
-- [4.2._RESOLVED:_Should_this_extension_be_split_into_two,_one_for_resources_and_one_for_other_objects?](#_resolved_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects)
-- [4.3. RESOLVED: Should the application be required to indicate its intention to export Metal objects when the corresponding Vulkan object is created?](#_resolved_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created)
-- [4.3._RESOLVED:_Should_the_application_be_required_to_indicate_its_intention_to_export_Metal_objects_when_the_corresponding_Vulkan_object_is_created?](#_resolved_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created)
-- [4.4. RESOLVED: Should a MTLBuffer be imported and exported through a VkBuffer or a VkDeviceMemory?](#_resolved_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory)
-- [4.4._RESOLVED:_Should_a_MTLBuffer_be_imported_and_exported_through_a_VkBuffer_or_a_VkDeviceMemory?](#_resolved_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory)
+- [4.1. Should this extension be built by adding Metal platform variations to the VK_KHR_external_memory family of extensions?](#_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions)
+- [4.1._Should_this_extension_be_built_by_adding_Metal_platform_variations_to_the_VK_KHR_external_memory_family_of_extensions?](#_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions)
+- [4.2. Should this extension be split into two, one for resources and one for other objects?](#_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects)
+- [4.2._Should_this_extension_be_split_into_two,_one_for_resources_and_one_for_other_objects?](#_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects)
+- [4.3. Should the application be required to indicate its intention to export Metal objects when the corresponding Vulkan object is created?](#_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created)
+- [4.3._Should_the_application_be_required_to_indicate_its_intention_to_export_Metal_objects_when_the_corresponding_Vulkan_object_is_created?](#_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created)
+- [4.4. Should a MTLBuffer be imported and exported through a VkBuffer or a VkDeviceMemory?](#_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory)
+- [4.4._Should_a_MTLBuffer_be_imported_and_exported_through_a_VkBuffer_or_a_VkDeviceMemory?](#_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory)
 
 ## Content
 
@@ -40,10 +40,10 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: Should this extension be built by adding Metal platform variations to the `VK_KHR_external_memory` family of extensions?](#_resolved_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions)
-[4.2. RESOLVED: Should this extension be split into two, one for resources and one for other objects?](#_resolved_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects)
-[4.3. RESOLVED: Should the application be required to indicate its intention to export Metal objects when the corresponding Vulkan object is created?](#_resolved_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created)
-[4.4. RESOLVED: Should a `MTLBuffer` be imported and exported through a `VkBuffer` or a `VkDeviceMemory`?](#_resolved_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory)
+[4.1. Should this extension be built by adding Metal platform variations to the `VK_KHR_external_memory` family of extensions?](#_should_this_extension_be_built_by_adding_metal_platform_variations_to_the_vk_khr_external_memory_family_of_extensions)
+[4.2. Should this extension be split into two, one for resources and one for other objects?](#_should_this_extension_be_split_into_two_one_for_resources_and_one_for_other_objects)
+[4.3. Should the application be required to indicate its intention to export Metal objects when the corresponding Vulkan object is created?](#_should_the_application_be_required_to_indicate_its_intention_to_export_metal_objects_when_the_corresponding_vulkan_object_is_created)
+[4.4. Should a `MTLBuffer` be imported and exported through a `VkBuffer` or a `VkDeviceMemory`?](#_should_a_mtlbuffer_be_imported_and_exported_through_a_vkbuffer_or_a_vkdevicememory)
 
 This document details API design ideas for the `VK_EXT_metal_objects` extension,
 which, in a Vulkan implementation that is layered on top of Metal on Apple device

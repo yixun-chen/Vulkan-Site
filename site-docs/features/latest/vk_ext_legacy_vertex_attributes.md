@@ -17,8 +17,8 @@
 - [3.1._API_Features](#_api_features)
 - [4. Examples](#_examples)
 - [5. Issues](#_issues)
-- [5.1. RESOLVED: Should implementations convert float/integer values?](#_resolved_should_implementations_convert_floatinteger_values)
-- [5.1._RESOLVED:_Should_implementations_convert_float/integer_values?](#_resolved_should_implementations_convert_floatinteger_values)
+- [5.1. Should implementations convert float/integer values?](#_should_implementations_convert_floatinteger_values)
+- [5.1._Should_implementations_convert_float/integer_values?](#_should_implementations_convert_floatinteger_values)
 
 ## Content
 
@@ -33,7 +33,7 @@ Table of Contents
 [4. Examples](#_examples)
 [5. Issues](#_issues)
 
-[5.1. RESOLVED: Should implementations convert float/integer values?](#_resolved_should_implementations_convert_floatinteger_values)
+[5.1. Should implementations convert float/integer values?](#_should_implementations_convert_floatinteger_values)
 
 This document proposes adding legacy features for vertex attributes as found in OpenGL.
 

@@ -36,7 +36,7 @@ typedef struct VkInitializePerformanceApiInfoINTEL {
 structure.
 
 * 
-`pUserData` is a pointer for application data.
+`pUserData` is NULL or a pointer for application data.
 
 Valid Usage (Implicit)
 

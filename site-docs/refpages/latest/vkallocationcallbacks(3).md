@@ -33,8 +33,8 @@ typedef struct VkAllocationCallbacks {
 } VkAllocationCallbacks;
 
 * 
-`pUserData` is a value to be interpreted by the implementation of
-the callbacks.
+`pUserData` is NULL or an application-defined user data pointer to
+be interpreted by the implementation of the callbacks.
 When any of the callbacks in `VkAllocationCallbacks` are called, the
 Vulkan implementation will pass this value as the first parameter to the
 callback.

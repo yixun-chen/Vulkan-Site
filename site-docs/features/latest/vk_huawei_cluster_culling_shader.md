@@ -243,6 +243,7 @@ Any invocation in Cluster Culling Shader can execute this instruction more than 
 New write-only output blocks are defined for built-in output variables:
 
 Type 1 (non-indexed mode):
+
 out gl_PerClusterHUAWEI
 {
     uint gl_VertexCountHUAWEI;
@@ -254,7 +255,8 @@ out gl_PerClusterHUAWEI
 }
 
 Type 2 (indexed mode):
- out gl_PerClusterHUAWEI
+
+out gl_PerClusterHUAWEI
 {
     uint gl_IndexCountHUAWEI;
     uint gl_InstanceCountHUAWEI;

@@ -13,10 +13,10 @@
 - [2. Proposal](#_proposal)
 - [3. Examples](#_examples)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: What about VK_KHR_dynamic_rendering?](#_resolved_what_about_vk_khr_dynamic_rendering)
-- [4.1._RESOLVED:_What_about_VK_KHR_dynamic_rendering?](#_resolved_what_about_vk_khr_dynamic_rendering)
-- [4.2. RESOLVED: Lack of on-tile-resolve support for some formats will particularly have a negative impact on this extension.  Can there be a format feature flag added?](#_resolved_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added)
-- [4.2._RESOLVED:_Lack_of_on-tile-resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension.__Can_there_be_a_format_feature_flag_added?](#_resolved_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added)
+- [4.1. What about VK_KHR_dynamic_rendering?](#_what_about_vk_khr_dynamic_rendering)
+- [4.1._What_about_VK_KHR_dynamic_rendering?](#_what_about_vk_khr_dynamic_rendering)
+- [4.2. Lack of on-tile-resolve support for some formats will particularly have a negative impact on this extension.  Can there be a format feature flag added?](#_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added)
+- [4.2._Lack_of_on-tile-resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension.__Can_there_be_a_format_feature_flag_added?](#_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added)
 
 ## Content
 
@@ -27,8 +27,8 @@ Table of Contents
 [3. Examples](#_examples)
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: What about `VK_KHR_dynamic_rendering`?](#_resolved_what_about_vk_khr_dynamic_rendering)
-[4.2. RESOLVED: Lack of on-tile-resolve support for some formats will particularly have a negative impact on this extension.  Can there be a format feature flag added?](#_resolved_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added)
+[4.1. What about `VK_KHR_dynamic_rendering`?](#_what_about_vk_khr_dynamic_rendering)
+[4.2. Lack of on-tile-resolve support for some formats will particularly have a negative impact on this extension.  Can there be a format feature flag added?](#_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added)
 
 This document identifies difficulties with efficient multisampled rendering on
 tiling GPUs and proposes an extension to improve it.

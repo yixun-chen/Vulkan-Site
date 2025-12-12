@@ -24,6 +24,14 @@
 - [3.4. Example Usage](#_example_usage)
 - [3.4._Example_Usage](#_example_usage)
 - [4. Issues](#_issues)
+- [4.1. How is effective size determined?](#_how_is_effective_size_determined)
+- [4.1._How_is_effective_size_determined?](#_how_is_effective_size_determined)
+- [4.2. What happens when an application indexes beyond the effective bounds of an unsized array?](#_what_happens_when_an_application_indexes_beyond_the_effective_bounds_of_an_unsized_array)
+- [4.2._What_happens_when_an_application_indexes_beyond_the_effective_bounds_of_an_unsized_array?](#_what_happens_when_an_application_indexes_beyond_the_effective_bounds_of_an_unsized_array)
+- [4.3. Should we allow unsized arrays at any position within a uniform block?](#_should_we_allow_unsized_arrays_at_any_position_within_a_uniform_block)
+- [4.3._Should_we_allow_unsized_arrays_at_any_position_within_a_uniform_block?](#_should_we_allow_unsized_arrays_at_any_position_within_a_uniform_block)
+- [4.4. What are the restrictions on using unsized arrays in uniform blocks?](#_what_are_the_restrictions_on_using_unsized_arrays_in_uniform_blocks)
+- [4.4._What_are_the_restrictions_on_using_unsized_arrays_in_uniform_blocks?](#_what_are_the_restrictions_on_using_unsized_arrays_in_uniform_blocks)
 - [5. Dependencies](#_dependencies)
 - [6. References](#_references)
 
@@ -44,6 +52,12 @@ Table of Contents
 [3.4. Example Usage](#_example_usage)
 
 [4. Issues](#_issues)
+
+[4.1. How is effective size determined?](#_how_is_effective_size_determined)
+[4.2. What happens when an application indexes beyond the effective bounds of an unsized array?](#_what_happens_when_an_application_indexes_beyond_the_effective_bounds_of_an_unsized_array)
+[4.3. Should we allow unsized arrays at any position within a uniform block?](#_should_we_allow_unsized_arrays_at_any_position_within_a_uniform_block)
+[4.4. What are the restrictions on using unsized arrays in uniform blocks?](#_what_are_the_restrictions_on_using_unsized_arrays_in_uniform_blocks)
+
 [5. Dependencies](#_dependencies)
 [6. References](#_references)
 
@@ -66,7 +80,7 @@ Key aspects of the solution:
 Only the last member of a uniform buffer can be an unsized array
 
 * 
-Array size is inferred from buffer size using: max((buffer_size - array_offset) / array_stride, 0)
+Array size is inferred from buffer size using: `max((buffer_size - array_offset) / array_stride, 0)`
 
 * 
 Applications calculate array size manually and pass it via separate uniforms if needed
@@ -119,38 +133,27 @@ void main() {
    gl_Position = vec4(value * scale, 0.0, 0.0, 1.0);
 }
 
-How is effective size determined?
-
-* 
-RESOLVED: The effective size is determined from the underlying buffer object size
+The effective size is determined from the underlying buffer object size
 using the formula: size = max((buffer_size - array_offset) / array_stride, 0)
 This calculation accounts for the actual size of the buffer object bound to the
 uniform block, the offset of the unsized array within the block, and the stride
 between array elements according to the layout rules.
 
-What happens when an application indexes beyond the effective bounds of an unsized array?
-
-* 
-RESOLVED: As with regular buffer accesses, accesses beyond the bound buffer object’s
+As with regular buffer accesses, accesses beyond the bound buffer object’s
 size are undefined and may result in device loss. Applications should ensure that
 array accesses remain within the effective bounds of the array. When robustness
 features are enabled, bounds checking applies to unsized array elements that are
 not fully contained in the uniform buffer memory associated with the block.
 
-Should we allow unsized arrays at any position within a uniform block?
-
-* 
-RESOLVED: No. Only the last member of a uniform block may be declared as an
+No. Only the last member of a uniform block may be declared as an
 unsized array. This restriction simplifies implementation and memory layout,
 as only the final member’s size needs to be determined at runtime. Allowing
 unsized arrays in arbitrary positions would significantly complicate the
 memory layout of the entire block.
 
-What are the restrictions on using unsized arrays in uniform blocks?
+Several restrictions apply to unsized arrays in uniform blocks:
 
 * 
-RESOLVED: Several restrictions apply to unsized arrays in uniform blocks:
-
 They can only appear as the last member of a uniform block
 
 * 
@@ -161,6 +164,7 @@ They cannot be indexed with negative constant expressions
 
 * 
 OpArrayLength cannot be used
+
 These restrictions ensure predictable behavior and manageable implementation
 complexity while still providing the core functionality of variable-sized arrays.
 

@@ -913,6 +913,12 @@ layouts:</p>
 <p><code>VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL</code></p>
 </li>
 <li>
+<p><code>VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL</code></p>
+</li>
+<li>
+<p><code>VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL</code></p>
+</li>
+<li>
 <p><code>VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR</code></p>
 </li>
 <li>
@@ -8856,8 +8862,7 @@ VK_QUEUE_GRAPHICS_BIT</p></td>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Alternatively, to bind one or more descriptor sets to a command buffer,
-call:</p>
+<p>To bind one or more descriptor sets to a command buffer, call:</p>
 </div>
 <div id="vkCmdBindDescriptorSets2" class="listingblock">
 <div class="content">
@@ -9257,13 +9262,13 @@ include a valid <a href="#VkPipelineLayoutCreateInfo">VkPipelineLayoutCreateInfo
 </div>
 <div class="sect2">
 <h3 id="descriptorsets-push-descriptors"><a class="anchor" href="#descriptorsets-push-descriptors"></a>Push Descriptor Updates</h3>
-<div class="openblock">
-<div class="content">
 <div class="paragraph">
 <p>In addition to allocating descriptor sets and binding them to a command
 buffer, an application <strong>can</strong> record descriptor updates into the command
 buffer.</p>
 </div>
+<div class="openblock">
+<div class="content">
 <div class="paragraph">
 <p>To push descriptor updates into a command buffer, call:</p>
 </div>
@@ -9527,7 +9532,7 @@ VK_QUEUE_GRAPHICS_BIT</p></td>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Alternatively, to push descriptor updates into a command buffer, call:</p>
+<p>To push descriptor updates into a command buffer, call:</p>
 </div>
 <div id="vkCmdPushDescriptorSet2" class="listingblock">
 <div class="content">
@@ -9846,9 +9851,8 @@ include a valid <a href="#VkPipelineLayoutCreateInfo">VkPipelineLayoutCreateInfo
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>It is also possible to use a descriptor update template to specify the push
-descriptors to update.
-To do so, call:</p>
+<p>To use a descriptor update template to specify the push descriptors to
+update in a command buffer, call:</p>
 </div>
 <div id="vkCmdPushDescriptorSetWithTemplate" class="listingblock">
 <div class="content">
@@ -10120,8 +10124,8 @@ vkCmdPushDescriptorSetWithTemplate(myCmdBuffer, myDescriptorUpdateTemplate, myPi
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Alternatively, to use a descriptor update template to specify the push
-descriptors to update, call:</p>
+<p>To use a descriptor update template to specify the push descriptors to
+update in a command buffer, call:</p>
 </div>
 <div id="vkCmdPushDescriptorSetWithTemplate2" class="listingblock">
 <div class="content">
@@ -10689,7 +10693,7 @@ VK_QUEUE_GRAPHICS_BIT</p></td>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Alternatively, to update push constants, call:</p>
+<p>To update push constants, call:</p>
 </div>
 <div id="vkCmdPushConstants2" class="listingblock">
 <div class="content">
@@ -11604,8 +11608,7 @@ If <code>type</code> is <code>VK_DESCRIPTOR_TYPE_TENSOR_ARM</code>, a
 <li>
 <p><a id="VUID-VkDescriptorGetInfoEXT-type-12216" href="#VUID-VkDescriptorGetInfoEXT-type-12216"></a> <span class="vuid">VUID-VkDescriptorGetInfoEXT-type-12216</span><br>
 
-If <code>type</code> is <code>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</code>,
-<code>pCombinedImageSampler</code> is not <code>NULL</code>, and
+If <code>type</code> is <code>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</code> and
 <code>pCombinedImageSampler-&gt;imageView</code> is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the
 <code>pCombinedImageSampler-&gt;imageView</code> member of <code>data</code> <strong>must</strong> have
 been created with <code>VK_IMAGE_USAGE_SAMPLED_BIT</code> set</p>
@@ -12484,15 +12487,17 @@ the <code>pNext</code> chain <strong>must</strong> include a
 
 If <code>usage</code> includes
 <code>VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT</code>, <code>address</code>
-<strong>must</strong> be an address within a valid buffer that was created with the
-<code>VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT</code> usage flag set</p>
+<strong>must</strong> be a device address allocated to the application from a buffer
+created with the <code>VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT</code>
+usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-VkDescriptorBufferBindingInfoEXT-usage-08123" href="#VUID-VkDescriptorBufferBindingInfoEXT-usage-08123"></a> <span class="vuid">VUID-VkDescriptorBufferBindingInfoEXT-usage-08123</span><br>
 
 If <code>usage</code> includes
 <code>VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT</code>, <code>address</code>
-<strong>must</strong> be an address within a valid buffer that was created with the
+<strong>must</strong> be a device address allocated to the application from a buffer
+created with the
 <code>VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT</code> usage flag set</p>
 </li>
 <li>
@@ -12500,8 +12505,8 @@ If <code>usage</code> includes
 
 If <code>usage</code> includes
 <code>VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT</code>,
-<code>address</code> <strong>must</strong> be an address within a valid buffer that was created
-with the
+<code>address</code> <strong>must</strong> be a device address allocated to the application
+from a buffer created with the
 <code>VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT</code> usage
 flag set</p>
 </li>
@@ -12959,7 +12964,7 @@ VK_QUEUE_GRAPHICS_BIT</p></td>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Alternatively, to set descriptor buffer offsets in a command buffer, call:</p>
+<p>To set descriptor buffer offsets in a command buffer, call:</p>
 </div>
 <div id="vkCmdSetDescriptorBufferOffsets2EXT" class="listingblock">
 <div class="content">
@@ -13494,8 +13499,7 @@ VK_QUEUE_GRAPHICS_BIT</p></td>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Alternatively, to bind an embedded immutable sampler set to a command
-buffer, call:</p>
+<p>To bind an embedded immutable sampler set to a command buffer, call:</p>
 </div>
 <div id="vkCmdBindDescriptorBufferEmbeddedSamplers2EXT" class="listingblock">
 <div class="content">

@@ -2041,9 +2041,8 @@ space allocation conflicts.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Alternatively, to
-request a specific device address for a buffer, add a
-<a href="#VkBufferDeviceAddressCreateInfoEXT">VkBufferDeviceAddressCreateInfoEXT</a> structure to the <code>pNext</code> chain
+<p>To request a specific device address for a buffer, add a
+<code>VkBufferDeviceAddressCreateInfoEXT</code> structure to the <code>pNext</code> chain
 of the <a href="#VkBufferCreateInfo">VkBufferCreateInfo</a> structure.
 The <code>VkBufferDeviceAddressCreateInfoEXT</code> structure is defined as:</p>
 </div>
@@ -10749,8 +10748,10 @@ structure with a <code>conversion</code> value other than <a href="../appendices
 <li>
 <p><a id="VUID-VkImageViewCreateInfo-image-01020" href="#VUID-VkImageViewCreateInfo-image-01020"></a> <span class="vuid">VUID-VkImageViewCreateInfo-image-01020</span><br>
 
-If <code>image</code> is non-sparse then it <strong>must</strong> be bound completely and
-contiguously to a single <code>VkDeviceMemory</code> object</p>
+If <code>image</code> is non-sparse then the image
+or each specified <em>disjoint</em> plane
+<strong>must</strong> be bound completely and contiguously to a single
+<code>VkDeviceMemory</code> object</p>
 </li>
 <li>
 <p><a id="VUID-VkImageViewCreateInfo-subResourceRange-01021" href="#VUID-VkImageViewCreateInfo-subResourceRange-01021"></a> <span class="vuid">VUID-VkImageViewCreateInfo-subResourceRange-01021</span><br>
@@ -13405,7 +13406,8 @@ of primitives built into each geometry.</p>
 <p><code>pSizeInfo</code> is a pointer to a
 <a href="#VkAccelerationStructureBuildSizesInfoKHR">VkAccelerationStructureBuildSizesInfoKHR</a> structure which returns
 the size required for an acceleration structure and the sizes required
-for the scratch buffers, given the build parameters.</p>
+for the scratch buffers, given the build parameters.
+The size requirements for a scratch buffer <strong>may</strong> be zero.</p>
 </li>
 </ul>
 </div>
@@ -16312,7 +16314,8 @@ structure describing parameters of a build operation.</p>
 <li>
 <p><code>pSizeInfo</code> is a pointer to a <a href="#VkMicromapBuildSizesInfoEXT">VkMicromapBuildSizesInfoEXT</a>
 structure which returns the size required for a micromap and the sizes
-required for the scratch buffers, given the build parameters.</p>
+required for the scratch buffers, given the build parameters.
+The size requirements for a scratch buffer <strong>may</strong> be zero.</p>
 </li>
 </ul>
 </div>

@@ -19,10 +19,6 @@
 
 vkCmdPushDescriptorSet - Pushes descriptor updates into a command buffer
 
-In addition to allocating descriptor sets and binding them to a command
-buffer, an application **can** record descriptor updates into the command
-buffer.
-
 To push descriptor updates into a command buffer, call:
 
 // Provided by VK_VERSION_1_4

@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -627,9 +630,9 @@
 </li>
 <li><a href="#_issues">6. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_how_to_handle_dynamic_rendering">6.1. RESOLVED: How to handle dynamic rendering?</a></li>
-<li><a href="#_resolved_this_extension_returns_only_one_set_of_dimensions_for_tile_size_so_how_to_handle_the_case_of_non_merged_subpasses_where_each_subpass_can_have_a_different_tile_size">6.2. RESOLVED: This extension returns only one set of dimensions for tile size so how to handle the case of non-merged subpasses where each subpass can have a different tile size?</a></li>
-<li><a href="#_resolved_adreno_implementation_may_decide_to_execute_certain_workloads_in_direct_rendering_mode_a_k_a_flex_render_what_is_the_interaction_of_this_extension_with_flex_render">6.3. RESOLVED: Adreno implementation may decide to execute certain workloads in direct rendering mode a.k.a Flex render. What is the interaction of this extension with Flex render?</a></li>
+<li><a href="#_how_to_handle_dynamic_rendering">6.1. How to handle dynamic rendering?</a></li>
+<li><a href="#_this_extension_returns_only_one_set_of_dimensions_for_tile_size_so_how_to_handle_the_case_of_non_merged_subpasses_where_each_subpass_can_have_a_different_tile_size">6.2. This extension returns only one set of dimensions for tile size so how to handle the case of non-merged subpasses where each subpass can have a different tile size?</a></li>
+<li><a href="#_adreno_implementation_may_decide_to_execute_certain_workloads_in_direct_rendering_mode_a_k_a_flex_render_what_is_the_interaction_of_this_extension_with_flex_render">6.3. Adreno implementation may decide to execute certain workloads in direct rendering mode a.k.a Flex render. What is the interaction of this extension with Flex render?</a></li>
 </ul>
 </li>
 </ul>
@@ -855,19 +858,19 @@ vkGetDynamicRenderingTilePropertiesQCOM(device, pRenderingInfo, &amp;tilePropert
 <p>This section describes issues that came up during discussion and their resolution.</p>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_to_handle_dynamic_rendering"><a class="anchor" href="#_resolved_how_to_handle_dynamic_rendering"></a>6.1. RESOLVED: How to handle dynamic rendering?</h3>
+<h3 id="_how_to_handle_dynamic_rendering"><a class="anchor" href="#_how_to_handle_dynamic_rendering"></a>6.1. How to handle dynamic rendering?</h3>
 <div class="paragraph">
 <p>Since the extension should support both renderpasses and dynamic rendering, dedicated API entry points were added for both.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_this_extension_returns_only_one_set_of_dimensions_for_tile_size_so_how_to_handle_the_case_of_non_merged_subpasses_where_each_subpass_can_have_a_different_tile_size"><a class="anchor" href="#_resolved_this_extension_returns_only_one_set_of_dimensions_for_tile_size_so_how_to_handle_the_case_of_non_merged_subpasses_where_each_subpass_can_have_a_different_tile_size"></a>6.2. RESOLVED: This extension returns only one set of dimensions for tile size so how to handle the case of non-merged subpasses where each subpass can have a different tile size?</h3>
+<h3 id="_this_extension_returns_only_one_set_of_dimensions_for_tile_size_so_how_to_handle_the_case_of_non_merged_subpasses_where_each_subpass_can_have_a_different_tile_size"><a class="anchor" href="#_this_extension_returns_only_one_set_of_dimensions_for_tile_size_so_how_to_handle_the_case_of_non_merged_subpasses_where_each_subpass_can_have_a_different_tile_size"></a>6.2. This extension returns only one set of dimensions for tile size so how to handle the case of non-merged subpasses where each subpass can have a different tile size?</h3>
 <div class="paragraph">
 <p>The extension was modified to return an array of tile properties which holds properties for all requested or available subpassses instead of single value for tile properties.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_adreno_implementation_may_decide_to_execute_certain_workloads_in_direct_rendering_mode_a_k_a_flex_render_what_is_the_interaction_of_this_extension_with_flex_render"><a class="anchor" href="#_resolved_adreno_implementation_may_decide_to_execute_certain_workloads_in_direct_rendering_mode_a_k_a_flex_render_what_is_the_interaction_of_this_extension_with_flex_render"></a>6.3. RESOLVED: Adreno implementation may decide to execute certain workloads in direct rendering mode a.k.a Flex render. What is the interaction of this extension with Flex render?</h3>
+<h3 id="_adreno_implementation_may_decide_to_execute_certain_workloads_in_direct_rendering_mode_a_k_a_flex_render_what_is_the_interaction_of_this_extension_with_flex_render"><a class="anchor" href="#_adreno_implementation_may_decide_to_execute_certain_workloads_in_direct_rendering_mode_a_k_a_flex_render_what_is_the_interaction_of_this_extension_with_flex_render"></a>6.3. Adreno implementation may decide to execute certain workloads in direct rendering mode a.k.a Flex render. What is the interaction of this extension with Flex render?</h3>
 <div class="paragraph">
 <p>In those cases, the information returned by this extension may not indicate the true execution mode of the GPU.</p>
 </div>

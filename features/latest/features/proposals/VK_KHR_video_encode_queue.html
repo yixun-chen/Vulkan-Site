@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -654,22 +657,22 @@
 </li>
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_why_is_there_no_vk_pipeline_stage_video_encode_bit_khr">5.1. RESOLVED: Why is there no <code>VK_PIPELINE_STAGE_VIDEO_ENCODE_BIT_KHR</code>?</a></li>
-<li><a href="#_resolved_how_can_layered_codec_specific_encode_extensions_enable_applications_to_provide_the_necessary_codec_specific_picture_information_parameter_sets_etc_that_may_be_needed_to_perform_the_video_coding_operations">5.2. RESOLVED: How can layered codec-specific encode extensions enable applications to provide the necessary codec-specific picture information, parameter sets, etc. that may be needed to perform the video coding operations?</a></li>
-<li><a href="#_resolved_can_vkcmdvideoencodekhr_only_encode_frames_what_about_field_encoding_slice_encoding_etc">5.3. RESOLVED: Can <code>vkCmdVideoEncodeKHR</code> only encode frames? What about field encoding, slice encoding, etc.?</a></li>
-<li><a href="#_resolved_what_is_the_effect_of_the_flags_provided_in_vkvideoencodeusageinfokhrvideousagehints_and_vkvideoencodeusageinfokhrvideocontenthints">5.4. RESOLVED: What is the effect of the flags provided in <code>VkVideoEncodeUsageInfoKHR::videoUsageHints</code> and <code>VkVideoEncodeUsageInfoKHR::videoContentHints</code>?</a></li>
-<li><a href="#_resolved_what_is_the_effect_of_the_tuning_mode_provided_in_vkvideoencodeusageinfokhrtuningmode">5.5. RESOLVED: What is the effect of the tuning mode provided in <code>VkVideoEncodeUsageInfoKHR::tuningMode</code>?</a></li>
-<li><a href="#_resolved_how_should_we_expose_video_encoding_feedback_values_e_g_encoded_bitstream_size">5.6. RESOLVED: How should we expose video encoding feedback values (e.g. encoded bitstream size)?</a></li>
-<li><a href="#_resolved_do_result_status_queries_need_to_be_used_in_conjunction_with_video_encode_feedback_queries">5.7. RESOLVED: Do result status queries need to be used in conjunction with video encode feedback queries?</a></li>
-<li><a href="#_resolved_why_is_there_a_need_to_allow_implementations_to_override_codec_specific_parameters">5.8. RESOLVED: Why is there a need to allow implementations to override codec-specific parameters?</a></li>
-<li><a href="#_resolved_can_the_application_disable_all_implementation_overrides">5.9. RESOLVED: Can the application disable all implementation overrides?</a></li>
-<li><a href="#_resolved_can_implementations_override_any_codec_specific_parameter">5.10. RESOLVED: Can implementations override any codec-specific parameter?</a></li>
-<li><a href="#_resolved_do_all_implementations_have_to_implement_the_same_rate_control_algorithms_corresponding_to_the_rate_control_modes_defined_by_this_proposal">5.11. RESOLVED: Do all implementations have to implement the same rate control algorithms corresponding to the rate control modes defined by this proposal?</a></li>
-<li><a href="#_resolved_do_rate_control_implementations_guarantee_to_respect_the_averagemax_bitrates_or_frame_sizes_configured_for_the_video_session">5.12. RESOLVED: Do rate control implementations guarantee to respect the average/max bitrates, or frame sizes configured for the video session?</a></li>
-<li><a href="#_resolved_are_video_session_parameters_objects_dependent_on_the_used_video_encode_quality_level">5.13. RESOLVED: Are video session parameters objects dependent on the used video encode quality level?</a></li>
-<li><a href="#_resolved_are_video_encode_quality_levels_and_rate_control_mutually_exclusive">5.14. RESOLVED: Are video encode quality levels and rate control mutually exclusive?</a></li>
-<li><a href="#_resolved_does_specifying_vkvideoencoderatecontrolinfokhr_in_the_pnext_chain_of_the_pbegincodinginfo_parameter_of_vkcmdbeginvideocodingkhr_change_the_current_rate_control_configuration">5.15. RESOLVED: Does specifying <code>VkVideoEncodeRateControlInfoKHR</code> in the <code>pNext</code> chain of the <code>pBeginCodingInfo</code> parameter of <code>vkCmdBeginVideoCodingKHR</code> change the current rate control configuration?</a></li>
-<li><a href="#_resolved_when_is_it_mandatory_to_specify_reconstructed_picture_information_in_vkvideoencodeinfokhrpsetupreferenceslot">5.16. RESOLVED: When is it mandatory to specify reconstructed picture information in <code>VkVideoEncodeInfoKHR::pSetupReferenceSlot</code>?</a></li>
+<li><a href="#_why_is_there_no_vk_pipeline_stage_video_encode_bit_khr">5.1. Why is there no <code>VK_PIPELINE_STAGE_VIDEO_ENCODE_BIT_KHR</code>?</a></li>
+<li><a href="#_how_can_layered_codec_specific_encode_extensions_enable_applications_to_provide_the_necessary_codec_specific_picture_information_parameter_sets_etc_that_may_be_needed_to_perform_the_video_coding_operations">5.2. How can layered codec-specific encode extensions enable applications to provide the necessary codec-specific picture information, parameter sets, etc. that may be needed to perform the video coding operations?</a></li>
+<li><a href="#_can_vkcmdvideoencodekhr_only_encode_frames_what_about_field_encoding_slice_encoding_etc">5.3. Can <code>vkCmdVideoEncodeKHR</code> only encode frames? What about field encoding, slice encoding, etc.?</a></li>
+<li><a href="#_what_is_the_effect_of_the_flags_provided_in_vkvideoencodeusageinfokhrvideousagehints_and_vkvideoencodeusageinfokhrvideocontenthints">5.4. What is the effect of the flags provided in <code>VkVideoEncodeUsageInfoKHR::videoUsageHints</code> and <code>VkVideoEncodeUsageInfoKHR::videoContentHints</code>?</a></li>
+<li><a href="#_what_is_the_effect_of_the_tuning_mode_provided_in_vkvideoencodeusageinfokhrtuningmode">5.5. What is the effect of the tuning mode provided in <code>VkVideoEncodeUsageInfoKHR::tuningMode</code>?</a></li>
+<li><a href="#_how_should_we_expose_video_encoding_feedback_values_e_g_encoded_bitstream_size">5.6. How should we expose video encoding feedback values (e.g. encoded bitstream size)?</a></li>
+<li><a href="#_do_result_status_queries_need_to_be_used_in_conjunction_with_video_encode_feedback_queries">5.7. Do result status queries need to be used in conjunction with video encode feedback queries?</a></li>
+<li><a href="#_why_is_there_a_need_to_allow_implementations_to_override_codec_specific_parameters">5.8. Why is there a need to allow implementations to override codec-specific parameters?</a></li>
+<li><a href="#_can_the_application_disable_all_implementation_overrides">5.9. Can the application disable all implementation overrides?</a></li>
+<li><a href="#_can_implementations_override_any_codec_specific_parameter">5.10. Can implementations override any codec-specific parameter?</a></li>
+<li><a href="#_do_all_implementations_have_to_implement_the_same_rate_control_algorithms_corresponding_to_the_rate_control_modes_defined_by_this_proposal">5.11. Do all implementations have to implement the same rate control algorithms corresponding to the rate control modes defined by this proposal?</a></li>
+<li><a href="#_do_rate_control_implementations_guarantee_to_respect_the_averagemax_bitrates_or_frame_sizes_configured_for_the_video_session">5.12. Do rate control implementations guarantee to respect the average/max bitrates, or frame sizes configured for the video session?</a></li>
+<li><a href="#_are_video_session_parameters_objects_dependent_on_the_used_video_encode_quality_level">5.13. Are video session parameters objects dependent on the used video encode quality level?</a></li>
+<li><a href="#_are_video_encode_quality_levels_and_rate_control_mutually_exclusive">5.14. Are video encode quality levels and rate control mutually exclusive?</a></li>
+<li><a href="#_does_specifying_vkvideoencoderatecontrolinfokhr_in_the_pnext_chain_of_the_pbegincodinginfo_parameter_of_vkcmdbeginvideocodingkhr_change_the_current_rate_control_configuration">5.15. Does specifying <code>VkVideoEncodeRateControlInfoKHR</code> in the <code>pNext</code> chain of the <code>pBeginCodingInfo</code> parameter of <code>vkCmdBeginVideoCodingKHR</code> change the current rate control configuration?</a></li>
+<li><a href="#_when_is_it_mandatory_to_specify_reconstructed_picture_information_in_vkvideoencodeinfokhrpsetupreferenceslot">5.16. When is it mandatory to specify reconstructed picture information in <code>VkVideoEncodeInfoKHR::pSetupReferenceSlot</code>?</a></li>
 </ul>
 </li>
 <li><a href="#_further_functionality">6. Further Functionality</a></li>
@@ -2262,13 +2265,13 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_why_is_there_no_vk_pipeline_stage_video_encode_bit_khr"><a class="anchor" href="#_resolved_why_is_there_no_vk_pipeline_stage_video_encode_bit_khr"></a>5.1. RESOLVED: Why is there no <code>VK_PIPELINE_STAGE_VIDEO_ENCODE_BIT_KHR</code>?</h3>
+<h3 id="_why_is_there_no_vk_pipeline_stage_video_encode_bit_khr"><a class="anchor" href="#_why_is_there_no_vk_pipeline_stage_video_encode_bit_khr"></a>5.1. Why is there no <code>VK_PIPELINE_STAGE_VIDEO_ENCODE_BIT_KHR</code>?</h3>
 <div class="paragraph">
 <p>This extension requires the <code>VK_KHR_synchronization2</code> extension because the new access flags introduced did not fit in the 32-bit enum <code>VkAccessFlagBits</code>. Accordingly, all new pipeline stage and access flags have been added to the corresponding 64-bit enums and no new flags have been added to the legacy 32-bit enums. While the new pipeline stage flag introduced uses bit #27 which would also fit in the legacy <code>VkPipelineStageFlagBits</code> enum, there is no real benefit to include it. Instead the bit is marked reserved.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_can_layered_codec_specific_encode_extensions_enable_applications_to_provide_the_necessary_codec_specific_picture_information_parameter_sets_etc_that_may_be_needed_to_perform_the_video_coding_operations"><a class="anchor" href="#_resolved_how_can_layered_codec_specific_encode_extensions_enable_applications_to_provide_the_necessary_codec_specific_picture_information_parameter_sets_etc_that_may_be_needed_to_perform_the_video_coding_operations"></a>5.2. RESOLVED: How can layered codec-specific encode extensions enable applications to provide the necessary codec-specific picture information, parameter sets, etc. that may be needed to perform the video coding operations?</h3>
+<h3 id="_how_can_layered_codec_specific_encode_extensions_enable_applications_to_provide_the_necessary_codec_specific_picture_information_parameter_sets_etc_that_may_be_needed_to_perform_the_video_coding_operations"><a class="anchor" href="#_how_can_layered_codec_specific_encode_extensions_enable_applications_to_provide_the_necessary_codec_specific_picture_information_parameter_sets_etc_that_may_be_needed_to_perform_the_video_coding_operations"></a>5.2. How can layered codec-specific encode extensions enable applications to provide the necessary codec-specific picture information, parameter sets, etc. that may be needed to perform the video coding operations?</h3>
 <div class="paragraph">
 <p>There are multiple points where codec-specific picture information can be provided to a video encode operation. This extension suggests the following convention:</p>
 </div>
@@ -2287,13 +2290,13 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_vkcmdvideoencodekhr_only_encode_frames_what_about_field_encoding_slice_encoding_etc"><a class="anchor" href="#_resolved_can_vkcmdvideoencodekhr_only_encode_frames_what_about_field_encoding_slice_encoding_etc"></a>5.3. RESOLVED: Can <code>vkCmdVideoEncodeKHR</code> only encode frames? What about field encoding, slice encoding, etc.?</h3>
+<h3 id="_can_vkcmdvideoencodekhr_only_encode_frames_what_about_field_encoding_slice_encoding_etc"><a class="anchor" href="#_can_vkcmdvideoencodekhr_only_encode_frames_what_about_field_encoding_slice_encoding_etc"></a>5.3. Can <code>vkCmdVideoEncodeKHR</code> only encode frames? What about field encoding, slice encoding, etc.?</h3>
 <div class="paragraph">
 <p>This extension does not define the types of pictures or sub-picture content that can be encoded by a <code>vkCmdVideoEncodeKHR</code> command. It is expected that the codec-specific encode extensions built upon this extension define the types of pictures that can be encoded. Furthermore, both codec-specific and codec-independent extensions can expand the set of capabilities introduced here to enable more advanced use cases, as needed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_is_the_effect_of_the_flags_provided_in_vkvideoencodeusageinfokhrvideousagehints_and_vkvideoencodeusageinfokhrvideocontenthints"><a class="anchor" href="#_resolved_what_is_the_effect_of_the_flags_provided_in_vkvideoencodeusageinfokhrvideousagehints_and_vkvideoencodeusageinfokhrvideocontenthints"></a>5.4. RESOLVED: What is the effect of the flags provided in <code>VkVideoEncodeUsageInfoKHR::videoUsageHints</code> and <code>VkVideoEncodeUsageInfoKHR::videoContentHints</code>?</h3>
+<h3 id="_what_is_the_effect_of_the_flags_provided_in_vkvideoencodeusageinfokhrvideousagehints_and_vkvideoencodeusageinfokhrvideocontenthints"><a class="anchor" href="#_what_is_the_effect_of_the_flags_provided_in_vkvideoencodeusageinfokhrvideousagehints_and_vkvideoencodeusageinfokhrvideocontenthints"></a>5.4. What is the effect of the flags provided in <code>VkVideoEncodeUsageInfoKHR::videoUsageHints</code> and <code>VkVideoEncodeUsageInfoKHR::videoContentHints</code>?</h3>
 <div class="paragraph">
 <p>There are no specific behavioral effects associated with any of the video encode usage and content hints, so the application can specify any combination of these flags. They are included to enable the application to better communicate the intended use case scenario to the implementation.</p>
 </div>
@@ -2302,25 +2305,25 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_is_the_effect_of_the_tuning_mode_provided_in_vkvideoencodeusageinfokhrtuningmode"><a class="anchor" href="#_resolved_what_is_the_effect_of_the_tuning_mode_provided_in_vkvideoencodeusageinfokhrtuningmode"></a>5.5. RESOLVED: What is the effect of the tuning mode provided in <code>VkVideoEncodeUsageInfoKHR::tuningMode</code>?</h3>
+<h3 id="_what_is_the_effect_of_the_tuning_mode_provided_in_vkvideoencodeusageinfokhrtuningmode"><a class="anchor" href="#_what_is_the_effect_of_the_tuning_mode_provided_in_vkvideoencodeusageinfokhrtuningmode"></a>5.5. What is the effect of the tuning mode provided in <code>VkVideoEncodeUsageInfoKHR::tuningMode</code>?</h3>
 <div class="paragraph">
 <p>Unlike the other fields in <code>VkVideoEncodeUsageInfoKHR</code>, the tuning mode affects the behavior of video session objects created using them. Different tuning modes may put the hardware in a different mode of operation tuned for the particular use case with significantly different capabilities, as well as quality and performance characteristics.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_should_we_expose_video_encoding_feedback_values_e_g_encoded_bitstream_size"><a class="anchor" href="#_resolved_how_should_we_expose_video_encoding_feedback_values_e_g_encoded_bitstream_size"></a>5.6. RESOLVED: How should we expose video encoding feedback values (e.g. encoded bitstream size)?</h3>
+<h3 id="_how_should_we_expose_video_encoding_feedback_values_e_g_encoded_bitstream_size"><a class="anchor" href="#_how_should_we_expose_video_encoding_feedback_values_e_g_encoded_bitstream_size"></a>5.6. How should we expose video encoding feedback values (e.g. encoded bitstream size)?</h3>
 <div class="paragraph">
 <p>Through a new query type. We follow the model of pipeline statistics queries to enable adding additional feedback values to the query thus this extension introduces a new <code>VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR</code> query type with the ability to get feedback about the offset and size of the bitstream data produced by video encode operations (amongst other feedback values). We expect that in the future video decode operations will need to support similar feedback values thus a similar query type for video decode operations can be introduced by another extension.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_do_result_status_queries_need_to_be_used_in_conjunction_with_video_encode_feedback_queries"><a class="anchor" href="#_resolved_do_result_status_queries_need_to_be_used_in_conjunction_with_video_encode_feedback_queries"></a>5.7. RESOLVED: Do result status queries need to be used in conjunction with video encode feedback queries?</h3>
+<h3 id="_do_result_status_queries_need_to_be_used_in_conjunction_with_video_encode_feedback_queries"><a class="anchor" href="#_do_result_status_queries_need_to_be_used_in_conjunction_with_video_encode_feedback_queries"></a>5.7. Do result status queries need to be used in conjunction with video encode feedback queries?</h3>
 <div class="paragraph">
 <p>No, in fact only a single query can ever be active within a video coding scope, hence executing a result status query as well as a video encode feedback query for the same video encode operation is not possible. Though it is also not needed, as all query types allow returning a result status, just like availability status. Thus, in practice, result status queries are only needed to be used when no other query type is supported in the particular context, and in case of video encoding applications are expected to only use video encode feedback queries within a video coding scope.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_why_is_there_a_need_to_allow_implementations_to_override_codec_specific_parameters"><a class="anchor" href="#_resolved_why_is_there_a_need_to_allow_implementations_to_override_codec_specific_parameters"></a>5.8. RESOLVED: Why is there a need to allow implementations to override codec-specific parameters?</h3>
+<h3 id="_why_is_there_a_need_to_allow_implementations_to_override_codec_specific_parameters"><a class="anchor" href="#_why_is_there_a_need_to_allow_implementations_to_override_codec_specific_parameters"></a>5.8. Why is there a need to allow implementations to override codec-specific parameters?</h3>
 <div class="paragraph">
 <p>As described in the corresponding section earlier, encoder implementations usually only support a subset of the available encoding tools defined by the corresponding video compression standards and enumerating exhaustively all of these constraints would be impractical and could result in a combinatorial explosion of codec-specific capabilities. Instead, this proposal allows implementations to override any codec-specific parameter values or combinations thereof, so that the resulting parameters comply to the constraints of the target implementation.</p>
 </div>
@@ -2332,7 +2335,7 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_the_application_disable_all_implementation_overrides"><a class="anchor" href="#_resolved_can_the_application_disable_all_implementation_overrides"></a>5.9. RESOLVED: Can the application disable all implementation overrides?</h3>
+<h3 id="_can_the_application_disable_all_implementation_overrides"><a class="anchor" href="#_can_the_application_disable_all_implementation_overrides"></a>5.9. Can the application disable all implementation overrides?</h3>
 <div class="paragraph">
 <p>No. Without the ability to override codec-specific parameters, as necessitated by the constraints of the target implementation, the implementation may not be able to guarantee that the generated bitstreams will be compliant with the video compression standard in question.</p>
 </div>
@@ -2347,7 +2350,7 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_implementations_override_any_codec_specific_parameter"><a class="anchor" href="#_resolved_can_implementations_override_any_codec_specific_parameter"></a>5.10. RESOLVED: Can implementations override any codec-specific parameter?</h3>
+<h3 id="_can_implementations_override_any_codec_specific_parameter"><a class="anchor" href="#_can_implementations_override_any_codec_specific_parameter"></a>5.10. Can implementations override any codec-specific parameter?</h3>
 <div class="paragraph">
 <p>No. First, there are a set of rules that implementations have to comply to when applying any parameter overrides, as defined in detail in the specification. In addition, codec-specific extensions layered on top of this proposal can define their own restrictions about what parameters can implementations override. In practice, it is expected that certain codec-specific parameters that affect the overall behavior of the encoder and that could have an impact on any additional bitstream elements that need to be encoded by the application will never be overridden by the implementation, and thus will be excluded from the set of overridable parameters in the corresponding codec-specific extension.</p>
 </div>
@@ -2356,7 +2359,7 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_do_all_implementations_have_to_implement_the_same_rate_control_algorithms_corresponding_to_the_rate_control_modes_defined_by_this_proposal"><a class="anchor" href="#_resolved_do_all_implementations_have_to_implement_the_same_rate_control_algorithms_corresponding_to_the_rate_control_modes_defined_by_this_proposal"></a>5.11. RESOLVED: Do all implementations have to implement the same rate control algorithms corresponding to the rate control modes defined by this proposal?</h3>
+<h3 id="_do_all_implementations_have_to_implement_the_same_rate_control_algorithms_corresponding_to_the_rate_control_modes_defined_by_this_proposal"><a class="anchor" href="#_do_all_implementations_have_to_implement_the_same_rate_control_algorithms_corresponding_to_the_rate_control_modes_defined_by_this_proposal"></a>5.11. Do all implementations have to implement the same rate control algorithms corresponding to the rate control modes defined by this proposal?</h3>
 <div class="paragraph">
 <p>No. While the high-level rate control modes (CBR and VBR) defined by this proposal are fairly universal, each rate control mode can be implemented in many different ways while still complying to the fundamental model of the mode itself. In practice, the rate control algorithms employed by implementations significantly differ.</p>
 </div>
@@ -2368,7 +2371,7 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_do_rate_control_implementations_guarantee_to_respect_the_averagemax_bitrates_or_frame_sizes_configured_for_the_video_session"><a class="anchor" href="#_resolved_do_rate_control_implementations_guarantee_to_respect_the_averagemax_bitrates_or_frame_sizes_configured_for_the_video_session"></a>5.12. RESOLVED: Do rate control implementations guarantee to respect the average/max bitrates, or frame sizes configured for the video session?</h3>
+<h3 id="_do_rate_control_implementations_guarantee_to_respect_the_averagemax_bitrates_or_frame_sizes_configured_for_the_video_session"><a class="anchor" href="#_do_rate_control_implementations_guarantee_to_respect_the_averagemax_bitrates_or_frame_sizes_configured_for_the_video_session"></a>5.12. Do rate control implementations guarantee to respect the average/max bitrates, or frame sizes configured for the video session?</h3>
 <div class="paragraph">
 <p>Unfortunately, implementations cannot provide hard guarantees about always respecting these rate control parameters, as the ability to conform to these is affected by the input content, the encoder tools of the video compression standard or the implementation, including the contents of future pictures, which implementations cannot make predictions about.</p>
 </div>
@@ -2377,7 +2380,7 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_video_session_parameters_objects_dependent_on_the_used_video_encode_quality_level"><a class="anchor" href="#_resolved_are_video_session_parameters_objects_dependent_on_the_used_video_encode_quality_level"></a>5.13. RESOLVED: Are video session parameters objects dependent on the used video encode quality level?</h3>
+<h3 id="_are_video_session_parameters_objects_dependent_on_the_used_video_encode_quality_level"><a class="anchor" href="#_are_video_session_parameters_objects_dependent_on_the_used_video_encode_quality_level"></a>5.13. Are video session parameters objects dependent on the used video encode quality level?</h3>
 <div class="paragraph">
 <p>Some implementations may support different hardware modes that are enabled in response to the used video encode quality level. This may also have an effect on the constraints related to the available encoding tools and as such may also affect the necessary codec-specific parameter overrides the implementation has to apply. As video session parameters objects are expected to store the already overridden codec-specific parameters typically in an encoded or otherwise optimized format, using a video session parameters object with any video encode quality level would require implementations to also store the original parameters in order to be able to re-encode them according to the needs of the target video encode quality level, which would partially defeat the purpose of video session parameters object.</p>
 </div>
@@ -2389,13 +2392,13 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_video_encode_quality_levels_and_rate_control_mutually_exclusive"><a class="anchor" href="#_resolved_are_video_encode_quality_levels_and_rate_control_mutually_exclusive"></a>5.14. RESOLVED: Are video encode quality levels and rate control mutually exclusive?</h3>
+<h3 id="_are_video_encode_quality_levels_and_rate_control_mutually_exclusive"><a class="anchor" href="#_are_video_encode_quality_levels_and_rate_control_mutually_exclusive"></a>5.14. Are video encode quality levels and rate control mutually exclusive?</h3>
 <div class="paragraph">
 <p>No, they are completely orthogonal, as they control different aspects of the encoder, and they are both always in effect all the time. There is always a currently active video encode quality level and rate control state, which default to quality level zero and implementation-specific rate control state, respectively, when the video encode session is initialized. The used video encode quality level and the rate control settings can be updated subsequently, potentially independently, or together with initialization per the application&#8217;s needs. The only relation between video encode quality levels and rate control is that the application can query for each video encode profile and video encode quality level the implementation recommended settings (using <code>vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR</code>) that are best suited for the selected quality level and the usage scenario information included in the video encode profile. These include recommendations on the rate control mode to use amongst other codec-independent and codec-specific suggestions. Nonetheless, these are only recommendations and the application can diverge from these if deemed necessary.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_specifying_vkvideoencoderatecontrolinfokhr_in_the_pnext_chain_of_the_pbegincodinginfo_parameter_of_vkcmdbeginvideocodingkhr_change_the_current_rate_control_configuration"><a class="anchor" href="#_resolved_does_specifying_vkvideoencoderatecontrolinfokhr_in_the_pnext_chain_of_the_pbegincodinginfo_parameter_of_vkcmdbeginvideocodingkhr_change_the_current_rate_control_configuration"></a>5.15. RESOLVED: Does specifying <code>VkVideoEncodeRateControlInfoKHR</code> in the <code>pNext</code> chain of the <code>pBeginCodingInfo</code> parameter of <code>vkCmdBeginVideoCodingKHR</code> change the current rate control configuration?</h3>
+<h3 id="_does_specifying_vkvideoencoderatecontrolinfokhr_in_the_pnext_chain_of_the_pbegincodinginfo_parameter_of_vkcmdbeginvideocodingkhr_change_the_current_rate_control_configuration"><a class="anchor" href="#_does_specifying_vkvideoencoderatecontrolinfokhr_in_the_pnext_chain_of_the_pbegincodinginfo_parameter_of_vkcmdbeginvideocodingkhr_change_the_current_rate_control_configuration"></a>5.15. Does specifying <code>VkVideoEncodeRateControlInfoKHR</code> in the <code>pNext</code> chain of the <code>pBeginCodingInfo</code> parameter of <code>vkCmdBeginVideoCodingKHR</code> change the current rate control configuration?</h3>
 <div class="paragraph">
 <p>No. The rate control information specified to <code>vkCmdBeginVideoCodingKHR</code> does not change the state of the video session, it is only expected to specify the current rate control configuration (previously already set through the execution of an appropriate <code>vkCmdControlVideoCodingKHR</code> command). This information is needed by some implementations in order to be aware of the current rate control configuration of the video session while recording commands, as some of the rate control state may affect the recorded device commands. When this information is not specified, the implementation will assume that the current rate control mode is set to <code>VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR</code>.</p>
 </div>
@@ -2404,7 +2407,7 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_when_is_it_mandatory_to_specify_reconstructed_picture_information_in_vkvideoencodeinfokhrpsetupreferenceslot"><a class="anchor" href="#_resolved_when_is_it_mandatory_to_specify_reconstructed_picture_information_in_vkvideoencodeinfokhrpsetupreferenceslot"></a>5.16. RESOLVED: When is it mandatory to specify reconstructed picture information in <code>VkVideoEncodeInfoKHR::pSetupReferenceSlot</code>?</h3>
+<h3 id="_when_is_it_mandatory_to_specify_reconstructed_picture_information_in_vkvideoencodeinfokhrpsetupreferenceslot"><a class="anchor" href="#_when_is_it_mandatory_to_specify_reconstructed_picture_information_in_vkvideoencodeinfokhrpsetupreferenceslot"></a>5.16. When is it mandatory to specify reconstructed picture information in <code>VkVideoEncodeInfoKHR::pSetupReferenceSlot</code>?</h3>
 <div class="paragraph">
 <p>In line with the <code>VK_KHR_video_decode_queue</code> extension, due to foreseeable implementation limitations that may require the presence of a reconstructed picture resource and/or DPB slot for encoding, revision 12 of this extension changed the requirements on reconstructed picture information as follows:</p>
 </div>

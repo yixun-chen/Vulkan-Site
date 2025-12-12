@@ -1475,6 +1475,24 @@ If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HA
 `VK_SAMPLE_COUNT_1_BIT`, `resolveImageView` **must** be
 [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
 
+[](#VUID-VkRenderingAttachmentInfo-None-12256) VUID-VkRenderingAttachmentInfo-None-12256
+
+If all of the following are true:
+
+* 
+`imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE)
+
+* 
+`imageView` has a sample count of `VK_SAMPLE_COUNT_1_BIT`
+
+* 
+the `pNext` chain of [VkRenderingInfo](#VkRenderingInfo) includes a
+[VkMultisampledRenderToSingleSampledInfoEXT](#VkMultisampledRenderToSingleSampledInfoEXT) structure with the
+`multisampledRenderToSingleSampledEnable` field equal to
+`VK_TRUE`
+
+then `resolveMode` **must** not be `VK_RESOLVE_MODE_NONE`
+
 [](#VUID-VkRenderingAttachmentInfo-imageView-06864) VUID-VkRenderingAttachmentInfo-imageView-06864
 
 If `imageView` is not [VK_NULL_HANDLE](../appendices/boilerplate.html#VK_NULL_HANDLE), `resolveImageView`
@@ -2683,6 +2701,30 @@ instance included `VK_RENDERING_SUSPENDING_BIT`, then this render pass
 is suspended and will be resumed later in
 [submission order](synchronization.html#synchronization-submission-order).
 
+|  | There is no implicit ordering between separate render passes, even in the
+| --- | --- |
+same command buffer, and even when the attachments match.
+Some applications rely on the continuation of
+[rasterization order](primsrast.html#primsrast-order) between multiple render passes with
+attachments defined in the same way, in order to perform non-rendering
+operations (such as copies or compute operations) between draw calls, but
+this has never been required by the specification.
+There is also no explicit barrier currently in the API that provides the
+guarantee that applications rely on without additional performance
+penalties.
+
+New applications should avoid relying on this ordering until an appropriate
+barrier is added to the API.
+
+Implementations where applications are performing this splitting are
+encouraged to continue supporting this guarantee until a suitable barrier is
+added to the API.
+
+Existing applications relying on this ordering should expect that it will
+continue working on platforms where it currently does.
+Once a new extension adds support for a new barrier, developers are
+encouraged to adapt their applications to use this when available. |
+
 Valid Usage
 
 * 
@@ -2769,7 +2811,7 @@ Conditional Rendering
 
 vkCmdEndRendering is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
-Alternatively, to end a render pass instance, call:
+To end a render pass instance, call:
 
 // Provided by VK_KHR_maintenance10
 void vkCmdEndRendering2KHR(
@@ -2795,6 +2837,30 @@ If the value of `pRenderingInfo->flags` used to begin this render pass
 instance included `VK_RENDERING_SUSPENDING_BIT`, then this render pass
 is suspended and will be resumed later in
 [submission order](synchronization.html#synchronization-submission-order).
+
+|  | There is no implicit ordering between separate render passes, even in the
+| --- | --- |
+same command buffer, and even when the attachments match.
+Some applications rely on the continuation of
+[rasterization order](primsrast.html#primsrast-order) between multiple render passes with
+attachments defined in the same way, in order to perform non-rendering
+operations (such as copies or compute operations) between draw calls, but
+this has never been required by the specification.
+There is also no explicit barrier currently in the API that provides the
+guarantee that applications rely on without additional performance
+penalties.
+
+New applications should avoid relying on this ordering until an appropriate
+barrier is added to the API.
+
+Implementations where applications are performing this splitting are
+encouraged to continue supporting this guarantee until a suitable barrier is
+added to the API.
+
+Existing applications relying on this ordering should expect that it will
+continue working on platforms where it currently does.
+Once a new extension adds support for a new barrier, developers are
+encouraged to adapt their applications to use this when available. |
 
 Valid Usage
 
@@ -10363,7 +10429,7 @@ Conditional Rendering
 
 vkCmdBeginRenderPass is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
-Alternatively to begin a render pass, call:
+To begin a render pass, call:
 
 |  | This functionality is superseded by [Vulkan Version 1.4](../appendices/versions.html#versions-1.4). See [Legacy Functionality](../appendices/legacy.html#legacy-dynamicrendering) for more information. |
 | --- | --- |
@@ -12136,6 +12202,30 @@ render pass instance.
 Ending a render pass instance performs any multisample resolve operations on
 the final subpass.
 
+|  | There is no implicit ordering between separate render passes, even in the
+| --- | --- |
+same command buffer, and even when the attachments match.
+Some applications rely on the continuation of
+[rasterization order](primsrast.html#primsrast-order) between multiple render passes with
+attachments defined in the same way, in order to perform non-rendering
+operations (such as copies or compute operations) between draw calls, but
+this has never been required by the specification.
+There is also no explicit barrier currently in the API that provides the
+guarantee that applications rely on without additional performance
+penalties.
+
+New applications should avoid relying on this ordering until an appropriate
+barrier is added to the API.
+
+Implementations where applications are performing this splitting are
+encouraged to continue supporting this guarantee until a suitable barrier is
+added to the API.
+
+Existing applications relying on this ordering should expect that it will
+continue working on platforms where it currently does.
+Once a new extension adds support for a new barrier, developers are
+encouraged to adapt their applications to use this when available. |
+
 Valid Usage
 
 * 
@@ -12254,6 +12344,30 @@ containing information about how the last subpass will be ended.
 
 `vkCmdEndRenderPass2` is semantically identical to
 [vkCmdEndRenderPass](#vkCmdEndRenderPass), except that it is extensible.
+
+|  | There is no implicit ordering between separate render passes, even in the
+| --- | --- |
+same command buffer, and even when the attachments match.
+Some applications rely on the continuation of
+[rasterization order](primsrast.html#primsrast-order) between multiple render passes with
+attachments defined in the same way, in order to perform non-rendering
+operations (such as copies or compute operations) between draw calls, but
+this has never been required by the specification.
+There is also no explicit barrier currently in the API that provides the
+guarantee that applications rely on without additional performance
+penalties.
+
+New applications should avoid relying on this ordering until an appropriate
+barrier is added to the API.
+
+Implementations where applications are performing this splitting are
+encouraged to continue supporting this guarantee until a suitable barrier is
+added to the API.
+
+Existing applications relying on this ordering should expect that it will
+continue working on platforms where it currently does.
+Once a new extension adds support for a new barrier, developers are
+encouraged to adapt their applications to use this when available. |
 
 Valid Usage
 

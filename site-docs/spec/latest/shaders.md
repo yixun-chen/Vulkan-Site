@@ -1016,6 +1016,12 @@ If [shader64BitIndexing](features.html#features-shader64BitIndexing) feature is 
 enabled, `flags` **must** not contain
 `VK_SHADER_CREATE_64_BIT_INDEXING_BIT_EXT`
 
+* 
+[](#VUID-VkShaderCreateInfoEXT-setLayoutCount-12257) VUID-VkShaderCreateInfoEXT-setLayoutCount-12257
+
+`setLayoutCount` **must** be less than or equal to
+`VkPhysicalDeviceLimits`::`maxBoundDescriptorSets`
+
 Valid Usage (Implicit)
 
 * 

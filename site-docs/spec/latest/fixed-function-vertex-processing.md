@@ -965,8 +965,8 @@ Conditional Rendering
 
 vkCmdBindVertexBuffers is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
 
-Alternatively, to bind vertex buffers, along with their sizes and strides,
-to a command buffer for use in subsequent drawing commands, call:
+To bind vertex buffers, along with their sizes and strides, to a command
+buffer for use in subsequent drawing commands, call:
 
 // Provided by VK_VERSION_1_3
 void vkCmdBindVertexBuffers2(

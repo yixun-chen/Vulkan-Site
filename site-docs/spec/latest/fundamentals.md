@@ -2798,6 +2798,9 @@ The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdEndRenderi
 The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdBeginCustomResolveEXT](renderpass.html#vkCmdBeginCustomResolveEXT)
 
 * 
+The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdSetComputeOccupancyPriorityNV](dispatch.html#vkCmdSetComputeOccupancyPriorityNV)
+
+* 
 The `VkCommandPool` that `commandBuffer` was allocated from, in [vkCmdBuildAccelerationStructuresKHR](accelstructures.html#vkCmdBuildAccelerationStructuresKHR)
 
 * 
@@ -6289,6 +6292,10 @@ typedef enum VkStructureType {
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CACHE_INCREMENTAL_MODE_FEATURES_SEC = 1000637000,
   // Provided by VK_EXT_shader_uniform_buffer_unsized_array
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_UNIFORM_BUFFER_UNSIZED_ARRAY_FEATURES_EXT = 1000642000,
+  // Provided by VK_NV_compute_occupancy_priority
+    VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV = 1000645000,
+  // Provided by VK_NV_compute_occupancy_priority
+    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_OCCUPANCY_PRIORITY_FEATURES_NV = 1000645001,
   // Provided by VK_VERSION_1_1
     VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES,
   // Provided by VK_VERSION_1_1

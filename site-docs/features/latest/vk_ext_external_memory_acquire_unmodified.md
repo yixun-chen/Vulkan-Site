@@ -22,8 +22,8 @@
 - [3.1. Feature](#_feature)
 - [3.2. Caution](#_caution)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: OUT OF SCOPE. How to determine if a resource’s external memory is modified?](#_resolved_out_of_scope_how_to_determine_if_a_resources_external_memory_is_modified)
-- [4.1._RESOLVED:_OUT_OF_SCOPE._How_to_determine_if_a_resource’s_external_memory_is_modified?](#_resolved_out_of_scope_how_to_determine_if_a_resources_external_memory_is_modified)
+- [4.1. OUT OF SCOPE. How to determine if a resource’s external memory is modified?](#_out_of_scope_how_to_determine_if_a_resources_external_memory_is_modified)
+- [4.1._OUT_OF_SCOPE._How_to_determine_if_a_resource’s_external_memory_is_modified?](#_out_of_scope_how_to_determine_if_a_resources_external_memory_is_modified)
 - [5. Further Functionality](#_further_functionality)
 - [5._Further_Functionality](#_further_functionality)
 
@@ -45,7 +45,7 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: OUT OF SCOPE. How to determine if a resource’s external memory is modified?](#_resolved_out_of_scope_how_to_determine_if_a_resources_external_memory_is_modified)
+[4.1. OUT OF SCOPE. How to determine if a resource’s external memory is modified?](#_out_of_scope_how_to_determine_if_a_resources_external_memory_is_modified)
 
 [5. Further Functionality](#_further_functionality)
 

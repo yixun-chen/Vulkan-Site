@@ -172,8 +172,7 @@ If `type` is `VK_DESCRIPTOR_TYPE_TENSOR_ARM`, a
 * 
 [](#VUID-VkDescriptorGetInfoEXT-type-12216) VUID-VkDescriptorGetInfoEXT-type-12216
 
-If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`,
-`pCombinedImageSampler` is not `NULL`, and
+If `type` is `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER` and
 `pCombinedImageSampler->imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), the
 `pCombinedImageSampler->imageView` member of `data` **must** have
 been created with `VK_IMAGE_USAGE_SAMPLED_BIT` set

@@ -480,8 +480,8 @@ typedef struct VkAllocationCallbacks {
 <div class="ulist">
 <ul>
 <li>
-<p><code>pUserData</code> is a value to be interpreted by the implementation of
-the callbacks.
+<p><code>pUserData</code> is NULL or an application-defined user data pointer to
+be interpreted by the implementation of the callbacks.
 When any of the callbacks in <code>VkAllocationCallbacks</code> are called, the
 Vulkan implementation will pass this value as the first parameter to the
 callback.
@@ -10098,8 +10098,8 @@ typedef VkFlags VkMemoryMapFlags;</code></pre>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Alternatively, to retrieve a host virtual address pointer to a region of a
-mappable memory object, call:</p>
+<p>To retrieve a host virtual address pointer to a region of a mappable memory
+object, call:</p>
 </div>
 <div id="vkMapMemory2" class="listingblock">
 <div class="content">
@@ -11116,8 +11116,8 @@ with an empty <code>pNext</code> chain and <code>flags</code> set to zero.</p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>Alternatively, to unmap a memory object once host access to it is no longer
-needed by the application, call:</p>
+<p>To unmap a memory object once host access to it is no longer needed by the
+application, call:</p>
 </div>
 <div id="vkUnmapMemory2" class="listingblock">
 <div class="content">

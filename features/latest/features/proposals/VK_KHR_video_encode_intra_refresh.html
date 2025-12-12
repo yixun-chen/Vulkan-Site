@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -630,15 +633,15 @@
 </li>
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_is_intra_refresh_performed_per_slice_segment">5.1. RESOLVED: Is intra refresh performed per slice (segment)?</a></li>
-<li><a href="#_resolved_are_the_actual_extents_of_intra_refresh_regions_exposed_to_the_application">5.2. RESOLVED: Are the actual extents of intra refresh regions exposed to the application?</a></li>
-<li><a href="#_resolved_should_we_require_the_slice_segment_count_to_match_used_the_intra_refresh_cycle_duration">5.3. RESOLVED: Should we require the slice (segment) count to match used the intra refresh cycle duration?</a></li>
-<li><a href="#_resolved_should_we_provide_a_query_for_the_application_to_determine_the_location_and_extent_of_intra_refresh_regions">5.4. RESOLVED: Should we provide a query for the application to determine the location and extent of intra refresh regions?</a></li>
-<li><a href="#_resolved_can_specific_intra_refresh_regions_for_a_given_coded_extent_and_intra_refresh_cycle_duration_be_empty">5.5. RESOLVED: Can specific intra refresh regions for a given coded extent and intra refresh cycle duration be empty?</a></li>
-<li><a href="#_resolved_should_we_enforce_with_valid_usage_clauses_that_the_intra_refresh_cycle_is_completed_in_exactly_intrarefreshcycleduration_number_of_frames_with_subsequent_intrarefreshindex_values">5.6. RESOLVED: Should we enforce with valid usage clauses that the intra refresh cycle is completed in exactly <code>intraRefreshCycleDuration</code> number of frames with subsequent <code>intraRefreshIndex</code> values?</a></li>
-<li><a href="#_resolved_should_we_restrict_referencing_during_an_intra_refresh_cycle_to_the_previously_encoded_frame">5.7. RESOLVED: Should we restrict referencing during an intra refresh cycle to the previously encoded frame?</a></li>
-<li><a href="#_resolved_are_there_any_restrictions_on_the_encoded_picture_types_that_can_be_used_with_intra_refresh">5.8. RESOLVED: Are there any restrictions on the encoded picture types that can be used with intra refresh?</a></li>
-<li><a href="#_resolved_should_we_allow_pictures_encoded_without_intra_refresh_to_have_active_reference_pictures_with_dirty_intra_refresh_regions">5.9. RESOLVED: Should we allow pictures encoded without intra refresh to have active reference pictures with dirty intra refresh regions?</a></li>
+<li><a href="#_is_intra_refresh_performed_per_slice_segment">5.1. Is intra refresh performed per slice (segment)?</a></li>
+<li><a href="#_are_the_actual_extents_of_intra_refresh_regions_exposed_to_the_application">5.2. Are the actual extents of intra refresh regions exposed to the application?</a></li>
+<li><a href="#_should_we_require_the_slice_segment_count_to_match_used_the_intra_refresh_cycle_duration">5.3. Should we require the slice (segment) count to match used the intra refresh cycle duration?</a></li>
+<li><a href="#_should_we_provide_a_query_for_the_application_to_determine_the_location_and_extent_of_intra_refresh_regions">5.4. Should we provide a query for the application to determine the location and extent of intra refresh regions?</a></li>
+<li><a href="#_can_specific_intra_refresh_regions_for_a_given_coded_extent_and_intra_refresh_cycle_duration_be_empty">5.5. Can specific intra refresh regions for a given coded extent and intra refresh cycle duration be empty?</a></li>
+<li><a href="#_should_we_enforce_with_valid_usage_clauses_that_the_intra_refresh_cycle_is_completed_in_exactly_intrarefreshcycleduration_number_of_frames_with_subsequent_intrarefreshindex_values">5.6. Should we enforce with valid usage clauses that the intra refresh cycle is completed in exactly <code>intraRefreshCycleDuration</code> number of frames with subsequent <code>intraRefreshIndex</code> values?</a></li>
+<li><a href="#_should_we_restrict_referencing_during_an_intra_refresh_cycle_to_the_previously_encoded_frame">5.7. Should we restrict referencing during an intra refresh cycle to the previously encoded frame?</a></li>
+<li><a href="#_are_there_any_restrictions_on_the_encoded_picture_types_that_can_be_used_with_intra_refresh">5.8. Are there any restrictions on the encoded picture types that can be used with intra refresh?</a></li>
+<li><a href="#_should_we_allow_pictures_encoded_without_intra_refresh_to_have_active_reference_pictures_with_dirty_intra_refresh_regions">5.9. Should we allow pictures encoded without intra refresh to have active reference pictures with dirty intra refresh regions?</a></li>
 </ul>
 </li>
 </ul>
@@ -968,13 +971,13 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_is_intra_refresh_performed_per_slice_segment"><a class="anchor" href="#_resolved_is_intra_refresh_performed_per_slice_segment"></a>5.1. RESOLVED: Is intra refresh performed per slice (segment)?</h3>
+<h3 id="_is_intra_refresh_performed_per_slice_segment"><a class="anchor" href="#_is_intra_refresh_performed_per_slice_segment"></a>5.1. Is intra refresh performed per slice (segment)?</h3>
 <div class="paragraph">
 <p>Not necessarily. While certain implementations may (only) support intra refresh on a per slice (segment) basis, this proposal does not require that.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_the_actual_extents_of_intra_refresh_regions_exposed_to_the_application"><a class="anchor" href="#_resolved_are_the_actual_extents_of_intra_refresh_regions_exposed_to_the_application"></a>5.2. RESOLVED: Are the actual extents of intra refresh regions exposed to the application?</h3>
+<h3 id="_are_the_actual_extents_of_intra_refresh_regions_exposed_to_the_application"><a class="anchor" href="#_are_the_actual_extents_of_intra_refresh_regions_exposed_to_the_application"></a>5.2. Are the actual extents of intra refresh regions exposed to the application?</h3>
 <div class="paragraph">
 <p>No. There are too many implementation variations when it comes to intra refresh:</p>
 </div>
@@ -993,37 +996,37 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_require_the_slice_segment_count_to_match_used_the_intra_refresh_cycle_duration"><a class="anchor" href="#_resolved_should_we_require_the_slice_segment_count_to_match_used_the_intra_refresh_cycle_duration"></a>5.3. RESOLVED: Should we require the slice (segment) count to match used the intra refresh cycle duration?</h3>
+<h3 id="_should_we_require_the_slice_segment_count_to_match_used_the_intra_refresh_cycle_duration"><a class="anchor" href="#_should_we_require_the_slice_segment_count_to_match_used_the_intra_refresh_cycle_duration"></a>5.3. Should we require the slice (segment) count to match used the intra refresh cycle duration?</h3>
 <div class="paragraph">
 <p>Yes, at least when the selected intra refresh mode is per slice (segment) intra refresh.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_provide_a_query_for_the_application_to_determine_the_location_and_extent_of_intra_refresh_regions"><a class="anchor" href="#_resolved_should_we_provide_a_query_for_the_application_to_determine_the_location_and_extent_of_intra_refresh_regions"></a>5.4. RESOLVED: Should we provide a query for the application to determine the location and extent of intra refresh regions?</h3>
+<h3 id="_should_we_provide_a_query_for_the_application_to_determine_the_location_and_extent_of_intra_refresh_regions"><a class="anchor" href="#_should_we_provide_a_query_for_the_application_to_determine_the_location_and_extent_of_intra_refresh_regions"></a>5.4. Should we provide a query for the application to determine the location and extent of intra refresh regions?</h3>
 <div class="paragraph">
 <p>Not in this extension. It is not even clear how such a query could look like, considering that intra refresh regions may not be rectangular on some implementations and may not consist of subsequent coding blocks on other implementations. A general query therefore is difficult to provide.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_specific_intra_refresh_regions_for_a_given_coded_extent_and_intra_refresh_cycle_duration_be_empty"><a class="anchor" href="#_resolved_can_specific_intra_refresh_regions_for_a_given_coded_extent_and_intra_refresh_cycle_duration_be_empty"></a>5.5. RESOLVED: Can specific intra refresh regions for a given coded extent and intra refresh cycle duration be empty?</h3>
+<h3 id="_can_specific_intra_refresh_regions_for_a_given_coded_extent_and_intra_refresh_cycle_duration_be_empty"><a class="anchor" href="#_can_specific_intra_refresh_regions_for_a_given_coded_extent_and_intra_refresh_cycle_duration_be_empty"></a>5.5. Can specific intra refresh regions for a given coded extent and intra refresh cycle duration be empty?</h3>
 <div class="paragraph">
 <p>Yes. This is necessary to account for implementation-specific limitations on how a specific coded extent can be split into intra refresh regions for a particular video codec operation and encoder configuration.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_enforce_with_valid_usage_clauses_that_the_intra_refresh_cycle_is_completed_in_exactly_intrarefreshcycleduration_number_of_frames_with_subsequent_intrarefreshindex_values"><a class="anchor" href="#_resolved_should_we_enforce_with_valid_usage_clauses_that_the_intra_refresh_cycle_is_completed_in_exactly_intrarefreshcycleduration_number_of_frames_with_subsequent_intrarefreshindex_values"></a>5.6. RESOLVED: Should we enforce with valid usage clauses that the intra refresh cycle is completed in exactly <code>intraRefreshCycleDuration</code> number of frames with subsequent <code>intraRefreshIndex</code> values?</h3>
+<h3 id="_should_we_enforce_with_valid_usage_clauses_that_the_intra_refresh_cycle_is_completed_in_exactly_intrarefreshcycleduration_number_of_frames_with_subsequent_intrarefreshindex_values"><a class="anchor" href="#_should_we_enforce_with_valid_usage_clauses_that_the_intra_refresh_cycle_is_completed_in_exactly_intrarefreshcycleduration_number_of_frames_with_subsequent_intrarefreshindex_values"></a>5.6. Should we enforce with valid usage clauses that the intra refresh cycle is completed in exactly <code>intraRefreshCycleDuration</code> number of frames with subsequent <code>intraRefreshIndex</code> values?</h3>
 <div class="paragraph">
 <p>No. While this is the typical use case, this proposal does not restrict applications from attempting to use more complex patterns. Instead, the proposal only defines the rules for intra refresh and reference prediction restriction. However, if the provided controls are used incorrectly, the resulting bitstream may not be resilient to error propagation, as likely intended.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_restrict_referencing_during_an_intra_refresh_cycle_to_the_previously_encoded_frame"><a class="anchor" href="#_resolved_should_we_restrict_referencing_during_an_intra_refresh_cycle_to_the_previously_encoded_frame"></a>5.7. RESOLVED: Should we restrict referencing during an intra refresh cycle to the previously encoded frame?</h3>
+<h3 id="_should_we_restrict_referencing_during_an_intra_refresh_cycle_to_the_previously_encoded_frame"><a class="anchor" href="#_should_we_restrict_referencing_during_an_intra_refresh_cycle_to_the_previously_encoded_frame"></a>5.7. Should we restrict referencing during an intra refresh cycle to the previously encoded frame?</h3>
 <div class="paragraph">
 <p>Yes. While some implementations can support unrestricted referencing of pictures with dirty intra refresh regions, such functionality is left to a future extension.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_there_any_restrictions_on_the_encoded_picture_types_that_can_be_used_with_intra_refresh"><a class="anchor" href="#_resolved_are_there_any_restrictions_on_the_encoded_picture_types_that_can_be_used_with_intra_refresh"></a>5.8. RESOLVED: Are there any restrictions on the encoded picture types that can be used with intra refresh?</h3>
+<h3 id="_are_there_any_restrictions_on_the_encoded_picture_types_that_can_be_used_with_intra_refresh"><a class="anchor" href="#_are_there_any_restrictions_on_the_encoded_picture_types_that_can_be_used_with_intra_refresh"></a>5.8. Are there any restrictions on the encoded picture types that can be used with intra refresh?</h3>
 <div class="paragraph">
 <p>Some implementations are not able to produce H.264 and/or H.265 B picture syntax when intra refresh is used. This applies both to B pictures encoded with intra refresh and to B pictures referencing pictures encoded with intra refresh (i.e. reference pictures having dirty intra refresh regions).
 Accordingly, optional H.264 and H.265 encode capability flags are introduced to indicate support for encoding B pictures with intra refresh.
@@ -1031,7 +1034,7 @@ Similar restrictions exist for AV1 encode on some implementations where using co
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_allow_pictures_encoded_without_intra_refresh_to_have_active_reference_pictures_with_dirty_intra_refresh_regions"><a class="anchor" href="#_resolved_should_we_allow_pictures_encoded_without_intra_refresh_to_have_active_reference_pictures_with_dirty_intra_refresh_regions"></a>5.9. RESOLVED: Should we allow pictures encoded without intra refresh to have active reference pictures with dirty intra refresh regions?</h3>
+<h3 id="_should_we_allow_pictures_encoded_without_intra_refresh_to_have_active_reference_pictures_with_dirty_intra_refresh_regions"><a class="anchor" href="#_should_we_allow_pictures_encoded_without_intra_refresh_to_have_active_reference_pictures_with_dirty_intra_refresh_regions"></a>5.9. Should we allow pictures encoded without intra refresh to have active reference pictures with dirty intra refresh regions?</h3>
 <div class="paragraph">
 <p>No. Not all implementations seem to support this and it is not a requirement for typical intra refresh use cases.</p>
 </div>

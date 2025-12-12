@@ -22,8 +22,8 @@
 - [3.4. Only storage image support](#_only_storage_image_support)
 - [3.4._Only_storage_image_support](#_only_storage_image_support)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Do we need another image creation flag?](#_resolved_do_we_need_another_image_creation_flag)
-- [4.1._RESOLVED:_Do_we_need_another_image_creation_flag?](#_resolved_do_we_need_another_image_creation_flag)
+- [4.1. Do we need another image creation flag?](#_do_we_need_another_image_creation_flag)
+- [4.1._Do_we_need_another_image_creation_flag?](#_do_we_need_another_image_creation_flag)
 
 ## Content
 
@@ -40,7 +40,7 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: Do we need another image creation flag?](#_resolved_do_we_need_another_image_creation_flag)
+[4.1. Do we need another image creation flag?](#_do_we_need_another_image_creation_flag)
 
 This document describes a proposal for adding support for taking a sliced view of a 3D image,
 where the result is a 3D image view with a restricted range of depth slices.

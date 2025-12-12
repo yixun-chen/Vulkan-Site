@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -618,8 +621,8 @@
 <li><a href="#_examples">3. Examples</a></li>
 <li><a href="#_issues">4. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_what_about_vk_khr_dynamic_rendering">4.1. RESOLVED: What about <code>VK_KHR_dynamic_rendering</code>?</a></li>
-<li><a href="#_resolved_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added">4.2. RESOLVED: Lack of on-tile-resolve support for some formats will particularly have a negative impact on this extension.  Can there be a format feature flag added?</a></li>
+<li><a href="#_what_about_vk_khr_dynamic_rendering">4.1. What about <code>VK_KHR_dynamic_rendering</code>?</a></li>
+<li><a href="#_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added">4.2. Lack of on-tile-resolve support for some formats will particularly have a negative impact on this extension.  Can there be a format feature flag added?</a></li>
 </ul>
 </li>
 </ul>
@@ -1034,7 +1037,7 @@ vkCmdBeginRendering(commandBuffer, &amp;renderingInfo);</code></pre>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_what_about_vk_khr_dynamic_rendering"><a class="anchor" href="#_resolved_what_about_vk_khr_dynamic_rendering"></a>4.1. RESOLVED: What about <code>VK_KHR_dynamic_rendering</code>?</h3>
+<h3 id="_what_about_vk_khr_dynamic_rendering"><a class="anchor" href="#_what_about_vk_khr_dynamic_rendering"></a>4.1. What about <code>VK_KHR_dynamic_rendering</code>?</h3>
 <div class="paragraph">
 <p>Render passes remain the optimal solution for tiling GPUs.
 The current limitations of the <code>VK_KHR_dynamic_rendering</code> extension on tiling
@@ -1043,7 +1046,7 @@ rendering.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added"><a class="anchor" href="#_resolved_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added"></a>4.2. RESOLVED: Lack of on-tile-resolve support for some formats will particularly have a negative impact on this extension.  Can there be a format feature flag added?</h3>
+<h3 id="_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added"><a class="anchor" href="#_lack_of_on_tile_resolve_support_for_some_formats_will_particularly_have_a_negative_impact_on_this_extension_can_there_be_a_format_feature_flag_added"></a>4.2. Lack of on-tile-resolve support for some formats will particularly have a negative impact on this extension.  Can there be a format feature flag added?</h3>
 <div class="paragraph">
 <p>A specific struct is added to query performance of subpass resolve for each
 format.

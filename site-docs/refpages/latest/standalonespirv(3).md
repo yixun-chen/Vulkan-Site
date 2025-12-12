@@ -708,9 +708,10 @@ or geometry shaders, the execution Scope **must** be `Subgroup`
 
 [](#VUID-StandaloneSpirv-None-10685) VUID-StandaloneSpirv-None-10685
 
-For each compute shader entry point, either a `TileShadingRateQCOM`,
-`LocalSize`, or `LocalSizeId` `Execution` `Mode`, or an object
-decorated with the `WorkgroupSize` decoration **must** be specified
+Either a `TileShadingRateQCOM`, `LocalSize`, or `LocalSizeId`
+`Execution` `Mode`, or an object decorated with the `WorkgroupSize`
+decoration **must** be specified for each entry point with a task, mesh, or
+compute `Execution` `Model`
 
 [](#VUID-StandaloneSpirv-DerivativeGroupQuadsNV-04684) VUID-StandaloneSpirv-DerivativeGroupQuadsNV-04684
 

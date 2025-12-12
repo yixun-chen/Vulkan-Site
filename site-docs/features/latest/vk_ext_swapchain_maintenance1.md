@@ -45,8 +45,8 @@
 - [3.6. Releasing Acquired Images](#_releasing_acquired_images_3)
 - [3.6._Releasing_Acquired_Images](#_releasing_acquired_images_3)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Should there be a surface capability bit to advertise the present fence functionality?](#_resolved_should_there_be_a_surface_capability_bit_to_advertise_the_present_fence_functionality)
-- [4.1._RESOLVED:_Should_there_be_a_surface_capability_bit_to_advertise_the_present_fence_functionality?](#_resolved_should_there_be_a_surface_capability_bit_to_advertise_the_present_fence_functionality)
+- [4.1. Should there be a surface capability bit to advertise the present fence functionality?](#_should_there_be_a_surface_capability_bit_to_advertise_the_present_fence_functionality)
+- [4.1._Should_there_be_a_surface_capability_bit_to_advertise_the_present_fence_functionality?](#_should_there_be_a_surface_capability_bit_to_advertise_the_present_fence_functionality)
 
 ## Content
 
@@ -79,7 +79,7 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: Should there be a surface capability bit to advertise the present fence functionality?](#_resolved_should_there_be_a_surface_capability_bit_to_advertise_the_present_fence_functionality)
+[4.1. Should there be a surface capability bit to advertise the present fence functionality?](#_should_there_be_a_surface_capability_bit_to_advertise_the_present_fence_functionality)
 
 This proposal investigates and addresses a number of practical issues with the
 `VK_KHR_swapchain` specification.

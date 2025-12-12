@@ -23,14 +23,14 @@
 - [3.2. Decode H.264 frame with inline PPS](#_decode_h_264_frame_with_inline_pps)
 - [3.2._Decode_H.264_frame_with_inline_PPS](#_decode_h_264_frame_with_inline_pps)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Do we want to relax the requirements for a bound video session parameters object for video encode sessions?](#_resolved_do_we_want_to_relax_the_requirements_for_a_bound_video_session_parameters_object_for_video_encode_sessions)
-- [4.1._RESOLVED:_Do_we_want_to_relax_the_requirements_for_a_bound_video_session_parameters_object_for_video_encode_sessions?](#_resolved_do_we_want_to_relax_the_requirements_for_a_bound_video_session_parameters_object_for_video_encode_sessions)
-- [4.2. RESOLVED: Do we want to support inline video session parameters in video encode sessions?](#_resolved_do_we_want_to_support_inline_video_session_parameters_in_video_encode_sessions)
-- [4.2._RESOLVED:_Do_we_want_to_support_inline_video_session_parameters_in_video_encode_sessions?](#_resolved_do_we_want_to_support_inline_video_session_parameters_in_video_encode_sessions)
-- [4.3. RESOLVED: Which codec-specific parameter set is used if a matching one is available in the bound video session parameters object but the application also specifies one using the new inline parameter specification APIs?](#_resolved_which_codec_specific_parameter_set_is_used_if_a_matching_one_is_available_in_the_bound_video_session_parameters_object_but_the_application_also_specifies_one_using_the_new_inline_parameter_specification_apis)
-- [4.3._RESOLVED:_Which_codec-specific_parameter_set_is_used_if_a_matching_one_is_available_in_the_bound_video_session_parameters_object_but_the_application_also_specifies_one_using_the_new_inline_parameter_specification_APIs?](#_resolved_which_codec_specific_parameter_set_is_used_if_a_matching_one_is_available_in_the_bound_video_session_parameters_object_but_the_application_also_specifies_one_using_the_new_inline_parameter_specification_apis)
-- [4.4. RESOLVED: Should we require VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR for all video encode profiles?](#_resolved_should_we_require_vk_video_encode_rate_control_mode_disabled_bit_khr_for_all_video_encode_profiles)
-- [4.4._RESOLVED:_Should_we_require_VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR_for_all_video_encode_profiles?](#_resolved_should_we_require_vk_video_encode_rate_control_mode_disabled_bit_khr_for_all_video_encode_profiles)
+- [4.1. Do we want to relax the requirements for a bound video session parameters object for video encode sessions?](#_do_we_want_to_relax_the_requirements_for_a_bound_video_session_parameters_object_for_video_encode_sessions)
+- [4.1._Do_we_want_to_relax_the_requirements_for_a_bound_video_session_parameters_object_for_video_encode_sessions?](#_do_we_want_to_relax_the_requirements_for_a_bound_video_session_parameters_object_for_video_encode_sessions)
+- [4.2. Do we want to support inline video session parameters in video encode sessions?](#_do_we_want_to_support_inline_video_session_parameters_in_video_encode_sessions)
+- [4.2._Do_we_want_to_support_inline_video_session_parameters_in_video_encode_sessions?](#_do_we_want_to_support_inline_video_session_parameters_in_video_encode_sessions)
+- [4.3. Which codec-specific parameter set is used if a matching one is available in the bound video session parameters object but the application also specifies one using the new inline parameter specification APIs?](#_which_codec_specific_parameter_set_is_used_if_a_matching_one_is_available_in_the_bound_video_session_parameters_object_but_the_application_also_specifies_one_using_the_new_inline_parameter_specification_apis)
+- [4.3._Which_codec-specific_parameter_set_is_used_if_a_matching_one_is_available_in_the_bound_video_session_parameters_object_but_the_application_also_specifies_one_using_the_new_inline_parameter_specification_APIs?](#_which_codec_specific_parameter_set_is_used_if_a_matching_one_is_available_in_the_bound_video_session_parameters_object_but_the_application_also_specifies_one_using_the_new_inline_parameter_specification_apis)
+- [4.4. Should we require VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR for all video encode profiles?](#_should_we_require_vk_video_encode_rate_control_mode_disabled_bit_khr_for_all_video_encode_profiles)
+- [4.4._Should_we_require_VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR_for_all_video_encode_profiles?](#_should_we_require_vk_video_encode_rate_control_mode_disabled_bit_khr_for_all_video_encode_profiles)
 - [5. Further Functionality](#_further_functionality)
 - [5._Further_Functionality](#_further_functionality)
 
@@ -52,10 +52,10 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: Do we want to relax the requirements for a bound video session parameters object for video encode sessions?](#_resolved_do_we_want_to_relax_the_requirements_for_a_bound_video_session_parameters_object_for_video_encode_sessions)
-[4.2. RESOLVED: Do we want to support inline video session parameters in video encode sessions?](#_resolved_do_we_want_to_support_inline_video_session_parameters_in_video_encode_sessions)
-[4.3. RESOLVED: Which codec-specific parameter set is used if a matching one is available in the bound video session parameters object but the application also specifies one using the new inline parameter specification APIs?](#_resolved_which_codec_specific_parameter_set_is_used_if_a_matching_one_is_available_in_the_bound_video_session_parameters_object_but_the_application_also_specifies_one_using_the_new_inline_parameter_specification_apis)
-[4.4. RESOLVED: Should we require `VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR` for all video encode profiles?](#_resolved_should_we_require_vk_video_encode_rate_control_mode_disabled_bit_khr_for_all_video_encode_profiles)
+[4.1. Do we want to relax the requirements for a bound video session parameters object for video encode sessions?](#_do_we_want_to_relax_the_requirements_for_a_bound_video_session_parameters_object_for_video_encode_sessions)
+[4.2. Do we want to support inline video session parameters in video encode sessions?](#_do_we_want_to_support_inline_video_session_parameters_in_video_encode_sessions)
+[4.3. Which codec-specific parameter set is used if a matching one is available in the bound video session parameters object but the application also specifies one using the new inline parameter specification APIs?](#_which_codec_specific_parameter_set_is_used_if_a_matching_one_is_available_in_the_bound_video_session_parameters_object_but_the_application_also_specifies_one_using_the_new_inline_parameter_specification_apis)
+[4.4. Should we require `VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR` for all video encode profiles?](#_should_we_require_vk_video_encode_rate_control_mode_disabled_bit_khr_for_all_video_encode_profiles)
 
 [5. Further Functionality](#_further_functionality)
 

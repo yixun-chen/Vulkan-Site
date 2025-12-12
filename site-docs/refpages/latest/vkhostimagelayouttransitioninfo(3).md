@@ -261,6 +261,259 @@ If the `aspectMask` member of `subresourceRange` includes
 the `image` was created with
 
 * 
+[](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01208) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01208
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL` then `image` **must**
+have been created with the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT`
+usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01209) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01209
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` then `image`
+**must** have been created with the
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01210) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01210
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL` then `image`
+**must** have been created with the
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01211) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01211
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL` then `image` **must**
+have been created with the `VK_IMAGE_USAGE_SAMPLED_BIT` or
+`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01212) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01212
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL` then `image` **must** have
+been created with the `VK_IMAGE_USAGE_TRANSFER_SRC_BIT` usage flag
+set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01213) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01213
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` then `image` **must** have
+been created with the `VK_IMAGE_USAGE_TRANSFER_DST_BIT` usage flag
+set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-10767) VUID-VkHostImageLayoutTransitionInfo-oldLayout-10767
+
+If the [    zeroInitializeDeviceMemory](../../../../spec/latest/chapters/features.html#features-zeroInitializeDeviceMemory) feature is not enabled, `oldLayout`
+**must** not be `VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-10768) VUID-VkHostImageLayoutTransitionInfo-oldLayout-10768
+
+If `oldLayout` is `VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT`, then
+all subresources **must** be included in the barrier
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01658) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01658
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL` then
+`image` **must** have been created with the
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-01659) VUID-VkHostImageLayoutTransitionInfo-oldLayout-01659
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL` then
+`image` **must** have been created with the
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04065) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04065
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL` then `image` **must**
+have been created with at least one of the
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
+`VK_IMAGE_USAGE_SAMPLED_BIT`, or
+`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04066) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04066
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL` then `image` **must**
+have been created with the
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04067) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04067
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL` then `image` **must**
+have been created with at least one of the
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
+`VK_IMAGE_USAGE_SAMPLED_BIT`, or
+`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04068) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-04068
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL` then `image` **must**
+have been created with the
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-synchronization2-07793) VUID-VkHostImageLayoutTransitionInfo-synchronization2-07793
+
+If the [`synchronization2`](../../../../spec/latest/chapters/features.html#features-synchronization2) feature is
+not enabled, `oldLayout` **must** not be
+`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
+`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-synchronization2-07794) VUID-VkHostImageLayoutTransitionInfo-synchronization2-07794
+
+If the [`synchronization2`](../../../../spec/latest/chapters/features.html#features-synchronization2) feature is
+not enabled, `newLayout` **must** not be
+`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR` or
+`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR`
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-03938) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-03938
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL`, `image` **must** have been
+created with the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-03939) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-03939
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL`, `image` **must** have been
+created with at least one of the
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT`,
+`VK_IMAGE_USAGE_SAMPLED_BIT`, or
+`VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage flags set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-02088) VUID-VkHostImageLayoutTransitionInfo-oldLayout-02088
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR` then
+`image` **must** have been created with the
+`VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR` usage flag
+set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07120) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07120
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR` then `image` **must** have
+been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR`
+usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07121) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07121
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR` then `image` **must** have
+been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR`
+usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07122) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07122
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR` then `image` **must** have
+been created with the `VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR`
+usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07123) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07123
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR` then `image` **must** have
+been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR`
+usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07124) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07124
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR` then `image` **must** have
+been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR`
+usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07125) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07125
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR` then `image` **must** have
+been created with the `VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR`
+usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-10287) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-10287
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR` then `image`
+**must** have been created with the
+`VK_IMAGE_USAGE_VIDEO_ENCODE_QUANTIZATION_DELTA_MAP_BIT_KHR` or
+`VK_IMAGE_USAGE_VIDEO_ENCODE_EMPHASIS_MAP_BIT_KHR` usage flags set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07006) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-07006
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT` then
+`image` **must** have been created with either the
+`VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set, and
+the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` or
+`VK_IMAGE_USAGE_SAMPLED_BIT` usage flags set, and the
+`VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT` usage flag set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-attachmentFeedbackLoopLayout-07313) VUID-VkHostImageLayoutTransitionInfo-attachmentFeedbackLoopLayout-07313
+
+If the [    `attachmentFeedbackLoopLayout`](../../../../spec/latest/chapters/features.html#features-attachmentFeedbackLoopLayout) feature is not enabled,
+`newLayout` **must** not be
+`VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT`
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-09550) VUID-VkHostImageLayoutTransitionInfo-srcQueueFamilyIndex-09550
+
+If  `oldLayout` or `newLayout` is
+`VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ` then `image` **must** have
+been created with either the `VK_IMAGE_USAGE_STORAGE_BIT` usage flag
+set, or with both the `VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT` usage
+flag and either of the `VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT` or
+`VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT` usage flags set
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-dynamicRenderingLocalRead-09551) VUID-VkHostImageLayoutTransitionInfo-dynamicRenderingLocalRead-09551
+
+If the [    `dynamicRenderingLocalRead`](../../../../spec/latest/chapters/features.html#features-dynamicRenderingLocalRead) feature is not enabled,
+`oldLayout` **must** not be `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+
+* 
+[](#VUID-VkHostImageLayoutTransitionInfo-dynamicRenderingLocalRead-09552) VUID-VkHostImageLayoutTransitionInfo-dynamicRenderingLocalRead-09552
+
+If the [    `dynamicRenderingLocalRead`](../../../../spec/latest/chapters/features.html#features-dynamicRenderingLocalRead) feature is not enabled,
+`newLayout` **must** not be `VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ`
+
+* 
 [](#VUID-VkHostImageLayoutTransitionInfo-oldLayout-09229) VUID-VkHostImageLayoutTransitionInfo-oldLayout-09229
 
 `oldLayout` **must** be either `VK_IMAGE_LAYOUT_UNDEFINED` or the

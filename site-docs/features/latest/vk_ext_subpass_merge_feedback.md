@@ -14,8 +14,8 @@
 - [2._Solution_Space](#_solution_space)
 - [3. Proposal](#_proposal)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Could the reasons of not merging be enum instead of string?](#_resolved_could_the_reasons_of_not_merging_be_enum_instead_of_string)
-- [4.1._RESOLVED:_Could_the_reasons_of_not_merging_be_enum_instead_of_string?](#_resolved_could_the_reasons_of_not_merging_be_enum_instead_of_string)
+- [4.1. Could the reasons of not merging be enum instead of string?](#_could_the_reasons_of_not_merging_be_enum_instead_of_string)
+- [4.1._Could_the_reasons_of_not_merging_be_enum_instead_of_string?](#_could_the_reasons_of_not_merging_be_enum_instead_of_string)
 
 ## Content
 
@@ -26,7 +26,7 @@ Table of Contents
 [3. Proposal](#_proposal)
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: Could the reasons of not merging be enum instead of string?](#_resolved_could_the_reasons_of_not_merging_be_enum_instead_of_string)
+[4.1. Could the reasons of not merging be enum instead of string?](#_could_the_reasons_of_not_merging_be_enum_instead_of_string)
 
 The Vulkan render pass mechanism allows the implementation to merge subpasses at render pass
 creation time to improve performance or reduce memory bandwidth usage. However, the criteria

@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -741,7 +744,7 @@ and the maximum primitive index.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">float2 GetUV_PerPrimitive( float2 bary )
+<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">float2 GetUV_PerPrimitive( float2 bary )
 {
     uint3 indices = Indices.Load3( INDEX_SIZE * 3 * PrimitiveIndex() );
 
@@ -764,7 +767,7 @@ and the maximum primitive index.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">float2 GetUV_PerBlockDirect( float2 bary )
+<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">float2 GetUV_PerBlockDirect( float2 bary )
 {
     uint userData      = GeometryBlockUserData();
     uint3 localIndices = GeometryBlockLocalIndices();
@@ -786,7 +789,7 @@ and the maximum primitive index.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">float2 GetUV_PerBlockIndirect( float2 bary )
+<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">float2 GetUV_PerBlockIndirect( float2 bary )
 {
     uint userData      = GeometryBlockUserData();
     uint3 localIndices = GeometryBlockLocalIndices();

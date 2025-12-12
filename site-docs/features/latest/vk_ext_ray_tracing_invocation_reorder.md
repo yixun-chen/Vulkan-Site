@@ -164,7 +164,8 @@ void reorderThreadNV(hitObjectNV hitObject, uint hint, uint bits)
 Plus this function which executes but is defined to not reorder:
 
 void hitObjectExecuteShaderNV(hitObjectNV hitObject,
-            int payload)
+
+int payload)
 
 The proposal is to allow reorder on trace and execute calls as well plus add an optional fused form:
 
@@ -215,35 +216,94 @@ uint hitObjectGetSbtRecordIndexEXT(hitObjectEXT hitObject);
 
 HLSL provides this functionality with DXR 1.2.
 
+* 
 HitObject::TraceRay → OpHitObjectTraceRayEXT
+
+* 
 HitObject::FromRayQuery → OpHitObjectRecordFromQueryEXT
+
+* 
 HitObject::MakeMiss → OpHitObjectRecordMissEXT
+
+* 
 HitObject::MakeNop → OpHitObjectRecordEmptyEXT
+
+* 
 HitObject::Invoke → OpHitObjectExecuteShaderEXT
+
+* 
 HitObject::IsMiss → OpHitObjectIsMissEXT
+
+* 
 HitObject::IsHit → OpHitObjectIsHitEXT
+
+* 
 HitObject::IsNop → OpHitObjectIsEmptyEXT
+
+* 
 HitObject::GetRayFlags → OpHitObjectGetRayFlagsEXT
+
+* 
 HitObject::GetRayTMin → OpHitObjectGetRayTMinEXT
+
+* 
 HitObject::GetRayTCurrent → OpHitObjectGetRayTMaxEXT
+
+* 
 HitObject::GetWorldRayOrigin → OpHitObjectGetWorldRayOriginEXT
+
+* 
 HitObject::GetWorldRayDirection → OpHitObjectGetWorldRayDirectionEXT
+
+* 
 HitObject::GetObjectRayOrigin → OpHitObjectGetObjectRayOriginEXT
+
+* 
 HitObject::GetObjectRayDirection → OpHitObjectGetObjectRayDirectionEXT
+
+* 
 HitObject::GetObjectToWorld3x4 → OpHitObjectGetObjectToWorldEXT
+
+* 
 HitObject::GetObjectToWorld4x3 → OpHitObjectGetObjectToWorldEXT
+
+* 
 HitObject::GetWorldToObject3x4 → OpHitObjectGetWorldToObjectEXT
+
+* 
 HitObject::GetWorldToObject4x3 → OpHitObjectGetWorldToObjectEXT
+
+* 
 HitObject::GetInstanceIndex → OpHitObjectGetInstanceCustomIndexEXT
+
+* 
 HitObject::GetInstanceID → OpHitObjectGetInstanceIdEXT
+
+* 
 HitObject::GetGeometryIndex → OpHitObjectGetGeometryIndexEXT
+
+* 
 HitObject::GetPrimitiveIndex → OpHitObjectGetPrimitiveIndexEXT
+
+* 
 HitObject::GetHitKind → OpHitObjectGetHitKindEXT
+
+* 
 HitObject::GetAttributes → OpHitObjectGetAttributesEXT
+
+* 
 HitObject::GetShaderTableIndex → OpHitObjectGetShaderBindingTableRecordIndexEXT
+
+* 
 HitObject::SetShaderTableIndex → OpHitObjectSetShaderBindingTableRecordIndexEXT
+
+* 
 dx::MaybeReorderThread (HitObject) → OpReorderThreadWithHitObjectEXT
+
+* 
 dx::MaybeReorderThread (CoherenceHint) → OpReorderThreadWithHintEXT
+
+* 
 dx::MaybeReorderThread (HitObject + CoherenceHint) → OpReorderThreadWithHitObjectEXT
 
 It is possible to use this functionality via
@@ -319,15 +379,15 @@ bool hitObjectIsHitEXT([[vk::ext_reference]] HitObjectEXT hitObject);
 
 Using the function in the code, can be done like this
 
-  if (USE_SER == 1)
-  {
-    createHitObjectEXT();
-    HitObjectEXT hObj; //  hitObjectEXT hObj;
-    hitObjectRecordEmptyEXT(hObj); //Initialize to an empty hit object
-    hitObjectTraceRayEXT(hObj, topLevelAS, rayFlags, 0xFF, 0, 0, 0, r.Origin, 0.0, r.Direction, INFINITE, payload);
-    reorderThreadWithHitObjectEXT(hObj);
-    hitObjectExecuteShaderEXT(hObj, payload);
-  }
+if (USE_SER == 1)
+{
+  createHitObjectEXT();
+  HitObjectEXT hObj; //  hitObjectEXT hObj;
+  hitObjectRecordEmptyEXT(hObj); //Initialize to an empty hit object
+  hitObjectTraceRayEXT(hObj, topLevelAS, rayFlags, 0xFF, 0, 0, 0, r.Origin, 0.0, r.Direction, INFINITE, payload);
+  reorderThreadWithHitObjectEXT(hObj);
+  hitObjectExecuteShaderEXT(hObj, payload);
+}
 
 Note:
 
@@ -361,38 +421,38 @@ void main()
     //Initialize to an empty hit object
     hitObjectRecordEmptyEXT(hObj);
 
-hitObjectTraceRayEXT(hObj,
-           as,
-           0,
-           0,
-           0,
-           4,
-           0,
-           origin + vec3(gl_LaunchIDEXT.xyz),
-           0.0f,
-           origin + vec3(gl_LaunchIDEXT.xyz) + vec3(0,0,1.0f),
-           1.0f,
-           0);
+    hitObjectTraceRayEXT(hObj,
+               as,
+               0,
+               0,
+               0,
+               4,
+               0,
+               origin + vec3(gl_LaunchIDEXT.xyz),
+               0.0f,
+               origin + vec3(gl_LaunchIDEXT.xyz) + vec3(0,0,1.0f),
+               1.0f,
+               0);
 
-uint materialIdHint = 0;
+    uint materialIdHint = 0;
 
-if (hitObjectIsHitEXT(hObj)) {
-    uvec2 handle = hitObjectGetShaderRecordBufferHandleEXT(hObj);
-    materialIdHint = SRB(handle).materialId;
-}
+    if (hitObjectIsHitEXT(hObj)) {
+        uvec2 handle = hitObjectGetShaderRecordBufferHandleEXT(hObj);
+        materialIdHint = SRB(handle).materialId;
+    }
 
-//Reorder threads based on hit object and additional hint on material type
-//Use 3 LSB bits only
-reorderThreadEXT(hObj, materialIdHint, 3);
+    //Reorder threads based on hit object and additional hint on material type
+    //Use 3 LSB bits only
+    reorderThreadEXT(hObj, materialIdHint, 3);
 
-//Execute closest hit shaders only
-if (hitObjectIsHitEXT(hObj)) {
-    //Get Attributes of intersection
-    hitObjectGetAttributesEXT(hObj, 0);
-    hitObjectExecuteShaderEXT(hObj, 0);
-    outputColor = vec4(Color.x + distance(sphereAABB, vec3(0)));
-}
+    //Execute closest hit shaders only
+    if (hitObjectIsHitEXT(hObj)) {
+        //Get Attributes of intersection
+        hitObjectGetAttributesEXT(hObj, 0);
+        hitObjectExecuteShaderEXT(hObj, 0);
+        outputColor = vec4(Color.x + distance(sphereAABB, vec3(0)));
+    }
 
-imageStore(img, ivec2(gl_LaunchIDEXT.xy), outputColor);
+    imageStore(img, ivec2(gl_LaunchIDEXT.xy), outputColor);
 
 }

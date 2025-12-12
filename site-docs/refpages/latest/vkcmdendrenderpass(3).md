@@ -36,6 +36,30 @@ render pass instance.
 Ending a render pass instance performs any multisample resolve operations on
 the final subpass.
 
+|  | There is no implicit ordering between separate render passes, even in the
+| --- | --- |
+same command buffer, and even when the attachments match.
+Some applications rely on the continuation of
+[rasterization order](../../../../spec/latest/chapters/primsrast.html#primsrast-order) between multiple render passes with
+attachments defined in the same way, in order to perform non-rendering
+operations (such as copies or compute operations) between draw calls, but
+this has never been required by the specification.
+There is also no explicit barrier currently in the API that provides the
+guarantee that applications rely on without additional performance
+penalties.
+
+New applications should avoid relying on this ordering until an appropriate
+barrier is added to the API.
+
+Implementations where applications are performing this splitting are
+encouraged to continue supporting this guarantee until a suitable barrier is
+added to the API.
+
+Existing applications relying on this ordering should expect that it will
+continue working on platforms where it currently does.
+Once a new extension adds support for a new barrier, developers are
+encouraged to adapt their applications to use this when available. |
+
 Valid Usage
 
 * 

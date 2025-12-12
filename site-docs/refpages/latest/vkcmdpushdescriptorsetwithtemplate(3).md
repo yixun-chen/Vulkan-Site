@@ -19,9 +19,8 @@
 
 vkCmdPushDescriptorSetWithTemplate - Pushes descriptor updates into a command buffer using a descriptor update template
 
-It is also possible to use a descriptor update template to specify the push
-descriptors to update.
-To do so, call:
+To use a descriptor update template to specify the push descriptors to
+update in a command buffer, call:
 
 // Provided by VK_VERSION_1_4
 void vkCmdPushDescriptorSetWithTemplate(

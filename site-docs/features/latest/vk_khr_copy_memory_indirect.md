@@ -20,6 +20,8 @@
 - [4.3. Commands](#_commands)
 - [5. Examples](#_examples)
 - [6. Issues](#_issues)
+- [6.1. Should we add copyCount to be also sourced from the GPU and use the minimum of the API specified and GPU value?](#_should_we_add_copycount_to_be_also_sourced_from_the_gpu_and_use_the_minimum_of_the_api_specified_and_gpu_value)
+- [6.1._Should_we_add_copyCount_to_be_also_sourced_from_the_GPU_and_use_the_minimum_of_the_API_specified_and_GPU_value?](#_should_we_add_copycount_to_be_also_sourced_from_the_gpu_and_use_the_minimum_of_the_api_specified_and_gpu_value)
 
 ## Content
 
@@ -36,6 +38,8 @@ Table of Contents
 
 [5. Examples](#_examples)
 [6. Issues](#_issues)
+
+[6.1. Should we add `copyCount` to be also sourced from the GPU and use the minimum of the API specified and GPU value?](#_should_we_add_copycount_to_be_also_sourced_from_the_gpu_and_use_the_minimum_of_the_api_specified_and_gpu_value)
 
 This document details the VK_KHR_copy_memory_indirect extension which
 adds support for performing copies between memory and image regions using
@@ -160,9 +164,6 @@ typedef struct VkCopyMemoryToImageIndirectCommandKHR {
 
 Note that the values specified in device memory at `imageSubresource` must match the values specified in `pImageSubresources` parameter of `VkCopyMemoryToImageIndirectInfoKHR` during command recording.
 
-1) Should we add `copyCount` to be also sourced from the GPU and
-use the minimum of the API specified and GPU value?
-
-**RESOLVED**: No. Though this falls in line with some of the other similar indirect
+No. Though this falls in line with some of the other similar indirect
 API commands, this can add significant complexity for memory to image copies.
 So, the consensus is to not add it.

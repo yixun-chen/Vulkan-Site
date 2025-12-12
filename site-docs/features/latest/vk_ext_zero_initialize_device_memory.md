@@ -16,8 +16,8 @@
 - [2.1._Image_clears](#_image_clears)
 - [3. Proposal](#_proposal)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Should exportable memory be supported?](#_resolved_should_exportable_memory_be_supported)
-- [4.1._RESOLVED:_Should_exportable_memory_be_supported?](#_resolved_should_exportable_memory_be_supported)
+- [4.1. Should exportable memory be supported?](#_should_exportable_memory_be_supported)
+- [4.1._Should_exportable_memory_be_supported?](#_should_exportable_memory_be_supported)
 
 ## Content
 
@@ -31,7 +31,7 @@ Table of Contents
 [3. Proposal](#_proposal)
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: Should exportable memory be supported?](#_resolved_should_exportable_memory_be_supported)
+[4.1. Should exportable memory be supported?](#_should_exportable_memory_be_supported)
 
 `VK_EXT_zero_initialize_device_memory` intends to add more control over how
 memory is cleared on allocation, ensuring that minimal work is performed in order to meet application requirements.

@@ -22,8 +22,8 @@
 - [3.4. New HLSL Attributes](#_new_hlsl_attributes)
 - [3.4._New_HLSL_Attributes](#_new_hlsl_attributes)
 - [4. Issues](#_issues)
-- [4.1. UNRESOLVED: Should we expose a feature/property indiciting if the implementation is actually going to perform early and late tests?](#_unresolved_should_we_expose_a_featureproperty_indiciting_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
-- [4.1._UNRESOLVED:_Should_we_expose_a_feature/property_indiciting_if_the_implementation_is_actually_going_to_perform_early_and_late_tests?](#_unresolved_should_we_expose_a_featureproperty_indiciting_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
+- [4.1. UNRESOLVED: Should we expose a feature/property indicating if the implementation is actually going to perform early and late tests?](#_unresolved_should_we_expose_a_featureproperty_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
+- [4.1._UNRESOLVED:_Should_we_expose_a_feature/property_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests?](#_unresolved_should_we_expose_a_featureproperty_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
 
 ## Content
 
@@ -40,7 +40,7 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. UNRESOLVED: Should we expose a feature/property indiciting if the implementation is actually going to perform early and late tests?](#_unresolved_should_we_expose_a_featureproperty_indiciting_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
+[4.1. UNRESOLVED: Should we expose a feature/property indicating if the implementation is actually going to perform early and late tests?](#_unresolved_should_we_expose_a_featureproperty_indicating_if_the_implementation_is_actually_going_to_perform_early_and_late_tests)
 
 This document describes a proposal for a new SPIR-V execution mode that allows fragment shaders to be discarded by early fragment operations, even if they contain writes to storage resources or other side effects.
 

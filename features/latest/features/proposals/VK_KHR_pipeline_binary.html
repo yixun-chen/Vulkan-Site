@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -635,10 +638,10 @@
 <li><a href="#_interactions_with_other_extensions">5. Interactions with other extensions</a></li>
 <li><a href="#_issues">6. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_fixed_size_keys">6.1. RESOLVED: Fixed size keys</a></li>
-<li><a href="#_resolved_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with">6.2. RESOLVED: Should implementations be able to advertise in some way <em>what</em> a key/data pair are associated with?</a></li>
-<li><a href="#_resolved_can_we_avoid_copies_everywhere">6.3. RESOLVED: Can we avoid copies everywhere?</a></li>
-<li><a href="#_resolved_can_we_avoid_recomputing_keys_on_each_run">6.4. RESOLVED: Can we avoid recomputing keys on each run?</a></li>
+<li><a href="#_fixed_size_keys">6.1. Fixed size keys</a></li>
+<li><a href="#_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with">6.2. Should implementations be able to advertise in some way <em>what</em> a key/data pair are associated with?</a></li>
+<li><a href="#_can_we_avoid_copies_everywhere">6.3. Can we avoid copies everywhere?</a></li>
+<li><a href="#_can_we_avoid_recomputing_keys_on_each_run">6.4. Can we avoid recomputing keys on each run?</a></li>
 </ul>
 </li>
 </ul>
@@ -1369,14 +1372,14 @@ in subsequent runs to recreate the pipeline libraries for linking into complete 
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>6. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_fixed_size_keys"><a class="anchor" href="#_resolved_fixed_size_keys"></a>6.1. RESOLVED: Fixed size keys</h3>
+<h3 id="_fixed_size_keys"><a class="anchor" href="#_fixed_size_keys"></a>6.1. Fixed size keys</h3>
 <div class="paragraph">
 <p>The original design had fixed size keys. We have decided that variable length keys with a limit will provide better flexibility without compromising the API usage too much.
 It also matches the design outlined in <code>VK_EXT_shader_module_identifier</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with"><a class="anchor" href="#_resolved_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with"></a>6.2. RESOLVED: Should implementations be able to advertise in some way <em>what</em> a key/data pair are associated with?</h3>
+<h3 id="_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with"><a class="anchor" href="#_should_implementations_be_able_to_advertise_in_some_way_what_a_keydata_pair_are_associated_with"></a>6.2. Should implementations be able to advertise in some way <em>what</em> a key/data pair are associated with?</h3>
 <div class="paragraph">
 <p>This could allow applications to make more informed decisions about how to store key/data pairs - e.g. by grouping key/data pairs in separate maps depending on what they are.</p>
 </div>
@@ -1391,7 +1394,7 @@ It also matches the design outlined in <code>VK_EXT_shader_module_identifier</co
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_we_avoid_copies_everywhere"><a class="anchor" href="#_resolved_can_we_avoid_copies_everywhere"></a>6.3. RESOLVED: Can we avoid copies everywhere?</h3>
+<h3 id="_can_we_avoid_copies_everywhere"><a class="anchor" href="#_can_we_avoid_copies_everywhere"></a>6.3. Can we avoid copies everywhere?</h3>
 <div class="paragraph">
 <p>The current design necessitates copying binaries into the driver using vkCreatePipelineBinariesKHR. Could this be avoided by making the application allocate special memory up front and writing into it? Does that even save anything? Presumably CPU drivers will want to CPU inspect the binary anyway.</p>
 </div>
@@ -1403,7 +1406,7 @@ It also matches the design outlined in <code>VK_EXT_shader_module_identifier</co
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_we_avoid_recomputing_keys_on_each_run"><a class="anchor" href="#_resolved_can_we_avoid_recomputing_keys_on_each_run"></a>6.4. RESOLVED: Can we avoid recomputing keys on each run?</h3>
+<h3 id="_can_we_avoid_recomputing_keys_on_each_run"><a class="anchor" href="#_can_we_avoid_recomputing_keys_on_each_run"></a>6.4. Can we avoid recomputing keys on each run?</h3>
 <div class="paragraph">
 <p>The only key that needs to be recomputed between runs is the global key. Applications can assume that
 as long as the global key has not changed, they can reuse their previously computed keys.</p>

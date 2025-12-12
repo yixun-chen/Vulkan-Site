@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -623,8 +626,8 @@
 </li>
 <li><a href="#_issues">4. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_should_the_functionality_from_vk_qcom_render_pass_shader_resolve_that_allows_applications_to_resolve_multisample_attachments_to_other_multisample_attachments_be_preserved_and_extended_to_dynamic_rendering">4.1. RESOLVED: Should the functionality from VK_QCOM_render_pass_shader_resolve that allows applications to resolve multisample attachments to other multisample attachments be preserved and extended to dynamic rendering?</a></li>
-<li><a href="#_resolved_how_does_this_interact_with_vk_ext_fragment_density_map">4.2. RESOLVED: How does this interact with VK_EXT_fragment_density_map?</a></li>
+<li><a href="#_should_the_functionality_from_vk_qcom_render_pass_shader_resolve_that_allows_applications_to_resolve_multisample_attachments_to_other_multisample_attachments_be_preserved_and_extended_to_dynamic_rendering">4.1. Should the functionality from VK_QCOM_render_pass_shader_resolve that allows applications to resolve multisample attachments to other multisample attachments be preserved and extended to dynamic rendering?</a></li>
+<li><a href="#_how_does_this_interact_with_vk_ext_fragment_density_map">4.2. How does this interact with VK_EXT_fragment_density_map?</a></li>
 </ul>
 </li>
 </ul>
@@ -875,13 +878,13 @@ undefined upon recording this command.</p>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_should_the_functionality_from_vk_qcom_render_pass_shader_resolve_that_allows_applications_to_resolve_multisample_attachments_to_other_multisample_attachments_be_preserved_and_extended_to_dynamic_rendering"><a class="anchor" href="#_resolved_should_the_functionality_from_vk_qcom_render_pass_shader_resolve_that_allows_applications_to_resolve_multisample_attachments_to_other_multisample_attachments_be_preserved_and_extended_to_dynamic_rendering"></a>4.1. RESOLVED: Should the functionality from VK_QCOM_render_pass_shader_resolve that allows applications to resolve multisample attachments to other multisample attachments be preserved and extended to dynamic rendering?</h3>
+<h3 id="_should_the_functionality_from_vk_qcom_render_pass_shader_resolve_that_allows_applications_to_resolve_multisample_attachments_to_other_multisample_attachments_be_preserved_and_extended_to_dynamic_rendering"><a class="anchor" href="#_should_the_functionality_from_vk_qcom_render_pass_shader_resolve_that_allows_applications_to_resolve_multisample_attachments_to_other_multisample_attachments_be_preserved_and_extended_to_dynamic_rendering"></a>4.1. Should the functionality from VK_QCOM_render_pass_shader_resolve that allows applications to resolve multisample attachments to other multisample attachments be preserved and extended to dynamic rendering?</h3>
 <div class="paragraph">
 <p>No. There is no known use case for this functionality, and adding it to the specification would introduce considerable complexity.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_does_this_interact_with_vk_ext_fragment_density_map"><a class="anchor" href="#_resolved_how_does_this_interact_with_vk_ext_fragment_density_map"></a>4.2. RESOLVED: How does this interact with VK_EXT_fragment_density_map?</h3>
+<h3 id="_how_does_this_interact_with_vk_ext_fragment_density_map"><a class="anchor" href="#_how_does_this_interact_with_vk_ext_fragment_density_map"></a>4.2. How does this interact with VK_EXT_fragment_density_map?</h3>
 <div class="paragraph">
 <p>On some implementations, in particular when using non-subsampled images, it may
 not be possible to have a fragment area larger than <span class="eq">(1,1)</span> while also

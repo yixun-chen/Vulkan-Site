@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -648,19 +651,19 @@
 </li>
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_what_is_within_the_scope_of_this_extension">5.1. RESOLVED: What is within the scope of this extension?</a></li>
-<li><a href="#_resolved_are_vulkan_video_profiles_equivalent_to_the_corresponding_concepts_of_video_compression_standards">5.2. RESOLVED: Are Vulkan video profiles equivalent to the corresponding concepts of video compression standards?</a></li>
-<li><a href="#_resolved_do_we_need_a_query_to_be_able_to_enumerate_all_supported_video_profiles">5.3. RESOLVED: Do we need a query to be able to enumerate all supported video profiles?</a></li>
-<li><a href="#_resolved_do_we_need_queries_that_allow_determining_how_multiple_video_profiles_can_be_used_in_conjunction">5.4. RESOLVED: Do we need queries that allow determining how multiple video profiles can be used in conjunction?</a></li>
-<li><a href="#_resolved_what_kind_of_capabilitity_queries_do_we_need">5.5. RESOLVED: What kind of capabilitity queries do we need?</a></li>
-<li><a href="#_resolved_what_kind_of_command_buffer_commands_do_we_need">5.6. RESOLVED: What kind of command buffer commands do we need?</a></li>
-<li><a href="#_resolved_how_can_the_application_get_feedback_about_the_status_of_video_coding_operations">5.7. RESOLVED: How can the application get feedback about the status of video coding operations?</a></li>
-<li><a href="#_resolved_do_we_need_to_introduce_new_vkcmdbeginqueryrangekhr_and_vkcmdendqueryrangekhr_commands_to_allow_capturing_feedback_about_multiple_video_coding_operations_using_a_single_scope">5.8. RESOLVED: Do we need to introduce new <code>vkCmdBeginQueryRangeKHR</code> and <code>vkCmdEndQueryRangeKHR</code> commands to allow capturing feedback about multiple video coding operations using a single scope?</a></li>
-<li><a href="#_resolved_can_resources_be_shared_across_video_sessions_potentially_ones_using_different_video_profiles">5.9. RESOLVED: Can resources be shared across video sessions, potentially ones using different video profiles?</a></li>
-<li><a href="#_resolved_how_are_video_coding_operations_synchronized_with_respect_to_other_vulkan_operations">5.10. RESOLVED: How are video coding operations synchronized with respect to other Vulkan operations?</a></li>
-<li><a href="#_resolved_why_do_some_of_the_members_of_vkvideoprofileinfokhr_have_flags_types_instead_of_flagbits_types_when_only_a_single_bit_can_be_used">5.11. RESOLVED: Why do some of the members of <code>VkVideoProfileInfoKHR</code> have <code>Flags</code> types instead of <code>FlagBits</code> types when only a single bit can be used?</a></li>
-<li><a href="#_resolved_can_the_application_create_video_sessions_with_any_maxdpbslots_and_maxactivereferencepictures_values_within_the_supported_capabilities">5.12. RESOLVED: Can the application create video sessions with any <code>maxDpbSlots</code> and <code>maxActiveReferencePictures</code> values within the supported capabilities?</a></li>
-<li><a href="#_resolved_are_vkvideosessionparameterskhr_objects_internally_or_externally_synchronized">5.13. RESOLVED: Are <code>VkVideoSessionParametersKHR</code> objects internally or externally synchronized?</a></li>
+<li><a href="#_what_is_within_the_scope_of_this_extension">5.1. What is within the scope of this extension?</a></li>
+<li><a href="#_are_vulkan_video_profiles_equivalent_to_the_corresponding_concepts_of_video_compression_standards">5.2. Are Vulkan video profiles equivalent to the corresponding concepts of video compression standards?</a></li>
+<li><a href="#_do_we_need_a_query_to_be_able_to_enumerate_all_supported_video_profiles">5.3. Do we need a query to be able to enumerate all supported video profiles?</a></li>
+<li><a href="#_do_we_need_queries_that_allow_determining_how_multiple_video_profiles_can_be_used_in_conjunction">5.4. Do we need queries that allow determining how multiple video profiles can be used in conjunction?</a></li>
+<li><a href="#_what_kind_of_capabilitity_queries_do_we_need">5.5. What kind of capabilitity queries do we need?</a></li>
+<li><a href="#_what_kind_of_command_buffer_commands_do_we_need">5.6. What kind of command buffer commands do we need?</a></li>
+<li><a href="#_how_can_the_application_get_feedback_about_the_status_of_video_coding_operations">5.7. How can the application get feedback about the status of video coding operations?</a></li>
+<li><a href="#_do_we_need_to_introduce_new_vkcmdbeginqueryrangekhr_and_vkcmdendqueryrangekhr_commands_to_allow_capturing_feedback_about_multiple_video_coding_operations_using_a_single_scope">5.8. Do we need to introduce new <code>vkCmdBeginQueryRangeKHR</code> and <code>vkCmdEndQueryRangeKHR</code> commands to allow capturing feedback about multiple video coding operations using a single scope?</a></li>
+<li><a href="#_can_resources_be_shared_across_video_sessions_potentially_ones_using_different_video_profiles">5.9. Can resources be shared across video sessions, potentially ones using different video profiles?</a></li>
+<li><a href="#_how_are_video_coding_operations_synchronized_with_respect_to_other_vulkan_operations">5.10. How are video coding operations synchronized with respect to other Vulkan operations?</a></li>
+<li><a href="#_why_do_some_of_the_members_of_vkvideoprofileinfokhr_have_flags_types_instead_of_flagbits_types_when_only_a_single_bit_can_be_used">5.11. Why do some of the members of <code>VkVideoProfileInfoKHR</code> have <code>Flags</code> types instead of <code>FlagBits</code> types when only a single bit can be used?</a></li>
+<li><a href="#_can_the_application_create_video_sessions_with_any_maxdpbslots_and_maxactivereferencepictures_values_within_the_supported_capabilities">5.12. Can the application create video sessions with any <code>maxDpbSlots</code> and <code>maxActiveReferencePictures</code> values within the supported capabilities?</a></li>
+<li><a href="#_are_vkvideosessionparameterskhr_objects_internally_or_externally_synchronized">5.13. Are <code>VkVideoSessionParametersKHR</code> objects internally or externally synchronized?</a></li>
 </ul>
 </li>
 <li><a href="#_further_functionality">6. Further Functionality</a></li>
@@ -1831,7 +1834,7 @@ if (status == VK_QUERY_RESULT_STATUS_NOT_READY_KHR /* 0 */) {
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_what_is_within_the_scope_of_this_extension"><a class="anchor" href="#_resolved_what_is_within_the_scope_of_this_extension"></a>5.1. RESOLVED: What is within the scope of this extension?</h3>
+<h3 id="_what_is_within_the_scope_of_this_extension"><a class="anchor" href="#_what_is_within_the_scope_of_this_extension"></a>5.1. What is within the scope of this extension?</h3>
 <div class="paragraph">
 <p>The goal of this extension is to include all infrastructure APIs that are shareable across all video coding use cases, including video decoding and video encoding, independent of the video compression standard used. While there is a large set of parameters and semantics that are specific to the particular video coding operation and video codec used, many fundamental concepts and APIs are common across those, including:</p>
 </div>
@@ -1865,7 +1868,7 @@ if (status == VK_QUERY_RESULT_STATUS_NOT_READY_KHR /* 0 */) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_vulkan_video_profiles_equivalent_to_the_corresponding_concepts_of_video_compression_standards"><a class="anchor" href="#_resolved_are_vulkan_video_profiles_equivalent_to_the_corresponding_concepts_of_video_compression_standards"></a>5.2. RESOLVED: Are Vulkan video profiles equivalent to the corresponding concepts of video compression standards?</h3>
+<h3 id="_are_vulkan_video_profiles_equivalent_to_the_corresponding_concepts_of_video_compression_standards"><a class="anchor" href="#_are_vulkan_video_profiles_equivalent_to_the_corresponding_concepts_of_video_compression_standards"></a>5.2. Are Vulkan video profiles equivalent to the corresponding concepts of video compression standards?</h3>
 <div class="paragraph">
 <p>Not exactly. While they do encompass actual video compression standard profile information, they also contain other information related to the type of the video content and additional use case scenario specific information.</p>
 </div>
@@ -1874,19 +1877,19 @@ if (status == VK_QUERY_RESULT_STATUS_NOT_READY_KHR /* 0 */) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_do_we_need_a_query_to_be_able_to_enumerate_all_supported_video_profiles"><a class="anchor" href="#_resolved_do_we_need_a_query_to_be_able_to_enumerate_all_supported_video_profiles"></a>5.3. RESOLVED: Do we need a query to be able to enumerate all supported video profiles?</h3>
+<h3 id="_do_we_need_a_query_to_be_able_to_enumerate_all_supported_video_profiles"><a class="anchor" href="#_do_we_need_a_query_to_be_able_to_enumerate_all_supported_video_profiles"></a>5.3. Do we need a query to be able to enumerate all supported video profiles?</h3>
 <div class="paragraph">
 <p>Enumerating individual video profiles is a non-trivial problem due to the parameter combinatorics and the interaction between individual parameters. As Vulkan video profiles also include additional use case scenario specific information, it gets even more complicated. It is also expected that most use cases (especially video decoding) will want to target specific video profiles anyway, so this extension does not include an enumeration API for video profiles, rather it provides the mechanisms to determine support for specific ones. Nonetheless, a more generic enumeration API is considered to be included in future extensions.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_do_we_need_queries_that_allow_determining_how_multiple_video_profiles_can_be_used_in_conjunction"><a class="anchor" href="#_resolved_do_we_need_queries_that_allow_determining_how_multiple_video_profiles_can_be_used_in_conjunction"></a>5.4. RESOLVED: Do we need queries that allow determining how multiple video profiles can be used in conjunction?</h3>
+<h3 id="_do_we_need_queries_that_allow_determining_how_multiple_video_profiles_can_be_used_in_conjunction"><a class="anchor" href="#_do_we_need_queries_that_allow_determining_how_multiple_video_profiles_can_be_used_in_conjunction"></a>5.4. Do we need queries that allow determining how multiple video profiles can be used in conjunction?</h3>
 <div class="paragraph">
 <p>Video transcoding is an important use case, so this extension does allow queries and other APIs to take a list of video profiles, when applicable, that enable the application to determine how to use a particular set of video decode and video encode profiles in conjunction, and thus support video transcoding without the need to copy video picture data, when possible.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_kind_of_capabilitity_queries_do_we_need"><a class="anchor" href="#_resolved_what_kind_of_capabilitity_queries_do_we_need"></a>5.5. RESOLVED: What kind of capabilitity queries do we need?</h3>
+<h3 id="_what_kind_of_capabilitity_queries_do_we_need"><a class="anchor" href="#_what_kind_of_capabilitity_queries_do_we_need"></a>5.5. What kind of capabilitity queries do we need?</h3>
 <div class="paragraph">
 <p>First, this extension enables the application to query the video codec operations supported by each queue family with the new output structure <code>VkQueueFamilyVideoPropertiesKHR</code>.</p>
 </div>
@@ -1898,7 +1901,7 @@ if (status == VK_QUERY_RESULT_STATUS_NOT_READY_KHR /* 0 */) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_kind_of_command_buffer_commands_do_we_need"><a class="anchor" href="#_resolved_what_kind_of_command_buffer_commands_do_we_need"></a>5.6. RESOLVED: What kind of command buffer commands do we need?</h3>
+<h3 id="_what_kind_of_command_buffer_commands_do_we_need"><a class="anchor" href="#_what_kind_of_command_buffer_commands_do_we_need"></a>5.6. What kind of command buffer commands do we need?</h3>
 <div class="paragraph">
 <p>This extension does not introduce any specific video coding operations (e.g. video decode or encode operations). However, it does introduce a set of command buffer commands that enable defining scopes within command buffers where layered extensions can record video coding operations against a specific video session to process a video sequence. These video coding scopes are delimited by the new <code>vkCmdBeginVideoCodingKHR</code> and <code>vkCmdEndVideoCodingKHR</code> commands.</p>
 </div>
@@ -1907,7 +1910,7 @@ if (status == VK_QUERY_RESULT_STATUS_NOT_READY_KHR /* 0 */) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_can_the_application_get_feedback_about_the_status_of_video_coding_operations"><a class="anchor" href="#_resolved_how_can_the_application_get_feedback_about_the_status_of_video_coding_operations"></a>5.7. RESOLVED: How can the application get feedback about the status of video coding operations?</h3>
+<h3 id="_how_can_the_application_get_feedback_about_the_status_of_video_coding_operations"><a class="anchor" href="#_how_can_the_application_get_feedback_about_the_status_of_video_coding_operations"></a>5.7. How can the application get feedback about the status of video coding operations?</h3>
 <div class="paragraph">
 <p>This extension uses queries for the purpose and even introduces a new query type (<code>VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR</code>) that only includes status information. Layered extensions may also introduce other query types to enable retrieving any additional feedback that may be needed in the specific video coding use case.</p>
 </div>
@@ -1916,13 +1919,13 @@ if (status == VK_QUERY_RESULT_STATUS_NOT_READY_KHR /* 0 */) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_do_we_need_to_introduce_new_vkcmdbeginqueryrangekhr_and_vkcmdendqueryrangekhr_commands_to_allow_capturing_feedback_about_multiple_video_coding_operations_using_a_single_scope"><a class="anchor" href="#_resolved_do_we_need_to_introduce_new_vkcmdbeginqueryrangekhr_and_vkcmdendqueryrangekhr_commands_to_allow_capturing_feedback_about_multiple_video_coding_operations_using_a_single_scope"></a>5.8. RESOLVED: Do we need to introduce new <code>vkCmdBeginQueryRangeKHR</code> and <code>vkCmdEndQueryRangeKHR</code> commands to allow capturing feedback about multiple video coding operations using a single scope?</h3>
+<h3 id="_do_we_need_to_introduce_new_vkcmdbeginqueryrangekhr_and_vkcmdendqueryrangekhr_commands_to_allow_capturing_feedback_about_multiple_video_coding_operations_using_a_single_scope"><a class="anchor" href="#_do_we_need_to_introduce_new_vkcmdbeginqueryrangekhr_and_vkcmdendqueryrangekhr_commands_to_allow_capturing_feedback_about_multiple_video_coding_operations_using_a_single_scope"></a>5.8. Do we need to introduce new <code>vkCmdBeginQueryRangeKHR</code> and <code>vkCmdEndQueryRangeKHR</code> commands to allow capturing feedback about multiple video coding operations using a single scope?</h3>
 <div class="paragraph">
 <p>Not in this extension. For now each layered extension is expected to introduce commands that result in the issue of only a single video coding operation, hence using the existing <code>vkCmdBeginQuery</code> and <code>vkCmdEndQuery</code> commands to surround each such command separately is sufficient. However, future extensions may introduce such commands if needed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_resources_be_shared_across_video_sessions_potentially_ones_using_different_video_profiles"><a class="anchor" href="#_resolved_can_resources_be_shared_across_video_sessions_potentially_ones_using_different_video_profiles"></a>5.9. RESOLVED: Can resources be shared across video sessions, potentially ones using different video profiles?</h3>
+<h3 id="_can_resources_be_shared_across_video_sessions_potentially_ones_using_different_video_profiles"><a class="anchor" href="#_can_resources_be_shared_across_video_sessions_potentially_ones_using_different_video_profiles"></a>5.9. Can resources be shared across video sessions, potentially ones using different video profiles?</h3>
 <div class="paragraph">
 <p>Yes, we need to support resource sharing at least for video bitstream buffers and video picture resources. This is important for the purposes of supporting efficient video transcoding.</p>
 </div>
@@ -1934,19 +1937,19 @@ if (status == VK_QUERY_RESULT_STATUS_NOT_READY_KHR /* 0 */) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_are_video_coding_operations_synchronized_with_respect_to_other_vulkan_operations"><a class="anchor" href="#_resolved_how_are_video_coding_operations_synchronized_with_respect_to_other_vulkan_operations"></a>5.10. RESOLVED: How are video coding operations synchronized with respect to other Vulkan operations?</h3>
+<h3 id="_how_are_video_coding_operations_synchronized_with_respect_to_other_vulkan_operations"><a class="anchor" href="#_how_are_video_coding_operations_synchronized_with_respect_to_other_vulkan_operations"></a>5.10. How are video coding operations synchronized with respect to other Vulkan operations?</h3>
 <div class="paragraph">
 <p>Synchronization works in the same way as elsewhere in the API. Command buffers targeting video-capable queues can use <code>vkCmdPipelineBarrier</code> or any of the other synchronization commands both inside and outside of video coding scopes. While this extension does not include any new pipeline stages, access flags, or image layouts, the layered extensions introducing particular video coding operations do.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_why_do_some_of_the_members_of_vkvideoprofileinfokhr_have_flags_types_instead_of_flagbits_types_when_only_a_single_bit_can_be_used"><a class="anchor" href="#_resolved_why_do_some_of_the_members_of_vkvideoprofileinfokhr_have_flags_types_instead_of_flagbits_types_when_only_a_single_bit_can_be_used"></a>5.11. RESOLVED: Why do some of the members of <code>VkVideoProfileInfoKHR</code> have <code>Flags</code> types instead of <code>FlagBits</code> types when only a single bit can be used?</h3>
+<h3 id="_why_do_some_of_the_members_of_vkvideoprofileinfokhr_have_flags_types_instead_of_flagbits_types_when_only_a_single_bit_can_be_used"><a class="anchor" href="#_why_do_some_of_the_members_of_vkvideoprofileinfokhr_have_flags_types_instead_of_flagbits_types_when_only_a_single_bit_can_be_used"></a>5.11. Why do some of the members of <code>VkVideoProfileInfoKHR</code> have <code>Flags</code> types instead of <code>FlagBits</code> types when only a single bit can be used?</h3>
 <div class="paragraph">
 <p>While this extension allows specifying only a single bit in the <code>chromaSubsampling</code>, <code>lumaBitDepth</code>, and <code>chromaBitDepth</code> members of <code>VkVideoProfileInfoKHR</code>, it is expected that future extensions may relax those requirements.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_the_application_create_video_sessions_with_any_maxdpbslots_and_maxactivereferencepictures_values_within_the_supported_capabilities"><a class="anchor" href="#_resolved_can_the_application_create_video_sessions_with_any_maxdpbslots_and_maxactivereferencepictures_values_within_the_supported_capabilities"></a>5.12. RESOLVED: Can the application create video sessions with any <code>maxDpbSlots</code> and <code>maxActiveReferencePictures</code> values within the supported capabilities?</h3>
+<h3 id="_can_the_application_create_video_sessions_with_any_maxdpbslots_and_maxactivereferencepictures_values_within_the_supported_capabilities"><a class="anchor" href="#_can_the_application_create_video_sessions_with_any_maxdpbslots_and_maxactivereferencepictures_values_within_the_supported_capabilities"></a>5.12. Can the application create video sessions with any <code>maxDpbSlots</code> and <code>maxActiveReferencePictures</code> values within the supported capabilities?</h3>
 <div class="paragraph">
 <p>Yes. While it is quite common for video compression standards to define these values, in particular a given video profile usually supports a specific value for the number of DPB slots and it is also typical for video compression standards to allow using all reference pictures associated with active DPB slots as active reference pictures in a video coding operation. However, depending on the specific use case, the application can choose to use lower values.</p>
 </div>
@@ -1958,7 +1961,7 @@ if (status == VK_QUERY_RESULT_STATUS_NOT_READY_KHR /* 0 */) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_vkvideosessionparameterskhr_objects_internally_or_externally_synchronized"><a class="anchor" href="#_resolved_are_vkvideosessionparameterskhr_objects_internally_or_externally_synchronized"></a>5.13. RESOLVED: Are <code>VkVideoSessionParametersKHR</code> objects internally or externally synchronized?</h3>
+<h3 id="_are_vkvideosessionparameterskhr_objects_internally_or_externally_synchronized"><a class="anchor" href="#_are_vkvideosessionparameterskhr_objects_internally_or_externally_synchronized"></a>5.13. Are <code>VkVideoSessionParametersKHR</code> objects internally or externally synchronized?</h3>
 <div class="paragraph">
 <p>Video session parameters objects have special synchronization requirements. Typically they will only get updated by a single thread that processes the video stream but they may be consumed concurrently by multiple command buffer recording threads.</p>
 </div>

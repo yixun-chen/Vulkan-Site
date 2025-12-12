@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -622,7 +625,14 @@
 </ul>
 </li>
 <li><a href="#_examples">4. Examples</a></li>
-<li><a href="#_issues">5. Issues</a></li>
+<li><a href="#_issues">5. Issues</a>
+<ul class="sectlevel2">
+<li><a href="#_how_should_the_requested_address_be_passed_to_vkmapmemory2khr">5.1. How should the requested address be passed to <code>vkMapMemory2KHR()</code>?</a></li>
+<li><a href="#_what_should_happen_if_the_implementation_cannot_place_the_memory_map_at_the_requested_address">5.2. What should happen if the implementation cannot place the memory map at the requested address?</a></li>
+<li><a href="#_how_can_an_application_atomically_re_reserve_the_address_range_on_unmap">5.3. How can an application atomically re-reserve the address range on unmap?</a></li>
+<li><a href="#_should_a_placed_memory_map_replace_existing_maps_in_the_specified_range_or_fail_if_a_map_exists">5.4. Should a placed memory map replace existing maps in the specified range or fail if a map exists?</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="preamble">
@@ -803,28 +813,26 @@ CHECK(map == reserved);</code></pre>
 <div class="sect1">
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_how_should_the_requested_address_be_passed_to_vkmapmemory2khr"><a class="anchor" href="#_how_should_the_requested_address_be_passed_to_vkmapmemory2khr"></a>5.1. How should the requested address be passed to <code>vkMapMemory2KHR()</code>?</h3>
 <div class="paragraph">
-<p>1) How should the requested address be passed to <code>vkMapMemory2KHR()</code>?</p>
-</div>
-<div class="paragraph">
-<p><strong>RESOLVED</strong>: When <code>VK_MEMORY_MAP_PLACED_BIT_EXT</code> is passed to
+<p>When <code>VK_MEMORY_MAP_PLACED_BIT_EXT</code> is passed to
 <code>vkMapMemory2KHR()</code> and a <code>VkMemoryMapPlacedInfoEXT</code> structure is present
 in the <code>pNext</code> chain, the implementation attempts to map to whatever
 address is provided by <code>VkMemoryMapPlacedInfoEXT::pPlacedAddress</code>.</p>
 </div>
-<div class="paragraph">
-<p>2) What should happen if the implementation cannot place the memory map at
-the requested address?</p>
 </div>
+<div class="sect2">
+<h3 id="_what_should_happen_if_the_implementation_cannot_place_the_memory_map_at_the_requested_address"><a class="anchor" href="#_what_should_happen_if_the_implementation_cannot_place_the_memory_map_at_the_requested_address"></a>5.2. What should happen if the implementation cannot place the memory map at the requested address?</h3>
 <div class="paragraph">
-<p><strong>RESOLVED</strong>: The memory object should be left unmapped and
+<p>The memory object should be left unmapped and
 <code>vkMapMemory2KHR</code> should return <code>VK_ERROR_MEMORY_MAP_FAILED</code>.</p>
 </div>
-<div class="paragraph">
-<p>3) How can an application atomically re-reserve the address range on unmap?</p>
 </div>
+<div class="sect2">
+<h3 id="_how_can_an_application_atomically_re_reserve_the_address_range_on_unmap"><a class="anchor" href="#_how_can_an_application_atomically_re_reserve_the_address_range_on_unmap"></a>5.3. How can an application atomically re-reserve the address range on unmap?</h3>
 <div class="paragraph">
-<p><strong>RESOLVED</strong>: When <code>VK_MEMORY_UNMAP_RESERVE_BIT_EXT</code> is passed to
+<p>When <code>VK_MEMORY_UNMAP_RESERVE_BIT_EXT</code> is passed to
 <code>vkUnmapMemory2KHR()</code>, the implementation unmaps the memory range in such a
 way that the range is automatically re-reserved.
 With <code>mmap()</code>, this is accomplished by simply mapping over the range with
@@ -832,12 +840,11 @@ another anonymous mapping.
 However, allowing this with <code>vkMapMemory()</code> would break Vulkan&#8217;s concept of
 when a memory object is or is not mapped.</p>
 </div>
-<div class="paragraph">
-<p>4) Should a placed memory map replace existing maps in the specified
-range or fail if a map exists?</p>
 </div>
+<div class="sect2">
+<h3 id="_should_a_placed_memory_map_replace_existing_maps_in_the_specified_range_or_fail_if_a_map_exists"><a class="anchor" href="#_should_a_placed_memory_map_replace_existing_maps_in_the_specified_range_or_fail_if_a_map_exists"></a>5.4. Should a placed memory map replace existing maps in the specified range or fail if a map exists?</h3>
 <div class="paragraph">
-<p><strong>RESOLVED</strong>: It should replace existing maps.
+<p>It should replace existing maps.
 If an application wants try-map behavior, it can get that by using mmap with
 <code>MAP_ANONYMOUS</code> and an address and only call <code>vkMapMemory2KHR()</code> to do a
 placed map if that succeeds.
@@ -845,6 +852,7 @@ Without replacement, there is no way for the application to atomically
 exchange maps and prevent races between reservation and the final map.
 Also, any attempt at a middle ground in which it might replace would make
 the spec less well-defined.</p>
+</div>
 </div>
 </div>
 </div>

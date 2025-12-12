@@ -61,27 +61,29 @@ this value is ignored.
 used during cluster acceleration structure move or build.
 
 * 
-`dstAddressesArray` is a [VkStridedDeviceAddressRegionKHR](VkStridedDeviceAddressRegionKHR.html) where
-the individual addresses and stride of moved or built cluster
-acceleration structures will be saved or read from depending on
+`dstAddressesArray` is a [VkStridedDeviceAddressRegionKHR](VkStridedDeviceAddressRegionKHR.html) that
+specifies addresses and stride for moved or built cluster acceleration
+structures, depending on the value of
 [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`opMode`.
 If [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`opMode` is
 `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV`
-and the address in `dstAddressesArray` is not `0`, then the
-addresses are saved.
+and [VkStridedDeviceAddressRegionKHR](VkStridedDeviceAddressRegionKHR.html)::`deviceAddress` is not
+`0`, then the implementation writes the cluster addresses to the
+specified region.
 If [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`opMode` is
 `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV`,
-then the addresses are read from.
+the implementation reads the cluster addresses from the specified
+region.
 If [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`opMode` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV`, then
-this value is ignored and **may** be `0`.
+`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV`, this
+member is ignored.
 
 * 
-`dstSizesArray` is `NULL` or a [VkStridedDeviceAddressRegionKHR](VkStridedDeviceAddressRegionKHR.html)
+`dstSizesArray` is a [VkStridedDeviceAddressRegionKHR](VkStridedDeviceAddressRegionKHR.html)
 containing sizes of moved or built cluster acceleration structures.
-Similar to `dstAddressesArray`, if
-[VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`opMode` is
-`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV`,
+If [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`opMode` is
+`VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV`
+or `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV`,
 then the sizes are saved.
 If [VkClusterAccelerationStructureInputInfoNV](VkClusterAccelerationStructureInputInfoNV.html)::`opMode` is
 `VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV`,
@@ -253,6 +255,14 @@ then depending on the
 [VkPhysicalDeviceClusterAccelerationStructurePropertiesNV](VkPhysicalDeviceClusterAccelerationStructurePropertiesNV.html)::`clusterScratchByteAlignment`
 
 * 
+[](#VUID-VkClusterAccelerationStructureCommandsInfoNV-buildScratchSize-12248) VUID-VkClusterAccelerationStructureCommandsInfoNV-buildScratchSize-12248
+
+If the `buildScratchSize` member of the
+[VkAccelerationStructureBuildSizesInfoKHR](VkAccelerationStructureBuildSizesInfoKHR.html) structure returned from a
+call to [vkGetClusterAccelerationStructureBuildSizesNV](vkGetClusterAccelerationStructureBuildSizesNV.html) is not `0`,
+then `scratchData` **must** be a valid device address
+
+* 
 [](#VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-10481) VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-10481
 
 `srcInfosCount` **must** be 4-byte aligned
@@ -288,7 +298,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureCommandsInfoNV-dstImplicitData-parameter) VUID-VkClusterAccelerationStructureCommandsInfoNV-dstImplicitData-parameter
 
- `dstImplicitData` **must** be a valid `VkDeviceAddress` value
+ If `dstImplicitData` is not `0`, `dstImplicitData` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureCommandsInfoNV-scratchData-parameter) VUID-VkClusterAccelerationStructureCommandsInfoNV-scratchData-parameter
@@ -298,7 +308,7 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-parameter) VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-parameter
 
- `srcInfosCount` **must** be a valid `VkDeviceAddress` value
+ If `srcInfosCount` is not `0`, `srcInfosCount` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureCommandsInfoNV-addressResolutionFlags-parameter) VUID-VkClusterAccelerationStructureCommandsInfoNV-addressResolutionFlags-parameter

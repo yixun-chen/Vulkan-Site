@@ -6806,6 +6806,20 @@ be enabled
 If a shader object is bound to any graphics stage, *multiview*
 functionality **must** not be enabled in the current render pass
 
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-multiviewPerViewViewports-12262) VUID-vkCmdExecuteGeneratedCommandsNV-multiviewPerViewViewports-12262
+
+If the [    `multiviewPerViewViewports`](../features.html#features-multiviewPerViewViewports) feature is enabled, then the index of
+the most significant bit in current render pass instance `viewMask`
+**must** be less than the [current value](../pipelines.html#dynamic-state-current-value) of
+`viewportCount`
+
+[](#VUID-vkCmdExecuteGeneratedCommandsNV-multiviewPerViewViewports-12263) VUID-vkCmdExecuteGeneratedCommandsNV-multiviewPerViewViewports-12263
+
+If the [    `multiviewPerViewViewports`](../features.html#features-multiviewPerViewViewports) feature is enabled, then the index of
+the most significant bit in current render pass instance `viewMask`
+**must** be less than the [current value](../pipelines.html#dynamic-state-current-value) of
+`scissorCount`
+
 [](#VUID-vkCmdExecuteGeneratedCommandsNV-flags-11521) VUID-vkCmdExecuteGeneratedCommandsNV-flags-11521
 
 If current render pass instance was begun with [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering)
@@ -11021,6 +11035,20 @@ be enabled
 If a shader object is bound to any graphics stage, *multiview*
 functionality **must** not be enabled in the current render pass
 
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-multiviewPerViewViewports-12262) VUID-vkCmdExecuteGeneratedCommandsEXT-multiviewPerViewViewports-12262
+
+If the [    `multiviewPerViewViewports`](../features.html#features-multiviewPerViewViewports) feature is enabled, then the index of
+the most significant bit in current render pass instance `viewMask`
+**must** be less than the [current value](../pipelines.html#dynamic-state-current-value) of
+`viewportCount`
+
+[](#VUID-vkCmdExecuteGeneratedCommandsEXT-multiviewPerViewViewports-12263) VUID-vkCmdExecuteGeneratedCommandsEXT-multiviewPerViewViewports-12263
+
+If the [    `multiviewPerViewViewports`](../features.html#features-multiviewPerViewViewports) feature is enabled, then the index of
+the most significant bit in current render pass instance `viewMask`
+**must** be less than the [current value](../pipelines.html#dynamic-state-current-value) of
+`scissorCount`
+
 [](#VUID-vkCmdExecuteGeneratedCommandsEXT-flags-11521) VUID-vkCmdExecuteGeneratedCommandsEXT-flags-11521
 
 If current render pass instance was begun with [vkCmdBeginRendering](../renderpass.html#vkCmdBeginRendering)
@@ -11651,9 +11679,9 @@ that was used to determine the `preprocessSize`
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-preprocessAddress-11069) VUID-VkGeneratedCommandsInfoEXT-preprocessAddress-11069
 
-The underlying buffer for `preprocessAddress` **must** have the
-`VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT` bit set in its usage
-flag
+`preprocessAddress` **must** be a device address allocated to the
+application from a buffer created with the
+`VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT` usage flag set
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11144) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11144

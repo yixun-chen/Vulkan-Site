@@ -23,12 +23,12 @@
 - [3.2. Pipeline Creation](#_pipeline_creation)
 - [3.2._Pipeline_Creation](#_pipeline_creation)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: How should the pipelineProtectedAccess feature interact with protectedMemory?](#_resolved_how_should_the_pipelineprotectedaccess_feature_interact_with_protectedmemory)
-- [4.1._RESOLVED:_How_should_the_pipelineProtectedAccess_feature_interact_with_protectedMemory?](#_resolved_how_should_the_pipelineprotectedaccess_feature_interact_with_protectedmemory)
-- [4.2. RESOLVED: Should the pipelineProtectedAccess feature allow pipelines to opt into protected access or out of it?](#_resolved_should_the_pipelineprotectedaccess_feature_allow_pipelines_to_opt_into_protected_access_or_out_of_it)
-- [4.2._RESOLVED:_Should_the_pipelineProtectedAccess_feature_allow_pipelines_to_opt_into_protected_access_or_out_of_it?](#_resolved_should_the_pipelineprotectedaccess_feature_allow_pipelines_to_opt_into_protected_access_or_out_of_it)
-- [4.3. RESOLVED: Should links between protected and unprotected pipeline libraries be allowed?](#_resolved_should_links_between_protected_and_unprotected_pipeline_libraries_be_allowed)
-- [4.3._RESOLVED:_Should_links_between_protected_and_unprotected_pipeline_libraries_be_allowed?](#_resolved_should_links_between_protected_and_unprotected_pipeline_libraries_be_allowed)
+- [4.1. How should the pipelineProtectedAccess feature interact with protectedMemory?](#_how_should_the_pipelineprotectedaccess_feature_interact_with_protectedmemory)
+- [4.1._How_should_the_pipelineProtectedAccess_feature_interact_with_protectedMemory?](#_how_should_the_pipelineprotectedaccess_feature_interact_with_protectedmemory)
+- [4.2. Should the pipelineProtectedAccess feature allow pipelines to opt into protected access or out of it?](#_should_the_pipelineprotectedaccess_feature_allow_pipelines_to_opt_into_protected_access_or_out_of_it)
+- [4.2._Should_the_pipelineProtectedAccess_feature_allow_pipelines_to_opt_into_protected_access_or_out_of_it?](#_should_the_pipelineprotectedaccess_feature_allow_pipelines_to_opt_into_protected_access_or_out_of_it)
+- [4.3. Should links between protected and unprotected pipeline libraries be allowed?](#_should_links_between_protected_and_unprotected_pipeline_libraries_be_allowed)
+- [4.3._Should_links_between_protected_and_unprotected_pipeline_libraries_be_allowed?](#_should_links_between_protected_and_unprotected_pipeline_libraries_be_allowed)
 
 ## Content
 
@@ -48,9 +48,9 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: How should the `pipelineProtectedAccess` feature interact with `protectedMemory`?](#_resolved_how_should_the_pipelineprotectedaccess_feature_interact_with_protectedmemory)
-[4.2. RESOLVED: Should the `pipelineProtectedAccess` feature allow pipelines to opt into protected access or out of it?](#_resolved_should_the_pipelineprotectedaccess_feature_allow_pipelines_to_opt_into_protected_access_or_out_of_it)
-[4.3. RESOLVED: Should links between protected and unprotected pipeline libraries be allowed?](#_resolved_should_links_between_protected_and_unprotected_pipeline_libraries_be_allowed)
+[4.1. How should the `pipelineProtectedAccess` feature interact with `protectedMemory`?](#_how_should_the_pipelineprotectedaccess_feature_interact_with_protectedmemory)
+[4.2. Should the `pipelineProtectedAccess` feature allow pipelines to opt into protected access or out of it?](#_should_the_pipelineprotectedaccess_feature_allow_pipelines_to_opt_into_protected_access_or_out_of_it)
+[4.3. Should links between protected and unprotected pipeline libraries be allowed?](#_should_links_between_protected_and_unprotected_pipeline_libraries_be_allowed)
 
 This proposal regards pipeline access to protected memory, and provides the
 means for applications to distinguish between pipelines that do and do not

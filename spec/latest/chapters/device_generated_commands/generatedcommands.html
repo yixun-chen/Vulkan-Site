@@ -8908,6 +8908,22 @@ If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdExecuteGeneratedCommandsNV-multiviewPerViewViewports-12262" href="#VUID-vkCmdExecuteGeneratedCommandsNV-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdExecuteGeneratedCommandsNV-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="../features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="../pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteGeneratedCommandsNV-multiviewPerViewViewports-12263" href="#VUID-vkCmdExecuteGeneratedCommandsNV-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdExecuteGeneratedCommandsNV-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="../features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="../pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
+</li>
+<li>
 <p><a id="VUID-vkCmdExecuteGeneratedCommandsNV-flags-11521" href="#VUID-vkCmdExecuteGeneratedCommandsNV-flags-11521"></a> <span class="vuid">VUID-vkCmdExecuteGeneratedCommandsNV-flags-11521</span><br>
 
 If current render pass instance was begun with <a href="../renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>
@@ -13556,6 +13572,22 @@ If a shader object is bound to any graphics stage, <em>multiview</em>
 functionality <strong>must</strong> not be enabled in the current render pass</p>
 </li>
 <li>
+<p><a id="VUID-vkCmdExecuteGeneratedCommandsEXT-multiviewPerViewViewports-12262" href="#VUID-vkCmdExecuteGeneratedCommandsEXT-multiviewPerViewViewports-12262"></a> <span class="vuid">VUID-vkCmdExecuteGeneratedCommandsEXT-multiviewPerViewViewports-12262</span><br>
+
+If the <a href="../features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="../pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdExecuteGeneratedCommandsEXT-multiviewPerViewViewports-12263" href="#VUID-vkCmdExecuteGeneratedCommandsEXT-multiviewPerViewViewports-12263"></a> <span class="vuid">VUID-vkCmdExecuteGeneratedCommandsEXT-multiviewPerViewViewports-12263</span><br>
+
+If the <a href="../features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, then the index of
+the most significant bit in current render pass instance <code>viewMask</code>
+<strong>must</strong> be less than the <a href="../pipelines.html#dynamic-state-current-value" class="xref page">current value</a> of
+<code>scissorCount</code></p>
+</li>
+<li>
 <p><a id="VUID-vkCmdExecuteGeneratedCommandsEXT-flags-11521" href="#VUID-vkCmdExecuteGeneratedCommandsEXT-flags-11521"></a> <span class="vuid">VUID-vkCmdExecuteGeneratedCommandsEXT-flags-11521</span><br>
 
 If current render pass instance was begun with <a href="../renderpass.html#vkCmdBeginRendering" class="xref page">vkCmdBeginRendering</a>
@@ -14266,9 +14298,9 @@ that was used to determine the <code>preprocessSize</code></p>
 <li>
 <p><a id="VUID-VkGeneratedCommandsInfoEXT-preprocessAddress-11069" href="#VUID-VkGeneratedCommandsInfoEXT-preprocessAddress-11069"></a> <span class="vuid">VUID-VkGeneratedCommandsInfoEXT-preprocessAddress-11069</span><br>
 
-The underlying buffer for <code>preprocessAddress</code> <strong>must</strong> have the
-<code>VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT</code> bit set in its usage
-flag</p>
+<code>preprocessAddress</code> <strong>must</strong> be a device address allocated to the
+application from a buffer created with the
+<code>VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11144" href="#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11144"></a> <span class="vuid">VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11144</span><br>

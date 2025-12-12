@@ -242,17 +242,17 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-geometryIndexAndFlagsBuffer-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-geometryIndexAndFlagsBuffer-parameter
 
- `geometryIndexAndFlagsBuffer` **must** be a valid `VkDeviceAddress` value
+ If `geometryIndexAndFlagsBuffer` is not `0`, `geometryIndexAndFlagsBuffer` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapArray-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapArray-parameter
 
- `opacityMicromapArray` **must** be a valid `VkDeviceAddress` value
+ If `opacityMicromapArray` is not `0`, `opacityMicromapArray` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapIndexBuffer-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapIndexBuffer-parameter
 
- `opacityMicromapIndexBuffer` **must** be a valid `VkDeviceAddress` value
+ If `opacityMicromapIndexBuffer` is not `0`, `opacityMicromapIndexBuffer` **must** be a valid `VkDeviceAddress` value
 
 [VK_NV_cluster_acceleration_structure](VK_NV_cluster_acceleration_structure.html), [VkClusterAccelerationStructureClusterFlagsNV](VkClusterAccelerationStructureClusterFlagsNV.html), [VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV](VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.html), `VkDeviceAddress`
 

@@ -2241,7 +2241,8 @@ event(s) will cause this callback to be called.</p>
 <p><code>pfnUserCallback</code> is the application callback function to call.</p>
 </li>
 <li>
-<p><code>pUserData</code> is user data to be passed to the callback.</p>
+<p><code>pUserData</code> is NULL or an application-defined user data pointer to
+be passed to the callback.</p>
 </li>
 </ul>
 </div>
@@ -2544,8 +2545,9 @@ event(s) triggered this callback.</p>
 <a href="#VkDebugUtilsMessengerCallbackDataEXT">VkDebugUtilsMessengerCallbackDataEXT</a> structure.</p>
 </li>
 <li>
-<p><code>pUserData</code> is the user data provided when the
-<a href="#VkDebugUtilsMessengerEXT">VkDebugUtilsMessengerEXT</a> was created.</p>
+<p><code>pUserData</code> is the application-defined user data pointer, equal to
+the value of <a href="#VkDebugUtilsMessengerCreateInfoEXT">VkDebugUtilsMessengerCreateInfoEXT</a>::<code>pUserData</code>
+specified when the <a href="#VkDebugUtilsMessengerEXT">VkDebugUtilsMessengerEXT</a> object was created.</p>
 </li>
 </ul>
 </div>
@@ -4195,7 +4197,8 @@ which event(s) will cause this callback to be called.</p>
 <p><code>pfnCallback</code> is the application callback function to call.</p>
 </li>
 <li>
-<p><code>pUserData</code> is user data to be passed to the callback.</p>
+<p><code>pUserData</code> is NULL or an application-defined user data pointer to
+be passed to the callback.</p>
 </li>
 </ul>
 </div>
@@ -4370,8 +4373,9 @@ conditions.
 <code>pMessage</code> is only valid for the duration of the callback.</p>
 </li>
 <li>
-<p><code>pUserData</code> is the user data given when the
-<a href="#VkDebugReportCallbackEXT">VkDebugReportCallbackEXT</a> was created.</p>
+<p><code>pUserData</code> is the application-defined user data pointer, equal to
+the value of <a href="#VkDebugReportCallbackCreateInfoEXT">VkDebugReportCallbackCreateInfoEXT</a>::<code>pUserData</code>
+specified when the <a href="#VkDebugReportCallbackEXT">VkDebugReportCallbackEXT</a> object was created.</p>
 </li>
 </ul>
 </div>

@@ -20,10 +20,10 @@
 - [3.5. HLSL](#_hlsl)
 - [4. Examples](#_examples)
 - [5. Issues](#_issues)
-- [5.1. RESOLVED: Do the new quad operations invoke helpers automatically?](#_resolved_do_the_new_quad_operations_invoke_helpers_automatically)
-- [5.1._RESOLVED:_Do_the_new_quad_operations_invoke_helpers_automatically?](#_resolved_do_the_new_quad_operations_invoke_helpers_automatically)
-- [5.2. RESOLVED: Why do the new quad operations not have execution scopes?](#_resolved_why_do_the_new_quad_operations_not_have_execution_scopes)
-- [5.2._RESOLVED:_Why_do_the_new_quad_operations_not_have_execution_scopes?](#_resolved_why_do_the_new_quad_operations_not_have_execution_scopes)
+- [5.1. Do the new quad operations invoke helpers automatically?](#_do_the_new_quad_operations_invoke_helpers_automatically)
+- [5.1._Do_the_new_quad_operations_invoke_helpers_automatically?](#_do_the_new_quad_operations_invoke_helpers_automatically)
+- [5.2. Why do the new quad operations not have execution scopes?](#_why_do_the_new_quad_operations_not_have_execution_scopes)
+- [5.2._Why_do_the_new_quad_operations_not_have_execution_scopes?](#_why_do_the_new_quad_operations_not_have_execution_scopes)
 
 ## Content
 
@@ -42,8 +42,8 @@ Table of Contents
 [4. Examples](#_examples)
 [5. Issues](#_issues)
 
-[5.1. RESOLVED: Do the new quad operations invoke helpers automatically?](#_resolved_do_the_new_quad_operations_invoke_helpers_automatically)
-[5.2. RESOLVED: Why do the new quad operations not have execution scopes?](#_resolved_why_do_the_new_quad_operations_not_have_execution_scopes)
+[5.1. Do the new quad operations invoke helpers automatically?](#_do_the_new_quad_operations_invoke_helpers_automatically)
+[5.2. Why do the new quad operations not have execution scopes?](#_why_do_the_new_quad_operations_not_have_execution_scopes)
 
 This document proposes an extension giving applications better guarantees about the uniformity of sampling and derivative operations in fragment shaders, and provides features to manage these guarantees.
 The primary features are a new `QuadDerivativesKHR` execution mode in SPIR-V which allows derivatives to be used in quad-uniform control flow, new quad Any/All operations, and guaranteed helper invocation participation in group operations.

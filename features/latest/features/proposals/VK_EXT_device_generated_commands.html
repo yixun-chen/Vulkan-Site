@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -638,14 +641,14 @@
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
 <li><a href="#_unresolved_how_will_future_commands_be_added">5.1. UNRESOLVED: How will future commands be added?</a></li>
-<li><a href="#_resolved_should_additional_state_be_included">5.2. RESOLVED: Should additional state be included?</a></li>
-<li><a href="#_resolved_what_shader_stages_or_pipeline_states_should_be_allowed_to_change">5.3. RESOLVED: What shader stages or pipeline states should be allowed to change?</a></li>
+<li><a href="#_should_additional_state_be_included">5.2. Should additional state be included?</a></li>
+<li><a href="#_what_shader_stages_or_pipeline_states_should_be_allowed_to_change">5.3. What shader stages or pipeline states should be allowed to change?</a></li>
 <li><a href="#_unresolved_should_indirect_execution_sets_be_merged_with_either_shader_binding_tables_or_indirect_object_sets">5.4. UNRESOLVED: Should Indirect execution sets be merged with either Shader Binding Tables or Indirect Object Sets?</a></li>
-<li><a href="#_resolved_should_additional_alignment_properties_be_added">5.5. RESOLVED: Should additional alignment properties be added?</a></li>
-<li><a href="#_resolved_should_index_type_values_be_remappable">5.6. RESOLVED: Should index type values be remappable?</a></li>
-<li><a href="#_resolved_should_indirect_buffers_be_reusable">5.7. RESOLVED: Should indirect buffers be reusable?</a></li>
-<li><a href="#_resolved_how_should_commands_with_less_than_32_bits_of_data_be_handled">5.8. RESOLVED: How should commands with less than 32-bits of data be handled?</a></li>
-<li><a href="#_resolved_how_should_applications_provide_data_to_the_preprocess_command_in_order_for_drivers_to_optimize_indirect_execution">5.9. RESOLVED: How should applications provide data to the preprocess command in order for drivers to optimize indirect execution?</a></li>
+<li><a href="#_should_additional_alignment_properties_be_added">5.5. Should additional alignment properties be added?</a></li>
+<li><a href="#_should_index_type_values_be_remappable">5.6. Should index type values be remappable?</a></li>
+<li><a href="#_should_indirect_buffers_be_reusable">5.7. Should indirect buffers be reusable?</a></li>
+<li><a href="#_how_should_commands_with_less_than_32_bits_of_data_be_handled">5.8. How should commands with less than 32-bits of data be handled?</a></li>
+<li><a href="#_how_should_applications_provide_data_to_the_preprocess_command_in_order_for_drivers_to_optimize_indirect_execution">5.9. How should applications provide data to the preprocess command in order for drivers to optimize indirect execution?</a></li>
 </ul>
 </li>
 <li><a href="#_further_functionality">6. Further Functionality</a></li>
@@ -2640,13 +2643,13 @@ The bound state in <code>stateCommandBuffer</code> must be identical to the stat
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_additional_state_be_included"><a class="anchor" href="#_resolved_should_additional_state_be_included"></a>5.2. RESOLVED: Should additional state be included?</h3>
+<h3 id="_should_additional_state_be_included"><a class="anchor" href="#_should_additional_state_be_included"></a>5.2. Should additional state be included?</h3>
 <div class="paragraph">
 <p>No additional state changes are permitted in order to enable fast and broad adoption.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_shader_stages_or_pipeline_states_should_be_allowed_to_change"><a class="anchor" href="#_resolved_what_shader_stages_or_pipeline_states_should_be_allowed_to_change"></a>5.3. RESOLVED: What shader stages or pipeline states should be allowed to change?</h3>
+<h3 id="_what_shader_stages_or_pipeline_states_should_be_allowed_to_change"><a class="anchor" href="#_what_shader_stages_or_pipeline_states_should_be_allowed_to_change"></a>5.3. What shader stages or pipeline states should be allowed to change?</h3>
 <div class="paragraph">
 <p>All implementation-supported shader stagess can be changed indirectly. No pipeline state may be changed. Future extensions may expose additional functionality.</p>
 </div>
@@ -2665,13 +2668,13 @@ The bound state in <code>stateCommandBuffer</code> must be identical to the stat
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_additional_alignment_properties_be_added"><a class="anchor" href="#_resolved_should_additional_alignment_properties_be_added"></a>5.5. RESOLVED: Should additional alignment properties be added?</h3>
+<h3 id="_should_additional_alignment_properties_be_added"><a class="anchor" href="#_should_additional_alignment_properties_be_added"></a>5.5. Should additional alignment properties be added?</h3>
 <div class="paragraph">
 <p>Recent extensions have been using fixed rather than queryable alignment rules. It makes sense to use fixed alignments here too.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_index_type_values_be_remappable"><a class="anchor" href="#_resolved_should_index_type_values_be_remappable"></a>5.6. RESOLVED: Should index type values be remappable?</h3>
+<h3 id="_should_index_type_values_be_remappable"><a class="anchor" href="#_should_index_type_values_be_remappable"></a>5.6. Should index type values be remappable?</h3>
 <div class="paragraph">
 <p><code>D3D12_INDEX_BUFFER_VIEW</code> and <code>VkBindIndexBufferIndirectCommandEXT</code> have the same memory layout but <code>DXGI_FORMAT</code> and <code>VkIndexType</code> do not have equivalent values.  Providing the ability to remap index type values in the layout simplifies API emulation.</p>
 </div>
@@ -2680,19 +2683,19 @@ The bound state in <code>stateCommandBuffer</code> must be identical to the stat
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_indirect_buffers_be_reusable"><a class="anchor" href="#_resolved_should_indirect_buffers_be_reusable"></a>5.7. RESOLVED: Should indirect buffers be reusable?</h3>
+<h3 id="_should_indirect_buffers_be_reusable"><a class="anchor" href="#_should_indirect_buffers_be_reusable"></a>5.7. Should indirect buffers be reusable?</h3>
 <div class="paragraph">
 <p>Yes, indirect buffers can be reused.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_should_commands_with_less_than_32_bits_of_data_be_handled"><a class="anchor" href="#_resolved_how_should_commands_with_less_than_32_bits_of_data_be_handled"></a>5.8. RESOLVED: How should commands with less than 32-bits of data be handled?</h3>
+<h3 id="_how_should_commands_with_less_than_32_bits_of_data_be_handled"><a class="anchor" href="#_how_should_commands_with_less_than_32_bits_of_data_be_handled"></a>5.8. How should commands with less than 32-bits of data be handled?</h3>
 <div class="paragraph">
 <p>No such commands are provided.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_should_applications_provide_data_to_the_preprocess_command_in_order_for_drivers_to_optimize_indirect_execution"><a class="anchor" href="#_resolved_how_should_applications_provide_data_to_the_preprocess_command_in_order_for_drivers_to_optimize_indirect_execution"></a>5.9. RESOLVED: How should applications provide data to the preprocess command in order for drivers to optimize indirect execution?</h3>
+<h3 id="_how_should_applications_provide_data_to_the_preprocess_command_in_order_for_drivers_to_optimize_indirect_execution"><a class="anchor" href="#_how_should_applications_provide_data_to_the_preprocess_command_in_order_for_drivers_to_optimize_indirect_execution"></a>5.9. How should applications provide data to the preprocess command in order for drivers to optimize indirect execution?</h3>
 <div class="paragraph">
 <p>A <code>stateCommandBuffer</code> is added to <code>vkCmdPreprocessGeneratedCommandsEXT</code> with the requirement that all state must match between this command buffer and the one used to record <code>vkCmdExecuteGeneratedCommandsEXT</code>.
 This guarantees that all pipeline state and, specifically for draw commands, other state (e.g., vertex buffers, index buffers) is available at preprocess time.</p>

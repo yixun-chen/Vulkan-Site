@@ -10206,8 +10206,10 @@ a region that is contained within <code>dstImage</code></p>
 <li>
 <p><a id="VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-07665" href="#VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-07665"></a> <span class="vuid">VUID-VkCopyMemoryToImageIndirectInfoKHR-dstImage-07665</span><br>
 
-If <code>dstImage</code> is non-sparse then it <strong>must</strong> be bound completely and
-contiguously to a single <code>VkDeviceMemory</code> object</p>
+If <code>dstImage</code> is non-sparse then the image
+or each specified <em>disjoint</em> plane
+<strong>must</strong> be bound completely and contiguously to a single
+<code>VkDeviceMemory</code> object</p>
 </li>
 </ul>
 </div>
@@ -10614,8 +10616,10 @@ a region that is contained within <code>dstImage</code></p>
 <li>
 <p><a id="VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07665" href="#VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07665"></a> <span class="vuid">VUID-vkCmdCopyMemoryToImageIndirectNV-dstImage-07665</span><br>
 
-If <code>dstImage</code> is non-sparse then it <strong>must</strong> be bound completely and
-contiguously to a single <code>VkDeviceMemory</code> object</p>
+If <code>dstImage</code> is non-sparse then the image
+or each specified <em>disjoint</em> plane
+<strong>must</strong> be bound completely and contiguously to a single
+<code>VkDeviceMemory</code> object</p>
 </li>
 </ul>
 </div>

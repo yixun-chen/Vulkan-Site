@@ -452,8 +452,8 @@ The result of the opacity micromap lookup and operations is to treat the
 intersection as opaque, non-opaque, or ignored.
 The interpretation of the values depends on
 `VK_GEOMETRY_INSTANCE_FORCE_OPACITY_MICROMAP_2_STATE_BIT_EXT` in the
-instance of the candidate intersection or
-`ForceOpacityMicromap2StateEXT` ray flags on the ray.
+instance of the candidate intersection or `ForceOpacityMicromap2StateEXT`
+ray flags on the ray.
 If either is set, the opacity micromap information is interpreted in 2 state
 override mode.
 If the result of the micromap lookup is to treat the intersection candidate

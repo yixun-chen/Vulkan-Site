@@ -55,7 +55,7 @@ support transfer operations.
 `VK_QUEUE_SPARSE_BINDING_BIT` specifies that queues in this queue
 family support sparse memory management operations (see
 [Sparse Resources](../../../../spec/latest/chapters/sparsemem.html#sparsememory)).
-If any of the sparse resource features are enabled, then at least one
+If any of the sparse resource features are supported, then at least one
 queue family **must** support this bit.
 
 * 

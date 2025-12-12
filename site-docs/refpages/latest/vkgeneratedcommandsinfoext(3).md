@@ -163,9 +163,9 @@ that was used to determine the `preprocessSize`
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-preprocessAddress-11069) VUID-VkGeneratedCommandsInfoEXT-preprocessAddress-11069
 
-The underlying buffer for `preprocessAddress` **must** have the
-`VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT` bit set in its usage
-flag
+`preprocessAddress` **must** be a device address allocated to the
+application from a buffer created with the
+`VK_BUFFER_USAGE_2_PREPROCESS_BUFFER_BIT_EXT` usage flag set
 
 * 
 [](#VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11144) VUID-VkGeneratedCommandsInfoEXT-indirectCommandsLayout-11144

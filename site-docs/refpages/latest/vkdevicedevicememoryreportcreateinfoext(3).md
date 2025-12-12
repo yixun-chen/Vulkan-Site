@@ -47,7 +47,8 @@ structure.
 `pfnUserCallback` is the application callback function to call.
 
 * 
-`pUserData` is user data to be passed to the callback.
+`pUserData` is NULL or an application-defined user data pointer to
+be passed to the callback.
 
 The callback **may** be called from multiple threads simultaneously.
 
@@ -74,11 +75,6 @@ Valid Usage (Implicit)
 [](#VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-pfnUserCallback-parameter) VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-pfnUserCallback-parameter
 
  `pfnUserCallback` **must** be a valid [PFN_vkDeviceMemoryReportCallbackEXT](PFN_vkDeviceMemoryReportCallbackEXT.html) value
-
-* 
-[](#VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-pUserData-parameter) VUID-VkDeviceDeviceMemoryReportCreateInfoEXT-pUserData-parameter
-
- `pUserData` **must** be a pointer value
 
 [PFN_vkDeviceMemoryReportCallbackEXT](PFN_vkDeviceMemoryReportCallbackEXT.html), [VK_EXT_device_memory_report](VK_EXT_device_memory_report.html), [VkDeviceMemoryReportFlagsEXT](VkDeviceMemoryReportFlagsEXT.html), [VkStructureType](VkStructureType.html)
 

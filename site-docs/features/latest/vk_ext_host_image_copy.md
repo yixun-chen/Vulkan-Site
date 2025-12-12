@@ -19,10 +19,10 @@
 - [2.4. Querying performance characteristics](#_querying_performance_characteristics)
 - [2.4._Querying_performance_characteristics](#_querying_performance_characteristics)
 - [3. Issues](#_issues)
-- [3.1. RESOLVED: Should other layouts be allowed in VkHostImageLayoutTransitionInfoEXT?](#_resolved_should_other_layouts_be_allowed_in_vkhostimagelayouttransitioninfoext)
-- [3.1._RESOLVED:_Should_other_layouts_be_allowed_in_VkHostImageLayoutTransitionInfoEXT?](#_resolved_should_other_layouts_be_allowed_in_vkhostimagelayouttransitioninfoext)
-- [3.2. RESOLVED: Should queue family ownership transfers be supported on the host as well?](#_resolved_should_queue_family_ownership_transfers_be_supported_on_the_host_as_well)
-- [3.2._RESOLVED:_Should_queue_family_ownership_transfers_be_supported_on_the_host_as_well?](#_resolved_should_queue_family_ownership_transfers_be_supported_on_the_host_as_well)
+- [3.1. Should other layouts be allowed in VkHostImageLayoutTransitionInfoEXT?](#_should_other_layouts_be_allowed_in_vkhostimagelayouttransitioninfoext)
+- [3.1._Should_other_layouts_be_allowed_in_VkHostImageLayoutTransitionInfoEXT?](#_should_other_layouts_be_allowed_in_vkhostimagelayouttransitioninfoext)
+- [3.2. Should queue family ownership transfers be supported on the host as well?](#_should_queue_family_ownership_transfers_be_supported_on_the_host_as_well)
+- [3.2._Should_queue_family_ownership_transfers_be_supported_on_the_host_as_well?](#_should_queue_family_ownership_transfers_be_supported_on_the_host_as_well)
 
 ## Content
 
@@ -38,8 +38,8 @@ Table of Contents
 
 [3. Issues](#_issues)
 
-[3.1. RESOLVED: Should other layouts be allowed in `VkHostImageLayoutTransitionInfoEXT`?](#_resolved_should_other_layouts_be_allowed_in_vkhostimagelayouttransitioninfoext)
-[3.2. RESOLVED: Should queue family ownership transfers be supported on the host as well?](#_resolved_should_queue_family_ownership_transfers_be_supported_on_the_host_as_well)
+[3.1. Should other layouts be allowed in `VkHostImageLayoutTransitionInfoEXT`?](#_should_other_layouts_be_allowed_in_vkhostimagelayouttransitioninfoext)
+[3.2. Should queue family ownership transfers be supported on the host as well?](#_should_queue_family_ownership_transfers_be_supported_on_the_host_as_well)
 
 This document identifies inefficiencies with image data initialization and proposes an extension to improve it.
 

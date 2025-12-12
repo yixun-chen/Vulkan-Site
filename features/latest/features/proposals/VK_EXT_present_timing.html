@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -613,7 +616,7 @@
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_problem_statement">1. Problem statement</a></li>
+<li><a href="#_problem_statement">1. Problem Statement</a></li>
 <li><a href="#_solution_space">2. Solution Space</a></li>
 <li><a href="#_proposal">3. Proposal</a>
 <ul class="sectlevel2">
@@ -636,8 +639,8 @@
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
 <li><a href="#_what_are_the_key_differences_to_vk_google_display_timing">5.1. What are the key differences to <code>VK_GOOGLE_display_timing</code>?</a></li>
-<li><a href="#_resolved_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize">5.2. RESOLVED: How does the application choose the internal queue size to pass in <code>vkSetSwapchainPresentTimingQueueSize</code>?</a></li>
-<li><a href="#_resolved_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback">5.3. RESOLVED: Do we need an API to synchronously wait for present timing feedback?</a></li>
+<li><a href="#_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize">5.2. How does the application choose the internal queue size to pass in <code>vkSetSwapchainPresentTimingQueueSize</code>?</a></li>
+<li><a href="#_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback">5.3. Do we need an API to synchronously wait for present timing feedback?</a></li>
 <li><a href="#_proposed_how_do_we_handle_dynamic_surface_properties_updates">5.4. PROPOSED: How do we handle dynamic surface properties updates?</a></li>
 <li><a href="#_proposed_how_are_dropped_presentation_requests_handled">5.5. PROPOSED: How are dropped presentation requests handled?</a></li>
 <li><a href="#_proposed_how_do_different_variable_refresh_rate_technologies_interact_with_this_extension">5.6. PROPOSED: How do different variable refresh rate technologies interact with this extension?</a></li>
@@ -654,7 +657,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_problem_statement"><a class="anchor" href="#_problem_statement"></a>1. Problem statement</h2>
+<h2 id="_problem_statement"><a class="anchor" href="#_problem_statement"></a>1. Problem Statement</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>As rendering systems have become more complex and more deeply buffered, rendering workloads have grown increasingly independent of the presentation process. Different hardware may even be involved. As a consequence, applications are left without a clear way to align the presentation process with other workloads, particularly rendering.</p>
@@ -1557,7 +1560,7 @@ typedef VkFlags VkPresentTimingInfoFlagsEXT;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize"><a class="anchor" href="#_resolved_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize"></a>5.2. RESOLVED: How does the application choose the internal queue size to pass in <code>vkSetSwapchainPresentTimingQueueSize</code>?</h3>
+<h3 id="_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize"><a class="anchor" href="#_how_does_the_application_choose_the_internal_queue_size_to_pass_in_vksetswapchainpresenttimingqueuesize"></a>5.2. How does the application choose the internal queue size to pass in <code>vkSetSwapchainPresentTimingQueueSize</code>?</h3>
 <div class="paragraph">
 <p>Use reasonable default values, such as a multiple of the swapchain image count.</p>
 </div>
@@ -1569,7 +1572,7 @@ typedef VkFlags VkPresentTimingInfoFlagsEXT;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback"><a class="anchor" href="#_resolved_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback"></a>5.3. RESOLVED: Do we need an API to synchronously wait for present timing feedback?</h3>
+<h3 id="_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback"><a class="anchor" href="#_do_we_need_an_api_to_synchronously_wait_for_present_timing_feedback"></a>5.3. Do we need an API to synchronously wait for present timing feedback?</h3>
 <div class="paragraph">
 <p>No, because some implementations cannot provide a synchronous wait on those results. However, allow applications to call vkGetPastPresentationTimingEXT without external synchronization.</p>
 </div>

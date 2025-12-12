@@ -208,6 +208,24 @@ If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `resolveMode` is no
 `VK_SAMPLE_COUNT_1_BIT`, `resolveImageView` **must** be
 [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
 
+[](#VUID-VkRenderingAttachmentInfo-None-12256) VUID-VkRenderingAttachmentInfo-None-12256
+
+If all of the following are true:
+
+* 
+`imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html)
+
+* 
+`imageView` has a sample count of `VK_SAMPLE_COUNT_1_BIT`
+
+* 
+the `pNext` chain of [VkRenderingInfo](VkRenderingInfo.html) includes a
+[VkMultisampledRenderToSingleSampledInfoEXT](VkMultisampledRenderToSingleSampledInfoEXT.html) structure with the
+`multisampledRenderToSingleSampledEnable` field equal to
+`VK_TRUE`
+
+then `resolveMode` **must** not be `VK_RESOLVE_MODE_NONE`
+
 [](#VUID-VkRenderingAttachmentInfo-imageView-06864) VUID-VkRenderingAttachmentInfo-imageView-06864
 
 If `imageView` is not [VK_NULL_HANDLE](VK_NULL_HANDLE.html), `resolveImageView`

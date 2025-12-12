@@ -33,8 +33,10 @@ typedef void (VKAPI_PTR *PFN_vkDeviceMemoryReportCallbackEXT)(
 [VkDeviceMemoryReportCallbackDataEXT](VkDeviceMemoryReportCallbackDataEXT.html) structure.
 
 * 
-`pUserData` is the user data provided when the
-[VkDeviceDeviceMemoryReportCreateInfoEXT](VkDeviceDeviceMemoryReportCreateInfoEXT.html) was created.
+`pUserData` is the application-defined user data pointer, equal to
+the value of
+[VkDeviceDeviceMemoryReportCreateInfoEXT](VkDeviceDeviceMemoryReportCreateInfoEXT.html)::`pUserData` specified
+when the [VkDevice](VkDevice.html) object was created.
 
 The callback **must** not make calls to any Vulkan commands.
 

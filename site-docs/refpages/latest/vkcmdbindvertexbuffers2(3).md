@@ -19,8 +19,8 @@
 
 vkCmdBindVertexBuffers2 - Bind vertex buffers to a command buffer and dynamically set strides
 
-Alternatively, to bind vertex buffers, along with their sizes and strides,
-to a command buffer for use in subsequent drawing commands, call:
+To bind vertex buffers, along with their sizes and strides, to a command
+buffer for use in subsequent drawing commands, call:
 
 // Provided by VK_VERSION_1_3
 void vkCmdBindVertexBuffers2(

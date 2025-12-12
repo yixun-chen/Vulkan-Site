@@ -19,7 +19,7 @@
 
 vkCmdSetDescriptorBufferOffsets2EXT - Setting descriptor buffer offsets in a command buffer
 
-Alternatively, to set descriptor buffer offsets in a command buffer, call:
+To set descriptor buffer offsets in a command buffer, call:
 
 // Provided by VK_KHR_maintenance6 with VK_EXT_descriptor_buffer
 void vkCmdSetDescriptorBufferOffsets2EXT(

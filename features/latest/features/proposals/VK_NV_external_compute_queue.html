@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -622,8 +625,8 @@
 </li>
 <li><a href="#_issues">4. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle">4.1. RESOLVED: How does execution of work on an external compute queue interact with <code>vkDeviceWaitIdle</code>?</a></li>
-<li><a href="#_resolved_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api">4.2. RESOLVED: Does this extension allow for more direct sharing of resources between Vulkan and the external compute API?</a></li>
+<li><a href="#_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle">4.1. How does execution of work on an external compute queue interact with <code>vkDeviceWaitIdle</code>?</a></li>
+<li><a href="#_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api">4.2. Does this extension allow for more direct sharing of resources between Vulkan and the external compute API?</a></li>
 </ul>
 </li>
 </ul>
@@ -794,13 +797,13 @@
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle"><a class="anchor" href="#_resolved_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle"></a>4.1. RESOLVED: How does execution of work on an external compute queue interact with <code>vkDeviceWaitIdle</code>?</h3>
+<h3 id="_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle"><a class="anchor" href="#_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle"></a>4.1. How does execution of work on an external compute queue interact with <code>vkDeviceWaitIdle</code>?</h3>
 <div class="paragraph">
 <p><code>vkDeviceWaitIdle</code> does not wait for external compute queues. Draining work on an external compute queue must be done through its own external API.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api"><a class="anchor" href="#_resolved_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api"></a>4.2. RESOLVED: Does this extension allow for more direct sharing of resources between Vulkan and the external compute API?</h3>
+<h3 id="_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api"><a class="anchor" href="#_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api"></a>4.2. Does this extension allow for more direct sharing of resources between Vulkan and the external compute API?</h3>
 <div class="paragraph">
 <p>No. This extension does not propose any changes or additions to existing resource sharing and cross-API synchronization mechanisms.</p>
 </div>

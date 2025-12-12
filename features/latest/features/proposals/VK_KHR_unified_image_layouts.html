@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -626,13 +629,13 @@
 </li>
 <li><a href="#_issues">4. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_can_vk_image_layout_undefined_be_avoided_in_this_extension">4.1. Resolved: Can <code>VK_IMAGE_LAYOUT_UNDEFINED</code> be avoided in this extension?</a></li>
-<li><a href="#_resolved_should_vk_image_layout_preinitialized_be_replaced_by_vk_image_layout_general">4.2. Resolved: Should <code>VK_IMAGE_LAYOUT_PREINITIALIZED</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</a></li>
-<li><a href="#_resolved_should_vk_image_layout_present_src_khr_be_replaced_by_vk_image_layout_general_and_a_queue_family_ownership_transfer">4.3. Resolved: Should <code>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code> and a queue family ownership transfer?</a></li>
-<li><a href="#_resolved_can_vk_image_layout_shared_present_khr_be_replaced_by_vk_image_layout_general">4.4. Resolved: Can <code>VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</a></li>
-<li><a href="#_resolved_can_the_vulkan_video_layouts_be_replaced_by_vk_image_layout_general">4.5. Resolved: Can the Vulkan Video layouts be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</a></li>
-<li><a href="#_resolved_can_vk_image_layout_attachment_feedback_loop_optimal_ext_be_replaced_by_vk_image_layout_general">4.6. Resolved: Can <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</a></li>
-<li><a href="#_resolved_should_image_layouts_in_the_api_be_ignored_required_to_be_vk_image_layout_general_or_simply_provide_the_possibility_of_that_layout_and_a_guarantee_of_efficiency">4.7. Resolved: Should image layouts in the API be <em>ignored</em>, <em>required</em> to be <code>VK_IMAGE_LAYOUT_GENERAL</code>, or simply provide the possibility of that layout and a guarantee of efficiency?</a></li>
+<li><a href="#_can_vk_image_layout_undefined_be_avoided_in_this_extension">4.1. Can <code>VK_IMAGE_LAYOUT_UNDEFINED</code> be avoided in this extension?</a></li>
+<li><a href="#_should_vk_image_layout_preinitialized_be_replaced_by_vk_image_layout_general">4.2. Should <code>VK_IMAGE_LAYOUT_PREINITIALIZED</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</a></li>
+<li><a href="#_should_vk_image_layout_present_src_khr_be_replaced_by_vk_image_layout_general_and_a_queue_family_ownership_transfer">4.3. Should <code>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code> and a queue family ownership transfer?</a></li>
+<li><a href="#_can_vk_image_layout_shared_present_khr_be_replaced_by_vk_image_layout_general">4.4. Can <code>VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</a></li>
+<li><a href="#_can_the_vulkan_video_layouts_be_replaced_by_vk_image_layout_general">4.5. Can the Vulkan Video layouts be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</a></li>
+<li><a href="#_can_vk_image_layout_attachment_feedback_loop_optimal_ext_be_replaced_by_vk_image_layout_general">4.6. Can <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</a></li>
+<li><a href="#_should_image_layouts_in_the_api_be_ignored_required_to_be_vk_image_layout_general_or_simply_provide_the_possibility_of_that_layout_and_a_guarantee_of_efficiency">4.7. Should image layouts in the API be <em>ignored</em>, <em>required</em> to be <code>VK_IMAGE_LAYOUT_GENERAL</code>, or simply provide the possibility of that layout and a guarantee of efficiency?</a></li>
 </ul>
 </li>
 </ul>
@@ -820,7 +823,7 @@ Support for using <code>VK_IMAGE_LAYOUT_GENERAL</code> for these layouts is indi
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_can_vk_image_layout_undefined_be_avoided_in_this_extension"><a class="anchor" href="#_resolved_can_vk_image_layout_undefined_be_avoided_in_this_extension"></a>4.1. Resolved: Can <code>VK_IMAGE_LAYOUT_UNDEFINED</code> be avoided in this extension?</h3>
+<h3 id="_can_vk_image_layout_undefined_be_avoided_in_this_extension"><a class="anchor" href="#_can_vk_image_layout_undefined_be_avoided_in_this_extension"></a>4.1. Can <code>VK_IMAGE_LAYOUT_UNDEFINED</code> be avoided in this extension?</h3>
 <div class="paragraph">
 <p>No.
 An API was drafted to initialize the image metadata to this effect, but it did not materially simplify the extension.
@@ -829,7 +832,7 @@ This work is deferred to that extension.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_vk_image_layout_preinitialized_be_replaced_by_vk_image_layout_general"><a class="anchor" href="#_resolved_should_vk_image_layout_preinitialized_be_replaced_by_vk_image_layout_general"></a>4.2. Resolved: Should <code>VK_IMAGE_LAYOUT_PREINITIALIZED</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</h3>
+<h3 id="_should_vk_image_layout_preinitialized_be_replaced_by_vk_image_layout_general"><a class="anchor" href="#_should_vk_image_layout_preinitialized_be_replaced_by_vk_image_layout_general"></a>4.2. Should <code>VK_IMAGE_LAYOUT_PREINITIALIZED</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</h3>
 <div class="paragraph">
 <p>No.
 While <em>technically</em> replacing <code>VK_IMAGE_LAYOUT_PREINITIALIZED</code> with <code>VK_IMAGE_LAYOUT_GENERAL</code> during image creation would have worked, mistakenly using <code>VK_IMAGE_LAYOUT_GENERAL</code> instead of <code>VK_IMAGE_LAYOUT_UNDEFINED</code> would have been hard to catch in validation layers.
@@ -837,7 +840,7 @@ Ultimately, it was decided that <code>VK_IMAGE_LAYOUT_PREINITIALIZED</code> shou
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_vk_image_layout_present_src_khr_be_replaced_by_vk_image_layout_general_and_a_queue_family_ownership_transfer"><a class="anchor" href="#_resolved_should_vk_image_layout_present_src_khr_be_replaced_by_vk_image_layout_general_and_a_queue_family_ownership_transfer"></a>4.3. Resolved: Should <code>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code> and a queue family ownership transfer?</h3>
+<h3 id="_should_vk_image_layout_present_src_khr_be_replaced_by_vk_image_layout_general_and_a_queue_family_ownership_transfer"><a class="anchor" href="#_should_vk_image_layout_present_src_khr_be_replaced_by_vk_image_layout_general_and_a_queue_family_ownership_transfer"></a>4.3. Should <code>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code> and a queue family ownership transfer?</h3>
 <div class="paragraph">
 <p>No, not in this extension.
 There are existing Vulkan layers that draw an overlay by intercepting the call to <code>vkQueuePresentKHR</code>.
@@ -851,7 +854,7 @@ Using the <code>VK_IMAGE_LAYOUT_PRESENT_SRC_KHR</code> layout is typically less 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_vk_image_layout_shared_present_khr_be_replaced_by_vk_image_layout_general"><a class="anchor" href="#_resolved_can_vk_image_layout_shared_present_khr_be_replaced_by_vk_image_layout_general"></a>4.4. Resolved: Can <code>VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</h3>
+<h3 id="_can_vk_image_layout_shared_present_khr_be_replaced_by_vk_image_layout_general"><a class="anchor" href="#_can_vk_image_layout_shared_present_khr_be_replaced_by_vk_image_layout_general"></a>4.4. Can <code>VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</h3>
 <div class="paragraph">
 <p>No, not in this extension.
 The driver has enough information at Vulkan swapchain creation to determine if the image needs to use a layout that can be shared with the present engine.
@@ -864,14 +867,14 @@ It was deemed preferable allow this compatibility and eventually define compatib
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_the_vulkan_video_layouts_be_replaced_by_vk_image_layout_general"><a class="anchor" href="#_resolved_can_the_vulkan_video_layouts_be_replaced_by_vk_image_layout_general"></a>4.5. Resolved: Can the Vulkan Video layouts be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</h3>
+<h3 id="_can_the_vulkan_video_layouts_be_replaced_by_vk_image_layout_general"><a class="anchor" href="#_can_the_vulkan_video_layouts_be_replaced_by_vk_image_layout_general"></a>4.5. Can the Vulkan Video layouts be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</h3>
 <div class="paragraph">
 <p>Only optionally.
 In the interest of alleviating developer pain sooner rather than later, and considering the fact that some significant classes of applications (such as video games) do not use Vulkan Video, it was decided to use an optional feature to indicate whether these layouts can be replaced with <code>VK_IMAGE_LAYOUT_GENERAL</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_vk_image_layout_attachment_feedback_loop_optimal_ext_be_replaced_by_vk_image_layout_general"><a class="anchor" href="#_resolved_can_vk_image_layout_attachment_feedback_loop_optimal_ext_be_replaced_by_vk_image_layout_general"></a>4.6. Resolved: Can <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</h3>
+<h3 id="_can_vk_image_layout_attachment_feedback_loop_optimal_ext_be_replaced_by_vk_image_layout_general"><a class="anchor" href="#_can_vk_image_layout_attachment_feedback_loop_optimal_ext_be_replaced_by_vk_image_layout_general"></a>4.6. Can <code>VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT</code> be replaced by <code>VK_IMAGE_LAYOUT_GENERAL</code>?</h3>
 <div class="paragraph">
 <p>Yes.
 However, the information provided by this layout is necessary for some existing hardware to be able to expose this extension.
@@ -883,7 +886,7 @@ Given the limited scope, and knowledge of existing layers, it was deemed suffici
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_image_layouts_in_the_api_be_ignored_required_to_be_vk_image_layout_general_or_simply_provide_the_possibility_of_that_layout_and_a_guarantee_of_efficiency"><a class="anchor" href="#_resolved_should_image_layouts_in_the_api_be_ignored_required_to_be_vk_image_layout_general_or_simply_provide_the_possibility_of_that_layout_and_a_guarantee_of_efficiency"></a>4.7. Resolved: Should image layouts in the API be <em>ignored</em>, <em>required</em> to be <code>VK_IMAGE_LAYOUT_GENERAL</code>, or simply provide the possibility of that layout and a guarantee of efficiency?</h3>
+<h3 id="_should_image_layouts_in_the_api_be_ignored_required_to_be_vk_image_layout_general_or_simply_provide_the_possibility_of_that_layout_and_a_guarantee_of_efficiency"><a class="anchor" href="#_should_image_layouts_in_the_api_be_ignored_required_to_be_vk_image_layout_general_or_simply_provide_the_possibility_of_that_layout_and_a_guarantee_of_efficiency"></a>4.7. Should image layouts in the API be <em>ignored</em>, <em>required</em> to be <code>VK_IMAGE_LAYOUT_GENERAL</code>, or simply provide the possibility of that layout and a guarantee of efficiency?</h3>
 <div class="paragraph">
 <p>Experience has shown that "ignored" parameters lead to complications and bugs in validation layers and implementations.
 "Requiring" <code>VK_IMAGE_LAYOUT_GENERAL</code> has the downside that an existing library, unaware of this extension, can no longer be used if this extension is enabled.</p>

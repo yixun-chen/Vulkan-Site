@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -620,7 +623,11 @@
 <li><a href="#_api_features">3.1. API Features</a></li>
 </ul>
 </li>
-<li><a href="#_issues">4. Issues</a></li>
+<li><a href="#_issues">4. Issues</a>
+<ul class="sectlevel2">
+<li><a href="#_should_applications_be_able_to_zoom_in_to_the_geometry_and_expect_good_results">4.1. Should applications be able to zoom-in to the geometry and expect 'good' results?</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="preamble">
@@ -820,12 +827,10 @@ and the <code>geometryType</code> is set to either <code>VK_GEOMETRY_TYPE_SPHERE
 <div class="sect1">
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>4. Issues</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_should_applications_be_able_to_zoom_in_to_the_geometry_and_expect_good_results"><a class="anchor" href="#_should_applications_be_able_to_zoom_in_to_the_geometry_and_expect_good_results"></a>4.1. Should applications be able to zoom-in to the geometry and expect 'good' results?</h3>
 <div class="paragraph">
-<p>1) Should applications be able to zoom-in to the geometry and expect 'good'
-results?</p>
-</div>
-<div class="paragraph">
-<p><strong>RESOLVED</strong>: No. Finding the intersection between a ray and an LSS is more
+<p>No. Finding the intersection between a ray and an LSS is more
 involved than for a triangle and requires more floating-point operations.
 It is expected that there will be more rounding errors in the results, and the
 input ranges where the intersection test will produce a usable result will be
@@ -836,6 +841,7 @@ at any extreme distances. The input ranges where floating-point issues start
 to become visible can differ significantly across implementation.
 Implementations should have the intended use cases in mind and are expected to
 make reasonable performance and quality tradeoffs.</p>
+</div>
 </div>
 </div>
 </div>

@@ -1369,28 +1369,28 @@ member of any element of <code>pGeometries</code> or <code>ppGeometries</code> w
 bound to device memory</p>
 </li>
 <li>
-<p><a id="VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03671" href="#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03671"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03671</span><br>
+<p><a id="VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12258" href="#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12258"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12258</span><br>
 
 If <code>pInfos</code>[i].<code>mode</code> is
-<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR</code>, all addresses
-between <code>pInfos</code>[i].<code>scratchData.deviceAddress</code> and
-<code>pInfos</code>[i].<code>scratchData.deviceAddress</code> +  N - 1 <strong>must</strong> be in
-the buffer device address range of the same buffer, where N is given by
-the <code>buildScratchSize</code> member of the
+<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR</code>, and N is not <code>0</code>,
+all addresses between <code>pInfos</code>[i].<code>scratchData.deviceAddress</code>
+and <code>pInfos</code>[i].<code>scratchData.deviceAddress</code> +  N - 1 <strong>must</strong>
+be in the buffer device address range of the same buffer, where N is
+given by the <code>buildScratchSize</code> member of the
 <a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned from a
 call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a> with an identical
 <a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a> structure and
 primitive count</p>
 </li>
 <li>
-<p><a id="VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03672" href="#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03672"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03672</span><br>
+<p><a id="VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12259" href="#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12259"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12259</span><br>
 
 If <code>pInfos</code>[i].<code>mode</code> is
-<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR</code>, all addresses
-between <code>pInfos</code>[i].<code>scratchData.deviceAddress</code> and
-<code>pInfos</code>[i].<code>scratchData.deviceAddress</code> +  N - 1 <strong>must</strong> be in
-the buffer device address range of the same buffer, where N is given by
-the <code>updateScratchSize</code> member of the
+<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR</code>, and N is not <code>0</code>,
+all addresses between <code>pInfos</code>[i].<code>scratchData.deviceAddress</code>
+and <code>pInfos</code>[i].<code>scratchData.deviceAddress</code> +  N - 1 <strong>must</strong>
+be in the buffer device address range of the same buffer, where N is
+given by the <code>updateScratchSize</code> member of the
 <a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned from a
 call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a> with an identical
 <a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a> structure and
@@ -1409,18 +1409,32 @@ are queried <strong>must</strong> have been created with the
 usage flag set</p>
 </li>
 <li>
-<p><a id="VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03674" href="#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03674"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03674</span><br>
+<p><a id="VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12260" href="#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12260"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12260</span><br>
 
-The buffer from which the buffer device address
-<code>pInfos</code>[i].<code>scratchData.deviceAddress</code> is queried <strong>must</strong> have
-been created with the <code>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</code> usage
-flag set</p>
+If <code>pInfos</code>[i].<code>mode</code> is
+<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR</code>, and the size
+reported by <code>updateScratchSize</code> member of the
+<a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned from a
+call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a> with an identical
+<a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a> structure and
+primitive count is non-zero,
+<code>pInfos</code>[i].<code>scratchData.deviceAddress</code> <strong>must</strong> be a device
+address allocated to the application from a buffer created with the
+<code>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</code> usage flag set</p>
 </li>
 <li>
-<p><a id="VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03802" href="#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03802"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03802</span><br>
+<p><a id="VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12261" href="#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12261"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-12261</span><br>
 
-For each element of <code>pInfos</code>, its <code>scratchData.deviceAddress</code>
-member <strong>must</strong> be a valid <code>VkDeviceAddress</code></p>
+If <code>pInfos</code>[i].<code>mode</code> is
+<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR</code>, and the size
+reported by <code>buildScratchSize</code> member of the
+<a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned from a
+call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a> with an identical
+<a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a> structure and
+primitive count is non-zero,
+<code>pInfos</code>[i].<code>scratchData.deviceAddress</code> <strong>must</strong> be a device
+address allocated to the application from a buffer created with the
+<code>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03710" href="#VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03710"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresKHR-pInfos-03710</span><br>
@@ -2314,28 +2328,28 @@ member of any element of <code>pGeometries</code> or <code>ppGeometries</code> w
 bound to device memory</p>
 </li>
 <li>
-<p><a id="VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03671" href="#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03671"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03671</span><br>
+<p><a id="VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12258" href="#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12258"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12258</span><br>
 
 If <code>pInfos</code>[i].<code>mode</code> is
-<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR</code>, all addresses
-between <code>pInfos</code>[i].<code>scratchData.deviceAddress</code> and
-<code>pInfos</code>[i].<code>scratchData.deviceAddress</code> +  N - 1 <strong>must</strong> be in
-the buffer device address range of the same buffer, where N is given by
-the <code>buildScratchSize</code> member of the
+<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR</code>, and N is not <code>0</code>,
+all addresses between <code>pInfos</code>[i].<code>scratchData.deviceAddress</code>
+and <code>pInfos</code>[i].<code>scratchData.deviceAddress</code> +  N - 1 <strong>must</strong>
+be in the buffer device address range of the same buffer, where N is
+given by the <code>buildScratchSize</code> member of the
 <a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned from a
 call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a> with an identical
 <a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a> structure and
 primitive count</p>
 </li>
 <li>
-<p><a id="VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03672" href="#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03672"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03672</span><br>
+<p><a id="VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12259" href="#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12259"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12259</span><br>
 
 If <code>pInfos</code>[i].<code>mode</code> is
-<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR</code>, all addresses
-between <code>pInfos</code>[i].<code>scratchData.deviceAddress</code> and
-<code>pInfos</code>[i].<code>scratchData.deviceAddress</code> +  N - 1 <strong>must</strong> be in
-the buffer device address range of the same buffer, where N is given by
-the <code>updateScratchSize</code> member of the
+<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR</code>, and N is not <code>0</code>,
+all addresses between <code>pInfos</code>[i].<code>scratchData.deviceAddress</code>
+and <code>pInfos</code>[i].<code>scratchData.deviceAddress</code> +  N - 1 <strong>must</strong>
+be in the buffer device address range of the same buffer, where N is
+given by the <code>updateScratchSize</code> member of the
 <a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned from a
 call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a> with an identical
 <a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a> structure and
@@ -2354,18 +2368,32 @@ are queried <strong>must</strong> have been created with the
 usage flag set</p>
 </li>
 <li>
-<p><a id="VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03674" href="#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03674"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03674</span><br>
+<p><a id="VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12260" href="#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12260"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12260</span><br>
 
-The buffer from which the buffer device address
-<code>pInfos</code>[i].<code>scratchData.deviceAddress</code> is queried <strong>must</strong> have
-been created with the <code>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</code> usage
-flag set</p>
+If <code>pInfos</code>[i].<code>mode</code> is
+<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR</code>, and the size
+reported by <code>updateScratchSize</code> member of the
+<a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned from a
+call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a> with an identical
+<a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a> structure and
+primitive count is non-zero,
+<code>pInfos</code>[i].<code>scratchData.deviceAddress</code> <strong>must</strong> be a device
+address allocated to the application from a buffer created with the
+<code>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</code> usage flag set</p>
 </li>
 <li>
-<p><a id="VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03802" href="#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03802"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03802</span><br>
+<p><a id="VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12261" href="#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12261"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-12261</span><br>
 
-For each element of <code>pInfos</code>, its <code>scratchData.deviceAddress</code>
-member <strong>must</strong> be a valid <code>VkDeviceAddress</code></p>
+If <code>pInfos</code>[i].<code>mode</code> is
+<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR</code>, and the size
+reported by <code>buildScratchSize</code> member of the
+<a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned from a
+call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a> with an identical
+<a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a> structure and
+primitive count is non-zero,
+<code>pInfos</code>[i].<code>scratchData.deviceAddress</code> <strong>must</strong> be a device
+address allocated to the application from a buffer created with the
+<code>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03710" href="#VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03710"></a> <span class="vuid">VUID-vkCmdBuildAccelerationStructuresIndirectKHR-pInfos-03710</span><br>
@@ -5386,13 +5414,15 @@ feature <strong>must</strong> be enabled</p>
 <p><a id="VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10887" href="#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10887"></a> <span class="vuid">VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10887</span><br>
 
 If <code>format</code> is VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX, then
-<code>compressedData.address</code> <strong>must</strong> be aligned to 128 bytes</p>
+<code>compressedData</code> <strong>must</strong> be aligned to
+<code>VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX</code> (128) bytes</p>
 </li>
 <li>
 <p><a id="VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10888" href="#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10888"></a> <span class="vuid">VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-format-10888</span><br>
 
 If <code>format</code> is VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX, then
-<code>dataSize</code> <strong>must</strong> be aligned to 128 bytes</p>
+<code>dataSize</code> <strong>must</strong> be a multiple of
+<code>VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX</code> (128) bytes</p>
 </li>
 <li>
 <p><a id="VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-pNext-10890" href="#VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-pNext-10890"></a> <span class="vuid">VUID-VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX-pNext-10890</span><br>
@@ -5430,6 +5460,34 @@ If <code>pNext</code> is a pointer to a valid
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p><code>VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX</code> is the
+alignment requirement in bytes for compressed triangle data as specified in
+<a href="#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX">VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX</a>::<code>compressedData</code>.</p>
+</div>
+<div id="VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">#define VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_ALIGNMENT_AMDX 128U</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p><code>VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX</code> is the stride
+requirement in bytes for compressed triangle data as specified in
+<a href="#VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX">VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX</a>::<code>dataSize</code>.</p>
+</div>
+<div id="VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">#define VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_BYTE_STRIDE_AMDX 128U</code></pre>
 </div>
 </div>
 </div>
@@ -8071,7 +8129,8 @@ parameters required for the memory requirements query.</p>
 <p><code>pSizeInfo</code> is a pointer to a
 <a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure which returns
 the size required for an acceleration structure and scratch buffer,
-given the build parameters.</p>
+given the build parameters.
+The size requirements for a scratch buffer <strong>may</strong> be zero.</p>
 </li>
 </ul>
 </div>
@@ -8835,27 +8894,39 @@ for multiple acceleration structure builds <strong>must</strong> not overlap wit
 <li>
 <p><a id="VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10457" href="#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10457"></a> <span class="vuid">VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10457</span><br>
 
-The buffer from which the buffer device address for
-<code>pCommandInfos-&gt;scratchData</code> is queried <strong>must</strong> have been created with
-the <code>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</code> usage flag set</p>
+<code>pCommandInfos-&gt;scratchData</code> <strong>must</strong> be a device address allocated to
+the application from a buffer created with the
+<code>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10458" href="#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10458"></a> <span class="vuid">VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10458</span><br>
 
-The buffers from which the buffer device addresses for
-<code>pCommandInfos-&gt;srcInfosArray</code> and
-<code>pCommandInfos-&gt;srcInfosCount</code> are queried <strong>must</strong> have been created
-with the
+<code>pCommandInfos-&gt;srcInfosArray</code> <strong>must</strong> be a device address range
+allocated to application from a buffer created with the
+<code>VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR</code>
+usage flag set</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12246" href="#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12246"></a> <span class="vuid">VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12246</span><br>
+
+<code>pCommandInfos-&gt;srcInfosCount</code> <strong>must</strong> be a device address allocated
+to application from a buffer created with the
 <code>VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR</code>
 usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10459" href="#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10459"></a> <span class="vuid">VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-10459</span><br>
 
-The buffers from which the buffer device addresses for
-<code>pCommandInfos-&gt;dstImplicitData</code> and
-<code>pCommandInfos-&gt;dstAddressesArray</code> are queried <strong>must</strong> have been
-created with the
+<code>pCommandInfos-&gt;dstAddressesArray</code> <strong>must</strong> be a device address range
+allocated to the application from a buffer created with the
+<code>VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR</code> usage flag
+set</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12247" href="#VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12247"></a> <span class="vuid">VUID-vkCmdBuildClusterAccelerationStructureIndirectNV-pCommandInfos-12247</span><br>
+
+<code>pCommandInfos-&gt;dstImplicitData</code> <strong>must</strong> be a device address allocated
+to the application from a buffer created with the
 <code>VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR</code> usage flag
 set</p>
 </li>
@@ -9008,27 +9079,29 @@ this value is ignored.</p>
 used during cluster acceleration structure move or build.</p>
 </li>
 <li>
-<p><code>dstAddressesArray</code> is a <a href="resources.html#VkStridedDeviceAddressRegionKHR" class="xref page">VkStridedDeviceAddressRegionKHR</a> where
-the individual addresses and stride of moved or built cluster
-acceleration structures will be saved or read from depending on
+<p><code>dstAddressesArray</code> is a <a href="resources.html#VkStridedDeviceAddressRegionKHR" class="xref page">VkStridedDeviceAddressRegionKHR</a> that
+specifies addresses and stride for moved or built cluster acceleration
+structures, depending on the value of
 <a href="#VkClusterAccelerationStructureInputInfoNV">VkClusterAccelerationStructureInputInfoNV</a>::<code>opMode</code>.
 If <a href="#VkClusterAccelerationStructureInputInfoNV">VkClusterAccelerationStructureInputInfoNV</a>::<code>opMode</code> is
 <code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV</code>
-and the address in <code>dstAddressesArray</code> is not <code>0</code>, then the
-addresses are saved.
+and <a href="resources.html#VkStridedDeviceAddressRegionKHR" class="xref page">VkStridedDeviceAddressRegionKHR</a>::<code>deviceAddress</code> is not
+<code>0</code>, then the implementation writes the cluster addresses to the
+specified region.
 If <a href="#VkClusterAccelerationStructureInputInfoNV">VkClusterAccelerationStructureInputInfoNV</a>::<code>opMode</code> is
 <code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV</code>,
-then the addresses are read from.
+the implementation reads the cluster addresses from the specified
+region.
 If <a href="#VkClusterAccelerationStructureInputInfoNV">VkClusterAccelerationStructureInputInfoNV</a>::<code>opMode</code> is
-<code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV</code>, then
-this value is ignored and <strong>may</strong> be <code>0</code>.</p>
+<code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV</code>, this
+member is ignored.</p>
 </li>
 <li>
-<p><code>dstSizesArray</code> is <code>NULL</code> or a <a href="resources.html#VkStridedDeviceAddressRegionKHR" class="xref page">VkStridedDeviceAddressRegionKHR</a>
+<p><code>dstSizesArray</code> is a <a href="resources.html#VkStridedDeviceAddressRegionKHR" class="xref page">VkStridedDeviceAddressRegionKHR</a>
 containing sizes of moved or built cluster acceleration structures.
-Similar to <code>dstAddressesArray</code>, if
-<a href="#VkClusterAccelerationStructureInputInfoNV">VkClusterAccelerationStructureInputInfoNV</a>::<code>opMode</code> is
-<code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV</code>,
+If <a href="#VkClusterAccelerationStructureInputInfoNV">VkClusterAccelerationStructureInputInfoNV</a>::<code>opMode</code> is
+<code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV</code>
+or <code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_COMPUTE_SIZES_NV</code>,
 then the sizes are saved.
 If <a href="#VkClusterAccelerationStructureInputInfoNV">VkClusterAccelerationStructureInputInfoNV</a>::<code>opMode</code> is
 <code>VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV</code>,
@@ -9236,6 +9309,14 @@ then depending on the
 <a href="limits.html#VkPhysicalDeviceClusterAccelerationStructurePropertiesNV" class="xref page">VkPhysicalDeviceClusterAccelerationStructurePropertiesNV</a>::<code>clusterScratchByteAlignment</code></p>
 </li>
 <li>
+<p><a id="VUID-VkClusterAccelerationStructureCommandsInfoNV-buildScratchSize-12248" href="#VUID-VkClusterAccelerationStructureCommandsInfoNV-buildScratchSize-12248"></a> <span class="vuid">VUID-VkClusterAccelerationStructureCommandsInfoNV-buildScratchSize-12248</span><br>
+
+If the <code>buildScratchSize</code> member of the
+<a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned from a
+call to <a href="#vkGetClusterAccelerationStructureBuildSizesNV">vkGetClusterAccelerationStructureBuildSizesNV</a> is not <code>0</code>,
+then <code>scratchData</code> <strong>must</strong> be a valid device address</p>
+</li>
+<li>
 <p><a id="VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-10481" href="#VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-10481"></a> <span class="vuid">VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-10481</span><br>
 
 <code>srcInfosCount</code> <strong>must</strong> be 4-byte aligned</p>
@@ -9274,7 +9355,7 @@ maximum values with which memory requirements were queried in
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureCommandsInfoNV-dstImplicitData-parameter" href="#VUID-VkClusterAccelerationStructureCommandsInfoNV-dstImplicitData-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureCommandsInfoNV-dstImplicitData-parameter</span><br>
- <code>dstImplicitData</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+ If <code>dstImplicitData</code> is not <code>0</code>, <code>dstImplicitData</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureCommandsInfoNV-scratchData-parameter" href="#VUID-VkClusterAccelerationStructureCommandsInfoNV-scratchData-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureCommandsInfoNV-scratchData-parameter</span><br>
@@ -9282,7 +9363,7 @@ maximum values with which memory requirements were queried in
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-parameter" href="#VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureCommandsInfoNV-srcInfosCount-parameter</span><br>
- <code>srcInfosCount</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+ If <code>srcInfosCount</code> is not <code>0</code>, <code>srcInfosCount</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureCommandsInfoNV-addressResolutionFlags-parameter" href="#VUID-VkClusterAccelerationStructureCommandsInfoNV-addressResolutionFlags-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureCommandsInfoNV-addressResolutionFlags-parameter</span><br>
@@ -9917,15 +9998,15 @@ flag set in <a href="#VkClusterAccelerationStructureInputInfoNV">VkClusterAccele
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-geometryIndexAndFlagsBuffer-parameter" href="#VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-geometryIndexAndFlagsBuffer-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-geometryIndexAndFlagsBuffer-parameter</span><br>
- <code>geometryIndexAndFlagsBuffer</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+ If <code>geometryIndexAndFlagsBuffer</code> is not <code>0</code>, <code>geometryIndexAndFlagsBuffer</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapArray-parameter" href="#VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapArray-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapArray-parameter</span><br>
- <code>opacityMicromapArray</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+ If <code>opacityMicromapArray</code> is not <code>0</code>, <code>opacityMicromapArray</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapIndexBuffer-parameter" href="#VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapIndexBuffer-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureBuildTriangleClusterInfoNV-opacityMicromapIndexBuffer-parameter</span><br>
- <code>opacityMicromapIndexBuffer</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+ If <code>opacityMicromapIndexBuffer</code> is not <code>0</code>, <code>opacityMicromapIndexBuffer</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 </ul>
 </div>
@@ -10248,23 +10329,23 @@ flag set in <a href="#VkClusterAccelerationStructureInputInfoNV">VkClusterAccele
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-vertexBuffer-parameter" href="#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-vertexBuffer-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-vertexBuffer-parameter</span><br>
- <code>vertexBuffer</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+ If <code>vertexBuffer</code> is not <code>0</code>, <code>vertexBuffer</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-geometryIndexAndFlagsBuffer-parameter" href="#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-geometryIndexAndFlagsBuffer-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-geometryIndexAndFlagsBuffer-parameter</span><br>
- <code>geometryIndexAndFlagsBuffer</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+ If <code>geometryIndexAndFlagsBuffer</code> is not <code>0</code>, <code>geometryIndexAndFlagsBuffer</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapArray-parameter" href="#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapArray-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapArray-parameter</span><br>
- <code>opacityMicromapArray</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+ If <code>opacityMicromapArray</code> is not <code>0</code>, <code>opacityMicromapArray</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapIndexBuffer-parameter" href="#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapIndexBuffer-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapIndexBuffer-parameter</span><br>
- <code>opacityMicromapIndexBuffer</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+ If <code>opacityMicromapIndexBuffer</code> is not <code>0</code>, <code>opacityMicromapIndexBuffer</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 <li>
 <p><a id="VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-instantiationBoundingBoxLimit-parameter" href="#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-instantiationBoundingBoxLimit-parameter"></a> <span class="vuid">VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-instantiationBoundingBoxLimit-parameter</span><br>
- <code>instantiationBoundingBoxLimit</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+ If <code>instantiationBoundingBoxLimit</code> is not <code>0</code>, <code>instantiationBoundingBoxLimit</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 </ul>
 </div>
@@ -10308,9 +10389,11 @@ index of each triangle.</p>
 cluster template.</p>
 </li>
 <li>
-<p><code>vertexBuffer</code> is either <code>0</code> or a <a href="#VkStridedDeviceAddressNV">VkStridedDeviceAddressNV</a>
-structure containing the vertex data for the indexed triangles stored in
-the cluster template.</p>
+<p><code>vertexBuffer</code> is a <a href="#VkStridedDeviceAddressNV">VkStridedDeviceAddressNV</a> structure
+containing the vertex data for the indexed triangles stored in the
+cluster template.
+If the address in <a href="#VkStridedDeviceAddressNV">VkStridedDeviceAddressNV</a> is <code>0</code> the vertex data
+is sourced from the cluster template.</p>
 </li>
 </ul>
 </div>
@@ -10544,7 +10627,8 @@ containing parameters required for the memory requirements query.</p>
 <p><code>pSizeInfo</code> is a pointer to a
 <a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure which returns
 the size required for an acceleration structure and the sizes required
-for the scratch buffers, given the build parameters.</p>
+for the scratch buffers, given the build parameters.
+The size requirements for a scratch buffer <strong>may</strong> be zero.</p>
 </li>
 </ul>
 </div>
@@ -10901,26 +10985,25 @@ each other</p>
 <li>
 <p><a id="VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10550" href="#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10550"></a> <span class="vuid">VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10550</span><br>
 
-The buffer from which the buffer device address for
-<code>pBuildInfo-&gt;scratchData</code> is queried <strong>must</strong> have been created with
-the <code>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</code> usage flag set</p>
+<code>pBuildInfo-&gt;scratchData</code> <strong>must</strong> be a device address allocated to the
+application from a buffer created with the
+<code>VK_BUFFER_USAGE_STORAGE_BUFFER_BIT</code> usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10551" href="#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10551"></a> <span class="vuid">VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10551</span><br>
 
-The buffers from which the buffer device addresses for
-<code>pBuildInfo-&gt;srcInfos</code> and <code>pBuildInfo-&gt;srcInfosCount</code> are
-queried <strong>must</strong> have been created with the
+<code>pBuildInfo-&gt;srcInfos</code> and <code>pBuildInfo-&gt;srcInfosCount</code> <strong>must</strong> be
+device addresses allocated to the application from buffers created with
+the
 <code>VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR</code>
 usage flag set</p>
 </li>
 <li>
 <p><a id="VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10552" href="#VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10552"></a> <span class="vuid">VUID-vkCmdBuildPartitionedAccelerationStructuresNV-pBuildInfo-10552</span><br>
 
-The buffers from which the buffer device addresses for
 <code>pBuildInfo-&gt;srcAccelerationStructureData</code> and
-<code>pBuildInfo-&gt;dstAccelerationStructureData</code> are queried <strong>must</strong> have
-been created with the
+<code>pBuildInfo-&gt;dstAccelerationStructureData</code> <strong>must</strong> be a device
+addresses allocated to the application from buffers created with the
 <code>VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR</code> usage flag
 set</p>
 </li>
@@ -11098,7 +11181,10 @@ is not modified.</p>
 <li>
 <p><a id="VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10558" href="#VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10558"></a> <span class="vuid">VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10558</span><br>
 
-<code>scratchData</code> <strong>must</strong> not be <code>NULL</code></p>
+If the <code>buildScratchSize</code> member of the
+<a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned from a
+call to <a href="#vkGetPartitionedAccelerationStructuresBuildSizesNV">vkGetPartitionedAccelerationStructuresBuildSizesNV</a> is not
+<code>0</code>, then <code>scratchData</code> <strong>must</strong> be a valid device address</p>
 </li>
 <li>
 <p><a id="VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10559" href="#VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10559"></a> <span class="vuid">VUID-VkBuildPartitionedAccelerationStructureInfoNV-scratchData-10559</span><br>
@@ -11164,7 +11250,7 @@ Each element of <code>srcInfos</code> array <strong>must</strong> have a unique
 </li>
 <li>
 <p><a id="VUID-VkBuildPartitionedAccelerationStructureInfoNV-srcAccelerationStructureData-parameter" href="#VUID-VkBuildPartitionedAccelerationStructureInfoNV-srcAccelerationStructureData-parameter"></a> <span class="vuid">VUID-VkBuildPartitionedAccelerationStructureInfoNV-srcAccelerationStructureData-parameter</span><br>
- <code>srcAccelerationStructureData</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
+ If <code>srcAccelerationStructureData</code> is not <code>0</code>, <code>srcAccelerationStructureData</code> <strong>must</strong> be a valid <code>VkDeviceAddress</code> value</p>
 </li>
 <li>
 <p><a id="VUID-VkBuildPartitionedAccelerationStructureInfoNV-dstAccelerationStructureData-parameter" href="#VUID-VkBuildPartitionedAccelerationStructureInfoNV-dstAccelerationStructureData-parameter"></a> <span class="vuid">VUID-VkBuildPartitionedAccelerationStructureInfoNV-dstAccelerationStructureData-parameter</span><br>
@@ -11442,6 +11528,20 @@ set</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p><code>VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV</code> is a
+special constant value used for partitioned acceleration structures to
+specify global partitions.</p>
+</div>
+<div id="VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">#define VK_PARTITIONED_ACCELERATION_STRUCTURE_PARTITION_INDEX_GLOBAL_NV (~0U)</code></pre>
 </div>
 </div>
 </div>
@@ -12293,30 +12393,30 @@ member of any element of <code>pGeometries</code> or <code>ppGeometries</code> w
 bound to host-visible device memory</p>
 </li>
 <li>
-<p><a id="VUID-vkBuildAccelerationStructuresKHR-pInfos-03725" href="#VUID-vkBuildAccelerationStructuresKHR-pInfos-03725"></a> <span class="vuid">VUID-vkBuildAccelerationStructuresKHR-pInfos-03725</span><br>
+<p><a id="VUID-vkBuildAccelerationStructuresKHR-pInfos-12244" href="#VUID-vkBuildAccelerationStructuresKHR-pInfos-12244"></a> <span class="vuid">VUID-vkBuildAccelerationStructuresKHR-pInfos-12244</span><br>
 
 If <code>pInfos</code>[i].<code>mode</code> is
-<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR</code>, all addresses
-between <code>pInfos</code>[i].<code>scratchData.hostAddress</code> and
-<code>pInfos</code>[i].<code>scratchData.hostAddress</code> + N - 1 <strong>must</strong> be valid
-host memory, where N is given by the <code>buildScratchSize</code> member of
-the <a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned
-from a call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a> with an
-identical <a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a> structure
-and primitive count</p>
+<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR</code>, and N is not <code>0</code>,
+all addresses between <code>pInfos</code>[i].<code>scratchData.hostAddress</code> and
+<code>pInfos</code>[i].<code>scratchData.hostAddress</code> <span class="eq">+  N - 1</span> <strong>must</strong>
+be valid host memory, where N is given by the <code>buildScratchSize</code>
+member of the <a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure
+returned from a call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a>
+with an identical <a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a>
+structure and primitive count</p>
 </li>
 <li>
-<p><a id="VUID-vkBuildAccelerationStructuresKHR-pInfos-03726" href="#VUID-vkBuildAccelerationStructuresKHR-pInfos-03726"></a> <span class="vuid">VUID-vkBuildAccelerationStructuresKHR-pInfos-03726</span><br>
+<p><a id="VUID-vkBuildAccelerationStructuresKHR-pInfos-12245" href="#VUID-vkBuildAccelerationStructuresKHR-pInfos-12245"></a> <span class="vuid">VUID-vkBuildAccelerationStructuresKHR-pInfos-12245</span><br>
 
 If <code>pInfos</code>[i].<code>mode</code> is
-<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR</code>, all addresses
-between <code>pInfos</code>[i].<code>scratchData.hostAddress</code> and
-<code>pInfos</code>[i].<code>scratchData.hostAddress</code> + N - 1 <strong>must</strong> be valid
-host memory, where N is given by the <code>updateScratchSize</code> member of
-the <a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure returned
-from a call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a> with an
-identical <a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a> structure
-and primitive count</p>
+<code>VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR</code>, and N is not <code>0</code>,
+all addresses between <code>pInfos</code>[i].<code>scratchData.hostAddress</code> and
+<code>pInfos</code>[i].<code>scratchData.hostAddress</code> <span class="eq">+  N - 1</span> <strong>must</strong>
+be valid host memory, where N is given by the <code>updateScratchSize</code>
+member of the <a href="resources.html#VkAccelerationStructureBuildSizesInfoKHR" class="xref page">VkAccelerationStructureBuildSizesInfoKHR</a> structure
+returned from a call to <a href="resources.html#vkGetAccelerationStructureBuildSizesKHR" class="xref page">vkGetAccelerationStructureBuildSizesKHR</a>
+with an identical <a href="#VkAccelerationStructureBuildGeometryInfoKHR">VkAccelerationStructureBuildGeometryInfoKHR</a>
+structure and primitive count</p>
 </li>
 <li>
 <p><a id="VUID-vkBuildAccelerationStructuresKHR-pInfos-03771" href="#VUID-vkBuildAccelerationStructuresKHR-pInfos-03771"></a> <span class="vuid">VUID-vkBuildAccelerationStructuresKHR-pInfos-03771</span><br>

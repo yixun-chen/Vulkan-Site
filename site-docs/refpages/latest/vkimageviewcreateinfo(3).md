@@ -533,8 +533,10 @@ structure with a `conversion` value other than [VK_NULL_HANDLE](VK_NULL_HANDLE.h
 
 [](#VUID-VkImageViewCreateInfo-image-01020) VUID-VkImageViewCreateInfo-image-01020
 
-If `image` is non-sparse then it **must** be bound completely and
-contiguously to a single `VkDeviceMemory` object
+If `image` is non-sparse then the image
+or each specified *disjoint* plane
+**must** be bound completely and contiguously to a single
+`VkDeviceMemory` object
 
 [](#VUID-VkImageViewCreateInfo-subResourceRange-01021) VUID-VkImageViewCreateInfo-subResourceRange-01021
 

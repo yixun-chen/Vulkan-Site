@@ -22,10 +22,10 @@
 - [Using_External_Compute_Queues](#_using_external_compute_queues)
 - [3.1.2. Properties](#_properties)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: How does execution of work on an external compute queue interact with vkDeviceWaitIdle?](#_resolved_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle)
-- [4.1._RESOLVED:_How_does_execution_of_work_on_an_external_compute_queue_interact_with_vkDeviceWaitIdle?](#_resolved_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle)
-- [4.2. RESOLVED: Does this extension allow for more direct sharing of resources between Vulkan and the external compute API?](#_resolved_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api)
-- [4.2._RESOLVED:_Does_this_extension_allow_for_more_direct_sharing_of_resources_between_Vulkan_and_the_external_compute_API?](#_resolved_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api)
+- [4.1. How does execution of work on an external compute queue interact with vkDeviceWaitIdle?](#_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle)
+- [4.1._How_does_execution_of_work_on_an_external_compute_queue_interact_with_vkDeviceWaitIdle?](#_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle)
+- [4.2. Does this extension allow for more direct sharing of resources between Vulkan and the external compute API?](#_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api)
+- [4.2._Does_this_extension_allow_for_more_direct_sharing_of_resources_between_Vulkan_and_the_external_compute_API?](#_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api)
 
 ## Content
 
@@ -39,8 +39,8 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: How does execution of work on an external compute queue interact with `vkDeviceWaitIdle`?](#_resolved_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle)
-[4.2. RESOLVED: Does this extension allow for more direct sharing of resources between Vulkan and the external compute API?](#_resolved_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api)
+[4.1. How does execution of work on an external compute queue interact with `vkDeviceWaitIdle`?](#_how_does_execution_of_work_on_an_external_compute_queue_interact_with_vkdevicewaitidle)
+[4.2. Does this extension allow for more direct sharing of resources between Vulkan and the external compute API?](#_does_this_extension_allow_for_more_direct_sharing_of_resources_between_vulkan_and_the_external_compute_api)
 
 Vulkan applications launching compute workloads through external APIs are presently limited by the fact that execution of these workloads is performed within a separate execution context on the GPU. This limits the ability of applications to achieve maximum performance when executing these externally launched compute workloads as these external compute workloads will not be able to execute simultaneously to the workloads launched through the Vulkan API.
 

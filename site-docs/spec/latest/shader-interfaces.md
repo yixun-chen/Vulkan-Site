@@ -789,8 +789,12 @@ is not enabled, and
 A subpass input variable identified with an `InputAttachmentIndex`
 decoration of *i* reads from the input attachment indicated by
 `pInputAttachments`[*i*] member of `VkSubpassDescription`.
-If the subpass input variable is declared as an array of size N, it consumes
-N consecutive input attachments, starting with the index specified.
+If the subpass input variable is declared as an array of size N,
+or a runtime-sized array,
+it consumes consecutive input attachments, starting with the index
+specified.
+For runtime-sized arrays, the number of input attachment indices consumed is
+equal to [VkDescriptorSetLayoutBinding](descriptorsets.html#VkDescriptorSetLayoutBinding)::`descriptorCount`.
 There **must** not be more than one input variable with the same
 `InputAttachmentIndex` whether explicitly declared or implied by an array
 declaration per image aspect.

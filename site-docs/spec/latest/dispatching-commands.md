@@ -14,6 +14,8 @@
 - [Passing_Dispatch_Parameters_and_Arguments](#cudadispatch_info)
 - [Resource Sharing from Vulkan to the CUDA Kernel](#cudadispatch_sharing_resources)
 - [Resource_Sharing_from_Vulkan_to_the_CUDA_Kernel](#cudadispatch_sharing_resources)
+- [Compute Occupancy Priority](#compute-occupancy-priority)
+- [Compute_Occupancy_Priority](#compute-occupancy-priority)
 
 ## Content
 
@@ -4495,3 +4497,166 @@ extern "C"  __global__ void cudaFunction(
   // write result
   surf3Dwrite(result, volumeTexOut, i * sizeof(float), j, k);
 }
+
+The [VK_NV_compute_occupancy_priority](../appendices/extensions.html#VK_NV_compute_occupancy_priority) extension provides applications
+with control over how their compute workloads utilize GPU compute resources,
+specifically allowing prioritization relative to other simultaneously
+executing workloads.
+Applications can specify the priority with which compute workloads should
+occupy GPU compute resources, allowing for a fine-grained distinction
+between workloads that may want to execute at a background priority over a
+long period of time versus workloads with harder latency requirements.
+
+To set the compute occupancy priority for subsequent compute dispatches,
+call:
+
+// Provided by VK_NV_compute_occupancy_priority
+void vkCmdSetComputeOccupancyPriorityNV(
+    VkCommandBuffer                             commandBuffer,
+    const VkComputeOccupancyPriorityParametersNV* pParameters);
+
+* 
+`commandBuffer` is the command buffer into which the command will be
+recorded.
+
+* 
+`pParameters` is a pointer to a
+[VkComputeOccupancyPriorityParametersNV](#VkComputeOccupancyPriorityParametersNV) structure specifying the
+occupancy priority parameters.
+
+The occupancy priority affects how compute workloads utilize GPU compute
+resources relative to other simultaneously executing workloads.
+The priority is stateful on a command buffer.
+All compute dispatch commands issued subsequent to a
+[vkCmdSetComputeOccupancyPriorityNV](#vkCmdSetComputeOccupancyPriorityNV) call will be executed with the
+specified priority parameters until another
+[vkCmdSetComputeOccupancyPriorityNV](#vkCmdSetComputeOccupancyPriorityNV) call is made.
+
+All command buffers (primary and secondary) start with a priority level
+equal to the `VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV` value.
+The priority state is not inherited by secondary command buffers - each
+command buffer maintains its own independent priority state.
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-parameter) VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-parameter
+
+ `commandBuffer` **must** be a valid [VkCommandBuffer](cmdbuffers.html#VkCommandBuffer) handle
+
+* 
+[](#VUID-vkCmdSetComputeOccupancyPriorityNV-pParameters-parameter) VUID-vkCmdSetComputeOccupancyPriorityNV-pParameters-parameter
+
+ `pParameters` **must** be a valid pointer to a valid [VkComputeOccupancyPriorityParametersNV](#VkComputeOccupancyPriorityParametersNV) structure
+
+* 
+[](#VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-recording) VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-recording
+
+ `commandBuffer` **must** be in the [recording state](cmdbuffers.html#commandbuffers-lifecycle)
+
+* 
+[](#VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-cmdpool) VUID-vkCmdSetComputeOccupancyPriorityNV-commandBuffer-cmdpool
+
+ The `VkCommandPool` that `commandBuffer` was allocated from **must** support `VK_QUEUE_COMPUTE_BIT` operations
+
+* 
+[](#VUID-vkCmdSetComputeOccupancyPriorityNV-videocoding) VUID-vkCmdSetComputeOccupancyPriorityNV-videocoding
+
+ This command **must** only be called outside of a video coding scope
+
+Host Synchronization
+
+* 
+Host access to the `VkCommandPool` that `commandBuffer` was allocated from **must** be externally synchronized
+
+Command Properties
+| [Command Buffer Levels](cmdbuffers.html#VkCommandBufferLevel) | [Render Pass Scope](renderpass.html#vkCmdBeginRenderPass) | [Video Coding Scope](videocoding.html#vkCmdBeginVideoCodingKHR) | [Supported Queue Types](devsandqueues.html#VkQueueFlagBits) | [Command Type](fundamentals.html#fundamentals-queueoperation-command-types) |
+| --- | --- | --- | --- | --- |
+| Primary
+
+Secondary | Both | Outside | VK_QUEUE_COMPUTE_BIT | State |
+
+Conditional Rendering
+
+vkCmdSetComputeOccupancyPriorityNV is not affected by [conditional rendering](drawing.html#drawing-conditional-rendering)
+
+The `VkComputeOccupancyPriorityParametersNV` structure is defined as:
+
+// Provided by VK_NV_compute_occupancy_priority
+typedef struct VkComputeOccupancyPriorityParametersNV {
+    VkStructureType    sType;
+    const void*        pNext;
+    float              occupancyPriority;
+    float              occupancyThrottling;
+} VkComputeOccupancyPriorityParametersNV;
+
+* 
+`sType` is a [VkStructureType](fundamentals.html#VkStructureType) value identifying this structure.
+
+* 
+`pNext` is `NULL` or a pointer to a structure extending this
+structure.
+
+* 
+`occupancyPriority` is a value specifying the occupancy priority for
+subsequent compute workloads, with a valid range of [0.0, 1.0].
+A value of 0.0 represents the lowest priority, while a value of 1.0 is
+the maximum priority.
+Default priority is specified by a value of 0.5.
+
+* 
+`occupancyThrottling` is a value specifying the level of occupancy
+throttling applied to subsequent workloads, with a valid range of [0.0,
+1.0].
+A value of 0.0 (the default) means no throttling is applied, allowing
+workloads to use the full available compute capacity.
+Non-zero values represent increasing levels of throttling, with higher
+values resulting in more restrictive occupancy limits.
+A value of 1.0 represents the maximum level of throttling supported by
+the implementation.
+
+Valid Usage
+
+* 
+[](#VUID-VkComputeOccupancyPriorityParametersNV-occupancyPriority-11919) VUID-VkComputeOccupancyPriorityParametersNV-occupancyPriority-11919
+
+`occupancyPriority` **must** be between `0` and `1`, inclusive
+
+* 
+[](#VUID-VkComputeOccupancyPriorityParametersNV-occupancyThrottling-11920) VUID-VkComputeOccupancyPriorityParametersNV-occupancyThrottling-11920
+
+`occupancyThrottling` **must** be between `0` and `1`, inclusive
+
+Valid Usage (Implicit)
+
+* 
+[](#VUID-VkComputeOccupancyPriorityParametersNV-sType-sType) VUID-VkComputeOccupancyPriorityParametersNV-sType-sType
+
+ `sType` **must** be `VK_STRUCTURE_TYPE_COMPUTE_OCCUPANCY_PRIORITY_PARAMETERS_NV`
+
+* 
+[](#VUID-VkComputeOccupancyPriorityParametersNV-pNext-pNext) VUID-VkComputeOccupancyPriorityParametersNV-pNext-pNext
+
+ `pNext` **must** be `NULL`
+
+`VK_COMPUTE_OCCUPANCY_PRIORITY_LOW_NV` is a constant value that can be
+used for
+[VkComputeOccupancyPriorityParametersNV](#VkComputeOccupancyPriorityParametersNV)::`occupancyPriority` to
+specify a low priority level.
+
+#define VK_COMPUTE_OCCUPANCY_PRIORITY_LOW_NV 0.25f
+
+`VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV` is a constant value that can
+be used for
+[VkComputeOccupancyPriorityParametersNV](#VkComputeOccupancyPriorityParametersNV)::`occupancyPriority` to
+specify a normal priority level.
+This represents the default priority level.
+
+#define VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV 0.50f
+
+`VK_COMPUTE_OCCUPANCY_PRIORITY_HIGH_NV` is a constant value that can be
+used for
+[VkComputeOccupancyPriorityParametersNV](#VkComputeOccupancyPriorityParametersNV)::`occupancyPriority` to
+specify a high priority level.
+
+#define VK_COMPUTE_OCCUPANCY_PRIORITY_HIGH_NV 0.75f

@@ -40,6 +40,7 @@ containing parameters required for the memory requirements query.
 [VkAccelerationStructureBuildSizesInfoKHR](VkAccelerationStructureBuildSizesInfoKHR.html) structure which returns
 the size required for an acceleration structure and the sizes required
 for the scratch buffers, given the build parameters.
+The size requirements for a scratch buffer **may** be zero.
 
 Valid Usage
 

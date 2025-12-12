@@ -27,14 +27,14 @@
 - [3.7. Features](#_features)
 - [4. Examples](#_examples)
 - [5. Issues](#_issues)
-- [5.1. RESOLVED: Should the result of combiners be required to be a valid rate?](#_resolved_should_the_result_of_combiners_be_required_to_be_a_valid_rate)
-- [5.1._RESOLVED:_Should_the_result_of_combiners_be_required_to_be_a_valid_rate?](#_resolved_should_the_result_of_combiners_be_required_to_be_a_valid_rate)
-- [5.2. RESOLVED: Should the various limits on state setting be validated?](#_resolved_should_the_various_limits_on_state_setting_be_validated)
-- [5.2._RESOLVED:_Should_the_various_limits_on_state_setting_be_validated?](#_resolved_should_the_various_limits_on_state_setting_be_validated)
-- [5.3. RESOLVED: Should we describe the final combiner operation as a multiplication or addition? Related, should the per-draw fragment shading rate be set as flags or raw values?](#_resolved_should_we_describe_the_final_combiner_operation_as_a_multiplication_or_addition_related_should_the_per_draw_fragment_shading_rate_be_set_as_flags_or_raw_values)
-- [5.3._RESOLVED:_Should_we_describe_the_final_combiner_operation_as_a_multiplication_or_addition?_Related,_should_the_per-draw_fragment_shading_rate_be_set_as_flags_or_raw_values?](#_resolved_should_we_describe_the_final_combiner_operation_as_a_multiplication_or_addition_related_should_the_per_draw_fragment_shading_rate_be_set_as_flags_or_raw_values)
-- [5.4. RESOLVED: When no fragment shading rate is provided, should the default rate {1, 1} take part in combination operation?](#_resolved_when_no_fragment_shading_rate_is_provided_should_the_default_rate_1_1_take_part_in_combination_operation)
-- [5.4._RESOLVED:_When_no_fragment_shading_rate_is_provided,_should_the_default_rate_{1,_1}_take_part_in_combination_operation?](#_resolved_when_no_fragment_shading_rate_is_provided_should_the_default_rate_1_1_take_part_in_combination_operation)
+- [5.1. Should the result of combiners be required to be a valid rate?](#_should_the_result_of_combiners_be_required_to_be_a_valid_rate)
+- [5.1._Should_the_result_of_combiners_be_required_to_be_a_valid_rate?](#_should_the_result_of_combiners_be_required_to_be_a_valid_rate)
+- [5.2. Should the various limits on state setting be validated?](#_should_the_various_limits_on_state_setting_be_validated)
+- [5.2._Should_the_various_limits_on_state_setting_be_validated?](#_should_the_various_limits_on_state_setting_be_validated)
+- [5.3. Should we describe the final combiner operation as a multiplication or addition? Related, should the per-draw fragment shading rate be set as flags or raw values?](#_should_we_describe_the_final_combiner_operation_as_a_multiplication_or_addition_related_should_the_per_draw_fragment_shading_rate_be_set_as_flags_or_raw_values)
+- [5.3._Should_we_describe_the_final_combiner_operation_as_a_multiplication_or_addition?_Related,_should_the_per-draw_fragment_shading_rate_be_set_as_flags_or_raw_values?](#_should_we_describe_the_final_combiner_operation_as_a_multiplication_or_addition_related_should_the_per_draw_fragment_shading_rate_be_set_as_flags_or_raw_values)
+- [5.4. When no fragment shading rate is provided, should the default rate {1, 1} take part in combination operation?](#_when_no_fragment_shading_rate_is_provided_should_the_default_rate_1_1_take_part_in_combination_operation)
+- [5.4._When_no_fragment_shading_rate_is_provided,_should_the_default_rate_{1,_1}_take_part_in_combination_operation?](#_when_no_fragment_shading_rate_is_provided_should_the_default_rate_1_1_take_part_in_combination_operation)
 
 ## Content
 
@@ -55,10 +55,10 @@ Table of Contents
 [4. Examples](#_examples)
 [5. Issues](#_issues)
 
-[5.1. RESOLVED: Should the result of combiners be required to be a valid rate?](#_resolved_should_the_result_of_combiners_be_required_to_be_a_valid_rate)
-[5.2. RESOLVED: Should the various limits on state setting be validated?](#_resolved_should_the_various_limits_on_state_setting_be_validated)
-[5.3. RESOLVED: Should we describe the final combiner operation as a multiplication or addition? Related, should the per-draw fragment shading rate be set as flags or raw values?](#_resolved_should_we_describe_the_final_combiner_operation_as_a_multiplication_or_addition_related_should_the_per_draw_fragment_shading_rate_be_set_as_flags_or_raw_values)
-[5.4. RESOLVED: When no fragment shading rate is provided, should the default rate {1, 1} take part in combination operation?](#_resolved_when_no_fragment_shading_rate_is_provided_should_the_default_rate_1_1_take_part_in_combination_operation)
+[5.1. Should the result of combiners be required to be a valid rate?](#_should_the_result_of_combiners_be_required_to_be_a_valid_rate)
+[5.2. Should the various limits on state setting be validated?](#_should_the_various_limits_on_state_setting_be_validated)
+[5.3. Should we describe the final combiner operation as a multiplication or addition? Related, should the per-draw fragment shading rate be set as flags or raw values?](#_should_we_describe_the_final_combiner_operation_as_a_multiplication_or_addition_related_should_the_per_draw_fragment_shading_rate_be_set_as_flags_or_raw_values)
+[5.4. When no fragment shading rate is provided, should the default rate {1, 1} take part in combination operation?](#_when_no_fragment_shading_rate_is_provided_should_the_default_rate_1_1_take_part_in_combination_operation)
 
 This extension adds the ability to change the rate at which fragments are shaded. Rather than the usual single fragment invocation for each pixel covered by a primitive, multiple pixels can be shaded by a single fragment shader invocation.
 

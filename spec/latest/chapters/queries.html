@@ -3501,19 +3501,35 @@ All queries used by the command <strong>must</strong> not be uninitialized</p>
 If <code>VK_QUERY_RESULT_64_BIT</code> is not set in <code>flags</code>
 and the <code>queryType</code> used to create <code>queryPool</code> was not
 <code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>,
-then <code>pData</code> and <code>stride</code> <strong>must</strong> be multiples of <code>4</code></p>
+then <code>pData</code> <strong>must</strong> be aligned to a multiple of <code>4</code></p>
+</li>
+<li>
+<p><a id="VUID-vkGetQueryPoolResults-queryCount-12251" href="#VUID-vkGetQueryPoolResults-queryCount-12251"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryCount-12251</span><br>
+
+If <code>queryCount</code> is greater than 1, <code>VK_QUERY_RESULT_64_BIT</code> is
+not set in <code>flags</code>
+and the <code>queryType</code> used to create <code>queryPool</code> was not
+<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>,
+then <code>stride</code> <strong>must</strong> be a multiple of <code>4</code></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-flags-00815" href="#VUID-vkGetQueryPoolResults-flags-00815"></a> <span class="vuid">VUID-vkGetQueryPoolResults-flags-00815</span><br>
 
 If <code>VK_QUERY_RESULT_64_BIT</code> is set in <code>flags</code> then <code>pData</code>
-and <code>stride</code> <strong>must</strong> be multiples of <code>8</code></p>
+<strong>must</strong> be aligned to a multiple of <code>8</code></p>
+</li>
+<li>
+<p><a id="VUID-vkGetQueryPoolResults-queryCount-12252" href="#VUID-vkGetQueryPoolResults-queryCount-12252"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryCount-12252</span><br>
+
+If <code>queryCount</code> is greater than 1 and <code>VK_QUERY_RESULT_64_BIT</code>
+is set in <code>flags</code>, then <code>stride</code> <strong>must</strong> be a multiple of <code>8</code></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-stride-08993" href="#VUID-vkGetQueryPoolResults-stride-08993"></a> <span class="vuid">VUID-vkGetQueryPoolResults-stride-08993</span><br>
 
-    If <code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code> is set, <code>stride</code>
-    <strong>must</strong> be large enough to contain the unsigned integer representing
+    If <code>queryCount</code> is greater than 1 and
+    <code>VK_QUERY_RESULT_WITH_AVAILABILITY_BIT</code> is set, <code>stride</code> <strong>must</strong>
+    be large enough to contain the unsigned integer representing
     availability
 or status
     in addition to the query result</p>
@@ -3522,16 +3538,23 @@ or status
 <p><a id="VUID-vkGetQueryPoolResults-queryType-03229" href="#VUID-vkGetQueryPoolResults-queryType-03229"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryType-03229</span><br>
 
 If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, then <code>pData</code> and
-<code>stride</code> <strong>must</strong> be multiples of the size of
+<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, then <code>pData</code> <strong>must</strong> be
+aligned to a multiple of the size of <a href="#VkPerformanceCounterResultKHR">VkPerformanceCounterResultKHR</a></p>
+</li>
+<li>
+<p><a id="VUID-vkGetQueryPoolResults-queryCount-12253" href="#VUID-vkGetQueryPoolResults-queryCount-12253"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryCount-12253</span><br>
+
+If <code>queryCount</code> is greater than 1 and the <code>queryType</code> used to
+create <code>queryPool</code> was <code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>,
+then <code>stride</code> <strong>must</strong> be a multiple of the size of
 <a href="#VkPerformanceCounterResultKHR">VkPerformanceCounterResultKHR</a></p>
 </li>
 <li>
 <p><a id="VUID-vkGetQueryPoolResults-queryType-04519" href="#VUID-vkGetQueryPoolResults-queryType-04519"></a> <span class="vuid">VUID-vkGetQueryPoolResults-queryType-04519</span><br>
 
-If the <code>queryType</code> used to create <code>queryPool</code> was
-<code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>, then <code>stride</code> <strong>must</strong> be
-large enough to contain the
+If <code>queryCount</code> is greater than 1 and the <code>queryType</code> used to
+create <code>queryPool</code> was <code>VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR</code>,
+then <code>stride</code> <strong>must</strong> be large enough to contain the
 <a href="#VkQueryPoolPerformanceCreateInfoKHR">VkQueryPoolPerformanceCreateInfoKHR</a>::<code>counterIndexCount</code> used
 to create <code>queryPool</code> times the size of
 <a href="#VkPerformanceCounterResultKHR">VkPerformanceCounterResultKHR</a></p>
@@ -3980,13 +4003,25 @@ command is executed</p>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-flags-00822" href="#VUID-vkCmdCopyQueryPoolResults-flags-00822"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-flags-00822</span><br>
 
 If <code>VK_QUERY_RESULT_64_BIT</code> is not set in <code>flags</code> then
-<code>dstOffset</code> and <code>stride</code> <strong>must</strong> be multiples of <code>4</code></p>
+<code>dstOffset</code> <strong>must</strong> be a multiple of <code>4</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdCopyQueryPoolResults-queryCount-12254" href="#VUID-vkCmdCopyQueryPoolResults-queryCount-12254"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-queryCount-12254</span><br>
+
+If <code>queryCount</code> is greater than 1 and <code>VK_QUERY_RESULT_64_BIT</code>
+is not set in <code>flags</code> then <code>stride</code> <strong>must</strong> be a multiple of <code>4</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-flags-00823" href="#VUID-vkCmdCopyQueryPoolResults-flags-00823"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-flags-00823</span><br>
 
 If <code>VK_QUERY_RESULT_64_BIT</code> is set in <code>flags</code> then
-<code>dstOffset</code> and <code>stride</code> <strong>must</strong> be multiples of <code>8</code></p>
+<code>dstOffset</code> <strong>must</strong> be a multiple of <code>8</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdCopyQueryPoolResults-queryCount-12255" href="#VUID-vkCmdCopyQueryPoolResults-queryCount-12255"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-queryCount-12255</span><br>
+
+If <code>queryCount</code> is greater than 1 and <code>VK_QUERY_RESULT_64_BIT</code>
+is set in <code>flags</code> then <code>stride</code> <strong>must</strong> be a multiple of <code>8</code></p>
 </li>
 <li>
 <p><a id="VUID-vkCmdCopyQueryPoolResults-dstBuffer-00824" href="#VUID-vkCmdCopyQueryPoolResults-dstBuffer-00824"></a> <span class="vuid">VUID-vkCmdCopyQueryPoolResults-dstBuffer-00824</span><br>
@@ -4236,10 +4271,9 @@ These counters are accumulated by Vulkan for a set of
 either drawing or
 dispatching commands while a pipeline statistics query is active.
 As such, pipeline statistics queries are available on queue families
-supporting</p>
-</div>
-<div class="paragraph">
-<p>compute operations.
+supporting
+either graphics or
+compute operations.
 The availability of pipeline statistics queries is indicated by the
 <code>pipelineStatisticsQuery</code> member of the <code>VkPhysicalDeviceFeatures</code>
 object (see <code>vkGetPhysicalDeviceFeatures</code> and <code>vkCreateDevice</code> for
@@ -5805,7 +5839,7 @@ typedef struct VkInitializePerformanceApiInfoINTEL {
 structure.</p>
 </li>
 <li>
-<p><code>pUserData</code> is a pointer for application data.</p>
+<p><code>pUserData</code> is NULL or a pointer for application data.</p>
 </li>
 </ul>
 </div>

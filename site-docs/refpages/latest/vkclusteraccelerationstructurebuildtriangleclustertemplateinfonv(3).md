@@ -252,27 +252,27 @@ Valid Usage (Implicit)
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-vertexBuffer-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-vertexBuffer-parameter
 
- `vertexBuffer` **must** be a valid `VkDeviceAddress` value
+ If `vertexBuffer` is not `0`, `vertexBuffer` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-geometryIndexAndFlagsBuffer-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-geometryIndexAndFlagsBuffer-parameter
 
- `geometryIndexAndFlagsBuffer` **must** be a valid `VkDeviceAddress` value
+ If `geometryIndexAndFlagsBuffer` is not `0`, `geometryIndexAndFlagsBuffer` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapArray-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapArray-parameter
 
- `opacityMicromapArray` **must** be a valid `VkDeviceAddress` value
+ If `opacityMicromapArray` is not `0`, `opacityMicromapArray` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapIndexBuffer-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-opacityMicromapIndexBuffer-parameter
 
- `opacityMicromapIndexBuffer` **must** be a valid `VkDeviceAddress` value
+ If `opacityMicromapIndexBuffer` is not `0`, `opacityMicromapIndexBuffer` **must** be a valid `VkDeviceAddress` value
 
 * 
 [](#VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-instantiationBoundingBoxLimit-parameter) VUID-VkClusterAccelerationStructureBuildTriangleClusterTemplateInfoNV-instantiationBoundingBoxLimit-parameter
 
- `instantiationBoundingBoxLimit` **must** be a valid `VkDeviceAddress` value
+ If `instantiationBoundingBoxLimit` is not `0`, `instantiationBoundingBoxLimit` **must** be a valid `VkDeviceAddress` value
 
 [VK_NV_cluster_acceleration_structure](VK_NV_cluster_acceleration_structure.html), [VkClusterAccelerationStructureClusterFlagsNV](VkClusterAccelerationStructureClusterFlagsNV.html), [VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV](VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.html), `VkDeviceAddress`
 

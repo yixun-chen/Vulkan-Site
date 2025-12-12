@@ -37,7 +37,7 @@
 - [4.2._Creating_a_tile_memory_VkBuffer](#_creating_a_tile_memory_vkbuffer)
 - [4.3. Recording Commands with tile memory](#_recording_commands_with_tile_memory)
 - [4.3._Recording_Commands_with_tile_memory](#_recording_commands_with_tile_memory)
-- [4.4. Questions](#_questions)
+- [4.4. Issues](#_issues)
 
 ## Content
 
@@ -63,7 +63,7 @@ Table of Contents
 [4.1. Creating a tile memory VkImage](#_creating_a_tile_memory_vkimage)
 [4.2. Creating a tile memory VkBuffer](#_creating_a_tile_memory_vkbuffer)
 [4.3. Recording Commands with tile memory](#_recording_commands_with_tile_memory)
-[4.4. Questions](#_questions)
+[4.4. Issues](#_issues)
 
 This document details API design ideas for the VK_QCOM_tile_memory_heap extension. This extension allows applications to directly allocate and manage tile memory.
 

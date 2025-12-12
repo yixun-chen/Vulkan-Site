@@ -750,8 +750,8 @@ to its `stride` member
 * 
 [](#VUID-vkCmdTraceRaysKHR-pRayGenShaderBindingTable-03681) VUID-vkCmdTraceRaysKHR-pRayGenShaderBindingTable-03681
 
-The buffer from which the `pRayGenShaderBindingTable->deviceAddress` is queried
-**must** have been created with the
+`pRayGenShaderBindingTable->deviceAddress` **must** be a device address allocated to
+the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 
@@ -763,8 +763,8 @@ The buffer from which the `pRayGenShaderBindingTable->deviceAddress` is queried
 * 
 [](#VUID-vkCmdTraceRaysKHR-pMissShaderBindingTable-03684) VUID-vkCmdTraceRaysKHR-pMissShaderBindingTable-03684
 
-The buffer from which the `pMissShaderBindingTable->deviceAddress` is queried
-**must** have been created with the
+`pMissShaderBindingTable->deviceAddress` **must** be a device address allocated to
+the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 
@@ -788,8 +788,8 @@ The buffer from which the `pMissShaderBindingTable->deviceAddress` is queried
 * 
 [](#VUID-vkCmdTraceRaysKHR-pHitShaderBindingTable-03688) VUID-vkCmdTraceRaysKHR-pHitShaderBindingTable-03688
 
-The buffer from which the `pHitShaderBindingTable->deviceAddress` is queried
-**must** have been created with the
+`pHitShaderBindingTable->deviceAddress` **must** be a device address allocated to
+the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 
@@ -813,8 +813,8 @@ The buffer from which the `pHitShaderBindingTable->deviceAddress` is queried
 * 
 [](#VUID-vkCmdTraceRaysKHR-pCallableShaderBindingTable-03692) VUID-vkCmdTraceRaysKHR-pCallableShaderBindingTable-03692
 
-The buffer from which the `pCallableShaderBindingTable->deviceAddress` is queried
-**must** have been created with the
+`pCallableShaderBindingTable->deviceAddress` **must** be a device address allocated
+to the application from a buffer created with the
 `VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR` usage flag set
 
 * 

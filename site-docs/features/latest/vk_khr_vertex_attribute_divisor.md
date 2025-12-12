@@ -13,6 +13,8 @@
 - [2. Proposal](#_proposal)
 - [3. Examples](#_examples)
 - [4. Issues](#_issues)
+- [4.1. What is the effect of a non-zero value for firstInstance?](#_what_is_the_effect_of_a_non_zero_value_for_firstinstance)
+- [4.1._What_is_the_effect_of_a_non-zero_value_for_firstInstance?](#_what_is_the_effect_of_a_non_zero_value_for_firstinstance)
 
 ## Content
 
@@ -22,6 +24,8 @@ Table of Contents
 [2. Proposal](#_proposal)
 [3. Examples](#_examples)
 [4. Issues](#_issues)
+
+[4.1. What is the effect of a non-zero value for `firstInstance`?](#_what_is_the_effect_of_a_non_zero_value_for_firstinstance)
 
 Promoted from `VK_EXT_vertex_attribute_divisor`, this extension allows
 instance-rate vertex attributes to be repeated for certain number of instances
@@ -134,7 +138,5 @@ const VkPipelineVertexInputStateCreateInfo viInfo =
     ...
 };
 
-1) What is the effect of a non-zero value for `firstInstance`?
-
-**RESOLVED**: The Vulkan API should follow the OpenGL convention and offset
+The Vulkan API should follow the OpenGL convention and offset
 attribute fetching by `firstInstance` while computing vertex attribute offsets.

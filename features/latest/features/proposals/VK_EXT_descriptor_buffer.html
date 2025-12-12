@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -641,24 +644,24 @@
 <li><a href="#_example">6. Example</a></li>
 <li><a href="#_issues">7. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_how_do_immutable_samplers_work">7.1. RESOLVED: How do immutable samplers work?</a></li>
-<li><a href="#_resolved_should_we_support_dynamic_buffers">7.2. RESOLVED: Should we support dynamic buffers?</a></li>
+<li><a href="#_how_do_immutable_samplers_work">7.1. How do immutable samplers work?</a></li>
+<li><a href="#_should_we_support_dynamic_buffers">7.2. Should we support dynamic buffers?</a></li>
 <li><a href="#_unresolved_how_does_this_interact_with_descriptor_set_invalidation">7.3. UNRESOLVED: How does this interact with descriptor set invalidation?</a></li>
-<li><a href="#_resolved_should_vkgetdescriptoroffset_take_an_arrayoffset_parameter_or_should_we_make_guarantees_about_how_arrays_work">7.4. RESOLVED: Should <code>vkGetDescriptorOffset</code> take an <code>arrayOffset</code> parameter, or should we make guarantees about how arrays work?</a></li>
-<li><a href="#_resolved_now_that_descriptors_are_in_regular_memory_should_there_be_a_limit_on_the_size_of_inline_uniforms">7.5. RESOLVED: Now that descriptors are in regular memory, should there be a limit on the size of “inline uniforms”?</a></li>
-<li><a href="#_resolved_why_are_view_objects_required_when_dx12_has_no_such_requirement">7.6. RESOLVED: Why are view objects required when DX12 has no such requirement?</a></li>
-<li><a href="#_resolved_should_vkgetdescriptorext_vkgetdescriptorsetlayoutbindingoffsetext_be_arrayed">7.7. RESOLVED: Should <code>vkGetDescriptorEXT</code> / <code>vkGetDescriptorSetLayoutBindingOffsetEXT</code> be arrayed?</a></li>
-<li><a href="#_resolved_should_we_support_combined_imagesampler_descriptors_with_this_extension">7.8. RESOLVED: Should we support combined image/sampler descriptors with this extension?</a></li>
-<li><a href="#_resolved_how_does_this_interact_with_variable_descriptor_count">7.9. RESOLVED: How does this interact with variable descriptor count?</a></li>
-<li><a href="#_resolved_should_we_require_descriptors_to_be_retrieved_for_null_handle_or_is_memset0_sufficient">7.10. RESOLVED: Should we require descriptors to be retrieved for <code>NULL_HANDLE</code> or is <code>memset(0)</code> sufficient?</a></li>
-<li><a href="#_resolved_how_can_ycbcr_descriptors_be_obtained">7.11. RESOLVED: How can YCbCr descriptors be obtained?</a></li>
-<li><a href="#_resolved_how_should_we_expect_capturereplay_tooling_e_g_renderdocvktrace_to_use_this">7.12. RESOLVED: How should we expect capture/replay tooling (e.g. RenderDoc/vktrace) to use this?</a></li>
-<li><a href="#_resolved_on_some_platforms_descriptor_sets_occupy_a_4gb_range_allowing_the_set_pointer_to_be_32_bit_rather_than_64_bit_how_can_this_be_guaranteed_for_descriptor_buffers">7.13. RESOLVED: On some platforms, descriptor sets occupy a 4GB range, allowing the set pointer to be 32-bit, rather than 64-bit. How can this be guaranteed for descriptor buffers?</a></li>
-<li><a href="#_resolved_should_the_alignment_be_separate_from_the_size">7.14. RESOLVED: Should the alignment be separate from the size?</a></li>
-<li><a href="#_resolved_what_is_the_fast_path_for_constant_data_in_this_new_model_previously_most_vendors_have_recommended_dynamic_ubos_as_a_fast_path_but_those_go_away_in_this_extension">7.15. RESOLVED: What is the fast path for constant data in this new model? Previously most vendors have recommended dynamic UBOs as a fast path, but those go away in this extension.</a></li>
-<li><a href="#_resolved_should_applications_be_able_to_mix_sets_and_buffers">7.16. RESOLVED: Should applications be able to mix sets and buffers?</a></li>
-<li><a href="#_resolved_should_we_use_buffer_device_addresses_for_the_buffer_arguments">7.17. RESOLVED: Should we use buffer device addresses for the buffer arguments?</a></li>
-<li><a href="#_resolved_how_does_this_interact_with_vk_ext_pipeline_robustness">7.18. RESOLVED: How does this interact with VK_EXT_pipeline_robustness?</a></li>
+<li><a href="#_should_vkgetdescriptoroffset_take_an_arrayoffset_parameter_or_should_we_make_guarantees_about_how_arrays_work">7.4. Should <code>vkGetDescriptorOffset</code> take an <code>arrayOffset</code> parameter, or should we make guarantees about how arrays work?</a></li>
+<li><a href="#_now_that_descriptors_are_in_regular_memory_should_there_be_a_limit_on_the_size_of_inline_uniforms">7.5. Now that descriptors are in regular memory, should there be a limit on the size of “inline uniforms”?</a></li>
+<li><a href="#_why_are_view_objects_required_when_dx12_has_no_such_requirement">7.6. Why are view objects required when DX12 has no such requirement?</a></li>
+<li><a href="#_should_vkgetdescriptorext_vkgetdescriptorsetlayoutbindingoffsetext_be_arrayed">7.7. Should <code>vkGetDescriptorEXT</code> / <code>vkGetDescriptorSetLayoutBindingOffsetEXT</code> be arrayed?</a></li>
+<li><a href="#_should_we_support_combined_imagesampler_descriptors_with_this_extension">7.8. Should we support combined image/sampler descriptors with this extension?</a></li>
+<li><a href="#_how_does_this_interact_with_variable_descriptor_count">7.9. How does this interact with variable descriptor count?</a></li>
+<li><a href="#_should_we_require_descriptors_to_be_retrieved_for_null_handle_or_is_memset0_sufficient">7.10. Should we require descriptors to be retrieved for <code>NULL_HANDLE</code> or is <code>memset(0)</code> sufficient?</a></li>
+<li><a href="#_how_can_ycbcr_descriptors_be_obtained">7.11. How can YCbCr descriptors be obtained?</a></li>
+<li><a href="#_how_should_we_expect_capturereplay_tooling_e_g_renderdocvktrace_to_use_this">7.12. How should we expect capture/replay tooling (e.g. RenderDoc/vktrace) to use this?</a></li>
+<li><a href="#_on_some_platforms_descriptor_sets_occupy_a_4gb_range_allowing_the_set_pointer_to_be_32_bit_rather_than_64_bit_how_can_this_be_guaranteed_for_descriptor_buffers">7.13. On some platforms, descriptor sets occupy a 4GB range, allowing the set pointer to be 32-bit, rather than 64-bit. How can this be guaranteed for descriptor buffers?</a></li>
+<li><a href="#_should_the_alignment_be_separate_from_the_size">7.14. Should the alignment be separate from the size?</a></li>
+<li><a href="#_what_is_the_fast_path_for_constant_data_in_this_new_model_previously_most_vendors_have_recommended_dynamic_ubos_as_a_fast_path_but_those_go_away_in_this_extension">7.15. What is the fast path for constant data in this new model? Previously most vendors have recommended dynamic UBOs as a fast path, but those go away in this extension.</a></li>
+<li><a href="#_should_applications_be_able_to_mix_sets_and_buffers">7.16. Should applications be able to mix sets and buffers?</a></li>
+<li><a href="#_should_we_use_buffer_device_addresses_for_the_buffer_arguments">7.17. Should we use buffer device addresses for the buffer arguments?</a></li>
+<li><a href="#_how_does_this_interact_with_vk_ext_pipeline_robustness">7.18. How does this interact with VK_EXT_pipeline_robustness?</a></li>
 </ul>
 </li>
 </ul>
@@ -2001,7 +2004,7 @@ for (int i = 0; i &lt; SET_COUNT; i++)
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>7. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_how_do_immutable_samplers_work"><a class="anchor" href="#_resolved_how_do_immutable_samplers_work"></a>7.1. RESOLVED: How do immutable samplers work?</h3>
+<h3 id="_how_do_immutable_samplers_work"><a class="anchor" href="#_how_do_immutable_samplers_work"></a>7.1. How do immutable samplers work?</h3>
 <div class="paragraph">
 <p>There may be cases where a driver needs immutable samplers stored as part of the descriptor, rather than solely existing as a part of the pipeline.
 With descriptor sets, this could be hidden from the application as the driver controlled how writes were performed – not so with this API.
@@ -2012,7 +2015,7 @@ To fix this, samplers must be used to populate these descriptor bindings as if t
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_support_dynamic_buffers"><a class="anchor" href="#_resolved_should_we_support_dynamic_buffers"></a>7.2. RESOLVED: Should we support dynamic buffers?</h3>
+<h3 id="_should_we_support_dynamic_buffers"><a class="anchor" href="#_should_we_support_dynamic_buffers"></a>7.2. Should we support dynamic buffers?</h3>
 <div class="paragraph">
 <p>No, these have very specialized support paths in some drivers, and end up being more pain than it’s worth to support.
 Applications can achieve the same using device addresses in push constants, or pipelined descriptor buffer updates.</p>
@@ -2026,13 +2029,13 @@ Shouldn’t be too difficult and will likely just be along the lines of invalida
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_vkgetdescriptoroffset_take_an_arrayoffset_parameter_or_should_we_make_guarantees_about_how_arrays_work"><a class="anchor" href="#_resolved_should_vkgetdescriptoroffset_take_an_arrayoffset_parameter_or_should_we_make_guarantees_about_how_arrays_work"></a>7.4. RESOLVED: Should <code>vkGetDescriptorOffset</code> take an <code>arrayOffset</code> parameter, or should we make guarantees about how arrays work?</h3>
+<h3 id="_should_vkgetdescriptoroffset_take_an_arrayoffset_parameter_or_should_we_make_guarantees_about_how_arrays_work"><a class="anchor" href="#_should_vkgetdescriptoroffset_take_an_arrayoffset_parameter_or_should_we_make_guarantees_about_how_arrays_work"></a>7.4. Should <code>vkGetDescriptorOffset</code> take an <code>arrayOffset</code> parameter, or should we make guarantees about how arrays work?</h3>
 <div class="paragraph">
 <p>Guarantees about how arrays work makes it much easier to work with GPU-side updates, as it avoids having to either add a “get offset” shader intrinsic, or for apps to keep a mapping when doing GPU copies.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_now_that_descriptors_are_in_regular_memory_should_there_be_a_limit_on_the_size_of_inline_uniforms"><a class="anchor" href="#_resolved_now_that_descriptors_are_in_regular_memory_should_there_be_a_limit_on_the_size_of_inline_uniforms"></a>7.5. RESOLVED: Now that descriptors are in regular memory, should there be a limit on the size of “inline uniforms”?</h3>
+<h3 id="_now_that_descriptors_are_in_regular_memory_should_there_be_a_limit_on_the_size_of_inline_uniforms"><a class="anchor" href="#_now_that_descriptors_are_in_regular_memory_should_there_be_a_limit_on_the_size_of_inline_uniforms"></a>7.5. Now that descriptors are in regular memory, should there be a limit on the size of “inline uniforms”?</h3>
 <div class="paragraph">
 <p>We should allow developers to put as many constants into descriptor buffers as they want, thus removing the limit, at least when it interacts with this extension.
 This is likely to remove an indirection compared to putting these in a uniform buffer.
@@ -2040,7 +2043,7 @@ Potentially we might want to at least have it match the uniform buffer limit rat
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_why_are_view_objects_required_when_dx12_has_no_such_requirement"><a class="anchor" href="#_resolved_why_are_view_objects_required_when_dx12_has_no_such_requirement"></a>7.6. RESOLVED: Why are view objects required when DX12 has no such requirement?</h3>
+<h3 id="_why_are_view_objects_required_when_dx12_has_no_such_requirement"><a class="anchor" href="#_why_are_view_objects_required_when_dx12_has_no_such_requirement"></a>7.6. Why are view objects required when DX12 has no such requirement?</h3>
 <div class="paragraph">
 <p>DX12 has dedicated heap objects which allow implementations to hide a lot of implementation detail behind them; without them, some vendors rely on view objects to store metadata.
 Introducing heaps to Vulkan as-is was too complex alongside the other changes in this extension, when the primary goal is to enable explicit memory management, rather than precise DX12 compatibility.
@@ -2048,13 +2051,13 @@ If this turns out to be a significant problem, a future extension could be devel
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_vkgetdescriptorext_vkgetdescriptorsetlayoutbindingoffsetext_be_arrayed"><a class="anchor" href="#_resolved_should_vkgetdescriptorext_vkgetdescriptorsetlayoutbindingoffsetext_be_arrayed"></a>7.7. RESOLVED: Should <code>vkGetDescriptorEXT</code> / <code>vkGetDescriptorSetLayoutBindingOffsetEXT</code> be arrayed?</h3>
+<h3 id="_should_vkgetdescriptorext_vkgetdescriptorsetlayoutbindingoffsetext_be_arrayed"><a class="anchor" href="#_should_vkgetdescriptorext_vkgetdescriptorsetlayoutbindingoffsetext_be_arrayed"></a>7.7. Should <code>vkGetDescriptorEXT</code> / <code>vkGetDescriptorSetLayoutBindingOffsetEXT</code> be arrayed?</h3>
 <div class="paragraph">
 <p>No – there is no reason why pulling this loop into the driver should provide any benefit.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_support_combined_imagesampler_descriptors_with_this_extension"><a class="anchor" href="#_resolved_should_we_support_combined_imagesampler_descriptors_with_this_extension"></a>7.8. RESOLVED: Should we support combined image/sampler descriptors with this extension?</h3>
+<h3 id="_should_we_support_combined_imagesampler_descriptors_with_this_extension"><a class="anchor" href="#_should_we_support_combined_imagesampler_descriptors_with_this_extension"></a>7.8. Should we support combined image/sampler descriptors with this extension?</h3>
 <div class="paragraph">
 <p>While some consider these deprecated, removing them would prevent some applications being able to port to this extension.
 Additionally, YCbCr support currently <em>relies</em> on this descriptor type, which is required on some platforms.
@@ -2062,20 +2065,20 @@ It might be possible to remove that requirement in the YCbCr feature, but it is 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_does_this_interact_with_variable_descriptor_count"><a class="anchor" href="#_resolved_how_does_this_interact_with_variable_descriptor_count"></a>7.9. RESOLVED: How does this interact with variable descriptor count?</h3>
+<h3 id="_how_does_this_interact_with_variable_descriptor_count"><a class="anchor" href="#_how_does_this_interact_with_variable_descriptor_count"></a>7.9. How does this interact with variable descriptor count?</h3>
 <div class="paragraph">
 <p>The variable flag is allowed; <code>vkGetDescriptorSetLayoutSize</code> returns a size assuming the maximum size will be used - but developers are free to use the set with a buffer sized for a smaller number of descriptors.  The exception to this is when <code>combinedImageSamplerDescriptorSingleArray</code> is <code>VK_FALSE</code> and the binding contains <code>VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER</code> descriptors; in this case the image and sampler descriptors are still arranged in the descriptor buffer as though the maximum number of descriptors are used, and so the buffer must be sized accordingly.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_require_descriptors_to_be_retrieved_for_null_handle_or_is_memset0_sufficient"><a class="anchor" href="#_resolved_should_we_require_descriptors_to_be_retrieved_for_null_handle_or_is_memset0_sufficient"></a>7.10. RESOLVED: Should we require descriptors to be retrieved for <code>NULL_HANDLE</code> or is <code>memset(0)</code> sufficient?</h3>
+<h3 id="_should_we_require_descriptors_to_be_retrieved_for_null_handle_or_is_memset0_sufficient"><a class="anchor" href="#_should_we_require_descriptors_to_be_retrieved_for_null_handle_or_is_memset0_sufficient"></a>7.10. Should we require descriptors to be retrieved for <code>NULL_HANDLE</code> or is <code>memset(0)</code> sufficient?</h3>
 <div class="paragraph">
 <p>Some vendors use non-zero values for null descriptors, so applications can retrieve these using <code>VK_NULL_HANDLE</code> with <code>vkGetDescriptorEXT</code>.
 For descriptor types which take buffer devices addresses, a <code>0</code> address is used instead.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_can_ycbcr_descriptors_be_obtained"><a class="anchor" href="#_resolved_how_can_ycbcr_descriptors_be_obtained"></a>7.11. RESOLVED: How can YCbCr descriptors be obtained?</h3>
+<h3 id="_how_can_ycbcr_descriptors_be_obtained"><a class="anchor" href="#_how_can_ycbcr_descriptors_be_obtained"></a>7.11. How can YCbCr descriptors be obtained?</h3>
 <div class="paragraph">
 <p>YCbCr descriptors can have multiple descriptors associated with them; applications must allow for this space.
 <code>VkSamplerYcbcrConversionImageFormatProperties::combinedImageSamplerDescriptorCount</code> determines how many descriptors each image format requires.
@@ -2083,26 +2086,26 @@ When calling <code>vkGetDescriptorEXT</code> for a YCbCr combined descriptor, ap
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_should_we_expect_capturereplay_tooling_e_g_renderdocvktrace_to_use_this"><a class="anchor" href="#_resolved_how_should_we_expect_capturereplay_tooling_e_g_renderdocvktrace_to_use_this"></a>7.12. RESOLVED: How should we expect capture/replay tooling (e.g. RenderDoc/vktrace) to use this?</h3>
+<h3 id="_how_should_we_expect_capturereplay_tooling_e_g_renderdocvktrace_to_use_this"><a class="anchor" href="#_how_should_we_expect_capturereplay_tooling_e_g_renderdocvktrace_to_use_this"></a>7.12. How should we expect capture/replay tooling (e.g. RenderDoc/vktrace) to use this?</h3>
 <div class="paragraph">
 <p>A capture replay bit on image/buffer creation will be added to enable descriptors to be reused between runs. This allows capture tools to capture the buffer data as bound, and replay with the same descriptors, rather than attempting to do a mapping.
 Some sort of GPU feedback is still desirable on capture to determine which handles are accessed, but this will be similar to the situation with descriptor indexing.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_on_some_platforms_descriptor_sets_occupy_a_4gb_range_allowing_the_set_pointer_to_be_32_bit_rather_than_64_bit_how_can_this_be_guaranteed_for_descriptor_buffers"><a class="anchor" href="#_resolved_on_some_platforms_descriptor_sets_occupy_a_4gb_range_allowing_the_set_pointer_to_be_32_bit_rather_than_64_bit_how_can_this_be_guaranteed_for_descriptor_buffers"></a>7.13. RESOLVED: On some platforms, descriptor sets occupy a 4GB range, allowing the set pointer to be 32-bit, rather than 64-bit. How can this be guaranteed for descriptor buffers?</h3>
+<h3 id="_on_some_platforms_descriptor_sets_occupy_a_4gb_range_allowing_the_set_pointer_to_be_32_bit_rather_than_64_bit_how_can_this_be_guaranteed_for_descriptor_buffers"><a class="anchor" href="#_on_some_platforms_descriptor_sets_occupy_a_4gb_range_allowing_the_set_pointer_to_be_32_bit_rather_than_64_bit_how_can_this_be_guaranteed_for_descriptor_buffers"></a>7.13. On some platforms, descriptor sets occupy a 4GB range, allowing the set pointer to be 32-bit, rather than 64-bit. How can this be guaranteed for descriptor buffers?</h3>
 <div class="paragraph">
 <p>This could be done a number of ways – e.g. having unique memory types that guarantee allocation in a 4GB range.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_the_alignment_be_separate_from_the_size"><a class="anchor" href="#_resolved_should_the_alignment_be_separate_from_the_size"></a>7.14. RESOLVED: Should the alignment be separate from the size?</h3>
+<h3 id="_should_the_alignment_be_separate_from_the_size"><a class="anchor" href="#_should_the_alignment_be_separate_from_the_size"></a>7.14. Should the alignment be separate from the size?</h3>
 <div class="paragraph">
 <p>No - the alignment of a descriptor is always the size of the descriptor.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_is_the_fast_path_for_constant_data_in_this_new_model_previously_most_vendors_have_recommended_dynamic_ubos_as_a_fast_path_but_those_go_away_in_this_extension"><a class="anchor" href="#_resolved_what_is_the_fast_path_for_constant_data_in_this_new_model_previously_most_vendors_have_recommended_dynamic_ubos_as_a_fast_path_but_those_go_away_in_this_extension"></a>7.15. RESOLVED: What is the fast path for constant data in this new model? Previously most vendors have recommended dynamic UBOs as a fast path, but those go away in this extension.</h3>
+<h3 id="_what_is_the_fast_path_for_constant_data_in_this_new_model_previously_most_vendors_have_recommended_dynamic_ubos_as_a_fast_path_but_those_go_away_in_this_extension"><a class="anchor" href="#_what_is_the_fast_path_for_constant_data_in_this_new_model_previously_most_vendors_have_recommended_dynamic_ubos_as_a_fast_path_but_those_go_away_in_this_extension"></a>7.15. What is the fast path for constant data in this new model? Previously most vendors have recommended dynamic UBOs as a fast path, but those go away in this extension.</h3>
 <div class="paragraph">
 <p>The crucial part of getting data into a shader quickly is mostly dominated by number of indirections, and cache behavior.
 Static accesses with fewer indirections and minimal memory model interactions (e.g. read-only and not <code>NonPrivate</code>) will be fastest.
@@ -2136,13 +2139,13 @@ For larger amounts of data, applications should favor allocating buffers and put
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_applications_be_able_to_mix_sets_and_buffers"><a class="anchor" href="#_resolved_should_applications_be_able_to_mix_sets_and_buffers"></a>7.16. RESOLVED: Should applications be able to mix sets and buffers?</h3>
+<h3 id="_should_applications_be_able_to_mix_sets_and_buffers"><a class="anchor" href="#_should_applications_be_able_to_mix_sets_and_buffers"></a>7.16. Should applications be able to mix sets and buffers?</h3>
 <div class="paragraph">
 <p>Originally the intention was to support this, but at least one vendor cannot support this natively.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_use_buffer_device_addresses_for_the_buffer_arguments"><a class="anchor" href="#_resolved_should_we_use_buffer_device_addresses_for_the_buffer_arguments"></a>7.17. RESOLVED: Should we use buffer device addresses for the buffer arguments?</h3>
+<h3 id="_should_we_use_buffer_device_addresses_for_the_buffer_arguments"><a class="anchor" href="#_should_we_use_buffer_device_addresses_for_the_buffer_arguments"></a>7.17. Should we use buffer device addresses for the buffer arguments?</h3>
 <div class="paragraph">
 <p>Buffer parameters in recent extensions have been using device address arguments, so this extension aims to be consistent. Part of the reason for this though, is so that the base address can be modified with a single pointer argument instead of object + offset.
 However, this extension explicitly uses a separate command for setting the offset dynamically compared to the base address, to allow for the application to set the base address statically.
@@ -2150,7 +2153,7 @@ Having the base address specified with a device address is still useful for cons
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_does_this_interact_with_vk_ext_pipeline_robustness"><a class="anchor" href="#_resolved_how_does_this_interact_with_vk_ext_pipeline_robustness"></a>7.18. RESOLVED: How does this interact with VK_EXT_pipeline_robustness?</h3>
+<h3 id="_how_does_this_interact_with_vk_ext_pipeline_robustness"><a class="anchor" href="#_how_does_this_interact_with_vk_ext_pipeline_robustness"></a>7.18. How does this interact with VK_EXT_pipeline_robustness?</h3>
 <div class="paragraph">
 <p>There is no way to request robust and non-robust descriptors separately, or specify robust/non-robust descriptors in the set layout, so if
 the <code>robustBufferAccess</code> feature is enabled then robust descriptors are always used.</p>

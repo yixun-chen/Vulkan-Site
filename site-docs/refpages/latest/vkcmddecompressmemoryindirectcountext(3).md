@@ -75,9 +75,9 @@ The [`memoryDecompression`](../../../../spec/latest/chapters/features.html#featu
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07694) VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07694
 
-The [VkBuffer](VkBuffer.html) that `indirectCommandsAddress` comes from **must**
-have been created with the `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT`
-usage flag set
+`indirectCommandsAddress` **must** be a device address allocated to the
+application from a buffer created with the
+`VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
 
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07695) VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsAddress-07695
@@ -87,8 +87,8 @@ usage flag set
 * 
 [](#VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsCountAddress-07697) VUID-vkCmdDecompressMemoryIndirectCountEXT-indirectCommandsCountAddress-07697
 
-The [VkBuffer](VkBuffer.html) that `indirectCommandsCountAddress` comes from
-**must** have been created with the
+`indirectCommandsCountAddress` **must** be a device address allocated
+to the application from a buffer created with the
 `VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT` usage flag set
 
 * 

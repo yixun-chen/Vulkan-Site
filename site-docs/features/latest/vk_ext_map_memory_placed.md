@@ -18,6 +18,14 @@
 - [3.2._API_Features](#_api_features)
 - [4. Examples](#_examples)
 - [5. Issues](#_issues)
+- [5.1. How should the requested address be passed to vkMapMemory2KHR()?](#_how_should_the_requested_address_be_passed_to_vkmapmemory2khr)
+- [5.1._How_should_the_requested_address_be_passed_to_vkMapMemory2KHR()?](#_how_should_the_requested_address_be_passed_to_vkmapmemory2khr)
+- [5.2. What should happen if the implementation cannot place the memory map at the requested address?](#_what_should_happen_if_the_implementation_cannot_place_the_memory_map_at_the_requested_address)
+- [5.2._What_should_happen_if_the_implementation_cannot_place_the_memory_map_at_the_requested_address?](#_what_should_happen_if_the_implementation_cannot_place_the_memory_map_at_the_requested_address)
+- [5.3. How can an application atomically re-reserve the address range on unmap?](#_how_can_an_application_atomically_re_reserve_the_address_range_on_unmap)
+- [5.3._How_can_an_application_atomically_re-reserve_the_address_range_on_unmap?](#_how_can_an_application_atomically_re_reserve_the_address_range_on_unmap)
+- [5.4. Should a placed memory map replace existing maps in the specified range or fail if a map exists?](#_should_a_placed_memory_map_replace_existing_maps_in_the_specified_range_or_fail_if_a_map_exists)
+- [5.4._Should_a_placed_memory_map_replace_existing_maps_in_the_specified_range_or_fail_if_a_map_exists?](#_should_a_placed_memory_map_replace_existing_maps_in_the_specified_range_or_fail_if_a_map_exists)
 
 ## Content
 
@@ -32,6 +40,11 @@ Table of Contents
 
 [4. Examples](#_examples)
 [5. Issues](#_issues)
+
+[5.1. How should the requested address be passed to `vkMapMemory2KHR()`?](#_how_should_the_requested_address_be_passed_to_vkmapmemory2khr)
+[5.2. What should happen if the implementation cannot place the memory map at the requested address?](#_what_should_happen_if_the_implementation_cannot_place_the_memory_map_at_the_requested_address)
+[5.3. How can an application atomically re-reserve the address range on unmap?](#_how_can_an_application_atomically_re_reserve_the_address_range_on_unmap)
+[5.4. Should a placed memory map replace existing maps in the specified range or fail if a map exists?](#_should_a_placed_memory_map_replace_existing_maps_in_the_specified_range_or_fail_if_a_map_exists)
 
 This document proposes adding support for application-controlled virtual address
 placement of `VkDeviceMemory` maps.
@@ -152,22 +165,15 @@ void *map;
 VK_CHECK(vkMapMemory2KHR(device, &mapInfo, &map));
 CHECK(map == reserved);
 
-1) How should the requested address be passed to `vkMapMemory2KHR()`?
-
-**RESOLVED**: When `VK_MEMORY_MAP_PLACED_BIT_EXT` is passed to
+When `VK_MEMORY_MAP_PLACED_BIT_EXT` is passed to
 `vkMapMemory2KHR()` and a `VkMemoryMapPlacedInfoEXT` structure is present
 in the `pNext` chain, the implementation attempts to map to whatever
 address is provided by `VkMemoryMapPlacedInfoEXT::pPlacedAddress`.
 
-2) What should happen if the implementation cannot place the memory map at
-the requested address?
-
-**RESOLVED**: The memory object should be left unmapped and
+The memory object should be left unmapped and
 `vkMapMemory2KHR` should return `VK_ERROR_MEMORY_MAP_FAILED`.
 
-3) How can an application atomically re-reserve the address range on unmap?
-
-**RESOLVED**: When `VK_MEMORY_UNMAP_RESERVE_BIT_EXT` is passed to
+When `VK_MEMORY_UNMAP_RESERVE_BIT_EXT` is passed to
 `vkUnmapMemory2KHR()`, the implementation unmaps the memory range in such a
 way that the range is automatically re-reserved.
 With `mmap()`, this is accomplished by simply mapping over the range with
@@ -175,10 +181,7 @@ another anonymous mapping.
 However, allowing this with `vkMapMemory()` would break Vulkan’s concept of
 when a memory object is or is not mapped.
 
-4) Should a placed memory map replace existing maps in the specified
-range or fail if a map exists?
-
-**RESOLVED**: It should replace existing maps.
+It should replace existing maps.
 If an application wants try-map behavior, it can get that by using mmap with
 `MAP_ANONYMOUS` and an address and only call `vkMapMemory2KHR()` to do a
 placed map if that succeeds.

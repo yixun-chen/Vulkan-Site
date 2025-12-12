@@ -14,6 +14,12 @@
 - [2._Solution_Space](#_solution_space)
 - [3. Proposal](#_proposal)
 - [4. Issues](#_issues)
+- [4.1. Should the depth clamp range be a per-viewport parameter?](#_should_the_depth_clamp_range_be_a_per_viewport_parameter)
+- [4.1._Should_the_depth_clamp_range_be_a_per-viewport_parameter?](#_should_the_depth_clamp_range_be_a_per_viewport_parameter)
+- [4.2. Should this pipeline state be dynamic?](#_should_this_pipeline_state_be_dynamic)
+- [4.2._Should_this_pipeline_state_be_dynamic?](#_should_this_pipeline_state_be_dynamic)
+- [4.3. Can the depth clamp range be ignored when depth clamping is disabled?](#_can_the_depth_clamp_range_be_ignored_when_depth_clamping_is_disabled)
+- [4.3._Can_the_depth_clamp_range_be_ignored_when_depth_clamping_is_disabled?](#_can_the_depth_clamp_range_be_ignored_when_depth_clamping_is_disabled)
 
 ## Content
 
@@ -23,6 +29,10 @@ Table of Contents
 [2. Solution Space](#_solution_space)
 [3. Proposal](#_proposal)
 [4. Issues](#_issues)
+
+[4.1. Should the depth clamp range be a per-viewport parameter?](#_should_the_depth_clamp_range_be_a_per_viewport_parameter)
+[4.2. Should this pipeline state be dynamic?](#_should_this_pipeline_state_be_dynamic)
+[4.3. Can the depth clamp range be ignored when depth clamping is disabled?](#_can_the_depth_clamp_range_be_ignored_when_depth_clamping_is_disabled)
 
 This document details API design ideas for the `VK_EXT_depth_clamp_control`
 extension, which provides functionality for finer control over the behavior
@@ -132,9 +142,7 @@ typedef struct VkPipelineViewportDepthClampControlCreateInfoEXT {
     const VkDepthClampRangeEXT*    pDepthClampRange;
 } VkPipelineViewportDepthClampControlCreateInfoEXT;
 
-1) Should the depth clamp range be a per-viewport parameter?
-
-**RESOLVED**: No.
+No.
 Because the depth clamp range was previously defined to be equal to the
 viewport depth range, conformant runtimes are already handling the depth
 clamp range as a per-viewport parameter.
@@ -143,16 +151,12 @@ original issue and because of complexities from interactions with
 multi-viewport support, this is left to a future extensions if a use case
 arises.
 
-2) Should this pipeline state be dynamic?
-
-**RESOLVED**: Yes.
+Yes.
 Since the viewport depth range can already be a dynamic state conformant
 runtimes are already able to handle the depth clamp range as a dynamic
 state.
 
-3) Can the depth clamp range be ignored when depth clamping is disabled?
-
-**RESOLVED**: Yes.
+Yes.
 This extension overrides the clamping range used only when depth clamping is
 enabled.
 The alternative would be highly unintuitive.

@@ -476,6 +476,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
@@ -757,39 +760,39 @@ specific required features.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">    uvec2 tileID = uvec2(gl_WorkGroupID.xy);
+<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">uvec2 tileID = uvec2(gl_WorkGroupID.xy);
 
-    // Initialize result to zero
-    result = coopmat&lt;C_TYPE, gl_ScopeWorkgroup, TILE_M, TILE_N, gl_MatrixUseAccumulator&gt;(0.0);
+// Initialize result to zero
+result = coopmat&lt;C_TYPE, gl_ScopeWorkgroup, TILE_M, TILE_N, gl_MatrixUseAccumulator&gt;(0.0);
 
-    // Create tensor layouts for A, B, Accumulator
-    tensorLayoutNV&lt;2&gt; tensorLayoutA = createTensorLayoutNV(2);
-    tensorLayoutNV&lt;2&gt; tensorLayoutB = createTensorLayoutNV(2);
-    tensorLayoutNV&lt;2&gt; tensorLayoutC = createTensorLayoutNV(2);
+// Create tensor layouts for A, B, Accumulator
+tensorLayoutNV&lt;2&gt; tensorLayoutA = createTensorLayoutNV(2);
+tensorLayoutNV&lt;2&gt; tensorLayoutB = createTensorLayoutNV(2);
+tensorLayoutNV&lt;2&gt; tensorLayoutC = createTensorLayoutNV(2);
 
-    tensorLayoutA = setTensorLayoutDimensionNV(tensorLayoutA, M, K);
-    tensorLayoutB = setTensorLayoutDimensionNV(tensorLayoutB, K, N);
-    tensorLayoutC = setTensorLayoutDimensionNV(tensorLayoutC, M, N);
+tensorLayoutA = setTensorLayoutDimensionNV(tensorLayoutA, M, K);
+tensorLayoutB = setTensorLayoutDimensionNV(tensorLayoutB, K, N);
+tensorLayoutC = setTensorLayoutDimensionNV(tensorLayoutC, M, N);
 
-    // Loop over K dimension and accumulate partial results
-    for (uint chunkK = 0; chunkK &lt; K; chunkK += TILE_K) {
+// Loop over K dimension and accumulate partial results
+for (uint chunkK = 0; chunkK &lt; K; chunkK += TILE_K) {
 
-        coopmat&lt;A_TYPE, gl_ScopeWorkgroup, TILE_M, TILE_K, gl_MatrixUseA&gt; matrixA;
-        coopMatLoadTensorNV(matrixA, inputA.x, 0, sliceTensorLayoutNV(tensorLayoutA, TILE_M * tileID.y, TILE_M, chunkK, TILE_K));
+    coopmat&lt;A_TYPE, gl_ScopeWorkgroup, TILE_M, TILE_K, gl_MatrixUseA&gt; matrixA;
+    coopMatLoadTensorNV(matrixA, inputA.x, 0, sliceTensorLayoutNV(tensorLayoutA, TILE_M * tileID.y, TILE_M, chunkK, TILE_K));
 
-        coopmat&lt;A_TYPE, gl_ScopeWorkgroup, TILE_K, TILE_N, gl_MatrixUseB&gt; matrixB;
-        coopMatLoadTensorNV(matrixB, inputB.x, 0, sliceTensorLayoutNV(tensorLayoutB, chunkK, TILE_K, TILE_N * tileID.x, TILE_N));
+    coopmat&lt;A_TYPE, gl_ScopeWorkgroup, TILE_K, TILE_N, gl_MatrixUseB&gt; matrixB;
+    coopMatLoadTensorNV(matrixB, inputB.x, 0, sliceTensorLayoutNV(tensorLayoutB, chunkK, TILE_K, TILE_N * tileID.x, TILE_N));
 
-        result = coopMatMulAdd(matrixA, matrixB, result);
-    }
+    result = coopMatMulAdd(matrixA, matrixB, result);
+}
 
-    // Load C and compute alpha*(A*B)+beta*C
-    coopmat&lt;C_TYPE, gl_ScopeWorkgroup, TILE_M, TILE_N, gl_MatrixUseAccumulator&gt; matrixC;
-    coopMatLoadTensorNV(matrixC, inputC.x, 0, sliceTensorLayoutNV(tensorLayoutC, TILE_M * tileID.y, TILE_M, TILE_N * tileID.x, TILE_N));
-    result = C_TYPE(alpha) * result + C_TYPE(beta) * matrixC;
+// Load C and compute alpha*(A*B)+beta*C
+coopmat&lt;C_TYPE, gl_ScopeWorkgroup, TILE_M, TILE_N, gl_MatrixUseAccumulator&gt; matrixC;
+coopMatLoadTensorNV(matrixC, inputC.x, 0, sliceTensorLayoutNV(tensorLayoutC, TILE_M * tileID.y, TILE_M, TILE_N * tileID.x, TILE_N));
+result = C_TYPE(alpha) * result + C_TYPE(beta) * matrixC;
 
-    // Store result to memory
-    coopMatStoreTensorNV(result, outputD.x, 0, sliceTensorLayoutNV(tensorLayoutC, TILE_M * tileID.y, TILE_M, TILE_N * tileID.x, TILE_N));</code></pre>
+// Store result to memory
+coopMatStoreTensorNV(result, outputD.x, 0, sliceTensorLayoutNV(tensorLayoutC, TILE_M * tileID.y, TILE_M, TILE_N * tileID.x, TILE_N));</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -797,14 +800,14 @@ specific required features.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c hljs" data-lang="c">    float16_t maxReduce(const in float16_t x, const in float16_t y) {
-        return max(x, y);
-    }
+<pre class="highlightjs highlight"><code class="language-glsl hljs" data-lang="glsl">float16_t maxReduce(const in float16_t x, const in float16_t y) {
+    return max(x, y);
+}
 
-    mat = ...;
+mat = ...;
 
-    coopmat&lt;float16_t, gl_ScopeWorkgroup, TILE_M, TILE_N, gl_MatrixUseAccumulator&gt; rowMax;
-    coopMatReduceNV(rowMax, mat, gl_CooperativeMatrixReduceRowNV, maxReduce);</code></pre>
+coopmat&lt;float16_t, gl_ScopeWorkgroup, TILE_M, TILE_N, gl_MatrixUseAccumulator&gt; rowMax;
+coopMatReduceNV(rowMax, mat, gl_CooperativeMatrixReduceRowNV, maxReduce);</code></pre>
 </div>
 </div>
 </div>

@@ -17,8 +17,8 @@
 - [3.1._SPV_KHR_maximal_reconvergence](#_spv_khr_maximal_reconvergence)
 - [3.2. Examples](#_examples)
 - [4. Issues](#_issues)
-- [4.1. RESOLVED: Can a single behavior be provided for switch statements?](#_resolved_can_a_single_behavior_be_provided_for_switch_statements)
-- [4.1._RESOLVED:_Can_a_single_behavior_be_provided_for_switch_statements?](#_resolved_can_a_single_behavior_be_provided_for_switch_statements)
+- [4.1. Can a single behavior be provided for switch statements?](#_can_a_single_behavior_be_provided_for_switch_statements)
+- [4.1._Can_a_single_behavior_be_provided_for_switch_statements?](#_can_a_single_behavior_be_provided_for_switch_statements)
 
 ## Content
 
@@ -33,7 +33,7 @@ Table of Contents
 
 [4. Issues](#_issues)
 
-[4.1. RESOLVED: Can a single behavior be provided for switch statements?](#_resolved_can_a_single_behavior_be_provided_for_switch_statements)
+[4.1. Can a single behavior be provided for switch statements?](#_can_a_single_behavior_be_provided_for_switch_statements)
 
 The SPIR-V specification defines several types of instructions as communicating between invocations.
 It refers to these instructions as

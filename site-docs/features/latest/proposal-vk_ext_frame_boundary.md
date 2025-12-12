@@ -30,12 +30,12 @@
 - [4.3. Overlapping frames with wait-after-signal](#_overlapping_frames_with_wait_after_signal)
 - [4.3._Overlapping_frames_with_wait-after-signal](#_overlapping_frames_with_wait_after_signal)
 - [5. Issues](#_issues)
-- [5.1. RESOLVED: What should this extension be named?](#_resolved_what_should_this_extension_be_named)
-- [5.1._RESOLVED:_What_should_this_extension_be_named?](#_resolved_what_should_this_extension_be_named)
-- [5.2. RESOLVED: What information should be included in VkFrameBoundaryEXT?](#_resolved_what_information_should_be_included_in_vkframeboundaryext)
-- [5.2._RESOLVED:_What_information_should_be_included_in_VkFrameBoundaryEXT?](#_resolved_what_information_should_be_included_in_vkframeboundaryext)
-- [5.3. RESOLVED: How should frame identifiers be validated?](#_resolved_how_should_frame_identifiers_be_validated)
-- [5.3._RESOLVED:_How_should_frame_identifiers_be_validated?](#_resolved_how_should_frame_identifiers_be_validated)
+- [5.1. What should this extension be named?](#_what_should_this_extension_be_named)
+- [5.1._What_should_this_extension_be_named?](#_what_should_this_extension_be_named)
+- [5.2. What information should be included in VkFrameBoundaryEXT?](#_what_information_should_be_included_in_vkframeboundaryext)
+- [5.2._What_information_should_be_included_in_VkFrameBoundaryEXT?](#_what_information_should_be_included_in_vkframeboundaryext)
+- [5.3. How should frame identifiers be validated?](#_how_should_frame_identifiers_be_validated)
+- [5.3._How_should_frame_identifiers_be_validated?](#_how_should_frame_identifiers_be_validated)
 
 ## Content
 
@@ -62,9 +62,9 @@ Table of Contents
 
 [5. Issues](#_issues)
 
-[5.1. RESOLVED: What should this extension be named?](#_resolved_what_should_this_extension_be_named)
-[5.2. RESOLVED: What information should be included in VkFrameBoundaryEXT?](#_resolved_what_information_should_be_included_in_vkframeboundaryext)
-[5.3. RESOLVED: How should frame identifiers be validated?](#_resolved_how_should_frame_identifiers_be_validated)
+[5.1. What should this extension be named?](#_what_should_this_extension_be_named)
+[5.2. What information should be included in VkFrameBoundaryEXT?](#_what_information_should_be_included_in_vkframeboundaryext)
+[5.3. How should frame identifiers be validated?](#_how_should_frame_identifiers_be_validated)
 
 `VK_EXT_frame_boundary` is a device extension that helps **tools** (such as
 debuggers) to group queue submissions per frames in non-trivial scenarios,

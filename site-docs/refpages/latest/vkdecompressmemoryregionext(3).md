@@ -104,16 +104,16 @@ The memory range defined by `srcAddress` and `compressedSize`
 * 
 [](#VUID-VkDecompressMemoryRegionEXT-srcAddress-11764) VUID-VkDecompressMemoryRegionEXT-srcAddress-11764
 
-The underlying buffer for `srcAddress` **must** have the
-`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` bit set in its
-usage flag
+`srcAddress` **must** be a device address allocated to the application
+from a buffer created with the
+`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` usage flag set
 
 * 
 [](#VUID-VkDecompressMemoryRegionEXT-dstAddress-11765) VUID-VkDecompressMemoryRegionEXT-dstAddress-11765
 
-The underlying buffer for `dstAddress` **must** have the
-`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` bit set in its
-usage flag
+`dstAddress` **must** be a device address allocated to the application
+from a buffer created with the
+`VK_BUFFER_USAGE_2_MEMORY_DECOMPRESSION_BIT_EXT` usage flag set
 
 Valid Usage (Implicit)
 

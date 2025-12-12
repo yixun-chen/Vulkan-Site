@@ -19,7 +19,7 @@
 
 vkCmdPushConstants2 - Update the values of push constants
 
-Alternatively, to update push constants, call:
+To update push constants, call:
 
 // Provided by VK_VERSION_1_4
 void vkCmdPushConstants2(

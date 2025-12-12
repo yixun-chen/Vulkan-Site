@@ -45,8 +45,9 @@ event(s) triggered this callback.
 [VkDebugUtilsMessengerCallbackDataEXT](VkDebugUtilsMessengerCallbackDataEXT.html) structure.
 
 * 
-`pUserData` is the user data provided when the
-[VkDebugUtilsMessengerEXT](VkDebugUtilsMessengerEXT.html) was created.
+`pUserData` is the application-defined user data pointer, equal to
+the value of [VkDebugUtilsMessengerCreateInfoEXT](VkDebugUtilsMessengerCreateInfoEXT.html)::`pUserData`
+specified when the [VkDebugUtilsMessengerEXT](VkDebugUtilsMessengerEXT.html) object was created.
 
 The callback returns a `VkBool32`, which is interpreted in a
 layer-specified manner.

@@ -19,8 +19,8 @@
 
 vkUnmapMemory2 - Unmap a previously mapped memory object
 
-Alternatively, to unmap a memory object once host access to it is no longer
-needed by the application, call:
+To unmap a memory object once host access to it is no longer needed by the
+application, call:
 
 // Provided by VK_VERSION_1_4
 VkResult vkUnmapMemory2(

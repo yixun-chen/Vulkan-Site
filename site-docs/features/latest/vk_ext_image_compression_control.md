@@ -21,8 +21,8 @@
 - [3.3._Querying_compression](#_querying_compression)
 - [4. Examples](#_examples)
 - [5. Issues](#_issues)
-- [5.1. RESOLVED: Should we split out the swapchain functionality to a separate extension?](#_resolved_should_we_split_out_the_swapchain_functionality_to_a_separate_extension)
-- [5.1._RESOLVED:_Should_we_split_out_the_swapchain_functionality_to_a_separate_extension?](#_resolved_should_we_split_out_the_swapchain_functionality_to_a_separate_extension)
+- [5.1. Should we split out the swapchain functionality to a separate extension?](#_should_we_split_out_the_swapchain_functionality_to_a_separate_extension)
+- [5.1._Should_we_split_out_the_swapchain_functionality_to_a_separate_extension?](#_should_we_split_out_the_swapchain_functionality_to_a_separate_extension)
 
 ## Content
 
@@ -39,7 +39,7 @@ Table of Contents
 [4. Examples](#_examples)
 [5. Issues](#_issues)
 
-[5.1. RESOLVED: Should we split out the swapchain functionality to a separate extension?](#_resolved_should_we_split_out_the_swapchain_functionality_to_a_separate_extension)
+[5.1. Should we split out the swapchain functionality to a separate extension?](#_should_we_split_out_the_swapchain_functionality_to_a_separate_extension)
 
 This document proposes adding support for fixed-rate, or 'lossy', image compression.
 

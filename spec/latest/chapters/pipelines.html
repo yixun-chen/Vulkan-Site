@@ -7594,26 +7594,46 @@ enabled, there <strong>must</strong> be no element of the <code>pDynamicStates</
 <li>
 <p><a id="VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07730" href="#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07730"></a> <span class="vuid">VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07730</span><br>
 
-If the pipeline requires <a href="#pipelines-graphics-subsets-pre-rasterization">    pre-rasterization shader state</a>, and no element of the
-<code>pDynamicStates</code> member of <code>pDynamicState</code> is
-<code>VK_DYNAMIC_STATE_VIEWPORT</code> or
-<code>VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT</code>, and if the
-<a href="features.html#features-multiviewPerViewViewports" class="xref page"><code>multiviewPerViewViewports</code></a>
-feature is enabled, then the index of the most significant bit in each
-element of <a href="renderpass.html#VkRenderPassMultiviewCreateInfo" class="xref page">VkRenderPassMultiviewCreateInfo</a>::<code>pViewMasks</code> <strong>must</strong>
-be less than <code>pViewportState-&gt;viewportCount</code></p>
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, <code>renderpass</code>
+is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the pipeline requires
+<a href="#pipelines-graphics-subsets-pre-rasterization">pre-rasterization shader    state</a>, and no element of the <code>pDynamicStates</code> member of
+<code>pDynamicState</code> is <code>VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT</code>, then
+the index of the most significant bit in each element of
+<a href="renderpass.html#VkRenderPassMultiviewCreateInfo" class="xref page">VkRenderPassMultiviewCreateInfo</a>::<code>pViewMasks</code> <strong>must</strong> be less
+than <code>pViewportState-&gt;viewportCount</code></p>
 </li>
 <li>
 <p><a id="VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07731" href="#VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07731"></a> <span class="vuid">VUID-VkGraphicsPipelineCreateInfo-pDynamicStates-07731</span><br>
 
-If the pipeline requires <a href="#pipelines-graphics-subsets-pre-rasterization">    pre-rasterization shader state</a>, and no element of the
-<code>pDynamicStates</code> member of <code>pDynamicState</code> is
-<code>VK_DYNAMIC_STATE_SCISSOR</code> or
-<code>VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT</code>, and if the
-<a href="features.html#features-multiviewPerViewViewports" class="xref page"><code>multiviewPerViewViewports</code></a>
-feature is enabled, then the index of the most significant bit in each
-element of <a href="renderpass.html#VkRenderPassMultiviewCreateInfo" class="xref page">VkRenderPassMultiviewCreateInfo</a>::<code>pViewMasks</code> <strong>must</strong>
-be less than <code>pViewportState-&gt;scissorCount</code></p>
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, <code>renderpass</code>
+is not <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the pipeline requires
+<a href="#pipelines-graphics-subsets-pre-rasterization">pre-rasterization shader    state</a>, and no element of the <code>pDynamicStates</code> member of
+<code>pDynamicState</code> is <code>VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT</code>, then
+the index of the most significant bit in each element of
+<a href="renderpass.html#VkRenderPassMultiviewCreateInfo" class="xref page">VkRenderPassMultiviewCreateInfo</a>::<code>pViewMasks</code> <strong>must</strong> be less
+than <code>pViewportState-&gt;scissorCount</code></p>
+</li>
+<li>
+<p><a id="VUID-VkGraphicsPipelineCreateInfo-multiviewPerViewViewports-12249" href="#VUID-VkGraphicsPipelineCreateInfo-multiviewPerViewViewports-12249"></a> <span class="vuid">VUID-VkGraphicsPipelineCreateInfo-multiviewPerViewViewports-12249</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, <code>renderpass</code>
+is <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the pipeline requires
+<a href="#pipelines-graphics-subsets-pre-rasterization">pre-rasterization shader    state</a>, and no element of the <code>pDynamicStates</code> member of
+<code>pDynamicState</code> is <code>VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT</code>, then
+the index of the most significant bit in
+<a href="#VkPipelineRenderingCreateInfo">VkPipelineRenderingCreateInfo</a>::<code>viewMask</code> <strong>must</strong> be less than
+<code>pViewportState-&gt;viewportCount</code></p>
+</li>
+<li>
+<p><a id="VUID-VkGraphicsPipelineCreateInfo-multiviewPerViewViewports-12250" href="#VUID-VkGraphicsPipelineCreateInfo-multiviewPerViewViewports-12250"></a> <span class="vuid">VUID-VkGraphicsPipelineCreateInfo-multiviewPerViewViewports-12250</span><br>
+
+If the <a href="features.html#features-multiviewPerViewViewports" class="xref page">    <code>multiviewPerViewViewports</code></a> feature is enabled, <code>renderpass</code>
+is <a href="../appendices/boilerplate.html#VK_NULL_HANDLE" class="xref page">VK_NULL_HANDLE</a>, the pipeline requires
+<a href="#pipelines-graphics-subsets-pre-rasterization">pre-rasterization shader    state</a>, and no element of the <code>pDynamicStates</code> member of
+<code>pDynamicState</code> is <code>VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT</code>, then
+the index of the most significant bit in
+<a href="#VkPipelineRenderingCreateInfo">VkPipelineRenderingCreateInfo</a>::<code>viewMask</code> <strong>must</strong> be less than
+<code>pViewportState-&gt;scissorCount</code></p>
 </li>
 <li>
 <p><a id="VUID-VkGraphicsPipelineCreateInfo-pStages-08711" href="#VUID-VkGraphicsPipelineCreateInfo-pStages-08711"></a> <span class="vuid">VUID-VkGraphicsPipelineCreateInfo-pStages-08711</span><br>
@@ -13705,8 +13725,8 @@ graph cache encoded in the data.</p>
 cache.</p>
 </li>
 <li>
-<p><code>toolchainVersion</code> is the version of the compiler that built the
-data graph cache.</p>
+<p><code>toolchainVersion</code> is a null-terminated UTF-8 string specifying the
+version of the compiler that built the data graph cache.</p>
 </li>
 </ul>
 </div>
@@ -13822,6 +13842,21 @@ typedef enum VkDataGraphModelCacheTypeQCOM {
 general binary layout type.</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p><code>VK_DATA_GRAPH_MODEL_TOOLCHAIN_VERSION_LENGTH_QCOM</code> is the length in
+<code>char</code> values of an array containing the version of the compiler that
+built a data graph cache, as returned in
+<a href="#VkPipelineCacheHeaderVersionDataGraphQCOM">VkPipelineCacheHeaderVersionDataGraphQCOM</a>::<code>toolchainVersion</code>.</p>
+</div>
+<div id="VK_DATA_GRAPH_MODEL_TOOLCHAIN_VERSION_LENGTH_QCOM" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">#define VK_DATA_GRAPH_MODEL_TOOLCHAIN_VERSION_LENGTH_QCOM 3U</code></pre>
+</div>
 </div>
 </div>
 </div>

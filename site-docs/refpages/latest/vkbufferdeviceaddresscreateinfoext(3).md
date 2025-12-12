@@ -19,9 +19,8 @@
 
 VkBufferDeviceAddressCreateInfoEXT - Request a specific address for a buffer
 
-Alternatively, to
-request a specific device address for a buffer, add a
-[VkBufferDeviceAddressCreateInfoEXT](#) structure to the `pNext` chain
+To request a specific device address for a buffer, add a
+`VkBufferDeviceAddressCreateInfoEXT` structure to the `pNext` chain
 of the [VkBufferCreateInfo](VkBufferCreateInfo.html) structure.
 The `VkBufferDeviceAddressCreateInfoEXT` structure is defined as:
 

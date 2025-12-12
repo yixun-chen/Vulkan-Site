@@ -19,7 +19,7 @@
 
 vkCmdPushDescriptorSet2 - Pushes descriptor updates into a command buffer
 
-Alternatively, to push descriptor updates into a command buffer, call:
+To push descriptor updates into a command buffer, call:
 
 // Provided by VK_VERSION_1_4
 void vkCmdPushDescriptorSet2(

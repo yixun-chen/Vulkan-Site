@@ -477,6 +477,9 @@
     <a class="nav-link" href="VK_NV_cluster_acceleration_structure.html">VK_NV_cluster_acceleration_structure</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="VK_NV_compute_occupancy_priority.html">VK_NV_compute_occupancy_priority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="VK_NV_cooperative_matrix2.html">VK_NV_cooperative_matrix2</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -634,18 +637,18 @@
 </li>
 <li><a href="#_issues">5. Issues</a>
 <ul class="sectlevel2">
-<li><a href="#_resolved_do_we_need_separate_extensions_for_each_video_codec">5.1. RESOLVED: Do we need separate extensions for each video codec?</a></li>
-<li><a href="#_resolved_how_should_quantization_maps_be_provided_to_the_implementation">5.2. RESOLVED: How should quantization maps be provided to the implementation?</a></li>
-<li><a href="#_resolved_can_all_implementations_support_quantization_delta_maps_or_do_some_implementations_only_support_absolute_quantization_maps">5.3. RESOLVED: Can all implementations support quantization delta maps, or do some implementations only support absolute quantization maps?</a></li>
-<li><a href="#_resolved_are_quantization_parameters_clamped_to_the_allowed_range_before_or_after_applying_the_quantization_map">5.4. RESOLVED: Are quantization parameters clamped to the allowed range before or after applying the quantization map?</a></li>
-<li><a href="#_resolved_what_is_the_granularity_of_quantization_maps_i_e_the_texel_size_of_the_rectangular_blocks_each_quantization_control_value_applies_to">5.5. RESOLVED: What is the granularity of quantization maps (i.e. the texel size of the rectangular blocks each quantization control value applies to)?</a></li>
-<li><a href="#_resolved_should_we_report_the_supported_quantization_map_granularities_through_individual_entries_as_a_vkextent2d_or_should_we_use_a_bitmask_where_each_flag_corresponds_to_a_supported_block_size">5.6. RESOLVED: Should we report the supported quantization map granularities through individual entries as a <code>VkExtent2D</code> or should we use a bitmask where each flag corresponds to a supported block size?</a></li>
-<li><a href="#_resolved_do_we_need_a_capability_for_the_maximum_extent_of_quantization_maps">5.7. RESOLVED: Do we need a capability for the maximum extent of quantization maps?</a></li>
-<li><a href="#_resolved_can_subregions_of_a_larger_image_be_used_as_a_quantization_map">5.8. RESOLVED: Can subregions of a larger image be used as a quantization map?</a></li>
-<li><a href="#_resolved_should_we_require_an_opt_in_at_video_session_creation_time_to_use_quantization_maps">5.9. RESOLVED: Should we require an opt-in at video session creation time to use quantization maps?</a></li>
-<li><a href="#_resolved_can_applications_use_quantization_maps_only_on_a_subset_of_the_pictures_encoded_within_a_video_stream">5.10. RESOLVED: Can applications use quantization maps only on a subset of the pictures encoded within a video stream?</a></li>
-<li><a href="#_resolved_why_does_this_proposal_introduce_the_vk_video_encode_h264_capability_mb_qp_diff_wraparound_bit_khr_capability_flag">5.11. RESOLVED: Why does this proposal introduce the <code>VK_VIDEO_ENCODE_H264_CAPABILITY_MB_QP_DIFF_WRAPAROUND_BIT_KHR</code> capability flag?</a></li>
-<li><a href="#_resolved_why_does_this_proposal_introduce_the_vk_video_encode_h265_capability_cu_qp_diff_wraparound_bit_khr_capability_flag">5.12. RESOLVED: Why does this proposal introduce the <code>VK_VIDEO_ENCODE_H265_CAPABILITY_CU_QP_DIFF_WRAPAROUND_BIT_KHR</code> capability flag?</a></li>
+<li><a href="#_do_we_need_separate_extensions_for_each_video_codec">5.1. Do we need separate extensions for each video codec?</a></li>
+<li><a href="#_how_should_quantization_maps_be_provided_to_the_implementation">5.2. How should quantization maps be provided to the implementation?</a></li>
+<li><a href="#_can_all_implementations_support_quantization_delta_maps_or_do_some_implementations_only_support_absolute_quantization_maps">5.3. Can all implementations support quantization delta maps, or do some implementations only support absolute quantization maps?</a></li>
+<li><a href="#_are_quantization_parameters_clamped_to_the_allowed_range_before_or_after_applying_the_quantization_map">5.4. Are quantization parameters clamped to the allowed range before or after applying the quantization map?</a></li>
+<li><a href="#_what_is_the_granularity_of_quantization_maps_i_e_the_texel_size_of_the_rectangular_blocks_each_quantization_control_value_applies_to">5.5. What is the granularity of quantization maps (i.e. the texel size of the rectangular blocks each quantization control value applies to)?</a></li>
+<li><a href="#_should_we_report_the_supported_quantization_map_granularities_through_individual_entries_as_a_vkextent2d_or_should_we_use_a_bitmask_where_each_flag_corresponds_to_a_supported_block_size">5.6. Should we report the supported quantization map granularities through individual entries as a <code>VkExtent2D</code> or should we use a bitmask where each flag corresponds to a supported block size?</a></li>
+<li><a href="#_do_we_need_a_capability_for_the_maximum_extent_of_quantization_maps">5.7. Do we need a capability for the maximum extent of quantization maps?</a></li>
+<li><a href="#_can_subregions_of_a_larger_image_be_used_as_a_quantization_map">5.8. Can subregions of a larger image be used as a quantization map?</a></li>
+<li><a href="#_should_we_require_an_opt_in_at_video_session_creation_time_to_use_quantization_maps">5.9. Should we require an opt-in at video session creation time to use quantization maps?</a></li>
+<li><a href="#_can_applications_use_quantization_maps_only_on_a_subset_of_the_pictures_encoded_within_a_video_stream">5.10. Can applications use quantization maps only on a subset of the pictures encoded within a video stream?</a></li>
+<li><a href="#_why_does_this_proposal_introduce_the_vk_video_encode_h264_capability_mb_qp_diff_wraparound_bit_khr_capability_flag">5.11. Why does this proposal introduce the <code>VK_VIDEO_ENCODE_H264_CAPABILITY_MB_QP_DIFF_WRAPAROUND_BIT_KHR</code> capability flag?</a></li>
+<li><a href="#_why_does_this_proposal_introduce_the_vk_video_encode_h265_capability_cu_qp_diff_wraparound_bit_khr_capability_flag">5.12. Why does this proposal introduce the <code>VK_VIDEO_ENCODE_H265_CAPABILITY_CU_QP_DIFF_WRAPAROUND_BIT_KHR</code> capability flag?</a></li>
 </ul>
 </li>
 </ul>
@@ -1193,13 +1196,13 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 <h2 id="_issues"><a class="anchor" href="#_issues"></a>5. Issues</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_resolved_do_we_need_separate_extensions_for_each_video_codec"><a class="anchor" href="#_resolved_do_we_need_separate_extensions_for_each_video_codec"></a>5.1. RESOLVED: Do we need separate extensions for each video codec?</h3>
+<h3 id="_do_we_need_separate_extensions_for_each_video_codec"><a class="anchor" href="#_do_we_need_separate_extensions_for_each_video_codec"></a>5.1. Do we need separate extensions for each video codec?</h3>
 <div class="paragraph">
 <p>No. While quantization parameter formats and semantics are specific to individual video codecs, the general mechanism is uniform enough to cover support for all video codecs using a single extension. The first revision of this extension covers all currently supported video encode profiles and requires that the new video encode profile capabilities must not be exposed for any video encode profile targeting a codec for which this extension does not specify any specific behavior. This enables future revisions of this extension to introduce support for new video codecs without any backward- or forward-compatibility issues.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_how_should_quantization_maps_be_provided_to_the_implementation"><a class="anchor" href="#_resolved_how_should_quantization_maps_be_provided_to_the_implementation"></a>5.2. RESOLVED: How should quantization maps be provided to the implementation?</h3>
+<h3 id="_how_should_quantization_maps_be_provided_to_the_implementation"><a class="anchor" href="#_how_should_quantization_maps_be_provided_to_the_implementation"></a>5.2. How should quantization maps be provided to the implementation?</h3>
 <div class="paragraph">
 <p>The following options were considered:</p>
 </div>
@@ -1224,13 +1227,13 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_all_implementations_support_quantization_delta_maps_or_do_some_implementations_only_support_absolute_quantization_maps"><a class="anchor" href="#_resolved_can_all_implementations_support_quantization_delta_maps_or_do_some_implementations_only_support_absolute_quantization_maps"></a>5.3. RESOLVED: Can all implementations support quantization delta maps, or do some implementations only support absolute quantization maps?</h3>
+<h3 id="_can_all_implementations_support_quantization_delta_maps_or_do_some_implementations_only_support_absolute_quantization_maps"><a class="anchor" href="#_can_all_implementations_support_quantization_delta_maps_or_do_some_implementations_only_support_absolute_quantization_maps"></a>5.3. Can all implementations support quantization delta maps, or do some implementations only support absolute quantization maps?</h3>
 <div class="paragraph">
 <p>Yes. In order to support quantization delta maps when rate control is disabled, implementations only have to support combining the quantization delta values in the quantization map with the absolute quantization parameters specified for the picture (e.g. the per-slice constant QP value for H.264 encode).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_are_quantization_parameters_clamped_to_the_allowed_range_before_or_after_applying_the_quantization_map"><a class="anchor" href="#_resolved_are_quantization_parameters_clamped_to_the_allowed_range_before_or_after_applying_the_quantization_map"></a>5.4. RESOLVED: Are quantization parameters clamped to the allowed range before or after applying the quantization map?</h3>
+<h3 id="_are_quantization_parameters_clamped_to_the_allowed_range_before_or_after_applying_the_quantization_map"><a class="anchor" href="#_are_quantization_parameters_clamped_to_the_allowed_range_before_or_after_applying_the_quantization_map"></a>5.4. Are quantization parameters clamped to the allowed range before or after applying the quantization map?</h3>
 <div class="paragraph">
 <p>After applying the quantization map.</p>
 </div>
@@ -1242,7 +1245,7 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_what_is_the_granularity_of_quantization_maps_i_e_the_texel_size_of_the_rectangular_blocks_each_quantization_control_value_applies_to"><a class="anchor" href="#_resolved_what_is_the_granularity_of_quantization_maps_i_e_the_texel_size_of_the_rectangular_blocks_each_quantization_control_value_applies_to"></a>5.5. RESOLVED: What is the granularity of quantization maps (i.e. the texel size of the rectangular blocks each quantization control value applies to)?</h3>
+<h3 id="_what_is_the_granularity_of_quantization_maps_i_e_the_texel_size_of_the_rectangular_blocks_each_quantization_control_value_applies_to"><a class="anchor" href="#_what_is_the_granularity_of_quantization_maps_i_e_the_texel_size_of_the_rectangular_blocks_each_quantization_control_value_applies_to"></a>5.5. What is the granularity of quantization maps (i.e. the texel size of the rectangular blocks each quantization control value applies to)?</h3>
 <div class="paragraph">
 <p>Different implementations have different answers to this question:</p>
 </div>
@@ -1270,43 +1273,43 @@ vkCmdEndVideoCodingKHR(commandBuffer, ...);</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_report_the_supported_quantization_map_granularities_through_individual_entries_as_a_vkextent2d_or_should_we_use_a_bitmask_where_each_flag_corresponds_to_a_supported_block_size"><a class="anchor" href="#_resolved_should_we_report_the_supported_quantization_map_granularities_through_individual_entries_as_a_vkextent2d_or_should_we_use_a_bitmask_where_each_flag_corresponds_to_a_supported_block_size"></a>5.6. RESOLVED: Should we report the supported quantization map granularities through individual entries as a <code>VkExtent2D</code> or should we use a bitmask where each flag corresponds to a supported block size?</h3>
+<h3 id="_should_we_report_the_supported_quantization_map_granularities_through_individual_entries_as_a_vkextent2d_or_should_we_use_a_bitmask_where_each_flag_corresponds_to_a_supported_block_size"><a class="anchor" href="#_should_we_report_the_supported_quantization_map_granularities_through_individual_entries_as_a_vkextent2d_or_should_we_use_a_bitmask_where_each_flag_corresponds_to_a_supported_block_size"></a>5.6. Should we report the supported quantization map granularities through individual entries as a <code>VkExtent2D</code> or should we use a bitmask where each flag corresponds to a supported block size?</h3>
 <div class="paragraph">
 <p>Using a bitmask could avoid the need to have to return multiple entries when multiple granularities are supported for a particular input configuration, but would require enumerating all supportable granularities as flags. Instead, this proposal simply reports separate entries for each supported granularity. This also works better with the resolution of the issue above.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_do_we_need_a_capability_for_the_maximum_extent_of_quantization_maps"><a class="anchor" href="#_resolved_do_we_need_a_capability_for_the_maximum_extent_of_quantization_maps"></a>5.7. RESOLVED: Do we need a capability for the maximum extent of quantization maps?</h3>
+<h3 id="_do_we_need_a_capability_for_the_maximum_extent_of_quantization_maps"><a class="anchor" href="#_do_we_need_a_capability_for_the_maximum_extent_of_quantization_maps"></a>5.7. Do we need a capability for the maximum extent of quantization maps?</h3>
 <div class="paragraph">
 <p>Yes. Quantization maps are expected to be much smaller than the encoded picture and some implementations only support limited extents for quantization maps. A new video profile capability indicates the maximum extent supported for quantization maps and they are expected to be as large as the maximum coded extent divided by the smallest supported quantization map texel size.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_subregions_of_a_larger_image_be_used_as_a_quantization_map"><a class="anchor" href="#_resolved_can_subregions_of_a_larger_image_be_used_as_a_quantization_map"></a>5.8. RESOLVED: Can subregions of a larger image be used as a quantization map?</h3>
+<h3 id="_can_subregions_of_a_larger_image_be_used_as_a_quantization_map"><a class="anchor" href="#_can_subregions_of_a_larger_image_be_used_as_a_quantization_map"></a>5.8. Can subregions of a larger image be used as a quantization map?</h3>
 <div class="paragraph">
 <p>Yes. This is in line with the general design of the video coding features to allow reusing the same resources across different resolutions. However, the used quantization map subregion is always expected to start at texel offset (0,0) of the corresponding image subresource.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_should_we_require_an_opt_in_at_video_session_creation_time_to_use_quantization_maps"><a class="anchor" href="#_resolved_should_we_require_an_opt_in_at_video_session_creation_time_to_use_quantization_maps"></a>5.9. RESOLVED: Should we require an opt-in at video session creation time to use quantization maps?</h3>
+<h3 id="_should_we_require_an_opt_in_at_video_session_creation_time_to_use_quantization_maps"><a class="anchor" href="#_should_we_require_an_opt_in_at_video_session_creation_time_to_use_quantization_maps"></a>5.9. Should we require an opt-in at video session creation time to use quantization maps?</h3>
 <div class="paragraph">
 <p>Yes. This may also enable some implementations to reduce the device memory usage of video sessions when there is no need to use quantization maps.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_can_applications_use_quantization_maps_only_on_a_subset_of_the_pictures_encoded_within_a_video_stream"><a class="anchor" href="#_resolved_can_applications_use_quantization_maps_only_on_a_subset_of_the_pictures_encoded_within_a_video_stream"></a>5.10. RESOLVED: Can applications use quantization maps only on a subset of the pictures encoded within a video stream?</h3>
+<h3 id="_can_applications_use_quantization_maps_only_on_a_subset_of_the_pictures_encoded_within_a_video_stream"><a class="anchor" href="#_can_applications_use_quantization_maps_only_on_a_subset_of_the_pictures_encoded_within_a_video_stream"></a>5.10. Can applications use quantization maps only on a subset of the pictures encoded within a video stream?</h3>
 <div class="paragraph">
 <p>Yes. Implementations do not require quantization maps to be provided for every video encode operation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_why_does_this_proposal_introduce_the_vk_video_encode_h264_capability_mb_qp_diff_wraparound_bit_khr_capability_flag"><a class="anchor" href="#_resolved_why_does_this_proposal_introduce_the_vk_video_encode_h264_capability_mb_qp_diff_wraparound_bit_khr_capability_flag"></a>5.11. RESOLVED: Why does this proposal introduce the <code>VK_VIDEO_ENCODE_H264_CAPABILITY_MB_QP_DIFF_WRAPAROUND_BIT_KHR</code> capability flag?</h3>
+<h3 id="_why_does_this_proposal_introduce_the_vk_video_encode_h264_capability_mb_qp_diff_wraparound_bit_khr_capability_flag"><a class="anchor" href="#_why_does_this_proposal_introduce_the_vk_video_encode_h264_capability_mb_qp_diff_wraparound_bit_khr_capability_flag"></a>5.11. Why does this proposal introduce the <code>VK_VIDEO_ENCODE_H264_CAPABILITY_MB_QP_DIFF_WRAPAROUND_BIT_KHR</code> capability flag?</h3>
 <div class="paragraph">
 <p>Some implementations do not support the macroblock QP wraparound logic in equation 7-37 of the H.264 specification and thus cannot encode QP differences across subsequent macroblocks that are outside of the [-(26 + QpBdOffsetY / 2), 25 + QpBdOffsetY / 2] range. As this limitation has an observable effect when using QP delta maps, the presence of this capability flag is used to indicate that the implementation does not have any limitation on the QP values used across subsequent macroblocks.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_resolved_why_does_this_proposal_introduce_the_vk_video_encode_h265_capability_cu_qp_diff_wraparound_bit_khr_capability_flag"><a class="anchor" href="#_resolved_why_does_this_proposal_introduce_the_vk_video_encode_h265_capability_cu_qp_diff_wraparound_bit_khr_capability_flag"></a>5.12. RESOLVED: Why does this proposal introduce the <code>VK_VIDEO_ENCODE_H265_CAPABILITY_CU_QP_DIFF_WRAPAROUND_BIT_KHR</code> capability flag?</h3>
+<h3 id="_why_does_this_proposal_introduce_the_vk_video_encode_h265_capability_cu_qp_diff_wraparound_bit_khr_capability_flag"><a class="anchor" href="#_why_does_this_proposal_introduce_the_vk_video_encode_h265_capability_cu_qp_diff_wraparound_bit_khr_capability_flag"></a>5.12. Why does this proposal introduce the <code>VK_VIDEO_ENCODE_H265_CAPABILITY_CU_QP_DIFF_WRAPAROUND_BIT_KHR</code> capability flag?</h3>
 <div class="paragraph">
 <p>Some implementations do not support the coding unit QP wraparound logic in equation 8-283 of the H.265 specification and thus cannot encode QP differences across subsequent coding units that are outside of the [-(26 + QpBdOffsetY / 2), 25 + QpBdOffsetY / 2] range. As this limitation has an observable effect when using QP delta maps, the presence of this capability flag is used to indicate that the implementation does not have any limitation on the QP values used across subsequent coding units.</p>
 </div>
