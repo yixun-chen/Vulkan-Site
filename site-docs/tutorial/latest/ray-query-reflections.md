@@ -44,9 +44,9 @@ PushConstant pushConstant = {
     .materialIndex = sub.materialID (sub.materialID),
     .reflective = sub.reflective
 };
-commandBuffers[currentFrame].pushConstants(pipelineLayout, vk::ShaderStageFlagBits::eFragment, 0, pushConstant);
+commandBuffers[frameIndex].pushConstants(pipelineLayout, vk::ShaderStageFlagBits::eFragment, 0, pushConstant);
 
-commandBuffers[currentFrame].drawIndexed(sub.indexCount, 1, sub.indexOffset, 0, 0);
+commandBuffers[frameIndex].drawIndexed(sub.indexCount, 1, sub.indexOffset, 0, 0);
 
 We will then retrieve this in the fragment shader, before we apply the shadow effect, to call a helper function that will modify the fragment color in-place, based on the reflection ray query:
 

@@ -427,6 +427,39 @@
 <article class="doc">
 <h1 class="page">Base code</h1>
 <div class="sect1">
+<h2 id="_vulkan_hpp_and_designated_initializers"><a class="anchor" href="#_vulkan_hpp_and_designated_initializers"></a>Vulkan-hpp and designated initializers</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We are going to use designated initializers introduced with C++ 20. By default,
+Vulkan-hpp uses a different way of initializing and we need to explicitly enable this
+by using the <code>VULKAN_HPP_NO_STRUCT_CONSTRUCTORS</code> define.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This provides a better meaning towards what each option relates to in the structures that we&#8217;re depending upon. For this tutorial, said define is declared in the <a href="../../02_Development_environment.html#cmake" class="xref page">CMake build setup</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you use a different build setup or want to write code from scratch, you need to manually define this before including the Vulkan-hpp headers like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">#define VULKAN_HPP_NO_STRUCT_CONSTRUCTORS
+#include &lt;vulkan/vulkan.hpp&gt;
+// or
+#include &lt;vulkan/vulkan_raii.hpp&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_general_structure"><a class="anchor" href="#_general_structure"></a>General structure</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -592,24 +625,6 @@ vk::InstanceCreateInfo createInfo{
 
 instance = vk::raii::Instance(context, createInfo);</code></pre>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-We use Vulkan-hpp with designated initializers introduced with C++ 20. By default,
-Vulkan-hpp uses a different way of initializing and we need to explicitly enable this
-by using the <code>VULKAN_HPP_NO_STRUCT_CONSTRUCTORS</code> define. This provides a better meaning
-towards what each option relates to in the structures that we&#8217;re depending upon.
-For this tutorial, said define is declared in the <a href="../../02_Development_environment.html#cmake" class="xref page">CMake build setup</a>.
-If you use a different build setup, you need to manually define this before including
-Vulkan-hpp.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>

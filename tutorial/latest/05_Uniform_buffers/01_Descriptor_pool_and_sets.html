@@ -619,8 +619,8 @@ This needs to be done before the <code>vkCmdDrawIndexed</code> call:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[currentFrame].bindDescriptorSets(vk::PipelineBindPoint::eGraphics, pipelineLayout, 0, *descriptorSets[currentFrame], nullptr);
-commandBuffers[currentFrame].drawIndexed(indices.size(), 1, 0, 0, 0);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[frameIndex].bindDescriptorSets(vk::PipelineBindPoint::eGraphics, pipelineLayout, 0, *descriptorSets[frameIndex], nullptr);
+commandBuffers[frameIndex].drawIndexed(indices.size(), 1, 0, 0, 0);</code></pre>
 </div>
 </div>
 <div class="paragraph">

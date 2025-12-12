@@ -600,9 +600,9 @@ blasGeometry.flags = (submesh.alphaCut) ? vk::GeometryFlagsKHR(0) : vk::Geometry
             PushConstant pushConstant = {
                 .materialIndex = sub.materialID &lt; 0 ? 0u : static_cast&lt;uint32_t&gt;(sub.materialID),
             };
-            commandBuffers[currentFrame].pushConstants&lt;PushConstant&gt;(pipelineLayout, vk::ShaderStageFlagBits::eFragment, 0, pushConstant);
+            commandBuffers[frameIndex].pushConstants&lt;PushConstant&gt;(pipelineLayout, vk::ShaderStageFlagBits::eFragment, 0, pushConstant);
 
-            commandBuffers[currentFrame].drawIndexed(sub.indexCount, 1, sub.indexOffset, 0, 0);
+            commandBuffers[frameIndex].drawIndexed(sub.indexCount, 1, sub.indexOffset, 0, 0);
         }</code></pre>
 </div>
 </div>

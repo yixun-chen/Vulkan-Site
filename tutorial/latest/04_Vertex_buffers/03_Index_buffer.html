@@ -547,8 +547,8 @@ It&#8217;s unfortunately not possible to use different indices for each vertex a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[currentFrame].bindVertexBuffers(0, *vertexBuffer, {0});
-commandBuffers[currentFrame].bindIndexBuffer( *indexBuffer, 0, vk::IndexType::eUint16 );</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[frameIndex].bindVertexBuffers(0, *vertexBuffer, {0});
+commandBuffers[frameIndex].bindIndexBuffer( *indexBuffer, 0, vk::IndexType::eUint16 );</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -561,7 +561,7 @@ Remove the <code>vkCmdDraw</code> line and replace it with <code>vkCmdDrawIndexe
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[currentFrame].drawIndexed(indices.size(), 1, 0, 0, 0);</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[frameIndex].drawIndexed(indices.size(), 1, 0, 0, 0);</code></pre>
 </div>
 </div>
 <div class="paragraph">

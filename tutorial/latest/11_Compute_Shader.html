@@ -972,7 +972,7 @@ Invocations within a single workgroup have access to shared memory.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The number of dimensions for work groups (defined by <code>computeCommandBuffers[currentFrame]&#8594;dispatch</code>) and invocations depends (defined by the local sizes in the compute shader) on how input data is structured.
+<p>The number of dimensions for work groups (defined by <code>computeCommandBuffers[frameIndex]&#8594;dispatch</code>) and invocations depends (defined by the local sizes in the compute shader) on how input data is structured.
 If you e.g.,
 work on a one-dimensional array, like we do in this chapter, you only have to specify the x dimension for both.</p>
 </div>
@@ -1078,28 +1078,28 @@ We use this to index into our particle array.</p>
 <h3 id="_dispatch"><a class="anchor" href="#_dispatch"></a>Dispatch</h3>
 <div class="paragraph">
 <p>Now it&#8217;s time to actually tell the GPU to do some compute.
-This is done by calling <code>computeCommandBuffers[currentFrame]&#8594;dispatch</code> inside a command buffer.
-While not perfectly true, a dispatch is for compute as a draw call like <code>commandBuffers[currentFrame]&#8594;draw</code> is for graphics.
+This is done by calling <code>computeCommandBuffers[frameIndex]&#8594;dispatch</code> inside a command buffer.
+While not perfectly true, a dispatch is for compute as a draw call like <code>commandBuffers[frameIndex]&#8594;draw</code> is for graphics.
 This dispatches a given number of compute work items in at max.
 three dimensions.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">computeCommandBuffers[currentFrame]-&gt;begin({});
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">computeCommandBuffers[frameIndex]-&gt;begin({});
 ...
 
-computeCommandBuffers[currentFrame]-&gt;bindPipeline(vk::PipelineBindPoint::eCompute, *computePipeline);
-computeCommandBuffers[currentFrame]-&gt;bindDescriptorSets(vk::PipelineBindPoint::eCompute, *computePipelineLayout, 0, {computeDescriptorSets[currentFrame]}, {});
+computeCommandBuffers[frameIndex]-&gt;bindPipeline(vk::PipelineBindPoint::eCompute, *computePipeline);
+computeCommandBuffers[frameIndex]-&gt;bindDescriptorSets(vk::PipelineBindPoint::eCompute, *computePipelineLayout, 0, {computeDescriptorSets[frameIndex]}, {});
 
-computeCommandBuffers[currentFrame]-&gt;dispatch( PARTICLE_COUNT / 256, 1, 1 );
+computeCommandBuffers[frameIndex]-&gt;dispatch( PARTICLE_COUNT / 256, 1, 1 );
 
 ...
 
-computeCommandBuffers[currentFrame]-&gt;end();</code></pre>
+computeCommandBuffers[frameIndex]-&gt;end();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>computeCommandBuffers[currentFrame]&#8594;dispatch</code> will dispatch <code>PARTICLE_COUNT / 256</code> local work groups in the x dimension.
+<p>The <code>computeCommandBuffers[frameIndex]&#8594;dispatch</code> will dispatch <code>PARTICLE_COUNT / 256</code> local work groups in the x dimension.
 As our particle array is linear, we leave the other two dimensions at one, resulting in a one-dimensional dispatch.
 But why do we divide the number of particles (in our array) by 256?
 That&#8217;s because in the previous paragraph, we defined that every compute shader in a work group will do 256 invocations.
@@ -1122,9 +1122,9 @@ There&#8217;s no need to start a render pass or set a viewport.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">...
-computeQueue-&gt;submit(submitInfo, **computeInFlightFences[currentFrame]);
+computeQueue-&gt;submit(submitInfo, **computeInFlightFences[frameIndex]);
 ...
-graphicsQueue-&gt;submit(submitInfo, **inFlightFences[currentFrame]);</code></pre>
+graphicsQueue-&gt;submit(submitInfo, **inFlightFences[frameIndex]);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1178,30 +1178,30 @@ for (size_t i = 0; i &lt; MAX_FRAMES_IN_FLIGHT; i++) {
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">{
     // Compute submission
-    while ( vk::Result::eTimeout == device-&gt;waitForFences(**computeInFlightFences[currentFrame], vk::True, UINT64_MAX) )
+    while ( vk::Result::eTimeout == device-&gt;waitForFences(**computeInFlightFences[frameIndex], vk::True, UINT64_MAX) )
         ;
 
-    updateUniformBuffer(currentFrame);
-    device-&gt;resetFences( **computeInFlightFences[currentFrame] );
-    computeCommandBuffers[currentFrame]-&gt;reset();
+    updateUniformBuffer(frameIndex);
+    device-&gt;resetFences( **computeInFlightFences[frameIndex] );
+    computeCommandBuffers[frameIndex]-&gt;reset();
     recordComputeCommandBuffer();
 
-    const vk::SubmitInfo submitInfo({}, {}, {**computeCommandBuffers[currentFrame]}, { **computeFinishedSemaphores[currentFrame]});
-    computeQueue-&gt;submit(submitInfo, **computeInFlightFences[currentFrame]);
+    const vk::SubmitInfo submitInfo({}, {}, {**computeCommandBuffers[frameIndex]}, { **computeFinishedSemaphores[frameIndex]});
+    computeQueue-&gt;submit(submitInfo, **computeInFlightFences[frameIndex]);
 }
 {
     // Graphics submission
-    while ( vk::Result::eTimeout == device-&gt;waitForFences(**inFlightFences[currentFrame], vk::True, UINT64_MAX))
+    while ( vk::Result::eTimeout == device-&gt;waitForFences(**inFlightFences[frameIndex], vk::True, UINT64_MAX))
 ...
 
-    device-&gt;resetFences(  **inFlightFences[currentFrame] );
-    commandBuffers[currentFrame]-&gt;reset();
+    device-&gt;resetFences(  **inFlightFences[frameIndex] );
+    commandBuffers[frameIndex]-&gt;reset();
     recordCommandBuffer(imageIndex);
 
-    vk::Semaphore waitSemaphores[] = {**presentCompleteSemaphore[currentFrame], **computeFinishedSemaphores[currentFrame]};
+    vk::Semaphore waitSemaphores[] = {**presentCompleteSemaphore[frameIndex], **computeFinishedSemaphores[frameIndex]};
     vk::PipelineStageFlags waitDestinationStageMask[] = { vk::PipelineStageFlagBits::eVertexInput, vk::PipelineStageFlagBits::eColorAttachmentOutput };
-    const vk::SubmitInfo submitInfo( waitSemaphores, waitDestinationStageMask, {**commandBuffers[currentFrame]}, {**renderFinishedSemaphore[currentFrame]} );
-    graphicsQueue-&gt;submit(submitInfo, **inFlightFences[currentFrame]);</code></pre>
+    const vk::SubmitInfo submitInfo( waitSemaphores, waitDestinationStageMask, {**commandBuffers[frameIndex]}, {**renderFinishedSemaphore[frameIndex]} );
+    graphicsQueue-&gt;submit(submitInfo, **inFlightFences[frameIndex]);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1301,7 +1301,7 @@ vk::SubmitInfo computeSubmitInfo{
     .pWaitSemaphores = &amp;*semaphore,
     .pWaitDstStageMask = waitStages,
     .commandBufferCount = 1,
-    .pCommandBuffers = &amp;*computeCommandBuffers[currentFrame],
+    .pCommandBuffers = &amp;*computeCommandBuffers[frameIndex],
     .signalSemaphoreCount = 1,
     .pSignalSemaphores = &amp;*semaphore
 };
@@ -1328,7 +1328,7 @@ vk::SubmitInfo graphicsSubmitInfo{
     .pWaitSemaphores = &amp;*semaphore,
     .pWaitDstStageMask = &amp;waitStage,
     .commandBufferCount = 1,
-    .pCommandBuffers = &amp;*commandBuffers[currentFrame],
+    .pCommandBuffers = &amp;*commandBuffers[frameIndex],
     .signalSemaphoreCount = 1,
     .pSignalSemaphores = &amp;*semaphore
 };
@@ -1417,9 +1417,9 @@ This means that we can use the shader storage buffer for drawing just as we used
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[currentFrame]-&gt;bindVertexBuffers(0, { *shaderStorageBuffers[currentFrame] }, {0});
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[frameIndex]-&gt;bindVertexBuffers(0, { *shaderStorageBuffers[frameIndex] }, {0});
 
-commandBuffers[currentFrame]-&gt;draw( PARTICLE_COUNT, 1, 0, 0 );</code></pre>
+commandBuffers[frameIndex]-&gt;draw( PARTICLE_COUNT, 1, 0, 0 );</code></pre>
 </div>
 </div>
 </div>

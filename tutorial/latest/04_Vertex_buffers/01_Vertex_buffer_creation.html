@@ -714,11 +714,11 @@ We&#8217;re going to extend the <code>recordCommandBuffer</code> function to do 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[currentFrame].bindPipeline(vk::PipelineBindPoint::eGraphics, *graphicsPipeline);
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[frameIndex].bindPipeline(vk::PipelineBindPoint::eGraphics, *graphicsPipeline);
 
-commandBuffers[currentFrame].bindVertexBuffers(0, *vertexBuffer, {0});
+commandBuffers[frameIndex].bindVertexBuffers(0, *vertexBuffer, {0});
 
-commandBuffers[currentFrame].draw(3, 1, 0, 0);</code></pre>
+commandBuffers[frameIndex].draw(3, 1, 0, 0);</code></pre>
 </div>
 </div>
 <div class="paragraph">

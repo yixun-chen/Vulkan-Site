@@ -192,11 +192,11 @@ Finally, we’ll update our main loop to coordinate the worker threads:
 
 void drawFrame() {
     // Wait for the previous frame to finish
-    while (vk::Result::eTimeout == device.waitForFences(*inFlightFences[currentFrame], vk::True, UINT64_MAX));
-    device.resetFences(*inFlightFences[currentFrame]);
+    while (vk::Result::eTimeout == device.waitForFences(*inFlightFences[frameIndex], vk::True, UINT64_MAX));
+    device.resetFences(*inFlightFences[frameIndex]);
 
     // Acquire the next image
-    auto [result, imageIndex] = swapChain.acquireNextImage(UINT64_MAX, *imageAvailableSemaphores[currentFrame], nullptr);
+    auto [result, imageIndex] = swapChain.acquireNextImage(UINT64_MAX, *imageAvailableSemaphores[frameIndex], nullptr);
 
     if (result == vk::Result::eErrorOutOfDateKHR || result == vk::Result::eSuboptimalKHR || framebufferResized) {
         framebufferResized = false;
@@ -205,7 +205,7 @@ void drawFrame() {
     }
 
     // Update uniform buffers
-    updateUniformBuffer(currentFrame);
+    updateUniformBuffer(frameIndex);
 
     // Signal worker threads to start recording compute command buffers
     signalThreadsToWork();
@@ -231,25 +231,23 @@ void drawFrame() {
     vk::PipelineStageFlags waitStages[] = {vk::PipelineStageFlagBits::eVertexInput};
 
     // Submit graphics work
-    vk::SubmitInfo graphicsSubmitInfo{
-        .waitSemaphoreCount = 1,
-        .pWaitSemaphores = &*imageAvailableSemaphores[currentFrame],
-        .pWaitDstStageMask = waitStages,
-        .commandBufferCount = 1,
-        .pCommandBuffers = &*graphicsCommandBuffers[currentFrame],
-        .signalSemaphoreCount = 1,
-        .pSignalSemaphores = &*renderFinishedSemaphores[currentFrame]
-    };
+    vk::SubmitInfo graphisSubmitInfo{.waitSemaphoreCount   = 1,
+                                      .pWaitSemaphores      = &*imageAvailableSemaphores[frameIndex],
+                                      .pWaitDstStageMask    = &waitDestinationStageMask,
+                                      .commandBufferCount   = 1,
+                                      .pCommandBuffers      = &*graphicsCommandBuffers[frameIndex],
+                                      .signalSemaphoreCount = 1,
+                                      .pSignalSemaphores    = &*renderFinishedSemaphores[imageIndex]};
 
     {
         std::lock_guard lock(queueSubmitMutex);
-        graphicsQueue.submit(graphicsSubmitInfo, *inFlightFences[currentFrame]);
+        graphicsQueue.submit(graphicsSubmitInfo, *inFlightFences[frameIndex]);
     }
 
     // Present the image
     vk::PresentInfoKHR presentInfo{
         .waitSemaphoreCount = 1,
-        .pWaitSemaphores = &*renderFinishedSemaphores[currentFrame],
+        .pWaitSemaphores = &*renderFinishedSemaphores[frameIndex],
         .swapchainCount = 1,
         .pSwapchains = &*swapChain,
         .pImageIndices = &imageIndex
@@ -264,7 +262,7 @@ void drawFrame() {
         throw std::runtime_error("failed to present swap chain image!");
     }
 
-    currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
+    frameIndex = (frameIndex + 1) % MAX_FRAMES_IN_FLIGHT;
 }
 
 Beyond the basic implementation above, there are several advanced techniques you can use to further optimize your multithreaded Vulkan application:

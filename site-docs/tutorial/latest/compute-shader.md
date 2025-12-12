@@ -372,7 +372,7 @@ This image shows the relation between these two in three dimensions:
 
 ![compute space](_images/images/compute_space.svg)
 
-The number of dimensions for work groups (defined by `computeCommandBuffers[currentFrame]→dispatch`) and invocations depends (defined by the local sizes in the compute shader) on how input data is structured.
+The number of dimensions for work groups (defined by `computeCommandBuffers[frameIndex]→dispatch`) and invocations depends (defined by the local sizes in the compute shader) on how input data is structured.
 If you e.g.,
 work on a one-dimensional array, like we do in this chapter, you only have to specify the x dimension for both.
 
@@ -449,24 +449,24 @@ across the current dispatch.  It gains that capability by the
 We use this to index into our particle array.
 
 Now it’s time to actually tell the GPU to do some compute.
-This is done by calling `computeCommandBuffers[currentFrame]→dispatch` inside a command buffer.
-While not perfectly true, a dispatch is for compute as a draw call like `commandBuffers[currentFrame]→draw` is for graphics.
+This is done by calling `computeCommandBuffers[frameIndex]→dispatch` inside a command buffer.
+While not perfectly true, a dispatch is for compute as a draw call like `commandBuffers[frameIndex]→draw` is for graphics.
 This dispatches a given number of compute work items in at max.
 three dimensions.
 
-computeCommandBuffers[currentFrame]->begin({});
+computeCommandBuffers[frameIndex]->begin({});
 ...
 
-computeCommandBuffers[currentFrame]->bindPipeline(vk::PipelineBindPoint::eCompute, *computePipeline);
-computeCommandBuffers[currentFrame]->bindDescriptorSets(vk::PipelineBindPoint::eCompute, *computePipelineLayout, 0, {computeDescriptorSets[currentFrame]}, {});
+computeCommandBuffers[frameIndex]->bindPipeline(vk::PipelineBindPoint::eCompute, *computePipeline);
+computeCommandBuffers[frameIndex]->bindDescriptorSets(vk::PipelineBindPoint::eCompute, *computePipelineLayout, 0, {computeDescriptorSets[frameIndex]}, {});
 
-computeCommandBuffers[currentFrame]->dispatch( PARTICLE_COUNT / 256, 1, 1 );
+computeCommandBuffers[frameIndex]->dispatch( PARTICLE_COUNT / 256, 1, 1 );
 
 ...
 
-computeCommandBuffers[currentFrame]->end();
+computeCommandBuffers[frameIndex]->end();
 
-The `computeCommandBuffers[currentFrame]→dispatch` will dispatch `PARTICLE_COUNT / 256` local work groups in the x dimension.
+The `computeCommandBuffers[frameIndex]→dispatch` will dispatch `PARTICLE_COUNT / 256` local work groups in the x dimension.
 As our particle array is linear, we leave the other two dimensions at one, resulting in a one-dimensional dispatch.
 But why do we divide the number of particles (in our array) by 256?
 That’s because in the previous paragraph, we defined that every compute shader in a work group will do 256 invocations.
@@ -482,9 +482,9 @@ There’s no need to start a render pass or set a viewport.
 As our sample does both compute and graphics operations, we’ll be doing two submits to both the graphics and compute queue per frame (see the `drawFrame` function):
 
 ...
-computeQueue->submit(submitInfo, **computeInFlightFences[currentFrame]);
+computeQueue->submit(submitInfo, **computeInFlightFences[frameIndex]);
 ...
-graphicsQueue->submit(submitInfo, **inFlightFences[currentFrame]);
+graphicsQueue->submit(submitInfo, **inFlightFences[frameIndex]);
 
 The first submit to the compute queue updates the particle positions using the compute shader, and the second submit will then use that updated data to draw the particle system.
 
@@ -521,30 +521,30 @@ We then use these to synchronize the compute buffer submission with the graphics
 
 {
     // Compute submission
-    while ( vk::Result::eTimeout == device->waitForFences(**computeInFlightFences[currentFrame], vk::True, UINT64_MAX) )
+    while ( vk::Result::eTimeout == device->waitForFences(**computeInFlightFences[frameIndex], vk::True, UINT64_MAX) )
         ;
 
-    updateUniformBuffer(currentFrame);
-    device->resetFences( **computeInFlightFences[currentFrame] );
-    computeCommandBuffers[currentFrame]->reset();
+    updateUniformBuffer(frameIndex);
+    device->resetFences( **computeInFlightFences[frameIndex] );
+    computeCommandBuffers[frameIndex]->reset();
     recordComputeCommandBuffer();
 
-    const vk::SubmitInfo submitInfo({}, {}, {**computeCommandBuffers[currentFrame]}, { **computeFinishedSemaphores[currentFrame]});
-    computeQueue->submit(submitInfo, **computeInFlightFences[currentFrame]);
+    const vk::SubmitInfo submitInfo({}, {}, {**computeCommandBuffers[frameIndex]}, { **computeFinishedSemaphores[frameIndex]});
+    computeQueue->submit(submitInfo, **computeInFlightFences[frameIndex]);
 }
 {
     // Graphics submission
-    while ( vk::Result::eTimeout == device->waitForFences(**inFlightFences[currentFrame], vk::True, UINT64_MAX))
+    while ( vk::Result::eTimeout == device->waitForFences(**inFlightFences[frameIndex], vk::True, UINT64_MAX))
 ...
 
-    device->resetFences(  **inFlightFences[currentFrame] );
-    commandBuffers[currentFrame]->reset();
+    device->resetFences(  **inFlightFences[frameIndex] );
+    commandBuffers[frameIndex]->reset();
     recordCommandBuffer(imageIndex);
 
-    vk::Semaphore waitSemaphores[] = {**presentCompleteSemaphore[currentFrame], **computeFinishedSemaphores[currentFrame]};
+    vk::Semaphore waitSemaphores[] = {**presentCompleteSemaphore[frameIndex], **computeFinishedSemaphores[frameIndex]};
     vk::PipelineStageFlags waitDestinationStageMask[] = { vk::PipelineStageFlagBits::eVertexInput, vk::PipelineStageFlagBits::eColorAttachmentOutput };
-    const vk::SubmitInfo submitInfo( waitSemaphores, waitDestinationStageMask, {**commandBuffers[currentFrame]}, {**renderFinishedSemaphore[currentFrame]} );
-    graphicsQueue->submit(submitInfo, **inFlightFences[currentFrame]);
+    const vk::SubmitInfo submitInfo( waitSemaphores, waitDestinationStageMask, {**commandBuffers[frameIndex]}, {**renderFinishedSemaphore[frameIndex]} );
+    graphicsQueue->submit(submitInfo, **inFlightFences[frameIndex]);
 
 Similar to the sample in the
 [semaphore chapter](03_Drawing_a_triangle/03_Drawing/02_Rendering_and_presentation.html), this setup will immediately run the
@@ -611,7 +611,7 @@ vk::SubmitInfo computeSubmitInfo{
     .pWaitSemaphores = &*semaphore,
     .pWaitDstStageMask = waitStages,
     .commandBufferCount = 1,
-    .pCommandBuffers = &*computeCommandBuffers[currentFrame],
+    .pCommandBuffers = &*computeCommandBuffers[frameIndex],
     .signalSemaphoreCount = 1,
     .pSignalSemaphores = &*semaphore
 };
@@ -634,7 +634,7 @@ vk::SubmitInfo graphicsSubmitInfo{
     .pWaitSemaphores = &*semaphore,
     .pWaitDstStageMask = &waitStage,
     .commandBufferCount = 1,
-    .pCommandBuffers = &*commandBuffers[currentFrame],
+    .pCommandBuffers = &*commandBuffers[frameIndex],
     .signalSemaphoreCount = 1,
     .pSignalSemaphores = &*semaphore
 };
@@ -693,9 +693,9 @@ Note that we don’t add `velocity` to the vertex input attributes, as this is o
 
 We then bind and draw it like we would with any vertex buffer:
 
-commandBuffers[currentFrame]->bindVertexBuffers(0, { *shaderStorageBuffers[currentFrame] }, {0});
+commandBuffers[frameIndex]->bindVertexBuffers(0, { *shaderStorageBuffers[frameIndex] }, {0});
 
-commandBuffers[currentFrame]->draw( PARTICLE_COUNT, 1, 0, 0 );
+commandBuffers[frameIndex]->draw( PARTICLE_COUNT, 1, 0, 0 );
 
 In this chapter, we learned how to use compute shaders to offload work from the CPU to the GPU.
 Without compute shaders, many effects in modern games and applications would either not be possible or would run a lot slower.

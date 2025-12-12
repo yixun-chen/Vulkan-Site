@@ -71,7 +71,7 @@ vk::raii::DeviceMemory indexBufferMemory = nullptr;
 You should change the type of the indices from `uint16_t` to `uint32_t`, because there are going to be a lot more vertices than 65535.
 Remember to also change the `vkCmdBindIndexBuffer` parameter:
 
-commandBuffers[currentFrame]->bindIndexBuffer( **indexBuffer, 0, vk::IndexType::eUint32 );
+commandBuffers[frameIndex]->bindIndexBuffer( **indexBuffer, 0, vk::IndexType::eUint32 );
 
 The tinyobjloader library is included in the same way as STB libraries.
 Include the `tiny_obj_loader.h` file and make sure to define `TINYOBJLOADER_IMPLEMENTATION` in one source file to include the function bodies and avoid linker errors:

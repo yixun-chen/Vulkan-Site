@@ -653,7 +653,7 @@ public:
 
         // Bind compute pipeline and descriptor sets
         cmdBuffer.bindPipeline(vk::PipelineBindPoint::eCompute, *computePipeline);
-        cmdBuffer.bindDescriptorSets(vk::PipelineBindPoint::eCompute, *computePipelineLayout, 0, {*computeDescriptorSets[currentFrame]}, {});
+        cmdBuffer.bindDescriptorSets(vk::PipelineBindPoint::eCompute, *computePipelineLayout, 0, {*computeDescriptorSets[frameIndex]}, {});
 
         // Add a push constant to specify the particle range for this thread
         struct PushConstants {
@@ -767,11 +767,11 @@ void compMain(uint3 threadId : SV_DispatchThreadID)
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c&#43;&#43; hljs" data-lang="c&#43;&#43;">void drawFrame() {
     // Wait for the previous frame to finish
-    while (vk::Result::eTimeout == device.waitForFences(*inFlightFences[currentFrame], vk::True, UINT64_MAX));
-    device.resetFences(*inFlightFences[currentFrame]);
+    while (vk::Result::eTimeout == device.waitForFences(*inFlightFences[frameIndex], vk::True, UINT64_MAX));
+    device.resetFences(*inFlightFences[frameIndex]);
 
     // Acquire the next image
-    auto [result, imageIndex] = swapChain.acquireNextImage(UINT64_MAX, *imageAvailableSemaphores[currentFrame], nullptr);
+    auto [result, imageIndex] = swapChain.acquireNextImage(UINT64_MAX, *imageAvailableSemaphores[frameIndex], nullptr);
 
     if (result == vk::Result::eErrorOutOfDateKHR || result == vk::Result::eSuboptimalKHR || framebufferResized) {
         framebufferResized = false;
@@ -780,7 +780,7 @@ void compMain(uint3 threadId : SV_DispatchThreadID)
     }
 
     // Update uniform buffers
-    updateUniformBuffer(currentFrame);
+    updateUniformBuffer(frameIndex);
 
     // Signal worker threads to start recording compute command buffers
     signalThreadsToWork();
@@ -812,25 +812,23 @@ void compMain(uint3 threadId : SV_DispatchThreadID)
     vk::PipelineStageFlags waitStages[] = {vk::PipelineStageFlagBits::eVertexInput};
 
     // Submit graphics work
-    vk::SubmitInfo graphicsSubmitInfo{
-        .waitSemaphoreCount = 1,
-        .pWaitSemaphores = &amp;*imageAvailableSemaphores[currentFrame],
-        .pWaitDstStageMask = waitStages,
-        .commandBufferCount = 1,
-        .pCommandBuffers = &amp;*graphicsCommandBuffers[currentFrame],
-        .signalSemaphoreCount = 1,
-        .pSignalSemaphores = &amp;*renderFinishedSemaphores[currentFrame]
-    };
+    vk::SubmitInfo graphisSubmitInfo{.waitSemaphoreCount   = 1,
+                                      .pWaitSemaphores      = &amp;*imageAvailableSemaphores[frameIndex],
+                                      .pWaitDstStageMask    = &amp;waitDestinationStageMask,
+                                      .commandBufferCount   = 1,
+                                      .pCommandBuffers      = &amp;*graphicsCommandBuffers[frameIndex],
+                                      .signalSemaphoreCount = 1,
+                                      .pSignalSemaphores    = &amp;*renderFinishedSemaphores[imageIndex]};
 
     {
         std::lock_guard&lt;std::mutex&gt; lock(queueSubmitMutex);
-        graphicsQueue.submit(graphicsSubmitInfo, *inFlightFences[currentFrame]);
+        graphicsQueue.submit(graphicsSubmitInfo, *inFlightFences[frameIndex]);
     }
 
     // Present the image
     vk::PresentInfoKHR presentInfo{
         .waitSemaphoreCount = 1,
-        .pWaitSemaphores = &amp;*renderFinishedSemaphores[currentFrame],
+        .pWaitSemaphores = &amp;*renderFinishedSemaphores[frameIndex],
         .swapchainCount = 1,
         .pSwapchains = &amp;*swapChain,
         .pImageIndices = &amp;imageIndex
@@ -845,7 +843,7 @@ void compMain(uint3 threadId : SV_DispatchThreadID)
         throw std::runtime_error("failed to present swap chain image!");
     }
 
-    currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
+    frameIndex = (frameIndex + 1) % MAX_FRAMES_IN_FLIGHT;
 }</code></pre>
 </div>
 </div>

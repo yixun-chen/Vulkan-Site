@@ -491,15 +491,18 @@ Next we need to resize the command buffers vector to the size of <code>MAX_FRAME
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void createSyncObjects() {
-    presentCompleteSemaphores.clear();
-    renderFinishedSemaphores.clear();
-    inFlightFences.clear();
+		assert(presentCompleteSemaphores.empty() &amp;&amp; renderFinishedSemaphores.empty() &amp;&amp; inFlightFences.empty());
 
-    for (size_t i = 0; i &lt; MAX_FRAMES_IN_FLIGHT; i++) {
-        presentCompleteSemaphores.emplace_back(device, vk::SemaphoreCreateInfo());
-        renderFinishedSemaphores.emplace_back(device, vk::SemaphoreCreateInfo());
-        inFlightFences.emplace_back(device, vk::FenceCreateInfo(vk::FenceCreateFlagBits::eSignaled));
-    }
+		for (size_t i = 0; i &lt; swapChainImages.size(); i++)
+		{
+			renderFinishedSemaphores.emplace_back(device, vk::SemaphoreCreateInfo());
+		}
+
+		for (size_t i = 0; i &lt; MAX_FRAMES_IN_FLIGHT; i++)
+		{
+			presentCompleteSemaphores.emplace_back(device, vk::SemaphoreCreateInfo());
+			inFlightFences.emplace_back(device, vk::FenceCreateInfo{.flags = vk::FenceCreateFlagBits::eSignaled});
+		}
 }</code></pre>
 </div>
 </div>
@@ -509,7 +512,7 @@ We will use a frame index for that purpose:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">uint32_t currentFrame = 0;</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">uint32_t frameIndex 0;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -518,27 +521,24 @@ We will use a frame index for that purpose:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void drawFrame() {
-    while ( vk::Result::eTimeout == device.waitForFences( inFlightFences[currentFrame], vk::True, UINT64_MAX ) )
-            ;
-    auto [result, imageIndex] = swapChain.acquireNextImage( UINT64_MAX, presentCompleteSemaphores[currentFrame], nullptr );
+		while (vk::Result::eTimeout == device.waitForFences(*inFlightFences[frameIndex], vk::True, UINT64_MAX))
+			;
+		device.resetFences(*inFlightFences[frameIndex]);
 
-    device.resetFences( inFlightFences[currentFrame] );
+		auto [result, imageIndex] = swapChain.acquireNextImage(UINT64_MAX, *presentCompleteSemaphores[frameIndex], nullptr);
 
-    ...
+		commandBuffers[frameIndex].reset();
+		recordCommandBuffer(imageIndex);
 
-    commandBuffers[currentFrame].reset();
-    recordCommandBuffer(commandBuffers[currentFrame], imageIndex);
-
-    ...
-
-    vk::PipelineStageFlags waitDestinationStageMask( vk::PipelineStageFlagBits::eColorAttachmentOutput );
-    const vk::SubmitInfo submitInfo{ .waitSemaphoreCount = 1, .pWaitSemaphores = &amp;*presentCompleteSemaphores[currentFrame],
-                        .pWaitDstStageMask = &amp;waitDestinationStageMask, .commandBufferCount = 1, .pCommandBuffers = &amp;*commandBuffers[currentFrame],
-                        .signalSemaphoreCount = 1, .pSignalSemaphores = &amp;*renderFinishedSemaphores[currentFrame] };
-
-    ...
-
-    graphicsQueue.submit(submitInfo, inFlightFences[currentFrame]);
+		vk::PipelineStageFlags waitDestinationStageMask(vk::PipelineStageFlagBits::eColorAttachmentOutput);
+		const vk::SubmitInfo   submitInfo{.waitSemaphoreCount   = 1,
+		                                  .pWaitSemaphores      = &amp;*presentCompleteSemaphores[frameIndex],
+		                                  .pWaitDstStageMask    = &amp;waitDestinationStageMask,
+		                                  .commandBufferCount   = 1,
+		                                  .pCommandBuffers      = &amp;*commandBuffers[frameIndex],
+		                                  .signalSemaphoreCount = 1,
+		                                  .pSignalSemaphores    = &amp;*renderFinishedSemaphores[imageIndex]};
+		queue.submit(submitInfo, *inFlightFences[frameIndex]);
 }</code></pre>
 </div>
 </div>
@@ -550,7 +550,7 @@ We will use a frame index for that purpose:</p>
 <pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">void drawFrame() {
     ...
 
-    currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
+    frameIndex = (frameIndex + 1) % MAX_FRAMES_IN_FLIGHT;
 }</code></pre>
 </div>
 </div>

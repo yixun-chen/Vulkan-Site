@@ -92,7 +92,7 @@ Usually happens after a window resize.
 * 
 `VK_SUBOPTIMAL_KHR`: The swap chain can still be used to successfully present to the surface, but the surface properties are no longer matched exactly.
 
-auto [result, imageIndex] = swapChain.acquireNextImage( UINT64_MAX, *presentCompleteSemaphores[currentFrame], nullptr );
+auto [result, imageIndex] = swapChain.acquireNextImage( UINT64_MAX, *presentCompleteSemaphores[frameIndex], nullptr );
 
 if (result == vk::Result::eErrorOutOfDateKHR) {
     recreateSwapChain();
@@ -115,10 +115,39 @@ if (result == vk::Result::eErrorOutOfDateKHR || result == vk::Result::eSuboptima
     throw std::runtime_error("failed to present swap chain image!");
 }
 
-currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
+frameIndex = (frameIndex + 1) % MAX_FRAMES_IN_FLIGHT;
 
 The `vkQueuePresentKHR` function returns the same values with the same meaning.
 In this case, we will also recreate the swap chain if it is suboptimal, because we want the best possible result.
+
+try
+{
+    const vk::PresentInfoKHR presentInfoKHR{.waitSemaphoreCount = 1, .pWaitSemaphores = &*renderFinishedSemaphore[imageIndex], .swapchainCount = 1, .pSwapchains = &*swapChain, .pImageIndices = &imageIndex};
+    result = queue.presentKHR(presentInfoKHR);
+    if (result == vk::Result::eErrorOutOfDateKHR || result == vk::Result::eSuboptimalKHR || framebufferResized)
+    {
+        framebufferResized = false;
+        recreateSwapChain();
+    }
+    else if (result != vk::Result::eSuccess)
+    {
+        throw std::runtime_error("failed to present swap chain image!");
+    }
+}
+catch (const vk::SystemError &e)
+{
+    if (e.code().value() == static_cast(vk::Result::eErrorOutOfDateKHR))
+    {
+        recreateSwapChain();
+        return;
+    }
+    else
+    {
+        throw;
+    }
+}
+
+Recent versions of Vulkan-hpp throw exceptions on unsuccessful return codes. To handle exceptions thrown by `vkQueuePresentKHR`, catch `vk::SystemError` and check the error code as shown above.
 
 If we try to run the code now, it is possible to encounter a deadlock.
 Debugging the code, we find that the application reaches `vkWaitForFences` but never continues past it.
@@ -132,10 +161,10 @@ Thus, if we return early, the fence is still signaled and `vkWaitForFences` wont
 
 The beginning of `drawFrame` should now look like this:
 
-vkWaitForFences(device, 1, &inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
+vkWaitForFences(device, 1, &inFlightFences[frameIndex], VK_TRUE, UINT64_MAX);
 
 uint32_t imageIndex;
-VkResult result = vkAcquireNextImageKHR(device, swapChain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &imageIndex);
+VkResult result = vkAcquireNextImageKHR(device, swapChain, UINT64_MAX, imageAvailableSemaphores[frameIndex], VK_NULL_HANDLE, &imageIndex);
 
 if (result == VK_ERROR_OUT_OF_DATE_KHR) {
     recreateSwapChain();
@@ -145,7 +174,7 @@ if (result == VK_ERROR_OUT_OF_DATE_KHR) {
 }
 
 // Only reset the fence if we are submitting work
-vkResetFences(device, 1, &inFlightFences[currentFrame]);
+vkResetFences(device, 1, &inFlightFences[frameIndex]);
 
 Although many drivers and platforms trigger `VK_ERROR_OUT_OF_DATE_KHR` automatically after a window resize, it is not guaranteed to happen.
 That’s why we’ll add some extra code to also handle resizes explicitly.

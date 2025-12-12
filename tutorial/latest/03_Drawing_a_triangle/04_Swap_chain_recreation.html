@@ -535,7 +535,7 @@ Usually happens after a window resize.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">auto [result, imageIndex] = swapChain.acquireNextImage( UINT64_MAX, *presentCompleteSemaphores[currentFrame], nullptr );
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">auto [result, imageIndex] = swapChain.acquireNextImage( UINT64_MAX, *presentCompleteSemaphores[frameIndex], nullptr );
 
 if (result == vk::Result::eErrorOutOfDateKHR) {
     recreateSwapChain();
@@ -563,12 +563,45 @@ if (result == vk::Result::eErrorOutOfDateKHR || result == vk::Result::eSuboptima
     throw std::runtime_error("failed to present swap chain image!");
 }
 
-currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;</code></pre>
+frameIndex = (frameIndex + 1) % MAX_FRAMES_IN_FLIGHT;</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The <code>vkQueuePresentKHR</code> function returns the same values with the same meaning.
 In this case, we will also recreate the swap chain if it is suboptimal, because we want the best possible result.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">try
+{
+    const vk::PresentInfoKHR presentInfoKHR{.waitSemaphoreCount = 1, .pWaitSemaphores = &amp;*renderFinishedSemaphore[imageIndex], .swapchainCount = 1, .pSwapchains = &amp;*swapChain, .pImageIndices = &amp;imageIndex};
+    result = queue.presentKHR(presentInfoKHR);
+    if (result == vk::Result::eErrorOutOfDateKHR || result == vk::Result::eSuboptimalKHR || framebufferResized)
+    {
+        framebufferResized = false;
+        recreateSwapChain();
+    }
+    else if (result != vk::Result::eSuccess)
+    {
+        throw std::runtime_error("failed to present swap chain image!");
+    }
+}
+catch (const vk::SystemError &amp;e)
+{
+    if (e.code().value() == static_cast&lt;int&gt;(vk::Result::eErrorOutOfDateKHR))
+    {
+        recreateSwapChain();
+        return;
+    }
+    else
+    {
+        throw;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Recent versions of Vulkan-hpp throw exceptions on unsuccessful return codes. To handle exceptions thrown by <code>vkQueuePresentKHR</code>, catch <code>vk::SystemError</code> and check the error code as shown above.</p>
 </div>
 </div>
 </div>
@@ -592,10 +625,10 @@ Thus, if we return early, the fence is still signaled and <code>vkWaitForFences<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkWaitForFences(device, 1, &amp;inFlightFences[currentFrame], VK_TRUE, UINT64_MAX);
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">vkWaitForFences(device, 1, &amp;inFlightFences[frameIndex], VK_TRUE, UINT64_MAX);
 
 uint32_t imageIndex;
-VkResult result = vkAcquireNextImageKHR(device, swapChain, UINT64_MAX, imageAvailableSemaphores[currentFrame], VK_NULL_HANDLE, &amp;imageIndex);
+VkResult result = vkAcquireNextImageKHR(device, swapChain, UINT64_MAX, imageAvailableSemaphores[frameIndex], VK_NULL_HANDLE, &amp;imageIndex);
 
 if (result == VK_ERROR_OUT_OF_DATE_KHR) {
     recreateSwapChain();
@@ -605,7 +638,7 @@ if (result == VK_ERROR_OUT_OF_DATE_KHR) {
 }
 
 // Only reset the fence if we are submitting work
-vkResetFences(device, 1, &amp;inFlightFences[currentFrame]);</code></pre>
+vkResetFences(device, 1, &amp;inFlightFences[frameIndex]);</code></pre>
 </div>
 </div>
 </div>

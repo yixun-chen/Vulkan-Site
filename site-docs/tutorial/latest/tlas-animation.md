@@ -126,7 +126,7 @@ These barriers are crucial for correct synchronization, preventing race conditio
 
 Verify that the function is called in `drawFrame()` after the model matrix is updated:
 
-        updateUniformBuffer(currentFrame);
+        updateUniformBuffer(frameIndex);
         // TASK06: Update the TLAS with the current model matrix
         updateTopLevelAS(ubo.model);
 

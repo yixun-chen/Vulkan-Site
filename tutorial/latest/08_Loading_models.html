@@ -523,7 +523,7 @@ Remember to also change the <code>vkCmdBindIndexBuffer</code> parameter:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[currentFrame]-&gt;bindIndexBuffer( **indexBuffer, 0, vk::IndexType::eUint32 );</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">commandBuffers[frameIndex]-&gt;bindIndexBuffer( **indexBuffer, 0, vk::IndexType::eUint32 );</code></pre>
 </div>
 </div>
 <div class="paragraph">

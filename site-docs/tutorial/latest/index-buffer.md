@@ -96,8 +96,8 @@ We first need to bind the index buffer, just like we did for the vertex buffer.
 The difference is that you can only have a single index buffer.
 It’s unfortunately not possible to use different indices for each vertex attribute, so we do still have to completely duplicate vertex data even if just one attribute varies.
 
-commandBuffers[currentFrame].bindVertexBuffers(0, *vertexBuffer, {0});
-commandBuffers[currentFrame].bindIndexBuffer( *indexBuffer, 0, vk::IndexType::eUint16 );
+commandBuffers[frameIndex].bindVertexBuffers(0, *vertexBuffer, {0});
+commandBuffers[frameIndex].bindIndexBuffer( *indexBuffer, 0, vk::IndexType::eUint16 );
 
 An index buffer is bound with `vkCmdBindIndexBuffer` which has the index buffer, a byte offset into it, and the type of index data as parameters.
 As mentioned before, the possible types are `VK_INDEX_TYPE_UINT16` and `VK_INDEX_TYPE_UINT32`.
@@ -105,7 +105,7 @@ As mentioned before, the possible types are `VK_INDEX_TYPE_UINT16` and `VK_INDEX
 Just binding an index buffer doesn’t change anything yet, we also need to change the drawing command to tell Vulkan to use the index buffer.
 Remove the `vkCmdDraw` line and replace it with `vkCmdDrawIndexed`:
 
-commandBuffers[currentFrame].drawIndexed(indices.size(), 1, 0, 0, 0);
+commandBuffers[frameIndex].drawIndexed(indices.size(), 1, 0, 0, 0);
 
 A call to this function is very similar to `vkCmdDraw`.
 The first two parameters specify the number of indices and the number of instances.

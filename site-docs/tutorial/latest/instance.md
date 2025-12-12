@@ -129,14 +129,17 @@ Here’s an example of checking for errors in Vulkan calls:
 
 Or use the tuple:
 
-    auto [result, imageIndex] = swapChain->acquireNextImage( UINT64_MAX, **presentCompleteSemaphore[currentFrame], nullptr );
-    if (result == vk::Result::eErrorOutOfDateKHR) {
-        recreateSwapChain();
-        return;
-    }
-    if (result != vk::Result::eSuccess && result != vk::Result::eSuboptimalKHR) {
-        throw std::runtime_error("failed to acquire swap chain image!");
-    }
+		auto [result, imageIndex] = swapChain.acquireNextImage(UINT64_MAX, *presentCompleteSemaphores[frameIndex], nullptr);
+
+		if (result == vk::Result::eErrorOutOfDateKHR)
+		{
+			recreateSwapChain();
+			return;
+		}
+		if (result != vk::Result::eSuccess && result != vk::Result::eSuboptimalKHR)
+		{
+			throw std::runtime_error("failed to acquire swap chain image!");
+		}
 
 Those examples are from later parts of our tutorial, this is just an example
 of how to check for errors in all of your calls.

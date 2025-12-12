@@ -600,14 +600,17 @@ Here&#8217;s an example of checking for errors in Vulkan calls:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">    auto [result, imageIndex] = swapChain-&gt;acquireNextImage( UINT64_MAX, **presentCompleteSemaphore[currentFrame], nullptr );
-    if (result == vk::Result::eErrorOutOfDateKHR) {
-        recreateSwapChain();
-        return;
-    }
-    if (result != vk::Result::eSuccess &amp;&amp; result != vk::Result::eSuboptimalKHR) {
-        throw std::runtime_error("failed to acquire swap chain image!");
-    }</code></pre>
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">		auto [result, imageIndex] = swapChain.acquireNextImage(UINT64_MAX, *presentCompleteSemaphores[frameIndex], nullptr);
+
+		if (result == vk::Result::eErrorOutOfDateKHR)
+		{
+			recreateSwapChain();
+			return;
+		}
+		if (result != vk::Result::eSuccess &amp;&amp; result != vk::Result::eSuboptimalKHR)
+		{
+			throw std::runtime_error("failed to acquire swap chain image!");
+		}</code></pre>
 </div>
 </div>
 <div class="paragraph">

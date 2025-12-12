@@ -53,41 +53,36 @@ void createCommandBuffers() {
 The `createSyncObjects` function should be changed to create all the objects:
 
 void createSyncObjects() {
-    presentCompleteSemaphores.clear();
-    renderFinishedSemaphores.clear();
-    inFlightFences.clear();
+		assert(presentCompleteSemaphores.empty() && renderFinishedSemaphores.empty() && inFlightFences.empty());
 
-    for (size_t i = 0; i 
+		for (size_t i = 0; i 
 
 To use the right objects every frame, we need to keep track of the current frame.
 We will use a frame index for that purpose:
 
-uint32_t currentFrame = 0;
+uint32_t frameIndex 0;
 
 The `drawFrame` function can now be modified to use the right objects:
 
 void drawFrame() {
-    while ( vk::Result::eTimeout == device.waitForFences( inFlightFences[currentFrame], vk::True, UINT64_MAX ) )
-            ;
-    auto [result, imageIndex] = swapChain.acquireNextImage( UINT64_MAX, presentCompleteSemaphores[currentFrame], nullptr );
+		while (vk::Result::eTimeout == device.waitForFences(*inFlightFences[frameIndex], vk::True, UINT64_MAX))
+			;
+		device.resetFences(*inFlightFences[frameIndex]);
 
-    device.resetFences( inFlightFences[currentFrame] );
+		auto [result, imageIndex] = swapChain.acquireNextImage(UINT64_MAX, *presentCompleteSemaphores[frameIndex], nullptr);
 
-    ...
+		commandBuffers[frameIndex].reset();
+		recordCommandBuffer(imageIndex);
 
-    commandBuffers[currentFrame].reset();
-    recordCommandBuffer(commandBuffers[currentFrame], imageIndex);
-
-    ...
-
-    vk::PipelineStageFlags waitDestinationStageMask( vk::PipelineStageFlagBits::eColorAttachmentOutput );
-    const vk::SubmitInfo submitInfo{ .waitSemaphoreCount = 1, .pWaitSemaphores = &*presentCompleteSemaphores[currentFrame],
-                        .pWaitDstStageMask = &waitDestinationStageMask, .commandBufferCount = 1, .pCommandBuffers = &*commandBuffers[currentFrame],
-                        .signalSemaphoreCount = 1, .pSignalSemaphores = &*renderFinishedSemaphores[currentFrame] };
-
-    ...
-
-    graphicsQueue.submit(submitInfo, inFlightFences[currentFrame]);
+		vk::PipelineStageFlags waitDestinationStageMask(vk::PipelineStageFlagBits::eColorAttachmentOutput);
+		const vk::SubmitInfo   submitInfo{.waitSemaphoreCount   = 1,
+		                                  .pWaitSemaphores      = &*presentCompleteSemaphores[frameIndex],
+		                                  .pWaitDstStageMask    = &waitDestinationStageMask,
+		                                  .commandBufferCount   = 1,
+		                                  .pCommandBuffers      = &*commandBuffers[frameIndex],
+		                                  .signalSemaphoreCount = 1,
+		                                  .pSignalSemaphores    = &*renderFinishedSemaphores[imageIndex]};
+		queue.submit(submitInfo, *inFlightFences[frameIndex]);
 }
 
 Of course, we shouldn’t forget to advance to the next frame every time:
@@ -95,7 +90,7 @@ Of course, we shouldn’t forget to advance to the next frame every time:
 void drawFrame() {
     ...
 
-    currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
+    frameIndex = (frameIndex + 1) % MAX_FRAMES_IN_FLIGHT;
 }
 
 By using the modulo (%) operator, we ensure that the frame index loops around after every `MAX_FRAMES_IN_FLIGHT` enqueued frames.

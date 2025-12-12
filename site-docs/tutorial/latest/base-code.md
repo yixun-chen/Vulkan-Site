@@ -8,11 +8,27 @@
 
 ## Table of Contents
 
+- [Vulkan-hpp and designated initializers](#_vulkan_hpp_and_designated_initializers)
+- [Vulkan-hpp_and_designated_initializers](#_vulkan_hpp_and_designated_initializers)
 - [General structure](#_general_structure)
 - [Resource management](#_resource_management)
 - [Integrating GLFW](#_integrating_glfw)
 
 ## Content
+
+|  | We are going to use designated initializers introduced with C++ 20. By default,
+| --- | --- |
+Vulkan-hpp uses a different way of initializing and we need to explicitly enable this
+by using the `VULKAN_HPP_NO_STRUCT_CONSTRUCTORS` define. |
+
+This provides a better meaning towards what each option relates to in the structures that we’re depending upon. For this tutorial, said define is declared in the [CMake build setup](../../02_Development_environment.html#cmake).
+
+If you use a different build setup or want to write code from scratch, you need to manually define this before including the Vulkan-hpp headers like this:
+
+#define VULKAN_HPP_NO_STRUCT_CONSTRUCTORS
+#include 
+// or
+#include 
 
 In the previous chapter, you’ve created a Vulkan project with all the proper
  configurations and tested it with the sample code. In this chapter, we’re starting
@@ -149,15 +165,6 @@ vk::InstanceCreateInfo createInfo{
 };
 
 instance = vk::raii::Instance(context, createInfo);
-
-|  | We use Vulkan-hpp with designated initializers introduced with C++ 20. By default,
-| --- | --- |
-Vulkan-hpp uses a different way of initializing and we need to explicitly enable this
-by using the `VULKAN_HPP_NO_STRUCT_CONSTRUCTORS` define. This provides a better meaning
-towards what each option relates to in the structures that we’re depending upon.
-For this tutorial, said define is declared in the [CMake build setup](../../02_Development_environment.html#cmake).
-If you use a different build setup, you need to manually define this before including
-Vulkan-hpp. |
 
 Vulkan works perfectly fine without creating a window if you want to use it for
 off-screen rendering, but it’s a lot more exciting to actually show something!

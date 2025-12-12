@@ -107,9 +107,9 @@ Note how the renderer does not bind separate material textures for each submesh.
             PushConstant pushConstant = {
                 .materialIndex = sub.materialID (sub.materialID),
             };
-            commandBuffers[currentFrame].pushConstants(pipelineLayout, vk::ShaderStageFlagBits::eFragment, 0, pushConstant);
+            commandBuffers[frameIndex].pushConstants(pipelineLayout, vk::ShaderStageFlagBits::eFragment, 0, pushConstant);
 
-            commandBuffers[currentFrame].drawIndexed(sub.indexCount, 1, sub.indexOffset, 0, 0);
+            commandBuffers[frameIndex].drawIndexed(sub.indexCount, 1, sub.indexOffset, 0, 0);
         }
 
 Then, in the shader, we use the material index to sample the texture array. They all share the same sampler:

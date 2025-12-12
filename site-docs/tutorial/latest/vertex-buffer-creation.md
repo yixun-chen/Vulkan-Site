@@ -190,11 +190,11 @@ The transfer of data to the GPU is an operation that happens in the background, 
 All that remains now is binding the vertex buffer during rendering operations.
 We’re going to extend the `recordCommandBuffer` function to do that.
 
-commandBuffers[currentFrame].bindPipeline(vk::PipelineBindPoint::eGraphics, *graphicsPipeline);
+commandBuffers[frameIndex].bindPipeline(vk::PipelineBindPoint::eGraphics, *graphicsPipeline);
 
-commandBuffers[currentFrame].bindVertexBuffers(0, *vertexBuffer, {0});
+commandBuffers[frameIndex].bindVertexBuffers(0, *vertexBuffer, {0});
 
-commandBuffers[currentFrame].draw(3, 1, 0, 0);
+commandBuffers[frameIndex].draw(3, 1, 0, 0);
 
 The `vkCmdBindVertexBuffers` function is used to bind vertex buffers to bindings, like the one we set up in the previous chapter.
 The first two parameters, besides the command buffer, specify the offset and number of bindings we’re going to specify vertex buffers for.

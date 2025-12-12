@@ -135,8 +135,8 @@ The latter can be used to copy descriptors to each other, as its name implies.
 We now need to update the `recordCommandBuffer` function to actually bind the right descriptor set for each frame to the descriptors in the shader with `vkCmdBindDescriptorSets`.
 This needs to be done before the `vkCmdDrawIndexed` call:
 
-commandBuffers[currentFrame].bindDescriptorSets(vk::PipelineBindPoint::eGraphics, pipelineLayout, 0, *descriptorSets[currentFrame], nullptr);
-commandBuffers[currentFrame].drawIndexed(indices.size(), 1, 0, 0, 0);
+commandBuffers[frameIndex].bindDescriptorSets(vk::PipelineBindPoint::eGraphics, pipelineLayout, 0, *descriptorSets[frameIndex], nullptr);
+commandBuffers[frameIndex].drawIndexed(indices.size(), 1, 0, 0, 0);
 
 Unlike vertex and index buffers, descriptor sets are not unique to graphics pipelines.
 Therefore, we need to specify if we want to bind descriptor sets to the graphics or compute pipeline.
